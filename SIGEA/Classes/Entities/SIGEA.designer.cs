@@ -26704,7 +26704,7 @@ namespace SIGEA.Classes.Entities
 			OnCreated();
 		}
 		
-		[Column(Storage="_idComparable", AutoSync=AutoSync.OnInsert, DbType="BigInt NOT NULL IDENTITY", IsPrimaryKey=true, IsDbGenerated=true)]
+		[Column(Storage="_idComparable", AutoSync=AutoSync.OnInsert, DbType="Int NOT NULL IDENTITY", IsPrimaryKey=true, IsDbGenerated=true)]
 		public long idComparable
 		{
 			get

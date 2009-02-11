@@ -1213,7 +1213,7 @@
   </Table>
   <Table Name="dbo.ComparableInmobiliario" Member="ComparableInmobiliario">
     <Type Name="ComparableInmobiliario">
-      <Column Name="idComparable" Type="System.Int64" DbType="BigInt NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="idComparable" Type="System.Int64" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
       <Column Name="idTipoComparable" Type="System.Int16" DbType="SmallInt NOT NULL" CanBeNull="false" />
       <Column Name="idValuador" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
       <Column Name="idDatoContacto" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
