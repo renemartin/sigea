@@ -5,7 +5,7 @@
 <%@ Register Src="../../Controles/DatosDireccion.ascx" TagName="DatosDireccion" TagPrefix="SIGEA" %>
 
 <asp:Content ID="headContent" ContentPlaceHolderID="head" runat="server">
-    <%--<script type="text/javascript">
+    <script type="text/javascript">
         var idComparable = 0;
         var idTipoComparable = "<%= tipoComparable_DDList.ClientID %>";
         
@@ -51,8 +51,8 @@
             $get("<%= fechaCreacion_TBox.ClientID %>").value = getDateString(date);
         }
         
-        function saveFormComparable(){
-            saveComparable(
+        function saveComparable(){
+            saveComparableAsync(
                 idComparable
                 , getData()
                 , getDatosUbicacion()
@@ -61,7 +61,7 @@
             );
         }
         
-        function saveFormComparableSuccess(id){
+        function saveComparable_Success(id){
             idComparable = id;
             setControlsVisibility();
             setFechaCreacion(new Date());
@@ -104,7 +104,7 @@
             }
         
         }
-    </script>--%>
+    </script>
 </asp:Content>
 
 <asp:Content ID="mainContent" ContentPlaceHolderID="main" runat="server">
