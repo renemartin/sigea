@@ -1,29 +1,10 @@
-﻿function fillTipoComparable(comparable_id) {
-    MethodCallers.GetListaTipoComparable(
-        fillSelect, asyncCallFail, comparable_id);
-}
+﻿/// <reference name="MicrosoftAjax.js"/>
+/// <reference path="~/Scripts/SelectFiller.js"/>
+/// <reference path="~/Scripts/AsyncCalls.js"/>
+/// <reference path="~/Services/MethodCallers.asmx">
+/// <reference path="~/Services/EntityWrappers.asmx">
 
-function fillUsoSuelo(usoSuelo_id) {
-    MethodCallers.GetListaUsoSuelo(
-        fillSelect, asyncCallFail, usoSuelo_id);
-}
-
-function fillConservacion(conservacion_id) {
-    MethodCallers.GetListaConservacion(
-        fillSelect, asyncCallFail, conservacion_id);
-}
-
-function fillCalidadProyecto(calidadProyecto_id) {
-    MethodCallers.GetListaCalidadProyecto(
-        fillSelect, asyncCallFail, calidadProyecto_id);
-}
-
-function fillClase(clase_id){
-    MethodCallers.GetListaClase(
-        fillSelect, asyncCallFail, clase_id);
-}
-
-function saveComparable(idComparable, datosComparable, datosUbicacion, datosContacto, asyncCallFail, callBack) {
+function saveComparableAsync(idComparable, datosComparable, datosUbicacion, datosContacto, callBack) {
     EntityWrappers.SaveComparable(
         idComparable
         , datosComparable
@@ -34,15 +15,15 @@ function saveComparable(idComparable, datosComparable, datosUbicacion, datosCont
     );
 }
 
-function saveComparableComplete(result, callBack){
+function saveComparableAsyncComplete(result, callBack){
     if(callBack != null)
-        callBack();
+        callBack(result);
 }
 
-function loadComparable(idComparable, callBackList){
+function loadComparableAsync(idComparable, callBackList){
     EntityWrappers.LoadComparable(
         idComparable
-        , loadComparableComplete
+        , asyncCallListBack
         , asyncCallFaill
         , callBackList
     );
@@ -56,4 +37,23 @@ function loadComparableComplete(result, callBackList){
         
         callBackList[0]();
     }
+}
+
+function deleteComparableAsync(idComparable, callBack, parameter){
+    var context = new Array();
+    context[0] = callBack;
+    context[1] = parameter;
+    
+    EntityWrappers.DeleteComparable(
+        idComparable
+        , deleteComparableAsync_Complete
+        , asyncCallFail
+        , context
+    );
+}
+
+function deleteComparableAsync_Complete(result, context){
+    if ( context != null && context.length == 2 ) {
+        context[0](context[1]);
+    }    
 }
