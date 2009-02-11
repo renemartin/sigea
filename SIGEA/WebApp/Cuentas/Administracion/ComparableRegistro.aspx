@@ -5,7 +5,7 @@
 <%@ Register Src="../../Controles/DatosDireccion.ascx" TagName="DatosDireccion" TagPrefix="SIGEA" %>
 
 <asp:Content ID="headContent" ContentPlaceHolderID="head" runat="server">
-    <script type="text/javascript">
+    <%--<script type="text/javascript">
         var idComparable = 0;
         var idTipoComparable = "<%= tipoComparable_DDList.ClientID %>";
         
@@ -104,7 +104,7 @@
             }
         
         }
-    </script>
+    </script>--%>
 </asp:Content>
 
 <asp:Content ID="mainContent" ContentPlaceHolderID="main" runat="server">
@@ -114,7 +114,7 @@
             <asp:ServiceReference Path="~/Services/EntityWrappers.asmx" />
         </Services>
         <Scripts>
-            <asp:ScriptReference Path="~/Scripts/Comparables.js" />
+            <asp:ScriptReference Path="~/Scripts/Utils.js" />
             <asp:ScriptReference Path="~/Scripts/AsyncCalls.js" />
             <asp:ScriptReference Path="~/Scripts/DataFillers.js" />
         </Scripts>
