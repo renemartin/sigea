@@ -28,7 +28,7 @@ namespace SIGEA.Classes.Entities
             activo = true;
         }
 
-        public static ComparableInmobiliario GetFromID(SIGEADataContext data_context, int idComparable)
+        public static ComparableInmobiliario GetFromId(SIGEADataContext data_context, int idComparable)
         {
             var comparable = data_context.ComparableInmobiliario.Where(c => c.idComparable == idComparable);
             if (!comparable.Any())
@@ -51,7 +51,7 @@ namespace SIGEA.Classes.Entities
             }
             else 
             {
-                comparable = GetFromID(data_context, idComparable);
+                comparable = GetFromId(data_context, idComparable);
                 if (comparable != null)
                 {
                     if (comparable.DatoContacto == null)
@@ -87,6 +87,17 @@ namespace SIGEA.Classes.Entities
             datos.Add("revisado", revisado);
 
             return datos;
+        }
+
+        public static void Delete(SIGEADataContext data_context, int idComparable)
+        {
+            ComparableInmobiliario comparable_delete = GetFromId(data_context, idComparable);
+            if (comparable_delete == null)
+            {
+                throw new Exception("Identificador de comparable inválido");
+            }
+
+            comparable_delete.activo = false;
         }
     }
 }
