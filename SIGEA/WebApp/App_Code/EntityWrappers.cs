@@ -407,6 +407,58 @@ public class EntityWrappers : System.Web.Services.WebService
     }
     #endregion
 
+    #region Comparable
+    [WebMethod]
+    public long SaveComparable(
+        int idComparable
+        , Entity datosComparable
+        , Entity datosUbicacion
+        , Entity datosContacto
+        )
+    {
+        SIGEADataContext data_context = new SIGEADataContext();
+
+        ComparableInmobiliario comparable = ComparableInmobiliario.GetDataForUpdate(data_context, idComparable);
+        if (comparable == null)
+            throw new Exception("El identificador del comparable es inválido");
+
+        CodigoPostal cp_direccion = CodigoPostal.GetFromData(data_context, datosUbicacion);
+        comparable.SetDatos(datosComparable);
+        comparable.DatoContacto.SetData(datosContacto);
+        comparable.Direccion.SetData(cp_direccion, datosUbicacion);
+
+        data_context.SubmitChanges();
+
+        return comparable.idComparable;
+    }
+
+    [WebMethod]
+    public Entity[] LoadComparable(int idComparable)
+    {
+        Entity[] datos = new Entity[4];
+
+        ComparableInmobiliario comparable = ComparableInmobiliario.GetFromId(common_context, idComparable);
+        if (comparable == null)
+            throw new Exception("El identificador del comparable es inválido");
+
+        datos[0] = comparable.GetData();
+        datos[1] = comparable.DatoContacto.GetData();
+        datos[2] = comparable.Direccion.GetData();
+
+        return datos;
+    }
+
+    [WebMethod]
+    public void DeleteComaprable(int idComparable)
+    {
+        SIGEADataContext data_context = new SIGEADataContext();
+        ComparableInmobiliario.Delete(data_context, idComparable);
+
+        data_context.SubmitChanges();
+    }
+
+    #endregion
+
     #endregion
 }
 
