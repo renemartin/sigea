@@ -296,7 +296,7 @@
       <Column Name="skype" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
       <Association Name="DatoContacto_Cliente" Member="Cliente" ThisKey="idDatoContacto" OtherKey="idDatoContacto" Type="Cliente" />
       <Association Name="DatoContacto_Valuador" Member="Valuador" ThisKey="idDatoContacto" OtherKey="idDatoContacto" Type="Valuador" />
-      <Association Name="ComparableInmobiliario_DatoContacto" Member="ComparableInmobiliario" ThisKey="idDatoContacto" OtherKey="idDatoContacto" Type="ComparableInmobiliario" IsForeignKey="true" />
+      <Association Name="DatoContacto_ComparableInmobiliario" Member="ComparableInmobiliario" ThisKey="idDatoContacto" OtherKey="idDatoContacto" Type="ComparableInmobiliario" />
     </Type>
   </Table>
   <Table Name="dbo.DatoCredito" Member="DatoCredito">
@@ -378,8 +378,8 @@
       <Association Name="Direccion_Propietario" Member="Propietario" ThisKey="idDireccion" OtherKey="idDireccion" Type="Propietario" />
       <Association Name="Direccion_Solicitante" Member="Solicitante" ThisKey="idDireccion" OtherKey="idDireccion" Type="Solicitante" />
       <Association Name="Direccion_Valuador" Member="Valuador" ThisKey="idDireccion" OtherKey="idDireccion" Type="Valuador" />
+      <Association Name="Direccion_ComparableInmobiliario" Member="ComparableInmobiliario" ThisKey="idDireccion" OtherKey="idDireccion" Type="ComparableInmobiliario" />
       <Association Name="CodigoPostal_Direccion" Member="CodigoPostal" ThisKey="idCodigoPostal" OtherKey="idCodigoPostal" Type="CodigoPostal" IsForeignKey="true" />
-      <Association Name="ComparableInmobiliario_Direccion" Member="ComparableInmobiliario" ThisKey="idDireccion" OtherKey="idDireccion" Type="ComparableInmobiliario" IsForeignKey="true" />
     </Type>
   </Table>
   <Table Name="dbo.DireccionInmueble" Member="DireccionInmueble">
@@ -1233,14 +1233,14 @@
       <Column Name="fechaActualizacion" Type="System.DateTime" DbType="DateTime NOT NULL" CanBeNull="false" />
       <Column Name="revisado" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
       <Column Name="activo" Type="System.Boolean" DbType="Bit" CanBeNull="true" />
-      <Association Name="ComparableInmobiliario_Direccion" Member="Direccion" ThisKey="idDireccion" OtherKey="idDireccion" Type="Direccion" />
       <Association Name="ComparableInmobiliario_Valuador" Member="Valuador" ThisKey="idValuador" OtherKey="idValuador" Type="Valuador" />
-      <Association Name="ComparableInmobiliario_DatoContacto" Member="DatoContacto" ThisKey="idDatoContacto" OtherKey="idDatoContacto" Type="DatoContacto" />
       <Association Name="CalidadProyecto_ComparableInmobiliario" Member="CalidadProyecto" ThisKey="idCalidadProyecto" OtherKey="idCalidadProyecto" Type="CalidadProyecto" IsForeignKey="true" />
       <Association Name="Clase_ComparableInmobiliario" Member="Clase" ThisKey="idClase" OtherKey="idClase" Type="Clase" IsForeignKey="true" />
       <Association Name="TipoComparable_ComparableInmobiliario" Member="TipoComparable" ThisKey="idTipoComparable" OtherKey="idTipoComparable" Type="TipoComparable" IsForeignKey="true" />
       <Association Name="UsoSuelo_ComparableInmobiliario" Member="UsoSuelo" ThisKey="idUsoSuelo" OtherKey="idUsoSuelo" Type="UsoSuelo" IsForeignKey="true" />
       <Association Name="Conservacion_ComparableInmobiliario" Member="Conservacion" ThisKey="idConservacion" OtherKey="idConservacion" Type="Conservacion" IsForeignKey="true" />
+      <Association Name="Direccion_ComparableInmobiliario" Member="Direccion" ThisKey="idDireccion" OtherKey="idDireccion" Type="Direccion" IsForeignKey="true" />
+      <Association Name="DatoContacto_ComparableInmobiliario" Member="DatoContacto" ThisKey="idDatoContacto" OtherKey="idDatoContacto" Type="DatoContacto" IsForeignKey="true" />
     </Type>
   </Table>
   <Table Name="dbo.TipoComparable" Member="TipoComparable">

@@ -7366,7 +7366,7 @@ namespace SIGEA.Classes.Entities
 		
 		private EntitySet<Valuador> _Valuador;
 		
-		private EntityRef<ComparableInmobiliario> _ComparableInmobiliario;
+		private EntitySet<ComparableInmobiliario> _ComparableInmobiliario;
 		
     #region Extensibility Method Definitions
     partial void OnLoaded();
@@ -7404,7 +7404,7 @@ namespace SIGEA.Classes.Entities
 		{
 			this._Cliente = new EntitySet<Cliente>(new Action<Cliente>(this.attach_Cliente), new Action<Cliente>(this.detach_Cliente));
 			this._Valuador = new EntitySet<Valuador>(new Action<Valuador>(this.attach_Valuador), new Action<Valuador>(this.detach_Valuador));
-			this._ComparableInmobiliario = default(EntityRef<ComparableInmobiliario>);
+			this._ComparableInmobiliario = new EntitySet<ComparableInmobiliario>(new Action<ComparableInmobiliario>(this.attach_ComparableInmobiliario), new Action<ComparableInmobiliario>(this.detach_ComparableInmobiliario));
 			OnCreated();
 		}
 		
@@ -7419,10 +7419,6 @@ namespace SIGEA.Classes.Entities
 			{
 				if ((this._idDatoContacto != value))
 				{
-					if (this._ComparableInmobiliario.HasLoadedOrAssignedValue)
-					{
-						throw new System.Data.Linq.ForeignKeyReferenceAlreadyHasValueException();
-					}
 					this.OnidDatoContactoChanging(value);
 					this.SendPropertyChanging();
 					this._idDatoContacto = value;
@@ -7698,37 +7694,16 @@ namespace SIGEA.Classes.Entities
 			}
 		}
 		
-		[Association(Name="ComparableInmobiliario_DatoContacto", Storage="_ComparableInmobiliario", ThisKey="idDatoContacto", OtherKey="idDatoContacto", IsForeignKey=true)]
-		public ComparableInmobiliario ComparableInmobiliario
+		[Association(Name="DatoContacto_ComparableInmobiliario", Storage="_ComparableInmobiliario", ThisKey="idDatoContacto", OtherKey="idDatoContacto")]
+		public EntitySet<ComparableInmobiliario> ComparableInmobiliario
 		{
 			get
 			{
-				return this._ComparableInmobiliario.Entity;
+				return this._ComparableInmobiliario;
 			}
 			set
 			{
-				ComparableInmobiliario previousValue = this._ComparableInmobiliario.Entity;
-				if (((previousValue != value) 
-							|| (this._ComparableInmobiliario.HasLoadedOrAssignedValue == false)))
-				{
-					this.SendPropertyChanging();
-					if ((previousValue != null))
-					{
-						this._ComparableInmobiliario.Entity = null;
-						previousValue.DatoContacto.Remove(this);
-					}
-					this._ComparableInmobiliario.Entity = value;
-					if ((value != null))
-					{
-						value.DatoContacto.Add(this);
-						this._idDatoContacto = value.idDatoContacto;
-					}
-					else
-					{
-						this._idDatoContacto = default(int);
-					}
-					this.SendPropertyChanged("ComparableInmobiliario");
-				}
+				this._ComparableInmobiliario.Assign(value);
 			}
 		}
 		
@@ -7771,6 +7746,18 @@ namespace SIGEA.Classes.Entities
 		}
 		
 		private void detach_Valuador(Valuador entity)
+		{
+			this.SendPropertyChanging();
+			entity.DatoContacto = null;
+		}
+		
+		private void attach_ComparableInmobiliario(ComparableInmobiliario entity)
+		{
+			this.SendPropertyChanging();
+			entity.DatoContacto = this;
+		}
+		
+		private void detach_ComparableInmobiliario(ComparableInmobiliario entity)
 		{
 			this.SendPropertyChanging();
 			entity.DatoContacto = null;
@@ -9215,9 +9202,9 @@ namespace SIGEA.Classes.Entities
 		
 		private EntitySet<Valuador> _Valuador;
 		
-		private EntityRef<CodigoPostal> _CodigoPostal;
+		private EntitySet<ComparableInmobiliario> _ComparableInmobiliario;
 		
-		private EntityRef<ComparableInmobiliario> _ComparableInmobiliario;
+		private EntityRef<CodigoPostal> _CodigoPostal;
 		
     #region Extensibility Method Definitions
     partial void OnLoaded();
@@ -9248,8 +9235,8 @@ namespace SIGEA.Classes.Entities
 			this._Propietario = new EntitySet<Propietario>(new Action<Propietario>(this.attach_Propietario), new Action<Propietario>(this.detach_Propietario));
 			this._Solicitante = new EntitySet<Solicitante>(new Action<Solicitante>(this.attach_Solicitante), new Action<Solicitante>(this.detach_Solicitante));
 			this._Valuador = new EntitySet<Valuador>(new Action<Valuador>(this.attach_Valuador), new Action<Valuador>(this.detach_Valuador));
+			this._ComparableInmobiliario = new EntitySet<ComparableInmobiliario>(new Action<ComparableInmobiliario>(this.attach_ComparableInmobiliario), new Action<ComparableInmobiliario>(this.detach_ComparableInmobiliario));
 			this._CodigoPostal = default(EntityRef<CodigoPostal>);
-			this._ComparableInmobiliario = default(EntityRef<ComparableInmobiliario>);
 			OnCreated();
 		}
 		
@@ -9264,10 +9251,6 @@ namespace SIGEA.Classes.Entities
 			{
 				if ((this._idDireccion != value))
 				{
-					if (this._ComparableInmobiliario.HasLoadedOrAssignedValue)
-					{
-						throw new System.Data.Linq.ForeignKeyReferenceAlreadyHasValueException();
-					}
 					this.OnidDireccionChanging(value);
 					this.SendPropertyChanging();
 					this._idDireccion = value;
@@ -9492,6 +9475,19 @@ namespace SIGEA.Classes.Entities
 			}
 		}
 		
+		[Association(Name="Direccion_ComparableInmobiliario", Storage="_ComparableInmobiliario", ThisKey="idDireccion", OtherKey="idDireccion")]
+		public EntitySet<ComparableInmobiliario> ComparableInmobiliario
+		{
+			get
+			{
+				return this._ComparableInmobiliario;
+			}
+			set
+			{
+				this._ComparableInmobiliario.Assign(value);
+			}
+		}
+		
 		[Association(Name="CodigoPostal_Direccion", Storage="_CodigoPostal", ThisKey="idCodigoPostal", OtherKey="idCodigoPostal", IsForeignKey=true)]
 		public CodigoPostal CodigoPostal
 		{
@@ -9522,40 +9518,6 @@ namespace SIGEA.Classes.Entities
 						this._idCodigoPostal = default(int);
 					}
 					this.SendPropertyChanged("CodigoPostal");
-				}
-			}
-		}
-		
-		[Association(Name="ComparableInmobiliario_Direccion", Storage="_ComparableInmobiliario", ThisKey="idDireccion", OtherKey="idDireccion", IsForeignKey=true)]
-		public ComparableInmobiliario ComparableInmobiliario
-		{
-			get
-			{
-				return this._ComparableInmobiliario.Entity;
-			}
-			set
-			{
-				ComparableInmobiliario previousValue = this._ComparableInmobiliario.Entity;
-				if (((previousValue != value) 
-							|| (this._ComparableInmobiliario.HasLoadedOrAssignedValue == false)))
-				{
-					this.SendPropertyChanging();
-					if ((previousValue != null))
-					{
-						this._ComparableInmobiliario.Entity = null;
-						previousValue.Direccion.Remove(this);
-					}
-					this._ComparableInmobiliario.Entity = value;
-					if ((value != null))
-					{
-						value.Direccion.Add(this);
-						this._idDireccion = value.idDireccion;
-					}
-					else
-					{
-						this._idDireccion = default(int);
-					}
-					this.SendPropertyChanged("ComparableInmobiliario");
 				}
 			}
 		}
@@ -9659,6 +9621,18 @@ namespace SIGEA.Classes.Entities
 		}
 		
 		private void detach_Valuador(Valuador entity)
+		{
+			this.SendPropertyChanging();
+			entity.Direccion = null;
+		}
+		
+		private void attach_ComparableInmobiliario(ComparableInmobiliario entity)
+		{
+			this.SendPropertyChanging();
+			entity.Direccion = this;
+		}
+		
+		private void detach_ComparableInmobiliario(ComparableInmobiliario entity)
 		{
 			this.SendPropertyChanging();
 			entity.Direccion = null;
@@ -26655,11 +26629,7 @@ namespace SIGEA.Classes.Entities
 		
 		private System.Nullable<bool> _activo;
 		
-		private EntitySet<Direccion> _Direccion;
-		
 		private EntitySet<Valuador> _Valuador;
-		
-		private EntitySet<DatoContacto> _DatoContacto;
 		
 		private EntityRef<CalidadProyecto> _CalidadProyecto;
 		
@@ -26670,6 +26640,10 @@ namespace SIGEA.Classes.Entities
 		private EntityRef<UsoSuelo> _UsoSuelo;
 		
 		private EntityRef<Conservacion> _Conservacion;
+		
+		private EntityRef<Direccion> _Direccion;
+		
+		private EntityRef<DatoContacto> _DatoContacto;
 		
     #region Extensibility Method Definitions
     partial void OnLoaded();
@@ -26719,14 +26693,14 @@ namespace SIGEA.Classes.Entities
 		
 		public ComparableInmobiliario()
 		{
-			this._Direccion = new EntitySet<Direccion>(new Action<Direccion>(this.attach_Direccion), new Action<Direccion>(this.detach_Direccion));
 			this._Valuador = new EntitySet<Valuador>(new Action<Valuador>(this.attach_Valuador), new Action<Valuador>(this.detach_Valuador));
-			this._DatoContacto = new EntitySet<DatoContacto>(new Action<DatoContacto>(this.attach_DatoContacto), new Action<DatoContacto>(this.detach_DatoContacto));
 			this._CalidadProyecto = default(EntityRef<CalidadProyecto>);
 			this._Clase = default(EntityRef<Clase>);
 			this._TipoComparable = default(EntityRef<TipoComparable>);
 			this._UsoSuelo = default(EntityRef<UsoSuelo>);
 			this._Conservacion = default(EntityRef<Conservacion>);
+			this._Direccion = default(EntityRef<Direccion>);
+			this._DatoContacto = default(EntityRef<DatoContacto>);
 			OnCreated();
 		}
 		
@@ -26805,6 +26779,10 @@ namespace SIGEA.Classes.Entities
 			{
 				if ((this._idDatoContacto != value))
 				{
+					if (this._DatoContacto.HasLoadedOrAssignedValue)
+					{
+						throw new System.Data.Linq.ForeignKeyReferenceAlreadyHasValueException();
+					}
 					this.OnidDatoContactoChanging(value);
 					this.SendPropertyChanging();
 					this._idDatoContacto = value;
@@ -26845,6 +26823,10 @@ namespace SIGEA.Classes.Entities
 			{
 				if ((this._idDireccion != value))
 				{
+					if (this._Direccion.HasLoadedOrAssignedValue)
+					{
+						throw new System.Data.Linq.ForeignKeyReferenceAlreadyHasValueException();
+					}
 					this.OnidDireccionChanging(value);
 					this.SendPropertyChanging();
 					this._idDireccion = value;
@@ -27150,19 +27132,6 @@ namespace SIGEA.Classes.Entities
 			}
 		}
 		
-		[Association(Name="ComparableInmobiliario_Direccion", Storage="_Direccion", ThisKey="idDireccion", OtherKey="idDireccion")]
-		public EntitySet<Direccion> Direccion
-		{
-			get
-			{
-				return this._Direccion;
-			}
-			set
-			{
-				this._Direccion.Assign(value);
-			}
-		}
-		
 		[Association(Name="ComparableInmobiliario_Valuador", Storage="_Valuador", ThisKey="idValuador", OtherKey="idValuador")]
 		public EntitySet<Valuador> Valuador
 		{
@@ -27173,19 +27142,6 @@ namespace SIGEA.Classes.Entities
 			set
 			{
 				this._Valuador.Assign(value);
-			}
-		}
-		
-		[Association(Name="ComparableInmobiliario_DatoContacto", Storage="_DatoContacto", ThisKey="idDatoContacto", OtherKey="idDatoContacto")]
-		public EntitySet<DatoContacto> DatoContacto
-		{
-			get
-			{
-				return this._DatoContacto;
-			}
-			set
-			{
-				this._DatoContacto.Assign(value);
 			}
 		}
 		
@@ -27359,6 +27315,74 @@ namespace SIGEA.Classes.Entities
 			}
 		}
 		
+		[Association(Name="Direccion_ComparableInmobiliario", Storage="_Direccion", ThisKey="idDireccion", OtherKey="idDireccion", IsForeignKey=true)]
+		public Direccion Direccion
+		{
+			get
+			{
+				return this._Direccion.Entity;
+			}
+			set
+			{
+				Direccion previousValue = this._Direccion.Entity;
+				if (((previousValue != value) 
+							|| (this._Direccion.HasLoadedOrAssignedValue == false)))
+				{
+					this.SendPropertyChanging();
+					if ((previousValue != null))
+					{
+						this._Direccion.Entity = null;
+						previousValue.ComparableInmobiliario.Remove(this);
+					}
+					this._Direccion.Entity = value;
+					if ((value != null))
+					{
+						value.ComparableInmobiliario.Add(this);
+						this._idDireccion = value.idDireccion;
+					}
+					else
+					{
+						this._idDireccion = default(int);
+					}
+					this.SendPropertyChanged("Direccion");
+				}
+			}
+		}
+		
+		[Association(Name="DatoContacto_ComparableInmobiliario", Storage="_DatoContacto", ThisKey="idDatoContacto", OtherKey="idDatoContacto", IsForeignKey=true)]
+		public DatoContacto DatoContacto
+		{
+			get
+			{
+				return this._DatoContacto.Entity;
+			}
+			set
+			{
+				DatoContacto previousValue = this._DatoContacto.Entity;
+				if (((previousValue != value) 
+							|| (this._DatoContacto.HasLoadedOrAssignedValue == false)))
+				{
+					this.SendPropertyChanging();
+					if ((previousValue != null))
+					{
+						this._DatoContacto.Entity = null;
+						previousValue.ComparableInmobiliario.Remove(this);
+					}
+					this._DatoContacto.Entity = value;
+					if ((value != null))
+					{
+						value.ComparableInmobiliario.Add(this);
+						this._idDatoContacto = value.idDatoContacto;
+					}
+					else
+					{
+						this._idDatoContacto = default(int);
+					}
+					this.SendPropertyChanged("DatoContacto");
+				}
+			}
+		}
+		
 		public event PropertyChangingEventHandler PropertyChanging;
 		
 		public event PropertyChangedEventHandler PropertyChanged;
@@ -27379,18 +27403,6 @@ namespace SIGEA.Classes.Entities
 			}
 		}
 		
-		private void attach_Direccion(Direccion entity)
-		{
-			this.SendPropertyChanging();
-			entity.ComparableInmobiliario = this;
-		}
-		
-		private void detach_Direccion(Direccion entity)
-		{
-			this.SendPropertyChanging();
-			entity.ComparableInmobiliario = null;
-		}
-		
 		private void attach_Valuador(Valuador entity)
 		{
 			this.SendPropertyChanging();
@@ -27398,18 +27410,6 @@ namespace SIGEA.Classes.Entities
 		}
 		
 		private void detach_Valuador(Valuador entity)
-		{
-			this.SendPropertyChanging();
-			entity.ComparableInmobiliario = null;
-		}
-		
-		private void attach_DatoContacto(DatoContacto entity)
-		{
-			this.SendPropertyChanging();
-			entity.ComparableInmobiliario = this;
-		}
-		
-		private void detach_DatoContacto(DatoContacto entity)
 		{
 			this.SendPropertyChanging();
 			entity.ComparableInmobiliario = null;
