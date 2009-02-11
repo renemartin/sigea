@@ -5,6 +5,106 @@
 <%@ Register Src="../../Controles/DatosDireccion.ascx" TagName="DatosDireccion" TagPrefix="SIGEA" %>
 
 <asp:Content ID="headContent" ContentPlaceHolderID="head" runat="server">
+    <script type="text/javascript">
+        var idComparable = 0;
+        var idTipoComparable = "<%= tipoComparable_DDList.ClientID %>";
+        
+        function getData(){
+            var data = new Object();
+            var fechaCreacion = $get("<%= fechaCreacion_TBox.ClientID %>").value;
+            
+            data["nombre"] = $get("<%= nombre_TBox.ClientID %>").value;
+            data["idTipoComparable"] = $get("<%= tipoComparable_DDList.SelectedValue %>").value;
+            data["valorOferta"] = $get("<%= valorOferta_TBox.ClientID %>").value;
+            data["idUsoSuelo"] = $get("<%= usoSuelo_DDList.SelectedValue %>").value;
+            data["numeroFrentes"] = $get("<%= numeroFrentes_TBox.ClientID %>").value;
+            data["superficieTerreno"] = $get("<%= superficieTerreno_TBox.ClientID %>").value;
+            data["superficieConstruida"] = $get("<%= superficieConstruida_TBox.ClientID %>").value;
+            data["idClase"] = $get("<%= clase_DDList.SelectedValue %>").value;
+            data["antiguedad"] = $get("<%= antiguedad_TBox.ClientID %>").value;
+            data["idConservacion"] = $get("<%= conservacion_DDList.SelectedValue %>").value;
+            data["idCalidadProyecto"] = $get("<%= calidadProyecto_DDList.SelectedValue %>").value;
+            data["avanceObra"] = $get("<%= avanceObra_TBox.ClientID %>").value;
+            data["fechaCreacion"] = fechaCreacion == "" ? null : getDate(fechaCreacion);
+            
+            return data;
+        }
+        
+        function setData(data){
+            $get("<%= nombre_TBox.ClientID %>").value = data["nombre"];
+            $get("<%= tipoComparable_DDList.SelectedValue %>").value = data["idTipoComparable"];
+            $get("<%= valorOferta_TBox.ClientID %>").value = data["valorOferta"];
+            $get("<%= usoSuelo_DDList.SelectedValue %>").value = data["idUsoSuelo"];
+            $get("<%= numeroFrentes_TBox.ClientID %>").value = data["numeroFrentes"];
+            $get("<%= superficieTerreno_TBox.ClientID %>").value = data["superficieTerreno"];
+            $get("<%= superficieConstruida_TBox.ClientID %>").value = data["superficieConstruida"];
+            $get("<%= usoSuelo_DDList.SelectedValue %>").value = data["idClase"];
+            $get("<%= antiguedad_TBox.ClientID %>").value = data["antiguedad"];
+            $get("<%= conservacion_DDList.SelectedValue %>").value = data["idConservacion"];
+            $get("<%= calidadProyecto_DDList.SelectedValue %>").value = data["idCalidadProyecto"];
+            $get("<%= avanceObra_TBox.ClientID %>").value = data["avanceObra"];
+            $get("<%= fechaActualizacion_TBox.ClientID %>").value = data["fechaActualizacion"]; 
+            setFechaCreacion(data["fechaCreacion"]);
+        }
+        
+        function setFechaCreacion(date){
+            $get("<%= fechaCreacion_TBox.ClientID %>").value = getDateString(date);
+        }
+        
+        function saveFormComparable(){
+            saveComparable(
+                idComparable
+                , getData()
+                , getDatosUbicacion()
+                , getDatosContacto()
+                , saveFormComparableSuccess()
+            );
+        }
+        
+        function saveFormComparableSuccess(id){
+            idComparable = id;
+            setControlsVisibility();
+            setFechaCreacion(new Date());
+            showMessage("Datos guardados");
+        }
+        
+        function loadFormComparable(keyId){
+            if(keyId != 0)
+            {
+                idComparable = keyId;
+                
+                var callBackList = new Array();
+                callBackList[0] = loadFormComparableSuccess;
+                callBackList[1] = setData;
+                callBackList[2] = setDatosUbicacion();
+                callBackList[3] = setDatosContacto();
+                
+                loadComparable(idComparable, callBackList);
+            }
+            else {
+                loadFormComparableSuccess();
+            }
+        }
+        function loadFormComparableSucess(){
+            fillFormComparableData();
+            setControlsVisibility();
+        }
+        function fillFormComparableData(){
+            fillTipoComparable(comparable_id);
+            fillCalidadProyecto(calidadProyecto_id);
+            fillClase(clase_id);
+            fillConservacion(conservacion_id);
+            fillUsoSuelo(usoSuelo_id);
+        }
+        
+        function setControlsVisibility(){
+            if (idComparable != 0){
+                $get("menu").style.display = "block";
+            
+            }
+        
+        }
+    </script>
 </asp:Content>
 
 <asp:Content ID="mainContent" ContentPlaceHolderID="main" runat="server">
@@ -16,93 +116,11 @@
         <Scripts>
             <asp:ScriptReference Path="~/Scripts/Comparables.js" />
             <asp:ScriptReference Path="~/Scripts/AsyncCalls.js" />
-            <asp:ScriptReference Path="~/Scripts/SelectFiller.js" />
+            <asp:ScriptReference Path="~/Scripts/DataFillers.js" />
         </Scripts>
     </asp:ScriptManager>
-
-    <script type ="text/javascript">
-//        var idComparable = 0;
-//        var idTipoComparable = '<%= tipoComparable_DDList.ClientID %>';
-//        
-//        function getData(){
-//            var data = new Object();
-//            
-//            data["nombre"] = $get("<% nombre_TBox.ClientID %>").value;
-//            data["idTipoComparable"] = $get("<% tipoComparable_DDList.SelectedValue %>").value;
-//            data["valorOferta"] = $get("<% valorOferta_TBox.ClientID %>").value;
-//            data["idUsoSuelo"] = $get("<% usoSuelo_DDList.SelectedValue %>").value;
-//            data["numeroFrentes"] = $get("<% numeroFrentes_TBox.ClientID %>").value;
-//            data["superficieTerreno"] = $get("<% superficieTerreno_TBox.ClientID %>").value;
-//            data["superficieConstruida"] = $get("<% superficieConstruida_TBox.ClientID %>").value;
-//            data["idClase"] = $get("<% clase_DDList.SelectedValue %>").value;
-//            data["antiguedad"] = $get("<% antiguedad_TBox.ClientID %>").value;
-//            data["idConservacion"] = $get("<% Conservacion_DDList.SelectedValue %>").value;
-//            data["idCalidadProyecto"] = $get("<% calidadProyecto_DDList.SelectedValue %>").value;
-//            data["avanceObra"] = $get("<% avanceObra_TBox.SelectedValue %>").value;
-//            
-//            return data;
-//        }
-//        
-//        function setData(data){
-//            $get("<% nombre_TBox.ClientID %>").value = data["nombre"];
-//            $get("<% tipoComparable_DDList.SelectedValue %>").value = data["idTipoComparable"];
-//            $get("<% valorOferta_TBox.ClientID %>").value = data["valorOferta"];
-//            $get("<% usoSuelo_DDList.SelectedValue %>").value = data["idUsoSuelo"];
-//            $get("<% numeroFrentes_TBox.ClientID %>").value = data["numeroFrentes"];
-//            $get("<% superficieTerreno_TBox.ClientID %>").value = data["superficieTerreno"];
-//            $get("<% superficieConstruida_TBox.ClientID %>").value = data["superficieConstruida"];
-//            $get("<% usoSuelo_DDList.SelectedValue %>").value = data["idClase"];
-//            $get("<% antiguedad_TBox.ClientID %>").value = data["antiguedad"];
-//            $get("<% conservacion_DDList.SelectedValue %>").value = data["idConservacion"];
-//            $get("<% calidadProyecto_DDList.SelectedValue %>").value = data["idCalidadProyecto"];
-//            $get("<% avanceObra_TBox.ClientID %>").value = data["avanceObra"];
-//            $get("<% fechaCreacion_TBox.ClientID %>").value = data["fechaCreacion"];
-//            $get("<% fechaActualizacion_TBox.ClientID %>").value = data["fechaActualizacion"]; 
-//        }
-//        
-//        function saveFormComparable(){
-//            saveComparable(
-//                idComparable
-//                , getData()
-//                , getDatosUbicacion()
-//                , getDatosContacto()
-//                , saveFormComparableSuccess()
-//            );
-//        }
-//        
-//        function saveFormComparableSuccess(){
-//            showMessage("Datos guardados");
-//            setControlsVisibility();
-//        }
-//        function loadFormComparable(keyId){
-//            if(keyId != 0)
-//            {
-//                idComparable = keyId;
-//                
-//                var callBackList = new Array();
-//                callBackList[0] = loadFormSuccess;
-//                callBackList[1] = setData;
-//                
-//                loadComparable(idComparable, callBackList);
-//            }
-//            else {
-//                loadFormComparableSuccess();
-//            }
-//        }
-//        function loadFormComparableSucess(){
-//            fillFormComparableData();
-//            setControlsVisibility();
-//        }
-//        function fillFormComparableData(){
-//            fillTipoComparable(comparable_id);
-//            fillCalidadProyecto(calidadProyecto_id);
-//            fillClase(clase_id);
-//            fillConservacion(conservacion_id);
-//            fillUsoSuelo(usoSuelo_id);
-//        }
-    </script>
     <h1>Datos del Comparable</h1>
-    <div class="acciones">
+    <div id="menu" style="display:none;">
         <asp:ImageButton ID="addNew_ImBtn" runat="server" SkinID="Add" /></div>
     <div class="formulario">
         <table>
