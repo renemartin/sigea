@@ -230,3 +230,34 @@ function fillUnidad(target_id) {
     MethodCallers.GetListaTiposUnidad(
         fillSelect, asyncCallFail, target_id);
 }
+
+//Comparables
+function fillTipoComparable(target_id) {
+    showControlLoading(target_id);
+    MethodCallers.GetListaTipoComparable(
+        fillSelect, asyncCallFail, target_id);
+}
+
+function fillUsosSuelo(target_id) {
+    showControlLoading(target_id);
+    MethodCallers.GetListaUsoSuelo(
+        fillSelect, asyncCallFail, target_id);
+}
+
+function fillConservacion(target_id) {
+    showControlLoading(target_id);
+    MethodCallers.GetListaConservacion(
+        fillSelect, asyncCallFail, target_id);
+}
+
+function fillCalidadProyecto(target_id) {
+    showControlLoading(target_id);
+    MethodCallers.GetListaCalidadProyecto(
+        fillSelect, asyncCallFail, target_id);
+}
+
+function fillClase(target_id){
+    showControlLoading(target_id);
+    MethodCallers.GetListaClase(
+        fillSelect, asyncCallFail, target_id);
+}
