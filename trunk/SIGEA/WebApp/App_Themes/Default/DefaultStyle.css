@@ -1,0 +1,315 @@
+﻿/* Tags HTML */
+
+body, html
+{
+	height: 100%;
+	border: 0;
+	padding: 0;	
+	margin: 0;
+}
+
+body
+{
+	font:.8em sans-serif, verdana, helvetica;	
+}
+
+h1
+{
+	font-size: 2em;
+}
+
+h2
+{
+	font-size: 1.5em;
+}
+
+h3, h4, h5
+{
+	font-size: 1.2em;
+}
+
+/* Texto */
+
+.textoError
+{
+	color: Red;
+}
+
+.textoInstruccion
+{
+	font-size: .7em;
+}
+
+.textoNota
+{
+	font-size: .6em;
+}
+
+.textoNegritas
+{
+	font-weight: bold;
+}
+
+.textoCursiva
+{
+	font-style: italic;
+}
+
+.textoChico
+{
+	font-size: .7em;
+}
+
+.glosario
+{
+}
+
+.definicion
+{
+}
+
+.resultadoAplicacion
+{
+}
+
+/* Controles */
+
+.hidden
+{
+	display: none;
+}
+
+.controlCompacto
+{
+	font-size: 1em;
+	margin: 0;
+	padding: 0;		
+}
+
+.controlBloque
+{
+}
+
+.textBoxNumero
+{
+	width: 40px;		
+}
+
+/* Tablas */
+
+.filaHeader
+{
+}
+
+.filaDatos
+{
+}
+
+.filaDatosAlter
+{
+}
+
+.celdaHeader
+{
+}
+
+.celdaTitulo
+{
+}
+
+.celdaTituloSec
+{
+}
+
+.celdaValor
+{
+}
+
+.tablaExtendida	.tablaCompactaExtendida
+{
+	width: 100%;
+	border: 0;
+	padding: 0;
+	margin: 0;
+}
+
+.tablaCompactaExtendida
+{
+	font-size: .7em
+}
+
+.tablaCompactaExtendida .celdaTitulo
+{
+	
+}
+
+.tablaCompactaExtendida .celdaValor
+{
+	
+}
+
+/* Grid */
+
+.grid
+{
+}
+
+.grid .header
+{
+}
+
+.grid .footer
+{
+}
+
+.grid .item
+{
+}
+
+.grid .itemAlter
+{
+}
+
+/* Barras */
+
+.barraMenu
+{
+	text-align: right;
+	margin: 10px 10px 0 0;
+}
+
+.barraAcciones
+{
+}
+
+/* Menús */
+
+.menu
+{
+	list-style: none;
+	padding: 0;
+}
+
+.menu ul
+{
+	margin: 0;
+	padding: 0;
+	list-style-type: none;
+}
+
+.menu li
+{
+	list-style: none;
+	display: inline;
+}
+
+.submenu
+{
+	list-style: none;
+	padding: 0;
+}
+
+.submenu ul
+{
+	margin: 0;
+	padding: 0;
+	list-style-type: none;
+}
+
+.submenu li
+{
+	display: inline;
+}
+
+/* Formularios */
+
+.formulario
+{
+	padding: 0px 5px 5px 5px;
+}
+
+.formulario .barraMenu
+{
+	text-align: left;
+}
+
+.formulario .celdaTitulo
+{
+	width: 200px;
+}
+
+.formulario .subCampo
+{
+	font-size: smaller;
+	margin-left: 2px;
+}
+
+/* Paneles */
+
+.panel
+{
+	padding: 5px;
+}
+
+/* Modulos */
+
+.modulo
+{
+}
+
+.modulo .formulario
+{
+	margin: 5px;
+}
+
+.modulo .barraMenu
+{
+}
+
+/* Bandejas */
+
+.bandejas
+{
+	width: 200px;
+	padding: 10px;
+}
+
+/* Contenedores */
+
+.spinner
+{
+	background-image: url(Images/SpinnerChico.gif);
+	background-repeat: no-repeat;	
+	width: 16px;
+	height: 16px;
+	display: inline-block;
+}
+
+.etiqueta1
+{
+}
+
+.etiqueta2
+{
+}
+
+.etiqueta3
+{
+}
+
+.foto
+{
+}
+
+.sinDatos
+{
+	height: 100px;
+	vertical-align: middle;
+}
+
+/* Botones */
+
+.botonImagen
+{
+	cursor: pointer;
+}
