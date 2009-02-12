@@ -17,7 +17,7 @@ function fillSelect(data, target_id) {
             option.selected = (select.selectedValue == data[i].value.toString());
         select.appendChild(option);
     }
-    if (data.length == 1) {
+    if (data.length == 2) {
         select.options[1].selected = true;
     }
     hideControlLoading(target_id);
