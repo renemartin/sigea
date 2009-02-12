@@ -1,6 +1,49 @@
 ﻿<%@ Control Language="C#" AutoEventWireup="true" CodeFile="DatosUsoActualDistribucion.ascx.cs" Inherits="Cuentas_Valuacion_Controles_DatosDistribucion" %>
 <link href="~/App_Themes/Default/DefaultStyle.css" rel="stylesheet" type="text/css" />
 
+<script type="text/javascript">
+    //mostrar datos
+    function setDatos(data) {
+        $get("<%= tipoEstacionamiento_DDList.ClientID %>").selectedValue = data.idTipoEstacionamiento;
+        $get("<%= cupoCarros_TBox.ClientID %>").value = data.cupoEstacionamiento;
+        $get("<%= jardin_CBox.ClientID %>").checked = data.jardinesFrontales;
+        $get("<%= jardinFondo_CBox.ClientID %>").checked = data.jardinesFondo;
+        $get("<%= jardinLateral_CBox.ClientID %>").checked = data.jardinesLateral;
+        $get("<%= elevador_CBox.ClientID %>").checked = data.elevador;
+        $get("<%= banosCompletos_TBox.ClientID %>").value = data.numBaniosCompletos;
+        $get("<%= banosMedios_TBox.ClientID %>").value = data.numBaniosMedios;
+        $get("<%= cuentaCocina_CBox.ClientID %>").value = data.cocina;
+        $get("<%= conTarja_RBtn.ClientID %>").checked = data.tarja;
+        $get("<%= mueblesCocina_RBtn.ClientID %>").checked = data.cocinaMuebles;
+        $get("<%= cocinaIntegral_RBtn.ClientID %>").checked = data.cocinaIntegral;
+        $get("<%= forjadaSitio_RBtn.ClientID %>").checked = data.forjadaSitio;
+        $get("<%= comedor_CBox.ClientID %>").checked = data.comedor;
+        $get("<%= despensa_CBox.ClientID %>").checked = data.despensa;
+    }
+    
+    //guardar datos
+    function getDatos() {
+        var data = new Object();
+        
+        data.idTipoEstacionamiento = $get("<%= tipoEstacionamiento_DDList.ClientID %>").selectedValue;
+        data.cupoEstacionamiento = $get("<%= cupoCarros_TBox.ClientID %>").value;
+        data.jardinesFrontales = $get("<%= jardin_CBox.ClientID %>").checked;
+        data.jardinesFondo = $get("<%= jardinFondo_CBox.ClientID %>").checked;
+        data.jardinesLateral = $get("<%= jardinLateral_CBox.ClientID %>").checked;
+        data.elevador = $get("<%= elevador_CBox.ClientID %>").checked;
+        data.numBaniosCompletos = $get("<%= banosCompletos_TBox.ClientID %>").value;
+        data.numBaniosMedios = $get("<%= banosMedios_TBox.ClientID %>").value;
+        data.cocina = $get("<%= cuentaCocina_CBox.ClientID %>").value;
+        data.tarja = $get("<%= conTarja_RBtn.ClientID %>").checke;
+        data.cocinaMuebles = $get("<%= mueblesCocina_RBtn.ClientID %>").checked;
+        data.cocinaIntegral = $get("<%= cocinaIntegral_RBtn.ClientID %>").checked;
+        data.forjadaSitio = $get("<%= forjadaSitio_RBtn.ClientID %>").checked;
+        data.comedor = $get("<%= comedor_CBox.ClientID %>").checked;
+        data.despensa = $get("<%= despensa_CBox.ClientID %>").checked;
+        
+        return data;        
+    }
+</script>
 <table>
     <tr>
         <td class="celdaTitulo">
