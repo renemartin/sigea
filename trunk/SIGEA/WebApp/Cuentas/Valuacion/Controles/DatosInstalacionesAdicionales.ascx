@@ -14,6 +14,46 @@
         addCloningTable(tabla, 1, 5);
     }
     
+    //mostrar datos
+    function setData(data) {
+        var i = null;
+        var parent_id = "<%= ClientID %>";
+        var filas_borrar = getCloningTableCount(parent_id +'_tabla_instalaciones') - data.length;
+        
+        if ( filas_borrar < 0 ) {
+            while(filas_borrar-- != 0 )
+                removeClonedRow(parent_id + '_tabla_instalaciones');
+        }
+        
+        for ( i = 1; i <= data.length; i++ ) {
+            $get( parent_id + "_descripcion_TBox_" + i).value = data[i].descripcion;
+            $get( parent_id + "_cantidad_TBox_" + i).value = data[i].cantidad;
+            $get( parent_id + "_unidad_DDList" + i).selectedValue = data[i].idTipoUnidad;
+            $get( parent_id + "_edad_TBox_" + i).value = data[i].edad;
+            $get( parent_id + "_conservacion_DDList_" + i).selectedValue = data[i].idTipoConservacion;
+        }
+        
+        if ( i != data.length ) {
+            addClonedRow(parent_id + '_tabla_instalaciones');
+        }
+    }
+    
+    //guardar datos
+    function getData( parent_id ) {
+        var data = new Object();
+        var i = null;
+        var numero_tablas = getCloningTableCount( parent_id + '_tabla_instalaciones');
+        
+        for ( i = 1; i <= numero_tablas; i++ ) {
+            data[i].descripcion = $get( parent_id + "_descripcion_TBox_" + i).value;
+            data[i].cantidad = $get( parent_id + "_cantidad_TBox_" + i).value;
+            data[i].idTipoUnidad = $get( parent_id + "_unidad_DDList" + i).selectedValue;
+            data[i].edad = $get( parent_id + "_edad_TBox_" + i).value;
+            data[i].idTipoConservacion = $get( parent_id + "_conservacion_DDList_" + i).selectedValue;
+        }
+        return data;
+    }
+    
 </script>
 
 <table id="<%= ClientID %>_tabla_instalaciones" >
