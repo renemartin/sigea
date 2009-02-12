@@ -2,6 +2,8 @@
     MasterPageFile="~/Cuentas/Valuacion/Editores/SHF/EditorSHF.master" CodeFile="ElementosConstruccion.aspx.cs"
     Inherits="Cuentas_Valuacion_Editores_SHF_ElementosConstruccion" %>
 
+<%@ Register Src="~/Cuentas/Valuacion/Editores/SHF/EditorSHFNavegador.ascx" TagName="EditorSHFNavegador"
+    TagPrefix="SIGEA" %>
 <%@ Register Src="~/Cuentas/Valuacion/Controles/DatosAcabados.ascx" TagName="DatosAcabados"
     TagPrefix="SIGEA" %>
 <%@ Register Src="~/Cuentas/Valuacion/Controles/DatosEstructuras.ascx" TagName="DatosEstructuras"
@@ -10,7 +12,6 @@
     TagPrefix="SIGEA" %>
 <%@ Register Src="~/Cuentas/Valuacion/Controles/DatosInstalacionesAdicionales.ascx"
     TagName="InstalacionesAdicionales" TagPrefix="SIGEA" %>
-    
 <asp:Content ID="headContent" ContentPlaceHolderID="head" runat="Server">
 </asp:Content>
 <asp:Content ID="mainContent" ContentPlaceHolderID="main" runat="Server">
@@ -27,6 +28,10 @@
             <asp:ScriptReference Path="~/Scripts/Forms.js" />
         </Scripts>
     </asp:ScriptManager>
+    <div id="form_actions" class="barraAcciones">
+        <SIGEA:EditorSHFNavegador ID="navegador_Ctrl" runat="server" VisiblidadGuardar="false"
+            VisiblidadCancelar="false" />
+    </div>
     <h1>
         Acabados y estructuras
     </h1>

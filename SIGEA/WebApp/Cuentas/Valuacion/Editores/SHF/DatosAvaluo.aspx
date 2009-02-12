@@ -16,15 +16,24 @@
     <script type="text/javascript">
         // Variables
         var idAvaluo = 0;
+        var num_bloques_datos = 2;
 
         // Inicialización
         function setupForm() {
+            $get("ctl00_menu_Ctrl_avaluo_LkBtn").removeAttribute("href");
+
             window.onbeforeunload = function() {
                 beforeUnload(saveForm)
             };
 
-            disableControls($get("form"));
-            $get("ctl00_menu_Ctrl_avaluo_LkBtn").removeAttribute("href");
+            disableControls($get("form_datos_generales"));
+            disableControls($get("form_declaraciones"));
+        }
+
+        // Llenado de datos
+        function fillData() {
+            fillAvaluoData();
+            fillDireccionData();
         }
 
         // Carga de registros
@@ -52,42 +61,26 @@
             if (num_bloques_cargados != undefined) {
                 num_bloques_cargados++;
                 if (num_bloques_cargados == num_bloques_datos) {
-                    fillData();                    
+                    fillData();
                 }
             }
         }
 
         // Guardado de registros
         function saveForm() {
-            //TODO: Llamadas a funciones de guardado
-            saveForm_Success(); // Temporal
-        }
-        function saveForm_Success() {
-            showMessage("Datos guardados");
-        }
-
-        // Edición de formulario
-        function editForm() {
-            $get("<%= navegador_Ctrl.ClientID %>_guardar_ImBtn").style.display = "inline";
-            $get("<%= navegador_Ctrl.ClientID %>_cancelar_ImBtn").style.display = "inline";
-
-            form_editing = true;
-            enableControls($get("form"));
-        }
-        function cancelEdit() {
-            $get("<%= navegador_Ctrl.ClientID %>_guardar_ImBtn").style.display = "none";
-            $get("<%= navegador_Ctrl.ClientID %>_cancelar_ImBtn").style.display = "none";
-        
-            form_editing = false;
-            disableControls($get("form"));
-            loadForm(idAvaluo);
+            if ($get("form_datos_generales").style.display == "block")
+                saveDatosGenerales();
+            if ($get("form_declaraciones").style.display == "block")
+                saveDeclaraciones();
         }
 
-        // Llenado de datos
-        function fillData() {
-            fillAvaluoData();
-            fillDireccionData();            
+        function saveDatosGenerales() {
+            disableControls($get("form_datos_generales"));            
         }
+        function saveDeclaraciones() {
+            disableControls($get("form_declaraciones"));
+        }
+
     </script>
 
 </asp:Content>
@@ -105,12 +98,17 @@
             <asp:ScriptReference Path="~/Scripts/Forms.js" />
         </Scripts>
     </asp:ScriptManager>
+    <SIGEA:EditorSHFNavegador ID="navegador_Ctrl" runat="server" />
     <h1>
         Datos del expediente</h1>
-    <div id="form_actions" class="barraAcciones">
-    <SIGEA:EditorSHFNavegador ID="navegador_Ctrl" runat="server" VisiblidadGuardar="false" VisiblidadCancelar="false" />
+    <div class="barraAcciones">
+        <asp:ImageButton ID="editar_datos_generales_ImBtn" runat="server" SkinID="Edit" />
+        <asp:ImageButton ID="guardar_datos_generales_ImBtn" runat="server" SkinID="Save"
+            CssClass="hidden" />
+        <asp:ImageButton ID="cancelar_datos_generales_ImBtn" runat="server" SkinID="Cancel"
+            CssClass="hidden" />
     </div>
-    <div id="form" class="formulario">
+    <div id="form_datos_generales" class="formulario">
         <h2>
             Datos generales del avalúo</h2>
         <SIGEA:DatosGeneralesAvaluo ID="datosAvaluo_Ctrl" runat="server" />
@@ -118,6 +116,14 @@
             Datos del solicitante
         </h2>
         <SIGEA:DatosSolicitante ID="datosSolicitante_Ctrl" runat="server" />
+    </div>
+    <div class="barraAcciones">
+        <asp:ImageButton ID="editar_declaraciones_ImBtn" runat="server" SkinID="Edit" />
+        <asp:ImageButton ID="guardar_declaraciones_ImBtn" runat="server" SkinID="Save" CssClass="hidden" />
+        <asp:ImageButton ID="cancelar_declaraciones_ImBtn" runat="server" SkinID="Cancel"
+            CssClass="hidden" />
+    </div>
+    <div id="form_declaraciones" class="formulario">
         <h2>
             Declaraciones
         </h2>
