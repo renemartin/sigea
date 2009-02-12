@@ -7,6 +7,67 @@
     function setupTablaRecamaras() {
         addCloningTable($get("tabla_recamaras"), 1, 5);
     }
+    
+    //mostrar datos
+    function setData(data) {
+        var i = null;
+        var parent_id = "<%= ClientID %>";
+        var filas_borrar = getCloningTableCount('tabla_recamaras') - data.length;
+        
+        if ( filas_borrar > 0 ) {
+            while(filas_borrar-- != 0 ) 
+                removeClonedRow('tabla_recamaras');
+        }
+                    
+        for( i=1; i<=data.length; i++ ) {
+        
+            $get( parent_id + "_cantidad_TBox_" + i).value = data[i].cantidad;
+            $get( parent_id + "_tipoPlanta_DDList_" + i).selectedValue = data[i].nivel;
+            
+            if ( data[i].espacioCloset == 1 ) {
+                $get( parent_id + "_espacioCloset_RBtn_" + i).checked = true;
+                $get( parent_id + "_closetEquipado_RBtn_" + i).checked = false;
+            }
+            
+            else if ( data[i].espacioCloset == 0 ) {
+                $get( parent_id + "_espacioCloset_RBtn_" + i).checked = false;
+                $get( parent_id + "_closetEquipado_RBtn_" + i).checked = false;
+            }
+            
+            else if ( data[i].closetEquipado == 1 ) {
+                $get( parent_id + "_closetEquipado_RBtn_" + i).checked = true;
+                $get( parent_id + "_espacioCloset_RBtn_" + i).checked = false;            
+            }
+            
+            $get( parent_id + "_terraza_CBox_" + i).checked = data[i].terraza;
+            $get( parent_id + "_balcon_CBox_" + i).checked = data[i].balcon;
+            $get( parent_id + "_vestidor_CBox_" + i).checked = data[i].vestidor;        
+                        
+            if ( i != data.length ) {
+                addClonedRow('tabla_recamaras');
+            }
+        }
+        
+        //guardar datos
+        function getData( parent_id ) {
+            var data = new Object();
+            var i = null;
+            var numero_tablas = getCloningTableCount('tabla_recamaras');
+            
+            for ( i = 1; i<= numero_tablas; i++ ) {
+            
+                data[i].cantidad = $get( parent_id + "_cantidad_TBox_" + i).value;
+                data[i].nivel = $get( parent_id + "_tipoPlanta_DDList_" + i).selectedValue;
+                data[i].espacioCloset = $get( parent_id + "_espacioCloset_RBtn_" + i).checked;
+                data[i].closetEquipado = $get( parent_id + "_closetEquipado_RBtn_" + i).checked;
+                data[i].terraza = $get( parent_id + "_terraza_CBtn_" + i).checked;
+                data[i].balcon = $get( parent_id + "_balcon_CBtn_" + i).checked;
+                data[i].vestidor = $get( parent_id + "_vestidor_CBtn_" + i).checked;
+           }
+           
+           return data;
+        }
+    }
 
 </script>
 
@@ -56,7 +117,6 @@
                     </td>
                 </tr>
             </table>
-        </td>
         </td>
     </tr>
 </table>
