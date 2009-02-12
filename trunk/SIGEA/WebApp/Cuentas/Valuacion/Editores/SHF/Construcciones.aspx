@@ -1,6 +1,8 @@
 ﻿<%@ Page Title="SIGEA - Editor SHF - Construcciones" Language="C#" MasterPageFile="~/Cuentas/Valuacion/Editores/SHF/EditorSHF.master"
     AutoEventWireup="true" CodeFile="Construcciones.aspx.cs" Inherits="Cuentas_Valuacion_Editores_SHF_Construcciones" %>
 
+<%@ Register Src="~/Cuentas/Valuacion/Editores/SHF/EditorSHFNavegador.ascx" TagName="EditorSHFNavegador"
+    TagPrefix="SIGEA" %>
 <%@ Register Src="~/Cuentas/Valuacion/Controles/DatosConstrucciones.ascx" TagName="Construcciones"
     TagPrefix="SIGEA" %>
 <%@ Register Src="~/Cuentas/Valuacion/Controles/DatosConstruccionesClasificacion.ascx"
@@ -11,13 +13,13 @@
     TagName="SuperficiesAdicionales" TagPrefix="SIGEA" %>
 <asp:Content ID="headContent" ContentPlaceHolderID="head" runat="Server">
 
-<script type="text/javascript">
+    <script type="text/javascript">
 
-    function editUsoActual() {
-        openModalWindow("Modulos/UsoActual.aspx", 750, 480);
-    }
+        function editUsoActual() {
+            openModalWindow("Modulos/UsoActual.aspx", 750, 480);
+        }
 
-</script>
+    </script>
 
 </asp:Content>
 <asp:Content ID="mainContent" ContentPlaceHolderID="main" runat="Server">
@@ -27,7 +29,7 @@
             <asp:ServiceReference Path="~/Services/EntityWrappers.asmx" />
         </Services>
         <Scripts>
-            <asp:ScriptReference Path="~/Scripts/Utils.js" />            
+            <asp:ScriptReference Path="~/Scripts/Utils.js" />
             <asp:ScriptReference Path="~/Scripts/AsyncCalls.js" />
             <asp:ScriptReference Path="~/Scripts/DataFillers.js" />
             <asp:ScriptReference Path="~/Scripts/Tables.js" />
@@ -37,12 +39,16 @@
     <h1>
         Descripción de las construcciones
     </h1>
+    <div id="form_actions" class="barraAcciones">
+        <SIGEA:EditorSHFNavegador ID="navegador_Ctrl" runat="server" VisiblidadGuardar="false"
+            VisiblidadCancelar="false" />
+    </div>
     <div id="form" class="formulario">
         <div class="etiqueta1">
             <span class="textoNegritas">Descripción de uso actual:</span>
             <asp:Label ID="descripcion_Lbl" runat="server">No especificada...</asp:Label>&nbsp;
             <asp:ImageButton ID="editarUsoActua_ImBtn" runat="server" SkinID="EditSmall" />
-        </div>        
+        </div>
         <h2>
             Clasificación de las construcciones privativas</h2>
         <SIGEA:ConstruccionesClasificacion ID="construccionesClasificacion_Ctrl" runat="server" />
