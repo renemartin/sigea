@@ -8,6 +8,22 @@
     function fillTerrenoColindanciasData() {
         fillFuente("<%= fuenteMedidas_DDList.ClientID %>");
     }   
+    
+    //mostrar datos
+    function setDatos(data) {
+        $get("<%= fuenteMedidas_DDList.ClientID %>").selectedValue = data.descripcion;
+        $get("<%= colindancias_TBox.ClientID %>").value = data.colindancias;
+    }
+    
+    //guardar datos
+    function getDatos() {
+        var data = new Object();
+        
+        data.direccion = $get("<%= fuenteMedidas_DDList.ClientID %>").selectedValue;
+        data.colindancias = $get("<%= colindancias_TBox.ClientID %>").value;
+        
+        return data;
+    }   
 </script>
 
 <table>
