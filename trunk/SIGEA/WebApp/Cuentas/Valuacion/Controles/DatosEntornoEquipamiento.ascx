@@ -1,6 +1,42 @@
 ﻿<%@ Control Language="C#" AutoEventWireup="true" CodeFile="DatosEntornoEquipamiento.ascx.cs"
     Inherits="Cuentas_Valuacion_Controles_DatosEntornoEquipamiento" %>
 <link href="~/App_Themes/Default/DefaultStyle.css" rel="stylesheet" type="text/css" />
+<script type="text/javascript">
+    
+    //mostrar datos
+    function setData(data) {
+        $get("<%= distanciaIglesia_TBox.ClientID %>").value = data.distanciaIglesia;
+        $get("<%= distanciaMercado_TBox.ClientID %>").value = data.distanciaMercado;
+        $get("<%= distanciaPlaza_TBox.ClientID %>").value = data.distanciaPlaza;
+        $get("<%= distanciaEscuela_TBox.ClientID %>").value = data.distanciaEscuela;
+        $get("<%= distanciaHospital_TBox.ClientID %>").value = data.distanciaHospital;
+        $get("<%= distanciaParque_TBox.ClientID %>").value = data.distanciaParque;
+        $get("<%= distanciaBanco_TBox.ClientID %>").value = data.distanciaBanco;
+        $get("<%= distanciaTransporte_TBox.ClientID %>").value = data.distanciaTransporte;
+        $get("<%= proximidadGeneral_Lbl.ClientID %>").text = data.proximidadGeneral;
+        $get("<%= nivelEquipamiento_Lbl.ClientID %>").text = data.nivelEquipamiento;
+    }
+    
+    //guardar datos
+    function getData() {
+        var data  = new Object();
+        
+         data.distanciaIglesia = $get("<%= distanciaIglesia_TBox.ClientID %>").value;
+         data.distanciaMercado = $get("<%= distanciaMercado_TBox.ClientID %>").value;
+         data.distanciaPlaza = $get("<%= distanciaPlaza_TBox.ClientID %>").value;
+         data.distanciaEscuela = $get("<%= distanciaEscuela_TBox.ClientID %>").value;
+         data.distanciaHospital = $get("<%= distanciaHospital_TBox.ClientID %>").value;
+         data.distanciaParque = $get("<%= distanciaParque_TBox.ClientID %>").value;
+         data.distanciaBanco = $get("<%= distanciaBanco_TBox.ClientID %>").value;
+         data.distanciaTransporte = $get("<%= distanciaTransporte_TBox.ClientID %>").value;
+         data.proximidadGeneral = $get("<%= proximidadGeneral_Lbl.ClientID %>").text;
+         data.nivelEquipamiento = $get("<%= nivelEquipamiento_Lbl.ClientID %>").text;
+    
+        return data;
+    }
+
+</script>
+
 <table>
     <tr>
         <td class="celdaTitulo">
