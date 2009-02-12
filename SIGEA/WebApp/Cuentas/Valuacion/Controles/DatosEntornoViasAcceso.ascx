@@ -6,6 +6,22 @@
     function fillEntornoViasAccesoData() {
         fillImportanciaVialidad("<%= importanciaVia_DDList.ClientID %>");
     }   
+    
+    //mostrar datos
+    function setData(data) {
+        $get("<%= importanciaVia_DDList.ClientID %>").selectedValue = data.idImportancia;
+        $get("<%= via_TBox.ClientID %>").selectedValue = data.nombreVia;
+    }
+    
+    //guardar datos
+    function getData() {
+        var data = new Object();
+        
+        data.idImportancia = $get("<%= importanciaVia_DDList.ClientID %>").selectedValue;
+        data.nombreVia = $get("<%= via_TBox.ClientID %>").selectedValue;
+        
+        return data;
+    }
 </script>
 
 <table>
