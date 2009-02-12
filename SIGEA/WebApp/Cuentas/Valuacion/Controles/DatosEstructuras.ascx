@@ -9,7 +9,29 @@
         fillMaterial("<%= escaleras_DDList.ClientID %>", "escaleras");
         fillMaterial("<%= entrepisosTechos_DDList.ClientID %>", "entrepisos");
         fillMaterial("<%= trabesColumnas_DDList.ClientID %>", "trabes");        
-    }   
+    }
+    
+    //mostrar datos
+    function setData(data) {
+        $get("<%= cimentacion_DDList.ClientID %>").selectedValue = data.idTipoCimentacion;
+        $get("<%= muros_DDList.ClientID %>").selectedValue = data.idTipoMuros;
+        $get("<%= escaleras_DDList.ClientID %>").selectedValue = data.idTipoEscaleras;
+        $get("<%= entrepisos_DDList.ClientID %>").selectedValue = data.idTipoEntrepisos;
+        $get("<%= trabesColumnas_DDList.ClientID %>").selectedValue = data.idTipoTrabes;
+    }
+    
+    //guardar datos
+    function getData() {
+        var data = new Object();
+        
+        data.idTipoCimentacion = $get("<%= cimentacion_DDList.ClientID %>").selectedValue;
+        data.idTipoMuros = $get("<%= muros_DDList.ClientID %>").selectedValue;
+        data.idTipoEscaleras = $get("<%= escaleras_DDList.ClientID %>").selectedValue;
+        data.idTipoEntrepisos = $get("<%= entrepisos_DDList.ClientID %>").selectedValue;
+        data.idTipoTrabes = $get("<%= trabesColumnas_DDList.ClientID %>").selectedValue;
+        
+        return data;
+    }
 </script>
 
 <table>
