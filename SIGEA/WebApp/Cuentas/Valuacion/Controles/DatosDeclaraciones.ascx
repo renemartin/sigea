@@ -1,6 +1,91 @@
 ﻿<%@ Control Language="C#" AutoEventWireup="true" CodeFile="DatosDeclaraciones.ascx.cs"
     Inherits="Cuentas_Valuacion_Controles_DatosDeclaraciones" %>
 <link href="~/App_Themes/Default/DefaultStyle.css" rel="stylesheet" type="text/css" />
+<script type="text/javascript">
+    
+    //mostrar datos
+    function setData(data) {
+        if ( data.declaracionIdentificacion == true ){
+                $get("<%= identificacionCoincide_RBtn.ClientID %>").checked = true;
+                $get("<%= identificacionNOCoincide_RBtn.ClientID %>").checked = false;
+        }
+        else {
+            $get("<%= identificacionCoincide_RBtn.ClientID %>").checked = false;
+            $get("<%= identificacionNOCoincide_RBtn.ClientID %>").checked = true;
+        }
+    
+        if ( data.declaracionSuperficies == true ){
+                $get("<%= superficiesCoinciden_RBtn.ClientID %>").checked = true;
+                $get("<%= superficiesNOCoinciden_RBtn.ClientID %>").checked = false;
+        }
+        else {
+            $get("<%= superficiesCoinciden_RBtn.ClientID %>").checked = false;
+            $get("<%= superficiesNOCoinciden_RBtn.ClientID %>").checked = true;
+        }
+        
+        if ( data.declaracionConstrucciones == true ){
+                $get("<%= contruccionCumple_RBtn.ClientID %>").checked = true;
+                $get("<%= contruccionNOCumple_RBtn.ClientID %>").checked = false;
+        }
+        else {
+            $get("<%= contruccionCumple_RBtn.ClientID %>").checked = false;
+            $get("<%= contruccionNOCumple_RBtn.ClientID %>").checked = true;
+        }
+        
+        if ( data.declaracionMonumento == true ){
+                $get("<%= inmuebleMonumento_RBtn.ClientID %>").checked = true;
+                $get("<%= inmuebleNOMonumento_RBtn.ClientID %>").checked = false;
+        }
+        else {
+            $get("<%= inmuebleMonumento_RBtn.ClientID %>").checked = false;
+            $get("<%= inmuebleNOMonumento_RBtn.ClientID %>").checked = true;
+        }
+        
+        if ( data.declaracionPatrimonio == true ){
+                $get("<%= inmueblePatrimonio_RBtn.ClientID %>").checked = true;
+                $get("<%= inmuebleNOPatrimonio_RBtn.ClientID %>").checked = false;
+        }
+        else {
+            $get("<%= inmueblePatrimonio_RBtn.ClientID %>").checked = false;
+            $get("<%= inmuebleNOPatrimonio_RBtn.ClientID %>").checked = true;
+        }
+    }
+    
+     //guardar datos
+    function getData() {
+        var data  = new Object();
+        
+        if ( $get("<%= identificacionCoincide_RBtn.ClientID %>").checked == true )
+                data.declaracionIdentificacion = true;
+        else 
+            data.declaracionIdentificacion = false;
+    
+        if ( $get("<%= superficiesCoinciden_RBtn.ClientID %>").checked == true )
+                data.declaracionSuperficies = true;
+        else 
+            data.declaracionSuperficies = false;
+            
+        if ( $get("<%= contruccionCumple_RBtn.ClientID %>").checked == true )
+                data.declaracionConstrucciones = true;
+        else 
+            data.declaracionConstrucciones = false;
+            
+        if ( $get("<%= inmuebleMonumento_RBtn.ClientID %>").checked == true )
+                data.declaracionMonumento = true;
+        else 
+            data.declaracionMonumento = false;
+        
+        if ( $get("<%= inmueblePatrimonio_RBtn.ClientID %>").checked == true )
+                data.declaracionPatrimonio = true;
+        else
+            data.declaracionPatrimonio = false;
+            
+        return data;
+            
+    }
+
+</script>
+
 <ol>
     <li>SE VERIFICÓ EL ESTADO DE LA CONSTRUCCIÓN Y CONSERVACIÓN DEL INMUEBLE
         <br />
