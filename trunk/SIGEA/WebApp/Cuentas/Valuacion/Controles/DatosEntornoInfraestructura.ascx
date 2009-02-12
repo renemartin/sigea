@@ -13,15 +13,13 @@
     //mostrar datos
     function setData(data) {
         $get("<%= aguaPotable_CBox.ClientID %>").checked = data.aguaPotable;
-        $get("<%= aguaPotableSuministros_CBox.ClientID %>").checked = data.aguaPotableSuministro;
+        $get("<%= aguaPotableSuministro_CBox.ClientID %>").checked = data.aguaPotableSuministro;
         $get("<%= drenaje_CBox.ClientID %>").checked = data.drenaje;
         $get("<%= drenajeConexion_CBox.ClientID %>").checked = data.drenajeConexion;
         $get("<%= drenajeFosaSeptica_CBox.ClientID %>").checked = data.drenajeFosaSeptica;
         $get("<%= electrificacion_CBox.ClientID %>").checked = data.electrificacion;
         $get("<%= electrificacionRedAerea_CBox.ClientID %>").checked = data.electrificacionRedAerea;
-        $get("<%= electrificacionSubterranea_CBox.ClientID %>").checked = data.electrificacionSubterranea;
         $get("<%= electrificacionConAcometida_CBox.ClientID %>").checked = data.electrificacionConAcometida;
-        $get("<%= electrificacionSubterranea_CBox.ClientID %>").checked = data.electrificacionSubterranea;
         $get("<%= alumbradoPublico_CBox.ClientID %>").checked = data.alumbradoPublico;
         $get("<%= alumbradoPublicoAereo_CBox.ClientID %>").checked = data.alumbradoPublicoaereo;
         $get("<%= vialidades_CBox.ClientID %>").checked = data.vialidades;
@@ -40,15 +38,14 @@
         var data = new Object();
         
          data.aguaPotable = $get("<%= aguaPotable_CBox.ClientID %>").checked;
-         data.aguaPotableSuministro = $get("<%= aguaPotableSuministros_CBox.ClientID %>").checked;
+         data.aguaPotableSuministro = $get("<%= aguaPotableSuministro_CBox.ClientID %>").checked;
          data.drenaje = $get("<%= drenaje_CBox.ClientID %>").checked;
          data.drenajeConexion = $get("<%= drenajeConexion_CBox.ClientID %>").checked;
          data.drenajeFosaSeptica =  $get("<%= drenajeFosaSeptica_CBox.ClientID %>").checked;
          data.electrificacion = $get("<%= electrificacion_CBox.ClientID %>").checked;
          data.electrificacionRedAerea = $get("<%= electrificacionRedAerea_CBox.ClientID %>").checked;
-         data.electrificacionSubterranea = $get("<%= electrificacionSubterranea_CBox.ClientID %>").checked;
+         data.electrificacionSubterranea = !$get("<%= electrificacionRedAerea_CBox.ClientID %>").checked;
          data.electrificacionConAcometida = $get("<%= electrificacionConAcometida_CBox.ClientID %>").checked;
-         data.electrificacionSubterranea = $get("<%= electrificacionSubterranea_CBox.ClientID %>").checked;
          data.alumbradoPublico = $get("<%= alumbradoPublico_CBox.ClientID %>").checked;
          data.alumbradoPublicoaereo = $get("<%= alumbradoPublicoAereo_CBox.ClientID %>").checked;
          data.vialidades = $get("<%= vialidades_CBox.ClientID %>").checked;

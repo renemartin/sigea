@@ -16,7 +16,7 @@
         $get("<%= cimentacion_DDList.ClientID %>").selectedValue = data.idTipoCimentacion;
         $get("<%= muros_DDList.ClientID %>").selectedValue = data.idTipoMuros;
         $get("<%= escaleras_DDList.ClientID %>").selectedValue = data.idTipoEscaleras;
-        $get("<%= entrepisos_DDList.ClientID %>").selectedValue = data.idTipoEntrepisos;
+        $get("<%= entrepisosTechos_DDList.ClientID %>").selectedValue = data.idTipoEntrepisos;
         $get("<%= trabesColumnas_DDList.ClientID %>").selectedValue = data.idTipoTrabes;
     }
     
@@ -27,7 +27,7 @@
         data.idTipoCimentacion = $get("<%= cimentacion_DDList.ClientID %>").selectedValue;
         data.idTipoMuros = $get("<%= muros_DDList.ClientID %>").selectedValue;
         data.idTipoEscaleras = $get("<%= escaleras_DDList.ClientID %>").selectedValue;
-        data.idTipoEntrepisos = $get("<%= entrepisos_DDList.ClientID %>").selectedValue;
+        data.idTipoEntrepisos = $get("<%= entrepisosTechos_DDList.ClientID %>").selectedValue;
         data.idTipoTrabes = $get("<%= trabesColumnas_DDList.ClientID %>").selectedValue;
         
         return data;

@@ -19,7 +19,7 @@
         $get("<%= instElectricas_DDList.ClientID %>").selectedValue = data.idTipoElectrica;
         $get("<%= carpinteria_DDList.ClientID %>").selectedValue = data.idTipoCarpinteria;
         $get("<%= herreria_DDList.ClientID %>").selectedValue = data.idTipoHerreria;
-        $get("<%= canceleria.ClientID %>").selectedValue = data.idTipoCanceleria;
+        $get("<%= carpinteria_DDList.ClientID %>").selectedValue = data.idTipoCanceleria;
     }
     
     //guardar datos
@@ -31,7 +31,7 @@
         data.idTipoElectrica = $get("<%= instElectricas_DDList.ClientID %>").selectedValue;
         data.idTipoCarpinteria = $get("<%= carpinteria_DDList.ClientID %>").selectedValue;
         data.idTipoHerreria = $get("<%= herreria_DDList.ClientID %>").selectedValue;
-        data.idTipoCanceleria = $get("<%= canceleria.ClientID %>").selectedValue;
+        data.idTipoCanceleria = $get("<%= carpinteria_DDList.ClientID %>").selectedValue;
         
         return data;       
     }
