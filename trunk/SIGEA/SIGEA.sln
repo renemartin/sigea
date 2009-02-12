@@ -10,6 +10,7 @@ Project("{E24C65DC-7377-472B-9ABA-BC803B73C61A}") = "WebApp", "WebApp\", "{60D29
 		SccLocalPath = "Svn"
 		SccProvider = "SubversionScc"
 		TargetFramework = "3.5"
+		ProjectReferences = "{7A19C2C6-2591-44B6-827D-B03B8281D689}|SIGEA.Classes.dll;"
 		Debug.AspNetCompiler.VirtualPath = "/WebApp"
 		Debug.AspNetCompiler.PhysicalPath = "WebApp\"
 		Debug.AspNetCompiler.TargetPath = "PrecompiledWeb\WebApp\"

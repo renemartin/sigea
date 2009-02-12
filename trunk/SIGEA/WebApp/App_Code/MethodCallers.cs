@@ -50,7 +50,7 @@ public class MethodCallers : System.Web.Services.WebService
     public IEnumerable<object> GetListaTiposValuador()
     {
         var tipos = from e in data_context.TipoValuador
-                    orderby e.descripcion
+                    orderby e.idTipoValuador
                     select new { display = e.descripcion, value = e.idTipoValuador };
 
         return tipos.ToArray();

@@ -4,9 +4,6 @@
 <asp:Content ID="headContent" ContentPlaceHolderID="head" runat="Server">
 
     <script type="text/javascript">
-        // Variables
-        var tipoValuador_ID = '<%= tipo_DDList.ClientID %>';
-
         // Acciones del registro
         function addNewValuador() {
             redirect("ValuadorRegistro.aspx");
