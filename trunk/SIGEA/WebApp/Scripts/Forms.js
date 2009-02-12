@@ -1,7 +1,6 @@
 ﻿// Variables
 var form_unloaded = false;
-var form_editing = false;
-var num_bloques_datos = 2;
+var form_editing_count = 0;
 var num_bloques_cargados = 0;
 
 // Habilitar / Deshabilitar controles
@@ -52,10 +51,29 @@ function disableControls(container) {
 function beforeUnload(saveCallBack) {
     if (!form_unloaded) {
         form_unloaded = true;
-        if (form_editing && saveCallBack != null) {
-            if (requestConfirmation("¿ Desea guardar los cambios efectuados al formulario ?")) {
-                saveCallBack();
+        if (form_editing_count > 0 && saveCallBack != null) {
+            if (requestConfirmation("¿Desea guardar los cambios efectuados al formulario?")) {
+                return saveCallBack();
             }
         }
     }
+}
+
+// Edición de formulario
+function editForm(form_id, edit_id, save_id, cancel_id) {
+    $get(edit_id).style.display = "none";
+    $get(cancel_id).style.display = "inline";
+    $get(save_id).style.display = "inline";
+
+    form_editing_count++;
+    enableControls($get(form_id));
+}
+function cancelEdit(form_id, edit_id, save_id, cancel_id, id_key) {
+    $get(edit_id).style.display = "inline";
+    $get(cancel_id).style.display = "none";
+    $get(save_id).style.display = "none";
+
+    form_editing_count--;
+    disableControls($get(form_id));
+    loadForm(id_key);
 }
