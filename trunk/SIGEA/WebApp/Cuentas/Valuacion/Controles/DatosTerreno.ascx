@@ -12,6 +12,42 @@
         fillFuente("<%= fuenteDensidad_DDList.ClientID %>");
         fillServidumbre("<%= servidumbre_DDList.ClientID %>");
     }   
+    
+    //mostrar datos
+    function setData(data) {
+        $get("<%= frentes_TBox.ClientId %>").value = data.frentes;
+        $get("<%= configuracionRegular_CBox.ClientId %>").checked = data.configuracionRegular;
+        $get("<%= lados_TBox.ClientId %>").value = data.lados;
+        $get("<%= ubicacion_DDList.ClientId %>").selectedValue = data.ubicacion;
+        $get("<%= topografia_DDList.ClientId %>").selectedValue = data.topografia;
+        $get("<%= caracPanoramicas_DDList.ClientId %>").selectedValue = data.caracPanoramicas;
+        $get("<%= usoSuelo_DDList.ClientId %>").selectedValue = data.usoSuelo;
+        $get("<%= densidadHabitacional_TBox.ClientId %>").value = data.densidadHabitacional;
+        $get("<%= fuenteDensidad_DDList.ClientId %>").selectedValue = data.fuenteDensidad;
+        $get("<%= habHectarea_TBox.ClientId %>").value = data.habHectarea;
+        $get("<%= vivHectarea_TBox.ClientId %>").value = data.vivHectarea;
+        $get("<%= servidumbre_DDList.ClientId %>").selectedValue = data.servidumbre;
+    }
+    
+    //guardar datos
+    function getData() {
+        var data = new Object();
+        
+        data.frentes = $get("<%= frentes_TBox.ClientId %>").value;
+        data.configuracionRegular = $get("<%= configuracionRegular_CBox.ClientId %>").checked;
+        data.lados = $get("<%= lados_TBox.ClientId %>").value;
+        data.ubicacion = $get("<%= ubicacion_DDList.ClientId %>").selectedValue;
+        data.topografia = $get("<%= topografia_DDList.ClientId %>").selectedValue;
+        data.caracPanoramicas = $get("<%= caracPanoramicas_DDList.ClientId %>").selectedValue;
+        data.usoSuelo = $get("<%= usoSuelo_DDList.ClientId %>").selectedValue;
+        data.densidadHabitacional = $get("<%= densidadHabitacional_TBox.ClientId %>").value;
+        data.fuenteDensidad = $get("<%= fuenteDensidad_DDList.ClientId %>").selectedValue;
+        data.habHectarea = $get("<%= habHectarea_TBox.ClientId %>").value;
+        data.vivHectarea = $get("<%= vivHectarea_TBox.ClientId %>").value;
+        data.servidumbre = $get("<%= servidumbre_DDList.ClientId %>").selectedValue;
+        
+        return data;
+    }
 </script>
 
 <table>
