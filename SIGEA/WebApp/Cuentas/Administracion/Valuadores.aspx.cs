@@ -21,7 +21,7 @@ public partial class Cuentas_Administracion_Valuadores : System.Web.UI.Page
     private void FillData()
     {
         ClientScript.RegisterStartupScript(
-            typeof(Page), "valuadoresLoad", "fillTiposValuador(tipoValuador_ID);", true);
+            typeof(Page), "valuadoresLoad", "fillTiposValuador('"+ tipo_DDList.ClientID +"');", true);
     }
     private void ApplyFilters()
     {

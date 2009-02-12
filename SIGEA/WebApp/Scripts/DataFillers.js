@@ -127,10 +127,10 @@ function fillCliente(target_id) {
         fillSelect, asyncCallFail, target_id);
 }
 
-function fillTiposValuador(tipos_id) {
+function fillTiposValuador(target_id) {
     showControlLoading(target_id);
     MethodCallers.GetListaTiposValuador(
-        fillSelect, asyncCallFail, tipos_id);
+        fillSelect, asyncCallFail, target_id);
 }
 
 // Inmuebles
@@ -252,7 +252,7 @@ function fillConservacion(target_id) {
 
 function fillCalidadProyecto(target_id) {
     showControlLoading(target_id);
-    MethodCallers.GetListaCalidadProyecto(
+    MethodCallers.GetListaTiposCalidadProyecto(
         fillSelect, asyncCallFail, target_id);
 }
 

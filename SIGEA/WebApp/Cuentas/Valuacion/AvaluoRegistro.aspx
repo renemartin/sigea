@@ -26,7 +26,7 @@
         function asignarAvaluo() {
             openModalWindow("AvaluoAsignacion.aspx?idAvaluo=" + idAvaluo, 350, 150);
         }
-        function editarAvaluo() {
+        function editarAvaluo() {            
         }
         function revisarAvaluo() {
         }

@@ -51,6 +51,7 @@ public class EntityWrappers : System.Web.Services.WebService
         avaluo.Inmueble.DireccionInmueble.Direccion.SetData(cp_inmueble, datosDireccionInmueble);
         avaluo.Inmueble.Propietario.SetData(datosPropietario);
         avaluo.Inmueble.Propietario.Direccion.SetData(cp_propietario, datosDireccionPropietario);
+        avaluo.UpdateSubTipo(avaluo.Inmueble.idTipoInmueble);
 
         if (datosCredito != null)
         {
