@@ -36,7 +36,7 @@ function showControlLoading(target_id) {
     var target = $get(target_id);
     if (!target.disabled) {
         target.setAttribute("load-disabled", true);
-        target.disabled = "disabled";
+        target.disabled = true;
     }
 
     var loading = document.createElement("img");
@@ -52,7 +52,7 @@ function showControlLoading(target_id) {
 function hideControlLoading(target_id) {
     var target = $get(target_id);
     if (target.disabled && target.getAttribute("load-disabled") != undefined)
-        target.disabled = "";
+        target.disabled = false;
 
     var loading = $get("loading_" + target_id, target.parentNode);
     if (loading != undefined)
