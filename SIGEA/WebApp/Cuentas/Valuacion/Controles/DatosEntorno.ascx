@@ -7,7 +7,7 @@
     function fillEntornoData(idClase) {
         fillClasificacionZona("<%= clasificacionZona_DDList.ClientID %>", idClase);
         fillProximidadUrbana("<%= proximidadUrbana_DDList.ClientID %>");
-        fillNivelSocioeconomico("<%= nivelSocioconomico_DDList.ClientID %>");
+        fillNivelSocioeconomico("<%= nivelSocioeconomico_DDList.ClientID %>");
         fillConstruccionPredominante("<%= construccionPredominante_DDList.ClientID %>");
         fillDensidad("<%= densidadPoblacion_DDList.ClientID %>");        
     }   
@@ -17,7 +17,7 @@
         $get("<%= clasificacionZona_DDList.ClientID %>").selectedValue = data.idTipoClasificacionZona;
         $get("<%= proximidadUrbana_DDList.ClientID %>").selectedValue = data.idTipoProximidadUrbana;
         $get("<%= nivelSocioeconomico_DDList.ClientID %>").selectedValue = data.idTipoNivelSocioEconomivo;
-        $get("<%= contruccionPredominante_DDList.ClientID %>").selectedValue = data.idTipoConstruccionProdominante;
+        $get("<%= construccionPredominante_DDList.ClientID %>").selectedValue = data.idTipoConstruccionProdominante;
         $get("<%= densidadPoblacion_DDList.ClientID %>").selectedValue = data.idTipoDensidadPoblacion;
         $get("<%= indiceSaturacion_TBox.ClientID %>").value = data.indiceSaturacion;
     }
@@ -29,7 +29,7 @@
         data.idTipoClasificacionZona = $get("<%= clasificacionZona_DDList.ClientID %>").selectedValue;
         data.idTipoProximidadUrbana = $get("<%= proximidadUrbana_DDList.ClientID %>").selectedValue;
         data.idTipoNivelSocioEconomivo = $get("<%= nivelSocioeconomico_DDList.ClientID %>").selectedValue;
-        data.idTipoConstruccionProdominante = $get("<%= contruccionPredominante_DDList.ClientID %>").selectedValue;
+        data.idTipoConstruccionProdominante = $get("<%= construccionPredominante_DDList.ClientID %>").selectedValue;
         data.idTipoDensidadPoblacion = $get("<%= densidadPoblacion_DDList.ClientID %>").selectedValue;
         data.indiceSaturacion = $get("<%= indiceSaturacion_TBox.ClientID %>").value;
         
@@ -59,7 +59,7 @@
             Nivel socioeconómico:
         </td>
         <td class="celdaValor">
-            <asp:DropDownList ID="nivelSocioconomico_DDList" runat="server">
+            <asp:DropDownList ID="nivelSocioeconomico_DDList" runat="server">
             </asp:DropDownList>
         </td>
     </tr>

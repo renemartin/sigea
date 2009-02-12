@@ -8,7 +8,7 @@
         $get("<%= gasNatural_CBox.ClientID %>").checked = data.gasNatural;
         $get("<%= gasNaturalSuministro_CBox.ClientID %>").checked = data.gasNaturalSuministro;
         $get("<%= redTelefonica_CBox.ClientID %>").checked = data.redTelefonica;
-        $get("<%= redTelefonicaArea_CBox.ClientID %>").checked = data.redTelefonicaArea;
+        $get("<%= redTelefonicaAerea_CBox.ClientID %>").checked = data.redTelefonicaArea;
         $get("<%= redTelefonicaAcometida_CBox.ClientID %>").checked = data.redTelefonicaAcometida;
         $get("<%= senalizacionNomenclatura_CBox.ClientID %>").checked = data.senalizacionNomenclatura;
         $get("<%= gasNatural_CBox.ClientID %>").checked = data.gasNatural;
@@ -30,7 +30,7 @@
         data.gasNatural = $get("<%= gasNatural_CBox.ClientID %>").checked;
         data.gasNaturalSuministro = $get("<%= gasNaturalSuministro_CBox.ClientID %>").checked;
         data.redTelefonica = $get("<%= redTelefonica_CBox.ClientID %>").checked;
-        data.redTelefonicaArea = $get("<%= redTelefonicaArea_CBox.ClientID %>").checked;
+        data.redTelefonicaArea = $get("<%= redTelefonicaAerea_CBox.ClientID %>").checked;
         data.redTelefonicaAcometida = $get("<%= redTelefonicaAcometida_CBox.ClientID %>").checked;
         data.senalizacionNomenclatura = $get("<%= senalizacionNomenclatura_CBox.ClientID %>").checked;
         data.gasNatural = $get("<%= gasNatural_CBox.ClientID %>").checked;
@@ -93,7 +93,7 @@
     </tr>
     <tr>
         <td class="celdaValor">
-            <asp:CheckBox ID="transporteSuburbano" Text="Transporte suburbano" runat="server" />
+            <asp:CheckBox ID="transporteSuburbano_CBox" Text="Transporte suburbano" runat="server" />
         </td>
         <td class="subCampo">
             Distancia

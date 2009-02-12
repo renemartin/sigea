@@ -16,12 +16,12 @@
         $get("<%= fuenteTerreno_DDList.ClientID %>").selectedValue = data.fuenteTerreno;
         $get("<%= especFuenteTerreno_TBox.ClientID %>").value = data.especFuenteTerreno;
         $get("<%= superficieFrente_TBox.ClientID %>").value = data.superficieFrente;
-        $get("<%= Indiviso_TBox.ClientID %>").value = data.indiviso;
+        $get("<%= indiviso_TBox.ClientID %>").value = data.indiviso;
         $get("<%= superficieTerreno_TBox.ClientID %>").value = data.superficieTerreno;
-        $get("<%= porporcional_Lbl.ClientID %>").text = data.superficieTerreno;
+        $get("<%= proporcional_Lbl.ClientID %>").text = data.superficieTerreno;
         $get("<%= fuenteIndiviso_DDList.ClientID %>").selectedValue = data.fuenteIndiviso;
         $get("<%= especFuenteIndiviso_TBox.ClientID %>").value = data.especFuenteIndiviso;
-        $get("<%= LotePrivativo_DDList.ClientID %>").value = data.lotePrivativo;
+        $get("<%= lotePrivativo_TBox.ClientID %>").value = data.lotePrivativo;
         $get("<%= fuentePrivativo_DDList.ClientID %>").value = data.fuentePrivativo;        
         $get("<%= especFuentePrivativo_TBox.ClientID %>").value = data.especFuentePrivativo;
     }
@@ -34,12 +34,12 @@
         data.fuenteTerreno = $get("<%= fuenteTerreno_DDList.ClientID %>").selectedValue;
         data.especFuenteTerreno = $get("<%= especFuenteTerreno_TBox.ClientID %>").value;
         data.superficieFrente = $get("<%= superficieFrente_TBox.ClientID %>").value;
-        data.indiviso = $get("<%= Indiviso_TBox.ClientID %>").value;
+        data.indiviso = $get("<%= indiviso_TBox.ClientID %>").value;
         data.superficieTerreno = $get("<%= superficieTerreno_TBox.ClientID %>").value;
-        data.superficieTerreno = $get("<%= porporcional_Lbl.ClientID %>").text;
+        data.superficieTerreno = $get("<%= proporcional_Lbl.ClientID %>").text;
         data.fuenteIndiviso = $get("<%= fuenteIndiviso_DDList.ClientID %>").selectedValue;
         data.especFuenteIndiviso = $get("<%= especFuenteIndiviso_TBox.ClientID %>").value;
-        data.lotePrivativo = $get("<%= LotePrivativo_DDList.ClientID %>").value;
+        data.lotePrivativo = $get("<%= lotePrivativo_TBox.ClientID %>").value;
         data.fuentePrivativo = $get("<%= fuentePrivativo_DDList.ClientID %>").value;        
         data.especFuentePrivativo = $get("<%= especFuentePrivativo_TBox.ClientID %>").value;
         
@@ -84,7 +84,7 @@
             Indiviso:
         </td>
         <td class="celdaValor">
-            <asp:TextBox ID="Indiviso_TBox" runat="server" SkinID="Numero"></asp:TextBox>
+            <asp:TextBox ID="indiviso_TBox" runat="server" SkinID="Numero"></asp:TextBox>
             <span class="textoChico">%</span>
             <div class="etiqueta2">
                 <asp:Label ID="proporcional_Lbl" runat="server"></asp:Label>
@@ -106,7 +106,7 @@
             Lote privativo
         </td>
         <td class="celdaValor">
-            <asp:TextBox ID="LotePrivativo_TBox" runat="server" SkinID="Numero"></asp:TextBox>
+            <asp:TextBox ID="lotePrivativo_TBox" runat="server" SkinID="Numero"></asp:TextBox>
             <span class="textoChico">m²</span>
         </td>
         <td class="celdaTituloSec" valign="top">
