@@ -91,8 +91,8 @@ namespace SIGEA.Classes.Entities
                 where a.idAvaluo == idAvaluo
                 select new
                 {
-                    claveEstado = a.Inmueble.DireccionInmueble.CodigoPostal.Asentamiento.Municipio.Estado.claveEstado,
-                    nombreEstado = a.Inmueble.DireccionInmueble.CodigoPostal.Asentamiento.Municipio.Estado.nombreEstado
+                    claveEstado = a.Inmueble.DireccionInmueble.Direccion.CodigoPostal.Asentamiento.Municipio.Estado.claveEstado,
+                    nombreEstado = a.Inmueble.DireccionInmueble.Direccion.CodigoPostal.Asentamiento.Municipio.Estado.nombreEstado
                 };
 
             if (!estado_query.Any())
@@ -123,9 +123,6 @@ namespace SIGEA.Classes.Entities
             data.Add("promocionVIASC", promocionVIASC);
             data.Add("operacionContado", operacionContado);
             data.Add("idCliente", idCliente);
-            //data.Add("idCliente", idCliente.HasValue
-            //    ? (object)idCliente.Value
-            //    : null);
 
             return data;
         }
@@ -159,8 +156,6 @@ namespace SIGEA.Classes.Entities
         }
         public void SetData(Dictionary<string, object> data)
         {
-            idSubTipo = GetSubTipo(short.Parse(data["idTipoInmueble"].ToString()));
-
             idProposito = short.Parse(data["idProposito"].ToString());
             especRecuperacion = data["especRecuperacion"].ToString();
             especProposito = data["especProposito"].ToString();
@@ -173,6 +168,10 @@ namespace SIGEA.Classes.Entities
                 promocionVIASC = (bool)data["promocionVIASC"];
             if (data.ContainsKey("operacionContado"))
                 operacionContado = (bool)data["operacionContado"];
+        }
+        public void UpdateSubTipo(short idTipoInmueble)
+        {
+            idSubTipo = GetSubTipo(idTipoInmueble);
         }
     }
 }

@@ -74,9 +74,9 @@ namespace SIGEA.Classes.Entities
                 text.Append(this.DireccionInmueble.Direccion.numeroInterior);
             }
             text.Append("<br/>");
-            text.Append(this.DireccionInmueble.CodigoPostal.Asentamiento.Municipio.nombreMunicipio);
+            text.Append(this.DireccionInmueble.Direccion.CodigoPostal.Asentamiento.Municipio.nombreMunicipio);
             text.Append(", ");
-            text.Append(this.DireccionInmueble.CodigoPostal.Asentamiento.Municipio.Estado.nombreEstado);
+            text.Append(this.DireccionInmueble.Direccion.CodigoPostal.Asentamiento.Municipio.Estado.nombreEstado);
 
             return text.ToString().ToUpper();
         }
