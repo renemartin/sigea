@@ -5,44 +5,44 @@
 <script type="text/javascript">
     //mostrar datos
     function setData(data) {
-        $get("<%= gasNatural_CBox.ClientID %>").value = data.gasNatural;
-        $get("<%= gasNaturalSuministro_CBox.ClientID %>").value = data.gasNaturalSuministro;
-        $get("<%= redTelefonica_CBox.ClientID %>").value = data.redTelefonica;
-        $get("<%= redTelefonicaArea_CBox.ClientID %>").value = data.redTelefonicaArea;
-        $get("<%= redTelefonicaAcometida_CBox.ClientID %>").value = data.redTelefonicaAcometida;
-        $get("<%= senalizacionNomenclatura_CBox.ClientID %>").value = data.senalizacionNomenclatura;
-        $get("<%= gasNatural_CBox.ClientID %>").value = data.gasNatural;
-        $get("<%= transporteUrbano_CBox.ClientID %>").value = data.transporteUrbano;
+        $get("<%= gasNatural_CBox.ClientID %>").checked = data.gasNatural;
+        $get("<%= gasNaturalSuministro_CBox.ClientID %>").checked = data.gasNaturalSuministro;
+        $get("<%= redTelefonica_CBox.ClientID %>").checked = data.redTelefonica;
+        $get("<%= redTelefonicaArea_CBox.ClientID %>").checked = data.redTelefonicaArea;
+        $get("<%= redTelefonicaAcometida_CBox.ClientID %>").checked = data.redTelefonicaAcometida;
+        $get("<%= senalizacionNomenclatura_CBox.ClientID %>").checked = data.senalizacionNomenclatura;
+        $get("<%= gasNatural_CBox.ClientID %>").checked = data.gasNatural;
+        $get("<%= transporteUrbano_CBox.ClientID %>").checked = data.transporteUrbano;
         $get("<%= transporteUrbanoDistancia_TBox.ClientID %>").value = data.transporteUrbanoDistancia;
         $get("<%= transporteUrbanoFrecuencia_TBox.ClientID %>").value = data.transporteUrbanoFrecuencia;
-        $get("<%= transporteSuburbano_CBox.ClientID %>").value = data.transporteSuburbano;
+        $get("<%= transporteSuburbano_CBox.ClientID %>").checked = data.transporteSuburbano;
         $get("<%= transporteSuburbanoDistancia_TBox.ClientID %>").value = data.transporteSuburbanoDistancia;
         $get("<%= transporteSuburbanoFrecuencia_TBox.ClientID %>").value = data.transporteSuburbanoFrecuencia;
-        $get("<%= vigilancia_CBox.ClientID %>").value = data.vigilancia;
-        $get("<%= vigilanciaMunicipal_CBox.ClientID %>").value = data.vigilanciaMunicipal;
-        $get("<%= recoleccionBasura_CBox.ClientID %>").value = data.recoleccionBasura;   
+        $get("<%= vigilancia_CBox.ClientID %>").checked = data.vigilancia;
+        $get("<%= vigilanciaMunicipal_CBox.ClientID %>").checked = data.vigilanciaMunicipal;
+        $get("<%= recoleccionBasura_CBox.ClientID %>").checked = data.recoleccionBasura;   
     }
     
     //guardar datos
     function getData() {
         var data = new Object();
         
-        data.gasNatural = $get("<%= gasNatural_CBox.ClientID %>").value;
-        data.gasNaturalSuministro = $get("<%= gasNaturalSuministro_CBox.ClientID %>").value;
-        data.redTelefonica = $get("<%= redTelefonica_CBox.ClientID %>").value;
-        data.redTelefonicaArea = $get("<%= redTelefonicaArea_CBox.ClientID %>").value;
-        data.redTelefonicaAcometida = $get("<%= redTelefonicaAcometida_CBox.ClientID %>").value;
-        data.senalizacionNomenclatura = $get("<%= senalizacionNomenclatura_CBox.ClientID %>").value;
-        data.gasNatural = $get("<%= gasNatural_CBox.ClientID %>").value;
-        data.transporteUrbano = $get("<%= transporteUrbano_CBox.ClientID %>").value;
+        data.gasNatural = $get("<%= gasNatural_CBox.ClientID %>").checked;
+        data.gasNaturalSuministro = $get("<%= gasNaturalSuministro_CBox.ClientID %>").checked;
+        data.redTelefonica = $get("<%= redTelefonica_CBox.ClientID %>").checked;
+        data.redTelefonicaArea = $get("<%= redTelefonicaArea_CBox.ClientID %>").checked;
+        data.redTelefonicaAcometida = $get("<%= redTelefonicaAcometida_CBox.ClientID %>").checked;
+        data.senalizacionNomenclatura = $get("<%= senalizacionNomenclatura_CBox.ClientID %>").checked;
+        data.gasNatural = $get("<%= gasNatural_CBox.ClientID %>").checked;
+        data.transporteUrbano = $get("<%= transporteUrbano_CBox.ClientID %>").checked;
         data.transporteUrbanoDistancia = $get("<%= transporteUrbanoDistancia_TBox.ClientID %>").value;
         data.transporteUrbanoFrecuencia = $get("<%= transporteUrbanoFrecuencia_TBox.ClientID %>").value;
-        data.transporteSuburbano = $get("<%= transporteSuburbano_CBox.ClientID %>").value;
+        data.transporteSuburbano = $get("<%= transporteSuburbano_CBox.ClientID %>").checked;
         data.transporteSuburbanoDistancia = $get("<%= transporteSuburbanoDistancia_TBox.ClientID %>").value;
         data.transporteSuburbanoFrecuencia = $get("<%= transporteSuburbanoFrecuencia_TBox.ClientID %>").value;
-        data.vigilancia = $get("<%= vigilancia_CBox.ClientID %>").value;
-        data.vigilanciaMunicipal = $get("<%= vigilanciaMunicipal_CBox.ClientID %>").value;
-        data.recoleccionBasura = $get("<%= recoleccionBasura_CBox.ClientID %>").value; 
+        data.vigilancia = $get("<%= vigilancia_CBox.ClientID %>").checked;
+        data.vigilanciaMunicipal = $get("<%= vigilanciaMunicipal_CBox.ClientID %>").checked;
+        data.recoleccionBasura = $get("<%= recoleccionBasura_CBox.ClientID %>").checked; 
         
         return data;  
     }
