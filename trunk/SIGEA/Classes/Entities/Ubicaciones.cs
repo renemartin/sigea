@@ -31,8 +31,7 @@ namespace SIGEA.Classes.Entities
                 asentamiento_entity.idTipoAsentamiento = GetIdTipoAsentamiento(data_context, "colonia");
                 asentamiento_entity.capturado = true;
                 asentamiento_entity.nombreAsentamiento = nombreAsentamiento;
-                asentamiento_entity.idMunicipio = idMunicipio;
-                data_context.Asentamiento.InsertOnSubmit(asentamiento_entity);
+                asentamiento_entity.idMunicipio = idMunicipio;                
             }
 
             // Obtener codigo postal
@@ -49,7 +48,6 @@ namespace SIGEA.Classes.Entities
                 codigo_postal_entity.capturado = true;                
                 codigo_postal_entity.codigoPostal1 = codigoPostal;
                 codigo_postal_entity.Asentamiento = asentamiento_entity;
-                data_context.CodigoPostal.InsertOnSubmit(codigo_postal_entity);
             }
 
             return codigo_postal_entity;

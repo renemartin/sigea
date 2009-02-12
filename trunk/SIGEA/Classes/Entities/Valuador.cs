@@ -61,10 +61,13 @@ namespace SIGEA.Classes.Entities
 
             return usuario.Single();
         }
-        public static int GetIdFromName(SIGEADataContext data_context, string nombre)
+        public static int GetIdFromName(SIGEADataContext data_context, string nombre, bool controlador)
         {
             var valuador_query = from v in data_context.Valuador
-                                 where v.nombre.ToLower() == nombre.ToLower().Trim() && v.activo
+                                 where v.nombre.ToLower() == nombre.ToLower().Trim() 
+                                    && ((controlador && v.TipoValuador.descripcion.ToLower() == "controlador")
+                                        || (!controlador && v.TipoValuador.descripcion.ToLower() != "controlador"))
+                                    && v.activo
                                  select v.idValuador;
 
             if (!valuador_query.Any())
