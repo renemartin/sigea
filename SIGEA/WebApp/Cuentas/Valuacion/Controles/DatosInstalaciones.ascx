@@ -9,7 +9,32 @@
         fillServicio("<%= instElectricas_DDList.ClientID %>", "electrificación");
         fillMaterial("<%= carpinteria_DDList.ClientID %>", "carpintería");
         fillMaterial("<%= herreria_DDList.ClientID %>", "herrería");        
-    }   
+        fillMaterial("<%= canceleria_DDList.ClientID %>", "cancelería"); 
+    }
+    
+    //mostrar datos
+    function setData(data) {
+        $get("<%= instHidraulicas_DDList.ClientID %>").selectedValue = data.idTipoHidraulica;
+        $get("<%= instSanitaria_DDList.ClientID %>").selectedValue = data.idTipoSanitaria;
+        $get("<%= instElectricas_DDList.ClientID %>").selectedValue = data.idTipoElectrica;
+        $get("<%= carpinteria_DDList.ClientID %>").selectedValue = data.idTipoCarpinteria;
+        $get("<%= herreria_DDList.ClientID %>").selectedValue = data.idTipoHerreria;
+        $get("<%= canceleria.ClientID %>").selectedValue = data.idTipoCanceleria;
+    }
+    
+    //guardar datos
+    function getData() {
+        var data = new Object();
+        
+        data.idTipoHidraulica = $get("<%= instHidraulicas_DDList.ClientID %>").selectedValue;
+        data.idTipoSanitaria = $get("<%= instSanitaria_DDList.ClientID %>").selectedValue;
+        data.idTipoElectrica = $get("<%= instElectricas_DDList.ClientID %>").selectedValue;
+        data.idTipoCarpinteria = $get("<%= carpinteria_DDList.ClientID %>").selectedValue;
+        data.idTipoHerreria = $get("<%= herreria_DDList.ClientID %>").selectedValue;
+        data.idTipoCanceleria = $get("<%= canceleria.ClientID %>").selectedValue;
+        
+        return data;       
+    }
 </script>
 
 <table>
@@ -55,6 +80,14 @@
             Herrería:</td>
         <td class="celdaValor">
             <asp:DropDownList ID="herreria_DDList" runat="server">
+            </asp:DropDownList>
+        </td>
+    </tr>
+    <tr>
+        <td class="celdaTitulo">
+            Cancelería:</td>
+        <td class="celdaValor">
+            <asp:DropDownList ID="canceleria_DDList" runat="server">
             </asp:DropDownList>
         </td>
     </tr>
