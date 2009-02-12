@@ -9,6 +9,60 @@
         fillMaterial("<%= materialBanquetas_DDList.ClientID %>", "Banquetas");
         fillMaterial("<%= materialGuarniciones_DDList.ClientID %>", "Guarnición");
     }   
+    
+    //mostrar datos
+    function setData(data) {
+        $get("<%= aguaPotable_CBox.ClientID %>").checked = data.aguaPotable;
+        $get("<%= aguaPotableSuministros_CBox.ClientID %>").checked = data.aguaPotableSuministro;
+        $get("<%= drenaje_CBox.ClientID %>").checked = data.drenaje;
+        $get("<%= drenajeConexion_CBox.ClientID %>").checked = data.drenajeConexion;
+        $get("<%= drenajeFosaSeptica_CBox.ClientID %>").checked = data.drenajeFosaSeptica;
+        $get("<%= electrificacion_CBox.ClientID %>").checked = data.electrificacion;
+        $get("<%= electrificacionRedAerea_CBox.ClientID %>").checked = data.electrificacionRedAerea;
+        $get("<%= electrificacionSubterranea_CBox.ClientID %>").checked = data.electrificacionSubterranea;
+        $get("<%= electrificacionConAcometida_CBox.ClientID %>").checked = data.electrificacionConAcometida;
+        $get("<%= electrificacionSubterranea_CBox.ClientID %>").checked = data.electrificacionSubterranea;
+        $get("<%= alumbradoPublico_CBox.ClientID %>").checked = data.alumbradoPublico;
+        $get("<%= alumbradoPublicoAereo_CBox.ClientID %>").checked = data.alumbradoPublicoaereo;
+        $get("<%= vialidades_CBox.ClientID %>").checked = data.vialidades;
+        $get("<%= materialVialidades_DDList.ClientID %>").selectedValue = data.idTipoVialidades;
+        $get("<%= anchoVialidad_TBox.ClientID %>").value = data.anchoVialidad;
+        $get("<%= banquetas_CBox.ClientID %>").checked = data.banquetas;
+        $get("<%= materialBanquetas_DDList.ClientID %>").selectedValue = data.idTipoBanquetas;
+        $get("<%= guarniciones_CBox.ClientID %>").checked = data.guarniciones;
+        $get("<%= materialGuarniciones_DDList.ClientID %>").selectedValue = data.idTipoGuarniciones;
+        $get("<%= nivelInfraestructura_Lbl.ClientID %>").text = data.nivelInfraestructura;
+        $get("<%= nivelInfraestructuraSHF_Lbl.ClientID %>").text = data.nivelInfraestructuraSHF;
+    }
+    
+   //guardar datos
+    function getData() {
+        var data = new Object();
+        
+         data.aguaPotable = $get("<%= aguaPotable_CBox.ClientID %>").checked;
+         data.aguaPotableSuministro = $get("<%= aguaPotableSuministros_CBox.ClientID %>").checked;
+         data.drenaje = $get("<%= drenaje_CBox.ClientID %>").checked;
+         data.drenajeConexion = $get("<%= drenajeConexion_CBox.ClientID %>").checked;
+         data.drenajeFosaSeptica =  $get("<%= drenajeFosaSeptica_CBox.ClientID %>").checked;
+         data.electrificacion = $get("<%= electrificacion_CBox.ClientID %>").checked;
+         data.electrificacionRedAerea = $get("<%= electrificacionRedAerea_CBox.ClientID %>").checked;
+         data.electrificacionSubterranea = $get("<%= electrificacionSubterranea_CBox.ClientID %>").checked;
+         data.electrificacionConAcometida = $get("<%= electrificacionConAcometida_CBox.ClientID %>").checked;
+         data.electrificacionSubterranea = $get("<%= electrificacionSubterranea_CBox.ClientID %>").checked;
+         data.alumbradoPublico = $get("<%= alumbradoPublico_CBox.ClientID %>").checked;
+         data.alumbradoPublicoaereo = $get("<%= alumbradoPublicoAereo_CBox.ClientID %>").checked;
+         data.vialidades = $get("<%= vialidades_CBox.ClientID %>").checked;
+         data.idTipoVialidades = $get("<%= materialVialidades_DDList.ClientID %>").selectedValue;
+         data.anchoVialidad = $get("<%= anchoVialidad_TBox.ClientID %>").value;
+         data.banquetas = $get("<%= banquetas_CBox.ClientID %>").checked;
+         data.idTipoBanquetas = $get("<%= materialBanquetas_DDList.ClientID %>").selectedValue;
+         data.guarniciones = $get("<%= guarniciones_CBox.ClientID %>").checked;
+         data.idTipoGuarniciones = $get("<%= materialGuarniciones_DDList.ClientID %>").selectedValue;
+         data.nivelInfraestructura = $get("<%= nivelInfraestructura_Lbl.ClientID %>").text;
+         data.nivelInfraestructuraSHF = $get("<%= nivelInfraestructuraSHF_Lbl.ClientID %>").text;
+        
+        return data;
+    }
 </script>
 
 <table>
