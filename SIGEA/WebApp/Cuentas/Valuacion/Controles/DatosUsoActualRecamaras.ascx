@@ -9,7 +9,7 @@
     }
     
     //mostrar datos
-    function setDataTablaRecamara(data) {
+    function setDataUsoActualRecamara(data) {
         var i = null;
         var parent_id = "<%= ClientID %>";
         var filas_borrar = getCloningTableCount('tabla_recamaras') - data.length;
@@ -35,7 +35,7 @@
         }
         
         //guardar datos
-        function getDataTablaRecamara( parent_id ) {
+        function getDataUsoActualRecamara( parent_id ) {
             var data = new Object();
             var i = null;
             var numero_tablas = getCloningTableCount('tabla_recamaras');
