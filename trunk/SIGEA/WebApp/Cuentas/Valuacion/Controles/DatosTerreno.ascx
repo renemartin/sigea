@@ -14,7 +14,7 @@
     }   
     
     //mostrar datos
-    function setData(data) {
+    function setDataTerreno(data) {
         $get("<%= frentes_TBox.ClientID %>").value = data.frentes;
         $get("<%= configuracionRegular_CBox.ClientID %>").checked = data.configuracionRegular;
         $get("<%= lados_TBox.ClientID %>").value = data.lados;
@@ -30,7 +30,7 @@
     }
     
     //guardar datos
-    function getData() {
+    function getDataTerreno() {
         var data = new Object();
         
         data.frentes = $get("<%= frentes_TBox.ClientID %>").value;
