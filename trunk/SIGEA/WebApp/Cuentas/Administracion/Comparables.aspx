@@ -11,9 +11,10 @@
             <asp:ServiceReference Path="~/Services/MethodCallers.asmx" />
         </Services>
         <Scripts>
-            <asp:ScriptReference Path="~/Scripts/Comparables.js" />
-             <asp:ScriptReference Path="~/Scripts/AsyncCalls.js" />
-            <asp:ScriptReference Path="~/Scripts/SelectFiller.js" />
+            <asp:ScriptReference Path="~/Scripts/Entities/Comparables.js" />
+            <asp:ScriptReference Path="~/Scripts/Utils.js" />
+            <asp:ScriptReference Path="~/Scripts/AsyncCalls.js" />
+            <asp:ScriptReference Path="~/Scripts/DataFillers.js" />
         </Scripts>
     </asp:ScriptManager>
     
