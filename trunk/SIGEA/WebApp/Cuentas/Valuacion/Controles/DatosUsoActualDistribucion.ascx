@@ -3,7 +3,7 @@
 
 <script type="text/javascript">
     //mostrar datos
-    function setDatos(data) {
+    function setDatosUsoActualDistribucion(data) {
         $get("<%= tipoEstacionamiento_DDList.ClientID %>").selectedValue = data.idTipoEstacionamiento;
         $get("<%= cupoCarros_TBox.ClientID %>").value = data.cupoEstacionamiento;
         $get("<%= jardin_CBox.ClientID %>").checked = data.jardinesFrontales;
@@ -22,7 +22,7 @@
     }
     
     //guardar datos
-    function getDatos() {
+    function getDatosUsoActualDistribucion() {
         var data = new Object();
         
         data.idTipoEstacionamiento = $get("<%= tipoEstacionamiento_DDList.ClientID %>").selectedValue;
