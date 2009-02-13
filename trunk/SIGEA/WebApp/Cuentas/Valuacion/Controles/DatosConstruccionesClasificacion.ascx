@@ -12,6 +12,59 @@
     function setupTablaConstrucciones() {
         addCloningTable($get("tabla_construcciones"), 1, 5);
     }
+    
+    //mostrar datos
+    function setDataConstruccionesClasificacion(data) {
+        var i = null;
+        var parent_id = "<%= ClientID %>";
+        var filas_borrar = getCloningTableCount( parent_id + 'tabla_contrucciones') - data.length;
+        
+        if ( filas_borrar > 0 ) {
+            while ( filas_borrar-- != 0 )
+                removeClonedRow( parent_id + 'tabla_construcciones' );
+        }
+        
+        for ( i = 1; i <= data.length; i++ ) {
+            $get( parent_id + "_tipo_CBox_" + i).checked = data.accesorio;
+            $get( parent_id + "_descripcion_TBox_" + i).value = data.descripcion;
+            $get( parent_id + "_clase_DDList_" + i).selectedValue = data.idClase;
+            $get( parent_id + "_superficie_TBox_" + i).value = data.superficie;
+            $get( parent_id + "_fuente_DDList_" + i).selectedValue = data.idFuente;
+            $get( parent_id + "_nivelesTipo_TBox_" + i).value = data.niveles;
+            $get( parent_id + "_nivelesCuerpo_TBox_" + i).value = data.nivelesCuerpo;
+            $get( parent_id + "_edad_TBox_" + i).value = data.edad;
+            $get( parent_id + "_avance_TBox_" + i).value = data.avanceObra;
+            $get( parent_id + "_vidaUtil_TBox_" + i).value = data.vidaUtil;
+            $get( parent_id + "_estadoConst_DDList_" + i).selectedValue = data.idConservacion; 
+        }
+        
+        if ( i != data.length ) {
+            addClonedRow('tabla_construcciones');
+        }
+    }
+    
+    //guardar datos
+    function getDataContruccionesClasificacion() {
+        var data = new Object();
+        var i = null;
+        var numero_tablas= getCloningTableCount('tabla_construcciones');
+        
+        for ( i = 1; i <= numero_tablas; i++ ) {
+            data.accesorio = $get( parent_id + "_tipo_CBox_" + i).checked;
+            data.descripcion = $get( parent_id + "_descripcion_TBox_" + i).value;
+            data.idClase = $get( parent_id + "_clase_DDList_" + i).selectedValue;
+            data.superficie = $get( parent_id + "_superficie_TBox_" + i).value;
+            data.idFuente = $get( parent_id + "_fuente_DDList_" + i).selectedValue;
+            data.niveles = $get( parent_id + "_nivelesTipo_TBox_" + i).value;
+            data.nivelesCuerpo = $get( parent_id + "_nivelesCuerpo_TBox_" + i).value;
+            data.edad = $get( parent_id + "_edad_TBox_" + i).value;
+            data.avanceObra = $get( parent_id + "_avance_TBox_" + i).value;
+            data.vidaUtil = $get( parent_id + "_vidaUtil_TBox_" + i).value;
+            data.idConservacion = $get( parent_id + "_estadoConst_DDList_" + i).selectedValue;
+        }
+        
+        return data;
+    }
 
 </script>
 
