@@ -26,7 +26,7 @@
     }
     
     //guardar datos
-    function setDatosConstrucciones() {
+    function getDatosConstrucciones() {
         var data = new Object();
         
         data.idCalidadProyecto = $get("<%= calidadProy_DDList.ClientID %>").selectedValue;
@@ -37,7 +37,7 @@
         
         return data;
     }
-    function setDatosCondominios() {
+    function getDatosCondominios() {
         var data = new Object();
         
         data.unidadesRentables = $get("<%= unidadesRentables_TBox.ClientID %>").value;
