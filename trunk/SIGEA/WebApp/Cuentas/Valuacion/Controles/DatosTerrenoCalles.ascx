@@ -11,7 +11,7 @@
     }   
     
     //mostrar datos 
-    function setDatos(data) {
+    function setDatosTerrenoCalles(data) {
         $get("<%= calleTrans1_TBox.ClientID %>").value = data.calleTrans1;
         $get("<%= calleTrans2_TBox.ClientID %>").value = data.calleTrans2;
         $get("<%= calleLimitrofe_TBox.ClientID %>").value = data.calleLimitrofe;
@@ -21,7 +21,7 @@
     }
     
     //guardar datos
-    function getDatos() {
+    function getDatosTerrenoCalles() {
         var data = new Object();
         
         data.calleTrans1 = $get("<%= calleTrans1_TBox.ClientID %>").value;
