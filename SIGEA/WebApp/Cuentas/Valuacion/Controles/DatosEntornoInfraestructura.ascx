@@ -21,10 +21,10 @@
         $get("<%= electrificacionRedAerea_CBox.ClientID %>").checked = data.electrificacionRedAerea;
         $get("<%= electrificacionConAcometida_CBox.ClientID %>").checked = data.electrificacionConAcometida;
         $get("<%= alumbradoPublico_CBox.ClientID %>").checked = data.alumbradoPublico;
-        $get("<%= alumbradoPublicoAereo_CBox.ClientID %>").checked = data.alumbradoPublicoaereo;
+        $get("<%= alumbradoPublicoAereo_CBox.ClientID %>").checked = data.alumbradoPublicoAereo;
         $get("<%= vialidades_CBox.ClientID %>").checked = data.vialidades;
         $get("<%= materialVialidades_DDList.ClientID %>").selectedValue = data.idTipoVialidades;
-        $get("<%= anchoVialidad_TBox.ClientID %>").value = data.anchoVialidad;
+        $get("<%= anchoVialidad_TBox.ClientID %>").value = data.anchoVialidades;
         $get("<%= banquetas_CBox.ClientID %>").checked = data.banquetas;
         $get("<%= materialBanquetas_DDList.ClientID %>").selectedValue = data.idTipoBanquetas;
         $get("<%= guarniciones_CBox.ClientID %>").checked = data.guarniciones;
@@ -47,10 +47,10 @@
          data.electrificacionSubterranea = !$get("<%= electrificacionRedAerea_CBox.ClientID %>").checked;
          data.electrificacionConAcometida = $get("<%= electrificacionConAcometida_CBox.ClientID %>").checked;
          data.alumbradoPublico = $get("<%= alumbradoPublico_CBox.ClientID %>").checked;
-         data.alumbradoPublicoaereo = $get("<%= alumbradoPublicoAereo_CBox.ClientID %>").checked;
+         data.alumbradoPublicoAereo = $get("<%= alumbradoPublicoAereo_CBox.ClientID %>").checked;
          data.vialidades = $get("<%= vialidades_CBox.ClientID %>").checked;
          data.idTipoVialidades = $get("<%= materialVialidades_DDList.ClientID %>").selectedValue;
-         data.anchoVialidad = $get("<%= anchoVialidad_TBox.ClientID %>").value;
+         data.anchoVialidades = $get("<%= anchoVialidad_TBox.ClientID %>").value;
          data.banquetas = $get("<%= banquetas_CBox.ClientID %>").checked;
          data.idTipoBanquetas = $get("<%= materialBanquetas_DDList.ClientID %>").selectedValue;
          data.guarniciones = $get("<%= guarniciones_CBox.ClientID %>").checked;
