@@ -13,7 +13,7 @@
     }   
     
     //mostrar datos
-    function setData(data) {
+    function setDataEntorno(data) {
         $get("<%= clasificacionZona_DDList.ClientID %>").selectedValue = data.idTipoClasificacionZona;
         $get("<%= proximidadUrbana_DDList.ClientID %>").selectedValue = data.idTipoProximidadUrbana;
         $get("<%= nivelSocioeconomico_DDList.ClientID %>").selectedValue = data.idTipoNivelSocioEconomivo;
@@ -23,7 +23,7 @@
     }
     
     //guardar datos
-    function getData() {
+    function getDataEntorno() {
         var data = new Object();
         
         data.idTipoClasificacionZona = $get("<%= clasificacionZona_DDList.ClientID %>").selectedValue;
