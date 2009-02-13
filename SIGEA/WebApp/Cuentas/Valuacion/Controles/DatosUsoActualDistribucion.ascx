@@ -21,7 +21,7 @@
         $get("<%= despensa_CBox.ClientID %>").checked = data.despensa;
     }
     
-    //guardar datos
+    //guardar datos Tabla UsoActualInmueble
     function getDatosUsoActualDistribucion() {
         var data = new Object();
         
