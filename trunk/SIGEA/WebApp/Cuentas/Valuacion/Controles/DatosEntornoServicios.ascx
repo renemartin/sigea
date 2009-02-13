@@ -4,7 +4,7 @@
 
 <script type="text/javascript">
     //mostrar datos
-    function setData(data) {
+    function setDataEntornoServicios(data) {
         $get("<%= gasNatural_CBox.ClientID %>").checked = data.gasNatural;
         $get("<%= gasNaturalSuministro_CBox.ClientID %>").checked = data.gasNaturalSuministro;
         $get("<%= redTelefonica_CBox.ClientID %>").checked = data.redTelefonica;
@@ -24,7 +24,7 @@
     }
     
     //guardar datos
-    function getData() {
+    function getDataEntornoServicios() {
         var data = new Object();
         
         data.gasNatural = $get("<%= gasNatural_CBox.ClientID %>").checked;
