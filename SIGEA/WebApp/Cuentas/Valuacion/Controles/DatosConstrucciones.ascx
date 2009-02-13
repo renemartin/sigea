@@ -9,6 +9,44 @@
         fillClaseInmueble("<%= claseGral_DDList.ClientID %>");
         fillEstadoConservacion("<%= estadoConservacionGral_DDList.ClientID %>");
     }   
+    
+    //mostrar datos
+    function setDatosConstrucciones(data) {
+        $get("<%= calidadProy_DDList.ClientID %>").selectedValue = data.idCalidadProyecto;
+        $get("<%= avanceObraGral_TBox.ClientID %>").value = data.avanceObra;
+        $get("<%= claseGral.ClientID %>").selectedValue = data.idClase;
+        $get("<%= estadoConservacionGral_DDList.ClientID %>").selectedValue = data.idConservacion;
+        $get("<%= unidadesRentables_TBox.ClientID %>").value = data.unidadRentable;
+    }
+    function setDatosCondominios(data) {
+        $get("<%= unidadesRentables_TBox.ClientID %>").value = data.unidadesRentables;
+        $get("<%= avanceAComunes_TBox.ClientID %>").value = data.avanceObra;
+        $get("<%= unidRentNucleo_TBox.ClientID %>").value = data.unidadesNucelo;
+        $get("<%= unidRentConjunto_TBox.ClientID %>").value = data.unidadesConjunto;
+    }
+    
+    //guardar datos
+    function setDatosConstrucciones() {
+        var data = new Object();
+        
+        data.idCalidadProyecto = $get("<%= calidadProy_DDList.ClientID %>").selectedValue;
+        data.avanceObra = $get("<%= avanceObraGral_TBox.ClientID %>").value;
+        data.idClase = $get("<%= claseGral.ClientID %>").selectedValue;
+        data.idConservacion = $get("<%= estadoConservacionGral_DDList.ClientID %>").selectedValue;
+        data.unidadRentable = $get("<%= unidadesRentables_TBox.ClientID %>").value = data.unidadRentable;
+        
+        return data;
+    }
+    function setDatosCondominios() {
+        var data = new Object();
+        
+        data.unidadesRentables = $get("<%= unidadesRentables_TBox.ClientID %>").value;
+        data.avanceObra = $get("<%= avanceAComunes_TBox.ClientID %>").value;
+        data.unidadesNucelo; $get("<%= unidRentNucleo_TBox.ClientID %>").value;
+        data.unidadesConjunto = $get("<%= unidRentConjunto_TBox.ClientID %>").value;
+        
+        return data;
+    }
 </script>
 
 <table>
