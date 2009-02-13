@@ -1,6 +1,65 @@
 ﻿<%@ Control Language="C#" AutoEventWireup="true" CodeFile="DatosAcabados.ascx.cs"
     Inherits="Cuentas_Valuacion_Controles_DatosAcabados" %>
 <link href="~/App_Themes/Default/DefaultStyle.css" rel="stylesheet" type="text/css" />
+
+<script type="text/javascript">
+    //mostrar datos
+    function setDataDatosAcabados(data) {
+        $get("<%= salaPisos_TBox.ClientID %>").value = data.salaPisos;
+        $get("<%= salaMuros_TBox.ClientID %>").value = data.salaMuros;
+        $get("<%= salaPlafones_TBox.ClientID %>").value = data.salaPlafones;
+        $get("<%= comedorPisos_TBox.ClientID %>").value = data.comedorPisos;
+        $get("<%= comedorMuros_TBox.ClientID %>").value = data.comedorMuros;
+        $get("<%= comedorPlafones_TBox.ClientID %>").value = data.comedorPlafones;
+        $get("<%= cocinaPisos_TBox.ClientID %>").value = data.cocinaPisos;
+        $get("<%= cocinaMuros_TBox.ClientID %>").value = data.cocinaMuros;
+        $get("<%= cocinaPlafones_TBox.ClientID %>").value = data.cocinaPlafones;
+        $get("<%= recamarasPisos_TBox.ClientID %>").value = data.recamarasPisos;
+        $get("<%= recamarasMuros_TBox.ClientID %>").value = data.recamarasMuros;
+        $get("<%= recamarasPlafones_TBox.ClientID %>").value = data.recamarasPlafones;
+        $get("<%= banosPisos_TBox.ClientID %>").value = data.banosPisos;
+        $get("<%= banosMuros_TBox.ClientID %>").value = data.banosMuros;
+        $get("<%= banosPlafones_TBox.ClientID %>").value = data.banosPlafones;
+        $get("<%= patiosPisos_TBox.ClientID %>").value = data.patiosPisos;
+        $get("<%= patiosMuros_TBox.ClientID %>").value = data.patiosMuros;
+        $get("<%= patiosPlafones_TBox.ClientID %>").value = data.patiosPlafones;
+        $get("<%= estacionamientoPisos_TBox.ClientID %>").value = data.estacionamientoPisos;
+        $get("<%= estacionamientoMuros_TBox.ClientID %>").value = data.estacionamientoMuros;
+        $get("<%= estacionamientoPlafones_TBox.ClientID %>").value = data.estacionmientoPlafones;
+        $get("<%= fachada_TBox.ClientID %>").value = data.fachadaPisos;
+    }
+    //guardar datos
+    function getDataDatosAcabados() {
+        var data = new Object();
+        
+        data.salaPisos = $get("<%= salaPisos_TBox.ClientID %>").value;
+        data.salaMuros = $get("<%= salaMuros_TBox.ClientID %>").value;
+        data.salaPlafones = $get("<%= salaPlafones_TBox.ClientID %>").value;
+        data.comedorPisos = $get("<%= comedorPisos_TBox.ClientID %>").value;
+        data.comedorMuros = $get("<%= comedorMuros_TBox.ClientID %>").value;
+        data.comedorPlafones = $get("<%= comedorPlafones_TBox.ClientID %>").value;
+        data.cocinaPisos = $get("<%= cocinaPisos_TBox.ClientID %>").value;
+        data.cocinaMuros = $get("<%= cocinaMuros_TBox.ClientID %>").value;
+        data.cocinaPlafones = $get("<%= cocinaPlafones_TBox.ClientID %>").value;
+        data.recamarasPisos = $get("<%= recamarasPisos_TBox.ClientID %>").value;
+        data.recamarasMuros = $get("<%= recamarasMuros_TBox.ClientID %>").value;
+        data.recamarasPlafones = $get("<%= recamarasPlafones_TBox.ClientID %>").value;
+        data.banosPisos = $get("<%= banosPisos_TBox.ClientID %>").value;
+        data.banosMuros = $get("<%= banosMuros_TBox.ClientID %>").value;
+        data.banosPlafones = $get("<%= banosPlafones_TBox.ClientID %>").value;
+        data.patiosPisos = $get("<%= patiosPisos_TBox.ClientID %>").value;
+        data.patiosMuros = $get("<%= patiosMuros_TBox.ClientID %>").value;
+        data.patiosPlafones = $get("<%= patiosPlafones_TBox.ClientID %>").value;
+        data.estacionamientoPisos = $get("<%= estacionamientoPisos_TBox.ClientID %>").value;
+        data.estacionamientoMuros = $get("<%= estacionamientoMuros_TBox.ClientID %>").value;
+        data.estacionamientoPlafones = $get("<%= estacionamientoPlafones_TBox.ClientID %>").value;
+        data.fachadaPisos = $get("<%= fachada_TBox.ClientID %>").value;
+        
+        return data;
+    }
+    
+</script>
+
 <table>
     <tr class="filaHeader">
         <td>
@@ -20,15 +79,15 @@
             Sala:
         </td>
         <td class="celdaValor">
-            <asp:TextBox ID="pisosSala_TBox" runat="server" TextMode="MultiLine" 
+            <asp:TextBox ID="salaPisos_TBox" runat="server" TextMode="MultiLine" 
                 SkinID="MultiLine"></asp:TextBox>
         </td>
         <td class="celdaValor">
-            <asp:TextBox ID="murosSala_TBox" runat="server" TextMode="MultiLine" 
+            <asp:TextBox ID="salaMuros_TBox" runat="server" TextMode="MultiLine" 
                 SkinID="MultiLine"></asp:TextBox>
         </td>
         <td class="celdaValor">
-            <asp:TextBox ID="plafonesSala_TBox" runat="server" TextMode="MultiLine" 
+            <asp:TextBox ID="salaPlafones_TBox" runat="server" TextMode="MultiLine" 
                 SkinID="MultiLine"></asp:TextBox>
         </td>
     </tr>
@@ -37,15 +96,15 @@
             Comedor:
         </td>
         <td class="celdaValor">
-            <asp:TextBox ID="pisosComedor_TBox" runat="server" TextMode="MultiLine" 
+            <asp:TextBox ID="comedorPisos_TBox" runat="server" TextMode="MultiLine" 
                 SkinID="MultiLine"></asp:TextBox>
         </td>
         <td class="celdaValor">
-            <asp:TextBox ID="murosComedor_TBox" runat="server" TextMode="MultiLine" 
+            <asp:TextBox ID="comedorMuros_TBox" runat="server" TextMode="MultiLine" 
                 SkinID="MultiLine"></asp:TextBox>
         </td>
         <td class="celdaValor">
-            <asp:TextBox ID="plafonesComedor_TBox" runat="server" TextMode="MultiLine" 
+            <asp:TextBox ID="comedorPlafones_TBox" runat="server" TextMode="MultiLine" 
                 SkinID="MultiLine"></asp:TextBox>
         </td>
     </tr>
@@ -54,15 +113,15 @@
             Cocina:
         </td>
         <td class="celdaValor">
-            <asp:TextBox ID="pisosCocina_TBox" runat="server" TextMode="MultiLine" 
+            <asp:TextBox ID="cocinaPisos_TBox" runat="server" TextMode="MultiLine" 
                 SkinID="MultiLine"></asp:TextBox>
         </td>
         <td class="celdaValor">
-            <asp:TextBox ID="murosCocina_TBox" runat="server" TextMode="MultiLine" 
+            <asp:TextBox ID="cocinaMuros_TBox" runat="server" TextMode="MultiLine" 
                 SkinID="MultiLine"></asp:TextBox>
         </td>
         <td class="celdaValor">
-            <asp:TextBox ID="plafonesCocina_TBox" runat="server" TextMode="MultiLine" 
+            <asp:TextBox ID="cocinaPlafones_TBox" runat="server" TextMode="MultiLine" 
                 SkinID="MultiLine"></asp:TextBox>
         </td>
     </tr>
@@ -71,15 +130,15 @@
             Recámaras:
         </td>
         <td class="celdaValor">
-            <asp:TextBox ID="pisosRecamaras_TBox" runat="server" TextMode="MultiLine" 
+            <asp:TextBox ID="recamarasPisos_TBox" runat="server" TextMode="MultiLine" 
                 SkinID="MultiLine"></asp:TextBox>
         </td>
         <td class="celdaValor">
-            <asp:TextBox ID="murosRecamaras_TBox" runat="server" TextMode="MultiLine" 
+            <asp:TextBox ID="recamarasMuros_TBox" runat="server" TextMode="MultiLine" 
                 SkinID="MultiLine"></asp:TextBox>
         </td>
         <td class="celdaValor">
-            <asp:TextBox ID="plafonesRecamaras_TBox" runat="server" TextMode="MultiLine" 
+            <asp:TextBox ID="recamarasPlafones_TBox" runat="server" TextMode="MultiLine" 
                 SkinID="MultiLine"></asp:TextBox>
         </td>
     </tr>
@@ -88,15 +147,15 @@
             Baños:
         </td>
         <td class="celdaValor">
-            <asp:TextBox ID="pisosBanos_TBox" runat="server" TextMode="MultiLine" 
+            <asp:TextBox ID="banosPisos_TBox" runat="server" TextMode="MultiLine" 
                 SkinID="MultiLine"></asp:TextBox>
         </td>
         <td class="celdaValor">
-            <asp:TextBox ID="murosBanos_TBox" runat="server" TextMode="MultiLine" 
+            <asp:TextBox ID="banosMuros_TBox" runat="server" TextMode="MultiLine" 
                 SkinID="MultiLine"></asp:TextBox>
         </td>
         <td class="celdaValor">
-            <asp:TextBox ID="plafonesBanos_TBox" runat="server" TextMode="MultiLine" 
+            <asp:TextBox ID="banosPlafones_TBox" runat="server" TextMode="MultiLine" 
                 SkinID="MultiLine"></asp:TextBox>
         </td>
     </tr>
@@ -105,15 +164,15 @@
             Patios:
         </td>
         <td class="celdaValor">
-            <asp:TextBox ID="pisosPatios_TBox" runat="server" TextMode="MultiLine" 
+            <asp:TextBox ID="patiosPisos_TBox" runat="server" TextMode="MultiLine" 
                 SkinID="MultiLine"></asp:TextBox>
         </td>
         <td class="celdaValor">
-            <asp:TextBox ID="murosPatios_TBox" runat="server" TextMode="MultiLine" 
+            <asp:TextBox ID="patiosMuros_TBox" runat="server" TextMode="MultiLine" 
                 SkinID="MultiLine"></asp:TextBox>
         </td>
         <td class="celdaValor">
-            <asp:TextBox ID="plafonesPatios_TBox" runat="server" TextMode="MultiLine" 
+            <asp:TextBox ID="patiosPlafones_TBox" runat="server" TextMode="MultiLine" 
                 SkinID="MultiLine"></asp:TextBox>
         </td>
     </tr>
@@ -122,15 +181,15 @@
             Estacionamiento:
         </td>
         <td class="celdaValor">
-            <asp:TextBox ID="pisosEstacionamiento_TBox" runat="server" TextMode="MultiLine" 
+            <asp:TextBox ID="estacionamientoPisos_TBox" runat="server" TextMode="MultiLine" 
                 SkinID="MultiLine"></asp:TextBox>
         </td>
         <td class="celdaValor">
-            <asp:TextBox ID="murosEstacionamiento_TBox" runat="server" TextMode="MultiLine" 
+            <asp:TextBox ID="estacionamientoMuros_TBox" runat="server" TextMode="MultiLine" 
                 SkinID="MultiLine"></asp:TextBox>
         </td>
         <td class="celdaValor">
-            <asp:TextBox ID="plafonesEstacionamiento_TBox" runat="server" 
+            <asp:TextBox ID="estacionamientoPlafones_TBox" runat="server" 
                 TextMode="MultiLine" SkinID="MultiLine"></asp:TextBox>
         </td>
     </tr>
