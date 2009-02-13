@@ -10,13 +10,13 @@
     }   
     
     //mostrar datos
-    function setDatos(data) {
+    function setDatosTerrenoColindancias(data) {
         $get("<%= fuenteMedidas_DDList.ClientID %>").selectedValue = data.descripcion;
         $get("<%= colindancias_TBox.ClientID %>").value = data.colindancias;
     }
     
     //guardar datos
-    function getDatos() {
+    function getDatosTerrenoColindancias() {
         var data = new Object();
         
         data.direccion = $get("<%= fuenteMedidas_DDList.ClientID %>").selectedValue;
