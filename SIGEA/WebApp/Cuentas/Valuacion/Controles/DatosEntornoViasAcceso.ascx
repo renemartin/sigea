@@ -8,13 +8,13 @@
     }   
     
     //mostrar datos
-    function setData(data) {
+    function setDataEntornoViasAcceso(data) {
         $get("<%= importanciaVia_DDList.ClientID %>").selectedValue = data.idImportancia;
         $get("<%= via_TBox.ClientID %>").selectedValue = data.nombreVia;
     }
     
     //guardar datos
-    function getData() {
+    function getDataEntornoViasAcceso() {
         var data = new Object();
         
         data.idImportancia = $get("<%= importanciaVia_DDList.ClientID %>").selectedValue;
