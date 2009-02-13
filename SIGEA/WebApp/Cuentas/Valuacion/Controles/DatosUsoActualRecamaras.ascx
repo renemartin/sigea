@@ -34,7 +34,7 @@
             }
         }
         
-        //guardar datos
+        //guardar datos Tabla UsoActualRecamaras
         function getDataUsoActualRecamara( parent_id ) {
             var data = new Object();
             var i = null;
