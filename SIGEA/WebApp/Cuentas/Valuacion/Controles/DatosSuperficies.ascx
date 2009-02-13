@@ -11,7 +11,7 @@
     }   
     
     //mostrar datos
-    function setData(data) {
+    function setDataSuperficies(data) {
         $get("<%= superficieTerreno_TBox.ClientID %>").value = data.superficieTerreno;
         $get("<%= fuenteTerreno_DDList.ClientID %>").selectedValue = data.fuenteTerreno;
         $get("<%= especFuenteTerreno_TBox.ClientID %>").value = data.especFuenteTerreno;
@@ -27,7 +27,7 @@
     }
     
     //guardar datos
-    function getData() {
+    function getDataSuperficies() {
         var data = new Object();
         
         data.superficieTerreno = $get("<%= superficieTerreno_TBox.ClientID %>").value;
