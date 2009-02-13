@@ -4,7 +4,7 @@
 <script type="text/javascript">
     
     //mostrar datos
-    function setData(data) {
+    function setDataEntornoEquipamiento(data) {
         $get("<%= distanciaIglesia_TBox.ClientID %>").value = data.distanciaIglesia;
         $get("<%= distanciaMercado_TBox.ClientID %>").value = data.distanciaMercado;
         $get("<%= distanciaPlaza_TBox.ClientID %>").value = data.distanciaPlaza;
@@ -18,7 +18,7 @@
     }
     
     //guardar datos
-    function getData() {
+    function getDataEntornoEquipamiento() {
         var data  = new Object();
         
          data.distanciaIglesia = $get("<%= distanciaIglesia_TBox.ClientID %>").value;
