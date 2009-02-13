@@ -1,6 +1,33 @@
 ﻿<%@ Control Language="C#" AutoEventWireup="true" CodeFile="DatosAdvertencias.ascx.cs"
     Inherits="Cuentas_Valuacion_Controles_DatosAdvertencias" %>
 <link href="~/App_Themes/Default/DefaultStyle.css" rel="stylesheet" type="text/css" />
+
+<script type="text/javascript">
+
+    //mostrar datos
+    function setDataAdvertencias(data) {
+        $get("<%= sinDocumentacion_CBox %>.ClientID").checked = data.advertenciaDocumentacion;
+        $get("<%= sinOferta_CBox %>.ClientID").checked = data.advertenciaOfertas;
+        $get("<%= dudaUso_CBox %>.ClientID").checked = data.advertenciaUso;
+        $get("<%= obrasAfectacion_CBox %>.ClientID").checked = data.advertenciaObras;
+        $get("<%= otrasAdvertencias_TBox %>.ClientID").value = data.otrasAdvertencias;
+        
+    }
+    
+    //guardar datos
+    function getDataAdvertencias() {
+        var data = new Object();
+        
+        data.advertenciaDocumentacion = $get("<%= sinDocumentacion_CBox %>.ClientID").checked;
+        data.advertenciaOfertas = $get("<%= sinOferta_CBox %>.ClientID").checkedx;
+        data.advertenciaUso = $get("<%= dudaUso_CBox %>.ClientID").checked;
+        data.advertenciaObras = $get("<%= obrasAfectacion_CBox %>.ClientID").checked;
+        data.otrasAdvertencias = $get("<%= otrasAdvertencias_TBox %>.ClientID").value;
+        
+        return data;
+    }
+    
+</script>
 <ol>
     <li>
         <asp:CheckBox ID="sinDocumentacion_CBox" runat="server" Text="NO SE DISPUSO DE DOCUMENTACIÓN RELEVANTE" />
