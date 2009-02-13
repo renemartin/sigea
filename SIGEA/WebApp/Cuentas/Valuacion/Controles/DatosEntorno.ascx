@@ -17,7 +17,7 @@
         $get("<%= clasificacionZona_DDList.ClientID %>").selectedValue = data.idTipoClasificacionZona;
         $get("<%= proximidadUrbana_DDList.ClientID %>").selectedValue = data.idTipoProximidadUrbana;
         $get("<%= nivelSocioeconomico_DDList.ClientID %>").selectedValue = data.idTipoNivelSocioEconomivo;
-        $get("<%= construccionPredominante_DDList.ClientID %>").selectedValue = data.idTipoConstruccionProdominante;
+        $get("<%= construccionPredominante_DDList.ClientID %>").selectedValue = data.idTipoConstrucciones;
         $get("<%= densidadPoblacion_DDList.ClientID %>").selectedValue = data.idTipoDensidadPoblacion;
         $get("<%= indiceSaturacion_TBox.ClientID %>").value = data.indiceSaturacion;
     }
@@ -29,7 +29,7 @@
         data.idTipoClasificacionZona = $get("<%= clasificacionZona_DDList.ClientID %>").selectedValue;
         data.idTipoProximidadUrbana = $get("<%= proximidadUrbana_DDList.ClientID %>").selectedValue;
         data.idTipoNivelSocioEconomivo = $get("<%= nivelSocioeconomico_DDList.ClientID %>").selectedValue;
-        data.idTipoConstruccionProdominante = $get("<%= construccionPredominante_DDList.ClientID %>").selectedValue;
+        data.idTipoConstrucciones = $get("<%= construccionPredominante_DDList.ClientID %>").selectedValue;
         data.idTipoDensidadPoblacion = $get("<%= densidadPoblacion_DDList.ClientID %>").selectedValue;
         data.indiceSaturacion = $get("<%= indiceSaturacion_TBox.ClientID %>").value;
         
