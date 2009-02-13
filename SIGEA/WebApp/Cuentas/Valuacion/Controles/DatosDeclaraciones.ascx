@@ -4,7 +4,7 @@
 <script type="text/javascript">
     
     //mostrar datos
-    function setData(data) {
+    function setDataDeclaraciones(data) {
         if ( data.declaracionIdentificacion == true ){
                 $get("<%= identificacionCoincide_RBtn.ClientID %>").checked = true;
                 $get("<%= identificacionNOCoincide_RBtn.ClientID %>").checked = false;
@@ -52,7 +52,7 @@
     }
     
      //guardar datos
-    function getData() {
+    function getDataDeclaraciones() {
         var data  = new Object();
         
         if ( $get("<%= identificacionCoincide_RBtn.ClientID %>").checked == true )
