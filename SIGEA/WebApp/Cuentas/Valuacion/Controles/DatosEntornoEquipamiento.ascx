@@ -12,12 +12,12 @@
         $get("<%= distanciaHospital_TBox.ClientID %>").value = data.distanciaHospital;
         $get("<%= distanciaParque_TBox.ClientID %>").value = data.distanciaParque;
         $get("<%= distanciaBanco_TBox.ClientID %>").value = data.distanciaBanco;
-        $get("<%= distanciaTransporte_TBox.ClientID %>").value = data.distanciaTransporte;
+        $get("<%= distanciaTransporte_TBox.ClientID %>").value = data.distanciaEstacionTransporte;
         $get("<%= proximidadGeneral_Lbl.ClientID %>").text = data.proximidadGeneral;
-        $get("<%= nivelEquipamiento_Lbl.ClientID %>").text = data.nivelEquipamiento;
+        $get("<%= nivelEquipamiento_Lbl.ClientID %>").text = data.nivelEquipamientoUrbano;
     }
     
-    //guardar datos
+    //guardar datos (tabla ServiciosInmueble)
     function getDataEntornoEquipamiento() {
         var data  = new Object();
         
@@ -28,9 +28,9 @@
          data.distanciaHospital = $get("<%= distanciaHospital_TBox.ClientID %>").value;
          data.distanciaParque = $get("<%= distanciaParque_TBox.ClientID %>").value;
          data.distanciaBanco = $get("<%= distanciaBanco_TBox.ClientID %>").value;
-         data.distanciaTransporte = $get("<%= distanciaTransporte_TBox.ClientID %>").value;
+         data.distanciaEstacionTransporte = $get("<%= distanciaTransporte_TBox.ClientID %>").value;
          data.proximidadGeneral = $get("<%= proximidadGeneral_Lbl.ClientID %>").text;
-         data.nivelEquipamiento = $get("<%= nivelEquipamiento_Lbl.ClientID %>").text;
+         data.nivelEquipamientoUrbano = $get("<%= nivelEquipamiento_Lbl.ClientID %>").text;
     
         return data;
     }
