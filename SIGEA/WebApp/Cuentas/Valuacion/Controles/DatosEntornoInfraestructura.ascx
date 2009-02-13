@@ -11,7 +11,7 @@
     }   
     
     //mostrar datos
-    function setData(data) {
+    function setDataEntornoInfraestructura(data) {
         $get("<%= aguaPotable_CBox.ClientID %>").checked = data.aguaPotable;
         $get("<%= aguaPotableSuministro_CBox.ClientID %>").checked = data.aguaPotableSuministro;
         $get("<%= drenaje_CBox.ClientID %>").checked = data.drenaje;
@@ -34,7 +34,7 @@
     }
     
    //guardar datos
-    function getData() {
+    function getDataEntornoInfraestructura() {
         var data = new Object();
         
          data.aguaPotable = $get("<%= aguaPotable_CBox.ClientID %>").checked;
