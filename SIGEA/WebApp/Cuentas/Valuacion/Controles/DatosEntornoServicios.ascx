@@ -11,7 +11,6 @@
         $get("<%= redTelefonicaAerea_CBox.ClientID %>").checked = data.redTelefonicaArea;
         $get("<%= redTelefonicaAcometida_CBox.ClientID %>").checked = data.redTelefonicaAcometida;
         $get("<%= senalizacionNomenclatura_CBox.ClientID %>").checked = data.senalizacionNomenclatura;
-        $get("<%= gasNatural_CBox.ClientID %>").checked = data.gasNatural;
         $get("<%= transporteUrbano_CBox.ClientID %>").checked = data.transporteUrbano;
         $get("<%= transporteUrbanoDistancia_TBox.ClientID %>").value = data.transporteUrbanoDistancia;
         $get("<%= transporteUrbanoFrecuencia_TBox.ClientID %>").value = data.transporteUrbanoFrecuencia;
@@ -33,7 +32,6 @@
         data.redTelefonicaArea = $get("<%= redTelefonicaAerea_CBox.ClientID %>").checked;
         data.redTelefonicaAcometida = $get("<%= redTelefonicaAcometida_CBox.ClientID %>").checked;
         data.senalizacionNomenclatura = $get("<%= senalizacionNomenclatura_CBox.ClientID %>").checked;
-        data.gasNatural = $get("<%= gasNatural_CBox.ClientID %>").checked;
         data.transporteUrbano = $get("<%= transporteUrbano_CBox.ClientID %>").checked;
         data.transporteUrbanoDistancia = $get("<%= transporteUrbanoDistancia_TBox.ClientID %>").value;
         data.transporteUrbanoFrecuencia = $get("<%= transporteUrbanoFrecuencia_TBox.ClientID %>").value;
