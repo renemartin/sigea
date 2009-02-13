@@ -10,7 +10,7 @@
         fillMaterial("<%= materialGuarniciones_DDList.ClientID %>", "Guarnición");
     }   
     
-    //mostrar datos
+    //mostrar datos (tabla InfraestructuraInmueble)
     function setDataEntornoInfraestructura(data) {
         $get("<%= aguaPotable_CBox.ClientID %>").checked = data.aguaPotable;
         $get("<%= aguaPotableSuministro_CBox.ClientID %>").checked = data.aguaPotableSuministro;
