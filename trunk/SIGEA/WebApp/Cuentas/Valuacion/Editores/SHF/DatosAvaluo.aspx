@@ -136,6 +136,7 @@
             CssClass="hidden" />
     </div>
     <hr />
+    <h1>Declaraciones y advertencias</h1>
     <div class="barraAcciones">
         <asp:ImageButton ID="editar_declaraciones_ImBtn" runat="server" SkinID="Edit" />
     </div>
