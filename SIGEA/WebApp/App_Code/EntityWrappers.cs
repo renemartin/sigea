@@ -185,6 +185,21 @@ public class EntityWrappers : System.Web.Services.WebService
         data_context.SubmitChanges();
     }
 
+    [WebMethod]
+    public void SaveSolicitante(
+        int idAvaluo
+        , Entity datosSolicitante)
+    {
+        SIGEADataContext data_context = new SIGEADataContext();
+        AvaluoInmobiliario avaluo = AvaluoInmobiliario.GetFromId(data_context, idAvaluo);
+
+        if (avaluo == null)
+            throw new Exception("El identificador del avalúo es inválido");
+
+        avaluo.Solicitante.SetData(datosSolicitante);
+        data_context.SubmitChanges(); 
+    }
+
 
     #endregion
 
