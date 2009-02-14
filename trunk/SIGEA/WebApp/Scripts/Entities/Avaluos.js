@@ -53,7 +53,7 @@ function saveDeclaracionesAsync(idAvaluo, datosDeclaraciones, datosAdvertencias,
         , asyncCallResultBack
         , asyncCallFail
         , callBack
-    );   
+    );
 }
 
 // Cancelación de avalúo
