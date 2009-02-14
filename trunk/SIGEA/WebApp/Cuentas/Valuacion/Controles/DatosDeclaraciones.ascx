@@ -8,13 +8,13 @@
         $get("<%= identificacionCoincide_RBtn.ClientID %>").checked = data.declaracionIdentificacion;
         $get("<%= identificacionNOCoincide_RBtn.ClientID %>").checked = !data.declaracionIdentificacion;
         $get("<%= superficiesCoinciden_RBtn.ClientID %>").checked = data.declaracionSuperficies;
-        $get("<%= superficiesNOCoinciden_RBtn.ClientID %>").checked = !data.declaracionSuperficies;
-        $get("<%= contruccionCumple_RBtn.ClientID %>").checked = data.declaracionConstrucciones;
-        $get("<%= contruccionNOCumple_RBtn.ClientID %>").checked = !data.declaracionConstrucciones;
+        $get("<%= superficiesNoCoinciden_RBtn.ClientID %>").checked = !data.declaracionSuperficies;
+        $get("<%= construccionCumple_RBtn.ClientID %>").checked = data.declaracionConstrucciones;
+        $get("<%= construccionNoCumple_RBtn.ClientID %>").checked = !data.declaracionConstrucciones;
         $get("<%= inmuebleMonumento_RBtn.ClientID %>").checked = data.declaracionMonumento;
-        $get("<%= inmuebleNOMonumento_RBtn.ClientID %>").checked = !data.declaracionMonumento;
+        $get("<%= inmuebleNoMonumento_RBtn.ClientID %>").checked = !data.declaracionMonumento;
         $get("<%= inmueblePatrimonio_RBtn.ClientID %>").checked = data.declaracionPatrimonio;
-        $get("<%= inmuebleNOPatrimonio_RBtn.ClientID %>").checked = !data.declaracionPatrimonio;
+        $get("<%= inmuebleNoPatrimonio_RBtn.ClientID %>").checked = !data.declaracionPatrimonio;
    
      //guardar datos
     function getDataDeclaraciones() {
@@ -22,7 +22,7 @@
         
          data.declaracionIdentificacion = $get("<%= identificacionCoincide_RBtn.ClientID %>").checked;
          data.declaracionSuperficies = $get("<%= superficiesCoinciden_RBtn.ClientID %>").checked;
-         data.declaracionConstrucciones = $get("<%= contruccionCumple_RBtn.ClientID %>").checked;         
+         data.declaracionConstrucciones = $get("<%= construccionCumple_RBtn.ClientID %>").checked;         
          data.declaracionMonumento = $get("<%= inmuebleMonumento_RBtn.ClientID %>").checked         
          data.declaracionPatrimonio = $get("<%= inmueblePatrimonio_RBtn.ClientID %>").checked
             
