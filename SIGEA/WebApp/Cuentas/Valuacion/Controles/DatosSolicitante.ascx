@@ -18,7 +18,7 @@
         $get("<%= nombre_TBox.ClientID %>").value = data["nombre"];
         $get("<%= NSS_TBox.ClientID %>").value = data["NSS"];
         $get("<%= RFC_TBox.ClientID %>").value = data["RFC"]
-        $get("<%= CURP_TBox.ClientID %>").selectedValue = data["CURP"];
+        $get("<%= CURP_TBox.ClientID %>").value = data["CURP"];
     }
 
 </script>
