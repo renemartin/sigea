@@ -25,6 +25,7 @@ namespace SIGEA.Classes.Entities
             if (credito == null)
             {
                 credito = new DatoCredito();
+                credito.idAvaluo = idAvaluo;
                 data_context.DatoCredito.InsertOnSubmit(credito);
             }
 
