@@ -168,7 +168,8 @@ public class EntityWrappers : System.Web.Services.WebService
     public void SaveAvaluo(
         int idAvaluo
         , Entity datosAvaluo
-        , Entity datosCredito)
+        , Entity datosCredito
+        , Entity datosSolicitante)
     {
         SIGEADataContext data_context = new SIGEADataContext();
         AvaluoInmobiliario avaluo = AvaluoInmobiliario.GetFromId(data_context, idAvaluo);
@@ -188,6 +189,7 @@ public class EntityWrappers : System.Web.Services.WebService
             avaluo.DatoCredito = null;
         }
 
+        avaluo.Solicitante.SetData(datosSolicitante);
         data_context.SubmitChanges();
     }
 
