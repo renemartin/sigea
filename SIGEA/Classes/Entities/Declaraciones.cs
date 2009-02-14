@@ -52,18 +52,19 @@ namespace SIGEA.Classes.Entities
             return data;
         }
 
-        public void SetData(Dictionary<string, object> data)
+        public void SetData(Dictionary<string, object> dataDeclaracion, Dictionary<string, object> dataAdvertencia)
         {
-            declaracionIdentificacion = (bool)data["declaracionIdentificacion"];
-            declaracionSuperficies = (bool)data["declaracionSuperficies"];
-            declaracionConstrucciones = (bool)data["declaracionConstrucciones"];
-            declaracionMonumento = (bool)data["declaracionMonumento"];
-            declaracionPatrimonio = (bool)data["declaracionPatrimonio"];
-            advertenciaDocumentacion = (bool)data["advertenciaDocumentacion"];
-            advertenciaOfertas = (bool)data["advertenciaOfertas"];
-            advertenciaUso = (bool)data["advertenciaUso"];
-            advertenciaObras = (bool)data["advertenciaObras"];
-            otrasAdvertencias = data["otrasAdvertencias"].ToString(); ;
+            declaracionIdentificacion = (bool)dataDeclaracion["declaracionIdentificacion"];
+            declaracionSuperficies = (bool)dataDeclaracion["declaracionSuperficies"];
+            declaracionConstrucciones = (bool)dataDeclaracion["declaracionConstrucciones"];
+            declaracionMonumento = (bool)dataDeclaracion["declaracionMonumento"];
+            declaracionPatrimonio = (bool)dataDeclaracion["declaracionPatrimonio"];
+
+            advertenciaDocumentacion = (bool)dataAdvertencia["advertenciaDocumentacion"];
+            advertenciaOfertas = (bool)dataAdvertencia["advertenciaOfertas"];
+            advertenciaUso = (bool)dataAdvertencia["advertenciaUso"];
+            advertenciaObras = (bool)dataAdvertencia["advertenciaObras"];
+            otrasAdvertencias = dataAdvertencia["otrasAdvertencias"].ToString(); ;
         }
     }
 }
