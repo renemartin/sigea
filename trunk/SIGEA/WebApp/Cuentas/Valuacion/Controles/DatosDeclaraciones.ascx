@@ -48,7 +48,7 @@
             CssClass="textoNegritas" />
         &nbsp;
         <asp:RadioButton ID="superficiesNoCoinciden_RBtn" runat="server" Text="NO COINCIDEN"
-            GroupName="declaracion2" CssClass="textoNegritas" Checked="True" />
+            GroupName="declaracion2" CssClass="textoNegritas" />
         &nbsp; CON LA DOCUMENTACIÓN
         <br />
         <span class="textoCursiva textoChico">(CON EL ALCANCE ESPERADO PARA EFECTOS DEL AVALÚO)</span> </li>
