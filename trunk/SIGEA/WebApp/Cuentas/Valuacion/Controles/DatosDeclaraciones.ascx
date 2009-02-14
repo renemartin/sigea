@@ -5,9 +5,6 @@
     
     //mostrar datos
     function setDataDeclaraciones(data) {
-<<<<<<< .mine
-        
-=======
         $get("<%= identificacionCoincide_RBtn.ClientID %>").checked = data.declaracionIdentificacion;
         $get("<%= identificacionNOCoincide_RBtn.ClientID %>").checked = !data.declaracionIdentificacion;
         $get("<%= superficiesCoinciden_RBtn.ClientID %>").checked = data.declaracionSuperficies;
@@ -18,14 +15,9 @@
         $get("<%= inmuebleNOMonumento_RBtn.ClientID %>").checked = !data.declaracionMonumento;
         $get("<%= inmueblePatrimonio_RBtn.ClientID %>").checked = data.declaracionPatrimonio;
         $get("<%= inmuebleNOPatrimonio_RBtn.ClientID %>").checked = !data.declaracionPatrimonio;
->>>>>>> .r89
-    }
-    
+   
      //guardar datos
     function getDataDeclaraciones() {
-<<<<<<< .mine
-                    
-=======
         var data  = new Object();
         
          data.declaracionIdentificacion = $get("<%= identificacionCoincide_RBtn.ClientID %>").checked;
@@ -35,8 +27,6 @@
          data.declaracionPatrimonio = $get("<%= inmueblePatrimonio_RBtn.ClientID %>").checked
             
         return data;
-            
->>>>>>> .r89
     }
 
 </script>
