@@ -1,7 +1,6 @@
 ﻿<%@ Control Language="C#" AutoEventWireup="true" CodeFile="ValuadorMenu.ascx.cs"
     Inherits="Cuentas_Administracion_ValuadorMenu" %>
-<link href="~/App_Themes/Default/DefaultStyle.css" rel="stylesheet" type="text/css" />
-<div class="submenu" id="submenu_valuador">
+<div class="submenu" id="submenu_valuador" style="display:none;">
     <ul>
         <li>
             <asp:LinkButton ID="registro_LkBtn" runat="server" Text="Datos generales" PostBackUrl="~/Cuentas/Administracion/ValuadorRegistro.aspx" /></li>

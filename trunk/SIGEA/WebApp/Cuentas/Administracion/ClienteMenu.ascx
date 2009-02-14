@@ -1,6 +1,5 @@
 ﻿<%@ Control Language="C#" AutoEventWireup="true" CodeFile="ClienteMenu.ascx.cs" Inherits="Cuentas_Administracion_ClienteMenu" %>
-<link href="~/App_Themes/Default/DefaultStyle.css" rel="stylesheet" type="text/css" />
-<div class="submenu" id="submenu_cliente">
+<div class="submenu" id="submenu_cliente" style="display:none;">
     <ul>
         <li>
             <asp:LinkButton ID="registro_LkBtn" runat="server" Text="Datos generales" PostBackUrl="~/Cuentas/Administracion/ClienteRegistro.aspx" /></li>

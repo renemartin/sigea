@@ -50,7 +50,7 @@
             );
         }
         function saveValuador_Success(id) {
-            idValuador = id;
+            idValuador = id;           
             setControlsVisibility();
             setFechaAlta(new Date());
             showMessage("Datos guardados");

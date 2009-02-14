@@ -20,7 +20,6 @@ public class FileUploader
 
         Image image = ImageResizer.Resize(Bitmap.FromStream(file.InputStream), scale_width, scale_height);
 
-
         string file_name = Path.GetFileNameWithoutExtension(file.FileName);
         string file_extension = Path.GetExtension(file.FileName);
         string new_file_name = string.Empty;

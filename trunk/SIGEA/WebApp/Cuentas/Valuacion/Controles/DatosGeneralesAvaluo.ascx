@@ -62,7 +62,11 @@
             $get("<%= entidadOtorgante_DDList.ClientID %>").selectedValue = data["idEntidadOtorgante"];
             $get("<%= entidadCofinanciamiento_DDList.ClientID %>").selectedValue = data["idEntidadCofinanciamiento"];
             $get("<%= tipoCreditoInterno_DDList.ClientID %>").selectedValue = data["idTipoCreditoInterno"];
-        }
+
+            $get("seccion_cofinanciamiento").style.display = data["idEntidadCofinanciamiento"] != null
+                ? "block"
+                : "none";
+            }
         else {
             $get("seccion_cofinanciamiento").style.display = "none";
             $get("seccion_subtipo_credito").style.display = "none";
@@ -77,7 +81,7 @@
     // Llenado de datos
     function fillAvaluoData() {
         fillProposito("<%= proposito_DDList.ClientID %>");
-        fillTipoCredito("<%= tipoCredito_DDList.ClientID %>");
+        fillTipoCredito("<%= tipoCredito_DDList.ClientID %>", setTipoCreditoSelection);
         fillEntidadOtorgante("<%= entidadOtorgante_DDList.ClientID %>", "<%= tipoCredito_DDList.ClientID %>", setEntidadFinanciamientoSelection);
         fillCreditoInterno("<%= tipoCreditoInterno_DDList.ClientID %>", "<%= entidadOtorgante_DDList.ClientID %>");
         fillEntidadCofinanciamiento("<%= entidadCofinanciamiento_DDList.ClientID %>", "<%= tipoCredito_DDList.ClientID %>");

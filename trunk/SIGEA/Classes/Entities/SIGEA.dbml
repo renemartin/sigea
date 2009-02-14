@@ -1,6 +1,6 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Database Name="SIGEA" Class="SIGEADataContext" xmlns="http://schemas.microsoft.com/linqtosql/dbml/2007">
-  <Connection Mode="AppSettings" ConnectionString="Data Source=VIASC;Initial Catalog=SIGEA;Persist Security Info=True;User ID=SistemaSIGEA" SettingsObjectName="SIGEA.Classes.Properties.Settings" SettingsPropertyName="SIGEAConnectionString" Provider="System.Data.SqlClient" />
+  <Connection Mode="AppSettings" ConnectionString="Data Source=65.182.106.50,1433;Initial Catalog=SIGEA;Persist Security Info=True;User ID=SistemaSIGEA" SettingsObjectName="SIGEA.Classes.Properties.Settings" SettingsPropertyName="SIGEAConnectionString" Provider="System.Data.SqlClient" />
   <Table Name="dbo.AcabadoTipoConstruccion" Member="AcabadoTipoConstruccion">
     <Type Name="AcabadoTipoConstruccion">
       <Column Name="idConstruccion" Type="System.Int32" DbType="Int NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
@@ -295,8 +295,8 @@
       <Column Name="messenger" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
       <Column Name="skype" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
       <Association Name="DatoContacto_Cliente" Member="Cliente" ThisKey="idDatoContacto" OtherKey="idDatoContacto" Type="Cliente" />
-      <Association Name="DatoContacto_Valuador" Member="Valuador" ThisKey="idDatoContacto" OtherKey="idDatoContacto" Type="Valuador" />
       <Association Name="DatoContacto_ComparableInmobiliario" Member="ComparableInmobiliario" ThisKey="idDatoContacto" OtherKey="idDatoContacto" Type="ComparableInmobiliario" />
+      <Association Name="DatoContacto_Valuador" Member="Valuador" ThisKey="idDatoContacto" OtherKey="idDatoContacto" Type="Valuador" />
     </Type>
   </Table>
   <Table Name="dbo.DatoCredito" Member="DatoCredito">
@@ -377,8 +377,8 @@
       <Association Name="Direccion_DireccionInmueble" Member="DireccionInmueble" ThisKey="idDireccion" OtherKey="idDireccion" Type="DireccionInmueble" />
       <Association Name="Direccion_Propietario" Member="Propietario" ThisKey="idDireccion" OtherKey="idDireccion" Type="Propietario" />
       <Association Name="Direccion_Solicitante" Member="Solicitante" ThisKey="idDireccion" OtherKey="idDireccion" Type="Solicitante" />
-      <Association Name="Direccion_Valuador" Member="Valuador" ThisKey="idDireccion" OtherKey="idDireccion" Type="Valuador" />
       <Association Name="Direccion_ComparableInmobiliario" Member="ComparableInmobiliario" ThisKey="idDireccion" OtherKey="idDireccion" Type="ComparableInmobiliario" />
+      <Association Name="Direccion_Valuador" Member="Valuador" ThisKey="idDireccion" OtherKey="idDireccion" Type="Valuador" />
       <Association Name="CodigoPostal_Direccion" Member="CodigoPostal" ThisKey="idCodigoPostal" OtherKey="idCodigoPostal" Type="CodigoPostal" IsForeignKey="true" />
     </Type>
   </Table>
@@ -1156,41 +1156,6 @@
       <Association Name="TipoServicio_ValorServicio" Member="TipoServicio" ThisKey="idTipoServicio" OtherKey="idTipoServicio" Type="TipoServicio" IsForeignKey="true" />
     </Type>
   </Table>
-  <Table Name="dbo.Valuador" Member="Valuador">
-    <Type Name="Valuador">
-      <Column Name="idValuador" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
-      <Column Name="idTipoValuador" Type="System.Int16" DbType="SmallInt NOT NULL" CanBeNull="false" />
-      <Column Name="idDireccion" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
-      <Column Name="idDatoContacto" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
-      <Column Name="idDatoBancario" Type="System.Int32" DbType="Int" CanBeNull="true" />
-      <Column Name="idDatoPaqueteria" Type="System.Int32" DbType="Int" CanBeNull="true" />
-      <Column Name="idFotografia" Type="System.Int32" DbType="Int" CanBeNull="true" />
-      <Column Name="idFormacionValuacion" Type="System.Int32" DbType="Int" CanBeNull="true" />
-      <Column Name="nombre" Type="System.String" DbType="NVarChar(100) NOT NULL" CanBeNull="false" />
-      <Column Name="nombreAsistente" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
-      <Column Name="emailAsistente" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
-      <Column Name="externo" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
-      <Column Name="activo" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
-      <Column Name="fechaAlta" Type="System.DateTime" DbType="DateTime NOT NULL" CanBeNull="false" />
-      <Association Name="Valuador_AsignacionAvaluo" Member="AsignacionAvaluo" ThisKey="idValuador" OtherKey="idControlador" Type="AsignacionAvaluo" />
-      <Association Name="Valuador_AsignacionAvaluo1" Member="AsignacionAvaluo1" ThisKey="idValuador" OtherKey="idValuador" Type="AsignacionAvaluo" />
-      <Association Name="Valuador_AvaluoReferencia" Member="AvaluoReferencia" ThisKey="idValuador" OtherKey="idValuador" Type="AvaluoReferencia" />
-      <Association Name="Valuador_DatoFacturacionValuador" Member="DatoFacturacionValuador" ThisKey="idValuador" OtherKey="idValuador" Type="DatoFacturacionValuador" />
-      <Association Name="Valuador_DocumentoValuador" Member="DocumentoValuador" ThisKey="idValuador" OtherKey="idValuador" Type="DocumentoValuador" />
-      <Association Name="Valuador_FormacionProfesionalValuador" Member="FormacionProfesionalValuador" ThisKey="idValuador" OtherKey="idValuador" Type="FormacionProfesionalValuador" />
-      <Association Name="Valuador_RechazoAvaluo" Member="RechazoAvaluo" ThisKey="idValuador" OtherKey="idControlador" Type="RechazoAvaluo" />
-      <Association Name="Valuador_RegistroSHF" Member="RegistroSHF" ThisKey="idValuador" OtherKey="idValuador" Type="RegistroSHF" />
-      <Association Name="Valuador_UsuarioValuador" Member="UsuarioValuador" ThisKey="idValuador" OtherKey="idValuador" Type="UsuarioValuador" />
-      <Association Name="Archivo_Valuador" Member="Archivo" ThisKey="idFotografia" OtherKey="idArchivo" Type="Archivo" IsForeignKey="true" DeleteRule="SET NULL" />
-      <Association Name="DatoBancario_Valuador" Member="DatoBancario" ThisKey="idDatoBancario" OtherKey="idDatoBancario" Type="DatoBancario" IsForeignKey="true" DeleteRule="SET NULL" />
-      <Association Name="DatoContacto_Valuador" Member="DatoContacto" ThisKey="idDatoContacto" OtherKey="idDatoContacto" Type="DatoContacto" IsForeignKey="true" DeleteRule="CASCADE" DeleteOnNull="true" />
-      <Association Name="DatoPaqueteria_Valuador" Member="DatoPaqueteria" ThisKey="idDatoPaqueteria" OtherKey="idDatoPaqueteria" Type="DatoPaqueteria" IsForeignKey="true" />
-      <Association Name="Direccion_Valuador" Member="Direccion" ThisKey="idDireccion" OtherKey="idDireccion" Type="Direccion" IsForeignKey="true" DeleteRule="CASCADE" DeleteOnNull="true" />
-      <Association Name="FormacionValuador_Valuador" Member="FormacionValuador" ThisKey="idFormacionValuacion" OtherKey="idFormacionValuador" Type="FormacionValuador" IsForeignKey="true" DeleteRule="SET NULL" />
-      <Association Name="TipoValuador_Valuador" Member="TipoValuador" ThisKey="idTipoValuador" OtherKey="idTipoValuador" Type="TipoValuador" IsForeignKey="true" />
-      <Association Name="ComparableInmobiliario_Valuador" Member="ComparableInmobiliario" ThisKey="idValuador" OtherKey="idValuador" Type="ComparableInmobiliario" IsForeignKey="true" />
-    </Type>
-  </Table>
   <Table Name="dbo.TipoImportanciaVialidad" Member="TipoImportanciaVialidad">
     <Type Name="TipoImportanciaVialidad">
       <Column Name="idImportanciaVialidad" Type="System.Int16" DbType="SmallInt NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
@@ -1233,7 +1198,6 @@
       <Column Name="fechaActualizacion" Type="System.DateTime" DbType="DateTime NOT NULL" CanBeNull="false" />
       <Column Name="revisado" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
       <Column Name="activo" Type="System.Boolean" DbType="Bit" CanBeNull="true" />
-      <Association Name="ComparableInmobiliario_Valuador" Member="Valuador" ThisKey="idValuador" OtherKey="idValuador" Type="Valuador" />
       <Association Name="CalidadProyecto_ComparableInmobiliario" Member="CalidadProyecto" ThisKey="idCalidadProyecto" OtherKey="idCalidadProyecto" Type="CalidadProyecto" IsForeignKey="true" />
       <Association Name="Clase_ComparableInmobiliario" Member="Clase" ThisKey="idClase" OtherKey="idClase" Type="Clase" IsForeignKey="true" />
       <Association Name="TipoComparable_ComparableInmobiliario" Member="TipoComparable" ThisKey="idTipoComparable" OtherKey="idTipoComparable" Type="TipoComparable" IsForeignKey="true" />
@@ -1262,6 +1226,40 @@
       <Column Name="idConservacion" Type="System.Int16" DbType="SmallInt NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
       <Column Name="descripcion" Type="System.String" DbType="NVarChar(30) NOT NULL" CanBeNull="false" />
       <Association Name="Conservacion_ComparableInmobiliario" Member="ComparableInmobiliario" ThisKey="idConservacion" OtherKey="idConservacion" Type="ComparableInmobiliario" />
+    </Type>
+  </Table>
+  <Table Name="dbo.Valuador" Member="Valuador">
+    <Type Name="Valuador">
+      <Column Name="idValuador" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="idTipoValuador" Type="System.Int16" DbType="SmallInt NOT NULL" CanBeNull="false" />
+      <Column Name="idDireccion" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="idDatoContacto" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="idDatoBancario" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="idDatoPaqueteria" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="idFotografia" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="idFormacionValuacion" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="nombre" Type="System.String" DbType="NVarChar(100) NOT NULL" CanBeNull="false" />
+      <Column Name="nombreAsistente" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="emailAsistente" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="externo" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
+      <Column Name="activo" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
+      <Column Name="fechaAlta" Type="System.DateTime" DbType="DateTime NOT NULL" CanBeNull="false" />
+      <Association Name="Valuador_AsignacionAvaluo" Member="AsignacionAvaluo" ThisKey="idValuador" OtherKey="idControlador" Type="AsignacionAvaluo" />
+      <Association Name="Valuador_AsignacionAvaluo1" Member="AsignacionAvaluo1" ThisKey="idValuador" OtherKey="idValuador" Type="AsignacionAvaluo" />
+      <Association Name="Valuador_AvaluoReferencia" Member="AvaluoReferencia" ThisKey="idValuador" OtherKey="idValuador" Type="AvaluoReferencia" />
+      <Association Name="Valuador_DatoFacturacionValuador" Member="DatoFacturacionValuador" ThisKey="idValuador" OtherKey="idValuador" Type="DatoFacturacionValuador" />
+      <Association Name="Valuador_DocumentoValuador" Member="DocumentoValuador" ThisKey="idValuador" OtherKey="idValuador" Type="DocumentoValuador" />
+      <Association Name="Valuador_FormacionProfesionalValuador" Member="FormacionProfesionalValuador" ThisKey="idValuador" OtherKey="idValuador" Type="FormacionProfesionalValuador" />
+      <Association Name="Valuador_RechazoAvaluo" Member="RechazoAvaluo" ThisKey="idValuador" OtherKey="idControlador" Type="RechazoAvaluo" />
+      <Association Name="Valuador_RegistroSHF" Member="RegistroSHF" ThisKey="idValuador" OtherKey="idValuador" Type="RegistroSHF" />
+      <Association Name="Valuador_UsuarioValuador" Member="UsuarioValuador" ThisKey="idValuador" OtherKey="idValuador" Type="UsuarioValuador" />
+      <Association Name="Archivo_Valuador" Member="Archivo" ThisKey="idFotografia" OtherKey="idArchivo" Type="Archivo" IsForeignKey="true" DeleteRule="SET NULL" />
+      <Association Name="DatoBancario_Valuador" Member="DatoBancario" ThisKey="idDatoBancario" OtherKey="idDatoBancario" Type="DatoBancario" IsForeignKey="true" DeleteRule="SET NULL" />
+      <Association Name="DatoContacto_Valuador" Member="DatoContacto" ThisKey="idDatoContacto" OtherKey="idDatoContacto" Type="DatoContacto" IsForeignKey="true" DeleteRule="CASCADE" DeleteOnNull="true" />
+      <Association Name="DatoPaqueteria_Valuador" Member="DatoPaqueteria" ThisKey="idDatoPaqueteria" OtherKey="idDatoPaqueteria" Type="DatoPaqueteria" IsForeignKey="true" />
+      <Association Name="Direccion_Valuador" Member="Direccion" ThisKey="idDireccion" OtherKey="idDireccion" Type="Direccion" IsForeignKey="true" DeleteRule="CASCADE" DeleteOnNull="true" />
+      <Association Name="FormacionValuador_Valuador" Member="FormacionValuador" ThisKey="idFormacionValuacion" OtherKey="idFormacionValuador" Type="FormacionValuador" IsForeignKey="true" DeleteRule="SET NULL" />
+      <Association Name="TipoValuador_Valuador" Member="TipoValuador" ThisKey="idTipoValuador" OtherKey="idTipoValuador" Type="TipoValuador" IsForeignKey="true" />
     </Type>
   </Table>
   <Function Name="dbo.GenerarIDE" Method="GenerarIDE">

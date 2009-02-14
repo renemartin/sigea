@@ -185,10 +185,10 @@
             </table>
         </div>
         <div class="barraMenu">
-            <asp:ImageButton ID="asignar_ImBtn" runat="server" SkinID="Asign" />
-            <asp:ImageButton ID="editar_ImBtn" runat="server" SkinID="LoadEditor" />
-            <asp:ImageButton ID="revisar_ImBtn" runat="server" SkinID="Review" />
-            <asp:ImageButton ID="descargar_ImBtn" runat="server" SkinID="PDF" />
+            <asp:ImageButton ID="asignar_ImBtn" runat="server" SkinID="Asign" CssClass="hidden" />
+            <asp:ImageButton ID="editar_ImBtn" runat="server" SkinID="LoadEditor" CssClass="hidden" />
+            <asp:ImageButton ID="revisar_ImBtn" runat="server" SkinID="Review" CssClass="hidden" />
+            <asp:ImageButton ID="descargar_ImBtn" runat="server" SkinID="PDF" CssClass="hidden" />
         </div>
     </div>
     </form>

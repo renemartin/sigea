@@ -70,24 +70,27 @@
         function saveForm() {
             if ($get("form_datos_generales").style.display == "block")
                 saveDatosGenerales();
-//            if ($get("form_declaraciones").style.display == "block")
-//                saveDeclaraciones();
+            if ($get("form_declaraciones").style.display == "block")
+                saveDeclaraciones();
         }
 
         function saveDatosGenerales() {
-            disableControls($get("form_datos_generales"));
             saveAvaluoAsync(
                 idAvaluo
                 , getDatosAvaluo()
                 , getDatosCredito()
-                //, saveAvaluo_Success
-            );            
+                , saveAvaluo_Success
+            );
         }
-        
+
         function saveAvaluo_Success() {
+            terminateEdit("form_datos_generales",
+                "<%= editar_datos_generales_ImBtn.ClientID %>",
+                "<%= guardar_datos_generales_ImBtn.ClientID %>",
+                "<%= cancelar_datos_generales_ImBtn.ClientID %>");
             showMessage("Datos guardados");
         }
-        
+
         function saveDeclaraciones() {
             disableControls($get("form_declaraciones"));
         }
