@@ -81,7 +81,7 @@
                 , getDatosCredito()
                 , getDatosSolicitante()
                 , getDatosDireccion()
-                //, saveAvaluo_Success
+                , saveAvaluo_Success
             );
         }
 
@@ -98,7 +98,7 @@
                 idAvaluo
                 , getDataDeclaraciones()
                 , getDataAdvertencias()
-                //, saveDeclaraciones_Success
+                , saveDeclaraciones_Success
             );
         }
         

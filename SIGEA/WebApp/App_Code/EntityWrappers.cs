@@ -182,7 +182,7 @@ public class EntityWrappers : System.Web.Services.WebService
 
         if (datosCredito != null)
         {
-            DatoCredito credito = DatoCredito.GetForDataUpdate(data_context, idAvaluo);           
+            DatoCredito credito = DatoCredito.GetForDataUpdate(data_context, idAvaluo);
             credito.SetData(datosCredito);
         }
         else

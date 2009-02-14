@@ -19,7 +19,7 @@
         var data = new Object();
         
         data.advertenciaDocumentacion = $get("<%= sinDocumentacion_CBox.ClientID %>").checked;
-        data.advertenciaOfertas = $get("<%= sinOferta_CBox.ClientID %>").checkedx;
+        data.advertenciaOfertas = $get("<%= sinOferta_CBox.ClientID %>").checked;
         data.advertenciaUso = $get("<%= dudaUso_CBox.ClientID %>").checked;
         data.advertenciaObras = $get("<%= obrasAfectacion_CBox.ClientID %>").checked;
         data.otrasAdvertencias = $get("<%= otrasAdvertencias_TBox.ClientID %>").value;
