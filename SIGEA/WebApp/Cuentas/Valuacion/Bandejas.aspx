@@ -3,7 +3,7 @@
 
 <asp:Content ID="headContent" ContentPlaceHolderID="head" runat="Server">
 
-    <script type="text/javascript">
+    <script type="text/javascript">          
         // Acciones
         //// Búsqueda por IDE
         function verificarExistenciaAvaluo() {
@@ -27,7 +27,7 @@
         function mostrarRegistroAvaluo(idAvaluo) {
             var result = openModalWindow("AvaluoRegistro.aspx?idAvaluo=" + idAvaluo, 400, 500);
             if (result != undefined) {
-                __doPostBack("'<%= avaluos_UpPanel.ClientID %>'", "");
+                recargarDatos();
             }
         }
 
@@ -45,10 +45,15 @@
             var row = cellChild.parentNode.parentNode;
             row.style.display = "none";
         }
+
+        // Actualizacion
+        function recargarDatos() {
+            __doPostBack("'<%= avaluos_UpPanel.ClientID %>'", "");
+        }
     </script>
 
 </asp:Content>
-<asp:Content ID="mainContent" ContentPlaceHolderID="main" runat="Server">
+<asp:Content ID="mainContent" ContentPlaceHolderID="main" runat="Server" EnableViewState="false">
     <asp:ScriptManager runat="server">
         <Services>
             <asp:ServiceReference Path="~/Services/EntityWrappers.asmx" />
@@ -144,7 +149,7 @@
                 <asp:UpdatePanel ID="avaluos_UpPanel" runat="server" UpdateMode="Conditional">
                     <ContentTemplate>
                         <asp:GridView ID="avaluos_GridView" runat="server" Width="100%" AllowPaging="True"
-                            AutoGenerateColumns="False" PageSize="2" DataSourceID="bandejas_DS">
+                            AutoGenerateColumns="False" PageSize="20" DataSourceID="bandejas_DS">
                             <Columns>
                                 <asp:TemplateField>
                                     <ItemTemplate>

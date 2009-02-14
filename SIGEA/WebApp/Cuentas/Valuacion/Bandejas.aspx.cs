@@ -46,7 +46,7 @@ public partial class Cuentas_Valuacion_Bandejas : System.Web.UI.Page
     private void UpdateData()
     {
         avaluos_UpPanel.Update();
-    }
+    }   
     private void SetAttributes()
     {
         search_ImBtn.OnClientClick = "verificarExistenciaAvaluo(); return false;";

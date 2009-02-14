@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data.Linq;
 using System.Linq;
 using System.Text;
 
@@ -7,33 +8,33 @@ namespace SIGEA.Classes.Entities
 {
     public class Bandejas
     {
-        public enum TipoBandeja
-        {
-            NoAsignados = 0, EnProceso = 1, EnCorreccion = 2, EnRevision = 3, Completados = 4
-        }
         private SIGEADataContext data_context;
         private const int num_bandejas = 5;
 
         public Bandejas()
         {
             data_context = new SIGEADataContext();
+
+            DataLoadOptions options = new DataLoadOptions();
+            options.LoadWith<AvaluoInmobiliario>(Avaluo => Avaluo.Inmueble);
+            data_context.LoadOptions = options;
         }
 
-        private static IEnumerable<object> GetFromStatusList(SIGEADataContext data_context, short[] status_list)
+        private IEnumerable<object> GetFromStatusList(SIGEADataContext data_context, short[] status_list)
         {
-            var avaluos_query = from a in data_context.AvaluoInmobiliario
-                                where a.activo && status_list.Contains(a.idStatus)
-                                select new
-                                {
-                                    idAvaluo = a.idAvaluo,
-                                    idStatus = a.idStatus,
-                                    IDE = a.IDE,
-                                    urlFoto = "",
-                                    datosInmueble = a.Inmueble.ToString(),
-                                    fechaAlta = a.fechaCreacion 
-                                };
+            var list_query = from a in data_context.AvaluoInmobiliario
+                             where status_list.Contains(a.idStatus)
+                             select new
+                             {
+                                 idAvaluo = a.idAvaluo,
+                                 idStatus = a.idStatus,
+                                 IDE = a.IDE,
+                                 urlFoto = "",
+                                 datosInmueble = a.Inmueble.ToString(),
+                                 fechaAlta = a.fechaCreacion
+                             };
 
-            return avaluos_query.ToArray();
+            return list_query.ToArray();
         }
         private int GetCountFromStatusList(SIGEADataContext data_context, short[] status_list)
         {
@@ -97,6 +98,11 @@ namespace SIGEA.Classes.Entities
         private IEnumerable<object> GetBandejaCompletados()
         {
             return GetFromStatusList(data_context, StatusAvaluo.ListaCompletados);
+        }
+
+        public enum TipoBandeja
+        {
+            NoAsignados = 0, EnProceso = 1, EnCorreccion = 2, EnRevision = 3, Completados = 4
         }
     }
 }

@@ -62,6 +62,10 @@ public class EntityWrappers : System.Web.Services.WebService
                 avaluo.DatoCredito = credito;
             }
         }
+        else
+        {
+            avaluo.DatoCredito = null;
+        }
 
         data_context.SubmitChanges();
 
@@ -114,7 +118,7 @@ public class EntityWrappers : System.Web.Services.WebService
     {
         SIGEADataContext data_context = new SIGEADataContext();
         AsignacionAvaluo.Save(data_context, idAvaluo, datosAsignacion);
-        
+
         data_context.SubmitChanges();
     }
 
@@ -176,28 +180,15 @@ public class EntityWrappers : System.Web.Services.WebService
 
         if (datosCredito != null)
         {
-            DatoCredito credito = DatoCredito.GetForDataUpdate(data_context, idAvaluo);
+            DatoCredito credito = DatoCredito.GetForDataUpdate(data_context, idAvaluo);           
             credito.SetData(datosCredito);
         }
         else
+        {
             avaluo.DatoCredito = null;
+        }
 
         data_context.SubmitChanges();
-    }
-
-    [WebMethod]
-    public void SaveSolicitante(
-        int idAvaluo
-        , Entity datosSolicitante)
-    {
-        SIGEADataContext data_context = new SIGEADataContext();
-        AvaluoInmobiliario avaluo = AvaluoInmobiliario.GetFromId(data_context, idAvaluo);
-
-        if (avaluo == null)
-            throw new Exception("El identificador del avalúo es inválido");
-
-        avaluo.Solicitante.SetData(datosSolicitante);
-        data_context.SubmitChanges(); 
     }
 
 
@@ -229,13 +220,23 @@ public class EntityWrappers : System.Web.Services.WebService
 
         CodigoPostal cp_direccion = CodigoPostal.GetFromData(data_context, datosDireccion);
 
+        int idUsuario = 0;
+        if (idValuador != 0)
+        {
+            idUsuario = valuador.GetUsuarioMaster().idUsuario;
+        }
+        else
+        {
+            idUsuario = (int)datosUsuario["idUsuario"];
+        }
+
         valuador.SetData(datosPersonales);
         valuador.DatoContacto.SetData(datosContacto);
         valuador.Direccion.SetData(cp_direccion, datosDireccion);
 
         if (Usuario.CheckExistingUsername(data_context,
                         datosUsuario["nombreUsuario"].ToString(),
-                        (int)datosUsuario["idUsuario"]))
+                        idUsuario))
         {
             usuario.SetDatos(datosUsuario);
             usuario.UpdateRoles(data_context, roles);
@@ -317,6 +318,16 @@ public class EntityWrappers : System.Web.Services.WebService
         cliente.SetData(datosPersonales);
         cliente.DatoContacto.SetData(datosContacto);
         cliente.Direccion.SetData(cp_direccion, datosDireccion);
+
+        int idUsuario = 0;
+        if (idCliente != 0)
+        {
+            idUsuario = cliente.GetUsuarioMaster().idUsuario;
+        }
+        else
+        {
+            idUsuario = (int)datosUsuario["idUsuario"];
+        }
 
         if (Usuario.CheckExistingUsername(data_context,
                         datosUsuario["nombreUsuario"].ToString(),
