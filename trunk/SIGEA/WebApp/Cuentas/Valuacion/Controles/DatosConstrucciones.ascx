@@ -14,7 +14,7 @@
     function setDatosConstrucciones(data) {
         $get("<%= calidadProy_DDList.ClientID %>").selectedValue = data.idCalidadProyecto;
         $get("<%= avanceObraGral_TBox.ClientID %>").value = data.avanceObra;
-        $get("<%= claseGral.ClientID %>").selectedValue = data.idClase;
+        $get("<%= claseGral_DDList.ClientID %>").selectedValue = data.idClase;
         $get("<%= estadoConservacionGral_DDList.ClientID %>").selectedValue = data.idConservacion;
         $get("<%= unidadesRentables_TBox.ClientID %>").value = data.unidadRentable;
     }
@@ -31,7 +31,7 @@
         
         data.idCalidadProyecto = $get("<%= calidadProy_DDList.ClientID %>").selectedValue;
         data.avanceObra = $get("<%= avanceObraGral_TBox.ClientID %>").value;
-        data.idClase = $get("<%= claseGral.ClientID %>").selectedValue;
+        data.idClase = $get("<%= claseGral_DDList.ClientID %>").selectedValue;
         data.idConservacion = $get("<%= estadoConservacionGral_DDList.ClientID %>").selectedValue;
         data.unidadRentable = $get("<%= unidadesRentables_TBox.ClientID %>").value = data.unidadRentable;
         
