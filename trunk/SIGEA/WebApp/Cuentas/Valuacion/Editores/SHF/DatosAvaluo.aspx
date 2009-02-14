@@ -70,8 +70,8 @@
         function saveForm() {
             if ($get("form_datos_generales").style.display == "block")
                 saveDatosGenerales();
-            if ($get("form_declaraciones").style.display == "block")
-                saveDeclaraciones();
+//            if ($get("form_declaraciones").style.display == "block")
+//                saveDeclaraciones();
         }
 
         function saveDatosGenerales() {
@@ -79,13 +79,12 @@
             saveAvaluoAsync(
                 idAvaluo
                 , getDatosAvaluo()
-                , saveAvaluo_Success()
+                , getDatosCredito()
+                //, saveAvaluo_Success
             );            
         }
         
-        function saveAvaluo_Success(id) {
-            idAvaluo = id;
-            setControlsVisibility();
+        function saveAvaluo_Success() {
             showMessage("Datos guardados");
         }
         
