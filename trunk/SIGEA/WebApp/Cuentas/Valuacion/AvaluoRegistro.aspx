@@ -24,9 +24,15 @@
 
         // Acciones
         function asignarAvaluo() {
-            openModalWindow("AvaluoAsignacion.aspx?idAvaluo=" + idAvaluo, 350, 150);
+            var result = openModalWindow(
+                "AvaluoAsignacion.aspx?idAvaluo=" + idAvaluo, 350, 150);
+            if (result != undefined) {
+                window.returnValue = result;
+            }           
         }
-        function editarAvaluo() {            
+        function editarAvaluo() {
+            openFullWindow("Editores/SHF/DatosAvaluo.aspx?idAvaluo=" + idAvaluo, idAvaluo);
+            window.returnValue == "recargar";       
         }
         function revisarAvaluo() {
         }

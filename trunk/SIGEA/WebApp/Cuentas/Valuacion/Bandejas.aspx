@@ -4,44 +4,47 @@
 <asp:Content ID="headContent" ContentPlaceHolderID="head" runat="Server">
 
     <script type="text/javascript">
-    // Acciones
-    //// Búsqueda por IDE
-    function verificarExistenciaAvaluo() {
-        var IDE = $get("<%= IDE_TBox.ClientID %>").value;
+        // Acciones
+        //// Búsqueda por IDE
+        function verificarExistenciaAvaluo() {
+            var IDE = $get("<%= IDE_TBox.ClientID %>").value;
 
-        verificarExistenciaAvaluoPorIDEAsync(IDE, verificarExistenciAvaluo_Success);
-    }
-    function verificarExistenciAvaluo_Success(result) {
-        var exists = result[0];
-        var idAvaluo = result[1];
-
-        if (exists) {
-            mostrarRegistroAvaluo(idAvaluo);
+            verificarExistenciaAvaluoPorIDEAsync(IDE, verificarExistenciAvaluo_Success);
         }
-        else {
-            showMessage("El IDE especificado no fué encontrado");
-        }
-    }
+        function verificarExistenciAvaluo_Success(result) {
+            var exists = result[0];
+            var idAvaluo = result[1];
 
-    //// Cargar registro de avaluo
-    function mostrarRegistroAvaluo(idAvaluo) {
-        openModalWindow("AvaluoRegistro.aspx?idAvaluo=" + idAvaluo, 400, 500);
-    }
-
-    //// Cancelar avalúo
-    function cancelarAvaluo(sender, idAvaluo) {       
-        if(requestConfirmation("¿Desea cancelar el avalúo especificado?")) {
-            cancelarAvaluoAsync(sender, idAvaluo, cancelarAvaluo_Success);
+            if (exists) {
+                mostrarRegistroAvaluo(idAvaluo);
+            }
+            else {
+                showMessage("El IDE especificado no fué encontrado");
+            }
         }
-    }
-    function cancelarAvaluo_Success(sender) {
-        hideRow(sender);
-        showMessage("Avalúo cancelado");
-    }
-    function hideRow(cellChild) {
-        var row = cellChild.parentNode.parentNode;
-        row.style.display = "none";
-    }
+
+        //// Cargar registro de avaluo
+        function mostrarRegistroAvaluo(idAvaluo) {
+            var result = openModalWindow("AvaluoRegistro.aspx?idAvaluo=" + idAvaluo, 400, 500);
+            if (result != undefined) {
+                __doPostBack("'<%= avaluos_UpPanel.ClientID %>'", "");
+            }
+        }
+
+        //// Cancelar avalúo
+        function cancelarAvaluo(sender, idAvaluo) {
+            if (requestConfirmation("¿Desea cancelar el avalúo especificado?")) {
+                cancelarAvaluoAsync(sender, idAvaluo, cancelarAvaluo_Success);
+            }
+        }
+        function cancelarAvaluo_Success(sender) {
+            hideRow(sender);
+            showMessage("Avalúo cancelado");
+        }
+        function hideRow(cellChild) {
+            var row = cellChild.parentNode.parentNode;
+            row.style.display = "none";
+        }
     </script>
 
 </asp:Content>
@@ -108,7 +111,7 @@
                                 </td>
                             </tr>
                         </table>
-                        <asp:Timer ID="bandejasCount_Timer" runat="server">
+                        <asp:Timer ID="bandejasCount_Timer" runat="server" Interval="5000">
                         </asp:Timer>
                     </ContentTemplate>
                 </asp:UpdatePanel>
@@ -138,10 +141,10 @@
                         </tr>
                     </table>
                 </div>
-                <asp:UpdatePanel ID="avaluos_UpPanel" runat="server" UpdateMode="Conditional" ChildrenAsTriggers="False">
+                <asp:UpdatePanel ID="avaluos_UpPanel" runat="server" UpdateMode="Conditional">
                     <ContentTemplate>
                         <asp:GridView ID="avaluos_GridView" runat="server" Width="100%" AllowPaging="True"
-                            AutoGenerateColumns="False" PageSize="30" DataSourceID="bandejas_DS">
+                            AutoGenerateColumns="False" PageSize="2" DataSourceID="bandejas_DS">
                             <Columns>
                                 <asp:TemplateField>
                                     <ItemTemplate>
@@ -164,7 +167,7 @@
                                         <img alt="Ver detalles" src="../../Images/Icons/Consultar.gif" class="botonImagen"
                                             onclick="mostrarRegistroAvaluo(<%# Eval("idAvaluo") %>);" />
                                         <img alt="Cancelar avalúo" src="../../Images/Icons/Eliminar.gif" class="botonImagen"
-                                            onclick="cancelarAvaluo(this, <%# Eval("idAvaluo") %>)"; />
+                                            onclick="cancelarAvaluo(this, <%# Eval("idAvaluo") %>);" />
                                     </ItemTemplate>
                                 </asp:TemplateField>
                             </Columns>
@@ -181,6 +184,7 @@
                         <asp:AsyncPostBackTrigger ControlID="enCorreccion_LkBtn" EventName="Click" />
                         <asp:AsyncPostBackTrigger ControlID="enRevision_LkBtn" EventName="Click" />
                         <asp:AsyncPostBackTrigger ControlID="completados_LkBtn" EventName="Click" />
+                        <asp:AsyncPostBackTrigger ControlID="refresh_ImBtn" EventName="Click" />
                     </Triggers>
                 </asp:UpdatePanel>
                 <asp:ObjectDataSource ID="bandejas_DS" runat="server" SelectMethod="GetBandeja" TypeName="SIGEA.Classes.Entities.Bandejas">

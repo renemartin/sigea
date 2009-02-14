@@ -15,8 +15,21 @@ function requestConfirmation(message) {
 // Ventanas
 
 function openModalWindow(url, width, height) {
-    window.showModalDialog(url, "",
+    return window.showModalDialog(url, "",
         String.format("status:no;dialogWidth:{0}px;dialogHeight:{1}px", width, height));
+}
+function openFullWindow(url, name) {
+    var width = screen.availWidth;
+    var height = screen.availHeight;
+
+    var pop = window.open(url, name,
+        String.format("width={0},height={1},left=0,top=0,screenX=0,screenY=0,toolbar=no,menubar=no,scrollbars=yes,resizable=yes")
+            ,width, height);
+
+    pop.resizeTo(width, height);
+    pop.focus();
+    
+    return pop; 
 }
 function closeWindow(ask) {
     if (ask) {

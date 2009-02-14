@@ -21,7 +21,7 @@ function saveAvaluoInmuebleAsync(idAvaluo, datosAvaluo, datosCredito, datosSolic
         , asyncCallResultBack
         , asyncCallFail
         , callBack
-    );
+    );    
 }
 function saveAsignacionAvaluoAsync(idAvaluo, datosAsignacion, callBack) {
     EntityWrappers.SaveAsignacionAvaluo(

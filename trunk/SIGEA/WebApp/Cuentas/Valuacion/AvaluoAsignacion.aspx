@@ -71,6 +71,7 @@
         }
         function saveAsignacionAvaluo_Success() {
             showMessage("Datos guardados");
+            window.returnValue = "recargar";
             closeWindow();
         }
 
