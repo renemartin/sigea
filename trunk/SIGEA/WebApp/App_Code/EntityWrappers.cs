@@ -173,6 +173,15 @@ public class EntityWrappers : System.Web.Services.WebService
             throw new Exception("El identificador del avalúo es inválido");
 
         avaluo.SetData(datosAvaluo);
+
+        if (datosCredito != null)
+        {
+            DatoCredito credito = DatoCredito.GetForDataUpdate(data_context, idAvaluo);
+            credito.SetData(datosCredito);
+        }
+        else
+            avaluo.DatoCredito = null;
+
         avaluo.SetData(datosCredito);
         data_context.SubmitChanges();
     }
