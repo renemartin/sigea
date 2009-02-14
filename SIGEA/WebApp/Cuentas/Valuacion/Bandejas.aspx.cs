@@ -11,11 +11,7 @@ public partial class Cuentas_Valuacion_Bandejas : System.Web.UI.Page
     protected void Page_Load(object sender, EventArgs e)
     {
         SetAttributes();
-
-        if (!IsPostBack)
-        {
-            GetBandejasCount();
-        }
+        GetBandejasCount();
     }
 
     public string ValidateUrlFoto(string url)
@@ -56,7 +52,6 @@ public partial class Cuentas_Valuacion_Bandejas : System.Web.UI.Page
         search_ImBtn.OnClientClick = "verificarExistenciaAvaluo(); return false;";
 
         refresh_ImBtn.Click += new ImageClickEventHandler(refresh_ImBtn_Click);
-        bandejasCount_Timer.Tick += new EventHandler<EventArgs>(bandejasCount_Timer_Tick);
         noAsignados_LkBtn.Click += new EventHandler(noAsignados_LkBtn_Click);
         enProceso_LkBtn.Click += new EventHandler(enProceso_LkBtn_Click);
         enCorreccion_LkBtn.Click += new EventHandler(enCorreccion_LkBtn_Click);
@@ -68,10 +63,6 @@ public partial class Cuentas_Valuacion_Bandejas : System.Web.UI.Page
     {
         GetBandejasCount();
         UpdateData();
-    }
-    private void bandejasCount_Timer_Tick(object sender, EventArgs e)
-    {
-        GetBandejasCount();
     }
     private void noAsignados_LkBtn_Click(object sender, EventArgs e)
     {

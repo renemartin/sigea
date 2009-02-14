@@ -20,7 +20,6 @@
         // Variables
         var idAvaluo = 0;
         var num_bloques_datos = 3;
-        var num_bloques_cargados = 0;
 
         // Inicialización
         function setupForm() {
@@ -77,11 +76,11 @@
         // Guardado de registros
         function saveForm() {
             if ($get("form_inmueble").style.display == "block")
-                saveDatosGenerales();
+                saveDatosInmueble();
             if ($get("form_terreno").style.display == "block")
-                saveDeclaraciones();
+                saveDatosTerreno();
             if ($get("form_colindancias").style.display == "block")
-                saveDatosGenerales();                
+                saveColindancias();                
         }
         function saveDatosInmueble() {
         }
