@@ -14,16 +14,25 @@ namespace SIGEA.Classes.Entities
         public Bandejas()
         {
             data_context = new SIGEADataContext();
+            data_context.ObjectTrackingEnabled = false;
 
             DataLoadOptions options = new DataLoadOptions();
             options.LoadWith<AvaluoInmobiliario>(Avaluo => Avaluo.Inmueble);
+            options.LoadWith<Inmueble>(Inmueble => Inmueble.TipoInmueble);
+            options.LoadWith<Inmueble>(Inmueble => Inmueble.RegimenPropiedad);
+            options.LoadWith<Inmueble>(Inmueble => Inmueble.DireccionInmueble);
+            options.LoadWith<DireccionInmueble>(Ubicacion => Ubicacion.Direccion);
+            options.LoadWith<Direccion>(Direccion => Direccion.CodigoPostal);
+            options.LoadWith<CodigoPostal>(CP => CP.Asentamiento);
+            options.LoadWith<Asentamiento>(Asentamiento => Asentamiento.Municipio);
+            options.LoadWith<Municipio>(Municipio => Municipio.Estado);
             data_context.LoadOptions = options;
         }
 
         private IEnumerable<object> GetFromStatusList(SIGEADataContext data_context, short[] status_list)
         {
             var list_query = from a in data_context.AvaluoInmobiliario
-                             where status_list.Contains(a.idStatus)
+                             where a.activo && status_list.Contains(a.idStatus)
                              select new
                              {
                                  idAvaluo = a.idAvaluo,

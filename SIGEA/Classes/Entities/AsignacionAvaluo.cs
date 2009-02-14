@@ -44,7 +44,7 @@ namespace SIGEA.Classes.Entities
             int idValuador = Valuador.GetIdFromName(data_context, data["nombreValuador"].ToString(), false);
             if (idValuador == 0)
                 throw new Exception("El nombre de valuador especificado es inválido");
-            if (asignacion.idAvaluo != idValuador)
+            if (asignacion.idValuador != idValuador)
             {
                 valuador_asigado = true;
                 asignacion.idValuador = idValuador;

@@ -51,10 +51,8 @@ function disableControls(container) {
 function beforeUnload(saveCallBack) {
     if (!form_unloaded) {
         form_unloaded = true;
-        if (form_editing_count > 0 && saveCallBack != null) {
-            if (requestConfirmation("¿Desea guardar los cambios efectuados al formulario?")) {
-                return saveCallBack();
-            }
+        if (form_editing_count > 0 && saveCallBack != null) {            
+            return saveCallBack();
         }
     }
 }

@@ -74,9 +74,12 @@ function hideControlLoading(target_id) {
 
 // Controles general
 
-function setVisibility(target, visible) {
-    target.style.display = visible ? "block" : "none";
+function setVisibility(target, visible, type) {
+    if (type == null)
+        type = "block";
+    target.style.display = visible ? type : "none";
 }
+
 
 function clearControl(control) {
     switch (control.type) {

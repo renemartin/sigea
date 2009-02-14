@@ -86,8 +86,9 @@
             $get("<%= valuador_TBox.ClientID %>").value = "";
             $get("<%= controlador_TBox.ClientID %>").value = "";
             $get("<%= eliminar_ImBtn.ClientID %>").style.display = "none";
-            
+
             showMessage("Asignaciones eliminadas");
+            window.returnValue = "recargar";
         }
         
     </script>
