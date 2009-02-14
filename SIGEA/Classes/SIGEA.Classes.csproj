@@ -65,6 +65,7 @@
     <Compile Include="Entities\ComparableInmobiliario.cs" />
     <Compile Include="Entities\DatoContacto.cs" />
     <Compile Include="Entities\DatoCredito.cs" />
+    <Compile Include="Entities\Declaraciones.cs" />
     <Compile Include="Entities\Direccion.cs" />
     <Compile Include="Entities\DireccionInmueble.cs" />
     <Compile Include="Entities\Inmueble.cs" />
