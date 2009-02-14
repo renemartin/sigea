@@ -161,7 +161,7 @@ public class EntityWrappers : System.Web.Services.WebService
     }
 
     [WebMethod]
-    public int SaveAvaluo(
+    public void SaveAvaluo(
         int idAvaluo
         , Entity datosAvaluo)
     {
@@ -173,8 +173,6 @@ public class EntityWrappers : System.Web.Services.WebService
 
         avaluo.SetData(datosAvaluo);
         data_context.SubmitChanges();
-
-        return avaluo.idAvaluo;    
     }
 
 
