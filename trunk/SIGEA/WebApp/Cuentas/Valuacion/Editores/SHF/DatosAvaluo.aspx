@@ -75,8 +75,20 @@
         }
 
         function saveDatosGenerales() {
-            disableControls($get("form_datos_generales"));            
+            disableControls($get("form_datos_generales"));
+            saveAvaluoAsync(
+                idAvaluo
+                , getDatosAvaluo()
+                , saveAvaluo_Success()
+            );            
         }
+        
+        function saveAvaluo_Success(id) {
+            idAvaluo = id;
+            setControlsVisibility();
+            showMessage("Datos guardados");
+        }
+        
         function saveDeclaraciones() {
             disableControls($get("form_declaraciones"));
         }
