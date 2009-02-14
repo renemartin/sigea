@@ -196,28 +196,55 @@ public class EntityWrappers : System.Web.Services.WebService
         data_context.SubmitChanges();
     }
 
+    #endregion
+
+    #region Inmuebles
+
     [WebMethod]
-    public void SaveDeclaraciones(
+    public void SaveInmueble(
         int idAvaluo
-        , Entity datosDeclaraciones
-        , Entity datosAdvertencias)
+        , Entity datosInmueble
+        , Entity datosUbicacionInmueble
+        , Entity datosDireccionInmueble
+        , Entity datosPropietario
+        , Entity datosDireccionPropietario)
     {
         SIGEADataContext data_context = new SIGEADataContext();
-        AvaluoInmobiliario avaluo = AvaluoInmobiliario.GetFromId(data_context, idAvaluo);
 
-        if (avaluo == null)
+        Inmueble inmueble = Inmueble.GetFromIdAvaluo(data_context, idAvaluo);
+        if (inmueble == null)
             throw new Exception("El identificador del avalúo es inválido");
 
-        if (datosDeclaraciones != null)
-        {
-            Declaraciones declaraciones = Declaraciones.GetForDataUpdate(data_context, idAvaluo);
-            declaraciones.SetData(datosDeclaraciones, datosAdvertencias);
-        }
+        CodigoPostal cp_inmueble = CodigoPostal.GetFromData(data_context, datosDireccionInmueble);
+        CodigoPostal cp_propietario = CodigoPostal.GetFromData(data_context, datosDireccionPropietario);
 
-        avaluo.Declaraciones.SetData(datosDeclaraciones, datosAdvertencias);
+        inmueble.SetData(datosInmueble);
+        inmueble.DireccionInmueble.SetData(datosUbicacionInmueble);
+        inmueble.DireccionInmueble.Direccion.SetData(cp_inmueble, datosDireccionInmueble);
+        inmueble.Propietario.SetData(datosPropietario);
+        inmueble.Propietario.Direccion.SetData(cp_propietario, datosDireccionPropietario);
+        inmueble.AvaluoInmobiliario.Single().UpdateSubTipo(inmueble.idTipoInmueble);
+
         data_context.SubmitChanges();
     }
 
+    [WebMethod]
+    public Entity[] LoadInmueble(int idAvaluo)
+    {
+        Inmueble inmueble = Inmueble.GetFromIdAvaluo(common_context, idAvaluo);
+        if (inmueble == null)
+            throw new Exception("El identificador del avalúo es inválido");
+
+        Entity[] datos = new Entity[5];
+
+        datos[0] = inmueble.GetData();
+        datos[1] = inmueble.DireccionInmueble.GetData();
+        datos[2] = inmueble.DireccionInmueble.Direccion.GetData();
+        datos[3] = inmueble.Propietario.GetData();
+        datos[4] = inmueble.Propietario.Direccion.GetData();
+
+        return datos;
+    }
 
     #endregion
 
