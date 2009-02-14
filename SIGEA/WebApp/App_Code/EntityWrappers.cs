@@ -196,6 +196,22 @@ public class EntityWrappers : System.Web.Services.WebService
         data_context.SubmitChanges();
     }
 
+    [WebMethod]
+    public void saveDeclaraciones(
+        int idAvaluo
+        , Entity datosDeclaracion
+        , Entity datosAdvertencia)
+    {
+        SIGEADataContext data_context = new SIGEADataContext();
+        AvaluoInmobiliario avaluo = AvaluoInmobiliario.GetFromId(data_context, idAvaluo);
+
+        if (avaluo == null)
+            throw new Exception("El identificador del avalúo es inválido");
+
+        avaluo.Declaraciones.SetData(datosDeclaracion, datosAdvertencia);
+        data_context.SubmitChanges();
+    }
+
     #endregion
 
     #region Inmuebles
