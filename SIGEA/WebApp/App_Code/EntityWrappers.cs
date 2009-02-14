@@ -203,21 +203,12 @@ public class EntityWrappers : System.Web.Services.WebService
         , Entity datosAdvertencias)
     {
         SIGEADataContext data_context = new SIGEADataContext();
-        AvaluoInmobiliario avaluo = AvaluoInmobiliario.GetFromId(data_context, idAvaluo);
+        Declaraciones declaracion = Declaraciones.GetForDataUpdate(data_context, idAvaluo);
 
-        if (avaluo == null)
+        if (declaracion == null)
             throw new Exception("El identificador del avalúo es inválido");
 
-        if (datosDeclaraciones != null)
-        {
-            Declaraciones declaracion = Declaraciones.GetForDataUpdate(data_context, idAvaluo);
-            declaracion.SetData(datosDeclaraciones, datosAdvertencias);
-        }
-        else
-        {
-            avaluo.Declaraciones = null;
-        }
-
+        declaracion.SetData(datosDeclaraciones, datosAdvertencias);
         data_context.SubmitChanges();
     }
 
