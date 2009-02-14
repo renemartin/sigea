@@ -163,7 +163,8 @@ public class EntityWrappers : System.Web.Services.WebService
     [WebMethod]
     public void SaveAvaluo(
         int idAvaluo
-        , Entity datosAvaluo)
+        , Entity datosAvaluo
+        , Entity datosCredito)
     {
         SIGEADataContext data_context = new SIGEADataContext();
         AvaluoInmobiliario avaluo = AvaluoInmobiliario.GetFromId(data_context, idAvaluo);
@@ -172,6 +173,7 @@ public class EntityWrappers : System.Web.Services.WebService
             throw new Exception("El identificador del avalúo es inválido");
 
         avaluo.SetData(datosAvaluo);
+        avaluo.SetData(datosCredito);
         data_context.SubmitChanges();
     }
 
