@@ -213,6 +213,7 @@ public class EntityWrappers : System.Web.Services.WebService
             Declaraciones declaraciones = Declaraciones.GetForDataUpdate(data_context, idAvaluo);
             declaraciones.SetData(datosDeclaraciones, datosAdvertencias);
         }
+
         avaluo.Declaraciones.SetData(datosDeclaraciones, datosAdvertencias);
         data_context.SubmitChanges();
     }
