@@ -68,10 +68,10 @@
 
         // Guardado de registros
         function saveForm() {
-            if ($get("form_datos_generales").style.display == "block")
+            if ($get("<%= guardar_datos_generales_ImBtn.ClientID %>").style.display != "none")
                 saveDatosGenerales();
-//            if ($get("form_declaraciones").style.display == "block")
-//                saveDeclaraciones();
+            if ($get("<%= guardar_datos_declaraciones_ImBtn.ClientID %>").style.display == "block")
+                saveDeclaraciones();
         }
 
         function saveDatosGenerales() {
@@ -81,7 +81,7 @@
                 , getDatosCredito()
                 , getDatosSolicitante()
                 , getDatosDireccion()
-                //, saveAvaluo_Success
+                , saveAvaluo_Success
             );
         }
 
@@ -119,10 +119,6 @@
         Datos del expediente</h1>
     <div class="barraAcciones">
         <asp:ImageButton ID="editar_datos_generales_ImBtn" runat="server" SkinID="Edit" />
-        <asp:ImageButton ID="guardar_datos_generales_ImBtn" runat="server" SkinID="Save"
-            CssClass="hidden" />
-        <asp:ImageButton ID="cancelar_datos_generales_ImBtn" runat="server" SkinID="Cancel"
-            CssClass="hidden" />
     </div>
     <div id="form_datos_generales" class="formulario">
         <h2>
@@ -134,10 +130,14 @@
         <SIGEA:DatosSolicitante ID="datosSolicitante_Ctrl" runat="server" />
     </div>
     <div class="barraAcciones">
-        <asp:ImageButton ID="editar_declaraciones_ImBtn" runat="server" SkinID="Edit" />
-        <asp:ImageButton ID="guardar_declaraciones_ImBtn" runat="server" SkinID="Save" CssClass="hidden" />
-        <asp:ImageButton ID="cancelar_declaraciones_ImBtn" runat="server" SkinID="Cancel"
+        <asp:ImageButton ID="guardar_datos_generales_ImBtn" runat="server" SkinID="Save"
             CssClass="hidden" />
+        <asp:ImageButton ID="cancelar_datos_generales_ImBtn" runat="server" SkinID="Cancel"
+            CssClass="hidden" />
+    </div>
+    <hr />
+    <div class="barraAcciones">
+        <asp:ImageButton ID="editar_declaraciones_ImBtn" runat="server" SkinID="Edit" />
     </div>
     <div id="form_declaraciones" class="formulario">
         <h2>
@@ -148,5 +148,10 @@
             Advertencias
         </h2>
         <SIGEA:DatosAdvertencias ID="datosAdvertencias_Ctrl" runat="server" />
+    </div>
+    <div class="barraAcciones">
+        <asp:ImageButton ID="guardar_declaraciones_ImBtn" runat="server" SkinID="Save" CssClass="hidden" />
+        <asp:ImageButton ID="cancelar_declaraciones_ImBtn" runat="server" SkinID="Cancel"
+            CssClass="hidden" />
     </div>
 </asp:Content>
