@@ -70,8 +70,8 @@
         function saveForm() {
             if ($get("form_datos_generales").style.display == "block")
                 saveDatosGenerales();
-            if ($get("form_declaraciones").style.display == "block")
-                saveDeclaraciones();
+//            if ($get("form_declaraciones").style.display == "block")
+//                saveDeclaraciones();
         }
 
         function saveDatosGenerales() {
@@ -79,7 +79,9 @@
                 idAvaluo
                 , getDatosAvaluo()
                 , getDatosCredito()
-                , saveAvaluo_Success
+                , getDatosSolicitante()
+                , getDatosDireccion()
+                //, saveAvaluo_Success
             );
         }
 
