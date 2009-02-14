@@ -15,6 +15,7 @@
         $get("<%= inmuebleNoMonumento_RBtn.ClientID %>").checked = !data.declaracionMonumento;
         $get("<%= inmueblePatrimonio_RBtn.ClientID %>").checked = data.declaracionPatrimonio;
         $get("<%= inmuebleNoPatrimonio_RBtn.ClientID %>").checked = !data.declaracionPatrimonio;
+    }
    
      //guardar datos
     function getDataDeclaraciones() {
