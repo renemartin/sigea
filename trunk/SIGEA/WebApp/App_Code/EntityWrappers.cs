@@ -169,7 +169,9 @@ public class EntityWrappers : System.Web.Services.WebService
         int idAvaluo
         , Entity datosAvaluo
         , Entity datosCredito
-        , Entity datosSolicitante)
+        , Entity datosSolicitante
+        , Entity datosDireccionSolicitante
+        , int idCodigoPostal)
     {
         SIGEADataContext data_context = new SIGEADataContext();
         AvaluoInmobiliario avaluo = AvaluoInmobiliario.GetFromId(data_context, idAvaluo);
@@ -190,6 +192,8 @@ public class EntityWrappers : System.Web.Services.WebService
         }
 
         avaluo.Solicitante.SetData(datosSolicitante);
+        CodigoPostal cp_solicitante = CodigoPostal.GetFromData(data_context, datosDireccionSolicitante);
+        avaluo.Solicitante.Direccion.SetData(cp_solicitante, datosDireccionSolicitante);
         data_context.SubmitChanges();
     }
 
