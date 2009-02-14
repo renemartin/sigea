@@ -182,7 +182,6 @@ public class EntityWrappers : System.Web.Services.WebService
         else
             avaluo.DatoCredito = null;
 
-        avaluo.SetData(datosCredito);
         data_context.SubmitChanges();
     }
 
