@@ -32,25 +32,17 @@ function saveAsignacionAvaluoAsync(idAvaluo, datosAsignacion, callBack) {
         , callBack);
 }
 
-function saveAvaluoAsync(idAvaluo, datosAvaluo, datosCredito, callBack) {
+function saveAvaluoAsync(idAvaluo, datosAvaluo, datosCredito, datosSolicitante, callBack) {
     EntityWrappers.SaveAvaluo(
         idAvaluo
         , datosAvaluo
         , datosCredito
+        , datosSolicitante
         , asyncCallResultBack
         , asyncCallFail
         , callBack
     );
 } 
-
-function saveSolicitanteAsync(idAvaluo, datosSolicitante, callBack) {
-    EntityWrappers.SaveSolicitante(
-        idAvaluo
-        , datosSolicitante
-        , callBack
-    );
-}
-   
     
 
 // Cancelación de avalúo
