@@ -46,7 +46,7 @@ function saveAvaluoAsync(idAvaluo, datosAvaluo, datosCredito, datosSolicitante, 
 }
 
 function saveDeclaracionesAsync(idAvaluo, datosDeclaraciones, datosAdvertencias, callBack) {
-    EntityWrappers.SaveDeclaraciones(
+    EntityWrappers.saveDeclaraciones(
         idAvaluo
         , datosDeclaraciones
         , datosAdvertencias
