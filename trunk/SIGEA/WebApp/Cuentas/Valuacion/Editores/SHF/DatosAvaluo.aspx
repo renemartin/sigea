@@ -70,7 +70,7 @@
         function saveForm() {
             if ($get("<%= guardar_datos_generales_ImBtn.ClientID %>").style.display != "none")
                 saveDatosGenerales();
-            if ($get("<%= guardar_datos_declaraciones_ImBtn.ClientID %>").style.display == "block")
+            if ($get("<%= guardar_declaraciones_ImBtn.ClientID %>").style.display == "block")
                 saveDeclaraciones();
         }
 
