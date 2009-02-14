@@ -43,8 +43,18 @@ function saveAvaluoAsync(idAvaluo, datosAvaluo, datosCredito, datosSolicitante, 
         , asyncCallFail
         , callBack
     );
-} 
-    
+}
+
+function saveDeclaracionesAsyn(idAvaluo, datosDeclaraciones, datosAdvertencias, callBack) {
+    EntityWrappers.SaveDeclaraciones(
+        idAvaluo
+        , datosDeclaraciones
+        , datosAdvertencias
+        , asyncCallResultBack
+        , asyncCallFail
+        , callBack
+    );   
+}
 
 // Cancelación de avalúo
 
