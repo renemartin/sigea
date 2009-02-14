@@ -69,10 +69,16 @@ function editForm(form_id, edit_id, save_id, cancel_id) {
     enableControls($get(form_id));
 }
 function cancelEdit(form_id, edit_id, save_id, cancel_id, id_key) {
-    readOnlyMode();
+    $get(edit_id).style.display = "inline";
+    $get(cancel_id).style.display = "none";
+    $get(save_id).style.display = "none";
+
+    form_editing_count--;
+    disableControls($get(form_id));
+    
     loadForm(id_key);
 }
-function readOnlyMode() {
+function terminateEdit(form_id, edit_id, save_id, cancel_id) {
     $get(edit_id).style.display = "inline";
     $get(cancel_id).style.display = "none";
     $get(save_id).style.display = "none";
