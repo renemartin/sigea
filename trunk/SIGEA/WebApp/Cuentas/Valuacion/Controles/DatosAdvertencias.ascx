@@ -7,10 +7,10 @@
     //mostrar datos
     function setDataAdvertencias(data) {
         $get("<%= sinDocumentacion_CBox.ClientID %>").checked = data.advertenciaDocumentacion;
-        $get("<%= sinOferta_CBox.ClientID%>").checked = data.advertenciaOfertas;
-        $get("<%= dudaUso_CBox.ClientID%>").checked = data.advertenciaUso;
-        $get("<%= obrasAfectacion_CBox.ClientID%>").checked = data.advertenciaObras;
-        $get("<%= otrasAdvertencias_TBox.ClientID%>").value = data.otrasAdvertencias;
+        $get("<%= sinOferta_CBox.ClientID %>").checked = data.advertenciaOfertas;
+        $get("<%= dudaUso_CBox.ClientID %>").checked = data.advertenciaUso;
+        $get("<%= obrasAfectacion_CBox.ClientID %>").checked = data.advertenciaObras;
+        $get("<%= otrasAdvertencias_TBox.ClientID %>").value = data.otrasAdvertencias;
         
     }
     
@@ -18,11 +18,11 @@
     function getDataAdvertencias() {
         var data = new Object();
         
-        data.advertenciaDocumentacion = $get("<%= sinDocumentacion_CBox %>.ClientID%>").checked;
-        data.advertenciaOfertas = $get("<%= sinOferta_CBox.ClientID%>").checkedx;
-        data.advertenciaUso = $get("<%= dudaUso_CBox.ClientID%>").checked;
-        data.advertenciaObras = $get("<%= obrasAfectacion_CBox.ClientID%>").checked;
-        data.otrasAdvertencias = $get("<%= otrasAdvertencias_TBox.ClientID%>").value;
+        data.advertenciaDocumentacion = $get("<%= sinDocumentacion_CBox.ClientID %>").checked;
+        data.advertenciaOfertas = $get("<%= sinOferta_CBox.ClientID %>").checkedx;
+        data.advertenciaUso = $get("<%= dudaUso_CBox.ClientID %>").checked;
+        data.advertenciaObras = $get("<%= obrasAfectacion_CBox.ClientID %>").checked;
+        data.otrasAdvertencias = $get("<%= otrasAdvertencias_TBox.ClientID %>").value;
         
         return data;
     }
