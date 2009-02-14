@@ -81,7 +81,7 @@
                 , getDatosCredito()
                 , getDatosSolicitante()
                 , getDatosDireccion()
-                , saveAvaluo_Success
+                //, saveAvaluo_Success
             );
         }
 
@@ -94,7 +94,20 @@
         }
 
         function saveDeclaraciones() {
-            disableControls($get("form_declaraciones"));
+            saveDeclaracionesAsync(
+                idAvaluo
+                , getDataDeclaraciones()
+                , getDataAdvertencias()
+                //, saveDeclaraciones_Success
+            );
+        }
+        
+        function saveDeclaraciones_Success() {
+            terminateEdit("form_declaraciones",
+                "<%= editar_declaraciones_ImBtn.ClientID %>",
+                "<%= guardar_declaraciones_ImBtn.ClientID %>",
+                "<%= cancelar_declaraciones_ImBtn.ClientID %>");
+            showMessage("Datos guardados");
         }
 
     </script>
