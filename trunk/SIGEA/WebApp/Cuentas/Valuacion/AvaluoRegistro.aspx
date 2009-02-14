@@ -67,15 +67,17 @@
 
             var urlFoto = "../../"
                 + (data.urlFoto == "" ? "Images/NoDisponible.jpg" : data.urlFoto);
-            $get("<%= foto_Ima.ClientID %>").src = urlFoto;
+            var foto = $get("<%= foto_Ima.ClientID %>");
+            foto.src = urlFoto;
+            setVisibility(foto, true);            
         }
 
         // Establecimiento de acciones por status
         function setActionsVisibility(idStatus) {
-            setVisibility($get("<%= asignar_ImBtn.ClientID %>"), verificarAccionAsignar(idStatus));
-            setVisibility($get("<%= editar_ImBtn.ClientID %>"), verificarAccionEditar(idStatus));
-            setVisibility($get("<%= revisar_ImBtn.ClientID %>"), verificarAccionRevisar(idStatus));
-            setVisibility($get("<%= descargar_ImBtn.ClientID %>"), verificarAccionDescargar(idStatus));
+            setVisibility($get("<%= asignar_ImBtn.ClientID %>"), verificarAccionAsignar(idStatus), "inline");
+            setVisibility($get("<%= editar_ImBtn.ClientID %>"), verificarAccionEditar(idStatus), "inline");
+            setVisibility($get("<%= revisar_ImBtn.ClientID %>"), verificarAccionRevisar(idStatus), "inline");
+            setVisibility($get("<%= descargar_ImBtn.ClientID %>"), verificarAccionDescargar(idStatus), "inline");
         }  
                     
     </script>
@@ -91,7 +93,7 @@
                 <asp:Label ID="status_Lbl" runat="server"></asp:Label>
             </div>
             <div class="foto">
-                <asp:Image ID="foto_Ima" runat="server" />
+                <asp:Image ID="foto_Ima" runat="server" CssClass="hidden" />
             </div>
             <table class="tablaCompactaExtendida">
                 <tr>

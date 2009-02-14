@@ -3,7 +3,7 @@
 
 <asp:Content ID="headContent" ContentPlaceHolderID="head" runat="Server">
 
-    <script type="text/javascript">          
+    <script type="text/javascript">
         // Acciones
         //// Búsqueda por IDE
         function verificarExistenciaAvaluo() {
@@ -48,7 +48,7 @@
 
         // Actualizacion
         function recargarDatos() {
-            __doPostBack("'<%= avaluos_UpPanel.ClientID %>'", "");
+            __doPostBack("<%= avaluos_UpPanel.ClientID %>", "");
         }
     </script>
 
@@ -72,7 +72,7 @@
                 <div class="celdaHeader">
                     Bandejas
                 </div>
-                <asp:UpdatePanel ID="bandejas_UpPanel" runat="server" UpdateMode="Conditional" ChildrenAsTriggers="false">
+                <asp:UpdatePanel ID="bandejas_UpPanel" runat="server">
                     <ContentTemplate>
                         <table>
                             <tr>
@@ -146,7 +146,7 @@
                         </tr>
                     </table>
                 </div>
-                <asp:UpdatePanel ID="avaluos_UpPanel" runat="server" UpdateMode="Conditional">
+                <asp:UpdatePanel ID="avaluos_UpPanel" runat="server">
                     <ContentTemplate>
                         <asp:GridView ID="avaluos_GridView" runat="server" Width="100%" AllowPaging="True"
                             AutoGenerateColumns="False" PageSize="20" DataSourceID="bandejas_DS">

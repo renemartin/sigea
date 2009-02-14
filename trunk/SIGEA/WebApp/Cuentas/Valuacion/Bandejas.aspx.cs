@@ -12,6 +12,8 @@ public partial class Cuentas_Valuacion_Bandejas : System.Web.UI.Page
     {
         SetAttributes();
         GetBandejasCount();
+
+        avaluos_GridView.DataBind();
     }
 
     public string ValidateUrlFoto(string url)
@@ -40,13 +42,7 @@ public partial class Cuentas_Valuacion_Bandejas : System.Web.UI.Page
         enCoreccion_Lbl.Text = string.Format("{0}", cuenta[2]);
         enRevision_Lbl.Text = string.Format("{0}", cuenta[3]);
         completados_Lbl.Text = string.Format("{0}", cuenta[4]);
-
-        bandejas_UpPanel.Update();
     }
-    private void UpdateData()
-    {
-        avaluos_UpPanel.Update();
-    }   
     private void SetAttributes()
     {
         search_ImBtn.OnClientClick = "verificarExistenciaAvaluo(); return false;";
@@ -62,31 +58,25 @@ public partial class Cuentas_Valuacion_Bandejas : System.Web.UI.Page
     private void refresh_ImBtn_Click(object sender, ImageClickEventArgs e)
     {
         GetBandejasCount();
-        UpdateData();
     }
     private void noAsignados_LkBtn_Click(object sender, EventArgs e)
     {
         Session["tipoBandeja"] = Bandejas.TipoBandeja.NoAsignados;
-        UpdateData();
     }
     private void enProceso_LkBtn_Click(object sender, EventArgs e)
     {
         Session["tipoBandeja"] = Bandejas.TipoBandeja.EnProceso;
-        UpdateData();
     }
     private void enCorreccion_LkBtn_Click(object sender, EventArgs e)
     {
         Session["tipoBandeja"] = Bandejas.TipoBandeja.EnCorreccion;
-        UpdateData();
     }
     private void enRevision_LkBtn_Click(object sender, EventArgs e)
     {
         Session["tipoBandeja"] = Bandejas.TipoBandeja.EnRevision;
-        UpdateData();
     }
     private void completados_LkBtn_Click(object sender, EventArgs e)
     {
         Session["tipoBandeja"] = Bandejas.TipoBandeja.Completados;
-        UpdateData();
     }
 }

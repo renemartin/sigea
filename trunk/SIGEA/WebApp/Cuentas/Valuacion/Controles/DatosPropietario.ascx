@@ -13,8 +13,8 @@
         return data;
     }
     function setDatosPropietario(data) {
-        $get("<%= nombre_TBox.ClientID %>").selectedValue = data["nombre"];
-        $get("<%= RFC_TBox.ClientID %>").selectedValue = data["RFC"];
+        $get("<%= nombre_TBox.ClientID %>").value = data["nombre"];
+        $get("<%= RFC_TBox.ClientID %>").value = data["RFC"];
         $get("<%= CURP_TBox.ClientID %>").value = data["CURP"]
     }
 </script>
