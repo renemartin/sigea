@@ -199,8 +199,8 @@ public class EntityWrappers : System.Web.Services.WebService
     [WebMethod]
     public void saveDeclaraciones(
         int idAvaluo
-        , Entity datosDeclaracion
-        , Entity datosAdvertencia)
+        , Entity datosDeclaraciones
+        , Entity datosAdvertencias)
     {
         SIGEADataContext data_context = new SIGEADataContext();
         AvaluoInmobiliario avaluo = AvaluoInmobiliario.GetFromId(data_context, idAvaluo);
@@ -208,10 +208,10 @@ public class EntityWrappers : System.Web.Services.WebService
         if (avaluo == null)
             throw new Exception("El identificador del avalúo es inválido");
 
-        if (datosDeclaracion != null)
+        if (datosDeclaraciones != null)
         {
             Declaraciones declaracion = Declaraciones.GetForDataUpdate(data_context, idAvaluo);
-            declaracion.SetData(datosDeclaracion, datosAdvertencia);
+            declaracion.SetData(datosDeclaraciones, datosAdvertencias);
         }
         else
         {
