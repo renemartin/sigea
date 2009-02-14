@@ -170,8 +170,7 @@ public class EntityWrappers : System.Web.Services.WebService
         , Entity datosAvaluo
         , Entity datosCredito
         , Entity datosSolicitante
-        , Entity datosDireccionSolicitante
-        , int idCodigoPostal)
+        , Entity datosDireccionSolicitante)
     {
         SIGEADataContext data_context = new SIGEADataContext();
         AvaluoInmobiliario avaluo = AvaluoInmobiliario.GetFromId(data_context, idAvaluo);
