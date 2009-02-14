@@ -20,15 +20,11 @@ namespace SIGEA.Classes.Entities
         }
         public static DatoCredito GetForDataUpdate(SIGEADataContext data_context, int idAvaluo)
         {
-            DatoCredito credito = null;
+            DatoCredito credito = GetFromId(data_context, idAvaluo);
 
-            if (idAvaluo == 0)
+            if (credito == null)
             {
                 credito = new DatoCredito();    
-            }
-            else
-            {
-                credito = GetFromId(data_context, idAvaluo);
             }
 
             return credito;
