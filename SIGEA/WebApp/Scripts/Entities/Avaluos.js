@@ -32,12 +32,13 @@ function saveAsignacionAvaluoAsync(idAvaluo, datosAsignacion, callBack) {
         , callBack);
 }
 
-function saveAvaluoAsync(idAvaluo, datosAvaluo, datosCredito, datosSolicitante, callBack) {
+function saveAvaluoAsync(idAvaluo, datosAvaluo, datosCredito, datosSolicitante, datosDireccion, callBack) {
     EntityWrappers.SaveAvaluo(
         idAvaluo
         , datosAvaluo
         , datosCredito
         , datosSolicitante
+        , datosDireccion
         , asyncCallResultBack
         , asyncCallFail
         , callBack
