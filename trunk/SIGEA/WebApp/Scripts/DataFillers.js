@@ -108,11 +108,6 @@ function fillEntidadCofinanciamiento(target_id, parent_id) {
             parent_key, fillSelect, asyncCallFail, target_id);
     }
 }
-function fillUsoSuelo(target_id) {
-    showControlLoading(target_id);
-    MethodCallers.GetListaTiposUsoSuelo(
-        fillSelect, asyncCallFail, target_id);
-}
 function fillFuente(target_id) {
     showControlLoading(target_id);
     MethodCallers.GetListaTiposFuente(
@@ -165,6 +160,11 @@ function fillCaracPanoramicas(target_id) {
     MethodCallers.GetListaCaracPanoramicas(
         fillSelect, asyncCallFail, target_id);
 }
+function fillUsoSuelo(target_id) {
+    showControlLoading(target_id);
+    MethodCallers.GetListaTiposUsoSuelo(
+        fillSelect, asyncCallFail, target_id);
+}
 function fillServidumbre(target_id) {
     showControlLoading(target_id);
     MethodCallers.GetListaTiposServidumbre(
@@ -196,7 +196,6 @@ function fillDensidad(target_id) {
         fillSelect, asyncCallFail, target_id);
 }
 function fillImportanciaVialidad(target_id) {
-    showControlLoading(target_id);
     MethodCallers.GetListaTiposImportanciaVia(
         fillSelect, asyncCallFail, target_id);
 }
@@ -235,29 +234,5 @@ function fillUnidad(target_id) {
 function fillTipoComparable(target_id) {
     showControlLoading(target_id);
     MethodCallers.GetListaTipoComparable(
-        fillSelect, asyncCallFail, target_id);
-}
-
-function fillUsosSuelo(target_id) {
-    showControlLoading(target_id);
-    MethodCallers.GetListaUsoSuelo(
-        fillSelect, asyncCallFail, target_id);
-}
-
-function fillConservacion(target_id) {
-    showControlLoading(target_id);
-    MethodCallers.GetListaConservacion(
-        fillSelect, asyncCallFail, target_id);
-}
-
-function fillCalidadProyecto(target_id) {
-    showControlLoading(target_id);
-    MethodCallers.GetListaTiposCalidadProyecto(
-        fillSelect, asyncCallFail, target_id);
-}
-
-function fillClase(target_id){
-    showControlLoading(target_id);
-    MethodCallers.GetListaClase(
         fillSelect, asyncCallFail, target_id);
 }

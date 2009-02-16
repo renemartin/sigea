@@ -50,7 +50,7 @@
             );
         }
         function saveValuador_Success(id) {
-            idValuador = id;           
+            idValuador = id;
             setControlsVisibility();
             setFechaAlta(new Date());
             showMessage("Datos guardados");
@@ -178,9 +178,9 @@
                 </td>
                 <td valign="top">
                     <div id="ficha" style="display: none;">
-                        <div class="foto">
-                            <img id="foto" alt="Cambiar imagen" src="../../Images/NoDisponible.jpg" style="cursor: pointer;"
-                                onclick="changeFotografia()" />
+                        <div>
+                            <img id="foto" alt="Cambiar imagen" class="foto" src="../../Images/NoDisponible.jpg"
+                                style="cursor: pointer;" onclick="changeFotografia()" />
                         </div>
                         <br />
                         Fecha de alta:

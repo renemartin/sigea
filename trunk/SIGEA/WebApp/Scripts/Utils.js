@@ -24,12 +24,12 @@ function openFullWindow(url, name) {
 
     var pop = window.open(url, name,
         String.format("width={0},height={1},left=0,top=0,screenX=0,screenY=0,toolbar=no,menubar=no,scrollbars=yes,resizable=yes")
-            ,width, height);
+            , width, height);
 
     pop.resizeTo(width, height);
     pop.focus();
-    
-    return pop; 
+
+    return pop;
 }
 function closeWindow(ask) {
     if (ask) {
@@ -68,8 +68,10 @@ function hideControlLoading(target_id) {
         target.disabled = false;
 
     var loading = $get("loading_" + target_id, target.parentNode);
-    if (loading != undefined)
+    if (loading != undefined) {
         target.parentNode.removeChild(loading);
+        setVisibility(loading, false);
+    }
 }
 
 // Controles general
@@ -79,7 +81,9 @@ function setVisibility(target, visible, type) {
         type = "block";
     target.style.display = visible ? type : "none";
 }
-
+function getVisibility(control) {
+    return control.style.display != "none";
+}
 
 function clearControl(control) {
     switch (control.type) {
@@ -149,14 +153,16 @@ function getDateString(date) {
 
 // Formato
 
-function getNumString(num) {
+function getNumString(num, decimals) {
     if (num == null)
         return ""
-    return num;
+    if (decimals == null)
+        return num;
+    return parseFloat(num).toFixed(decimals);
 }
 
 function getCurrString(num) {
     if (num == null)
         return ""
-    return "$ " + num;
+    return "$ " + num.toFixed(2);
 }

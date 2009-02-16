@@ -67,14 +67,14 @@
         <td class="celdaTitulo" valign="top">
             Jardines:
         </td>
-        <td class="celdaValor">
-            <asp:CheckBox ID="jardin_CBox" Text="Tiene jardines" runat="server" /><br />
-            <asp:CheckBox ID="jardinFondo_CBox" Text="Tiene jardín al fondo" runat="server" /><br />
-            <asp:CheckBox ID="jardinLateral_CBox" Text="Tiene jardín lateral" runat="server" />
+        <td class="celdaValor" colspan="3">
+            <asp:CheckBox ID="jardin_CBox" Text="Tiene jardines" runat="server" />&nbsp;<asp:CheckBox ID="jardinFondo_CBox" Text="Tiene jardín al fondo" runat="server" />&nbsp;<asp:CheckBox ID="jardinLateral_CBox" Text="Tiene jardín lateral" runat="server" />
         </td>
-        <td class="celdaTituloSec" valign="top">
+    </tr>
+    <tr>
+        <td class="celdaTituloSec">
             Elevador:</td>
-        <td class="celdaValor" valign="top">
+        <td class="celdaValor" colspan="3">
             <asp:CheckBox ID="elevador_CBox" Text="Tiene elevador" runat="server" />
         </td>
     </tr>
@@ -99,25 +99,24 @@
             Cocina:</td>
         <td class="celdaValor" valign="top">
             <asp:CheckBox ID="cuentaCocina_CBox" Text="Cuenta con cocina" runat="server" />
-        </td>
-        <td class="celdaValor">
-            <asp:RadioButton ID="conTarja_RBtn" Text="Con tarja" runat="server" />
             <br />
-            <asp:RadioButton ID="mueblesCocina_RBtn" Text="Muebles de cocina" runat="server" />
-        </td>
-        <td class="celdaValor">
-            <asp:RadioButton ID="cocinaIntegral_RBtn" Text="Cocina integral" runat="server" />
-            <br />
-            <asp:RadioButton ID="forjadaSitio_RBtn" Text="Forjada en sitio" runat="server" />
-        </td>
-    </tr>
-    <tr>
-        <td colspan="2"></td>
-        <td class="celdaValor">
             <asp:CheckBox ID="comedor_CBox" Text="Comedor" runat="server" />
-        </td>
-        <td class="celdaValor">
+            <br />
             <asp:CheckBox ID="despensa_CBox" Text="Despensa" runat="server" />
         </td>
+        <td class="celdaValor" valign="top">
+            <asp:RadioButton ID="conTarja_RBtn" Text="Con tarja" runat="server" 
+                GroupName="mueblesCocina" />
+            <br />
+            <asp:RadioButton ID="mueblesCocina_RBtn" Text="Muebles de cocina" 
+                runat="server" GroupName="mueblesCocina" />
+        </td>
+        <td class="celdaValor" valign="top">
+            <asp:RadioButton ID="cocinaIntegral_RBtn" Text="Cocina integral" runat="server" 
+                GroupName="tipoCocina" />
+            <br />
+            <asp:RadioButton ID="forjadaSitio_RBtn" Text="Forjada en sitio" runat="server" 
+                GroupName="tipoCocina" />
+        </td>
     </tr>
-</table>
+    </table>

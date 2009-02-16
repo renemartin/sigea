@@ -2,30 +2,51 @@
 
 body, html
 {
-	height: 100%;
 	border: 0;
-	padding: 0;	
+	padding: 0;
 	margin: 0;
 }
 
 body
 {
-	font:.8em sans-serif, verdana, helvetica;	
+	font: .8em sans-serif, verdana, helvetica;
+	margin-left: 5px;
+	margin-right: 5px;
+	margin-bottom: 20px;
 }
 
 h1
 {
 	font-size: 2em;
+	color: #EDA50E;
 }
 
 h2
 {
 	font-size: 1.5em;
+	color: #006600;
 }
 
 h3, h4, h5
 {
 	font-size: 1.2em;
+	color: #004200;
+}
+
+a, a:active, a:link, a:visited
+{
+	color: #008000;
+}
+
+a:hover
+{
+	color: #00CC00;
+}
+
+hr
+{
+	color: #FFFFFF;
+	border-style: none;
 }
 
 /* Texto */
@@ -37,7 +58,9 @@ h3, h4, h5
 
 .textoInstruccion
 {
+	padding: 5px;
 	font-size: .7em;
+	font-style: italic;
 }
 
 .textoNota
@@ -83,49 +106,65 @@ h3, h4, h5
 {
 	font-size: 1em;
 	margin: 0;
-	padding: 0;		
+	padding: 0;
+}
+
+.controlBox
+{
+	background-color: #FFFFFF;
+	border: 1px solid #C0C0C0;
+	margin-top: 1px;
+	margin-bottom: 1px;
 }
 
 .controlBloque
 {
+	padding: 2px;
+	border: 1px solid #C0C0C0;
+	background-color: #FFFFFF;
 }
 
 .textBoxNumero
 {
-	width: 40px;		
+	width: 40px;
 }
 
 /* Tablas */
 
 .filaHeader
 {
-}
-
-.filaDatos
-{
-}
-
-.filaDatosAlter
-{
+	font-weight: bold;
 }
 
 .celdaHeader
 {
+	font-size: 1.2em;
+	color: #004200;
+	padding-top: 10px;
+	padding-bottom: 10px;
 }
 
 .celdaTitulo
 {
+	font-size: .9em;
+	font-weight: bold;
+	padding-right: 5px;
 }
 
 .celdaTituloSec
 {
+	font-size: .9em;
+	font-weight: bold;
+	padding-right: 5px;
+	padding-left: 5px;
 }
 
 .celdaValor
 {
+	font-size: .8em;
 }
 
-.tablaExtendida	.tablaCompactaExtendida
+.tablaExtendida .tablaCompactaExtendida
 {
 	width: 100%;
 	border: 0;
@@ -135,39 +174,7 @@ h3, h4, h5
 
 .tablaCompactaExtendida
 {
-	font-size: .7em
-}
-
-.tablaCompactaExtendida .celdaTitulo
-{
-	
-}
-
-.tablaCompactaExtendida .celdaValor
-{
-	
-}
-
-/* Grid */
-
-.grid
-{
-}
-
-.grid .header
-{
-}
-
-.grid .footer
-{
-}
-
-.grid .item
-{
-}
-
-.grid .itemAlter
-{
+	font-size: .7em;
 }
 
 /* Barras */
@@ -175,11 +182,19 @@ h3, h4, h5
 .barraMenu
 {
 	text-align: right;
-	margin: 10px 10px 0 0;
+	background-color: #F2F2F2;
+	border: 1px solid #C0C0C0;
+	margin-left: -5px;
+	margin-right: -5px;
+	margin-top: 20px;
 }
 
 .barraAcciones
 {
+	background-color: #DFDFDF;
+	border: 1px solid #C0C0C0;
+	margin-left: 5px;
+	margin-right: 5px;
 }
 
 /* Menús */
@@ -187,7 +202,19 @@ h3, h4, h5
 .menu
 {
 	list-style: none;
-	padding: 0;
+	padding: 0 0 0 5;
+	background-color: #E2E9E0;
+	margin-left: -5px;
+}
+
+.menu a, a:active, a:link, a:visited
+{
+	color: #008000;
+}
+
+.menu a:hover
+{
+	color: #00CC00;
 }
 
 .menu ul
@@ -201,6 +228,13 @@ h3, h4, h5
 {
 	list-style: none;
 	display: inline;
+}
+
+.menu .current
+{
+	background-color: #FFFFFF;
+	padding-right: 5px;
+	padding-left: 5px;
 }
 
 .submenu
@@ -225,7 +259,20 @@ h3, h4, h5
 
 .formulario
 {
-	padding: 0px 5px 5px 5px;
+	border: 1px solid #C0C0C0;
+	background-color: #FFFFFF;
+	padding: 5px;
+	margin-right: 5px;
+	margin-left: 5px;
+}
+
+.formularioDeshabilitado
+{
+	border: 1px solid #E6E6E6;
+	background-color: #FCFCFC;
+	padding: 5px;
+	margin-right: 5px;
+	margin-left: 5px;
 }
 
 .formulario .barraMenu
@@ -234,6 +281,10 @@ h3, h4, h5
 }
 
 .formulario .celdaTitulo
+{
+	width: 200px;
+}
+.formularioDeshabilitado .celdaTitulo
 {
 	width: 200px;
 }
@@ -255,15 +306,9 @@ h3, h4, h5
 
 .modulo
 {
-}
-
-.modulo .formulario
-{
-	margin: 5px;
-}
-
-.modulo .barraMenu
-{
+	width: 95%;
+	padding: 10px;
+	margin-bottom: 10px;
 }
 
 /* Bandejas */
@@ -279,32 +324,28 @@ h3, h4, h5
 .spinner
 {
 	background-image: url(Images/SpinnerChico.gif);
-	background-repeat: no-repeat;	
+	background-repeat: no-repeat;
 	width: 16px;
 	height: 16px;
 	display: inline-block;
 }
 
-.etiqueta1
+.etiqueta1, .etiqueta2, .etiqueta3
 {
-}
-
-.etiqueta2
-{
-}
-
-.etiqueta3
-{
+	padding: 4px;
+	background-color: #FAF9E2;
 }
 
 .foto
 {
+	border: medium solid #E8ECE6;
 }
 
 .sinDatos
 {
 	height: 100px;
 	vertical-align: middle;
+	color: #CCCCCC;
 }
 
 /* Botones */

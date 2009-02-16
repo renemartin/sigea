@@ -13,7 +13,7 @@
     }
     
     //mostrar datos
-    function setDataInstalaciones(data) {
+    function setDatosInstalaciones(data) {
         $get("<%= instHidraulicas_DDList.ClientID %>").selectedValue = data.idTipoHidraulica;
         $get("<%= instSanitaria_DDList.ClientID %>").selectedValue = data.idTipoSanitaria;
         $get("<%= instElectricas_DDList.ClientID %>").selectedValue = data.idTipoElectrica;
@@ -23,7 +23,7 @@
     }
     
     //guardar datos
-    function getDataInstalaciones() {
+    function getDatosInstalaciones() {
         var data = new Object();
         
         data.idTipoHidraulica = $get("<%= instHidraulicas_DDList.ClientID %>").selectedValue;

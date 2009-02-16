@@ -149,8 +149,8 @@
                 </td>
                 <td valign="top">
                     <div id="ficha" style="display: none;">
-                        <div class="foto">
-                            <img id="foto" alt="Cambiar imagen" src="../../Images/NoDisponible.jpg" style="cursor: pointer;"
+                        <div>
+                            <img id="foto" class="foto" alt="Cambiar imagen" src="../../Images/NoDisponible.jpg" style="cursor: pointer;"
                                 onclick="changeFotografia()" />
                         </div>
                         <br />

@@ -4,21 +4,35 @@
 <script type="text/javascript">
     
     //mostrar datos
-    function setDataDeclaraciones(data) {
-        $get("<%= identificacionCoincide_RBtn.ClientID %>").checked = data.declaracionIdentificacion;
-        $get("<%= identificacionNOCoincide_RBtn.ClientID %>").checked = !data.declaracionIdentificacion;
-        $get("<%= superficiesCoinciden_RBtn.ClientID %>").checked = data.declaracionSuperficies;
-        $get("<%= superficiesNoCoinciden_RBtn.ClientID %>").checked = !data.declaracionSuperficies;
-        $get("<%= construccionCumple_RBtn.ClientID %>").checked = data.declaracionConstrucciones;
-        $get("<%= construccionNoCumple_RBtn.ClientID %>").checked = !data.declaracionConstrucciones;
-        $get("<%= inmuebleMonumento_RBtn.ClientID %>").checked = data.declaracionMonumento;
-        $get("<%= inmuebleNoMonumento_RBtn.ClientID %>").checked = !data.declaracionMonumento;
-        $get("<%= inmueblePatrimonio_RBtn.ClientID %>").checked = data.declaracionPatrimonio;
-        $get("<%= inmuebleNoPatrimonio_RBtn.ClientID %>").checked = !data.declaracionPatrimonio;
+    function setDatosDeclaraciones(data) {
+        if (data != null) {
+            $get("<%= identificacionCoincide_RBtn.ClientID %>").checked = data.declaracionIdentificacion;
+            $get("<%= identificacionNOCoincide_RBtn.ClientID %>").checked = !data.declaracionIdentificacion;
+            $get("<%= superficiesCoinciden_RBtn.ClientID %>").checked = data.declaracionSuperficies;
+            $get("<%= superficiesNoCoinciden_RBtn.ClientID %>").checked = !data.declaracionSuperficies;
+            $get("<%= construccionCumple_RBtn.ClientID %>").checked = data.declaracionConstrucciones;
+            $get("<%= construccionNoCumple_RBtn.ClientID %>").checked = !data.declaracionConstrucciones;
+            $get("<%= inmuebleMonumento_RBtn.ClientID %>").checked = data.declaracionMonumento;
+            $get("<%= inmuebleNoMonumento_RBtn.ClientID %>").checked = !data.declaracionMonumento;
+            $get("<%= inmueblePatrimonio_RBtn.ClientID %>").checked = data.declaracionPatrimonio;
+            $get("<%= inmuebleNoPatrimonio_RBtn.ClientID %>").checked = !data.declaracionPatrimonio;
+        }
+        else {
+            $get("<%= identificacionCoincide_RBtn.ClientID %>").checked = false;
+            $get("<%= identificacionNOCoincide_RBtn.ClientID %>").checked = false;
+            $get("<%= superficiesCoinciden_RBtn.ClientID %>").checked = false;
+            $get("<%= superficiesNoCoinciden_RBtn.ClientID %>").checked = false;
+            $get("<%= construccionCumple_RBtn.ClientID %>").checked = false;
+            $get("<%= construccionNoCumple_RBtn.ClientID %>").checked = false;
+            $get("<%= inmuebleMonumento_RBtn.ClientID %>").checked = false;
+            $get("<%= inmuebleNoMonumento_RBtn.ClientID %>").checked = false;
+            $get("<%= inmueblePatrimonio_RBtn.ClientID %>").checked = false;
+            $get("<%= inmuebleNoPatrimonio_RBtn.ClientID %>").checked = false;
+        }
     }
    
      //guardar datos
-    function getDataDeclaraciones() {
+    function getDatosDeclaraciones() {
         var data  = new Object();
         
          data.declaracionIdentificacion = $get("<%= identificacionCoincide_RBtn.ClientID %>").checked;
@@ -68,7 +82,7 @@
         <asp:RadioButton ID="inmuebleNoMonumento_RBtn" runat="server" Text="NO ES" GroupName="declaracion4"
             CssClass="textoNegritas" />
         &nbsp; CONSIDERADO MONUMENTO HISTORICO POR EL I.N.A.H. </li>
-    <li>EL INMUEBLE &nbsp;&
+    <li>EL INMUEBLE &nbsp;
         <asp:RadioButton ID="inmueblePatrimonio_RBtn" runat="server" Text="ES" GroupName="declaracion5"
             CssClass="textoNegritas" />
         &nbsp;

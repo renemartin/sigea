@@ -39,10 +39,14 @@ function toggleControlEnabled(container, enabled) {
 }
 
 function enableControls(container) {
+    container.setAttribute("class", "formulario");
+    container.setAttribute("className", "formulario");
     toggleControlEnabled(container, true);
 }
 
 function disableControls(container) {
+    container.setAttribute("class", "formularioDeshabilitado");
+    container.setAttribute("className", "formularioDeshabilitado");
     toggleControlEnabled(container, false);
 }
 
@@ -73,8 +77,6 @@ function cancelEdit(form_id, edit_id, save_id, cancel_id, id_key) {
 
     form_editing_count--;
     disableControls($get(form_id));
-    
-    loadForm(id_key);
 }
 function terminateEdit(form_id, edit_id, save_id, cancel_id) {
     $get(edit_id).style.display = "inline";

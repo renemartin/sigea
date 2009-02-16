@@ -21,7 +21,10 @@
 
         // Inicialización
         function setupForm() {
-            $get("ctl00_menu_Ctrl_elementos_LkBtn").removeAttribute("href");
+            var link = $get("ctl00_menu_Ctrl_elementos_LkBtn")
+            link.removeAttribute("href");
+            link.setAttribute("class", "current");
+            link.setAttribute("className", "current");
 
             window.onbeforeunload = function() {
                 beforeUnload(saveForm)
@@ -30,6 +33,9 @@
             disableControls($get('form_estructuras'));
             disableControls($get('form_acabados'));
             disableControls($get('form_instalaciones'));
+
+            setupTablaSuperficiesAdicionales("<%= instalacionesPrivativas_Ctrl.ClientID %>");
+            setupTablaSuperficiesAdicionales("<%= instalacionesComunes_Ctrl.ClientID %>");
         }
 
         // Llenado de datos
@@ -38,8 +44,6 @@
             fillInstalacionesData();
             fillInstalacionesAdicionalesData("<%= instalacionesPrivativas_Ctrl.ClientID %>");
             fillInstalacionesAdicionalesData("<%= instalacionesComunes_Ctrl.ClientID %>");
-            setupTablaSuperficiesAdicionales("<%= instalacionesPrivativas_Ctrl.ClientID %>");
-            setupTablaSuperficiesAdicionales("<%= instalacionesComunes_Ctrl.ClientID %>");
         }
 
         // Carga de registros
@@ -66,6 +70,8 @@
             if (num_bloques_cargados != undefined) {
                 num_bloques_cargados++;
                 if (num_bloques_cargados == num_bloques_datos) {
+                    getInmuebleEscondominalAsync(
+                        idAvaluo, setVisibilidadCondominal);
                     fillData();
                 }
             }
@@ -73,19 +79,44 @@
 
         // Guardado de registros
         function saveForm() {
-            if ($get("form_estructuras").style.display == "block")
+            if (getVisibility($get("<%= guardar_estructuras_ImBtn.ClientID %>")))
                 saveDatosEstructuras();
-            if ($get("form_acabados").style.display == "block")
+            if (getVisibility($get("<%= guardar_acabados_ImBtn.ClientID %>")))
                 saveDatosAcabados();
-            if ($get("form_instalaciones").style.display == "block")
+            if (getVisibility($get("<%= guardar_instalaciones_ImBtn.ClientID %>")))
                 saveDatosInstalaciones();
         }
         function saveDatosEstructuras() {
         }
+        function saveDatosEstructuras_Success() {
+            terminateEdit("form_estructuras",
+                "<%= editar_estructuras_ImBtn.ClientID %>",
+                "<%= guardar_estructuras_ImBtn.ClientID %>",
+                "<%= cancelar_estructuras_ImBtn.ClientID %>");
+        }
+
         function saveDatosAcabados() {
         }
+        function saveDatosAcabados_Success() {
+            terminateEdit("form_acabados",
+                "<%= editar_acabados_ImBtn.ClientID %>",
+                "<%= guardar_acabados_ImBtn.ClientID %>",
+                "<%= cancelar_acabados_ImBtn.ClientID %>");
+        }
+
         function saveDatosInstalaciones() {
-        } 
+        }
+        function saveDatosInstalaciones_Success() {
+            terminateEdit("form_instalaciones",
+                "<%= editar_instalaciones_ImBtn.ClientID %>",
+                "<%= guardar_instalaciones_ImBtn.ClientID %>",
+                "<%= cancelar_instalaciones_ImBtn.ClientID %>");
+        }
+
+        // Visibilidad secciones
+        function setVisibilidadCondominal(visible) {
+            setVisibility($get("seccion_instalaciones_condominio"), visible);
+        }
         
     </script>
 
@@ -102,6 +133,7 @@
             <asp:ScriptReference Path="~/Scripts/DataFillers.js" />
             <asp:ScriptReference Path="~/Scripts/Tables.js" />
             <asp:ScriptReference Path="~/Scripts/Forms.js" />
+            <asp:ScriptReference Path="~/Scripts/Entities/Inmuebles.js" />
         </Scripts>
     </asp:ScriptManager>
     <SIGEA:EditorSHFNavegador ID="navegador_Ctrl" runat="server" />
@@ -113,43 +145,53 @@
     </h2>
     <div class="barraAcciones">
         <asp:ImageButton ID="editar_estructuras_ImBtn" runat="server" SkinID="Edit" />
-        <asp:ImageButton ID="guardar_estructuras_ImBtn" runat="server" SkinID="Save" CssClass="hidden" />
-        <asp:ImageButton ID="cancelar_estructuras_ImBtn" runat="server" SkinID="Cancel" CssClass="hidden" />
     </div>
     <div id="form_estructuras" class="formulario">
         <SIGEA:DatosEstructuras ID="datosEstructuras_Ctrl" runat="server" />
     </div>
+    <div class="barraAcciones">
+        <asp:ImageButton ID="guardar_estructuras_ImBtn" runat="server" SkinID="Save" CssClass="hidden" />
+        <asp:ImageButton ID="cancelar_estructuras_ImBtn" runat="server" SkinID="Cancel" CssClass="hidden" />
+    </div>
+    <hr />
     <h2>
         Acabados
     </h2>
     <div class="barraAcciones">
         <asp:ImageButton ID="editar_acabados_ImBtn" runat="server" SkinID="Edit" />
-        <asp:ImageButton ID="guardar_acabados_ImBtn" runat="server" SkinID="Save" CssClass="hidden" />
-        <asp:ImageButton ID="cancelar_acabados_ImBtn" runat="server" SkinID="Cancel" CssClass="hidden" />
     </div>
     <div id="form_acabados" class="formulario">
         <SIGEA:DatosAcabados ID="datosAcabados_Ctrl" runat="server" />
     </div>
-    <h1>
-        Instalaciones
-    </h1>
     <div class="barraAcciones">
-        <asp:ImageButton ID="editar_instalaciones_ImBtn" runat="server" SkinID="Edit" />
-        <asp:ImageButton ID="guardar_instalaciones_ImBtn" runat="server" SkinID="Save" CssClass="hidden" />
-        <asp:ImageButton ID="cancelar_instalaciones_ImBtn" runat="server" SkinID="Cancel"
-            CssClass="hidden" />
+        <asp:ImageButton ID="guardar_acabados_ImBtn" runat="server" SkinID="Save" CssClass="hidden" />
+        <asp:ImageButton ID="cancelar_acabados_ImBtn" runat="server" SkinID="Cancel" CssClass="hidden" />
     </div>
-    <div id="form_instalaciones" class="formulario">
-        <SIGEA:DatosInstalaciones ID="instalaciones_Ctrl" runat="server" />
-        <h2>
-            Instalaciones especiales</h2>
-        <h3>
-            Instalaciones privativas</h3>
-        <SIGEA:InstalacionesAdicionales ID="instalacionesPrivativas_Ctrl" runat="server" />
-        <h2>
-            Obras complementarias</h2>
-        <h3>
-            Instalaciones comúnes</h3>
-        <SIGEA:InstalacionesAdicionales ID="instalacionesComunes_Ctrl" runat="server" />
+    <div id="seccion_instalaciones_condominio" style="display: none;">
+        <hr />
+        <h1>
+            Instalaciones
+        </h1>
+        <div class="barraAcciones">
+            <asp:ImageButton ID="editar_instalaciones_ImBtn" runat="server" SkinID="Edit" />
+        </div>
+        <div id="form_instalaciones" class="formulario">
+            <SIGEA:DatosInstalaciones ID="instalaciones_Ctrl" runat="server" />
+            <h2>
+                Instalaciones especiales</h2>
+            <h3>
+                Instalaciones privativas</h3>
+            <SIGEA:InstalacionesAdicionales ID="instalacionesPrivativas_Ctrl" runat="server" />
+            <h2>
+                Obras complementarias</h2>
+            <h3>
+                Instalaciones comúnes</h3>
+            <SIGEA:InstalacionesAdicionales ID="instalacionesComunes_Ctrl" runat="server" />
+        </div>
+        <div class="barraAcciones">
+            <asp:ImageButton ID="guardar_instalaciones_ImBtn" runat="server" SkinID="Save" CssClass="hidden" />
+            <asp:ImageButton ID="cancelar_instalaciones_ImBtn" runat="server" SkinID="Cancel"
+                CssClass="hidden" />
+        </div>
     </div>
 </asp:Content>

@@ -1,11 +1,12 @@
 ﻿
-<asp:TextBox runat="server" />
-<asp:TextBox runat="server" SkinId="Compacto" CssClass="controlCompacto" />
-<asp:TextBox runat="server" SkinId="Numero" CssClass="textBoxNumero" />
-<asp:TextBox runat="server" SkinId="NumeroCompacto" CssClass="controlCompacto textBoxNumero" />
+<asp:TextBox runat="server" CssClass="controlBox" />
+<asp:TextBox runat="server" SkinId="Compacto" CssClass="controlCompacto controlBox" />
+<asp:TextBox runat="server" SkinId="Numero" CssClass="textBoxNumero controlBox" />
+<asp:TextBox runat="server" SkinId="NumeroCompacto" CssClass="controlCompacto textBoxNumero controlBox" />
 <asp:TextBox runat="server" SkinId="MultiLine" CssClass="controlBloque" />
 
-<asp:DropDownList runat="server" SkinId="Compacto" CssClass="controlCompacto" />
+<asp:DropDownList runat="server" CssClass="controlBox" />
+<asp:DropDownList runat="server" SkinId="Compacto" CssClass="controlCompacto controlBox" />
 
 <asp:ImageButton runat="server" SkinId="Accept" CssClass="botonImagen" ImageUrl="~/Images/Icons/Aceptar.gif" ToolTip="Realizar operación" />
 <asp:ImageButton runat="server" SkinId="Save" CssClass="botonImagen" ImageUrl="~/Images/Icons/Guardar.gif" ToolTip="Guardar datos" />

@@ -12,7 +12,7 @@
     }
     
     //mostrar datos
-    function setDataEstructuras(data) {
+    function setDatosEstructuras(data) {
         $get("<%= cimentacion_DDList.ClientID %>").selectedValue = data.idTipoCimentacion;
         $get("<%= muros_DDList.ClientID %>").selectedValue = data.idTipoMuros;
         $get("<%= escaleras_DDList.ClientID %>").selectedValue = data.idTipoEscaleras;
@@ -21,7 +21,7 @@
     }
     
     //guardar datos
-    function getDataEstructuras() {
+    function getDatosEstructuras() {
         var data = new Object();
         
         data.idTipoCimentacion = $get("<%= cimentacion_DDList.ClientID %>").selectedValue;

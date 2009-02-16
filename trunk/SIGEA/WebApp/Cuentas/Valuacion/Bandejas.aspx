@@ -69,9 +69,10 @@
     <table class="tablaExtendida">
         <tr>
             <td class="bandejas" valign="top">
-                <div class="celdaHeader">
+                <h2>
+                    <img alt="" src="../../Images/Icons/Bandejas.gif" />
                     Bandejas
-                </div>
+                </h2>
                 <asp:UpdatePanel ID="bandejas_UpPanel" runat="server">
                     <ContentTemplate>
                         <table>
@@ -149,7 +150,9 @@
                 <asp:UpdatePanel ID="avaluos_UpPanel" runat="server">
                     <ContentTemplate>
                         <asp:GridView ID="avaluos_GridView" runat="server" Width="100%" AllowPaging="True"
-                            AutoGenerateColumns="False" PageSize="20" DataSourceID="bandejas_DS">
+                            AutoGenerateColumns="False" PageSize="20" DataSourceID="bandejas_DS" CellPadding="4"
+                            ForeColor="#333333" GridLines="None">
+                            <RowStyle BackColor="#E3EAEB" />
                             <Columns>
                                 <asp:TemplateField>
                                     <ItemTemplate>
@@ -176,11 +179,17 @@
                                     </ItemTemplate>
                                 </asp:TemplateField>
                             </Columns>
+                            <FooterStyle BackColor="#1C5E55" Font-Bold="True" ForeColor="White" />
+                            <PagerStyle BackColor="#666666" ForeColor="White" HorizontalAlign="Center" />
                             <EmptyDataTemplate>
                                 <div class="sinDatos">
                                     <%# GetMensajeSinDatos() %>
                                 </div>
                             </EmptyDataTemplate>
+                            <SelectedRowStyle BackColor="#C5BBAF" Font-Bold="True" ForeColor="#333333" />
+                            <HeaderStyle BackColor="#1C5E55" Font-Bold="True" ForeColor="White" />
+                            <EditRowStyle BackColor="#7C6F57" />
+                            <AlternatingRowStyle BackColor="White" />
                         </asp:GridView>
                     </ContentTemplate>
                     <Triggers>

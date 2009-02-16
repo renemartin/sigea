@@ -33,7 +33,7 @@ namespace SIGEA.Classes.Entities
             return declaraciones;
         }
 
-        public Dictionary<string, object> GetData()
+        public Dictionary<string, object> GetDataDeclaraciones()
         {
             Dictionary<string, object> data = new Dictionary<string, object>();
 
@@ -43,6 +43,13 @@ namespace SIGEA.Classes.Entities
             data.Add("declaracionConstrucciones", declaracionConstrucciones);
             data.Add("declaracionMonumento", declaracionMonumento);
             data.Add("declaracionPatrimonio", declaracionPatrimonio);
+
+            return data;
+        }
+        public Dictionary<string, object> GetDataAdvertencias()
+        {
+            Dictionary<string, object> data = new Dictionary<string, object>();
+
             data.Add("advertenciaDocumentacion", advertenciaDocumentacion);
             data.Add("advertenciaOfertas", advertenciaOfertas);
             data.Add("advertenciaUso", advertenciaUso);

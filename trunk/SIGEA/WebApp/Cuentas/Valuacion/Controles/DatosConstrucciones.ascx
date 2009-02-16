@@ -47,6 +47,11 @@
         
         return data;
     }
+
+    // Visibilidad secciones
+    function showDatosConstruccionesCondominio() {
+        setVisibility($get("seccion_construcciones_condominio"), true);
+    }
 </script>
 
 <table>
@@ -91,7 +96,7 @@
         </td>
     </tr>
 </table>
-<table>
+<table id="seccion_construcciones_condominio" style="display:none;">
     <tr>
         <td class="celdaTitulo">
             Avance de obra en áreas comúnes en condominios:

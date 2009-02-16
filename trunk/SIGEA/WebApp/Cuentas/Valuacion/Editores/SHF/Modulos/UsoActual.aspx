@@ -120,9 +120,9 @@
                     </td>
                 </tr>
             </table>
-            <div class="barraMenu">
-                <asp:ImageButton ID="save_ImBtn" runat="server" SkinID="Save" />
-            </div>
+        </div>
+        <div class="barraMenu">
+            <asp:ImageButton ID="save_ImBtn" runat="server" SkinID="Save" />
         </div>
     </div>
     </form>

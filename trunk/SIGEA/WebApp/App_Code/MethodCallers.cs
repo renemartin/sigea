@@ -160,7 +160,6 @@ public class MethodCallers : System.Web.Services.WebService
     public IEnumerable<object> GetListaTiposOrientacion()
     {
         var lista = from e in data_context.TipoOrientacion
-                    orderby e.descripcion
                     select new { display = e.descripcion, value = e.idTipoOrientacion };
 
         return lista.ToArray();
@@ -170,7 +169,6 @@ public class MethodCallers : System.Web.Services.WebService
     public IEnumerable<object> GetListaTiposUbicacion()
     {
         var lista = from e in data_context.TipoUbicacion
-                    orderby e.descripcion
                     select new { display = e.descripcion, value = e.idTipoUbicacion };
 
         return lista.ToArray();
@@ -180,7 +178,6 @@ public class MethodCallers : System.Web.Services.WebService
     public IEnumerable<object> GetListaTiposTopografia()
     {
         var lista = from e in data_context.TipoTopografia
-                    orderby e.descripcion
                     select new { display = e.descripcion, value = e.idTipoTopografia };
 
         return lista.ToArray();
@@ -210,7 +207,6 @@ public class MethodCallers : System.Web.Services.WebService
     public IEnumerable<object> GetListaTiposFuente()
     {
         var lista = from e in data_context.TipoFuente
-                    orderby e.descripcion
                     select new { display = e.descripcion, value = e.idTipoFuente };
 
         return lista.ToArray();
@@ -361,46 +357,6 @@ public class MethodCallers : System.Web.Services.WebService
         var lista = from c in data_context.TipoComparable
                           orderby c.descripcion
                           select new { display = c.descripcion, value = c.idTipoComparable };
-
-        return lista.ToArray();
-    }
-
-    [WebMethod]
-    public IEnumerable<object> GetListaUsoSuelo()
-    {
-        var lista = from us in data_context.UsoSuelo
-                        orderby us.descripcion
-                        select new { display = us.descripcion, us.idUsoSuelo };
-
-        return lista.ToArray();
-    }
-
-    [WebMethod]
-    public IEnumerable<object> GetListaClase()
-    {
-        var lista = from c in data_context.Clase
-                    orderby c.descripcion
-                    select new { display = c.descripcion, c.idClase };
-
-        return lista.ToArray();
-    }
-
-    [WebMethod]
-    public IEnumerable<object> GetListaConservacion()
-    {
-        var lista = from c in data_context.Conservacion
-                           orderby c.descripcion
-                           select new { display = c.descripcion, c.idConservacion };
-
-        return lista.ToArray();
-    }
-
-    [WebMethod]
-    public IEnumerable<object> GetListaCalidadProyecto()
-    {
-        var lista = from cp in data_context.CalidadProyecto
-                               orderby cp.descripcion
-                               select new { display = cp.descripcion, cp.idCalidadProyecto };
 
         return lista.ToArray();
     }

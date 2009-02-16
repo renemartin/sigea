@@ -9,45 +9,60 @@
         fillTopografia("<%= topografia_DDList.ClientID %>");
         fillCaracPanoramicas("<%= caracPanoramicas_DDList.ClientID %>");
         fillUsoSuelo("<%= usoSuelo_DDList.ClientID %>");
-        fillFuente("<%= fuenteDensidad_DDList.ClientID %>");
         fillServidumbre("<%= servidumbre_DDList.ClientID %>");
-    }   
-    
-    //mostrar datos
-    function setDataTerreno(data) {
-        $get("<%= frentes_TBox.ClientID %>").value = data.frentes;
-        $get("<%= configuracionRegular_CBox.ClientID %>").checked = data.configuracionRegular;
-        $get("<%= lados_TBox.ClientID %>").value = data.lados;
-        $get("<%= ubicacion_DDList.ClientID %>").selectedValue = data.ubicacion;
-        $get("<%= topografia_DDList.ClientID %>").selectedValue = data.topografia;
-        $get("<%= caracPanoramicas_DDList.ClientID %>").selectedValue = data.caracPanoramicas;
-        $get("<%= usoSuelo_DDList.ClientID %>").selectedValue = data.usoSuelo;
-        $get("<%= densidadHabitacional_TBox.ClientID %>").value = data.densidadHabitacional;
-        $get("<%= fuenteDensidad_DDList.ClientID %>").selectedValue = data.fuenteDensidad;
-        $get("<%= habHectarea_TBox.ClientID %>").value = data.habHectarea;
-        $get("<%= vivHectarea_TBox.ClientID %>").value = data.vivHectarea;
-        $get("<%= servidumbre_DDList.ClientID %>").selectedValue = data.servidumbre;
+        fillFuente("<%= fuenteMedidas_DDList.ClientID %>");
+    }
+   
+    // Databindings
+    function setDatosTerreno(data) {
+        if (data != null) {
+            $get("<%= frentes_TBox.ClientID %>").value = data.frentes;
+            $get("<%= configuracionRegular_CBox.ClientID %>").checked = data.configuracionRegular;
+            $get("<%= lados_TBox.ClientID %>").value = data.lados;
+            $get("<%= ubicacion_DDList.ClientID %>").selectedValue = data.idTipoUbicacion;
+            $get("<%= topografia_DDList.ClientID %>").selectedValue = data.idTipoTopografia;
+            $get("<%= caracPanoramicas_DDList.ClientID %>").selectedValue = data.idTipoCaracteristicasPanoramicas;
+            $get("<%= usoSuelo_DDList.ClientID %>").selectedValue = data.idTipoUsoSuelo;
+            $get("<%= habHectarea_TBox.ClientID %>").value = data.densidadHabitantes;
+            $get("<%= vivHectarea_TBox.ClientID %>").value = data.densidadViviendas;
+            $get("<%= servidumbre_DDList.ClientID %>").selectedValue = data.idTipoServidumbre;
+            $get("<%= fuenteMedidas_DDList.ClientID %>").selectedValue = data.idFuenteMedidas;
+            $get("<%= otraFuente_TBox.ClientID %>").value = data.otraFuente;
+            $get("<%= colindancias_TBox.ClientID %>").value = data.descripcionColindancias;
+
+            setVisibility($get("seccion_fuente_medidas"), data.otraFuente != "");                       
+        }
     }
     
-    //guardar datos
-    function getDataTerreno() {
+    function getDatosTerreno() {
         var data = new Object();
         
         data.frentes = $get("<%= frentes_TBox.ClientID %>").value;
         data.configuracionRegular = $get("<%= configuracionRegular_CBox.ClientID %>").checked;
         data.lados = $get("<%= lados_TBox.ClientID %>").value;
-        data.ubicacion = $get("<%= ubicacion_DDList.ClientID %>").selectedValue;
-        data.topografia = $get("<%= topografia_DDList.ClientID %>").selectedValue;
-        data.caracPanoramicas = $get("<%= caracPanoramicas_DDList.ClientID %>").selectedValue;
-        data.usoSuelo = $get("<%= usoSuelo_DDList.ClientID %>").selectedValue;
-        data.densidadHabitacional = $get("<%= densidadHabitacional_TBox.ClientID %>").value;
-        data.fuenteDensidad = $get("<%= fuenteDensidad_DDList.ClientID %>").selectedValue;
-        data.habHectarea = $get("<%= habHectarea_TBox.ClientID %>").value;
-        data.vivHectarea = $get("<%= vivHectarea_TBox.ClientID %>").value;
-        data.servidumbre = $get("<%= servidumbre_DDList.ClientID %>").selectedValue;
+        data.idTipoUbicacion = $get("<%= ubicacion_DDList.ClientID %>").value;
+        data.idTipoTopografia = $get("<%= topografia_DDList.ClientID %>").value;
+        data.idTipoCaracteristicasPanoramicas = $get("<%= caracPanoramicas_DDList.ClientID %>").value;
+        data.idTipoUsoSuelo = $get("<%= usoSuelo_DDList.ClientID %>").value;
+        data.densidadHabitantes = $get("<%= habHectarea_TBox.ClientID %>").value;
+        data.densidadViviendas = $get("<%= vivHectarea_TBox.ClientID %>").value;
+        data.idTipoServidumbre = $get("<%= servidumbre_DDList.ClientID %>").value;
+        data.idFuenteMedidas = $get("<%= fuenteMedidas_DDList.ClientID %>").value;
+        data.otraFuente = getVisibility($get("seccion_fuente_medidas"))
+            ? $get("<%= otraFuente_TBox.ClientID %>").value : "";
+        data.descripcionColindancias = $get("<%= colindancias_TBox.ClientID %>").value;
         
         return data;
     }
+
+    // Validacion de selecciones
+    function setFuenteMedidasSelection() {
+        var fuente_medidas = $get("<%= fuenteMedidas_DDList.ClientID %>");
+
+        setVisibility($get("seccion_fuente_medidas"),
+            fuente_medidas.options[fuente_medidas.selectedIndex].text.toLowerCase() == "otra");
+    }
+    
 </script>
 
 <table>
@@ -109,21 +124,6 @@
     </tr>
     <tr>
         <td class="celdaTitulo">
-            Densidad habitacional:
-        </td>
-        <td class="celdaValor">
-            <asp:TextBox ID="densidadHabitacional_TBox" runat="server" SkinID="Numero"></asp:TextBox>
-        </td>
-        <td class="celdaTituloSec">
-            Fuente de densidad habitacional:
-        </td>
-        <td class="celdaValor">
-            <asp:DropDownList ID="fuenteDensidad_DDList" runat="server">
-            </asp:DropDownList>
-        </td>
-    </tr>
-    <tr>
-        <td class="celdaTitulo">
             Habitantes por hectárea:
         </td>
         <td class="celdaValor">
@@ -143,6 +143,36 @@
         <td class="celdaValor" colspan="3">
             <asp:DropDownList ID="servidumbre_DDList" runat="server">
             </asp:DropDownList>
+        </td>
+    </tr>
+</table>
+<table>
+    <tr>
+    <td colspan="2" class="celdaHeader">
+    Descripción de colindancias
+    </td>
+    </tr>
+    <tr>
+        <td class="celdaTitulo" valign="top">
+            Fuente de medidas y colindancias:
+        </td>
+        <td class="celdaValor">
+            <asp:DropDownList ID="fuenteMedidas_DDList" runat="server">
+            </asp:DropDownList>
+            <div id="seccion_fuente_medidas" style="display: none;">
+                <span class="subCampo">Especifique:</span>
+                <asp:TextBox ID="otraFuente_TBox" runat="server"></asp:TextBox></div>
+        </td>
+    </tr>
+    <tr>
+        <td class="celdaHeader" colspan="2">
+            Colindancias
+        </td>
+    </tr>
+    <tr>
+        <td class="celdaValor" colspan="2">
+            <asp:TextBox ID="colindancias_TBox" runat="server" TextMode="MultiLine" 
+                SkinID="MultiLine" Height="100px" Width="550px"></asp:TextBox>
         </td>
     </tr>
 </table>
