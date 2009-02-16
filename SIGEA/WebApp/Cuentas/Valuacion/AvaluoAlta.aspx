@@ -70,17 +70,17 @@
     <h1>
         Alta de avalúo inmobiliario</h1>
     <div class="formulario">
-        <h2>
+        
             Datos generales del avalúo</h2>
         <SIGEA:DatosGeneralesAvaluo ID="datosAvaluo_Ctrl" runat="server" />
-        <h2>
+        
             Datos del solicitante
         </h2>
         <SIGEA:DatosSolicitante ID="datosSolicitante_Ctrl" runat="server" />
-        <h2>
+        
             Datos del inmueble</h2>
         <SIGEA:DatosGeneralesInmueble ID="datosInmueble_Ctrl" runat="server" />
-        <h2>
+        
             Datos del propietario</h2>
         <SIGEA:DatosPropietario ID="datosPropietario_Ctrl" runat="server" />
         <div class="barraMenu">

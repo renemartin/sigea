@@ -15,11 +15,22 @@ function asyncCallSenderBack(result, context) {
     }
 }
 function asyncCallListBack(result, callBackList) {
-    if (result != null && callBackList != null) {
-        for (i = 0; i < result.length; i++) {
-            callBackList[i + 1](result[i]);
+    if (callBackList != null) {
+        if (result != null && result.length != undefined) {
+            for (i = 0; i < result.length; i++) {
+                callBackList[i + 1](result[i]);
+            }
+        }
+        else {
+            callBackList[1](result);
         }
 
+        callBackList[0]();
+    }
+}
+function asyncCallSingleListBack(result, callBackList) {
+    if (callBackList != null) {
+        callBackList[1](result);
         callBackList[0]();
     }
 }

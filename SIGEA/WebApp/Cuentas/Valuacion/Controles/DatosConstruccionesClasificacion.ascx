@@ -14,7 +14,7 @@
     }
     
     //mostrar datos
-    function setDataConstruccionesClasificacion(data) {
+    function setDatosConstruccionesClasificacion(data) {
         var i = null;
         var parent_id = "<%= ClientID %>";
         var filas_borrar = getCloningTableCount( parent_id + 'tabla_contrucciones') - data.length;
@@ -44,7 +44,7 @@
     }
     
     //guardar datos
-    function getDataContruccionesClasificacion() {
+    function getDatosContruccionesClasificacion() {
         var data = new Object();
         var i = null;
         var numero_tablas= getCloningTableCount('tabla_construcciones');

@@ -114,6 +114,70 @@ public class EntityWrappers : System.Web.Services.WebService
     }
 
     [WebMethod]
+    public void SaveAvaluo(
+        int idAvaluo
+        , Entity datosAvaluo
+        , Entity datosCredito
+        , Entity datosSolicitante
+        , Entity datosDireccionSolicitante)
+    {
+        SIGEADataContext data_context = new SIGEADataContext();
+        AvaluoInmobiliario avaluo = AvaluoInmobiliario.GetFromId(data_context, idAvaluo);
+
+        if (avaluo == null)
+            throw new Exception("El identificador del avalúo es inválido");
+
+        avaluo.SetData(datosAvaluo);
+
+        if (datosCredito != null)
+        {
+            DatoCredito credito = DatoCredito.GetForDataUpdate(data_context, idAvaluo);
+            credito.SetData(datosCredito);
+        }
+        else
+        {
+            avaluo.DatoCredito = null;
+        }
+
+        avaluo.Solicitante.SetData(datosSolicitante);
+        CodigoPostal cp_solicitante = CodigoPostal.GetFromData(data_context, datosDireccionSolicitante);
+        avaluo.Solicitante.Direccion.SetData(cp_solicitante, datosDireccionSolicitante);
+        data_context.SubmitChanges();
+    }
+
+    [WebMethod]
+    public void SaveDeclaraciones(
+        int idAvaluo
+        , Entity datosDeclaraciones
+        , Entity datosAdvertencias)
+    {
+        SIGEADataContext data_context = new SIGEADataContext();
+        Declaraciones declaracion = Declaraciones.GetForDataUpdate(data_context, idAvaluo);
+
+        if (declaracion == null)
+            throw new Exception("El identificador del avalúo es inválido");
+
+        declaracion.SetData(datosDeclaraciones, datosAdvertencias);
+        data_context.SubmitChanges();
+    }
+
+    [WebMethod]
+    public Entity[] LoadDeclaraciones(int idAvaluo)
+    {
+        Entity[] datos = new Entity[2];
+
+        Declaraciones declaraciones = Declaraciones.GetFromId(common_context, idAvaluo);
+
+        if (declaraciones != null)
+        {
+            datos[0] = declaraciones.GetDataDeclaraciones();
+            datos[1] = declaraciones.GetDataAdvertencias();
+        }
+
+        return datos;
+    }
+
+    [WebMethod]
     public void SaveAsignacionAvaluo(int idAvaluo, Entity datosAsignacion)
     {
         SIGEADataContext data_context = new SIGEADataContext();
@@ -164,54 +228,6 @@ public class EntityWrappers : System.Web.Services.WebService
         return AvaluoInmobiliario.GetEstadoInmueble(common_context, idAvaluo);
     }
 
-    [WebMethod]
-    public void SaveAvaluo(
-        int idAvaluo
-        , Entity datosAvaluo
-        , Entity datosCredito
-        , Entity datosSolicitante
-        , Entity datosDireccionSolicitante)
-    {
-        SIGEADataContext data_context = new SIGEADataContext();
-        AvaluoInmobiliario avaluo = AvaluoInmobiliario.GetFromId(data_context, idAvaluo);
-
-        if (avaluo == null)
-            throw new Exception("El identificador del avalúo es inválido");
-
-        avaluo.SetData(datosAvaluo);
-
-        if (datosCredito != null)
-        {
-            DatoCredito credito = DatoCredito.GetForDataUpdate(data_context, idAvaluo);
-            credito.SetData(datosCredito);
-        }
-        else
-        {
-            avaluo.DatoCredito = null;
-        }
-
-        avaluo.Solicitante.SetData(datosSolicitante);
-        CodigoPostal cp_solicitante = CodigoPostal.GetFromData(data_context, datosDireccionSolicitante);
-        avaluo.Solicitante.Direccion.SetData(cp_solicitante, datosDireccionSolicitante);
-        data_context.SubmitChanges();
-    }
-
-    [WebMethod]
-    public void saveDeclaraciones(
-        int idAvaluo
-        , Entity datosDeclaraciones
-        , Entity datosAdvertencias)
-    {
-        SIGEADataContext data_context = new SIGEADataContext();
-        Declaraciones declaracion = Declaraciones.GetForDataUpdate(data_context, idAvaluo);
-
-        if (declaracion == null)
-            throw new Exception("El identificador del avalúo es inválido");
-
-        declaracion.SetData(datosDeclaraciones, datosAdvertencias);
-        data_context.SubmitChanges();
-    }
-
     #endregion
 
     #region Inmuebles
@@ -260,6 +276,185 @@ public class EntityWrappers : System.Web.Services.WebService
         datos[4] = inmueble.Propietario.Direccion.GetData();
 
         return datos;
+    }
+
+    [WebMethod]
+    public void SaveUbicacionInmueble(
+        int idAvaluo
+        , Entity datosCalles
+        , Entity datosTerreno)
+    { 
+        SIGEADataContext data_context = new SIGEADataContext();
+        Inmueble inmueble = Inmueble.GetFromIdAvaluo(data_context, idAvaluo);
+
+        if (inmueble == null)
+        {
+            throw new Exception("El avalúo no cuenta con un inmueble registrado");
+        }
+
+        UbicacionCallesInmueble calles = UbicacionCallesInmueble.GetForDataUpdate(data_context, inmueble);
+        UbicacionInmueble ubicacion = UbicacionInmueble.GetForDataUpdate(data_context, inmueble);        
+
+        ubicacion.SetData(datosTerreno);
+        calles.SetData(datosCalles);
+
+        data_context.SubmitChanges();
+    }
+
+    [WebMethod]
+    public Entity[] LoadUbicacionInmueble(int idAvaluo)
+    {
+        Inmueble inmueble = Inmueble.GetFromIdAvaluo(common_context, idAvaluo);
+
+        if (inmueble == null)
+        {
+            throw new Exception("El avalúo no cuenta con un inmueble registrado");
+        }
+
+        Entity[] datos = new Entity[2];
+        if (inmueble.UbicacionCallesInmueble != null)
+            datos[0] = inmueble.UbicacionCallesInmueble.GetData();
+        if(inmueble.UbicacionInmueble != null)
+            datos[1] = inmueble.UbicacionInmueble.GetData();
+
+        return datos;
+    }
+
+    [WebMethod]
+    public void SaveEntorno(
+        int idAvaluo
+        , Entity datosEntorno
+        , Entity[] datosViasAcceso)
+    {
+        SIGEADataContext data_context = new SIGEADataContext();
+        Inmueble inmueble = Inmueble.GetFromIdAvaluo(data_context, idAvaluo);
+
+        if (inmueble == null)
+        {
+            throw new Exception("El avalúo no cuenta con un inmueble registrado");
+        }
+
+        EntornoInmueble entorno = EntornoInmueble.GetForDataUpdate(data_context, inmueble);
+        entorno.SetData(datosEntorno);
+
+        ViasAcceso.SetViasAcceso(inmueble, datosViasAcceso);
+        data_context.SubmitChanges();
+    }
+
+    [WebMethod]
+    public Entity LoadEntorno(int idAvaluo)
+    {
+        Inmueble inmueble = Inmueble.GetFromIdAvaluo(common_context, idAvaluo);
+
+        if (inmueble == null)
+        {
+            throw new Exception("El avalúo no cuenta con un inmueble registrado");
+        }
+
+        if (inmueble.EntornoInmueble == null)
+            return null;
+
+        return inmueble.EntornoInmueble.GetData();
+    }
+
+    [WebMethod]
+    public Entity[] LoadViasAcceso(int idAvaluo)
+    {
+        Inmueble inmueble = Inmueble.GetFromIdAvaluo(common_context, idAvaluo);
+
+        if (inmueble == null)
+        {
+            throw new Exception("El avalúo no cuenta con un inmueble registrado");
+        }
+
+        return ViasAcceso.GetViasAcceso(inmueble);
+    }
+
+    [WebMethod]
+    public void SaveInfraestructura(
+        int idAvaluo
+        , Entity datosInfraestructura
+        , Entity datosServicios)
+    {
+        SIGEADataContext data_context = new SIGEADataContext();
+        Inmueble inmueble = Inmueble.GetFromIdAvaluo(data_context, idAvaluo);
+
+        if (inmueble == null)
+        {
+            throw new Exception("El avalúo no cuenta con un inmueble registrado");
+        }
+
+        InfraestructuraInmueble infraestructura = InfraestructuraInmueble.GetForDataUpdate(data_context, inmueble);
+        infraestructura.SetData(datosInfraestructura);
+
+        ServiciosInmueble servicios = ServiciosInmueble.GetForDataUpdate(data_context, inmueble);
+        servicios.SetData(datosServicios);
+
+        data_context.SubmitChanges();
+    }
+
+    [WebMethod]
+    public Entity[] LoadInfraestructura(int idAvaluo)
+    {
+        Inmueble inmueble = Inmueble.GetFromIdAvaluo(common_context, idAvaluo);
+
+        if (inmueble == null)
+        {
+            throw new Exception("El avalúo no cuenta con un inmueble registrado");
+        }
+
+        Entity[] datos = new Entity[2];
+        if (inmueble.InfraestructuraInmueble != null)
+            datos[0] = inmueble.InfraestructuraInmueble.GetData();
+        if (inmueble.ServiciosInmueble != null)
+            datos[1] = inmueble.ServiciosInmueble.GetData();
+
+        return datos;
+    }
+
+    [WebMethod]
+    public void SaveEquipamiento(int idAvaluo, Entity datosEquipamiento)
+    {
+        SIGEADataContext data_context = new SIGEADataContext();
+        Inmueble inmueble = Inmueble.GetFromIdAvaluo(data_context, idAvaluo);
+
+        if (inmueble == null)
+        {
+            throw new Exception("El avalúo no cuenta con un inmueble registrado");
+        }
+
+        EquipamientoInmueble equipamiento = EquipamientoInmueble.GetForDataUpdate(data_context, inmueble);
+        equipamiento.SetData(datosEquipamiento);
+        data_context.SubmitChanges();
+    }
+
+    [WebMethod]
+    public Entity LoadEquipamiento(int idAvaluo)
+    {
+        Inmueble inmueble = Inmueble.GetFromIdAvaluo(common_context, idAvaluo);
+
+        if (inmueble == null)
+        {
+            throw new Exception("El avalúo no cuenta con un inmueble registrado");
+        }
+
+        if (inmueble.EquipamientoInmueble == null)
+            return null;
+
+        return inmueble.EquipamientoInmueble.GetData();
+    }
+
+    [WebMethod]
+    public bool GetInmuebleEsCondominal(int idAvaluo)
+    {
+        Inmueble inmueble = Inmueble.GetFromIdAvaluo(common_context, idAvaluo);
+
+        if (inmueble == null)
+        {
+            throw new Exception("El avalúo no cuenta con un inmueble registrado");
+        }
+
+        return inmueble.RegimenPropiedad.descripcion.ToLower() == "condominal";
     }
 
     #endregion

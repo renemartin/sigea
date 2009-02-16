@@ -4,7 +4,7 @@
 
 <script type="text/javascript">
     //mostrar datos
-    function setDataDatosAcabados(data) {
+    function setDatosDatosAcabados(data) {
         $get("<%= salaPisos_TBox.ClientID %>").value = data.salaPisos;
         $get("<%= salaMuros_TBox.ClientID %>").value = data.salaMuros;
         $get("<%= salaPlafones_TBox.ClientID %>").value = data.salaPlafones;
@@ -29,7 +29,7 @@
         $get("<%= fachada_TBox.ClientID %>").value = data.fachadaPisos;
     }
     //guardar datos
-    function getDataDatosAcabados() {
+    function getDatosDatosAcabados() {
         var data = new Object();
         
         data.salaPisos = $get("<%= salaPisos_TBox.ClientID %>").value;
@@ -61,16 +61,16 @@
 </script>
 
 <table>
-    <tr class="filaHeader">
+    <tr>
         <td>
         </td>
-        <td>
+        <td class="celdaHeader">
             Pisos
         </td>
-        <td>
+        <td class="celdaHeader">
             Muros
         </td>
-        <td>
+        <td class="celdaHeader">
             Plafones
         </td>
     </tr>
@@ -199,7 +199,7 @@
         </td>
         <td class="celdaValor" colspan="3">
             <asp:TextBox ID="fachada_TBox" runat="server" TextMode="MultiLine" 
-                SkinID="MultiLine"></asp:TextBox>
+                SkinID="MultiLine" Height="50px" Width="544px"></asp:TextBox>
         </td>
     </tr>
 </table>

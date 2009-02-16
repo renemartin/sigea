@@ -68,6 +68,7 @@
     <Compile Include="Entities\Declaraciones.cs" />
     <Compile Include="Entities\Direccion.cs" />
     <Compile Include="Entities\DireccionInmueble.cs" />
+    <Compile Include="Entities\EntornoInmueble.cs" />
     <Compile Include="Entities\Inmueble.cs" />
     <Compile Include="Entities\Personal.cs" />
     <Compile Include="Entities\Propietario.cs" />
@@ -81,6 +82,7 @@
     <Compile Include="Entities\StatusAvaluo.cs" />
     <Compile Include="Entities\TipoComparable.cs" />
     <Compile Include="Entities\Ubicaciones.cs" />
+    <Compile Include="Entities\UbicacionInmueble.cs" />
     <Compile Include="Entities\Usuario.cs" />
     <Compile Include="Entities\Valuador.cs" />
     <Compile Include="Properties\Settings.Designer.cs">

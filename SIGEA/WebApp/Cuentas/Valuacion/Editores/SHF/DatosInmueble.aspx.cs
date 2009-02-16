@@ -53,10 +53,6 @@ public partial class Cuentas_Valuacion_Editores_SHF_DatosInmueble : System.Web.U
         SetEdit("form_terreno", editar_terreno_ImBtn, guardar_terreno_ImBtn, cancelar_terreno_ImBtn);
         SetCancel("form_terreno", editar_terreno_ImBtn, guardar_terreno_ImBtn, cancelar_terreno_ImBtn);
         guardar_terreno_ImBtn.OnClientClick = "saveDatosTerreno(); return false;";
-
-        SetEdit("form_colindancias", editar_colindancias_ImBtn, guardar_colindancias_ImBtn, cancelar_colindancias_ImBtn);
-        SetCancel("form_colindancias", editar_colindancias_ImBtn, guardar_colindancias_ImBtn, cancelar_colindancias_ImBtn);
-        guardar_colindancias_ImBtn.OnClientClick = "saveColindancias(); return false;";
     }
 
     private void SetEdit(string form, ImageButton editar, ImageButton guardar, ImageButton cancelar)

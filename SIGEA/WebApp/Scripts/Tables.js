@@ -21,7 +21,7 @@ function addClonedRow(table_id) {
     var base_row = tables[table_id].base_row;
     var cloned_row = base_row.cloneNode(true);
 
-    setupClonedRow(cloned_row, tables[table_id].count++);
+    setupClonedRow(cloned_row, ++tables[table_id].count);
     base_row.parentNode.appendChild(cloned_row);
 }
 

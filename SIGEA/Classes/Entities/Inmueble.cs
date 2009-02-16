@@ -30,6 +30,18 @@ namespace SIGEA.Classes.Entities
 
             return inmueble_query.Single();
         }
+        public static int GetIdFromAvaluo(SIGEADataContext data_context, int idAvaluo)
+        {
+            var inmueble_query = from i in data_context.Inmueble
+                                 join a in data_context.AvaluoInmobiliario on i.idInmueble equals a.idInmueble
+                                 where a.idAvaluo == idAvaluo
+                                 select i.idInmueble;
+
+            if (!inmueble_query.Any())
+                return 0;
+
+            return inmueble_query.Single();
+        }
 
         public Dictionary<string, object> GetData()
         {

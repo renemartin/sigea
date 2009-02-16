@@ -9,6 +9,14 @@ public partial class Cuentas_Valuacion_Controles_DatosTerreno : System.Web.UI.Us
 {
     protected void Page_Load(object sender, EventArgs e)
     {
+        if (!IsPostBack)
+        {
+            SetAttributes();
+        }
+    }
 
+    private void SetAttributes()
+    {
+        fuenteMedidas_DDList.Attributes.Add("onchange", "setFuenteMedidasSelection();");
     }
 }

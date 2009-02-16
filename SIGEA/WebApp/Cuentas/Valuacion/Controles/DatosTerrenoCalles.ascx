@@ -10,26 +10,28 @@
         fillOrientacion("<%= orientacion3_DDList.ClientID %>");
     }   
     
-    //mostrar datos 
+    //mostrar datos
     function setDatosTerrenoCalles(data) {
-        $get("<%= calleTrans1_TBox.ClientID %>").value = data.calleTrans1;
-        $get("<%= calleTrans2_TBox.ClientID %>").value = data.calleTrans2;
-        $get("<%= calleLimitrofe_TBox.ClientID %>").value = data.calleLimitrofe;
-        $get("<%= orientacion1_DDList.ClientID %>").selectedValue = data.orientacion1;
-        $get("<%= orientacion2_DDList.ClientID %>").selectedValue = data.orientacion2;
-        $get("<%= orientacion3_DDList.ClientID %>").selectedValue = data.orientacion3;
+        if (data != null) {
+            $get("<%= calleTrans1_TBox.ClientID %>").value = data.calleTransversal1;
+            $get("<%= calleTrans2_TBox.ClientID %>").value = data.calleTransversal2;
+            $get("<%= calleLimitrofe_TBox.ClientID %>").value = data.calleLimitrofe;
+            $get("<%= orientacion1_DDList.ClientID %>").selectedValue = data.idTipoOrientacion1;
+            $get("<%= orientacion2_DDList.ClientID %>").selectedValue = data.idTipoOrientacion2;
+            $get("<%= orientacion3_DDList.ClientID %>").selectedValue = data.idTipoOrientacion3;
+        }
     }
     
     //guardar datos
     function getDatosTerrenoCalles() {
         var data = new Object();
         
-        data.calleTrans1 = $get("<%= calleTrans1_TBox.ClientID %>").value;
-        data.calleTrans2 = $get("<%= calleTrans2_TBox.ClientID %>").value;
+        data.calleTransversal1 = $get("<%= calleTrans1_TBox.ClientID %>").value;
+        data.calleTransversal2 = $get("<%= calleTrans2_TBox.ClientID %>").value;
         data.calleLimitrofe = $get("<%= calleLimitrofe_TBox.ClientID %>").value;
-        data.orientacion1 = $get("<%= orientacion1_DDList.ClientID %>").selectedValue;
-        data.orientacion2 = $get("<%= orientacion2_DDList.ClientID %>").selectedValue;
-        data.orientacion3 = $get("<%= orientacion3_DDList.ClientID %>").selectedValue;
+        data.idTipoOrientacion1 = $get("<%= orientacion1_DDList.ClientID %>").value;
+        data.idTipoOrientacion2 = $get("<%= orientacion2_DDList.ClientID %>").value;
+        data.idTipoOrientacion3 = $get("<%= orientacion3_DDList.ClientID %>").value;
     
         return data;
     }

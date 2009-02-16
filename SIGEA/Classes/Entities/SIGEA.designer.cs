@@ -33,9 +33,6 @@ namespace SIGEA.Classes.Entities
     partial void InsertAcabadoTipoConstruccion(AcabadoTipoConstruccion instance);
     partial void UpdateAcabadoTipoConstruccion(AcabadoTipoConstruccion instance);
     partial void DeleteAcabadoTipoConstruccion(AcabadoTipoConstruccion instance);
-    partial void InsertViasAcceso(ViasAcceso instance);
-    partial void UpdateViasAcceso(ViasAcceso instance);
-    partial void DeleteViasAcceso(ViasAcceso instance);
     partial void InsertArchivo(Archivo instance);
     partial void UpdateArchivo(Archivo instance);
     partial void DeleteArchivo(Archivo instance);
@@ -150,9 +147,6 @@ namespace SIGEA.Classes.Entities
     partial void InsertHistorialRevision(HistorialRevision instance);
     partial void UpdateHistorialRevision(HistorialRevision instance);
     partial void DeleteHistorialRevision(HistorialRevision instance);
-    partial void InsertInfraestructuraInmueble(InfraestructuraInmueble instance);
-    partial void UpdateInfraestructuraInmueble(InfraestructuraInmueble instance);
-    partial void DeleteInfraestructuraInmueble(InfraestructuraInmueble instance);
     partial void InsertInmueble(Inmueble instance);
     partial void UpdateInmueble(Inmueble instance);
     partial void DeleteInmueble(Inmueble instance);
@@ -198,9 +192,6 @@ namespace SIGEA.Classes.Entities
     partial void InsertRolUsuario(RolUsuario instance);
     partial void UpdateRolUsuario(RolUsuario instance);
     partial void DeleteRolUsuario(RolUsuario instance);
-    partial void InsertServiciosInmueble(ServiciosInmueble instance);
-    partial void UpdateServiciosInmueble(ServiciosInmueble instance);
-    partial void DeleteServiciosInmueble(ServiciosInmueble instance);
     partial void InsertSolicitante(Solicitante instance);
     partial void UpdateSolicitante(Solicitante instance);
     partial void DeleteSolicitante(Solicitante instance);
@@ -297,9 +288,6 @@ namespace SIGEA.Classes.Entities
     partial void InsertTipoValuador(TipoValuador instance);
     partial void UpdateTipoValuador(TipoValuador instance);
     partial void DeleteTipoValuador(TipoValuador instance);
-    partial void InsertUbicacionInmueble(UbicacionInmueble instance);
-    partial void UpdateUbicacionInmueble(UbicacionInmueble instance);
-    partial void DeleteUbicacionInmueble(UbicacionInmueble instance);
     partial void InsertUniversidad(Universidad instance);
     partial void UpdateUniversidad(Universidad instance);
     partial void DeleteUniversidad(Universidad instance);
@@ -351,6 +339,24 @@ namespace SIGEA.Classes.Entities
     partial void InsertValuador(Valuador instance);
     partial void UpdateValuador(Valuador instance);
     partial void DeleteValuador(Valuador instance);
+    partial void InsertUbicacionInmueble(UbicacionInmueble instance);
+    partial void UpdateUbicacionInmueble(UbicacionInmueble instance);
+    partial void DeleteUbicacionInmueble(UbicacionInmueble instance);
+    partial void InsertUbicacionCallesInmueble(UbicacionCallesInmueble instance);
+    partial void UpdateUbicacionCallesInmueble(UbicacionCallesInmueble instance);
+    partial void DeleteUbicacionCallesInmueble(UbicacionCallesInmueble instance);
+    partial void InsertViasAcceso(ViasAcceso instance);
+    partial void UpdateViasAcceso(ViasAcceso instance);
+    partial void DeleteViasAcceso(ViasAcceso instance);
+    partial void InsertEquipamientoInmueble(EquipamientoInmueble instance);
+    partial void UpdateEquipamientoInmueble(EquipamientoInmueble instance);
+    partial void DeleteEquipamientoInmueble(EquipamientoInmueble instance);
+    partial void InsertInfraestructuraInmueble(InfraestructuraInmueble instance);
+    partial void UpdateInfraestructuraInmueble(InfraestructuraInmueble instance);
+    partial void DeleteInfraestructuraInmueble(InfraestructuraInmueble instance);
+    partial void InsertServiciosInmueble(ServiciosInmueble instance);
+    partial void UpdateServiciosInmueble(ServiciosInmueble instance);
+    partial void DeleteServiciosInmueble(ServiciosInmueble instance);
     #endregion
 		
 		public SIGEADataContext() : 
@@ -388,14 +394,6 @@ namespace SIGEA.Classes.Entities
 			get
 			{
 				return this.GetTable<AcabadoTipoConstruccion>();
-			}
-		}
-		
-		public System.Data.Linq.Table<ViasAcceso> ViasAcceso
-		{
-			get
-			{
-				return this.GetTable<ViasAcceso>();
 			}
 		}
 		
@@ -711,14 +709,6 @@ namespace SIGEA.Classes.Entities
 			}
 		}
 		
-		public System.Data.Linq.Table<InfraestructuraInmueble> InfraestructuraInmueble
-		{
-			get
-			{
-				return this.GetTable<InfraestructuraInmueble>();
-			}
-		}
-		
 		public System.Data.Linq.Table<Inmueble> Inmueble
 		{
 			get
@@ -836,14 +826,6 @@ namespace SIGEA.Classes.Entities
 			get
 			{
 				return this.GetTable<RolUsuario>();
-			}
-		}
-		
-		public System.Data.Linq.Table<ServiciosInmueble> ServiciosInmueble
-		{
-			get
-			{
-				return this.GetTable<ServiciosInmueble>();
 			}
 		}
 		
@@ -1103,14 +1085,6 @@ namespace SIGEA.Classes.Entities
 			}
 		}
 		
-		public System.Data.Linq.Table<UbicacionInmueble> UbicacionInmueble
-		{
-			get
-			{
-				return this.GetTable<UbicacionInmueble>();
-			}
-		}
-		
 		public System.Data.Linq.Table<Universidad> Universidad
 		{
 			get
@@ -1244,6 +1218,54 @@ namespace SIGEA.Classes.Entities
 			get
 			{
 				return this.GetTable<Valuador>();
+			}
+		}
+		
+		public System.Data.Linq.Table<UbicacionInmueble> UbicacionInmueble
+		{
+			get
+			{
+				return this.GetTable<UbicacionInmueble>();
+			}
+		}
+		
+		public System.Data.Linq.Table<UbicacionCallesInmueble> UbicacionCallesInmueble
+		{
+			get
+			{
+				return this.GetTable<UbicacionCallesInmueble>();
+			}
+		}
+		
+		public System.Data.Linq.Table<ViasAcceso> ViasAcceso
+		{
+			get
+			{
+				return this.GetTable<ViasAcceso>();
+			}
+		}
+		
+		public System.Data.Linq.Table<EquipamientoInmueble> EquipamientoInmueble
+		{
+			get
+			{
+				return this.GetTable<EquipamientoInmueble>();
+			}
+		}
+		
+		public System.Data.Linq.Table<InfraestructuraInmueble> InfraestructuraInmueble
+		{
+			get
+			{
+				return this.GetTable<InfraestructuraInmueble>();
+			}
+		}
+		
+		public System.Data.Linq.Table<ServiciosInmueble> ServiciosInmueble
+		{
+			get
+			{
+				return this.GetTable<ServiciosInmueble>();
 			}
 		}
 		
@@ -1502,181 +1524,6 @@ namespace SIGEA.Classes.Entities
 						this._numeroTipo = default(short);
 					}
 					this.SendPropertyChanged("TipoConstruccion");
-				}
-			}
-		}
-		
-		public event PropertyChangingEventHandler PropertyChanging;
-		
-		public event PropertyChangedEventHandler PropertyChanged;
-		
-		protected virtual void SendPropertyChanging()
-		{
-			if ((this.PropertyChanging != null))
-			{
-				this.PropertyChanging(this, emptyChangingEventArgs);
-			}
-		}
-		
-		protected virtual void SendPropertyChanged(String propertyName)
-		{
-			if ((this.PropertyChanged != null))
-			{
-				this.PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
-			}
-		}
-	}
-	
-	[Table(Name="dbo.ViasAcceso")]
-	public partial class ViasAcceso : INotifyPropertyChanging, INotifyPropertyChanged
-	{
-		
-		private static PropertyChangingEventArgs emptyChangingEventArgs = new PropertyChangingEventArgs(String.Empty);
-		
-		private int _idViaAcceso;
-		
-		private int _idInmueble;
-		
-		private short _idImportanciaVia;
-		
-		private string _nombreVia;
-		
-		private EntityRef<Inmueble> _Inmueble;
-		
-    #region Extensibility Method Definitions
-    partial void OnLoaded();
-    partial void OnValidate(System.Data.Linq.ChangeAction action);
-    partial void OnCreated();
-    partial void OnidViaAccesoChanging(int value);
-    partial void OnidViaAccesoChanged();
-    partial void OnidInmuebleChanging(int value);
-    partial void OnidInmuebleChanged();
-    partial void OnidImportanciaViaChanging(short value);
-    partial void OnidImportanciaViaChanged();
-    partial void OnnombreViaChanging(string value);
-    partial void OnnombreViaChanged();
-    #endregion
-		
-		public ViasAcceso()
-		{
-			this._Inmueble = default(EntityRef<Inmueble>);
-			OnCreated();
-		}
-		
-		[Column(Storage="_idViaAcceso", AutoSync=AutoSync.OnInsert, DbType="Int NOT NULL IDENTITY", IsPrimaryKey=true, IsDbGenerated=true)]
-		public int idViaAcceso
-		{
-			get
-			{
-				return this._idViaAcceso;
-			}
-			set
-			{
-				if ((this._idViaAcceso != value))
-				{
-					this.OnidViaAccesoChanging(value);
-					this.SendPropertyChanging();
-					this._idViaAcceso = value;
-					this.SendPropertyChanged("idViaAcceso");
-					this.OnidViaAccesoChanged();
-				}
-			}
-		}
-		
-		[Column(Storage="_idInmueble", DbType="Int NOT NULL")]
-		public int idInmueble
-		{
-			get
-			{
-				return this._idInmueble;
-			}
-			set
-			{
-				if ((this._idInmueble != value))
-				{
-					if (this._Inmueble.HasLoadedOrAssignedValue)
-					{
-						throw new System.Data.Linq.ForeignKeyReferenceAlreadyHasValueException();
-					}
-					this.OnidInmuebleChanging(value);
-					this.SendPropertyChanging();
-					this._idInmueble = value;
-					this.SendPropertyChanged("idInmueble");
-					this.OnidInmuebleChanged();
-				}
-			}
-		}
-		
-		[Column(Storage="_idImportanciaVia", DbType="SmallInt NOT NULL")]
-		public short idImportanciaVia
-		{
-			get
-			{
-				return this._idImportanciaVia;
-			}
-			set
-			{
-				if ((this._idImportanciaVia != value))
-				{
-					this.OnidImportanciaViaChanging(value);
-					this.SendPropertyChanging();
-					this._idImportanciaVia = value;
-					this.SendPropertyChanged("idImportanciaVia");
-					this.OnidImportanciaViaChanged();
-				}
-			}
-		}
-		
-		[Column(Storage="_nombreVia", DbType="NVarChar(50) NOT NULL", CanBeNull=false)]
-		public string nombreVia
-		{
-			get
-			{
-				return this._nombreVia;
-			}
-			set
-			{
-				if ((this._nombreVia != value))
-				{
-					this.OnnombreViaChanging(value);
-					this.SendPropertyChanging();
-					this._nombreVia = value;
-					this.SendPropertyChanged("nombreVia");
-					this.OnnombreViaChanged();
-				}
-			}
-		}
-		
-		[Association(Name="Inmueble_ViasAcceso", Storage="_Inmueble", ThisKey="idInmueble", OtherKey="idInmueble", IsForeignKey=true, DeleteOnNull=true, DeleteRule="CASCADE")]
-		public Inmueble Inmueble
-		{
-			get
-			{
-				return this._Inmueble.Entity;
-			}
-			set
-			{
-				Inmueble previousValue = this._Inmueble.Entity;
-				if (((previousValue != value) 
-							|| (this._Inmueble.HasLoadedOrAssignedValue == false)))
-				{
-					this.SendPropertyChanging();
-					if ((previousValue != null))
-					{
-						this._Inmueble.Entity = null;
-						previousValue.ViasAcceso.Remove(this);
-					}
-					this._Inmueble.Entity = value;
-					if ((value != null))
-					{
-						value.ViasAcceso.Add(this);
-						this._idInmueble = value.idInmueble;
-					}
-					else
-					{
-						this._idInmueble = default(int);
-					}
-					this.SendPropertyChanged("Inmueble");
 				}
 			}
 		}
@@ -10421,8 +10268,6 @@ namespace SIGEA.Classes.Entities
 		
 		private short _idTipoConstrucciones;
 		
-		private short _idTipoCaracteristicasPanoramicas;
-		
 		private short _idTipoDensidadPoblacion;
 		
 		private short _idTipoProximidadUrbana;
@@ -10443,8 +10288,6 @@ namespace SIGEA.Classes.Entities
     partial void OnidTipoClasificacionZonaChanged();
     partial void OnidTipoConstruccionesChanging(short value);
     partial void OnidTipoConstruccionesChanged();
-    partial void OnidTipoCaracteristicasPanoramicasChanging(short value);
-    partial void OnidTipoCaracteristicasPanoramicasChanged();
     partial void OnidTipoDensidadPoblacionChanging(short value);
     partial void OnidTipoDensidadPoblacionChanged();
     partial void OnidTipoProximidadUrbanaChanging(short value);
@@ -10521,26 +10364,6 @@ namespace SIGEA.Classes.Entities
 					this._idTipoConstrucciones = value;
 					this.SendPropertyChanged("idTipoConstrucciones");
 					this.OnidTipoConstruccionesChanged();
-				}
-			}
-		}
-		
-		[Column(Storage="_idTipoCaracteristicasPanoramicas", DbType="SmallInt NOT NULL")]
-		public short idTipoCaracteristicasPanoramicas
-		{
-			get
-			{
-				return this._idTipoCaracteristicasPanoramicas;
-			}
-			set
-			{
-				if ((this._idTipoCaracteristicasPanoramicas != value))
-				{
-					this.OnidTipoCaracteristicasPanoramicasChanging(value);
-					this.SendPropertyChanging();
-					this._idTipoCaracteristicasPanoramicas = value;
-					this.SendPropertyChanged("idTipoCaracteristicasPanoramicas");
-					this.OnidTipoCaracteristicasPanoramicasChanged();
 				}
 			}
 		}
@@ -12685,469 +12508,6 @@ namespace SIGEA.Classes.Entities
 		}
 	}
 	
-	[Table(Name="dbo.InfraestructuraInmueble")]
-	public partial class InfraestructuraInmueble : INotifyPropertyChanging, INotifyPropertyChanged
-	{
-		
-		private static PropertyChangingEventArgs emptyChangingEventArgs = new PropertyChangingEventArgs(String.Empty);
-		
-		private int _idInmueble;
-		
-		private short _idTipoAguaPotable;
-		
-		private short _idTipoElectrificacion;
-		
-		private short _idTipoDrenaje;
-		
-		private short _idTipoAlumbrado;
-		
-		private short _idTipoVialidades;
-		
-		private string _otroVialidades;
-		
-		private double _anchoVialidades;
-		
-		private short _idTipoBanquetas;
-		
-		private string _otroBanquetas;
-		
-		private double _anchoBanquetas;
-		
-		private short _idTipoGuarniciones;
-		
-		private string _otroGuarniciones;
-		
-		private double _anchoGuarniciones;
-		
-		private double _nivelInfraestructura;
-		
-		private short _nivelInfraestructuraSHF;
-		
-		private EntityRef<Inmueble> _Inmueble;
-		
-    #region Extensibility Method Definitions
-    partial void OnLoaded();
-    partial void OnValidate(System.Data.Linq.ChangeAction action);
-    partial void OnCreated();
-    partial void OnidInmuebleChanging(int value);
-    partial void OnidInmuebleChanged();
-    partial void OnidTipoAguaPotableChanging(short value);
-    partial void OnidTipoAguaPotableChanged();
-    partial void OnidTipoElectrificacionChanging(short value);
-    partial void OnidTipoElectrificacionChanged();
-    partial void OnidTipoDrenajeChanging(short value);
-    partial void OnidTipoDrenajeChanged();
-    partial void OnidTipoAlumbradoChanging(short value);
-    partial void OnidTipoAlumbradoChanged();
-    partial void OnidTipoVialidadesChanging(short value);
-    partial void OnidTipoVialidadesChanged();
-    partial void OnotroVialidadesChanging(string value);
-    partial void OnotroVialidadesChanged();
-    partial void OnanchoVialidadesChanging(double value);
-    partial void OnanchoVialidadesChanged();
-    partial void OnidTipoBanquetasChanging(short value);
-    partial void OnidTipoBanquetasChanged();
-    partial void OnotroBanquetasChanging(string value);
-    partial void OnotroBanquetasChanged();
-    partial void OnanchoBanquetasChanging(double value);
-    partial void OnanchoBanquetasChanged();
-    partial void OnidTipoGuarnicionesChanging(short value);
-    partial void OnidTipoGuarnicionesChanged();
-    partial void OnotroGuarnicionesChanging(string value);
-    partial void OnotroGuarnicionesChanged();
-    partial void OnanchoGuarnicionesChanging(double value);
-    partial void OnanchoGuarnicionesChanged();
-    partial void OnnivelInfraestructuraChanging(double value);
-    partial void OnnivelInfraestructuraChanged();
-    partial void OnnivelInfraestructuraSHFChanging(short value);
-    partial void OnnivelInfraestructuraSHFChanged();
-    #endregion
-		
-		public InfraestructuraInmueble()
-		{
-			this._Inmueble = default(EntityRef<Inmueble>);
-			OnCreated();
-		}
-		
-		[Column(Storage="_idInmueble", DbType="Int NOT NULL", IsPrimaryKey=true)]
-		public int idInmueble
-		{
-			get
-			{
-				return this._idInmueble;
-			}
-			set
-			{
-				if ((this._idInmueble != value))
-				{
-					if (this._Inmueble.HasLoadedOrAssignedValue)
-					{
-						throw new System.Data.Linq.ForeignKeyReferenceAlreadyHasValueException();
-					}
-					this.OnidInmuebleChanging(value);
-					this.SendPropertyChanging();
-					this._idInmueble = value;
-					this.SendPropertyChanged("idInmueble");
-					this.OnidInmuebleChanged();
-				}
-			}
-		}
-		
-		[Column(Storage="_idTipoAguaPotable", DbType="SmallInt NOT NULL")]
-		public short idTipoAguaPotable
-		{
-			get
-			{
-				return this._idTipoAguaPotable;
-			}
-			set
-			{
-				if ((this._idTipoAguaPotable != value))
-				{
-					this.OnidTipoAguaPotableChanging(value);
-					this.SendPropertyChanging();
-					this._idTipoAguaPotable = value;
-					this.SendPropertyChanged("idTipoAguaPotable");
-					this.OnidTipoAguaPotableChanged();
-				}
-			}
-		}
-		
-		[Column(Storage="_idTipoElectrificacion", DbType="SmallInt NOT NULL")]
-		public short idTipoElectrificacion
-		{
-			get
-			{
-				return this._idTipoElectrificacion;
-			}
-			set
-			{
-				if ((this._idTipoElectrificacion != value))
-				{
-					this.OnidTipoElectrificacionChanging(value);
-					this.SendPropertyChanging();
-					this._idTipoElectrificacion = value;
-					this.SendPropertyChanged("idTipoElectrificacion");
-					this.OnidTipoElectrificacionChanged();
-				}
-			}
-		}
-		
-		[Column(Storage="_idTipoDrenaje", DbType="SmallInt NOT NULL")]
-		public short idTipoDrenaje
-		{
-			get
-			{
-				return this._idTipoDrenaje;
-			}
-			set
-			{
-				if ((this._idTipoDrenaje != value))
-				{
-					this.OnidTipoDrenajeChanging(value);
-					this.SendPropertyChanging();
-					this._idTipoDrenaje = value;
-					this.SendPropertyChanged("idTipoDrenaje");
-					this.OnidTipoDrenajeChanged();
-				}
-			}
-		}
-		
-		[Column(Storage="_idTipoAlumbrado", DbType="SmallInt NOT NULL")]
-		public short idTipoAlumbrado
-		{
-			get
-			{
-				return this._idTipoAlumbrado;
-			}
-			set
-			{
-				if ((this._idTipoAlumbrado != value))
-				{
-					this.OnidTipoAlumbradoChanging(value);
-					this.SendPropertyChanging();
-					this._idTipoAlumbrado = value;
-					this.SendPropertyChanged("idTipoAlumbrado");
-					this.OnidTipoAlumbradoChanged();
-				}
-			}
-		}
-		
-		[Column(Storage="_idTipoVialidades", DbType="SmallInt NOT NULL")]
-		public short idTipoVialidades
-		{
-			get
-			{
-				return this._idTipoVialidades;
-			}
-			set
-			{
-				if ((this._idTipoVialidades != value))
-				{
-					this.OnidTipoVialidadesChanging(value);
-					this.SendPropertyChanging();
-					this._idTipoVialidades = value;
-					this.SendPropertyChanged("idTipoVialidades");
-					this.OnidTipoVialidadesChanged();
-				}
-			}
-		}
-		
-		[Column(Storage="_otroVialidades", DbType="NVarChar(50) NOT NULL", CanBeNull=false)]
-		public string otroVialidades
-		{
-			get
-			{
-				return this._otroVialidades;
-			}
-			set
-			{
-				if ((this._otroVialidades != value))
-				{
-					this.OnotroVialidadesChanging(value);
-					this.SendPropertyChanging();
-					this._otroVialidades = value;
-					this.SendPropertyChanged("otroVialidades");
-					this.OnotroVialidadesChanged();
-				}
-			}
-		}
-		
-		[Column(Storage="_anchoVialidades", DbType="Float NOT NULL")]
-		public double anchoVialidades
-		{
-			get
-			{
-				return this._anchoVialidades;
-			}
-			set
-			{
-				if ((this._anchoVialidades != value))
-				{
-					this.OnanchoVialidadesChanging(value);
-					this.SendPropertyChanging();
-					this._anchoVialidades = value;
-					this.SendPropertyChanged("anchoVialidades");
-					this.OnanchoVialidadesChanged();
-				}
-			}
-		}
-		
-		[Column(Storage="_idTipoBanquetas", DbType="SmallInt NOT NULL")]
-		public short idTipoBanquetas
-		{
-			get
-			{
-				return this._idTipoBanquetas;
-			}
-			set
-			{
-				if ((this._idTipoBanquetas != value))
-				{
-					this.OnidTipoBanquetasChanging(value);
-					this.SendPropertyChanging();
-					this._idTipoBanquetas = value;
-					this.SendPropertyChanged("idTipoBanquetas");
-					this.OnidTipoBanquetasChanged();
-				}
-			}
-		}
-		
-		[Column(Storage="_otroBanquetas", DbType="NVarChar(50) NOT NULL", CanBeNull=false)]
-		public string otroBanquetas
-		{
-			get
-			{
-				return this._otroBanquetas;
-			}
-			set
-			{
-				if ((this._otroBanquetas != value))
-				{
-					this.OnotroBanquetasChanging(value);
-					this.SendPropertyChanging();
-					this._otroBanquetas = value;
-					this.SendPropertyChanged("otroBanquetas");
-					this.OnotroBanquetasChanged();
-				}
-			}
-		}
-		
-		[Column(Storage="_anchoBanquetas", DbType="Float NOT NULL")]
-		public double anchoBanquetas
-		{
-			get
-			{
-				return this._anchoBanquetas;
-			}
-			set
-			{
-				if ((this._anchoBanquetas != value))
-				{
-					this.OnanchoBanquetasChanging(value);
-					this.SendPropertyChanging();
-					this._anchoBanquetas = value;
-					this.SendPropertyChanged("anchoBanquetas");
-					this.OnanchoBanquetasChanged();
-				}
-			}
-		}
-		
-		[Column(Storage="_idTipoGuarniciones", DbType="SmallInt NOT NULL")]
-		public short idTipoGuarniciones
-		{
-			get
-			{
-				return this._idTipoGuarniciones;
-			}
-			set
-			{
-				if ((this._idTipoGuarniciones != value))
-				{
-					this.OnidTipoGuarnicionesChanging(value);
-					this.SendPropertyChanging();
-					this._idTipoGuarniciones = value;
-					this.SendPropertyChanged("idTipoGuarniciones");
-					this.OnidTipoGuarnicionesChanged();
-				}
-			}
-		}
-		
-		[Column(Storage="_otroGuarniciones", DbType="NVarChar(50) NOT NULL", CanBeNull=false)]
-		public string otroGuarniciones
-		{
-			get
-			{
-				return this._otroGuarniciones;
-			}
-			set
-			{
-				if ((this._otroGuarniciones != value))
-				{
-					this.OnotroGuarnicionesChanging(value);
-					this.SendPropertyChanging();
-					this._otroGuarniciones = value;
-					this.SendPropertyChanged("otroGuarniciones");
-					this.OnotroGuarnicionesChanged();
-				}
-			}
-		}
-		
-		[Column(Storage="_anchoGuarniciones", DbType="Float NOT NULL")]
-		public double anchoGuarniciones
-		{
-			get
-			{
-				return this._anchoGuarniciones;
-			}
-			set
-			{
-				if ((this._anchoGuarniciones != value))
-				{
-					this.OnanchoGuarnicionesChanging(value);
-					this.SendPropertyChanging();
-					this._anchoGuarniciones = value;
-					this.SendPropertyChanged("anchoGuarniciones");
-					this.OnanchoGuarnicionesChanged();
-				}
-			}
-		}
-		
-		[Column(Storage="_nivelInfraestructura", DbType="Float NOT NULL")]
-		public double nivelInfraestructura
-		{
-			get
-			{
-				return this._nivelInfraestructura;
-			}
-			set
-			{
-				if ((this._nivelInfraestructura != value))
-				{
-					this.OnnivelInfraestructuraChanging(value);
-					this.SendPropertyChanging();
-					this._nivelInfraestructura = value;
-					this.SendPropertyChanged("nivelInfraestructura");
-					this.OnnivelInfraestructuraChanged();
-				}
-			}
-		}
-		
-		[Column(Storage="_nivelInfraestructuraSHF", DbType="SmallInt NOT NULL")]
-		public short nivelInfraestructuraSHF
-		{
-			get
-			{
-				return this._nivelInfraestructuraSHF;
-			}
-			set
-			{
-				if ((this._nivelInfraestructuraSHF != value))
-				{
-					this.OnnivelInfraestructuraSHFChanging(value);
-					this.SendPropertyChanging();
-					this._nivelInfraestructuraSHF = value;
-					this.SendPropertyChanged("nivelInfraestructuraSHF");
-					this.OnnivelInfraestructuraSHFChanged();
-				}
-			}
-		}
-		
-		[Association(Name="Inmueble_InfraestructuraInmueble", Storage="_Inmueble", ThisKey="idInmueble", OtherKey="idInmueble", IsForeignKey=true, DeleteOnNull=true, DeleteRule="CASCADE")]
-		public Inmueble Inmueble
-		{
-			get
-			{
-				return this._Inmueble.Entity;
-			}
-			set
-			{
-				Inmueble previousValue = this._Inmueble.Entity;
-				if (((previousValue != value) 
-							|| (this._Inmueble.HasLoadedOrAssignedValue == false)))
-				{
-					this.SendPropertyChanging();
-					if ((previousValue != null))
-					{
-						this._Inmueble.Entity = null;
-						previousValue.InfraestructuraInmueble = null;
-					}
-					this._Inmueble.Entity = value;
-					if ((value != null))
-					{
-						value.InfraestructuraInmueble = this;
-						this._idInmueble = value.idInmueble;
-					}
-					else
-					{
-						this._idInmueble = default(int);
-					}
-					this.SendPropertyChanged("Inmueble");
-				}
-			}
-		}
-		
-		public event PropertyChangingEventHandler PropertyChanging;
-		
-		public event PropertyChangedEventHandler PropertyChanged;
-		
-		protected virtual void SendPropertyChanging()
-		{
-			if ((this.PropertyChanging != null))
-			{
-				this.PropertyChanging(this, emptyChangingEventArgs);
-			}
-		}
-		
-		protected virtual void SendPropertyChanged(String propertyName)
-		{
-			if ((this.PropertyChanged != null))
-			{
-				this.PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
-			}
-		}
-	}
-	
 	[Table(Name="dbo.Inmueble")]
 	public partial class Inmueble : INotifyPropertyChanging, INotifyPropertyChanged
 	{
@@ -13174,8 +12534,6 @@ namespace SIGEA.Classes.Entities
 		
 		private string _telefono;
 		
-		private EntitySet<ViasAcceso> _ViasAcceso;
-		
 		private EntitySet<AvaluoInmobiliario> _AvaluoInmobiliario;
 		
 		private EntitySet<ConstruccionInmueble> _ConstruccionInmueble;
@@ -13188,15 +12546,21 @@ namespace SIGEA.Classes.Entities
 		
 		private EntityRef<GeolocalizacionInmueble> _GeolocalizacionInmueble;
 		
-		private EntityRef<InfraestructuraInmueble> _InfraestructuraInmueble;
-		
-		private EntityRef<ServiciosInmueble> _ServiciosInmueble;
-		
 		private EntityRef<SuperficiesInmueble> _SuperficiesInmueble;
+		
+		private EntitySet<UsoActualInmueble> _UsoActualInmueble;
 		
 		private EntityRef<UbicacionInmueble> _UbicacionInmueble;
 		
-		private EntitySet<UsoActualInmueble> _UsoActualInmueble;
+		private EntityRef<UbicacionCallesInmueble> _UbicacionCallesInmueble;
+		
+		private EntitySet<ViasAcceso> _ViasAcceso;
+		
+		private EntityRef<EquipamientoInmueble> _EquipamientoInmueble;
+		
+		private EntityRef<InfraestructuraInmueble> _InfraestructuraInmueble;
+		
+		private EntityRef<ServiciosInmueble> _ServiciosInmueble;
 		
 		private EntityRef<DireccionInmueble> _DireccionInmueble;
 		
@@ -13234,18 +12598,20 @@ namespace SIGEA.Classes.Entities
 		
 		public Inmueble()
 		{
-			this._ViasAcceso = new EntitySet<ViasAcceso>(new Action<ViasAcceso>(this.attach_ViasAcceso), new Action<ViasAcceso>(this.detach_ViasAcceso));
 			this._AvaluoInmobiliario = new EntitySet<AvaluoInmobiliario>(new Action<AvaluoInmobiliario>(this.attach_AvaluoInmobiliario), new Action<AvaluoInmobiliario>(this.detach_AvaluoInmobiliario));
 			this._ConstruccionInmueble = new EntitySet<ConstruccionInmueble>(new Action<ConstruccionInmueble>(this.attach_ConstruccionInmueble), new Action<ConstruccionInmueble>(this.detach_ConstruccionInmueble));
 			this._DatoCondominio = new EntitySet<DatoCondominio>(new Action<DatoCondominio>(this.attach_DatoCondominio), new Action<DatoCondominio>(this.detach_DatoCondominio));
 			this._EntornoInmueble = default(EntityRef<EntornoInmueble>);
 			this._EscriturasInmueble = default(EntityRef<EscriturasInmueble>);
 			this._GeolocalizacionInmueble = default(EntityRef<GeolocalizacionInmueble>);
+			this._SuperficiesInmueble = default(EntityRef<SuperficiesInmueble>);
+			this._UsoActualInmueble = new EntitySet<UsoActualInmueble>(new Action<UsoActualInmueble>(this.attach_UsoActualInmueble), new Action<UsoActualInmueble>(this.detach_UsoActualInmueble));
+			this._UbicacionInmueble = default(EntityRef<UbicacionInmueble>);
+			this._UbicacionCallesInmueble = default(EntityRef<UbicacionCallesInmueble>);
+			this._ViasAcceso = new EntitySet<ViasAcceso>(new Action<ViasAcceso>(this.attach_ViasAcceso), new Action<ViasAcceso>(this.detach_ViasAcceso));
+			this._EquipamientoInmueble = default(EntityRef<EquipamientoInmueble>);
 			this._InfraestructuraInmueble = default(EntityRef<InfraestructuraInmueble>);
 			this._ServiciosInmueble = default(EntityRef<ServiciosInmueble>);
-			this._SuperficiesInmueble = default(EntityRef<SuperficiesInmueble>);
-			this._UbicacionInmueble = default(EntityRef<UbicacionInmueble>);
-			this._UsoActualInmueble = new EntitySet<UsoActualInmueble>(new Action<UsoActualInmueble>(this.attach_UsoActualInmueble), new Action<UsoActualInmueble>(this.detach_UsoActualInmueble));
 			this._DireccionInmueble = default(EntityRef<DireccionInmueble>);
 			this._Propietario = default(EntityRef<Propietario>);
 			this._RegimenPropiedad = default(EntityRef<RegimenPropiedad>);
@@ -13469,19 +12835,6 @@ namespace SIGEA.Classes.Entities
 			}
 		}
 		
-		[Association(Name="Inmueble_ViasAcceso", Storage="_ViasAcceso", ThisKey="idInmueble", OtherKey="idInmueble")]
-		public EntitySet<ViasAcceso> ViasAcceso
-		{
-			get
-			{
-				return this._ViasAcceso;
-			}
-			set
-			{
-				this._ViasAcceso.Assign(value);
-			}
-		}
-		
 		[Association(Name="Inmueble_AvaluoInmobiliario", Storage="_AvaluoInmobiliario", ThisKey="idInmueble", OtherKey="idInmueble")]
 		public EntitySet<AvaluoInmobiliario> AvaluoInmobiliario
 		{
@@ -13608,6 +12961,148 @@ namespace SIGEA.Classes.Entities
 			}
 		}
 		
+		[Association(Name="Inmueble_SuperficiesInmueble", Storage="_SuperficiesInmueble", ThisKey="idInmueble", OtherKey="idInmueble", IsUnique=true, IsForeignKey=false)]
+		public SuperficiesInmueble SuperficiesInmueble
+		{
+			get
+			{
+				return this._SuperficiesInmueble.Entity;
+			}
+			set
+			{
+				SuperficiesInmueble previousValue = this._SuperficiesInmueble.Entity;
+				if (((previousValue != value) 
+							|| (this._SuperficiesInmueble.HasLoadedOrAssignedValue == false)))
+				{
+					this.SendPropertyChanging();
+					if ((previousValue != null))
+					{
+						this._SuperficiesInmueble.Entity = null;
+						previousValue.Inmueble = null;
+					}
+					this._SuperficiesInmueble.Entity = value;
+					if ((value != null))
+					{
+						value.Inmueble = this;
+					}
+					this.SendPropertyChanged("SuperficiesInmueble");
+				}
+			}
+		}
+		
+		[Association(Name="Inmueble_UsoActualInmueble", Storage="_UsoActualInmueble", ThisKey="idInmueble", OtherKey="idInmueble")]
+		public EntitySet<UsoActualInmueble> UsoActualInmueble
+		{
+			get
+			{
+				return this._UsoActualInmueble;
+			}
+			set
+			{
+				this._UsoActualInmueble.Assign(value);
+			}
+		}
+		
+		[Association(Name="Inmueble_UbicacionInmueble", Storage="_UbicacionInmueble", ThisKey="idInmueble", OtherKey="idInmueble", IsUnique=true, IsForeignKey=false)]
+		public UbicacionInmueble UbicacionInmueble
+		{
+			get
+			{
+				return this._UbicacionInmueble.Entity;
+			}
+			set
+			{
+				UbicacionInmueble previousValue = this._UbicacionInmueble.Entity;
+				if (((previousValue != value) 
+							|| (this._UbicacionInmueble.HasLoadedOrAssignedValue == false)))
+				{
+					this.SendPropertyChanging();
+					if ((previousValue != null))
+					{
+						this._UbicacionInmueble.Entity = null;
+						previousValue.Inmueble = null;
+					}
+					this._UbicacionInmueble.Entity = value;
+					if ((value != null))
+					{
+						value.Inmueble = this;
+					}
+					this.SendPropertyChanged("UbicacionInmueble");
+				}
+			}
+		}
+		
+		[Association(Name="Inmueble_UbicacionCallesInmueble", Storage="_UbicacionCallesInmueble", ThisKey="idInmueble", OtherKey="idInmueble", IsUnique=true, IsForeignKey=false)]
+		public UbicacionCallesInmueble UbicacionCallesInmueble
+		{
+			get
+			{
+				return this._UbicacionCallesInmueble.Entity;
+			}
+			set
+			{
+				UbicacionCallesInmueble previousValue = this._UbicacionCallesInmueble.Entity;
+				if (((previousValue != value) 
+							|| (this._UbicacionCallesInmueble.HasLoadedOrAssignedValue == false)))
+				{
+					this.SendPropertyChanging();
+					if ((previousValue != null))
+					{
+						this._UbicacionCallesInmueble.Entity = null;
+						previousValue.Inmueble = null;
+					}
+					this._UbicacionCallesInmueble.Entity = value;
+					if ((value != null))
+					{
+						value.Inmueble = this;
+					}
+					this.SendPropertyChanged("UbicacionCallesInmueble");
+				}
+			}
+		}
+		
+		[Association(Name="Inmueble_ViasAcceso", Storage="_ViasAcceso", ThisKey="idInmueble", OtherKey="idInmueble")]
+		public EntitySet<ViasAcceso> ViasAcceso
+		{
+			get
+			{
+				return this._ViasAcceso;
+			}
+			set
+			{
+				this._ViasAcceso.Assign(value);
+			}
+		}
+		
+		[Association(Name="Inmueble_EquipamientoInmueble", Storage="_EquipamientoInmueble", ThisKey="idInmueble", OtherKey="idInmueble", IsUnique=true, IsForeignKey=false)]
+		public EquipamientoInmueble EquipamientoInmueble
+		{
+			get
+			{
+				return this._EquipamientoInmueble.Entity;
+			}
+			set
+			{
+				EquipamientoInmueble previousValue = this._EquipamientoInmueble.Entity;
+				if (((previousValue != value) 
+							|| (this._EquipamientoInmueble.HasLoadedOrAssignedValue == false)))
+				{
+					this.SendPropertyChanging();
+					if ((previousValue != null))
+					{
+						this._EquipamientoInmueble.Entity = null;
+						previousValue.Inmueble = null;
+					}
+					this._EquipamientoInmueble.Entity = value;
+					if ((value != null))
+					{
+						value.Inmueble = this;
+					}
+					this.SendPropertyChanged("EquipamientoInmueble");
+				}
+			}
+		}
+		
 		[Association(Name="Inmueble_InfraestructuraInmueble", Storage="_InfraestructuraInmueble", ThisKey="idInmueble", OtherKey="idInmueble", IsUnique=true, IsForeignKey=false)]
 		public InfraestructuraInmueble InfraestructuraInmueble
 		{
@@ -13663,77 +13158,6 @@ namespace SIGEA.Classes.Entities
 					}
 					this.SendPropertyChanged("ServiciosInmueble");
 				}
-			}
-		}
-		
-		[Association(Name="Inmueble_SuperficiesInmueble", Storage="_SuperficiesInmueble", ThisKey="idInmueble", OtherKey="idInmueble", IsUnique=true, IsForeignKey=false)]
-		public SuperficiesInmueble SuperficiesInmueble
-		{
-			get
-			{
-				return this._SuperficiesInmueble.Entity;
-			}
-			set
-			{
-				SuperficiesInmueble previousValue = this._SuperficiesInmueble.Entity;
-				if (((previousValue != value) 
-							|| (this._SuperficiesInmueble.HasLoadedOrAssignedValue == false)))
-				{
-					this.SendPropertyChanging();
-					if ((previousValue != null))
-					{
-						this._SuperficiesInmueble.Entity = null;
-						previousValue.Inmueble = null;
-					}
-					this._SuperficiesInmueble.Entity = value;
-					if ((value != null))
-					{
-						value.Inmueble = this;
-					}
-					this.SendPropertyChanged("SuperficiesInmueble");
-				}
-			}
-		}
-		
-		[Association(Name="Inmueble_UbicacionInmueble", Storage="_UbicacionInmueble", ThisKey="idInmueble", OtherKey="idInmueble", IsUnique=true, IsForeignKey=false)]
-		public UbicacionInmueble UbicacionInmueble
-		{
-			get
-			{
-				return this._UbicacionInmueble.Entity;
-			}
-			set
-			{
-				UbicacionInmueble previousValue = this._UbicacionInmueble.Entity;
-				if (((previousValue != value) 
-							|| (this._UbicacionInmueble.HasLoadedOrAssignedValue == false)))
-				{
-					this.SendPropertyChanging();
-					if ((previousValue != null))
-					{
-						this._UbicacionInmueble.Entity = null;
-						previousValue.Inmueble = null;
-					}
-					this._UbicacionInmueble.Entity = value;
-					if ((value != null))
-					{
-						value.Inmueble = this;
-					}
-					this.SendPropertyChanged("UbicacionInmueble");
-				}
-			}
-		}
-		
-		[Association(Name="Inmueble_UsoActualInmueble", Storage="_UsoActualInmueble", ThisKey="idInmueble", OtherKey="idInmueble")]
-		public EntitySet<UsoActualInmueble> UsoActualInmueble
-		{
-			get
-			{
-				return this._UsoActualInmueble;
-			}
-			set
-			{
-				this._UsoActualInmueble.Assign(value);
 			}
 		}
 		
@@ -13893,18 +13317,6 @@ namespace SIGEA.Classes.Entities
 			}
 		}
 		
-		private void attach_ViasAcceso(ViasAcceso entity)
-		{
-			this.SendPropertyChanging();
-			entity.Inmueble = this;
-		}
-		
-		private void detach_ViasAcceso(ViasAcceso entity)
-		{
-			this.SendPropertyChanging();
-			entity.Inmueble = null;
-		}
-		
 		private void attach_AvaluoInmobiliario(AvaluoInmobiliario entity)
 		{
 			this.SendPropertyChanging();
@@ -13948,6 +13360,18 @@ namespace SIGEA.Classes.Entities
 		}
 		
 		private void detach_UsoActualInmueble(UsoActualInmueble entity)
+		{
+			this.SendPropertyChanging();
+			entity.Inmueble = null;
+		}
+		
+		private void attach_ViasAcceso(ViasAcceso entity)
+		{
+			this.SendPropertyChanging();
+			entity.Inmueble = this;
+		}
+		
+		private void detach_ViasAcceso(ViasAcceso entity)
 		{
 			this.SendPropertyChanging();
 			entity.Inmueble = null;
@@ -17538,589 +16962,6 @@ namespace SIGEA.Classes.Entities
 						this._idUsuario = default(int);
 					}
 					this.SendPropertyChanged("Usuario");
-				}
-			}
-		}
-		
-		public event PropertyChangingEventHandler PropertyChanging;
-		
-		public event PropertyChangedEventHandler PropertyChanged;
-		
-		protected virtual void SendPropertyChanging()
-		{
-			if ((this.PropertyChanging != null))
-			{
-				this.PropertyChanging(this, emptyChangingEventArgs);
-			}
-		}
-		
-		protected virtual void SendPropertyChanged(String propertyName)
-		{
-			if ((this.PropertyChanged != null))
-			{
-				this.PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
-			}
-		}
-	}
-	
-	[Table(Name="dbo.ServiciosInmueble")]
-	public partial class ServiciosInmueble : INotifyPropertyChanging, INotifyPropertyChanged
-	{
-		
-		private static PropertyChangingEventArgs emptyChangingEventArgs = new PropertyChangingEventArgs(String.Empty);
-		
-		private int _idInmueble;
-		
-		private short _idTipoGasNatural;
-		
-		private short _idTipoRedTelefonica;
-		
-		private double _transporteUrbanoDistancia;
-		
-		private double _transporteUrbanoFrecuencia;
-		
-		private double _transporteSuburbanoDistancia;
-		
-		private double _transporteSuburbanoFrecuencia;
-		
-		private short _idTipoVigilancia;
-		
-		private bool _senalizacion;
-		
-		private bool _nomenclatura;
-		
-		private bool _recoleccionBasura;
-		
-		private double _distanciaIglesia;
-		
-		private double _distanciaEscuela;
-		
-		private double _distanciaEstacionTransporte;
-		
-		private double _distanciaMercado;
-		
-		private double _distanciaHospital;
-		
-		private double _distanciaPlaza;
-		
-		private double _distanciaParque;
-		
-		private double _distanciaBanco;
-		
-		private double _proximidadGeneral;
-		
-		private short _nivelEquipamientoUrbano;
-		
-		private EntityRef<Inmueble> _Inmueble;
-		
-    #region Extensibility Method Definitions
-    partial void OnLoaded();
-    partial void OnValidate(System.Data.Linq.ChangeAction action);
-    partial void OnCreated();
-    partial void OnidInmuebleChanging(int value);
-    partial void OnidInmuebleChanged();
-    partial void OnidTipoGasNaturalChanging(short value);
-    partial void OnidTipoGasNaturalChanged();
-    partial void OnidTipoRedTelefonicaChanging(short value);
-    partial void OnidTipoRedTelefonicaChanged();
-    partial void OntransporteUrbanoDistanciaChanging(double value);
-    partial void OntransporteUrbanoDistanciaChanged();
-    partial void OntransporteUrbanoFrecuenciaChanging(double value);
-    partial void OntransporteUrbanoFrecuenciaChanged();
-    partial void OntransporteSuburbanoDistanciaChanging(double value);
-    partial void OntransporteSuburbanoDistanciaChanged();
-    partial void OntransporteSuburbanoFrecuenciaChanging(double value);
-    partial void OntransporteSuburbanoFrecuenciaChanged();
-    partial void OnidTipoVigilanciaChanging(short value);
-    partial void OnidTipoVigilanciaChanged();
-    partial void OnsenalizacionChanging(bool value);
-    partial void OnsenalizacionChanged();
-    partial void OnnomenclaturaChanging(bool value);
-    partial void OnnomenclaturaChanged();
-    partial void OnrecoleccionBasuraChanging(bool value);
-    partial void OnrecoleccionBasuraChanged();
-    partial void OndistanciaIglesiaChanging(double value);
-    partial void OndistanciaIglesiaChanged();
-    partial void OndistanciaEscuelaChanging(double value);
-    partial void OndistanciaEscuelaChanged();
-    partial void OndistanciaEstacionTransporteChanging(double value);
-    partial void OndistanciaEstacionTransporteChanged();
-    partial void OndistanciaMercadoChanging(double value);
-    partial void OndistanciaMercadoChanged();
-    partial void OndistanciaHospitalChanging(double value);
-    partial void OndistanciaHospitalChanged();
-    partial void OndistanciaPlazaChanging(double value);
-    partial void OndistanciaPlazaChanged();
-    partial void OndistanciaParqueChanging(double value);
-    partial void OndistanciaParqueChanged();
-    partial void OndistanciaBancoChanging(double value);
-    partial void OndistanciaBancoChanged();
-    partial void OnproximidadGeneralChanging(double value);
-    partial void OnproximidadGeneralChanged();
-    partial void OnnivelEquipamientoUrbanoChanging(short value);
-    partial void OnnivelEquipamientoUrbanoChanged();
-    #endregion
-		
-		public ServiciosInmueble()
-		{
-			this._Inmueble = default(EntityRef<Inmueble>);
-			OnCreated();
-		}
-		
-		[Column(Storage="_idInmueble", DbType="Int NOT NULL", IsPrimaryKey=true)]
-		public int idInmueble
-		{
-			get
-			{
-				return this._idInmueble;
-			}
-			set
-			{
-				if ((this._idInmueble != value))
-				{
-					if (this._Inmueble.HasLoadedOrAssignedValue)
-					{
-						throw new System.Data.Linq.ForeignKeyReferenceAlreadyHasValueException();
-					}
-					this.OnidInmuebleChanging(value);
-					this.SendPropertyChanging();
-					this._idInmueble = value;
-					this.SendPropertyChanged("idInmueble");
-					this.OnidInmuebleChanged();
-				}
-			}
-		}
-		
-		[Column(Storage="_idTipoGasNatural", DbType="SmallInt NOT NULL")]
-		public short idTipoGasNatural
-		{
-			get
-			{
-				return this._idTipoGasNatural;
-			}
-			set
-			{
-				if ((this._idTipoGasNatural != value))
-				{
-					this.OnidTipoGasNaturalChanging(value);
-					this.SendPropertyChanging();
-					this._idTipoGasNatural = value;
-					this.SendPropertyChanged("idTipoGasNatural");
-					this.OnidTipoGasNaturalChanged();
-				}
-			}
-		}
-		
-		[Column(Storage="_idTipoRedTelefonica", DbType="SmallInt NOT NULL")]
-		public short idTipoRedTelefonica
-		{
-			get
-			{
-				return this._idTipoRedTelefonica;
-			}
-			set
-			{
-				if ((this._idTipoRedTelefonica != value))
-				{
-					this.OnidTipoRedTelefonicaChanging(value);
-					this.SendPropertyChanging();
-					this._idTipoRedTelefonica = value;
-					this.SendPropertyChanged("idTipoRedTelefonica");
-					this.OnidTipoRedTelefonicaChanged();
-				}
-			}
-		}
-		
-		[Column(Storage="_transporteUrbanoDistancia", DbType="Float NOT NULL")]
-		public double transporteUrbanoDistancia
-		{
-			get
-			{
-				return this._transporteUrbanoDistancia;
-			}
-			set
-			{
-				if ((this._transporteUrbanoDistancia != value))
-				{
-					this.OntransporteUrbanoDistanciaChanging(value);
-					this.SendPropertyChanging();
-					this._transporteUrbanoDistancia = value;
-					this.SendPropertyChanged("transporteUrbanoDistancia");
-					this.OntransporteUrbanoDistanciaChanged();
-				}
-			}
-		}
-		
-		[Column(Storage="_transporteUrbanoFrecuencia", DbType="Float NOT NULL")]
-		public double transporteUrbanoFrecuencia
-		{
-			get
-			{
-				return this._transporteUrbanoFrecuencia;
-			}
-			set
-			{
-				if ((this._transporteUrbanoFrecuencia != value))
-				{
-					this.OntransporteUrbanoFrecuenciaChanging(value);
-					this.SendPropertyChanging();
-					this._transporteUrbanoFrecuencia = value;
-					this.SendPropertyChanged("transporteUrbanoFrecuencia");
-					this.OntransporteUrbanoFrecuenciaChanged();
-				}
-			}
-		}
-		
-		[Column(Storage="_transporteSuburbanoDistancia", DbType="Float NOT NULL")]
-		public double transporteSuburbanoDistancia
-		{
-			get
-			{
-				return this._transporteSuburbanoDistancia;
-			}
-			set
-			{
-				if ((this._transporteSuburbanoDistancia != value))
-				{
-					this.OntransporteSuburbanoDistanciaChanging(value);
-					this.SendPropertyChanging();
-					this._transporteSuburbanoDistancia = value;
-					this.SendPropertyChanged("transporteSuburbanoDistancia");
-					this.OntransporteSuburbanoDistanciaChanged();
-				}
-			}
-		}
-		
-		[Column(Storage="_transporteSuburbanoFrecuencia", DbType="Float NOT NULL")]
-		public double transporteSuburbanoFrecuencia
-		{
-			get
-			{
-				return this._transporteSuburbanoFrecuencia;
-			}
-			set
-			{
-				if ((this._transporteSuburbanoFrecuencia != value))
-				{
-					this.OntransporteSuburbanoFrecuenciaChanging(value);
-					this.SendPropertyChanging();
-					this._transporteSuburbanoFrecuencia = value;
-					this.SendPropertyChanged("transporteSuburbanoFrecuencia");
-					this.OntransporteSuburbanoFrecuenciaChanged();
-				}
-			}
-		}
-		
-		[Column(Storage="_idTipoVigilancia", DbType="SmallInt NOT NULL")]
-		public short idTipoVigilancia
-		{
-			get
-			{
-				return this._idTipoVigilancia;
-			}
-			set
-			{
-				if ((this._idTipoVigilancia != value))
-				{
-					this.OnidTipoVigilanciaChanging(value);
-					this.SendPropertyChanging();
-					this._idTipoVigilancia = value;
-					this.SendPropertyChanged("idTipoVigilancia");
-					this.OnidTipoVigilanciaChanged();
-				}
-			}
-		}
-		
-		[Column(Storage="_senalizacion", DbType="Bit NOT NULL")]
-		public bool senalizacion
-		{
-			get
-			{
-				return this._senalizacion;
-			}
-			set
-			{
-				if ((this._senalizacion != value))
-				{
-					this.OnsenalizacionChanging(value);
-					this.SendPropertyChanging();
-					this._senalizacion = value;
-					this.SendPropertyChanged("senalizacion");
-					this.OnsenalizacionChanged();
-				}
-			}
-		}
-		
-		[Column(Storage="_nomenclatura", DbType="Bit NOT NULL")]
-		public bool nomenclatura
-		{
-			get
-			{
-				return this._nomenclatura;
-			}
-			set
-			{
-				if ((this._nomenclatura != value))
-				{
-					this.OnnomenclaturaChanging(value);
-					this.SendPropertyChanging();
-					this._nomenclatura = value;
-					this.SendPropertyChanged("nomenclatura");
-					this.OnnomenclaturaChanged();
-				}
-			}
-		}
-		
-		[Column(Storage="_recoleccionBasura", DbType="Bit NOT NULL")]
-		public bool recoleccionBasura
-		{
-			get
-			{
-				return this._recoleccionBasura;
-			}
-			set
-			{
-				if ((this._recoleccionBasura != value))
-				{
-					this.OnrecoleccionBasuraChanging(value);
-					this.SendPropertyChanging();
-					this._recoleccionBasura = value;
-					this.SendPropertyChanged("recoleccionBasura");
-					this.OnrecoleccionBasuraChanged();
-				}
-			}
-		}
-		
-		[Column(Storage="_distanciaIglesia", DbType="Float NOT NULL")]
-		public double distanciaIglesia
-		{
-			get
-			{
-				return this._distanciaIglesia;
-			}
-			set
-			{
-				if ((this._distanciaIglesia != value))
-				{
-					this.OndistanciaIglesiaChanging(value);
-					this.SendPropertyChanging();
-					this._distanciaIglesia = value;
-					this.SendPropertyChanged("distanciaIglesia");
-					this.OndistanciaIglesiaChanged();
-				}
-			}
-		}
-		
-		[Column(Storage="_distanciaEscuela", DbType="Float NOT NULL")]
-		public double distanciaEscuela
-		{
-			get
-			{
-				return this._distanciaEscuela;
-			}
-			set
-			{
-				if ((this._distanciaEscuela != value))
-				{
-					this.OndistanciaEscuelaChanging(value);
-					this.SendPropertyChanging();
-					this._distanciaEscuela = value;
-					this.SendPropertyChanged("distanciaEscuela");
-					this.OndistanciaEscuelaChanged();
-				}
-			}
-		}
-		
-		[Column(Storage="_distanciaEstacionTransporte", DbType="Float NOT NULL")]
-		public double distanciaEstacionTransporte
-		{
-			get
-			{
-				return this._distanciaEstacionTransporte;
-			}
-			set
-			{
-				if ((this._distanciaEstacionTransporte != value))
-				{
-					this.OndistanciaEstacionTransporteChanging(value);
-					this.SendPropertyChanging();
-					this._distanciaEstacionTransporte = value;
-					this.SendPropertyChanged("distanciaEstacionTransporte");
-					this.OndistanciaEstacionTransporteChanged();
-				}
-			}
-		}
-		
-		[Column(Storage="_distanciaMercado", DbType="Float NOT NULL")]
-		public double distanciaMercado
-		{
-			get
-			{
-				return this._distanciaMercado;
-			}
-			set
-			{
-				if ((this._distanciaMercado != value))
-				{
-					this.OndistanciaMercadoChanging(value);
-					this.SendPropertyChanging();
-					this._distanciaMercado = value;
-					this.SendPropertyChanged("distanciaMercado");
-					this.OndistanciaMercadoChanged();
-				}
-			}
-		}
-		
-		[Column(Storage="_distanciaHospital", DbType="Float NOT NULL")]
-		public double distanciaHospital
-		{
-			get
-			{
-				return this._distanciaHospital;
-			}
-			set
-			{
-				if ((this._distanciaHospital != value))
-				{
-					this.OndistanciaHospitalChanging(value);
-					this.SendPropertyChanging();
-					this._distanciaHospital = value;
-					this.SendPropertyChanged("distanciaHospital");
-					this.OndistanciaHospitalChanged();
-				}
-			}
-		}
-		
-		[Column(Storage="_distanciaPlaza", DbType="Float NOT NULL")]
-		public double distanciaPlaza
-		{
-			get
-			{
-				return this._distanciaPlaza;
-			}
-			set
-			{
-				if ((this._distanciaPlaza != value))
-				{
-					this.OndistanciaPlazaChanging(value);
-					this.SendPropertyChanging();
-					this._distanciaPlaza = value;
-					this.SendPropertyChanged("distanciaPlaza");
-					this.OndistanciaPlazaChanged();
-				}
-			}
-		}
-		
-		[Column(Storage="_distanciaParque", DbType="Float NOT NULL")]
-		public double distanciaParque
-		{
-			get
-			{
-				return this._distanciaParque;
-			}
-			set
-			{
-				if ((this._distanciaParque != value))
-				{
-					this.OndistanciaParqueChanging(value);
-					this.SendPropertyChanging();
-					this._distanciaParque = value;
-					this.SendPropertyChanged("distanciaParque");
-					this.OndistanciaParqueChanged();
-				}
-			}
-		}
-		
-		[Column(Storage="_distanciaBanco", DbType="Float NOT NULL")]
-		public double distanciaBanco
-		{
-			get
-			{
-				return this._distanciaBanco;
-			}
-			set
-			{
-				if ((this._distanciaBanco != value))
-				{
-					this.OndistanciaBancoChanging(value);
-					this.SendPropertyChanging();
-					this._distanciaBanco = value;
-					this.SendPropertyChanged("distanciaBanco");
-					this.OndistanciaBancoChanged();
-				}
-			}
-		}
-		
-		[Column(Storage="_proximidadGeneral", DbType="Float NOT NULL")]
-		public double proximidadGeneral
-		{
-			get
-			{
-				return this._proximidadGeneral;
-			}
-			set
-			{
-				if ((this._proximidadGeneral != value))
-				{
-					this.OnproximidadGeneralChanging(value);
-					this.SendPropertyChanging();
-					this._proximidadGeneral = value;
-					this.SendPropertyChanged("proximidadGeneral");
-					this.OnproximidadGeneralChanged();
-				}
-			}
-		}
-		
-		[Column(Storage="_nivelEquipamientoUrbano", DbType="SmallInt NOT NULL")]
-		public short nivelEquipamientoUrbano
-		{
-			get
-			{
-				return this._nivelEquipamientoUrbano;
-			}
-			set
-			{
-				if ((this._nivelEquipamientoUrbano != value))
-				{
-					this.OnnivelEquipamientoUrbanoChanging(value);
-					this.SendPropertyChanging();
-					this._nivelEquipamientoUrbano = value;
-					this.SendPropertyChanged("nivelEquipamientoUrbano");
-					this.OnnivelEquipamientoUrbanoChanged();
-				}
-			}
-		}
-		
-		[Association(Name="Inmueble_ServiciosInmueble", Storage="_Inmueble", ThisKey="idInmueble", OtherKey="idInmueble", IsForeignKey=true, DeleteOnNull=true, DeleteRule="CASCADE")]
-		public Inmueble Inmueble
-		{
-			get
-			{
-				return this._Inmueble.Entity;
-			}
-			set
-			{
-				Inmueble previousValue = this._Inmueble.Entity;
-				if (((previousValue != value) 
-							|| (this._Inmueble.HasLoadedOrAssignedValue == false)))
-				{
-					this.SendPropertyChanging();
-					if ((previousValue != null))
-					{
-						this._Inmueble.Entity = null;
-						previousValue.ServiciosInmueble = null;
-					}
-					this._Inmueble.Entity = value;
-					if ((value != null))
-					{
-						value.ServiciosInmueble = this;
-						this._idInmueble = value.idInmueble;
-					}
-					else
-					{
-						this._idInmueble = default(int);
-					}
-					this.SendPropertyChanged("Inmueble");
 				}
 			}
 		}
@@ -22437,397 +21278,6 @@ namespace SIGEA.Classes.Entities
 		{
 			this.SendPropertyChanging();
 			entity.TipoValuador = null;
-		}
-	}
-	
-	[Table(Name="dbo.UbicacionInmueble")]
-	public partial class UbicacionInmueble : INotifyPropertyChanging, INotifyPropertyChanged
-	{
-		
-		private static PropertyChangingEventArgs emptyChangingEventArgs = new PropertyChangingEventArgs(String.Empty);
-		
-		private int _idInmueble;
-		
-		private short _idTipoUbicacion;
-		
-		private short _idTipoConfiguracion;
-		
-		private short _idTipotopografia;
-		
-		private short _idTipoUsoSuelo;
-		
-		private short _idFuenteMedida;
-		
-		private string _otraFuente;
-		
-		private short _idFuenteDensidad;
-		
-		private double _densidadHabitantes;
-		
-		private double _densidadViviendas;
-		
-		private short _frentes;
-		
-		private short _lados;
-		
-		private string _descripcionColindancias;
-		
-		private EntityRef<Inmueble> _Inmueble;
-		
-    #region Extensibility Method Definitions
-    partial void OnLoaded();
-    partial void OnValidate(System.Data.Linq.ChangeAction action);
-    partial void OnCreated();
-    partial void OnidInmuebleChanging(int value);
-    partial void OnidInmuebleChanged();
-    partial void OnidTipoUbicacionChanging(short value);
-    partial void OnidTipoUbicacionChanged();
-    partial void OnidTipoConfiguracionChanging(short value);
-    partial void OnidTipoConfiguracionChanged();
-    partial void OnidTipotopografiaChanging(short value);
-    partial void OnidTipotopografiaChanged();
-    partial void OnidTipoUsoSueloChanging(short value);
-    partial void OnidTipoUsoSueloChanged();
-    partial void OnidFuenteMedidaChanging(short value);
-    partial void OnidFuenteMedidaChanged();
-    partial void OnotraFuenteChanging(string value);
-    partial void OnotraFuenteChanged();
-    partial void OnidFuenteDensidadChanging(short value);
-    partial void OnidFuenteDensidadChanged();
-    partial void OndensidadHabitantesChanging(double value);
-    partial void OndensidadHabitantesChanged();
-    partial void OndensidadViviendasChanging(double value);
-    partial void OndensidadViviendasChanged();
-    partial void OnfrentesChanging(short value);
-    partial void OnfrentesChanged();
-    partial void OnladosChanging(short value);
-    partial void OnladosChanged();
-    partial void OndescripcionColindanciasChanging(string value);
-    partial void OndescripcionColindanciasChanged();
-    #endregion
-		
-		public UbicacionInmueble()
-		{
-			this._Inmueble = default(EntityRef<Inmueble>);
-			OnCreated();
-		}
-		
-		[Column(Storage="_idInmueble", DbType="Int NOT NULL", IsPrimaryKey=true)]
-		public int idInmueble
-		{
-			get
-			{
-				return this._idInmueble;
-			}
-			set
-			{
-				if ((this._idInmueble != value))
-				{
-					if (this._Inmueble.HasLoadedOrAssignedValue)
-					{
-						throw new System.Data.Linq.ForeignKeyReferenceAlreadyHasValueException();
-					}
-					this.OnidInmuebleChanging(value);
-					this.SendPropertyChanging();
-					this._idInmueble = value;
-					this.SendPropertyChanged("idInmueble");
-					this.OnidInmuebleChanged();
-				}
-			}
-		}
-		
-		[Column(Storage="_idTipoUbicacion", DbType="SmallInt NOT NULL")]
-		public short idTipoUbicacion
-		{
-			get
-			{
-				return this._idTipoUbicacion;
-			}
-			set
-			{
-				if ((this._idTipoUbicacion != value))
-				{
-					this.OnidTipoUbicacionChanging(value);
-					this.SendPropertyChanging();
-					this._idTipoUbicacion = value;
-					this.SendPropertyChanged("idTipoUbicacion");
-					this.OnidTipoUbicacionChanged();
-				}
-			}
-		}
-		
-		[Column(Storage="_idTipoConfiguracion", DbType="SmallInt NOT NULL")]
-		public short idTipoConfiguracion
-		{
-			get
-			{
-				return this._idTipoConfiguracion;
-			}
-			set
-			{
-				if ((this._idTipoConfiguracion != value))
-				{
-					this.OnidTipoConfiguracionChanging(value);
-					this.SendPropertyChanging();
-					this._idTipoConfiguracion = value;
-					this.SendPropertyChanged("idTipoConfiguracion");
-					this.OnidTipoConfiguracionChanged();
-				}
-			}
-		}
-		
-		[Column(Storage="_idTipotopografia", DbType="SmallInt NOT NULL")]
-		public short idTipotopografia
-		{
-			get
-			{
-				return this._idTipotopografia;
-			}
-			set
-			{
-				if ((this._idTipotopografia != value))
-				{
-					this.OnidTipotopografiaChanging(value);
-					this.SendPropertyChanging();
-					this._idTipotopografia = value;
-					this.SendPropertyChanged("idTipotopografia");
-					this.OnidTipotopografiaChanged();
-				}
-			}
-		}
-		
-		[Column(Storage="_idTipoUsoSuelo", DbType="SmallInt NOT NULL")]
-		public short idTipoUsoSuelo
-		{
-			get
-			{
-				return this._idTipoUsoSuelo;
-			}
-			set
-			{
-				if ((this._idTipoUsoSuelo != value))
-				{
-					this.OnidTipoUsoSueloChanging(value);
-					this.SendPropertyChanging();
-					this._idTipoUsoSuelo = value;
-					this.SendPropertyChanged("idTipoUsoSuelo");
-					this.OnidTipoUsoSueloChanged();
-				}
-			}
-		}
-		
-		[Column(Storage="_idFuenteMedida", DbType="SmallInt NOT NULL")]
-		public short idFuenteMedida
-		{
-			get
-			{
-				return this._idFuenteMedida;
-			}
-			set
-			{
-				if ((this._idFuenteMedida != value))
-				{
-					this.OnidFuenteMedidaChanging(value);
-					this.SendPropertyChanging();
-					this._idFuenteMedida = value;
-					this.SendPropertyChanged("idFuenteMedida");
-					this.OnidFuenteMedidaChanged();
-				}
-			}
-		}
-		
-		[Column(Storage="_otraFuente", DbType="NVarChar(50) NOT NULL", CanBeNull=false)]
-		public string otraFuente
-		{
-			get
-			{
-				return this._otraFuente;
-			}
-			set
-			{
-				if ((this._otraFuente != value))
-				{
-					this.OnotraFuenteChanging(value);
-					this.SendPropertyChanging();
-					this._otraFuente = value;
-					this.SendPropertyChanged("otraFuente");
-					this.OnotraFuenteChanged();
-				}
-			}
-		}
-		
-		[Column(Storage="_idFuenteDensidad", DbType="SmallInt NOT NULL")]
-		public short idFuenteDensidad
-		{
-			get
-			{
-				return this._idFuenteDensidad;
-			}
-			set
-			{
-				if ((this._idFuenteDensidad != value))
-				{
-					this.OnidFuenteDensidadChanging(value);
-					this.SendPropertyChanging();
-					this._idFuenteDensidad = value;
-					this.SendPropertyChanged("idFuenteDensidad");
-					this.OnidFuenteDensidadChanged();
-				}
-			}
-		}
-		
-		[Column(Storage="_densidadHabitantes", DbType="Float NOT NULL")]
-		public double densidadHabitantes
-		{
-			get
-			{
-				return this._densidadHabitantes;
-			}
-			set
-			{
-				if ((this._densidadHabitantes != value))
-				{
-					this.OndensidadHabitantesChanging(value);
-					this.SendPropertyChanging();
-					this._densidadHabitantes = value;
-					this.SendPropertyChanged("densidadHabitantes");
-					this.OndensidadHabitantesChanged();
-				}
-			}
-		}
-		
-		[Column(Storage="_densidadViviendas", DbType="Float NOT NULL")]
-		public double densidadViviendas
-		{
-			get
-			{
-				return this._densidadViviendas;
-			}
-			set
-			{
-				if ((this._densidadViviendas != value))
-				{
-					this.OndensidadViviendasChanging(value);
-					this.SendPropertyChanging();
-					this._densidadViviendas = value;
-					this.SendPropertyChanged("densidadViviendas");
-					this.OndensidadViviendasChanged();
-				}
-			}
-		}
-		
-		[Column(Storage="_frentes", DbType="SmallInt NOT NULL")]
-		public short frentes
-		{
-			get
-			{
-				return this._frentes;
-			}
-			set
-			{
-				if ((this._frentes != value))
-				{
-					this.OnfrentesChanging(value);
-					this.SendPropertyChanging();
-					this._frentes = value;
-					this.SendPropertyChanged("frentes");
-					this.OnfrentesChanged();
-				}
-			}
-		}
-		
-		[Column(Storage="_lados", DbType="SmallInt NOT NULL")]
-		public short lados
-		{
-			get
-			{
-				return this._lados;
-			}
-			set
-			{
-				if ((this._lados != value))
-				{
-					this.OnladosChanging(value);
-					this.SendPropertyChanging();
-					this._lados = value;
-					this.SendPropertyChanged("lados");
-					this.OnladosChanged();
-				}
-			}
-		}
-		
-		[Column(Storage="_descripcionColindancias", DbType="NVarChar(500) NOT NULL", CanBeNull=false)]
-		public string descripcionColindancias
-		{
-			get
-			{
-				return this._descripcionColindancias;
-			}
-			set
-			{
-				if ((this._descripcionColindancias != value))
-				{
-					this.OndescripcionColindanciasChanging(value);
-					this.SendPropertyChanging();
-					this._descripcionColindancias = value;
-					this.SendPropertyChanged("descripcionColindancias");
-					this.OndescripcionColindanciasChanged();
-				}
-			}
-		}
-		
-		[Association(Name="Inmueble_UbicacionInmueble", Storage="_Inmueble", ThisKey="idInmueble", OtherKey="idInmueble", IsForeignKey=true, DeleteOnNull=true, DeleteRule="CASCADE")]
-		public Inmueble Inmueble
-		{
-			get
-			{
-				return this._Inmueble.Entity;
-			}
-			set
-			{
-				Inmueble previousValue = this._Inmueble.Entity;
-				if (((previousValue != value) 
-							|| (this._Inmueble.HasLoadedOrAssignedValue == false)))
-				{
-					this.SendPropertyChanging();
-					if ((previousValue != null))
-					{
-						this._Inmueble.Entity = null;
-						previousValue.UbicacionInmueble = null;
-					}
-					this._Inmueble.Entity = value;
-					if ((value != null))
-					{
-						value.UbicacionInmueble = this;
-						this._idInmueble = value.idInmueble;
-					}
-					else
-					{
-						this._idInmueble = default(int);
-					}
-					this.SendPropertyChanged("Inmueble");
-				}
-			}
-		}
-		
-		public event PropertyChangingEventHandler PropertyChanging;
-		
-		public event PropertyChangedEventHandler PropertyChanged;
-		
-		protected virtual void SendPropertyChanging()
-		{
-			if ((this.PropertyChanging != null))
-			{
-				this.PropertyChanging(this, emptyChangingEventArgs);
-			}
-		}
-		
-		protected virtual void SendPropertyChanged(String propertyName)
-		{
-			if ((this.PropertyChanged != null))
-			{
-				this.PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
-			}
 		}
 	}
 	
@@ -27686,6 +26136,2208 @@ namespace SIGEA.Classes.Entities
 		{
 			this.SendPropertyChanging();
 			entity.Valuador = null;
+		}
+	}
+	
+	[Table(Name="dbo.UbicacionInmueble")]
+	public partial class UbicacionInmueble : INotifyPropertyChanging, INotifyPropertyChanged
+	{
+		
+		private static PropertyChangingEventArgs emptyChangingEventArgs = new PropertyChangingEventArgs(String.Empty);
+		
+		private int _idInmueble;
+		
+		private short _idTipoUbicacion;
+		
+		private short _idTipotopografia;
+		
+		private short _idTipoCaracteristicasPanoramicas;
+		
+		private short _idTipoUsoSuelo;
+		
+		private short _idTipoServidumbre;
+		
+		private short _idFuenteMedida;
+		
+		private string _otraFuente;
+		
+		private bool _configuracionRegular;
+		
+		private double _densidadHabitantes;
+		
+		private double _densidadViviendas;
+		
+		private short _frentes;
+		
+		private short _lados;
+		
+		private string _descripcionColindancias;
+		
+		private EntityRef<Inmueble> _Inmueble;
+		
+    #region Extensibility Method Definitions
+    partial void OnLoaded();
+    partial void OnValidate(System.Data.Linq.ChangeAction action);
+    partial void OnCreated();
+    partial void OnidInmuebleChanging(int value);
+    partial void OnidInmuebleChanged();
+    partial void OnidTipoUbicacionChanging(short value);
+    partial void OnidTipoUbicacionChanged();
+    partial void OnidTipotopografiaChanging(short value);
+    partial void OnidTipotopografiaChanged();
+    partial void OnidTipoCaracteristicasPanoramicasChanging(short value);
+    partial void OnidTipoCaracteristicasPanoramicasChanged();
+    partial void OnidTipoUsoSueloChanging(short value);
+    partial void OnidTipoUsoSueloChanged();
+    partial void OnidTipoServidumbreChanging(short value);
+    partial void OnidTipoServidumbreChanged();
+    partial void OnidFuenteMedidaChanging(short value);
+    partial void OnidFuenteMedidaChanged();
+    partial void OnotraFuenteChanging(string value);
+    partial void OnotraFuenteChanged();
+    partial void OnconfiguracionRegularChanging(bool value);
+    partial void OnconfiguracionRegularChanged();
+    partial void OndensidadHabitantesChanging(double value);
+    partial void OndensidadHabitantesChanged();
+    partial void OndensidadViviendasChanging(double value);
+    partial void OndensidadViviendasChanged();
+    partial void OnfrentesChanging(short value);
+    partial void OnfrentesChanged();
+    partial void OnladosChanging(short value);
+    partial void OnladosChanged();
+    partial void OndescripcionColindanciasChanging(string value);
+    partial void OndescripcionColindanciasChanged();
+    #endregion
+		
+		public UbicacionInmueble()
+		{
+			this._Inmueble = default(EntityRef<Inmueble>);
+			OnCreated();
+		}
+		
+		[Column(Storage="_idInmueble", DbType="Int NOT NULL", IsPrimaryKey=true)]
+		public int idInmueble
+		{
+			get
+			{
+				return this._idInmueble;
+			}
+			set
+			{
+				if ((this._idInmueble != value))
+				{
+					if (this._Inmueble.HasLoadedOrAssignedValue)
+					{
+						throw new System.Data.Linq.ForeignKeyReferenceAlreadyHasValueException();
+					}
+					this.OnidInmuebleChanging(value);
+					this.SendPropertyChanging();
+					this._idInmueble = value;
+					this.SendPropertyChanged("idInmueble");
+					this.OnidInmuebleChanged();
+				}
+			}
+		}
+		
+		[Column(Storage="_idTipoUbicacion", DbType="SmallInt NOT NULL")]
+		public short idTipoUbicacion
+		{
+			get
+			{
+				return this._idTipoUbicacion;
+			}
+			set
+			{
+				if ((this._idTipoUbicacion != value))
+				{
+					this.OnidTipoUbicacionChanging(value);
+					this.SendPropertyChanging();
+					this._idTipoUbicacion = value;
+					this.SendPropertyChanged("idTipoUbicacion");
+					this.OnidTipoUbicacionChanged();
+				}
+			}
+		}
+		
+		[Column(Storage="_idTipotopografia", DbType="SmallInt NOT NULL")]
+		public short idTipotopografia
+		{
+			get
+			{
+				return this._idTipotopografia;
+			}
+			set
+			{
+				if ((this._idTipotopografia != value))
+				{
+					this.OnidTipotopografiaChanging(value);
+					this.SendPropertyChanging();
+					this._idTipotopografia = value;
+					this.SendPropertyChanged("idTipotopografia");
+					this.OnidTipotopografiaChanged();
+				}
+			}
+		}
+		
+		[Column(Storage="_idTipoCaracteristicasPanoramicas", DbType="SmallInt NOT NULL")]
+		public short idTipoCaracteristicasPanoramicas
+		{
+			get
+			{
+				return this._idTipoCaracteristicasPanoramicas;
+			}
+			set
+			{
+				if ((this._idTipoCaracteristicasPanoramicas != value))
+				{
+					this.OnidTipoCaracteristicasPanoramicasChanging(value);
+					this.SendPropertyChanging();
+					this._idTipoCaracteristicasPanoramicas = value;
+					this.SendPropertyChanged("idTipoCaracteristicasPanoramicas");
+					this.OnidTipoCaracteristicasPanoramicasChanged();
+				}
+			}
+		}
+		
+		[Column(Storage="_idTipoUsoSuelo", DbType="SmallInt NOT NULL")]
+		public short idTipoUsoSuelo
+		{
+			get
+			{
+				return this._idTipoUsoSuelo;
+			}
+			set
+			{
+				if ((this._idTipoUsoSuelo != value))
+				{
+					this.OnidTipoUsoSueloChanging(value);
+					this.SendPropertyChanging();
+					this._idTipoUsoSuelo = value;
+					this.SendPropertyChanged("idTipoUsoSuelo");
+					this.OnidTipoUsoSueloChanged();
+				}
+			}
+		}
+		
+		[Column(Storage="_idTipoServidumbre", DbType="SmallInt NOT NULL")]
+		public short idTipoServidumbre
+		{
+			get
+			{
+				return this._idTipoServidumbre;
+			}
+			set
+			{
+				if ((this._idTipoServidumbre != value))
+				{
+					this.OnidTipoServidumbreChanging(value);
+					this.SendPropertyChanging();
+					this._idTipoServidumbre = value;
+					this.SendPropertyChanged("idTipoServidumbre");
+					this.OnidTipoServidumbreChanged();
+				}
+			}
+		}
+		
+		[Column(Storage="_idFuenteMedida", DbType="SmallInt NOT NULL")]
+		public short idFuenteMedida
+		{
+			get
+			{
+				return this._idFuenteMedida;
+			}
+			set
+			{
+				if ((this._idFuenteMedida != value))
+				{
+					this.OnidFuenteMedidaChanging(value);
+					this.SendPropertyChanging();
+					this._idFuenteMedida = value;
+					this.SendPropertyChanged("idFuenteMedida");
+					this.OnidFuenteMedidaChanged();
+				}
+			}
+		}
+		
+		[Column(Storage="_otraFuente", DbType="NVarChar(50) NOT NULL", CanBeNull=false)]
+		public string otraFuente
+		{
+			get
+			{
+				return this._otraFuente;
+			}
+			set
+			{
+				if ((this._otraFuente != value))
+				{
+					this.OnotraFuenteChanging(value);
+					this.SendPropertyChanging();
+					this._otraFuente = value;
+					this.SendPropertyChanged("otraFuente");
+					this.OnotraFuenteChanged();
+				}
+			}
+		}
+		
+		[Column(Storage="_configuracionRegular", DbType="Bit NOT NULL")]
+		public bool configuracionRegular
+		{
+			get
+			{
+				return this._configuracionRegular;
+			}
+			set
+			{
+				if ((this._configuracionRegular != value))
+				{
+					this.OnconfiguracionRegularChanging(value);
+					this.SendPropertyChanging();
+					this._configuracionRegular = value;
+					this.SendPropertyChanged("configuracionRegular");
+					this.OnconfiguracionRegularChanged();
+				}
+			}
+		}
+		
+		[Column(Storage="_densidadHabitantes", DbType="Float NOT NULL")]
+		public double densidadHabitantes
+		{
+			get
+			{
+				return this._densidadHabitantes;
+			}
+			set
+			{
+				if ((this._densidadHabitantes != value))
+				{
+					this.OndensidadHabitantesChanging(value);
+					this.SendPropertyChanging();
+					this._densidadHabitantes = value;
+					this.SendPropertyChanged("densidadHabitantes");
+					this.OndensidadHabitantesChanged();
+				}
+			}
+		}
+		
+		[Column(Storage="_densidadViviendas", DbType="Float NOT NULL")]
+		public double densidadViviendas
+		{
+			get
+			{
+				return this._densidadViviendas;
+			}
+			set
+			{
+				if ((this._densidadViviendas != value))
+				{
+					this.OndensidadViviendasChanging(value);
+					this.SendPropertyChanging();
+					this._densidadViviendas = value;
+					this.SendPropertyChanged("densidadViviendas");
+					this.OndensidadViviendasChanged();
+				}
+			}
+		}
+		
+		[Column(Storage="_frentes", DbType="SmallInt NOT NULL")]
+		public short frentes
+		{
+			get
+			{
+				return this._frentes;
+			}
+			set
+			{
+				if ((this._frentes != value))
+				{
+					this.OnfrentesChanging(value);
+					this.SendPropertyChanging();
+					this._frentes = value;
+					this.SendPropertyChanged("frentes");
+					this.OnfrentesChanged();
+				}
+			}
+		}
+		
+		[Column(Storage="_lados", DbType="SmallInt NOT NULL")]
+		public short lados
+		{
+			get
+			{
+				return this._lados;
+			}
+			set
+			{
+				if ((this._lados != value))
+				{
+					this.OnladosChanging(value);
+					this.SendPropertyChanging();
+					this._lados = value;
+					this.SendPropertyChanged("lados");
+					this.OnladosChanged();
+				}
+			}
+		}
+		
+		[Column(Storage="_descripcionColindancias", DbType="NVarChar(500) NOT NULL", CanBeNull=false)]
+		public string descripcionColindancias
+		{
+			get
+			{
+				return this._descripcionColindancias;
+			}
+			set
+			{
+				if ((this._descripcionColindancias != value))
+				{
+					this.OndescripcionColindanciasChanging(value);
+					this.SendPropertyChanging();
+					this._descripcionColindancias = value;
+					this.SendPropertyChanged("descripcionColindancias");
+					this.OndescripcionColindanciasChanged();
+				}
+			}
+		}
+		
+		[Association(Name="Inmueble_UbicacionInmueble", Storage="_Inmueble", ThisKey="idInmueble", OtherKey="idInmueble", IsForeignKey=true, DeleteOnNull=true, DeleteRule="CASCADE")]
+		public Inmueble Inmueble
+		{
+			get
+			{
+				return this._Inmueble.Entity;
+			}
+			set
+			{
+				Inmueble previousValue = this._Inmueble.Entity;
+				if (((previousValue != value) 
+							|| (this._Inmueble.HasLoadedOrAssignedValue == false)))
+				{
+					this.SendPropertyChanging();
+					if ((previousValue != null))
+					{
+						this._Inmueble.Entity = null;
+						previousValue.UbicacionInmueble = null;
+					}
+					this._Inmueble.Entity = value;
+					if ((value != null))
+					{
+						value.UbicacionInmueble = this;
+						this._idInmueble = value.idInmueble;
+					}
+					else
+					{
+						this._idInmueble = default(int);
+					}
+					this.SendPropertyChanged("Inmueble");
+				}
+			}
+		}
+		
+		public event PropertyChangingEventHandler PropertyChanging;
+		
+		public event PropertyChangedEventHandler PropertyChanged;
+		
+		protected virtual void SendPropertyChanging()
+		{
+			if ((this.PropertyChanging != null))
+			{
+				this.PropertyChanging(this, emptyChangingEventArgs);
+			}
+		}
+		
+		protected virtual void SendPropertyChanged(String propertyName)
+		{
+			if ((this.PropertyChanged != null))
+			{
+				this.PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
+			}
+		}
+	}
+	
+	[Table(Name="dbo.UbicacionCallesInmueble")]
+	public partial class UbicacionCallesInmueble : INotifyPropertyChanging, INotifyPropertyChanged
+	{
+		
+		private static PropertyChangingEventArgs emptyChangingEventArgs = new PropertyChangingEventArgs(String.Empty);
+		
+		private int _idInmueble;
+		
+		private short _idTipoOrientacion1;
+		
+		private short _idTipoOrientacion2;
+		
+		private short _idTipoOrientacion3;
+		
+		private string _calleTransversal1;
+		
+		private string _calleTransversal2;
+		
+		private string _calleLimitrofe;
+		
+		private EntityRef<Inmueble> _Inmueble;
+		
+    #region Extensibility Method Definitions
+    partial void OnLoaded();
+    partial void OnValidate(System.Data.Linq.ChangeAction action);
+    partial void OnCreated();
+    partial void OnidInmuebleChanging(int value);
+    partial void OnidInmuebleChanged();
+    partial void OnidTipoOrientacion1Changing(short value);
+    partial void OnidTipoOrientacion1Changed();
+    partial void OnidTipoOrientacion2Changing(short value);
+    partial void OnidTipoOrientacion2Changed();
+    partial void OnidTipoOrientacion3Changing(short value);
+    partial void OnidTipoOrientacion3Changed();
+    partial void OncalleTransversal1Changing(string value);
+    partial void OncalleTransversal1Changed();
+    partial void OncalleTransversal2Changing(string value);
+    partial void OncalleTransversal2Changed();
+    partial void OncalleLimitrofeChanging(string value);
+    partial void OncalleLimitrofeChanged();
+    #endregion
+		
+		public UbicacionCallesInmueble()
+		{
+			this._Inmueble = default(EntityRef<Inmueble>);
+			OnCreated();
+		}
+		
+		[Column(Storage="_idInmueble", DbType="Int NOT NULL", IsPrimaryKey=true)]
+		public int idInmueble
+		{
+			get
+			{
+				return this._idInmueble;
+			}
+			set
+			{
+				if ((this._idInmueble != value))
+				{
+					if (this._Inmueble.HasLoadedOrAssignedValue)
+					{
+						throw new System.Data.Linq.ForeignKeyReferenceAlreadyHasValueException();
+					}
+					this.OnidInmuebleChanging(value);
+					this.SendPropertyChanging();
+					this._idInmueble = value;
+					this.SendPropertyChanged("idInmueble");
+					this.OnidInmuebleChanged();
+				}
+			}
+		}
+		
+		[Column(Storage="_idTipoOrientacion1", DbType="SmallInt NOT NULL")]
+		public short idTipoOrientacion1
+		{
+			get
+			{
+				return this._idTipoOrientacion1;
+			}
+			set
+			{
+				if ((this._idTipoOrientacion1 != value))
+				{
+					this.OnidTipoOrientacion1Changing(value);
+					this.SendPropertyChanging();
+					this._idTipoOrientacion1 = value;
+					this.SendPropertyChanged("idTipoOrientacion1");
+					this.OnidTipoOrientacion1Changed();
+				}
+			}
+		}
+		
+		[Column(Storage="_idTipoOrientacion2", DbType="SmallInt NOT NULL")]
+		public short idTipoOrientacion2
+		{
+			get
+			{
+				return this._idTipoOrientacion2;
+			}
+			set
+			{
+				if ((this._idTipoOrientacion2 != value))
+				{
+					this.OnidTipoOrientacion2Changing(value);
+					this.SendPropertyChanging();
+					this._idTipoOrientacion2 = value;
+					this.SendPropertyChanged("idTipoOrientacion2");
+					this.OnidTipoOrientacion2Changed();
+				}
+			}
+		}
+		
+		[Column(Storage="_idTipoOrientacion3", DbType="SmallInt NOT NULL")]
+		public short idTipoOrientacion3
+		{
+			get
+			{
+				return this._idTipoOrientacion3;
+			}
+			set
+			{
+				if ((this._idTipoOrientacion3 != value))
+				{
+					this.OnidTipoOrientacion3Changing(value);
+					this.SendPropertyChanging();
+					this._idTipoOrientacion3 = value;
+					this.SendPropertyChanged("idTipoOrientacion3");
+					this.OnidTipoOrientacion3Changed();
+				}
+			}
+		}
+		
+		[Column(Storage="_calleTransversal1", DbType="NVarChar(35) NOT NULL", CanBeNull=false)]
+		public string calleTransversal1
+		{
+			get
+			{
+				return this._calleTransversal1;
+			}
+			set
+			{
+				if ((this._calleTransversal1 != value))
+				{
+					this.OncalleTransversal1Changing(value);
+					this.SendPropertyChanging();
+					this._calleTransversal1 = value;
+					this.SendPropertyChanged("calleTransversal1");
+					this.OncalleTransversal1Changed();
+				}
+			}
+		}
+		
+		[Column(Storage="_calleTransversal2", DbType="NVarChar(35) NOT NULL", CanBeNull=false)]
+		public string calleTransversal2
+		{
+			get
+			{
+				return this._calleTransversal2;
+			}
+			set
+			{
+				if ((this._calleTransversal2 != value))
+				{
+					this.OncalleTransversal2Changing(value);
+					this.SendPropertyChanging();
+					this._calleTransversal2 = value;
+					this.SendPropertyChanged("calleTransversal2");
+					this.OncalleTransversal2Changed();
+				}
+			}
+		}
+		
+		[Column(Storage="_calleLimitrofe", DbType="NVarChar(35) NOT NULL", CanBeNull=false)]
+		public string calleLimitrofe
+		{
+			get
+			{
+				return this._calleLimitrofe;
+			}
+			set
+			{
+				if ((this._calleLimitrofe != value))
+				{
+					this.OncalleLimitrofeChanging(value);
+					this.SendPropertyChanging();
+					this._calleLimitrofe = value;
+					this.SendPropertyChanged("calleLimitrofe");
+					this.OncalleLimitrofeChanged();
+				}
+			}
+		}
+		
+		[Association(Name="Inmueble_UbicacionCallesInmueble", Storage="_Inmueble", ThisKey="idInmueble", OtherKey="idInmueble", IsForeignKey=true, DeleteOnNull=true, DeleteRule="CASCADE")]
+		public Inmueble Inmueble
+		{
+			get
+			{
+				return this._Inmueble.Entity;
+			}
+			set
+			{
+				Inmueble previousValue = this._Inmueble.Entity;
+				if (((previousValue != value) 
+							|| (this._Inmueble.HasLoadedOrAssignedValue == false)))
+				{
+					this.SendPropertyChanging();
+					if ((previousValue != null))
+					{
+						this._Inmueble.Entity = null;
+						previousValue.UbicacionCallesInmueble = null;
+					}
+					this._Inmueble.Entity = value;
+					if ((value != null))
+					{
+						value.UbicacionCallesInmueble = this;
+						this._idInmueble = value.idInmueble;
+					}
+					else
+					{
+						this._idInmueble = default(int);
+					}
+					this.SendPropertyChanged("Inmueble");
+				}
+			}
+		}
+		
+		public event PropertyChangingEventHandler PropertyChanging;
+		
+		public event PropertyChangedEventHandler PropertyChanged;
+		
+		protected virtual void SendPropertyChanging()
+		{
+			if ((this.PropertyChanging != null))
+			{
+				this.PropertyChanging(this, emptyChangingEventArgs);
+			}
+		}
+		
+		protected virtual void SendPropertyChanged(String propertyName)
+		{
+			if ((this.PropertyChanged != null))
+			{
+				this.PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
+			}
+		}
+	}
+	
+	[Table(Name="dbo.ViasAcceso")]
+	public partial class ViasAcceso : INotifyPropertyChanging, INotifyPropertyChanged
+	{
+		
+		private static PropertyChangingEventArgs emptyChangingEventArgs = new PropertyChangingEventArgs(String.Empty);
+		
+		private int _idViaAcceso;
+		
+		private int _idInmueble;
+		
+		private short _idImportanciaVia;
+		
+		private string _nombreVia;
+		
+		private EntityRef<Inmueble> _Inmueble;
+		
+    #region Extensibility Method Definitions
+    partial void OnLoaded();
+    partial void OnValidate(System.Data.Linq.ChangeAction action);
+    partial void OnCreated();
+    partial void OnidViaAccesoChanging(int value);
+    partial void OnidViaAccesoChanged();
+    partial void OnidInmuebleChanging(int value);
+    partial void OnidInmuebleChanged();
+    partial void OnidImportanciaViaChanging(short value);
+    partial void OnidImportanciaViaChanged();
+    partial void OnnombreViaChanging(string value);
+    partial void OnnombreViaChanged();
+    #endregion
+		
+		public ViasAcceso()
+		{
+			this._Inmueble = default(EntityRef<Inmueble>);
+			OnCreated();
+		}
+		
+		[Column(Storage="_idViaAcceso", DbType="Int NOT NULL", IsPrimaryKey=true)]
+		public int idViaAcceso
+		{
+			get
+			{
+				return this._idViaAcceso;
+			}
+			set
+			{
+				if ((this._idViaAcceso != value))
+				{
+					this.OnidViaAccesoChanging(value);
+					this.SendPropertyChanging();
+					this._idViaAcceso = value;
+					this.SendPropertyChanged("idViaAcceso");
+					this.OnidViaAccesoChanged();
+				}
+			}
+		}
+		
+		[Column(Storage="_idInmueble", DbType="Int NOT NULL", IsPrimaryKey=true)]
+		public int idInmueble
+		{
+			get
+			{
+				return this._idInmueble;
+			}
+			set
+			{
+				if ((this._idInmueble != value))
+				{
+					if (this._Inmueble.HasLoadedOrAssignedValue)
+					{
+						throw new System.Data.Linq.ForeignKeyReferenceAlreadyHasValueException();
+					}
+					this.OnidInmuebleChanging(value);
+					this.SendPropertyChanging();
+					this._idInmueble = value;
+					this.SendPropertyChanged("idInmueble");
+					this.OnidInmuebleChanged();
+				}
+			}
+		}
+		
+		[Column(Storage="_idImportanciaVia", DbType="SmallInt NOT NULL")]
+		public short idImportanciaVia
+		{
+			get
+			{
+				return this._idImportanciaVia;
+			}
+			set
+			{
+				if ((this._idImportanciaVia != value))
+				{
+					this.OnidImportanciaViaChanging(value);
+					this.SendPropertyChanging();
+					this._idImportanciaVia = value;
+					this.SendPropertyChanged("idImportanciaVia");
+					this.OnidImportanciaViaChanged();
+				}
+			}
+		}
+		
+		[Column(Storage="_nombreVia", DbType="NVarChar(50) NOT NULL", CanBeNull=false)]
+		public string nombreVia
+		{
+			get
+			{
+				return this._nombreVia;
+			}
+			set
+			{
+				if ((this._nombreVia != value))
+				{
+					this.OnnombreViaChanging(value);
+					this.SendPropertyChanging();
+					this._nombreVia = value;
+					this.SendPropertyChanged("nombreVia");
+					this.OnnombreViaChanged();
+				}
+			}
+		}
+		
+		[Association(Name="Inmueble_ViasAcceso", Storage="_Inmueble", ThisKey="idInmueble", OtherKey="idInmueble", IsForeignKey=true, DeleteOnNull=true, DeleteRule="CASCADE")]
+		public Inmueble Inmueble
+		{
+			get
+			{
+				return this._Inmueble.Entity;
+			}
+			set
+			{
+				Inmueble previousValue = this._Inmueble.Entity;
+				if (((previousValue != value) 
+							|| (this._Inmueble.HasLoadedOrAssignedValue == false)))
+				{
+					this.SendPropertyChanging();
+					if ((previousValue != null))
+					{
+						this._Inmueble.Entity = null;
+						previousValue.ViasAcceso.Remove(this);
+					}
+					this._Inmueble.Entity = value;
+					if ((value != null))
+					{
+						value.ViasAcceso.Add(this);
+						this._idInmueble = value.idInmueble;
+					}
+					else
+					{
+						this._idInmueble = default(int);
+					}
+					this.SendPropertyChanged("Inmueble");
+				}
+			}
+		}
+		
+		public event PropertyChangingEventHandler PropertyChanging;
+		
+		public event PropertyChangedEventHandler PropertyChanged;
+		
+		protected virtual void SendPropertyChanging()
+		{
+			if ((this.PropertyChanging != null))
+			{
+				this.PropertyChanging(this, emptyChangingEventArgs);
+			}
+		}
+		
+		protected virtual void SendPropertyChanged(String propertyName)
+		{
+			if ((this.PropertyChanged != null))
+			{
+				this.PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
+			}
+		}
+	}
+	
+	[Table(Name="dbo.EquipamientoInmueble")]
+	public partial class EquipamientoInmueble : INotifyPropertyChanging, INotifyPropertyChanged
+	{
+		
+		private static PropertyChangingEventArgs emptyChangingEventArgs = new PropertyChangingEventArgs(String.Empty);
+		
+		private int _idInmueble;
+		
+		private System.Nullable<double> _distanciaIglesia;
+		
+		private System.Nullable<double> _distanciaEscuela;
+		
+		private System.Nullable<double> _distanciaEstacionTransporte;
+		
+		private System.Nullable<double> _distanciaMercado;
+		
+		private System.Nullable<double> _distanciaHospital;
+		
+		private System.Nullable<double> _distanciaPlaza;
+		
+		private System.Nullable<double> _distanciaParque;
+		
+		private System.Nullable<double> _distanciaBanco;
+		
+		private double _proximidadGeneral;
+		
+		private short _nivelEquipamientoUrbano;
+		
+		private EntityRef<Inmueble> _Inmueble;
+		
+    #region Extensibility Method Definitions
+    partial void OnLoaded();
+    partial void OnValidate(System.Data.Linq.ChangeAction action);
+    partial void OnCreated();
+    partial void OnidInmuebleChanging(int value);
+    partial void OnidInmuebleChanged();
+    partial void OndistanciaIglesiaChanging(System.Nullable<double> value);
+    partial void OndistanciaIglesiaChanged();
+    partial void OndistanciaEscuelaChanging(System.Nullable<double> value);
+    partial void OndistanciaEscuelaChanged();
+    partial void OndistanciaEstacionTransporteChanging(System.Nullable<double> value);
+    partial void OndistanciaEstacionTransporteChanged();
+    partial void OndistanciaMercadoChanging(System.Nullable<double> value);
+    partial void OndistanciaMercadoChanged();
+    partial void OndistanciaHospitalChanging(System.Nullable<double> value);
+    partial void OndistanciaHospitalChanged();
+    partial void OndistanciaPlazaChanging(System.Nullable<double> value);
+    partial void OndistanciaPlazaChanged();
+    partial void OndistanciaParqueChanging(System.Nullable<double> value);
+    partial void OndistanciaParqueChanged();
+    partial void OndistanciaBancoChanging(System.Nullable<double> value);
+    partial void OndistanciaBancoChanged();
+    partial void OnproximidadGeneralChanging(double value);
+    partial void OnproximidadGeneralChanged();
+    partial void OnnivelEquipamientoUrbanoChanging(short value);
+    partial void OnnivelEquipamientoUrbanoChanged();
+    #endregion
+		
+		public EquipamientoInmueble()
+		{
+			this._Inmueble = default(EntityRef<Inmueble>);
+			OnCreated();
+		}
+		
+		[Column(Storage="_idInmueble", DbType="Int NOT NULL", IsPrimaryKey=true)]
+		public int idInmueble
+		{
+			get
+			{
+				return this._idInmueble;
+			}
+			set
+			{
+				if ((this._idInmueble != value))
+				{
+					if (this._Inmueble.HasLoadedOrAssignedValue)
+					{
+						throw new System.Data.Linq.ForeignKeyReferenceAlreadyHasValueException();
+					}
+					this.OnidInmuebleChanging(value);
+					this.SendPropertyChanging();
+					this._idInmueble = value;
+					this.SendPropertyChanged("idInmueble");
+					this.OnidInmuebleChanged();
+				}
+			}
+		}
+		
+		[Column(Storage="_distanciaIglesia", DbType="Float")]
+		public System.Nullable<double> distanciaIglesia
+		{
+			get
+			{
+				return this._distanciaIglesia;
+			}
+			set
+			{
+				if ((this._distanciaIglesia != value))
+				{
+					this.OndistanciaIglesiaChanging(value);
+					this.SendPropertyChanging();
+					this._distanciaIglesia = value;
+					this.SendPropertyChanged("distanciaIglesia");
+					this.OndistanciaIglesiaChanged();
+				}
+			}
+		}
+		
+		[Column(Storage="_distanciaEscuela", DbType="Float")]
+		public System.Nullable<double> distanciaEscuela
+		{
+			get
+			{
+				return this._distanciaEscuela;
+			}
+			set
+			{
+				if ((this._distanciaEscuela != value))
+				{
+					this.OndistanciaEscuelaChanging(value);
+					this.SendPropertyChanging();
+					this._distanciaEscuela = value;
+					this.SendPropertyChanged("distanciaEscuela");
+					this.OndistanciaEscuelaChanged();
+				}
+			}
+		}
+		
+		[Column(Storage="_distanciaEstacionTransporte", DbType="Float")]
+		public System.Nullable<double> distanciaEstacionTransporte
+		{
+			get
+			{
+				return this._distanciaEstacionTransporte;
+			}
+			set
+			{
+				if ((this._distanciaEstacionTransporte != value))
+				{
+					this.OndistanciaEstacionTransporteChanging(value);
+					this.SendPropertyChanging();
+					this._distanciaEstacionTransporte = value;
+					this.SendPropertyChanged("distanciaEstacionTransporte");
+					this.OndistanciaEstacionTransporteChanged();
+				}
+			}
+		}
+		
+		[Column(Storage="_distanciaMercado", DbType="Float")]
+		public System.Nullable<double> distanciaMercado
+		{
+			get
+			{
+				return this._distanciaMercado;
+			}
+			set
+			{
+				if ((this._distanciaMercado != value))
+				{
+					this.OndistanciaMercadoChanging(value);
+					this.SendPropertyChanging();
+					this._distanciaMercado = value;
+					this.SendPropertyChanged("distanciaMercado");
+					this.OndistanciaMercadoChanged();
+				}
+			}
+		}
+		
+		[Column(Storage="_distanciaHospital", DbType="Float")]
+		public System.Nullable<double> distanciaHospital
+		{
+			get
+			{
+				return this._distanciaHospital;
+			}
+			set
+			{
+				if ((this._distanciaHospital != value))
+				{
+					this.OndistanciaHospitalChanging(value);
+					this.SendPropertyChanging();
+					this._distanciaHospital = value;
+					this.SendPropertyChanged("distanciaHospital");
+					this.OndistanciaHospitalChanged();
+				}
+			}
+		}
+		
+		[Column(Storage="_distanciaPlaza", DbType="Float")]
+		public System.Nullable<double> distanciaPlaza
+		{
+			get
+			{
+				return this._distanciaPlaza;
+			}
+			set
+			{
+				if ((this._distanciaPlaza != value))
+				{
+					this.OndistanciaPlazaChanging(value);
+					this.SendPropertyChanging();
+					this._distanciaPlaza = value;
+					this.SendPropertyChanged("distanciaPlaza");
+					this.OndistanciaPlazaChanged();
+				}
+			}
+		}
+		
+		[Column(Storage="_distanciaParque", DbType="Float")]
+		public System.Nullable<double> distanciaParque
+		{
+			get
+			{
+				return this._distanciaParque;
+			}
+			set
+			{
+				if ((this._distanciaParque != value))
+				{
+					this.OndistanciaParqueChanging(value);
+					this.SendPropertyChanging();
+					this._distanciaParque = value;
+					this.SendPropertyChanged("distanciaParque");
+					this.OndistanciaParqueChanged();
+				}
+			}
+		}
+		
+		[Column(Storage="_distanciaBanco", DbType="Float")]
+		public System.Nullable<double> distanciaBanco
+		{
+			get
+			{
+				return this._distanciaBanco;
+			}
+			set
+			{
+				if ((this._distanciaBanco != value))
+				{
+					this.OndistanciaBancoChanging(value);
+					this.SendPropertyChanging();
+					this._distanciaBanco = value;
+					this.SendPropertyChanged("distanciaBanco");
+					this.OndistanciaBancoChanged();
+				}
+			}
+		}
+		
+		[Column(Storage="_proximidadGeneral", DbType="Float NOT NULL")]
+		public double proximidadGeneral
+		{
+			get
+			{
+				return this._proximidadGeneral;
+			}
+			set
+			{
+				if ((this._proximidadGeneral != value))
+				{
+					this.OnproximidadGeneralChanging(value);
+					this.SendPropertyChanging();
+					this._proximidadGeneral = value;
+					this.SendPropertyChanged("proximidadGeneral");
+					this.OnproximidadGeneralChanged();
+				}
+			}
+		}
+		
+		[Column(Storage="_nivelEquipamientoUrbano", DbType="SmallInt NOT NULL")]
+		public short nivelEquipamientoUrbano
+		{
+			get
+			{
+				return this._nivelEquipamientoUrbano;
+			}
+			set
+			{
+				if ((this._nivelEquipamientoUrbano != value))
+				{
+					this.OnnivelEquipamientoUrbanoChanging(value);
+					this.SendPropertyChanging();
+					this._nivelEquipamientoUrbano = value;
+					this.SendPropertyChanged("nivelEquipamientoUrbano");
+					this.OnnivelEquipamientoUrbanoChanged();
+				}
+			}
+		}
+		
+		[Association(Name="Inmueble_EquipamientoInmueble", Storage="_Inmueble", ThisKey="idInmueble", OtherKey="idInmueble", IsForeignKey=true, DeleteOnNull=true, DeleteRule="CASCADE")]
+		public Inmueble Inmueble
+		{
+			get
+			{
+				return this._Inmueble.Entity;
+			}
+			set
+			{
+				Inmueble previousValue = this._Inmueble.Entity;
+				if (((previousValue != value) 
+							|| (this._Inmueble.HasLoadedOrAssignedValue == false)))
+				{
+					this.SendPropertyChanging();
+					if ((previousValue != null))
+					{
+						this._Inmueble.Entity = null;
+						previousValue.EquipamientoInmueble = null;
+					}
+					this._Inmueble.Entity = value;
+					if ((value != null))
+					{
+						value.EquipamientoInmueble = this;
+						this._idInmueble = value.idInmueble;
+					}
+					else
+					{
+						this._idInmueble = default(int);
+					}
+					this.SendPropertyChanged("Inmueble");
+				}
+			}
+		}
+		
+		public event PropertyChangingEventHandler PropertyChanging;
+		
+		public event PropertyChangedEventHandler PropertyChanged;
+		
+		protected virtual void SendPropertyChanging()
+		{
+			if ((this.PropertyChanging != null))
+			{
+				this.PropertyChanging(this, emptyChangingEventArgs);
+			}
+		}
+		
+		protected virtual void SendPropertyChanged(String propertyName)
+		{
+			if ((this.PropertyChanged != null))
+			{
+				this.PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
+			}
+		}
+	}
+	
+	[Table(Name="dbo.InfraestructuraInmueble")]
+	public partial class InfraestructuraInmueble : INotifyPropertyChanging, INotifyPropertyChanged
+	{
+		
+		private static PropertyChangingEventArgs emptyChangingEventArgs = new PropertyChangingEventArgs(String.Empty);
+		
+		private int _idInmueble;
+		
+		private bool _aguaPotable;
+		
+		private bool _aguaPotableSuministro;
+		
+		private bool _electrificacion;
+		
+		private bool _electrificacionRedAerea;
+		
+		private bool _electrificacionConAcometida;
+		
+		private bool _drenaje;
+		
+		private bool _drenajeConexion;
+		
+		private bool _drenajeFosaSeptica;
+		
+		private bool _alumbradoPublico;
+		
+		private bool _alumbradoPublicoAereo;
+		
+		private bool _vialidades;
+		
+		private System.Nullable<short> _idTipoVialidades;
+		
+		private System.Nullable<double> _anchoVialidades;
+		
+		private bool _banquetas;
+		
+		private System.Nullable<short> _idTipoBanquetas;
+		
+		private bool _guarniciones;
+		
+		private System.Nullable<short> _idTipoGuarniciones;
+		
+		private double _nivelInfraestructura;
+		
+		private short _nivelInfraestructuraSHF;
+		
+		private EntityRef<Inmueble> _Inmueble;
+		
+    #region Extensibility Method Definitions
+    partial void OnLoaded();
+    partial void OnValidate(System.Data.Linq.ChangeAction action);
+    partial void OnCreated();
+    partial void OnidInmuebleChanging(int value);
+    partial void OnidInmuebleChanged();
+    partial void OnaguaPotableChanging(bool value);
+    partial void OnaguaPotableChanged();
+    partial void OnaguaPotableSuministroChanging(bool value);
+    partial void OnaguaPotableSuministroChanged();
+    partial void OnelectrificacionChanging(bool value);
+    partial void OnelectrificacionChanged();
+    partial void OnelectrificacionRedAereaChanging(bool value);
+    partial void OnelectrificacionRedAereaChanged();
+    partial void OnelectrificacionConAcometidaChanging(bool value);
+    partial void OnelectrificacionConAcometidaChanged();
+    partial void OndrenajeChanging(bool value);
+    partial void OndrenajeChanged();
+    partial void OndrenajeConexionChanging(bool value);
+    partial void OndrenajeConexionChanged();
+    partial void OndrenajeFosaSepticaChanging(bool value);
+    partial void OndrenajeFosaSepticaChanged();
+    partial void OnalumbradoPublicoChanging(bool value);
+    partial void OnalumbradoPublicoChanged();
+    partial void OnalumbradoPublicoAereoChanging(bool value);
+    partial void OnalumbradoPublicoAereoChanged();
+    partial void OnvialidadesChanging(bool value);
+    partial void OnvialidadesChanged();
+    partial void OnidTipoVialidadesChanging(System.Nullable<short> value);
+    partial void OnidTipoVialidadesChanged();
+    partial void OnanchoVialidadesChanging(System.Nullable<double> value);
+    partial void OnanchoVialidadesChanged();
+    partial void OnbanquetasChanging(bool value);
+    partial void OnbanquetasChanged();
+    partial void OnidTipoBanquetasChanging(System.Nullable<short> value);
+    partial void OnidTipoBanquetasChanged();
+    partial void OnguarnicionesChanging(bool value);
+    partial void OnguarnicionesChanged();
+    partial void OnidTipoGuarnicionesChanging(System.Nullable<short> value);
+    partial void OnidTipoGuarnicionesChanged();
+    partial void OnnivelInfraestructuraChanging(double value);
+    partial void OnnivelInfraestructuraChanged();
+    partial void OnnivelInfraestructuraSHFChanging(short value);
+    partial void OnnivelInfraestructuraSHFChanged();
+    #endregion
+		
+		public InfraestructuraInmueble()
+		{
+			this._Inmueble = default(EntityRef<Inmueble>);
+			OnCreated();
+		}
+		
+		[Column(Storage="_idInmueble", DbType="Int NOT NULL", IsPrimaryKey=true)]
+		public int idInmueble
+		{
+			get
+			{
+				return this._idInmueble;
+			}
+			set
+			{
+				if ((this._idInmueble != value))
+				{
+					if (this._Inmueble.HasLoadedOrAssignedValue)
+					{
+						throw new System.Data.Linq.ForeignKeyReferenceAlreadyHasValueException();
+					}
+					this.OnidInmuebleChanging(value);
+					this.SendPropertyChanging();
+					this._idInmueble = value;
+					this.SendPropertyChanged("idInmueble");
+					this.OnidInmuebleChanged();
+				}
+			}
+		}
+		
+		[Column(Storage="_aguaPotable", DbType="Bit NOT NULL")]
+		public bool aguaPotable
+		{
+			get
+			{
+				return this._aguaPotable;
+			}
+			set
+			{
+				if ((this._aguaPotable != value))
+				{
+					this.OnaguaPotableChanging(value);
+					this.SendPropertyChanging();
+					this._aguaPotable = value;
+					this.SendPropertyChanged("aguaPotable");
+					this.OnaguaPotableChanged();
+				}
+			}
+		}
+		
+		[Column(Storage="_aguaPotableSuministro", DbType="Bit NOT NULL")]
+		public bool aguaPotableSuministro
+		{
+			get
+			{
+				return this._aguaPotableSuministro;
+			}
+			set
+			{
+				if ((this._aguaPotableSuministro != value))
+				{
+					this.OnaguaPotableSuministroChanging(value);
+					this.SendPropertyChanging();
+					this._aguaPotableSuministro = value;
+					this.SendPropertyChanged("aguaPotableSuministro");
+					this.OnaguaPotableSuministroChanged();
+				}
+			}
+		}
+		
+		[Column(Storage="_electrificacion", DbType="Bit NOT NULL")]
+		public bool electrificacion
+		{
+			get
+			{
+				return this._electrificacion;
+			}
+			set
+			{
+				if ((this._electrificacion != value))
+				{
+					this.OnelectrificacionChanging(value);
+					this.SendPropertyChanging();
+					this._electrificacion = value;
+					this.SendPropertyChanged("electrificacion");
+					this.OnelectrificacionChanged();
+				}
+			}
+		}
+		
+		[Column(Storage="_electrificacionRedAerea", DbType="Bit NOT NULL")]
+		public bool electrificacionRedAerea
+		{
+			get
+			{
+				return this._electrificacionRedAerea;
+			}
+			set
+			{
+				if ((this._electrificacionRedAerea != value))
+				{
+					this.OnelectrificacionRedAereaChanging(value);
+					this.SendPropertyChanging();
+					this._electrificacionRedAerea = value;
+					this.SendPropertyChanged("electrificacionRedAerea");
+					this.OnelectrificacionRedAereaChanged();
+				}
+			}
+		}
+		
+		[Column(Storage="_electrificacionConAcometida", DbType="Bit NOT NULL")]
+		public bool electrificacionConAcometida
+		{
+			get
+			{
+				return this._electrificacionConAcometida;
+			}
+			set
+			{
+				if ((this._electrificacionConAcometida != value))
+				{
+					this.OnelectrificacionConAcometidaChanging(value);
+					this.SendPropertyChanging();
+					this._electrificacionConAcometida = value;
+					this.SendPropertyChanged("electrificacionConAcometida");
+					this.OnelectrificacionConAcometidaChanged();
+				}
+			}
+		}
+		
+		[Column(Storage="_drenaje", DbType="Bit NOT NULL")]
+		public bool drenaje
+		{
+			get
+			{
+				return this._drenaje;
+			}
+			set
+			{
+				if ((this._drenaje != value))
+				{
+					this.OndrenajeChanging(value);
+					this.SendPropertyChanging();
+					this._drenaje = value;
+					this.SendPropertyChanged("drenaje");
+					this.OndrenajeChanged();
+				}
+			}
+		}
+		
+		[Column(Storage="_drenajeConexion", DbType="Bit NOT NULL")]
+		public bool drenajeConexion
+		{
+			get
+			{
+				return this._drenajeConexion;
+			}
+			set
+			{
+				if ((this._drenajeConexion != value))
+				{
+					this.OndrenajeConexionChanging(value);
+					this.SendPropertyChanging();
+					this._drenajeConexion = value;
+					this.SendPropertyChanged("drenajeConexion");
+					this.OndrenajeConexionChanged();
+				}
+			}
+		}
+		
+		[Column(Storage="_drenajeFosaSeptica", DbType="Bit NOT NULL")]
+		public bool drenajeFosaSeptica
+		{
+			get
+			{
+				return this._drenajeFosaSeptica;
+			}
+			set
+			{
+				if ((this._drenajeFosaSeptica != value))
+				{
+					this.OndrenajeFosaSepticaChanging(value);
+					this.SendPropertyChanging();
+					this._drenajeFosaSeptica = value;
+					this.SendPropertyChanged("drenajeFosaSeptica");
+					this.OndrenajeFosaSepticaChanged();
+				}
+			}
+		}
+		
+		[Column(Storage="_alumbradoPublico", DbType="Bit NOT NULL")]
+		public bool alumbradoPublico
+		{
+			get
+			{
+				return this._alumbradoPublico;
+			}
+			set
+			{
+				if ((this._alumbradoPublico != value))
+				{
+					this.OnalumbradoPublicoChanging(value);
+					this.SendPropertyChanging();
+					this._alumbradoPublico = value;
+					this.SendPropertyChanged("alumbradoPublico");
+					this.OnalumbradoPublicoChanged();
+				}
+			}
+		}
+		
+		[Column(Storage="_alumbradoPublicoAereo", DbType="Bit NOT NULL")]
+		public bool alumbradoPublicoAereo
+		{
+			get
+			{
+				return this._alumbradoPublicoAereo;
+			}
+			set
+			{
+				if ((this._alumbradoPublicoAereo != value))
+				{
+					this.OnalumbradoPublicoAereoChanging(value);
+					this.SendPropertyChanging();
+					this._alumbradoPublicoAereo = value;
+					this.SendPropertyChanged("alumbradoPublicoAereo");
+					this.OnalumbradoPublicoAereoChanged();
+				}
+			}
+		}
+		
+		[Column(Storage="_vialidades", DbType="Bit NOT NULL")]
+		public bool vialidades
+		{
+			get
+			{
+				return this._vialidades;
+			}
+			set
+			{
+				if ((this._vialidades != value))
+				{
+					this.OnvialidadesChanging(value);
+					this.SendPropertyChanging();
+					this._vialidades = value;
+					this.SendPropertyChanged("vialidades");
+					this.OnvialidadesChanged();
+				}
+			}
+		}
+		
+		[Column(Storage="_idTipoVialidades", DbType="SmallInt")]
+		public System.Nullable<short> idTipoVialidades
+		{
+			get
+			{
+				return this._idTipoVialidades;
+			}
+			set
+			{
+				if ((this._idTipoVialidades != value))
+				{
+					this.OnidTipoVialidadesChanging(value);
+					this.SendPropertyChanging();
+					this._idTipoVialidades = value;
+					this.SendPropertyChanged("idTipoVialidades");
+					this.OnidTipoVialidadesChanged();
+				}
+			}
+		}
+		
+		[Column(Storage="_anchoVialidades", DbType="Float")]
+		public System.Nullable<double> anchoVialidades
+		{
+			get
+			{
+				return this._anchoVialidades;
+			}
+			set
+			{
+				if ((this._anchoVialidades != value))
+				{
+					this.OnanchoVialidadesChanging(value);
+					this.SendPropertyChanging();
+					this._anchoVialidades = value;
+					this.SendPropertyChanged("anchoVialidades");
+					this.OnanchoVialidadesChanged();
+				}
+			}
+		}
+		
+		[Column(Storage="_banquetas", DbType="Bit NOT NULL")]
+		public bool banquetas
+		{
+			get
+			{
+				return this._banquetas;
+			}
+			set
+			{
+				if ((this._banquetas != value))
+				{
+					this.OnbanquetasChanging(value);
+					this.SendPropertyChanging();
+					this._banquetas = value;
+					this.SendPropertyChanged("banquetas");
+					this.OnbanquetasChanged();
+				}
+			}
+		}
+		
+		[Column(Storage="_idTipoBanquetas", DbType="SmallInt")]
+		public System.Nullable<short> idTipoBanquetas
+		{
+			get
+			{
+				return this._idTipoBanquetas;
+			}
+			set
+			{
+				if ((this._idTipoBanquetas != value))
+				{
+					this.OnidTipoBanquetasChanging(value);
+					this.SendPropertyChanging();
+					this._idTipoBanquetas = value;
+					this.SendPropertyChanged("idTipoBanquetas");
+					this.OnidTipoBanquetasChanged();
+				}
+			}
+		}
+		
+		[Column(Storage="_guarniciones", DbType="Bit NOT NULL")]
+		public bool guarniciones
+		{
+			get
+			{
+				return this._guarniciones;
+			}
+			set
+			{
+				if ((this._guarniciones != value))
+				{
+					this.OnguarnicionesChanging(value);
+					this.SendPropertyChanging();
+					this._guarniciones = value;
+					this.SendPropertyChanged("guarniciones");
+					this.OnguarnicionesChanged();
+				}
+			}
+		}
+		
+		[Column(Storage="_idTipoGuarniciones", DbType="SmallInt")]
+		public System.Nullable<short> idTipoGuarniciones
+		{
+			get
+			{
+				return this._idTipoGuarniciones;
+			}
+			set
+			{
+				if ((this._idTipoGuarniciones != value))
+				{
+					this.OnidTipoGuarnicionesChanging(value);
+					this.SendPropertyChanging();
+					this._idTipoGuarniciones = value;
+					this.SendPropertyChanged("idTipoGuarniciones");
+					this.OnidTipoGuarnicionesChanged();
+				}
+			}
+		}
+		
+		[Column(Storage="_nivelInfraestructura", DbType="Float NOT NULL")]
+		public double nivelInfraestructura
+		{
+			get
+			{
+				return this._nivelInfraestructura;
+			}
+			set
+			{
+				if ((this._nivelInfraestructura != value))
+				{
+					this.OnnivelInfraestructuraChanging(value);
+					this.SendPropertyChanging();
+					this._nivelInfraestructura = value;
+					this.SendPropertyChanged("nivelInfraestructura");
+					this.OnnivelInfraestructuraChanged();
+				}
+			}
+		}
+		
+		[Column(Storage="_nivelInfraestructuraSHF", DbType="SmallInt NOT NULL")]
+		public short nivelInfraestructuraSHF
+		{
+			get
+			{
+				return this._nivelInfraestructuraSHF;
+			}
+			set
+			{
+				if ((this._nivelInfraestructuraSHF != value))
+				{
+					this.OnnivelInfraestructuraSHFChanging(value);
+					this.SendPropertyChanging();
+					this._nivelInfraestructuraSHF = value;
+					this.SendPropertyChanged("nivelInfraestructuraSHF");
+					this.OnnivelInfraestructuraSHFChanged();
+				}
+			}
+		}
+		
+		[Association(Name="Inmueble_InfraestructuraInmueble", Storage="_Inmueble", ThisKey="idInmueble", OtherKey="idInmueble", IsForeignKey=true, DeleteOnNull=true, DeleteRule="CASCADE")]
+		public Inmueble Inmueble
+		{
+			get
+			{
+				return this._Inmueble.Entity;
+			}
+			set
+			{
+				Inmueble previousValue = this._Inmueble.Entity;
+				if (((previousValue != value) 
+							|| (this._Inmueble.HasLoadedOrAssignedValue == false)))
+				{
+					this.SendPropertyChanging();
+					if ((previousValue != null))
+					{
+						this._Inmueble.Entity = null;
+						previousValue.InfraestructuraInmueble = null;
+					}
+					this._Inmueble.Entity = value;
+					if ((value != null))
+					{
+						value.InfraestructuraInmueble = this;
+						this._idInmueble = value.idInmueble;
+					}
+					else
+					{
+						this._idInmueble = default(int);
+					}
+					this.SendPropertyChanged("Inmueble");
+				}
+			}
+		}
+		
+		public event PropertyChangingEventHandler PropertyChanging;
+		
+		public event PropertyChangedEventHandler PropertyChanged;
+		
+		protected virtual void SendPropertyChanging()
+		{
+			if ((this.PropertyChanging != null))
+			{
+				this.PropertyChanging(this, emptyChangingEventArgs);
+			}
+		}
+		
+		protected virtual void SendPropertyChanged(String propertyName)
+		{
+			if ((this.PropertyChanged != null))
+			{
+				this.PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
+			}
+		}
+	}
+	
+	[Table(Name="dbo.ServiciosInmueble")]
+	public partial class ServiciosInmueble : INotifyPropertyChanging, INotifyPropertyChanged
+	{
+		
+		private static PropertyChangingEventArgs emptyChangingEventArgs = new PropertyChangingEventArgs(String.Empty);
+		
+		private int _idInmueble;
+		
+		private bool _gasNatural;
+		
+		private bool _gasNaturalSuministro;
+		
+		private bool _redTelefonica;
+		
+		private bool _redTelefonicaAerea;
+		
+		private bool _redTelefonicaAcometida;
+		
+		private bool _transporteUrbano;
+		
+		private System.Nullable<double> _transporteUrbanoDistancia;
+		
+		private System.Nullable<double> _transporteUrbanoFrecuencia;
+		
+		private bool _transporteSuburbano;
+		
+		private System.Nullable<double> _transporteSuburbanoDistancia;
+		
+		private System.Nullable<double> _transporteSuburbanoFrecuencia;
+		
+		private bool _vigilancia;
+		
+		private bool _vigilanciaMunicipal;
+		
+		private bool _senalizacionNomencaltura;
+		
+		private bool _recoleccionBasura;
+		
+		private EntityRef<Inmueble> _Inmueble;
+		
+    #region Extensibility Method Definitions
+    partial void OnLoaded();
+    partial void OnValidate(System.Data.Linq.ChangeAction action);
+    partial void OnCreated();
+    partial void OnidInmuebleChanging(int value);
+    partial void OnidInmuebleChanged();
+    partial void OngasNaturalChanging(bool value);
+    partial void OngasNaturalChanged();
+    partial void OngasNaturalSuministroChanging(bool value);
+    partial void OngasNaturalSuministroChanged();
+    partial void OnredTelefonicaChanging(bool value);
+    partial void OnredTelefonicaChanged();
+    partial void OnredTelefonicaAereaChanging(bool value);
+    partial void OnredTelefonicaAereaChanged();
+    partial void OnredTelefonicaAcometidaChanging(bool value);
+    partial void OnredTelefonicaAcometidaChanged();
+    partial void OntransporteUrbanoChanging(bool value);
+    partial void OntransporteUrbanoChanged();
+    partial void OntransporteUrbanoDistanciaChanging(System.Nullable<double> value);
+    partial void OntransporteUrbanoDistanciaChanged();
+    partial void OntransporteUrbanoFrecuenciaChanging(System.Nullable<double> value);
+    partial void OntransporteUrbanoFrecuenciaChanged();
+    partial void OntransporteSuburbanoChanging(bool value);
+    partial void OntransporteSuburbanoChanged();
+    partial void OntransporteSuburbanoDistanciaChanging(System.Nullable<double> value);
+    partial void OntransporteSuburbanoDistanciaChanged();
+    partial void OntransporteSuburbanoFrecuenciaChanging(System.Nullable<double> value);
+    partial void OntransporteSuburbanoFrecuenciaChanged();
+    partial void OnvigilanciaChanging(bool value);
+    partial void OnvigilanciaChanged();
+    partial void OnvigilanciaMunicipalChanging(bool value);
+    partial void OnvigilanciaMunicipalChanged();
+    partial void OnsenalizacionNomencalturaChanging(bool value);
+    partial void OnsenalizacionNomencalturaChanged();
+    partial void OnrecoleccionBasuraChanging(bool value);
+    partial void OnrecoleccionBasuraChanged();
+    #endregion
+		
+		public ServiciosInmueble()
+		{
+			this._Inmueble = default(EntityRef<Inmueble>);
+			OnCreated();
+		}
+		
+		[Column(Storage="_idInmueble", DbType="Int NOT NULL", IsPrimaryKey=true)]
+		public int idInmueble
+		{
+			get
+			{
+				return this._idInmueble;
+			}
+			set
+			{
+				if ((this._idInmueble != value))
+				{
+					if (this._Inmueble.HasLoadedOrAssignedValue)
+					{
+						throw new System.Data.Linq.ForeignKeyReferenceAlreadyHasValueException();
+					}
+					this.OnidInmuebleChanging(value);
+					this.SendPropertyChanging();
+					this._idInmueble = value;
+					this.SendPropertyChanged("idInmueble");
+					this.OnidInmuebleChanged();
+				}
+			}
+		}
+		
+		[Column(Storage="_gasNatural", DbType="Bit NOT NULL")]
+		public bool gasNatural
+		{
+			get
+			{
+				return this._gasNatural;
+			}
+			set
+			{
+				if ((this._gasNatural != value))
+				{
+					this.OngasNaturalChanging(value);
+					this.SendPropertyChanging();
+					this._gasNatural = value;
+					this.SendPropertyChanged("gasNatural");
+					this.OngasNaturalChanged();
+				}
+			}
+		}
+		
+		[Column(Storage="_gasNaturalSuministro", DbType="Bit NOT NULL")]
+		public bool gasNaturalSuministro
+		{
+			get
+			{
+				return this._gasNaturalSuministro;
+			}
+			set
+			{
+				if ((this._gasNaturalSuministro != value))
+				{
+					this.OngasNaturalSuministroChanging(value);
+					this.SendPropertyChanging();
+					this._gasNaturalSuministro = value;
+					this.SendPropertyChanged("gasNaturalSuministro");
+					this.OngasNaturalSuministroChanged();
+				}
+			}
+		}
+		
+		[Column(Storage="_redTelefonica", DbType="Bit NOT NULL")]
+		public bool redTelefonica
+		{
+			get
+			{
+				return this._redTelefonica;
+			}
+			set
+			{
+				if ((this._redTelefonica != value))
+				{
+					this.OnredTelefonicaChanging(value);
+					this.SendPropertyChanging();
+					this._redTelefonica = value;
+					this.SendPropertyChanged("redTelefonica");
+					this.OnredTelefonicaChanged();
+				}
+			}
+		}
+		
+		[Column(Storage="_redTelefonicaAerea", DbType="Bit NOT NULL")]
+		public bool redTelefonicaAerea
+		{
+			get
+			{
+				return this._redTelefonicaAerea;
+			}
+			set
+			{
+				if ((this._redTelefonicaAerea != value))
+				{
+					this.OnredTelefonicaAereaChanging(value);
+					this.SendPropertyChanging();
+					this._redTelefonicaAerea = value;
+					this.SendPropertyChanged("redTelefonicaAerea");
+					this.OnredTelefonicaAereaChanged();
+				}
+			}
+		}
+		
+		[Column(Storage="_redTelefonicaAcometida", DbType="Bit NOT NULL")]
+		public bool redTelefonicaAcometida
+		{
+			get
+			{
+				return this._redTelefonicaAcometida;
+			}
+			set
+			{
+				if ((this._redTelefonicaAcometida != value))
+				{
+					this.OnredTelefonicaAcometidaChanging(value);
+					this.SendPropertyChanging();
+					this._redTelefonicaAcometida = value;
+					this.SendPropertyChanged("redTelefonicaAcometida");
+					this.OnredTelefonicaAcometidaChanged();
+				}
+			}
+		}
+		
+		[Column(Storage="_transporteUrbano", DbType="Bit NOT NULL")]
+		public bool transporteUrbano
+		{
+			get
+			{
+				return this._transporteUrbano;
+			}
+			set
+			{
+				if ((this._transporteUrbano != value))
+				{
+					this.OntransporteUrbanoChanging(value);
+					this.SendPropertyChanging();
+					this._transporteUrbano = value;
+					this.SendPropertyChanged("transporteUrbano");
+					this.OntransporteUrbanoChanged();
+				}
+			}
+		}
+		
+		[Column(Storage="_transporteUrbanoDistancia", DbType="Float")]
+		public System.Nullable<double> transporteUrbanoDistancia
+		{
+			get
+			{
+				return this._transporteUrbanoDistancia;
+			}
+			set
+			{
+				if ((this._transporteUrbanoDistancia != value))
+				{
+					this.OntransporteUrbanoDistanciaChanging(value);
+					this.SendPropertyChanging();
+					this._transporteUrbanoDistancia = value;
+					this.SendPropertyChanged("transporteUrbanoDistancia");
+					this.OntransporteUrbanoDistanciaChanged();
+				}
+			}
+		}
+		
+		[Column(Storage="_transporteUrbanoFrecuencia", DbType="Float")]
+		public System.Nullable<double> transporteUrbanoFrecuencia
+		{
+			get
+			{
+				return this._transporteUrbanoFrecuencia;
+			}
+			set
+			{
+				if ((this._transporteUrbanoFrecuencia != value))
+				{
+					this.OntransporteUrbanoFrecuenciaChanging(value);
+					this.SendPropertyChanging();
+					this._transporteUrbanoFrecuencia = value;
+					this.SendPropertyChanged("transporteUrbanoFrecuencia");
+					this.OntransporteUrbanoFrecuenciaChanged();
+				}
+			}
+		}
+		
+		[Column(Storage="_transporteSuburbano", DbType="Bit NOT NULL")]
+		public bool transporteSuburbano
+		{
+			get
+			{
+				return this._transporteSuburbano;
+			}
+			set
+			{
+				if ((this._transporteSuburbano != value))
+				{
+					this.OntransporteSuburbanoChanging(value);
+					this.SendPropertyChanging();
+					this._transporteSuburbano = value;
+					this.SendPropertyChanged("transporteSuburbano");
+					this.OntransporteSuburbanoChanged();
+				}
+			}
+		}
+		
+		[Column(Storage="_transporteSuburbanoDistancia", DbType="Float")]
+		public System.Nullable<double> transporteSuburbanoDistancia
+		{
+			get
+			{
+				return this._transporteSuburbanoDistancia;
+			}
+			set
+			{
+				if ((this._transporteSuburbanoDistancia != value))
+				{
+					this.OntransporteSuburbanoDistanciaChanging(value);
+					this.SendPropertyChanging();
+					this._transporteSuburbanoDistancia = value;
+					this.SendPropertyChanged("transporteSuburbanoDistancia");
+					this.OntransporteSuburbanoDistanciaChanged();
+				}
+			}
+		}
+		
+		[Column(Storage="_transporteSuburbanoFrecuencia", DbType="Float")]
+		public System.Nullable<double> transporteSuburbanoFrecuencia
+		{
+			get
+			{
+				return this._transporteSuburbanoFrecuencia;
+			}
+			set
+			{
+				if ((this._transporteSuburbanoFrecuencia != value))
+				{
+					this.OntransporteSuburbanoFrecuenciaChanging(value);
+					this.SendPropertyChanging();
+					this._transporteSuburbanoFrecuencia = value;
+					this.SendPropertyChanged("transporteSuburbanoFrecuencia");
+					this.OntransporteSuburbanoFrecuenciaChanged();
+				}
+			}
+		}
+		
+		[Column(Storage="_vigilancia", DbType="Bit NOT NULL")]
+		public bool vigilancia
+		{
+			get
+			{
+				return this._vigilancia;
+			}
+			set
+			{
+				if ((this._vigilancia != value))
+				{
+					this.OnvigilanciaChanging(value);
+					this.SendPropertyChanging();
+					this._vigilancia = value;
+					this.SendPropertyChanged("vigilancia");
+					this.OnvigilanciaChanged();
+				}
+			}
+		}
+		
+		[Column(Storage="_vigilanciaMunicipal", DbType="Bit NOT NULL")]
+		public bool vigilanciaMunicipal
+		{
+			get
+			{
+				return this._vigilanciaMunicipal;
+			}
+			set
+			{
+				if ((this._vigilanciaMunicipal != value))
+				{
+					this.OnvigilanciaMunicipalChanging(value);
+					this.SendPropertyChanging();
+					this._vigilanciaMunicipal = value;
+					this.SendPropertyChanged("vigilanciaMunicipal");
+					this.OnvigilanciaMunicipalChanged();
+				}
+			}
+		}
+		
+		[Column(Storage="_senalizacionNomencaltura", DbType="Bit NOT NULL")]
+		public bool senalizacionNomencaltura
+		{
+			get
+			{
+				return this._senalizacionNomencaltura;
+			}
+			set
+			{
+				if ((this._senalizacionNomencaltura != value))
+				{
+					this.OnsenalizacionNomencalturaChanging(value);
+					this.SendPropertyChanging();
+					this._senalizacionNomencaltura = value;
+					this.SendPropertyChanged("senalizacionNomencaltura");
+					this.OnsenalizacionNomencalturaChanged();
+				}
+			}
+		}
+		
+		[Column(Storage="_recoleccionBasura", DbType="Bit NOT NULL")]
+		public bool recoleccionBasura
+		{
+			get
+			{
+				return this._recoleccionBasura;
+			}
+			set
+			{
+				if ((this._recoleccionBasura != value))
+				{
+					this.OnrecoleccionBasuraChanging(value);
+					this.SendPropertyChanging();
+					this._recoleccionBasura = value;
+					this.SendPropertyChanged("recoleccionBasura");
+					this.OnrecoleccionBasuraChanged();
+				}
+			}
+		}
+		
+		[Association(Name="Inmueble_ServiciosInmueble", Storage="_Inmueble", ThisKey="idInmueble", OtherKey="idInmueble", IsForeignKey=true, DeleteOnNull=true, DeleteRule="CASCADE")]
+		public Inmueble Inmueble
+		{
+			get
+			{
+				return this._Inmueble.Entity;
+			}
+			set
+			{
+				Inmueble previousValue = this._Inmueble.Entity;
+				if (((previousValue != value) 
+							|| (this._Inmueble.HasLoadedOrAssignedValue == false)))
+				{
+					this.SendPropertyChanging();
+					if ((previousValue != null))
+					{
+						this._Inmueble.Entity = null;
+						previousValue.ServiciosInmueble = null;
+					}
+					this._Inmueble.Entity = value;
+					if ((value != null))
+					{
+						value.ServiciosInmueble = this;
+						this._idInmueble = value.idInmueble;
+					}
+					else
+					{
+						this._idInmueble = default(int);
+					}
+					this.SendPropertyChanged("Inmueble");
+				}
+			}
+		}
+		
+		public event PropertyChangingEventHandler PropertyChanging;
+		
+		public event PropertyChangedEventHandler PropertyChanged;
+		
+		protected virtual void SendPropertyChanging()
+		{
+			if ((this.PropertyChanging != null))
+			{
+				this.PropertyChanging(this, emptyChangingEventArgs);
+			}
+		}
+		
+		protected virtual void SendPropertyChanged(String propertyName)
+		{
+			if ((this.PropertyChanged != null))
+			{
+				this.PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
+			}
 		}
 	}
 	

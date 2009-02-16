@@ -5,23 +5,27 @@
     // DataBindings
     function getDatosAvaluo() {
         var data = new Object();
+        var seccion_proposito = $get("seccion_proposito");        
+        var seccion_recuperacion = $get("seccion_recuperacion");
 
         data["idProposito"] = $get("<%= proposito_DDList.ClientID %>").value;
-        data["especProposito"] = $get("<%= especProposito_TBox.ClientID %>").value;
-        data["especRecuperacion"] = $get("<%= especRecuperacion_TBox.ClientID %>").value;
+        data["especProposito"] = getVisiblity(seccion_proposito) 
+            ? $get("<%= especProposito_TBox.ClientID %>").value : "";
+        data["especRecuperacion"] = getVisiblity(seccion_recuperacion) 
+            ? $get("<%= especRecuperacion_TBox.ClientID %>").value : "";        
         data["operacionContado"] = $get("<%= contado_CBox.ClientID %>").checked;
 
-        if ($get("seccion_promocion").style.display == "block") {
+        if (getVisibility($get("seccion_promocion"))) {
             data["promocionVIASC"] = $get("<%= promocionVIASC_CBox.ClientID %>").checked;
 
-            if ($get("seccion_cliente").style.display != "none") {
+            if (getVisibility($get("seccion_cliente"))) {
                 data["idCliente"] = $get("<%= cliente_DDList.ClientID %>").value;
             }
         }
 
         return data;
     }
-    function setDatosAvaluo(data) {
+    function setDatosAvaluo(data) {        
         $get("<%= proposito_DDList.ClientID %>").selectedValue = data["idProposito"];
         $get("<%= especProposito_TBox.ClientID %>").value = data["especProposito"];
         $get("<%= especRecuperacion_TBox.ClientID %>").value = data["especRecuperacion"]
@@ -29,15 +33,9 @@
         $get("<%= promocionVIASC_CBox.ClientID %>").checked = data["promocionVIASC"];
         $get("<%= contado_CBox.ClientID %>").checked = data["operacionContado"];
 
-        $get("seccion_credito").style.display = data["operacionContado"] == false
-            ? "block"
-            : "none";
-        $get("seccion_recuperacion").style.display = data["especRecuperacion"] != ""
-            ? "block"
-            : "none";
-        $get("seccion_proposito").style.display = data["especProposito"] != ""
-            ? "block"
-            : "none";
+        setVisibility($get("seccion_credito"), data["operacionContado"] == false);
+        setVisibility($get("seccion_recuperacion"), data["especRecuperacion"] != "");
+        setVisibility($get("seccion_proposito"), data["especProposito"] != "");
     }
 
     function getDatosCredito() {
@@ -63,10 +61,8 @@
             $get("<%= entidadCofinanciamiento_DDList.ClientID %>").selectedValue = data["idEntidadCofinanciamiento"];
             $get("<%= tipoCreditoInterno_DDList.ClientID %>").selectedValue = data["idTipoCreditoInterno"];
 
-            $get("seccion_cofinanciamiento").style.display = data["idEntidadCofinanciamiento"] != null
-                ? "block"
-                : "none";
-            }
+            setVisibility($get("seccion_cofinanciamiento"), data["idEntidadCofinanciamiento"] != null);
+        }
         else {
             $get("seccion_cofinanciamiento").style.display = "none";
             $get("seccion_subtipo_credito").style.display = "none";

@@ -1,4 +1,4 @@
-﻿<%@ Page Title="SIGEA - Editor SHF - Datos Inmueble" Language="C#" AutoEventWireup="true"
+<%@ Page Title="SIGEA - Editor SHF - Datos Inmueble" Language="C#" AutoEventWireup="true"
     CodeFile="DatosInmueble.aspx.cs" MasterPageFile="~/Cuentas/Valuacion/Editores/SHF/EditorSHF.master"
     Inherits="Cuentas_Valuacion_Editores_SHF_DatosInmueble" %>
 
@@ -12,18 +12,19 @@
     TagPrefix="SIGEA" %>
 <%@ Register Src="~/Cuentas/Valuacion/Controles/DatosTerrenoCalles.ascx" TagName="DatosTerrenoCalles"
     TagPrefix="SIGEA" %>
-<%@ Register Src="~/Cuentas/Valuacion/Controles/DatosTerrenoColindancias.ascx" TagName="Colindancias"
-    TagPrefix="SIGEA" %>
 <asp:Content ID="headContent" ContentPlaceHolderID="head" runat="Server">
 
     <script type="text/javascript">
         // Variables
         var idAvaluo = 0;
-        var num_bloques_datos = 3;
+        var num_bloques_datos = 2;
 
-        // Inicialización
+        // Inicializaci�n
         function setupForm() {
-            $get("ctl00_menu_Ctrl_inmueble_LkBtn").removeAttribute("href");
+            var link = $get("ctl00_menu_Ctrl_inmueble_LkBtn")
+            link.removeAttribute("href");
+            link.setAttribute("class", "current");
+            link.setAttribute("className", "current");
 
             window.onbeforeunload = function() {
                 beforeUnload(saveForm)
@@ -31,7 +32,6 @@
 
             disableControls($get('form_inmueble'));
             disableControls($get('form_terreno'));
-            disableControls($get('form_colindancias'));
         }
 
         // Llenado de datos
@@ -39,7 +39,6 @@
             fillInmuebleData();
             fillTerrenoData();
             fillTerrenoCallesData();
-            fillTerrenoColindanciasData();
             fillDireccionData_Aux("<%= datosInmueble_Ctrl.DireccionID %>");
             fillDireccionData_Aux("<%= datosPropietario_Ctrl.DireccionID %>");
         }
@@ -50,13 +49,12 @@
 
             loadDatosInmueble();
             loadDatosTerreno();
-            loadDatosColindancias();
         }
         function loadDatosInmueble() {
             var callBackList = new Array();
             callBackList[0] = loadForm_Success;
             callBackList[1] = setDatosInmueble;
-            callBackList[2] = setDatosUbicacionInmueble;            
+            callBackList[2] = setDatosUbicacionInmueble;
             callBackList[3] = setDatosDireccionInmueble;
             callBackList[4] = setDatosPropietario;
             callBackList[5] = setDatosDireccionPropietario;
@@ -70,12 +68,12 @@
             setDatosDireccion_Aux("<%= datosPropietario_Ctrl.DireccionID%>", data);
         }
         function loadDatosTerreno() {
-            //TODO: Cargar datos de terreno
-            loadForm_Success() // Temporal
-        }
-        function loadDatosColindancias() {
-            //TODO: Cargar datos de Colindancias
-            loadForm_Success() // Temporal
+            var callBackList = new Array();
+            callBackList[0] = loadForm_Success;
+            callBackList[1] = setDatosTerrenoCalles;
+            callBackList[2] = setDatosTerreno;
+
+            loadUbicacionInmuebleAsync(idAvaluo, callBackList);
         }
         function loadForm_Success() {
             if (num_bloques_cargados != undefined) {
@@ -88,12 +86,10 @@
 
         // Guardado de registros
         function saveForm() {
-            if ($get("form_inmueble").style.display == "block")
+            if (getVisibility($get("<%= guardar_inmueble_ImBtn.ClientID %>")))
                 saveDatosInmueble();
-            if ($get("form_terreno").style.display == "block")
+            if (getVisibility($get("<%= guardar_terreno_ImBtn.ClientID %>")))
                 saveDatosTerreno();
-            if ($get("form_colindancias").style.display == "block")
-                saveColindancias();
         }
         function saveDatosInmueble() {
             saveInmuebleAsync(
@@ -103,20 +99,28 @@
                 , getDatosDireccion("<%= datosInmueble_Ctrl.DireccionID %>")
                 , getDatosPropietario()
                 , getDatosDireccion_Aux("<%= datosPropietario_Ctrl.DireccionID%>")
-                , saveDatosInmueble_Success);                
+                , saveDatosInmueble_Success);
         }
         function saveDatosInmueble_Success() {
             terminateEdit("form_inmueble",
                 "<%= editar_inmueble_ImBtn.ClientID %>",
                 "<%= guardar_inmueble_ImBtn.ClientID %>",
                 "<%= cancelar_inmueble_ImBtn.ClientID %>");
-            showMessage("Datos guardados");
         }
-        
+
         function saveDatosTerreno() {
+            saveUbicacionInmuebleAsync(
+                idAvaluo
+                , getDatosTerrenoCalles()
+                , getDatosTerreno()
+                , saveDatosTerreno_Success);
         }
-        function saveColindancias() {
-        }        
+        function saveDatosTerreno_Success() {
+            terminateEdit("form_terreno",
+                "<%= editar_terreno_ImBtn.ClientID %>",
+                "<%= guardar_terreno_ImBtn.ClientID %>",
+                "<%= cancelar_terreno_ImBtn.ClientID %>");
+        } 
 
     </script>
 
@@ -164,20 +168,5 @@
     <div class="barraAcciones">
         <asp:ImageButton ID="guardar_terreno_ImBtn" runat="server" SkinID="Save" CssClass="hidden" />
         <asp:ImageButton ID="cancelar_terreno_ImBtn" runat="server" SkinID="Cancel" CssClass="hidden" />
-    </div>
-    <hr />
-    <h2>
-        Medidas y colindancias
-    </h2>
-    <div class="barraAcciones">
-        <asp:ImageButton ID="editar_colindancias_ImBtn" runat="server" SkinID="Edit" />
-    </div>
-    <div id="form_colindancias" class="formulario">
-        <SIGEA:Colindancias ID="Colindancias_Ctrl" runat="server" />
-    </div>
-    <div class="barraAcciones">
-        <asp:ImageButton ID="guardar_colindancias_ImBtn" runat="server" SkinID="Save" CssClass="hidden" />
-        <asp:ImageButton ID="cancelar_colindancias_ImBtn" runat="server" SkinID="Cancel"
-            CssClass="hidden" />
     </div>
 </asp:Content>

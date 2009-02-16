@@ -9,7 +9,7 @@
         var idComparable = 0;
         var idTipoComparable = "<%= tipoComparable_DDList.ClientID %>";
         
-        function getData(){
+        function getDatos(){
             var data = new Object();
             var fechaCreacion = $get("<%= fechaCreacion_TBox.ClientID %>").value;
             
@@ -30,7 +30,7 @@
             return data;
         }
         
-        function setData(data){
+        function setDatos(data){
             $get("<%= nombre_TBox.ClientID %>").value = data["nombre"];
             $get("<%= tipoComparable_DDList.SelectedValue %>").value = data["idTipoComparable"];
             $get("<%= valorOferta_TBox.ClientID %>").value = data["valorOferta"];
@@ -92,8 +92,8 @@
         function fillFormComparableData(){
             fillTipoComparable(comparable_id);
             fillCalidadProyecto(calidadProyecto_id);
-            fillClase(clase_id);
-            fillConservacion(conservacion_id);
+            fillClaseInmueble(clase_id);
+            fillEstadoConservacion(conservacion_id);
             fillUsoSuelo(usoSuelo_id);
         }
         
@@ -239,11 +239,11 @@
                 </td>
              </tr>
          </table>
-         <h2>
+         
             Datos de ubicación
          </h2>
             <SIGEA:DatosDireccion ID="direccion_Ctrl" runat="server" />
-         <h2>
+         
             Datos de contacto
          </h2>
             <SIGEA:DatosContacto ID="usuario_Ctrl" runat="server" />

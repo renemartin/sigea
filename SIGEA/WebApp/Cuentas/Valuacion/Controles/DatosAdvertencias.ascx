@@ -5,17 +5,25 @@
 <script type="text/javascript">
 
     //mostrar datos
-    function setDataAdvertencias(data) {
-        $get("<%= sinDocumentacion_CBox.ClientID %>").checked = data.advertenciaDocumentacion;
-        $get("<%= sinOferta_CBox.ClientID %>").checked = data.advertenciaOfertas;
-        $get("<%= dudaUso_CBox.ClientID %>").checked = data.advertenciaUso;
-        $get("<%= obrasAfectacion_CBox.ClientID %>").checked = data.advertenciaObras;
-        $get("<%= otrasAdvertencias_TBox.ClientID %>").value = data.otrasAdvertencias;
-        
+    function setDatosAdvertencias(data) {
+        if (data != null) {
+            $get("<%= sinDocumentacion_CBox.ClientID %>").checked = data.advertenciaDocumentacion;
+            $get("<%= sinOferta_CBox.ClientID %>").checked = data.advertenciaOfertas;
+            $get("<%= dudaUso_CBox.ClientID %>").checked = data.advertenciaUso;
+            $get("<%= obrasAfectacion_CBox.ClientID %>").checked = data.advertenciaObras;
+            $get("<%= otrasAdvertencias_TBox.ClientID %>").value = data.otrasAdvertencias;
+        }
+        else {
+            $get("<%= sinDocumentacion_CBox.ClientID %>").checked = false;
+            $get("<%= sinOferta_CBox.ClientID %>").checked = false;
+            $get("<%= dudaUso_CBox.ClientID %>").checked = false;
+            $get("<%= obrasAfectacion_CBox.ClientID %>").checked = false;
+            $get("<%= otrasAdvertencias_TBox.ClientID %>").value = "";
+        }        
     }
     
     //guardar datos
-    function getDataAdvertencias() {
+    function getDatosAdvertencias() {
         var data = new Object();
         
         data.advertenciaDocumentacion = $get("<%= sinDocumentacion_CBox.ClientID %>").checked;
@@ -44,4 +52,5 @@
 </ol>
 <span>Otras advertencias:</span>
 <br />
-<asp:TextBox ID="otrasAdvertencias_TBox" runat="server" TextMode="MultiLine"></asp:TextBox>
+<asp:TextBox ID="otrasAdvertencias_TBox" runat="server" TextMode="MultiLine" 
+    Height="70px" Width="550px"></asp:TextBox>

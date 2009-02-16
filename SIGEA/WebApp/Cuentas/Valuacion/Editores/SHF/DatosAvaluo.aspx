@@ -20,7 +20,10 @@
 
         // Inicialización
         function setupForm() {
-            $get("ctl00_menu_Ctrl_avaluo_LkBtn").removeAttribute("href");
+            var link = $get("ctl00_menu_Ctrl_avaluo_LkBtn")
+            link.removeAttribute("href");
+            link.setAttribute("class", "current");
+            link.setAttribute("className", "current");
 
             window.onbeforeunload = function() {
                 beforeUnload(saveForm)
@@ -54,8 +57,12 @@
             loadDatosAvaluoAsync(idAvaluo, callBackList);
         }
         function loadDatosDeclaraciones() {
-            //TODO: Cargar datos de declaraciones y advertencias
-            loadForm_Success() // Temporal
+            var callBackList = new Array();
+            callBackList[0] = loadForm_Success;
+            callBackList[1] = setDatosDeclaraciones;
+            callBackList[2] = setDatosAdvertencias;
+
+            loadDeclaracionesAsync(idAvaluo, callBackList);
         }
         function loadForm_Success() {
             if (num_bloques_cargados != undefined) {
@@ -68,9 +75,9 @@
 
         // Guardado de registros
         function saveForm() {
-            if ($get("<%= guardar_datos_generales_ImBtn.ClientID %>").style.display != "none")
+            if (getVisibility($get("<%= guardar_datos_generales_ImBtn.ClientID %>")))
                 saveDatosGenerales();
-            if ($get("<%= guardar_declaraciones_ImBtn.ClientID %>").style.display == "block")
+            if (getVisibility($get("<%= guardar_declaraciones_ImBtn.ClientID %>")))
                 saveDeclaraciones();
         }
 
@@ -81,33 +88,29 @@
                 , getDatosCredito()
                 , getDatosSolicitante()
                 , getDatosDireccion()
-                , saveAvaluo_Success
+                , saveDatosAvaluo_Success
             );
         }
-
-        function saveAvaluo_Success() {
+        function saveDatosAvaluo_Success() {
             terminateEdit("form_datos_generales",
                 "<%= editar_datos_generales_ImBtn.ClientID %>",
                 "<%= guardar_datos_generales_ImBtn.ClientID %>",
                 "<%= cancelar_datos_generales_ImBtn.ClientID %>");
-            showMessage("Datos guardados");
         }
 
         function saveDeclaraciones() {
             saveDeclaracionesAsync(
                 idAvaluo
-                , getDataDeclaraciones()
-                , getDataAdvertencias()
+                , getDatosDeclaraciones()
+                , getDatosAdvertencias()
                 , saveDeclaraciones_Success
             );
         }
-        
         function saveDeclaraciones_Success() {
             terminateEdit("form_declaraciones",
                 "<%= editar_declaraciones_ImBtn.ClientID %>",
                 "<%= guardar_declaraciones_ImBtn.ClientID %>",
                 "<%= cancelar_declaraciones_ImBtn.ClientID %>");
-            showMessage("Datos guardados");
         }
 
     </script>
@@ -138,7 +141,7 @@
             Datos generales del avalúo</h2>
         <SIGEA:DatosGeneralesAvaluo ID="datosAvaluo_Ctrl" runat="server" />
         <h2>
-            Datos del solicitante
+            del solicitante
         </h2>
         <SIGEA:DatosSolicitante ID="datosSolicitante_Ctrl" runat="server" />
     </div>
@@ -149,7 +152,8 @@
             CssClass="hidden" />
     </div>
     <hr />
-    <h1>Declaraciones y advertencias</h1>
+    <h1>
+        Declaraciones y advertencias</h1>
     <div class="barraAcciones">
         <asp:ImageButton ID="editar_declaraciones_ImBtn" runat="server" SkinID="Edit" />
     </div>

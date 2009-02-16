@@ -9,7 +9,7 @@
     }
     
     //mostrar datos
-    function setDataSuperficiesAdicionales(data) { 
+    function setDatosSuperficiesAdicionales(data) { 
         var i = null;
         var parent_id = "<%= ClientID %>";
         
@@ -30,7 +30,7 @@
     }
     
     //guardar datos
-    function getDataSuperficiesAdicionales( parent_id ) {
+    function getDatosSuperficiesAdicionales( parent_id ) {
         var data = new Object();
         var i = null;
         var numero_tablas = getCloningTableCount(parent_id + '_tabla_adicionales');

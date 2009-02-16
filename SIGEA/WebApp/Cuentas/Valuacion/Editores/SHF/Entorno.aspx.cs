@@ -54,10 +54,6 @@ public partial class Cuentas_Valuacion_Editores_SHF_Entorno : System.Web.UI.Page
         SetCancel("form_infraestructura", editar_infraestructura_ImBtn, guardar_infraestructura_ImBtn, cancelar_infraestructura_ImBtn);
         guardar_infraestructura_ImBtn.OnClientClick = "saveDatosInfraestructura(); return false;";
 
-        SetEdit("form_servicios", editar_servicios_ImBtn, guardar_servicios_ImBtn, cancelar_servicios_ImBtn);
-        SetCancel("form_servicios", editar_servicios_ImBtn, guardar_servicios_ImBtn, cancelar_servicios_ImBtn);
-        guardar_servicios_ImBtn.OnClientClick = "saveDatosServicios(); return false;";
-
         SetEdit("form_equipamiento", editar_equipamiento_ImBtn, guardar_equipamiento_ImBtn, cancelar_equipamiento_ImBtn);
         SetCancel("form_equipamiento", editar_equipamiento_ImBtn, guardar_equipamiento_ImBtn, cancelar_equipamiento_ImBtn);
         guardar_equipamiento_ImBtn.OnClientClick = "saveDatosEquipamiento(); return false;";

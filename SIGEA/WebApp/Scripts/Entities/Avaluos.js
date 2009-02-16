@@ -31,7 +31,6 @@ function saveAsignacionAvaluoAsync(idAvaluo, datosAsignacion, callBack) {
         , asyncCallFail
         , callBack);
 }
-
 function saveAvaluoAsync(idAvaluo, datosAvaluo, datosCredito, datosSolicitante, datosDireccion, callBack) {
     EntityWrappers.SaveAvaluo(
         idAvaluo
@@ -44,7 +43,6 @@ function saveAvaluoAsync(idAvaluo, datosAvaluo, datosCredito, datosSolicitante, 
         , callBack
     );
 }
-
 function saveDeclaracionesAsync(idAvaluo, datosDeclaraciones, datosAdvertencias, callBack) {
     EntityWrappers.SaveDeclaraciones(
         idAvaluo
@@ -54,30 +52,6 @@ function saveDeclaracionesAsync(idAvaluo, datosDeclaraciones, datosAdvertencias,
         , asyncCallFail
         , callBack
     );
-}
-
-// Cancelación de avalúo
-
-function cancelarAvaluoAsync(sender, idAvaluo, callBack) {
-    var context = new Array();
-    context[0] = sender;
-    context[1] = callBack;
-    
-    EntityWrappers.CancelarAvaluo(
-        idAvaluo
-        , asyncCallSenderBack
-        , asyncCallFail
-        , context);
-}
-
-// Eliminación de asignación
-
-function deleteAsignacionAvaluoAsync(idAvaluo, callBack) {
-    EntityWrappers.DeleteAsignacionAvaluo(
-        idAvaluo
-        , asyncCallResultBack
-        , asyncCallFail
-        , callBack);
 }
 
 // Carga de datos
@@ -103,6 +77,13 @@ function loadAsignacionAvaluoAsync(idAvaluo, callBack) {
         , asyncCallFail
         , callBack);
 }
+function loadDeclaracionesAsync(idAvaluo, callBackList) {
+    EntityWrappers.LoadDeclaraciones(
+        idAvaluo
+        , asyncCallListBack
+        , asyncCallFail
+        , callBackList);
+}
 function verificarExistenciaAvaluoPorIDEAsync(IDE, callBack) {
     EntityWrappers.VerificarExistenciaAvaluoPorIDE(
         IDE
@@ -112,6 +93,30 @@ function verificarExistenciaAvaluoPorIDEAsync(IDE, callBack) {
 }
 function getEstadoInmuebleAvaluoAsync(idAvaluo, callBack) {
     EntityWrappers.GetEstadoInmuebleAvaluo(
+        idAvaluo
+        , asyncCallResultBack
+        , asyncCallFail
+        , callBack);
+}
+
+// Cancelación de avalúo
+
+function cancelarAvaluoAsync(sender, idAvaluo, callBack) {
+    var context = new Array();
+    context[0] = sender;
+    context[1] = callBack;
+    
+    EntityWrappers.CancelarAvaluo(
+        idAvaluo
+        , asyncCallSenderBack
+        , asyncCallFail
+        , context);
+}
+
+// Eliminación de asignación
+
+function deleteAsignacionAvaluoAsync(idAvaluo, callBack) {
+    EntityWrappers.DeleteAsignacionAvaluo(
         idAvaluo
         , asyncCallResultBack
         , asyncCallFail
