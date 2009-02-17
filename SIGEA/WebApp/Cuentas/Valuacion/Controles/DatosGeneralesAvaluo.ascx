@@ -9,9 +9,9 @@
         var seccion_recuperacion = $get("seccion_recuperacion");
 
         data["idProposito"] = $get("<%= proposito_DDList.ClientID %>").value;
-        data["especProposito"] = getVisiblity(seccion_proposito) 
+        data["especProposito"] = getVisibility(seccion_proposito) 
             ? $get("<%= especProposito_TBox.ClientID %>").value : "";
-        data["especRecuperacion"] = getVisiblity(seccion_recuperacion) 
+        data["especRecuperacion"] = getVisibility(seccion_recuperacion) 
             ? $get("<%= especRecuperacion_TBox.ClientID %>").value : "";        
         data["operacionContado"] = $get("<%= contado_CBox.ClientID %>").checked;
 
