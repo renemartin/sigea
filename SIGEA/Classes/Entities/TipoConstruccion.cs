@@ -33,7 +33,7 @@ namespace SIGEA.Classes.Entities
             return tipo_construccion;
         }
 
-        public Dictionary<string, object> GetDataTipoConstruccion()
+        public Dictionary<string, object> GetData()
         {
             Dictionary<string, object> data = new Dictionary<string, object>();
 
