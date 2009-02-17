@@ -53,7 +53,7 @@ namespace SIGEA.Classes.Entities
             return data;
         }
 
-        public void setData(Dictionary<string, object> data)
+        public void SetData(Dictionary<string, object> data)
         {
             idConstruccion = int.Parse(data["idConstruccion"].ToString());
             idClase = short.Parse(data["idClase"].ToString());
