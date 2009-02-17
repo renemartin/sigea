@@ -19,7 +19,6 @@
         $get("<%= unidadesRentables_TBox.ClientID %>").value = data.unidadRentable;
     }
     function setDatosCondominios(data) {
-        $get("<%= unidadesRentables_TBox.ClientID %>").value = data.unidadesRentables;
         $get("<%= avanceAComunes_TBox.ClientID %>").value = data.avanceObra;
         $get("<%= unidRentNucleo_TBox.ClientID %>").value = data.unidadesNucelo;
         $get("<%= unidRentConjunto_TBox.ClientID %>").value = data.unidadesConjunto;
@@ -40,7 +39,6 @@
     function getDatosCondominios() {
         var data = new Object();
         
-        data.unidadesRentables = $get("<%= unidadesRentables_TBox.ClientID %>").value;
         data.avanceObra = $get("<%= avanceAComunes_TBox.ClientID %>").value;
         data.unidadesNucelo; $get("<%= unidRentNucleo_TBox.ClientID %>").value;
         data.unidadesConjunto = $get("<%= unidRentConjunto_TBox.ClientID %>").value;
