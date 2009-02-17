@@ -14,9 +14,9 @@
 
     //mostrar datos
     function setDatosSuperficies(data) {
-        $get("<%= superficieTerreno_TBox.ClientID %>").value = data.superficieTerreno;
+        $get("<%= superficieTerreno_TBox.ClientID %>").value = data.totalTerreno;
         $get("<%= fuenteTerreno_DDList.ClientID %>").selectedValue = data.fuenteTerreno;
-        $get("<%= superficieFrente_TBox.ClientID %>").value = data.superficieFrente;
+        $get("<%= superficieFrente_TBox.ClientID %>").value = data.frenteLote;
     }
     
     function setDatosSuperficiesCondominio(data) {     
@@ -35,9 +35,9 @@
     function getDatosSuperficies() {
         var data = new Object();
 
-        data.superficieTerreno = $get("<%= superficieTerreno_TBox.ClientID %>").value;
+        data.totalTerreno = $get("<%= superficieTerreno_TBox.ClientID %>").value;
         data.fuenteTerreno = $get("<%= fuenteTerreno_DDList.ClientID %>").selectedValue;
-        data.superficieFrente = $get("<%= superficieFrente_TBox.ClientID %>").value;
+        data.frenteLote = $get("<%= superficieFrente_TBox.ClientID %>").value;
         
         return data;
     }
