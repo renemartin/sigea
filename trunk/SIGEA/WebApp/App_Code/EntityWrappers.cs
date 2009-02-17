@@ -778,5 +778,58 @@ public class EntityWrappers : System.Web.Services.WebService
     #endregion
 
     #endregion
+
+    #region Construcciones
+
+    [WebMethod]
+    public void SaveTipoConstruccion(
+        int idConstruccion
+        , Entity datosTipoConstruccion)
+    {
+        SIGEADataContext data_context = new SIGEADataContext();
+        TipoConstruccion tipo_construccion = TipoConstruccion.GetForDataUpdate(data_context, idConstruccion);
+
+        if (tipo_construccion == null)
+            throw new Exception("El identificador de la construcción es inválido");
+
+        tipo_construccion.SetData(datosTipoConstruccion);
+        data_context.SubmitChanges();
+    }
+
+    [WebMethod]
+    public void SaveConstruccionInmueble(
+        int idConstruccion
+        , Entity datosConstrucciones
+        , Entity datosCondominios)
+    {
+        SIGEADataContext data_context = new SIGEADataContext();
+        ConstruccionInmueble construccion_inmueble = ConstruccionInmueble.GetForDataUpdate(data_context, idConstruccion);
+
+        if(construccion_inmueble == null)
+            throw new Exception("El identificador de la construcción es inválido");
+
+        construccion_inmueble.SetData(datosConstrucciones);
+        construccion_inmueble.DatoCondominio.SetData(datosCondominios);
+        data_context.SubmitChanges();
+    }
+
+    [WebMethod]
+    public void SaveSuperficies(
+        int idConstruccion
+        , Entity datosSuperfices
+        , Entity datosSuperficiesCondominio
+        , Entity datosSuperficiesAdicionales)
+    {
+        SIGEADataContext data_context = new SIGEADataContext();
+        SuperficiesInmueble superficies = SuperficiesInmueble.GetForDataUpdate(data_context, idConstruccion);
+
+        if(superficies == null)
+            throw new Exception("El identificador de la construcción es inválido");
+
+        superficies.SetData(datosSuperfices);
+        superficies.DatoCondominio.SetData(datosSuperficiesCondominio);
+        superficies.AreaComun.SetData(datosSuperficiesAdicionales);
+    }
+    #endregion
 }
 
