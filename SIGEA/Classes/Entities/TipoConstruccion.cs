@@ -66,7 +66,7 @@ namespace SIGEA.Classes.Entities
             edad = float.Parse(data["edad"].ToString());
             avanceObra = float.Parse(data["avanceObra"].ToString());
             vidaUtil = float.Parse(data["vidaUtil"].ToString());
-            nivelesCuerpo = shot.Parse(data["nivelesCuerpo"].ToString());
+            nivelesCuerpo = short.Parse(data["nivelesCuerpo"].ToString());
         }
     }
 }
