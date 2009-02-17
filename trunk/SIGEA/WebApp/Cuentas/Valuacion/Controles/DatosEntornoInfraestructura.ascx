@@ -25,16 +25,16 @@
             $get("<%= alumbradoPublicoAereo_CBox.ClientID %>").checked = data.alumbradoPublicoAereo;
             $get("<%= vialidades_CBox.ClientID %>").checked = data.vialidades;
             if (data.vialidades) {
-                $get("<%= materialVialidades_DDList.ClientID %>").selectedValue = data.idTipoVialidades;
+                $get("<%= materialVialidades_DDList.ClientID %>").value = data.idTipoVialidades;
                 $get("<%= anchoVialidad_TBox.ClientID %>").value = data.anchoVialidades;
             }            
             $get("<%= banquetas_CBox.ClientID %>").checked = data.banquetas;
             if (data.banquetas) {
-                $get("<%= materialBanquetas_DDList.ClientID %>").selectedValue = data.idTipoBanquetas;
+                $get("<%= materialBanquetas_DDList.ClientID %>").value = data.idTipoBanquetas;
             }            
             $get("<%= guarniciones_CBox.ClientID %>").checked = data.guarniciones;
             if (data.guarniciones) {
-                $get("<%= materialGuarniciones_DDList.ClientID %>").selectedValue = data.idTipoGuarniciones;
+                $get("<%= materialGuarniciones_DDList.ClientID %>").value = data.idTipoGuarniciones;
             }
 
             $get("<%= nivelInfraestructura_Lbl.ClientID %>").innerHTML = getNumString(data.nivelInfraestructura, 2);
