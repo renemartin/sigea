@@ -40,6 +40,10 @@ namespace SIGEA.Classes.Entities
             data.Add("avanceObra", avanceObra);
             data.Add("unidadesNucleo", unidadesNucleo);
             data.Add("unidadesConjunto", unidadesConjunto);
+            data.Add("indiviso", indiviso);
+            data.Add("fuenteIndiviso", fuenteIndiviso);
+            data.Add("privativo", privativo);
+            data.Add("fuentePrivativo", fuentePrivativo);
 
             return data;
         }
@@ -49,6 +53,9 @@ namespace SIGEA.Classes.Entities
             avanceObra = float.Parse(data["avanceObra"].ToString());
             unidadesNucleo = int.Parse(data["unidadesNucleo"].ToString());
             unidadesConjunto = int.Parse(data["unidadesConjunto"].ToString());
+            fuenteIndiviso = int.Parse(data["fuenteIndiviso"].ToString());
+            privativo = int.Parse(data["privativo"].ToString());
+            fuentePrivativo = int.Parse(data["fuentePrivativo"].ToString());
         }
     }
 }
