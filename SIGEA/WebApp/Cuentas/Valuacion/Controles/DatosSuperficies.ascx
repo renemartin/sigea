@@ -16,16 +16,19 @@
     function setDatosSuperficies(data) {
         $get("<%= superficieTerreno_TBox.ClientID %>").value = data.superficieTerreno;
         $get("<%= fuenteTerreno_DDList.ClientID %>").selectedValue = data.fuenteTerreno;
-        $get("<%= especFuenteTerreno_TBox.ClientID %>").value = data.especFuenteTerreno;
         $get("<%= superficieFrente_TBox.ClientID %>").value = data.superficieFrente;
+    }
+    
+    function setDatosSuperficiesCondominio(data) {     
         $get("<%= indiviso_TBox.ClientID %>").value = data.indiviso;
-        $get("<%= superficieTerreno_TBox.ClientID %>").value = data.superficieTerreno;
-        $get("<%= proporcional_Lbl.ClientID %>").text = data.superficieTerreno;
         $get("<%= fuenteIndiviso_DDList.ClientID %>").selectedValue = data.fuenteIndiviso;
-        $get("<%= especFuenteIndiviso_TBox.ClientID %>").value = data.especFuenteIndiviso;
+        $get("<%= proporcional_Lbl.ClientID %>").text = data.superficieTerreno;
         $get("<%= lotePrivativo_TBox.ClientID %>").value = data.lotePrivativo;
-        $get("<%= fuentePrivativo_DDList.ClientID %>").value = data.fuentePrivativo;
-        $get("<%= especFuentePrivativo_TBox.ClientID %>").value = data.especFuentePrivativo;
+        $get("<%= fuentePrivativo_DDList.ClientID %>").value = data.fuentePrivativo;       
+        
+//        $get("<%= especFuenteIndiviso_TBox.ClientID %>").value = data.especFuenteIndiviso;
+//        $get("<%= especFuenteTerreno_TBox.ClientID %>").value = data.especFuenteTerreno;
+//        $get("<%= especFuentePrivativo_TBox.ClientID %>").value = data.especFuentePrivativo;
     }
 
     //guardar datos
@@ -34,17 +37,21 @@
 
         data.superficieTerreno = $get("<%= superficieTerreno_TBox.ClientID %>").value;
         data.fuenteTerreno = $get("<%= fuenteTerreno_DDList.ClientID %>").selectedValue;
-        data.especFuenteTerreno = $get("<%= especFuenteTerreno_TBox.ClientID %>").value;
         data.superficieFrente = $get("<%= superficieFrente_TBox.ClientID %>").value;
-        data.indiviso = $get("<%= indiviso_TBox.ClientID %>").value;
-        data.superficieTerreno = $get("<%= superficieTerreno_TBox.ClientID %>").value;
-        data.superficieTerreno = $get("<%= proporcional_Lbl.ClientID %>").text;
-        data.fuenteIndiviso = $get("<%= fuenteIndiviso_DDList.ClientID %>").selectedValue;
-        data.especFuenteIndiviso = $get("<%= especFuenteIndiviso_TBox.ClientID %>").value;
-        data.lotePrivativo = $get("<%= lotePrivativo_TBox.ClientID %>").value;
-        data.fuentePrivativo = $get("<%= fuentePrivativo_DDList.ClientID %>").value;
-        data.especFuentePrivativo = $get("<%= especFuentePrivativo_TBox.ClientID %>").value;
+        
+        return data;
+    }
+    function getDatosSuperficiesCondominio() {
+        var data = new Object();
 
+        data.indiviso = $get("<%= indiviso_TBox.ClientID %>").value;
+        data.fuenteIndiviso = $get("<%= fuenteIndiviso_DDList.ClientID %>").selectedValue;
+        data.lotePrivativo = $get("<%= lotePrivativo_TBox.ClientID %>").value;
+        data.fuentePrivativo = $get("<%= fuentePrivativo_DDList.ClientID %>").value;                        
+        
+//        data.especFuenteIndiviso = $get("<%= especFuenteIndiviso_TBox.ClientID %>").value;
+//        data.especFuentePrivativo = $get("<%= especFuentePrivativo_TBox.ClientID %>").value;
+//        data.especFuenteTerreno = $get("<%= especFuenteTerreno_TBox.ClientID %>").value;
         return data;
     }
 
