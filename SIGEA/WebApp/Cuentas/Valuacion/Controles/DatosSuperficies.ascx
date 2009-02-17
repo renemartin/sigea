@@ -22,8 +22,8 @@
     function setDatosSuperficiesCondominio(data) {     
         $get("<%= indiviso_TBox.ClientID %>").value = data.indiviso;
         $get("<%= fuenteIndiviso_DDList.ClientID %>").selectedValue = data.fuenteIndiviso;
-        $get("<%= proporcional_Lbl.ClientID %>").text = data.superficieTerreno;
-        $get("<%= lotePrivativo_TBox.ClientID %>").value = data.lotePrivativo;
+        $get("<%= proporcional_Lbl.ClientID %>").text = data.totalTerreno;
+        $get("<%= lotePrivativo_TBox.ClientID %>").value = data.privativo;
         $get("<%= fuentePrivativo_DDList.ClientID %>").value = data.fuentePrivativo;       
         
 //        $get("<%= especFuenteIndiviso_TBox.ClientID %>").value = data.especFuenteIndiviso;
@@ -46,7 +46,7 @@
 
         data.indiviso = $get("<%= indiviso_TBox.ClientID %>").value;
         data.fuenteIndiviso = $get("<%= fuenteIndiviso_DDList.ClientID %>").selectedValue;
-        data.lotePrivativo = $get("<%= lotePrivativo_TBox.ClientID %>").value;
+        data.privativo = $get("<%= lotePrivativo_TBox.ClientID %>").value;
         data.fuentePrivativo = $get("<%= fuentePrivativo_DDList.ClientID %>").value;                        
         
 //        data.especFuenteIndiviso = $get("<%= especFuenteIndiviso_TBox.ClientID %>").value;
