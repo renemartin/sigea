@@ -215,6 +215,7 @@
       <Column Name="nivelEdificio" Type="System.Int16" DbType="SmallInt NOT NULL" CanBeNull="false" />
       <Column Name="horizontal" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
       <Column Name="vertical" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
+      <Column Member="undidadRentable" Type="System.Int32" CanBeNull="false" />
       <Association Name="ConstruccionInmueble_InstalacionConstruccion" Member="InstalacionConstruccion" ThisKey="idConstruccion" OtherKey="idConstruccion" Type="InstalacionConstruccion" />
       <Association Name="ConstruccionInmueble_InstalacionesEspecialesCondominio" Member="InstalacionesEspecialesCondominio" ThisKey="idConstruccion" OtherKey="idConstruccion" Type="InstalacionesEspecialesCondominio" Cardinality="One" />
       <Association Name="ConstruccionInmueble_InstalacionesEspecialesConstruccion" Member="InstalacionesEspecialesConstruccion" ThisKey="idConstruccion" OtherKey="idConstruccion" Type="InstalacionesEspecialesConstruccion" Cardinality="One" />
@@ -811,6 +812,7 @@
       <Column Name="edad" Type="System.Double" DbType="Float NOT NULL" CanBeNull="false" />
       <Column Name="avanceObra" Type="System.Double" DbType="Float NOT NULL" CanBeNull="false" />
       <Column Name="vidaUtil" Type="System.Double" DbType="Float NOT NULL" CanBeNull="false" />
+      <Column Member="nivelesCuerpo" Type="System.Int16" CanBeNull="false" />
       <Association Name="TipoConstruccion_AcabadoTipoConstruccion" Member="AcabadoTipoConstruccion" ThisKey="idConstruccion,numeroTipo" OtherKey="idConstruccion,numeroTipo" Type="AcabadoTipoConstruccion" Cardinality="One" />
       <Association Name="TipoConstruccion_EstructurasTipoConstruccion" Member="EstructurasTipoConstruccion" ThisKey="idConstruccion,numeroTipo" OtherKey="idConstruccion,numeroTipo" Type="EstructurasTipoConstruccion" Cardinality="One" />
       <Association Name="TipoConstruccion_InstalacionesTipoConstruccion" Member="InstalacionesTipoConstruccion" ThisKey="idConstruccion,numeroTipo" OtherKey="idConstruccion,numeroTipo" Type="InstalacionesTipoConstruccion" Cardinality="One" />
