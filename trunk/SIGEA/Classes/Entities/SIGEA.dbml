@@ -642,7 +642,7 @@
       <Association Name="Inmueble_SuperficiesInmueble" Member="SuperficiesInmueble" ThisKey="idInmueble" OtherKey="idInmueble" Type="SuperficiesInmueble" Cardinality="One" />
       <Association Name="Inmueble_UbicacionCallesInmueble" Member="UbicacionCallesInmueble" ThisKey="idInmueble" OtherKey="idInmueble" Type="UbicacionCallesInmueble" Cardinality="One" />
       <Association Name="Inmueble_UbicacionInmueble" Member="UbicacionInmueble" ThisKey="idInmueble" OtherKey="idInmueble" Type="UbicacionInmueble" Cardinality="One" />
-      <Association Name="Inmueble_UsoActualInmueble" Member="UsoActualInmueble" ThisKey="idInmueble" OtherKey="idInmueble" Type="UsoActualInmueble" />
+      <Association Name="Inmueble_UsoActualInmueble" Member="UsoActualInmueble" ThisKey="idInmueble" OtherKey="idInmueble" Type="UsoActualInmueble" Cardinality="One" />
       <Association Name="Inmueble_ViasAcceso" Member="ViasAcceso" ThisKey="idInmueble" OtherKey="idInmueble" Type="ViasAcceso" />
       <Association Name="DireccionInmueble_Inmueble" Member="DireccionInmueble" ThisKey="idDireccionInmueble" OtherKey="idDireccionInmueble" Type="DireccionInmueble" IsForeignKey="true" />
       <Association Name="Propietario_Inmueble" Member="Propietario" ThisKey="idPropietario" OtherKey="idPropietario" Type="Propietario" IsForeignKey="true" />
