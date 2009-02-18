@@ -110,11 +110,6 @@
                 "<%= cancelar_superficies_ImBtn.ClientID %>");
         }
 
-        // Uso actual
-        function editUsoActual() {
-            openModalWindow("Modulos/UsoActual.aspx", 750, 480);
-        }
-
         // Visibilidad secciones
         function setVisibilidadCondominal(visible) {
             if (visible) {
@@ -147,8 +142,7 @@
     </h1>
     <div class="etiqueta1">
         <span class="textoNegritas">Descripción de uso actual:</span>
-        <asp:Label ID="descripcion_Lbl" runat="server">No especificada...</asp:Label>&nbsp;
-        <asp:ImageButton ID="editar_uso_actual_ImBtn" runat="server" SkinID="EditSmall" />
+        <asp:Label ID="descripcion_Lbl" runat="server">No especificada...</asp:Label>        
     </div>
     <h2>Clasificación de las construcciones privativas</h2>
     <div class="barraAcciones">

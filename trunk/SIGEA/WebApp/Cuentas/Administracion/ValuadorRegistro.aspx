@@ -99,7 +99,7 @@
             getUrlFotoValuadorAsync(idValuador, setFotografia);
         }
         function changeFotografia() {
-            openModalWindow("ValuadorFoto.aspx?idValuador=" + idValuador, 400, 300);
+            openModalWindow("ValuadorFoto.aspx?idValuador=" + idValuador, 430, 300);
             loadFotografia();
         }
         function setFotografia(url) {

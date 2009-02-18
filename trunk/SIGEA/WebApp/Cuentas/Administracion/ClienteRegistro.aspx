@@ -91,7 +91,7 @@
             getUrlFotoClienteAsync(idCliente, setFotografia);
         }
         function changeFotografia() {
-            openModalWindow("ClienteLogo.aspx?idCliente=" + idCliente, 400, 300);
+            openModalWindow("ClienteLogo.aspx?idCliente=" + idCliente, 430, 300);
             loadFotografia();
         }
         function setFotografia(url) {
