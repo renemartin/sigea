@@ -54,4 +54,5 @@ namespace SIGEA.Classes.Entities
             idConservacion = short.Parse(data["idConservacion"].ToString());
             unidadRentable = int.Parse(data["unidadRentable"].ToString());
         }
+    }
 }
