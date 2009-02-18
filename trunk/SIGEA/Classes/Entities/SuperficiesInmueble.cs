@@ -26,8 +26,11 @@ namespace SIGEA.Classes.Entities
             if (superficies_inmueble == null)
             {
                 superficies_inmueble = new SuperficiesInmueble();
+                superficies_inmueble.DatosCondominio = new DatoCondominio();
+                superficies_inmueble.AreaComun = new AreaComun();
                 superficies_inmueble.idInmueble = idInmueble;
                 data_context.SuperficiesInmueble.InsertOnSubmit(superficies_inmueble);
+
             }
 
             return superficies_inmueble;
