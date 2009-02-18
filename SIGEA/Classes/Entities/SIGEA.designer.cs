@@ -14767,7 +14767,7 @@ namespace SIGEA.Classes.Entities
 		
 		private EntityRef<UbicacionInmueble> _UbicacionInmueble;
 		
-		private EntitySet<UsoActualInmueble> _UsoActualInmueble;
+		private EntityRef<UsoActualInmueble> _UsoActualInmueble;
 		
 		private EntitySet<ViasAcceso> _ViasAcceso;
 		
@@ -14818,7 +14818,7 @@ namespace SIGEA.Classes.Entities
 			this._SuperficiesInmueble = default(EntityRef<SuperficiesInmueble>);
 			this._UbicacionCallesInmueble = default(EntityRef<UbicacionCallesInmueble>);
 			this._UbicacionInmueble = default(EntityRef<UbicacionInmueble>);
-			this._UsoActualInmueble = new EntitySet<UsoActualInmueble>(new Action<UsoActualInmueble>(this.attach_UsoActualInmueble), new Action<UsoActualInmueble>(this.detach_UsoActualInmueble));
+			this._UsoActualInmueble = default(EntityRef<UsoActualInmueble>);
 			this._ViasAcceso = new EntitySet<ViasAcceso>(new Action<ViasAcceso>(this.attach_ViasAcceso), new Action<ViasAcceso>(this.detach_ViasAcceso));
 			this._DireccionInmueble = default(EntityRef<DireccionInmueble>);
 			this._Propietario = default(EntityRef<Propietario>);
@@ -15330,16 +15330,32 @@ namespace SIGEA.Classes.Entities
 			}
 		}
 		
-		[Association(Name="Inmueble_UsoActualInmueble", Storage="_UsoActualInmueble", ThisKey="idInmueble", OtherKey="idInmueble")]
-		public EntitySet<UsoActualInmueble> UsoActualInmueble
+		[Association(Name="Inmueble_UsoActualInmueble", Storage="_UsoActualInmueble", ThisKey="idInmueble", OtherKey="idInmueble", IsUnique=true, IsForeignKey=false)]
+		public UsoActualInmueble UsoActualInmueble
 		{
 			get
 			{
-				return this._UsoActualInmueble;
+				return this._UsoActualInmueble.Entity;
 			}
 			set
 			{
-				this._UsoActualInmueble.Assign(value);
+				UsoActualInmueble previousValue = this._UsoActualInmueble.Entity;
+				if (((previousValue != value) 
+							|| (this._UsoActualInmueble.HasLoadedOrAssignedValue == false)))
+				{
+					this.SendPropertyChanging();
+					if ((previousValue != null))
+					{
+						this._UsoActualInmueble.Entity = null;
+						previousValue.Inmueble = null;
+					}
+					this._UsoActualInmueble.Entity = value;
+					if ((value != null))
+					{
+						value.Inmueble = this;
+					}
+					this.SendPropertyChanged("UsoActualInmueble");
+				}
 			}
 		}
 		
@@ -15531,18 +15547,6 @@ namespace SIGEA.Classes.Entities
 		}
 		
 		private void detach_ConstruccionInmueble(ConstruccionInmueble entity)
-		{
-			this.SendPropertyChanging();
-			entity.Inmueble = null;
-		}
-		
-		private void attach_UsoActualInmueble(UsoActualInmueble entity)
-		{
-			this.SendPropertyChanging();
-			entity.Inmueble = this;
-		}
-		
-		private void detach_UsoActualInmueble(UsoActualInmueble entity)
 		{
 			this.SendPropertyChanging();
 			entity.Inmueble = null;
@@ -25651,12 +25655,12 @@ namespace SIGEA.Classes.Entities
 					if ((previousValue != null))
 					{
 						this._Inmueble.Entity = null;
-						previousValue.UsoActualInmueble.Remove(this);
+						previousValue.UsoActualInmueble = null;
 					}
 					this._Inmueble.Entity = value;
 					if ((value != null))
 					{
-						value.UsoActualInmueble.Add(this);
+						value.UsoActualInmueble = this;
 						this._idInmueble = value.idInmueble;
 					}
 					else
