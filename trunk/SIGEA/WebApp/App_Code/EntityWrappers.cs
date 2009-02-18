@@ -498,7 +498,7 @@ public class EntityWrappers : System.Web.Services.WebService
     }
     [WebMethod]
 
-    public Entity LoadUsoActualPlantas(int idAvaluo)
+    public Entity[] LoadUsoActualPlantas(int idAvaluo)
     {
         Inmueble inmueble = Inmueble.GetFromIdAvaluo(common_context, idAvaluo);
 
@@ -882,23 +882,23 @@ public class EntityWrappers : System.Web.Services.WebService
         data_context.SubmitChanges();
     }
 
-    [WebMethod]
-    public void SaveSuperficie(
-        int idConstruccion
-        , Entity datosSuperfice
-        , Entity datosSuperficieCondominio
-        , Entity datosSuperficieAdicional)
-    {
-        SIGEADataContext data_context = new SIGEADataContext();
-        SuperficiesInmueble superficies = SuperficiesInmueble.GetForDataUpdate(data_context, idConstruccion);
+    //[WebMethod]
+    //public void SaveSuperficie(
+    //    int idConstruccion
+    //    , Entity datosSuperfice
+    //    , Entity datosSuperficieCondominio
+    //    , Entity datosSuperficieAdicional)
+    //{
+    //    SIGEADataContext data_context = new SIGEADataContext();
+    //    SuperficiesInmueble superficies = SuperficiesInmueble.GetForDataUpdate(data_context, idConstruccion);
 
-        if(superficies == null)
-            throw new Exception("El identificador de la construcción es inválido");
+    //    if(superficies == null)
+    //        throw new Exception("El identificador de la construcción es inválido");
 
-        superficies.SetData(datosSuperfice);
-        superficies.DatoCondominio.SetData(datosSuperficieCondominio);
-        superficies.AreaComun.SetData(datosSuperficieAdicional);
-    }
+    //    superficies.SetData(datosSuperfice);
+    //    superficies.DatoCondominio.SetData(datosSuperficieCondominio);
+    //    superficies.AreaComun.SetData(datosSuperficieAdicional);
+    //}
     #endregion
 }
 
