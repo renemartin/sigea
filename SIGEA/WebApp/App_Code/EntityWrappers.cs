@@ -445,6 +445,75 @@ public class EntityWrappers : System.Web.Services.WebService
     }
 
     [WebMethod]
+    public void SaveUsoActual(
+            int idAvaluo
+            , Entity datosDistribucion
+            , Entity[] datosRecamaras
+            , Entity[] datosPlantas)
+    {
+        SIGEADataContext data_context = new SIGEADataContext();
+        Inmueble inmueble = Inmueble.GetFromIdAvaluo(data_context, idAvaluo);
+
+        if (inmueble == null)
+        {
+            throw new Exception("El avalúo no cuenta con un inmueble registrado");
+        }
+
+        UsoActualInmueble uso_actual = UsoActualInmueble.GetForDataUpdate(data_context, inmueble);
+        uso_actual.SetData(datosDistribucion);
+        UsoActualRecamara.SetRecamaras(uso_actual, datosRecamaras);
+        UsoActualArea.SePlantas(uso_actual, datosPlantas);
+    }
+
+    [WebMethod]
+    public Entity LoadUsoActualDistribucion(int idAvaluo)
+    {
+        Inmueble inmueble = Inmueble.GetFromIdAvaluo(common_context, idAvaluo);
+
+        if (inmueble == null)
+        {
+            throw new Exception("El avalúo no cuenta con un inmueble registrado");
+        }
+
+        if (inmueble.UsoActualInmueble == null)
+            return null;
+
+        return inmueble.InfraestructuraInmueble.GetData();
+    }
+    [WebMethod]
+
+    public Entity[] LoadUsoActualRecamaras(int idAvaluo)
+    {
+        Inmueble inmueble = Inmueble.GetFromIdAvaluo(common_context, idAvaluo);
+
+        if (inmueble == null)
+        {
+            throw new Exception("El avalúo no cuenta con un inmueble registrado");
+        }
+
+        if (inmueble.UsoActualInmueble == null || inmueble.UsoActualInmueble.UsoActualRecamara == null)
+            return null;
+
+        return UsoActualRecamara.GetRecamaras(inmueble.UsoActualInmueble);
+    }
+    [WebMethod]
+
+    public Entity LoadUsoActualPlantas(int idAvaluo)
+    {
+        Inmueble inmueble = Inmueble.GetFromIdAvaluo(common_context, idAvaluo);
+
+        if (inmueble == null)
+        {
+            throw new Exception("El avalúo no cuenta con un inmueble registrado");
+        }
+
+        if (inmueble.UsoActualInmueble == null || inmueble.UsoActualInmueble.UsoActualArea == null)
+            return null;
+
+        return UsoActualArea.GetPlantas(inmueble.UsoActualInmueble);
+    }
+
+    [WebMethod]
     public bool GetInmuebleEsCondominal(int idAvaluo)
     {
         Inmueble inmueble = Inmueble.GetFromIdAvaluo(common_context, idAvaluo);
