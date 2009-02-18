@@ -536,13 +536,13 @@
       <Association Name="Inmueble_EscriturasInmueble" Member="EscriturasInmueble" ThisKey="idInmueble" OtherKey="idInmueble" Type="EscriturasInmueble" Cardinality="One" />
       <Association Name="Inmueble_GeolocalizacionInmueble" Member="GeolocalizacionInmueble" ThisKey="idInmueble" OtherKey="idInmueble" Type="GeolocalizacionInmueble" Cardinality="One" />
       <Association Name="Inmueble_SuperficiesInmueble" Member="SuperficiesInmueble" ThisKey="idInmueble" OtherKey="idInmueble" Type="SuperficiesInmueble" Cardinality="One" />
-      <Association Name="Inmueble_UsoActualInmueble" Member="UsoActualInmueble" ThisKey="idInmueble" OtherKey="idInmueble" Type="UsoActualInmueble" />
       <Association Name="Inmueble_UbicacionInmueble" Member="UbicacionInmueble" ThisKey="idInmueble" OtherKey="idInmueble" Type="UbicacionInmueble" Cardinality="One" />
       <Association Name="Inmueble_UbicacionCallesInmueble" Member="UbicacionCallesInmueble" ThisKey="idInmueble" OtherKey="idInmueble" Type="UbicacionCallesInmueble" Cardinality="One" />
       <Association Name="Inmueble_ViasAcceso" Member="ViasAcceso" ThisKey="idInmueble" OtherKey="idInmueble" Type="ViasAcceso" />
       <Association Name="Inmueble_EquipamientoInmueble" Member="EquipamientoInmueble" ThisKey="idInmueble" OtherKey="idInmueble" Type="EquipamientoInmueble" Cardinality="One" />
       <Association Name="Inmueble_InfraestructuraInmueble" Member="InfraestructuraInmueble" ThisKey="idInmueble" OtherKey="idInmueble" Type="InfraestructuraInmueble" Cardinality="One" />
       <Association Name="Inmueble_ServiciosInmueble" Member="ServiciosInmueble" ThisKey="idInmueble" OtherKey="idInmueble" Type="ServiciosInmueble" Cardinality="One" />
+      <Association Name="Inmueble_UsoActualInmueble" Member="UsoActualInmueble" ThisKey="idInmueble" OtherKey="idInmueble" Type="UsoActualInmueble" />
       <Association Name="DireccionInmueble_Inmueble" Member="DireccionInmueble" ThisKey="idDireccionInmueble" OtherKey="idDireccionInmueble" Type="DireccionInmueble" IsForeignKey="true" />
       <Association Name="Propietario_Inmueble" Member="Propietario" ThisKey="idPropietario" OtherKey="idPropietario" Type="Propietario" IsForeignKey="true" />
       <Association Name="RegimenPropiedad_Inmueble" Member="RegimenPropiedad" ThisKey="idRegimenPropiedad" OtherKey="idRegimenPropiedad" Type="RegimenPropiedad" IsForeignKey="true" />
@@ -976,63 +976,6 @@
       <Association Name="Universidad_FormacionProfesional" Member="FormacionProfesional" ThisKey="idUniversidad" OtherKey="idUniversidad" Type="FormacionProfesional" />
     </Type>
   </Table>
-  <Table Name="dbo.UsoActualArea" Member="UsoActualArea">
-    <Type Name="UsoActualArea">
-      <Column Name="idUsoArea" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
-      <Column Name="idUsoActual" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
-      <Column Name="nivel" Type="System.Int16" DbType="SmallInt NOT NULL" CanBeNull="false" />
-      <Column Name="cuartoServicio" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
-      <Column Name="cuartoLavado" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
-      <Column Name="areaServicio" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
-      <Column Name="sala" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
-      <Column Name="banios" Type="System.Int16" DbType="SmallInt NOT NULL" CanBeNull="false" />
-      <Column Name="baniosMedios" Type="System.Int16" DbType="SmallInt NOT NULL" CanBeNull="false" />
-      <Column Name="otros" Type="System.String" DbType="NVarChar(250) NOT NULL" CanBeNull="false" />
-      <Association Name="UsoActualInmueble_UsoActualArea" Member="UsoActualInmueble" ThisKey="idUsoActual" OtherKey="idUsoActual" Type="UsoActualInmueble" IsForeignKey="true" DeleteRule="CASCADE" DeleteOnNull="true" />
-    </Type>
-  </Table>
-  <Table Name="dbo.UsoActualInmueble" Member="UsoActualInmueble">
-    <Type Name="UsoActualInmueble">
-      <Column Name="idUsoActual" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
-      <Column Name="idInmueble" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
-      <Column Name="idTipoEstacionamiento" Type="System.Int16" DbType="SmallInt NOT NULL" CanBeNull="false" />
-      <Column Name="cupoEstacionamiento" Type="System.Int16" DbType="SmallInt NOT NULL" CanBeNull="false" />
-      <Column Name="jardinesFrontales" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
-      <Column Name="jardinesFondo" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
-      <Column Name="jardinesLateral" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
-      <Column Name="elevador" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
-      <Column Name="vestibulo" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
-      <Column Name="escaleraPrincipal" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
-      <Column Name="escaleraServicio" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
-      <Column Name="cocina" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
-      <Column Name="cocinaMuebles" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
-      <Column Name="cocinaIntegral" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
-      <Column Name="comedor" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
-      <Column Name="despensa" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
-      <Column Name="numBaniosCompletos" Type="System.Int16" DbType="SmallInt NOT NULL" CanBeNull="false" />
-      <Column Name="numBaniosMedios" Type="System.Int16" DbType="SmallInt NOT NULL" CanBeNull="false" />
-      <Column Name="numRecamaras" Type="System.Int16" DbType="SmallInt NOT NULL" CanBeNull="false" />
-      <Association Name="UsoActualInmueble_UsoActualArea" Member="UsoActualArea" ThisKey="idUsoActual" OtherKey="idUsoActual" Type="UsoActualArea" />
-      <Association Name="UsoActualInmueble_UsoActualRecamara" Member="UsoActualRecamara" ThisKey="idUsoActual" OtherKey="idUsoActual" Type="UsoActualRecamara" />
-      <Association Name="Inmueble_UsoActualInmueble" Member="Inmueble" ThisKey="idInmueble" OtherKey="idInmueble" Type="Inmueble" IsForeignKey="true" DeleteRule="CASCADE" DeleteOnNull="true" />
-    </Type>
-  </Table>
-  <Table Name="dbo.UsoActualRecamara" Member="UsoActualRecamara">
-    <Type Name="UsoActualRecamara">
-      <Column Name="idUsoRecamara" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
-      <Column Name="idUsoActual" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
-      <Column Name="tipo" Type="System.Int16" DbType="SmallInt NOT NULL" CanBeNull="false" />
-      <Column Name="cantidad" Type="System.Int16" DbType="SmallInt NOT NULL" CanBeNull="false" />
-      <Column Name="nivel" Type="System.Int16" DbType="SmallInt NOT NULL" CanBeNull="false" />
-      <Column Name="espacioCloset" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
-      <Column Name="closetEquipado" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
-      <Column Name="balcon" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
-      <Column Name="vestidor" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
-      <Column Name="terraza" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
-      <Column Name="banio" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
-      <Association Name="UsoActualInmueble_UsoActualRecamara" Member="UsoActualInmueble" ThisKey="idUsoActual" OtherKey="idUsoActual" Type="UsoActualInmueble" IsForeignKey="true" DeleteRule="CASCADE" DeleteOnNull="true" />
-    </Type>
-  </Table>
   <Table Name="dbo.Usuario" Member="Usuario">
     <Type Name="Usuario">
       <Column Name="idUsuario" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
@@ -1291,6 +1234,55 @@
       <Column Name="senalizacionNomencaltura" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
       <Column Name="recoleccionBasura" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
       <Association Name="Inmueble_ServiciosInmueble" Member="Inmueble" ThisKey="idInmueble" OtherKey="idInmueble" Type="Inmueble" IsForeignKey="true" DeleteRule="CASCADE" DeleteOnNull="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.UsoActualRecamara" Member="UsoActualRecamara">
+    <Type Name="UsoActualRecamara">
+      <Column Name="idUsoRecamara" Type="System.Int16" DbType="SmallInt NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="idUsoActual" Type="System.Int32" DbType="Int NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="cantidad" Type="System.Int16" DbType="SmallInt NOT NULL" CanBeNull="false" />
+      <Column Name="planta" Type="System.Int16" DbType="SmallInt NOT NULL" CanBeNull="false" />
+      <Column Name="espacioCloset" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
+      <Column Name="closetEquipado" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
+      <Column Name="balcon" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
+      <Column Name="vestidor" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
+      <Column Name="terraza" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
+      <Association Name="UsoActualInmueble_UsoActualRecamara" Member="UsoActualInmueble" ThisKey="idUsoActual" OtherKey="idUsoActual" Type="UsoActualInmueble" IsForeignKey="true" DeleteRule="CASCADE" DeleteOnNull="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.UsoActualInmueble" Member="UsoActualInmueble">
+    <Type Name="UsoActualInmueble">
+      <Column Name="idUsoActual" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="idInmueble" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="idTipoEstacionamiento" Type="System.Int16" DbType="SmallInt NOT NULL" CanBeNull="false" />
+      <Column Name="cupoEstacionamiento" Type="System.Int16" DbType="SmallInt" CanBeNull="true" />
+      <Column Name="jardinesFrontales" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
+      <Column Name="jardinesFondo" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
+      <Column Name="jardinesLateral" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
+      <Column Name="elevador" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
+      <Column Name="cocina" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
+      <Column Name="cocinaMuebles" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
+      <Column Name="cocinaIntegral" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
+      <Column Name="comedor" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
+      <Column Name="despensa" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
+      <Column Name="numBaniosCompletos" Type="System.Int16" DbType="SmallInt NOT NULL" CanBeNull="false" />
+      <Column Name="numBaniosMedios" Type="System.Int16" DbType="SmallInt NOT NULL" CanBeNull="false" />
+      <Association Name="UsoActualInmueble_UsoActualRecamara" Member="UsoActualRecamara" ThisKey="idUsoActual" OtherKey="idUsoActual" Type="UsoActualRecamara" />
+      <Association Name="UsoActualInmueble_UsoActualArea" Member="UsoActualArea" ThisKey="idUsoActual" OtherKey="idUsoActual" Type="UsoActualArea" />
+      <Association Name="Inmueble_UsoActualInmueble" Member="Inmueble" ThisKey="idInmueble" OtherKey="idInmueble" Type="Inmueble" IsForeignKey="true" DeleteRule="CASCADE" DeleteOnNull="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.UsoActualArea" Member="UsoActualArea">
+    <Type Name="UsoActualArea">
+      <Column Name="idUsoActual" Type="System.Int32" DbType="Int NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="planta" Type="System.Int16" DbType="SmallInt NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="cuartoServicio" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
+      <Column Name="cuartoLavado" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
+      <Column Name="areaServicio" Type="System.Boolean" DbType="Bit" CanBeNull="true" />
+      <Column Name="vestibuloIngreso" Type="System.Boolean" DbType="Bit" CanBeNull="true" />
+      <Column Name="escaleraPrincipal" Type="System.Boolean" DbType="Bit" CanBeNull="true" />
+      <Column Name="sala" Type="System.Boolean" DbType="Bit" CanBeNull="true" />
+      <Association Name="UsoActualInmueble_UsoActualArea" Member="UsoActualInmueble" ThisKey="idUsoActual" OtherKey="idUsoActual" Type="UsoActualInmueble" IsForeignKey="true" DeleteRule="CASCADE" DeleteOnNull="true" />
     </Type>
   </Table>
   <Function Name="dbo.GenerarIDE" Method="GenerarIDE">
