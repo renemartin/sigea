@@ -5722,7 +5722,7 @@ namespace SIGEA.Classes.Entities
 		
 		private bool _vertical;
 		
-		private int _undidadRentable;
+		private int _unidadRentable;
 		
 		private EntitySet<InstalacionConstruccion> _InstalacionConstruccion;
 		
@@ -5764,8 +5764,8 @@ namespace SIGEA.Classes.Entities
     partial void OnhorizontalChanged();
     partial void OnverticalChanging(bool value);
     partial void OnverticalChanged();
-    partial void OnundidadRentableChanging(int value);
-    partial void OnundidadRentableChanged();
+    partial void OnunidadRentableChanging(int value);
+    partial void OnunidadRentableChanged();
     #endregion
 		
 		public ConstruccionInmueble()
@@ -6042,22 +6042,22 @@ namespace SIGEA.Classes.Entities
 			}
 		}
 		
-		[Column(Storage="_undidadRentable")]
-		public int undidadRentable
+		[Column(Storage="_unidadRentable")]
+		public int unidadRentable
 		{
 			get
 			{
-				return this._undidadRentable;
+				return this._unidadRentable;
 			}
 			set
 			{
-				if ((this._undidadRentable != value))
+				if ((this._unidadRentable != value))
 				{
-					this.OnundidadRentableChanging(value);
+					this.OnunidadRentableChanging(value);
 					this.SendPropertyChanging();
-					this._undidadRentable = value;
-					this.SendPropertyChanged("undidadRentable");
-					this.OnundidadRentableChanged();
+					this._unidadRentable = value;
+					this.SendPropertyChanged("unidadRentable");
+					this.OnunidadRentableChanged();
 				}
 			}
 		}
