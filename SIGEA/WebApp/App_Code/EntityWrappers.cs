@@ -814,11 +814,11 @@ public class EntityWrappers : System.Web.Services.WebService
     }
 
     [WebMethod]
-    public void SaveSuperficies(
+    public void SaveSuperficie(
         int idConstruccion
-        , Entity datosSuperfices
-        , Entity datosSuperficiesCondominio
-        , Entity datosSuperficiesAdicionales)
+        , Entity datosSuperfice
+        , Entity datosSuperficieCondominio
+        , Entity datosSuperficieAdicional)
     {
         SIGEADataContext data_context = new SIGEADataContext();
         SuperficiesInmueble superficies = SuperficiesInmueble.GetForDataUpdate(data_context, idConstruccion);
@@ -826,9 +826,9 @@ public class EntityWrappers : System.Web.Services.WebService
         if(superficies == null)
             throw new Exception("El identificador de la construcción es inválido");
 
-        superficies.SetData(datosSuperfices);
-        superficies.DatoCondominio.SetData(datosSuperficiesCondominio);
-        superficies.AreaComun.SetData(datosSuperficiesAdicionales);
+        superficies.SetData(datosSuperfice);
+        superficies.DatoCondominio.SetData(datosSuperficieCondominio);
+        superficies.AreaComun.SetData(datosSuperficieAdicional);
     }
     #endregion
 }
