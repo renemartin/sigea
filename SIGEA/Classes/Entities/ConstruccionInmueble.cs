@@ -26,6 +26,7 @@ namespace SIGEA.Classes.Entities
             if (construccion_inmueble == null)
             {
                 construccion_inmueble = new ConstruccionInmueble();
+                construccion_inmueble.DatoCondominio = new DatoCondominio();
                 construccion_inmueble.idConstruccion = idConstruccion;
                 data_context.ConstruccionInmueble.InsertOnSubmit(construccion_inmueble);
             }
