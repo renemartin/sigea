@@ -56,6 +56,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Entities\Archivo.cs" />
+    <Compile Include="Entities\AreaComun.cs" />
     <Compile Include="Entities\AsignacionAvaluo.cs" />
     <Compile Include="Entities\AvaluoInmobiliario.cs" />
     <Compile Include="Entities\Bandejas.cs" />
@@ -63,6 +64,8 @@
     <Compile Include="Entities\Cliente.cs" />
     <Compile Include="Entities\CodigoPostal.cs" />
     <Compile Include="Entities\ComparableInmobiliario.cs" />
+    <Compile Include="Entities\ConstruccionInmueble.cs" />
+    <Compile Include="Entities\DatoCondominio.cs" />
     <Compile Include="Entities\DatoContacto.cs" />
     <Compile Include="Entities\DatoCredito.cs" />
     <Compile Include="Entities\Declaraciones.cs" />
@@ -80,7 +83,9 @@
     </Compile>
     <Compile Include="Entities\Solicitante.cs" />
     <Compile Include="Entities\StatusAvaluo.cs" />
+    <Compile Include="Entities\SuperficiesInmueble.cs" />
     <Compile Include="Entities\TipoComparable.cs" />
+    <Compile Include="Entities\TipoConstruccion.cs" />
     <Compile Include="Entities\Ubicaciones.cs" />
     <Compile Include="Entities\UbicacionInmueble.cs" />
     <Compile Include="Entities\Usuario.cs" />
