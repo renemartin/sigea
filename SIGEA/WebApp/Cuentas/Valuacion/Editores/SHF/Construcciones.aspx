@@ -13,7 +13,7 @@
 
     <script type="text/javascript">
         // Variables
-        var idAvaluo = 0;
+        var idConstruccion = 0;
         var num_bloques_datos = 3;
 
         // Inicialización
@@ -52,17 +52,34 @@
             loadDatosSuperficies();
         }
         function loadDatosClasificaciones() {
-            //TODO: Cargar datos de clasificaciones
-            loadForm_Success() // Temporal
+            var callBackList = new Array();
+            callBackList[0] = loadForm_Success;
+            callBackList[1] = setDatosConstruccionesClasificacion;
+            
+            loadDatosTipoConstruccionAsync(idConstruccion, callBackList);
         }
+        
         function loadDatosConstrucciones() {
-            //TODO: Cargar datos de construcciones
-            loadForm_Success() // Temporal
+            var callBackList = new Array();
+            callBackList[0] = loadForm_Success;
+            callBackList[1] = setDatosConstrucciones;
+            
+            callBackList[2] = setDatosCondominios;
+            
+            loadDatosConstruccionInmuebleAsync(idConstruccion, callBackList);
         }
+        
         function loadDatosSuperficies() {
-            //TODO: Cargar datos de superficies
-            loadForm_Success() // Temporal
+            var callBackList = new Array();
+            callBackList[0] = loadForm_Success;
+            callBackList[1] = setDatosSuperficies;
+            
+            callBackList[2] = setDatosSuperficiesCondominio;
+            callBackList[3] = setDatosSuperficiesAdicionales;
+            
+            loadDatosSuperficieAsync(idConstruccion, callBackList);
         }
+        
         function loadForm_Success() {
             if (num_bloques_cargados != undefined) {
                 num_bloques_cargados++;
@@ -84,7 +101,13 @@
                 saveSuperficies();
         }
         function saveClasificacion() {
+            saveTipoConstruccionAsync(
+                idConstruccion
+                , getDatosConstruccionesClasificacion()
+                , saveClasificacion_Success
+            );
         }
+                
         function saveClasificacion_Success() {
             terminateEdit("form_clasificacion",
                 "<%= editar_clasificacion_ImBtn.ClientID %>",
@@ -93,6 +116,12 @@
         }
 
         function saveConstrucciones() {
+            saveConstruccionInmuebleAsync(
+                idConstruccion
+                , getDatosConstrucciones()
+                , getDatosCondominions()
+                , saveConstrucciones_Success
+            );
         }
         function saveConstrucciones_Success() {
             terminateEdit("form_construcciones",
@@ -102,6 +131,13 @@
         }
 
         function saveSuperficies() {
+            saveSuperficieAsync(
+                idConstruccion
+                , getDatosSuperficies()
+                , getDatosSuperficiesCondominio()
+                , getDatosSuperficiesAdicionales()
+                , saveSuperficies_Success
+            );
         }
         function saveSuperficies_Success() {
             terminateEdit("form_superficies",
