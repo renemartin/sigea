@@ -63,7 +63,9 @@
     <Compile Include="Entities\BusquedaAvanzada.cs" />
     <Compile Include="Entities\Cliente.cs" />
     <Compile Include="Entities\CodigoPostal.cs" />
-    <Compile Include="Entities\ComparableInmobiliario.cs" />
+    <Compile Include="Entities\ComparableInmobiliario.cs">
+      <SubType>Code</SubType>
+    </Compile>
     <Compile Include="Entities\ConstruccionInmueble.cs" />
     <Compile Include="Entities\DatoCondominio.cs" />
     <Compile Include="Entities\DatoContacto.cs" />
@@ -95,7 +97,7 @@
     <Compile Include="Security\CustomMembershipProvider.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Security\CustomRoleProvider.cs" />
-    <Compile Include="SIGEA.designer.cs">
+    <Compile Include="Entities\SIGEA.designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>SIGEA.dbml</DependentUpon>
@@ -113,14 +115,14 @@
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
     </None>
-    <None Include="SIGEA.dbml">
+    <None Include="Entities\SIGEA.dbml">
       <Generator>MSLinqToSQLGenerator</Generator>
       <LastGenOutput>SIGEA.designer.cs</LastGenOutput>
       <SubType>Designer</SubType>
     </None>
   </ItemGroup>
   <ItemGroup>
-    <None Include="SIGEA.dbml.layout">
+    <None Include="Entities\SIGEA.dbml.layout">
       <DependentUpon>SIGEA.dbml</DependentUpon>
     </None>
   </ItemGroup>
