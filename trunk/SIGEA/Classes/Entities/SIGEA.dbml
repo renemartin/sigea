@@ -1,6 +1,6 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Database Name="SIGEA" Class="SIGEADataContext" xmlns="http://schemas.microsoft.com/linqtosql/dbml/2007">
-  <Connection Mode="AppSettings" ConnectionString="Data Source=65.182.106.50,1433;Initial Catalog=SIGEA;Persist Security Info=True;User ID=SistemaSIGEA" SettingsObjectName="SIGEA.Classes.Properties.Settings" SettingsPropertyName="SIGEAConnectionString" Provider="System.Data.SqlClient" />
+  <Connection Mode="AppSettings" ConnectionString="Data Source=65.182.106.50;Initial Catalog=SIGEA;Persist Security Info=True;User ID=sistemaSIGEA" SettingsObjectName="SIGEA.Classes.Properties.Settings" SettingsPropertyName="SIGEAConnectionString1" Provider="System.Data.SqlClient" />
   <Table Name="dbo.AcabadoTipoConstruccion" Member="AcabadoTipoConstruccion">
     <Type Name="AcabadoTipoConstruccion">
       <Column Name="idConstruccion" Type="System.Int32" DbType="Int NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
@@ -38,6 +38,7 @@
       <Association Name="Valuador_RechazoAvaluo" Member="RechazoAvaluo" ThisKey="idValuador" OtherKey="idControlador" Type="RechazoAvaluo" />
       <Association Name="Valuador_RegistroSHF" Member="RegistroSHF" ThisKey="idValuador" OtherKey="idValuador" Type="RegistroSHF" />
       <Association Name="Valuador_UsuarioValuador" Member="UsuarioValuador" ThisKey="idValuador" OtherKey="idValuador" Type="UsuarioValuador" />
+      <Association Name="Valuador_ComparableInmobiliario" Member="ComparableInmobiliario" ThisKey="idValuador" OtherKey="idValuador" Type="ComparableInmobiliario" />
       <Association Name="Archivo_Valuador" Member="Archivo" ThisKey="idFotografia" OtherKey="idArchivo" Type="Archivo" IsForeignKey="true" DeleteRule="SET NULL" />
       <Association Name="DatoBancario_Valuador" Member="DatoBancario" ThisKey="idDatoBancario" OtherKey="idDatoBancario" Type="DatoBancario" IsForeignKey="true" DeleteRule="SET NULL" />
       <Association Name="DatoContacto_Valuador" Member="DatoContacto" ThisKey="idDatoContacto" OtherKey="idDatoContacto" Type="DatoContacto" IsForeignKey="true" DeleteRule="CASCADE" DeleteOnNull="true" />
@@ -351,6 +352,7 @@
       <Column Name="skype" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
       <Association Name="DatoContacto_Valuador" Member="Valuador" ThisKey="idDatoContacto" OtherKey="idDatoContacto" Type="Valuador" />
       <Association Name="DatoContacto_Cliente" Member="Cliente" ThisKey="idDatoContacto" OtherKey="idDatoContacto" Type="Cliente" />
+      <Association Name="DatoContacto_ComparableInmobiliario" Member="ComparableInmobiliario" ThisKey="idDatoContacto" OtherKey="idDatoContacto" Type="ComparableInmobiliario" />
     </Type>
   </Table>
   <Table Name="dbo.DatoCredito" Member="DatoCredito">
@@ -432,6 +434,7 @@
       <Association Name="Direccion_DireccionInmueble" Member="DireccionInmueble" ThisKey="idDireccion" OtherKey="idDireccion" Type="DireccionInmueble" />
       <Association Name="Direccion_Propietario" Member="Propietario" ThisKey="idDireccion" OtherKey="idDireccion" Type="Propietario" />
       <Association Name="Direccion_Solicitante" Member="Solicitante" ThisKey="idDireccion" OtherKey="idDireccion" Type="Solicitante" />
+      <Association Name="Direccion_ComparableInmobiliario" Member="ComparableInmobiliario" ThisKey="idDireccion" OtherKey="idDireccion" Type="ComparableInmobiliario" />
       <Association Name="CodigoPostal_Direccion" Member="CodigoPostal" ThisKey="idCodigoPostal" OtherKey="idCodigoPostal" Type="CodigoPostal" IsForeignKey="true" />
     </Type>
   </Table>
@@ -924,6 +927,7 @@
     <Type Name="TipoComparable">
       <Column Name="idTipoComparable" Type="System.Int16" DbType="SmallInt NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
       <Column Name="descripcion" Type="System.String" DbType="NVarChar(15) NOT NULL" CanBeNull="false" />
+      <Association Name="TipoComparable_ComparableInmobiliario" Member="ComparableInmobiliario" ThisKey="idTipoComparable" OtherKey="idTipoComparable" Type="ComparableInmobiliario" />
     </Type>
   </Table>
   <Table Name="dbo.TipoConstruccion" Member="TipoConstruccion">
@@ -1250,6 +1254,66 @@
       <Column Name="idImportanciaVia" Type="System.Int16" DbType="SmallInt NOT NULL" CanBeNull="false" />
       <Column Name="nombreVia" Type="System.String" DbType="NVarChar(50) NOT NULL" CanBeNull="false" />
       <Association Name="Inmueble_ViasAcceso" Member="Inmueble" ThisKey="idInmueble" OtherKey="idInmueble" Type="Inmueble" IsForeignKey="true" DeleteRule="CASCADE" DeleteOnNull="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.ClaseComparable" Member="ClaseComparable">
+    <Type Name="ClaseComparable">
+      <Column Name="idClase" Type="System.Int16" DbType="SmallInt NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="descripcion" Type="System.String" DbType="NVarChar(50) NOT NULL" CanBeNull="false" />
+      <Association Name="ClaseComparable_ComparableInmobiliario" Member="ComparableInmobiliario" ThisKey="idClase" OtherKey="idClase" Type="ComparableInmobiliario" />
+    </Type>
+  </Table>
+  <Table Name="dbo.CalidadProyecto" Member="CalidadProyecto">
+    <Type Name="CalidadProyecto">
+      <Column Name="idCalidadProyecto" Type="System.Int16" DbType="SmallInt NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="descripcion" Type="System.String" DbType="NVarChar(50) NOT NULL" CanBeNull="false" />
+      <Association Name="CalidadProyecto_ComparableInmobiliario" Member="ComparableInmobiliario" ThisKey="idCalidadProyecto" OtherKey="idCalidadProyecto" Type="ComparableInmobiliario" />
+    </Type>
+  </Table>
+  <Table Name="dbo.ComparableInmobiliario" Member="ComparableInmobiliario">
+    <Type Name="ComparableInmobiliario">
+      <Column Name="idComparable" Type="System.Int64" DbType="BigInt NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="idTipoComparable" Type="System.Int16" DbType="SmallInt NOT NULL" CanBeNull="false" />
+      <Column Name="idValuador" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="idDatoContacto" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="nombre" Type="System.String" DbType="NVarChar(30)" CanBeNull="true" />
+      <Column Name="idDireccion" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="valorOferta" Type="System.Decimal" DbType="Money NOT NULL" CanBeNull="false" />
+      <Column Name="idUsoSuelo" Type="System.Int16" DbType="SmallInt NOT NULL" CanBeNull="false" />
+      <Column Name="numeroFrentes" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="superficieTerreno" Type="System.Double" DbType="Float NOT NULL" CanBeNull="false" />
+      <Column Name="superficieConstruida" Type="System.Double" DbType="Float" CanBeNull="true" />
+      <Column Name="idClase" Type="System.Int16" DbType="SmallInt NOT NULL" CanBeNull="false" />
+      <Column Name="antiguedad" Type="System.Double" DbType="Float" CanBeNull="true" />
+      <Column Name="idConservacion" Type="System.Int16" DbType="SmallInt NOT NULL" CanBeNull="false" />
+      <Column Name="idCalidadProyecto" Type="System.Int16" DbType="SmallInt NOT NULL" CanBeNull="false" />
+      <Column Name="avanceObra" Type="System.Double" DbType="Float" CanBeNull="true" />
+      <Column Name="fechaCreacion" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="fechaActualizacion" Type="System.DateTime" DbType="DateTime NOT NULL" CanBeNull="false" />
+      <Column Name="revisado" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
+      <Column Name="activo" Type="System.Boolean" DbType="Bit" CanBeNull="true" />
+      <Association Name="CalidadProyecto_ComparableInmobiliario" Member="CalidadProyecto" ThisKey="idCalidadProyecto" OtherKey="idCalidadProyecto" Type="CalidadProyecto" IsForeignKey="true" />
+      <Association Name="ClaseComparable_ComparableInmobiliario" Member="ClaseComparable" ThisKey="idClase" OtherKey="idClase" Type="ClaseComparable" IsForeignKey="true" />
+      <Association Name="TipoComparable_ComparableInmobiliario" Member="TipoComparable" ThisKey="idTipoComparable" OtherKey="idTipoComparable" Type="TipoComparable" IsForeignKey="true" />
+      <Association Name="TipoComparable1_ComparableInmobiliario" Member="TipoComparable1" ThisKey="idTipoComparable" OtherKey="idTipoComparable" Type="TipoComparable1" IsForeignKey="true" />
+      <Association Name="UsoSuelo_ComparableInmobiliario" Member="UsoSuelo" ThisKey="idUsoSuelo" OtherKey="idUsoSuelo" Type="UsoSuelo" IsForeignKey="true" />
+      <Association Name="Direccion_ComparableInmobiliario" Member="Direccion" ThisKey="idDireccion" OtherKey="idDireccion" Type="Direccion" IsForeignKey="true" />
+      <Association Name="DatoContacto_ComparableInmobiliario" Member="DatoContacto" ThisKey="idDatoContacto" OtherKey="idDatoContacto" Type="DatoContacto" IsForeignKey="true" />
+      <Association Name="Valuador_ComparableInmobiliario" Member="Valuador" ThisKey="idValuador" OtherKey="idValuador" Type="Valuador" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.TipoComparable" Member="TipoComparable1">
+    <Type Name="TipoComparable1">
+      <Column Name="idTipoComparable" Type="System.Int16" DbType="SmallInt NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="descripcion" Type="System.String" DbType="NVarChar(15) NOT NULL" CanBeNull="false" />
+      <Association Name="TipoComparable1_ComparableInmobiliario" Member="ComparableInmobiliario" ThisKey="idTipoComparable" OtherKey="idTipoComparable" Type="ComparableInmobiliario" />
+    </Type>
+  </Table>
+  <Table Name="dbo.UsoSuelo" Member="UsoSuelo">
+    <Type Name="UsoSuelo">
+      <Column Name="idUsoSuelo" Type="System.Int16" DbType="SmallInt NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="descripcion" Type="System.String" DbType="NVarChar(50) NOT NULL" CanBeNull="false" />
+      <Association Name="UsoSuelo_ComparableInmobiliario" Member="ComparableInmobiliario" ThisKey="idUsoSuelo" OtherKey="idUsoSuelo" Type="ComparableInmobiliario" />
     </Type>
   </Table>
   <Function Name="dbo.GenerarIDE" Method="GenerarIDE">
