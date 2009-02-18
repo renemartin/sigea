@@ -40,7 +40,7 @@ function saveSuperficie( idConstruccion, datosSuperficie, datosSuperficieCondomi
 
 //cargar datos
 
-function loadDatosTipoConstruccion( idConstruccion, callBackList) {
+function loadDatosTipoConstruccionAsync( idConstruccion, callBackList) {
     EntityWrappers.LoadTipoConstruccion(
         idConstruccion
         , asyncCallListBack
@@ -49,7 +49,7 @@ function loadDatosTipoConstruccion( idConstruccion, callBackList) {
     );
 }
 
-function loadDatosConstruccionInmueble( idConstruccion, callBackList) {
+function loadDatosConstruccionInmuebleAsync( idConstruccion, callBackList) {
     EntityWrappers.LoadConstruccionInmueble(
         idConstruccion
         , asyncCallListBack
@@ -58,7 +58,7 @@ function loadDatosConstruccionInmueble( idConstruccion, callBackList) {
     );
 }
 
-function loadSuperficie( idConstruccion, callBackList) {
+function loadSuperficieAsync( idConstruccion, callBackList) {
     EntityWrappers.LoadSuperficie(
         idConstruccion
         , asyncCallListBack
