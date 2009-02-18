@@ -10,6 +10,8 @@
         <li>
             <asp:LinkButton ID="entorno_LkBtn" runat="server" Text="Datos entorno" PostBackUrl="~/Cuentas/Valuacion/Editores/SHF/Entorno.aspx" /></li>
         <li>
+            <asp:LinkButton ID="usoActual_LkBtn" runat="server" Text="Uso actual" PostBackUrl="~/Cuentas/Valuacion/Editores/SHF/UsoActual.aspx" /></li>
+        <li>
             <asp:LinkButton ID="construcciones_LkBtn" runat="server" Text="Descripción construcciones"
                 PostBackUrl="~/Cuentas/Valuacion/Editores/SHF/Construcciones.aspx" /></li>
         <li>

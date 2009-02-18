@@ -15,6 +15,7 @@ public partial class Cuentas_Valuacion_Editores_SHF_EditorSHFMenu : System.Web.U
             avaluo_LkBtn,
             inmueble_LkBtn,
             entorno_LkBtn,
+            usoActual_LkBtn,
             construcciones_LkBtn,
             elementos_LkBtn 
         };

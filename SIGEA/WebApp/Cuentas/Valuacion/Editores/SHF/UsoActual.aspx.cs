@@ -3,7 +3,7 @@ using System.Text;
 using System.Web.UI;
 using System.Web.UI.WebControls;
 
-public partial class Cuentas_Valuacion_Editores_SHF_Construcciones : System.Web.UI.Page
+public partial class Cuentas_Valuacion_Editores_SHF_UsoActual : System.Web.UI.Page
 {
     private StringBuilder scripts;
     private int idAvaluo;
@@ -46,17 +46,9 @@ public partial class Cuentas_Valuacion_Editores_SHF_Construcciones : System.Web.
     }
     private void SetAttributes()
     {
-        SetEdit("form_clasificacion", editar_clasificacion_ImBtn, guardar_clasificacion_ImBtn, cancelar_clasificacion_ImBtn);
-        SetCancel("form_clasificacion", editar_clasificacion_ImBtn, guardar_clasificacion_ImBtn, cancelar_clasificacion_ImBtn);
-        guardar_clasificacion_ImBtn.OnClientClick = "saveDatosClasificacion(); return false;";
-
-        SetEdit("form_construcciones", editar_construcciones_ImBtn, guardar_construcciones_ImBtn, cancelar_construcciones_ImBtn);
-        SetCancel("form_construcciones", editar_construcciones_ImBtn, guardar_construcciones_ImBtn, cancelar_construcciones_ImBtn);
-        guardar_construcciones_ImBtn.OnClientClick = "saveDatosConstrucciones(); return false;";
-
-        SetEdit("form_superficies", editar_superficies_ImBtn, guardar_superficies_ImBtn, cancelar_superficies_ImBtn);
-        SetCancel("form_superficies", editar_superficies_ImBtn, guardar_superficies_ImBtn, cancelar_superficies_ImBtn);
-        guardar_superficies_ImBtn.OnClientClick = "saveSuperficies(); return false;";
+        SetEdit("form_uso_actual", editar_uso_actual_ImBtn, guardar_uso_actual_ImBtn, cancelar_uso_actual_ImBtn);
+        SetCancel("form_uso_actual", editar_uso_actual_ImBtn, guardar_uso_actual_ImBtn, cancelar_uso_actual_ImBtn);
+        guardar_uso_actual_ImBtn.OnClientClick = "saveUsoActual(); return false;";
     }
 
     private void SetEdit(string form, ImageButton editar, ImageButton guardar, ImageButton cancelar)
