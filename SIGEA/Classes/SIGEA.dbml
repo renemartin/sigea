@@ -1,0 +1,1264 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Database Name="SIGEA" Class="SIGEADataContext" xmlns="http://schemas.microsoft.com/linqtosql/dbml/2007">
+  <Connection Mode="AppSettings" ConnectionString="Data Source=65.182.106.50,1433;Initial Catalog=SIGEA;Persist Security Info=True;User ID=SistemaSIGEA" SettingsObjectName="SIGEA.Classes.Properties.Settings" SettingsPropertyName="SIGEAConnectionString" Provider="System.Data.SqlClient" />
+  <Table Name="dbo.AcabadoTipoConstruccion" Member="AcabadoTipoConstruccion">
+    <Type Name="AcabadoTipoConstruccion">
+      <Column Name="idConstruccion" Type="System.Int32" DbType="Int NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="numeroTipo" Type="System.Int16" DbType="SmallInt NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="idTipoAcabado" Type="System.Int16" DbType="SmallInt NOT NULL" CanBeNull="false" />
+      <Column Name="piso" Type="System.String" DbType="NVarChar(500) NOT NULL" CanBeNull="false" />
+      <Column Name="muro" Type="System.String" DbType="NVarChar(500) NOT NULL" CanBeNull="false" />
+      <Column Name="plafon" Type="System.String" DbType="NVarChar(500) NOT NULL" CanBeNull="false" />
+      <Association Name="TipoAcabado_AcabadoTipoConstruccion" Member="TipoAcabado" ThisKey="idTipoAcabado" OtherKey="idTipoAcabado" Type="TipoAcabado" IsForeignKey="true" />
+      <Association Name="TipoConstruccion_AcabadoTipoConstruccion" Member="TipoConstruccion" ThisKey="idConstruccion,numeroTipo" OtherKey="idConstruccion,numeroTipo" Type="TipoConstruccion" IsForeignKey="true" DeleteRule="CASCADE" DeleteOnNull="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.Valuador" Member="Valuador">
+    <Type Name="Valuador">
+      <Column Name="idValuador" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="idTipoValuador" Type="System.Int16" DbType="SmallInt NOT NULL" CanBeNull="false" />
+      <Column Name="idDireccion" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="idDatoContacto" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="idDatoBancario" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="idDatoPaqueteria" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="idFotografia" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="idFormacionValuacion" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="nombre" Type="System.String" DbType="NVarChar(100) NOT NULL" CanBeNull="false" />
+      <Column Name="nombreAsistente" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="emailAsistente" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="externo" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
+      <Column Name="activo" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
+      <Column Name="fechaAlta" Type="System.DateTime" DbType="DateTime NOT NULL" CanBeNull="false" />
+      <Association Name="Valuador_AsignacionAvaluo" Member="AsignacionAvaluo" ThisKey="idValuador" OtherKey="idControlador" Type="AsignacionAvaluo" />
+      <Association Name="Valuador_AsignacionAvaluo1" Member="AsignacionAvaluo1" ThisKey="idValuador" OtherKey="idValuador" Type="AsignacionAvaluo" />
+      <Association Name="Valuador_AvaluoReferencia" Member="AvaluoReferencia" ThisKey="idValuador" OtherKey="idValuador" Type="AvaluoReferencia" />
+      <Association Name="Valuador_DatoFacturacionValuador" Member="DatoFacturacionValuador" ThisKey="idValuador" OtherKey="idValuador" Type="DatoFacturacionValuador" />
+      <Association Name="Valuador_DocumentoValuador" Member="DocumentoValuador" ThisKey="idValuador" OtherKey="idValuador" Type="DocumentoValuador" />
+      <Association Name="Valuador_FormacionProfesionalValuador" Member="FormacionProfesionalValuador" ThisKey="idValuador" OtherKey="idValuador" Type="FormacionProfesionalValuador" />
+      <Association Name="Valuador_RechazoAvaluo" Member="RechazoAvaluo" ThisKey="idValuador" OtherKey="idControlador" Type="RechazoAvaluo" />
+      <Association Name="Valuador_RegistroSHF" Member="RegistroSHF" ThisKey="idValuador" OtherKey="idValuador" Type="RegistroSHF" />
+      <Association Name="Valuador_UsuarioValuador" Member="UsuarioValuador" ThisKey="idValuador" OtherKey="idValuador" Type="UsuarioValuador" />
+      <Association Name="Archivo_Valuador" Member="Archivo" ThisKey="idFotografia" OtherKey="idArchivo" Type="Archivo" IsForeignKey="true" DeleteRule="SET NULL" />
+      <Association Name="DatoBancario_Valuador" Member="DatoBancario" ThisKey="idDatoBancario" OtherKey="idDatoBancario" Type="DatoBancario" IsForeignKey="true" DeleteRule="SET NULL" />
+      <Association Name="DatoContacto_Valuador" Member="DatoContacto" ThisKey="idDatoContacto" OtherKey="idDatoContacto" Type="DatoContacto" IsForeignKey="true" DeleteRule="CASCADE" DeleteOnNull="true" />
+      <Association Name="DatoPaqueteria_Valuador" Member="DatoPaqueteria" ThisKey="idDatoPaqueteria" OtherKey="idDatoPaqueteria" Type="DatoPaqueteria" IsForeignKey="true" />
+      <Association Name="Direccion_Valuador" Member="Direccion" ThisKey="idDireccion" OtherKey="idDireccion" Type="Direccion" IsForeignKey="true" DeleteRule="CASCADE" DeleteOnNull="true" />
+      <Association Name="FormacionValuador_Valuador" Member="FormacionValuador" ThisKey="idFormacionValuacion" OtherKey="idFormacionValuador" Type="FormacionValuador" IsForeignKey="true" DeleteRule="SET NULL" />
+      <Association Name="TipoValuador_Valuador" Member="TipoValuador" ThisKey="idTipoValuador" OtherKey="idTipoValuador" Type="TipoValuador" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.Archivo" Member="Archivo">
+    <Type Name="Archivo">
+      <Column Name="idArchivo" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="idCarpeta" Type="System.Int16" DbType="SmallInt NOT NULL" CanBeNull="false" />
+      <Column Name="idTipo" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="titulo" Type="System.String" DbType="NVarChar(20) NOT NULL" CanBeNull="false" />
+      <Column Name="nombre" Type="System.String" DbType="NVarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="extension" Type="System.String" DbType="NVarChar(5) NOT NULL" CanBeNull="false" />
+      <Column Name="tipoMIME" Type="System.String" DbType="NVarChar(35) NOT NULL" CanBeNull="false" />
+      <Column Name="fechaCreacion" Type="System.DateTime" DbType="DateTime NOT NULL" CanBeNull="false" />
+      <Column Name="fechaModificacion" Type="System.DateTime" DbType="DateTime NOT NULL" CanBeNull="false" />
+      <Association Name="Archivo_Valuador" Member="Valuador" ThisKey="idArchivo" OtherKey="idFotografia" Type="Valuador" />
+      <Association Name="Archivo_AvaluoReferencia" Member="AvaluoReferencia" ThisKey="idArchivo" OtherKey="idArchivo" Type="AvaluoReferencia" />
+      <Association Name="Archivo_Cliente" Member="Cliente" ThisKey="idArchivo" OtherKey="idLogotipo" Type="Cliente" />
+      <Association Name="Archivo_HistorialRevision" Member="HistorialRevision" ThisKey="idArchivo" OtherKey="idCapturaAvaluo" Type="HistorialRevision" />
+      <Association Name="Carpeta_Archivo" Member="Carpeta" ThisKey="idCarpeta" OtherKey="idCarpeta" Type="Carpeta" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.AreaComun" Member="AreaComun">
+    <Type Name="AreaComun">
+      <Column Name="idArea" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="idCondominio" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="concepto" Type="System.String" DbType="NVarChar(40) NOT NULL" CanBeNull="false" />
+      <Column Name="superficie" Type="System.Double" DbType="Float NOT NULL" CanBeNull="false" />
+      <Association Name="DatoCondominio_AreaComun" Member="DatoCondominio" ThisKey="idCondominio" OtherKey="idCondominio" Type="DatoCondominio" IsForeignKey="true" DeleteRule="CASCADE" DeleteOnNull="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.Asentamiento" Member="Asentamiento">
+    <Type Name="Asentamiento">
+      <Column Name="idAsentamiento" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="idMunicipio" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="idTipoAsentamiento" Type="System.Int16" DbType="SmallInt NOT NULL" CanBeNull="false" />
+      <Column Name="nombreAsentamiento" Type="System.String" DbType="NVarChar(100) NOT NULL" CanBeNull="false" />
+      <Column Name="capturado" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
+      <Association Name="Asentamiento_CodigoPostal" Member="CodigoPostal" ThisKey="idAsentamiento" OtherKey="idAsentamiento" Type="CodigoPostal" />
+      <Association Name="Municipio_Asentamiento" Member="Municipio" ThisKey="idMunicipio" OtherKey="idMunicipio" Type="Municipio" IsForeignKey="true" />
+      <Association Name="TipoAsentamiento_Asentamiento" Member="TipoAsentamiento" ThisKey="idTipoAsentamiento" OtherKey="idTipoAsentamiento" Type="TipoAsentamiento" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.AsignacionAvaluo" Member="AsignacionAvaluo">
+    <Type Name="AsignacionAvaluo">
+      <Column Name="idAvaluo" Type="System.Int32" DbType="Int NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="idValuador" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="idControlador" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Association Name="Valuador_AsignacionAvaluo" Member="Valuador" ThisKey="idControlador" OtherKey="idValuador" Type="Valuador" IsForeignKey="true" />
+      <Association Name="Valuador_AsignacionAvaluo1" Member="Valuador1" ThisKey="idValuador" OtherKey="idValuador" Type="Valuador" IsForeignKey="true" />
+      <Association Name="AvaluoInmobiliario_AsignacionAvaluo" Member="AvaluoInmobiliario" ThisKey="idAvaluo" OtherKey="idAvaluo" Type="AvaluoInmobiliario" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.AsignacionFolioSHF" Member="AsignacionFolioSHF">
+    <Type Name="AsignacionFolioSHF">
+      <Column Name="idAvaluo" Type="System.Int32" DbType="Int NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="folio" Type="System.String" DbType="NVarChar(15) NOT NULL" CanBeNull="false" />
+      <Column Name="consecutivo" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="periodo" Type="System.Int16" DbType="SmallInt NOT NULL" CanBeNull="false" />
+      <Association Name="AvaluoInmobiliario_AsignacionFolioSHF" Member="AvaluoInmobiliario" ThisKey="idAvaluo" OtherKey="idAvaluo" Type="AvaluoInmobiliario" IsForeignKey="true" DeleteRule="CASCADE" DeleteOnNull="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.AvaluoInmobiliario" Member="AvaluoInmobiliario">
+    <Type Name="AvaluoInmobiliario">
+      <Column Name="idAvaluo" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="IDE" Type="System.String" DbType="NVarChar(20)" CanBeNull="true" />
+      <Column Name="idCliente" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="idInmueble" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="idSubTipo" Type="System.Int16" DbType="SmallInt NOT NULL" CanBeNull="false" />
+      <Column Name="idSolicitante" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="idStatus" Type="System.Int16" DbType="SmallInt NOT NULL" CanBeNull="false" />
+      <Column Name="idProposito" Type="System.Int16" DbType="SmallInt NOT NULL" CanBeNull="false" />
+      <Column Name="especRecuperacion" Type="System.String" DbType="NVarChar(20) NOT NULL" CanBeNull="false" />
+      <Column Name="especProposito" Type="System.String" DbType="NVarChar(30) NOT NULL" CanBeNull="false" />
+      <Column Name="fechaCreacion" Type="System.DateTime" DbType="DateTime NOT NULL" CanBeNull="false" />
+      <Column Name="fechaFinalizacion" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="promocionVIASC" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
+      <Column Name="operacionContado" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
+      <Column Name="activo" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
+      <Association Name="AvaluoInmobiliario_AsignacionAvaluo" Member="AsignacionAvaluo" ThisKey="idAvaluo" OtherKey="idAvaluo" Type="AsignacionAvaluo" Cardinality="One" />
+      <Association Name="AvaluoInmobiliario_AsignacionFolioSHF" Member="AsignacionFolioSHF" ThisKey="idAvaluo" OtherKey="idAvaluo" Type="AsignacionFolioSHF" Cardinality="One" />
+      <Association Name="AvaluoInmobiliario_ConclusionAvaluo" Member="ConclusionAvaluo" ThisKey="idAvaluo" OtherKey="idAvaluo" Type="ConclusionAvaluo" Cardinality="One" />
+      <Association Name="AvaluoInmobiliario_DatoCredito" Member="DatoCredito" ThisKey="idAvaluo" OtherKey="idAvaluo" Type="DatoCredito" Cardinality="One" />
+      <Association Name="AvaluoInmobiliario_Declaraciones" Member="Declaraciones" ThisKey="idAvaluo" OtherKey="idAvaluo" Type="Declaraciones" Cardinality="One" />
+      <Association Name="AvaluoInmobiliario_RechazoAvaluo" Member="RechazoAvaluo" ThisKey="idAvaluo" OtherKey="idAvaluo" Type="RechazoAvaluo" />
+      <Association Name="AvaluoInmobiliario_RevisionAvaluo" Member="RevisionAvaluo" ThisKey="idAvaluo" OtherKey="idAvaluo" Type="RevisionAvaluo" />
+      <Association Name="Cliente_AvaluoInmobiliario" Member="Cliente" ThisKey="idCliente" OtherKey="idCliente" Type="Cliente" IsForeignKey="true" />
+      <Association Name="Inmueble_AvaluoInmobiliario" Member="Inmueble" ThisKey="idInmueble" OtherKey="idInmueble" Type="Inmueble" IsForeignKey="true" />
+      <Association Name="PropositoAvaluo_AvaluoInmobiliario" Member="PropositoAvaluo" ThisKey="idProposito" OtherKey="idProposito" Type="PropositoAvaluo" IsForeignKey="true" />
+      <Association Name="Solicitante_AvaluoInmobiliario" Member="Solicitante" ThisKey="idSolicitante" OtherKey="idSolicitante" Type="Solicitante" IsForeignKey="true" />
+      <Association Name="StatusAvaluo_AvaluoInmobiliario" Member="StatusAvaluo" ThisKey="idStatus" OtherKey="idStatus" Type="StatusAvaluo" IsForeignKey="true" />
+      <Association Name="TipoAvaluoInmobiliario_AvaluoInmobiliario" Member="TipoAvaluoInmobiliario" ThisKey="idSubTipo" OtherKey="idSubTipo" Type="TipoAvaluoInmobiliario" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.AvaluoReferencia" Member="AvaluoReferencia">
+    <Type Name="AvaluoReferencia">
+      <Column Name="idAvaluoReferencia" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="idValuador" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="idArchivo" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="fechaElaboracion" Type="System.DateTime" DbType="SmallDateTime NOT NULL" CanBeNull="false" />
+      <Association Name="Archivo_AvaluoReferencia" Member="Archivo" ThisKey="idArchivo" OtherKey="idArchivo" Type="Archivo" IsForeignKey="true" />
+      <Association Name="Valuador_AvaluoReferencia" Member="Valuador" ThisKey="idValuador" OtherKey="idValuador" Type="Valuador" IsForeignKey="true" DeleteRule="CASCADE" DeleteOnNull="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.Banco" Member="Banco">
+    <Type Name="Banco">
+      <Column Name="idBanco" Type="System.Int16" DbType="SmallInt NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="nombreBanco" Type="System.String" DbType="NVarChar(50) NOT NULL" CanBeNull="false" />
+      <Association Name="Banco_DatoBancario" Member="DatoBancario" ThisKey="idBanco" OtherKey="idBancoEnvio" Type="DatoBancario" />
+      <Association Name="Banco_DatoBancario1" Member="DatoBancario1" ThisKey="idBanco" OtherKey="idBancoRecepcion" Type="DatoBancario" />
+    </Type>
+  </Table>
+  <Table Name="dbo.Carpeta" Member="Carpeta">
+    <Type Name="Carpeta">
+      <Column Name="idCarpeta" Type="System.Int16" DbType="SmallInt NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="ruta" Type="System.String" DbType="NVarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="descripcion" Type="System.String" DbType="NVarChar(30) NOT NULL" CanBeNull="false" />
+      <Association Name="Carpeta_Archivo" Member="Archivo" ThisKey="idCarpeta" OtherKey="idCarpeta" Type="Archivo" />
+    </Type>
+  </Table>
+  <Table Name="dbo.Carrera" Member="Carrera">
+    <Type Name="Carrera">
+      <Column Name="idCarrera" Type="System.Int16" DbType="SmallInt NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="nombreCarrera" Type="System.String" DbType="NVarChar(40) NOT NULL" CanBeNull="false" />
+      <Column Name="posgrado" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
+      <Association Name="Carrera_FormacionProfesional" Member="FormacionProfesional" ThisKey="idCarrera" OtherKey="idCarrera" Type="FormacionProfesional" />
+    </Type>
+  </Table>
+  <Table Name="dbo.ClaseInmueble" Member="ClaseInmueble">
+    <Type Name="ClaseInmueble">
+      <Column Name="idClase" Type="System.Int16" DbType="SmallInt NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="descripcion" Type="System.String" DbType="NVarChar(30) NOT NULL" CanBeNull="false" />
+      <Column Name="vidaUtil" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Association Name="ClaseInmueble_TipoClasificacionZona" Member="TipoClasificacionZona" ThisKey="idClase" OtherKey="idClase" Type="TipoClasificacionZona" />
+      <Association Name="ClaseInmueble_TipoConstruccionPredominante" Member="TipoConstruccionPredominante" ThisKey="idClase" OtherKey="idClase" Type="TipoConstruccionPredominante" />
+      <Association Name="ClaseInmueble_TipoDensidad" Member="TipoDensidad" ThisKey="idClase" OtherKey="idClase" Type="TipoDensidad" />
+      <Association Name="ClaseInmueble_TipoNivelSocioeconomico" Member="TipoNivelSocioeconomico" ThisKey="idClase" OtherKey="idClase" Type="TipoNivelSocioeconomico" />
+      <Association Name="ClaseInmueble_TipoProximidadUrbana" Member="TipoProximidadUrbana" ThisKey="idClase" OtherKey="idClase" Type="TipoProximidadUrbana" />
+      <Association Name="ClaseInmueble_TipoUsoSuelo" Member="TipoUsoSuelo" ThisKey="idClase" OtherKey="idClase" Type="TipoUsoSuelo" />
+      <Association Name="ClaseInmueble_ValorMaterial" Member="ValorMaterial" ThisKey="idClase" OtherKey="idClase" Type="ValorMaterial" />
+    </Type>
+  </Table>
+  <Table Name="dbo.Cliente" Member="Cliente">
+    <Type Name="Cliente">
+      <Column Name="idCliente" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="idDireccion" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="idDatoContacto" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="idDatoPaqueteria" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="idDatoBancario" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="idLogotipo" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="nombre" Type="System.String" DbType="NVarChar(100) NOT NULL" CanBeNull="false" />
+      <Column Name="paginaWeb" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="fechaAlta" Type="System.DateTime" DbType="DateTime NOT NULL" CanBeNull="false" />
+      <Column Name="activo" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
+      <Association Name="Cliente_AvaluoInmobiliario" Member="AvaluoInmobiliario" ThisKey="idCliente" OtherKey="idCliente" Type="AvaluoInmobiliario" />
+      <Association Name="Cliente_UsuarioCliente" Member="UsuarioCliente" ThisKey="idCliente" OtherKey="idCliente" Type="UsuarioCliente" />
+      <Association Name="Archivo_Cliente" Member="Archivo" ThisKey="idLogotipo" OtherKey="idArchivo" Type="Archivo" IsForeignKey="true" DeleteRule="SET NULL" />
+      <Association Name="DatoBancario_Cliente" Member="DatoBancario" ThisKey="idDatoBancario" OtherKey="idDatoBancario" Type="DatoBancario" IsForeignKey="true" DeleteRule="SET NULL" />
+      <Association Name="DatoContacto_Cliente" Member="DatoContacto" ThisKey="idDatoContacto" OtherKey="idDatoContacto" Type="DatoContacto" IsForeignKey="true" DeleteRule="CASCADE" DeleteOnNull="true" />
+      <Association Name="DatoPaqueteria_Cliente" Member="DatoPaqueteria" ThisKey="idDatoPaqueteria" OtherKey="idDatoPaqueteria" Type="DatoPaqueteria" IsForeignKey="true" />
+      <Association Name="Direccion_Cliente" Member="Direccion" ThisKey="idDireccion" OtherKey="idDireccion" Type="Direccion" IsForeignKey="true" DeleteRule="CASCADE" DeleteOnNull="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.CodigoPostal" Member="CodigoPostal">
+    <Type Name="CodigoPostal">
+      <Column Name="idCodigoPostal" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="idAsentamiento" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="codigoPostal" Member="codigoPostal1" Type="System.String" DbType="Char(5) NOT NULL" CanBeNull="false" />
+      <Column Name="capturado" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
+      <Association Name="CodigoPostal_Direccion" Member="Direccion" ThisKey="idCodigoPostal" OtherKey="idCodigoPostal" Type="Direccion" />
+      <Association Name="CodigoPostal_DireccionInmueble" Member="DireccionInmueble" ThisKey="idCodigoPostal" OtherKey="idDireccion" Type="DireccionInmueble" />
+      <Association Name="Asentamiento_CodigoPostal" Member="Asentamiento" ThisKey="idAsentamiento" OtherKey="idAsentamiento" Type="Asentamiento" IsForeignKey="true" DeleteRule="CASCADE" DeleteOnNull="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.ColegioValuadores" Member="ColegioValuadores">
+    <Type Name="ColegioValuadores">
+      <Column Name="idcolegioValuadores" Type="System.Int16" DbType="SmallInt NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="nombreColegio" Type="System.String" DbType="NVarChar(40) NOT NULL" CanBeNull="false" />
+      <Association Name="ColegioValuadores_FormacionValuador" Member="FormacionValuador" ThisKey="idcolegioValuadores" OtherKey="idColegio" Type="FormacionValuador" />
+    </Type>
+  </Table>
+  <Table Name="dbo.ConclusionAvaluo" Member="ConclusionAvaluo">
+    <Type Name="ConclusionAvaluo">
+      <Column Name="idAvaluo" Type="System.Int32" DbType="Int NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="comentarios" Type="System.String" DbType="NVarChar(300) NOT NULL" CanBeNull="false" />
+      <Column Name="valorConcluido" Type="System.Decimal" DbType="Money NOT NULL" CanBeNull="false" />
+      <Column Name="consideraciones" Type="System.String" DbType="NVarChar(512) NOT NULL" CanBeNull="false" />
+      <Column Name="observaciones" Type="System.String" DbType="NVarChar(512) NOT NULL" CanBeNull="false" />
+      <Association Name="AvaluoInmobiliario_ConclusionAvaluo" Member="AvaluoInmobiliario" ThisKey="idAvaluo" OtherKey="idAvaluo" Type="AvaluoInmobiliario" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.ConstruccionInmueble" Member="ConstruccionInmueble">
+    <Type Name="ConstruccionInmueble">
+      <Column Name="idConstruccion" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="idInmueble" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="idClase" Type="System.Int16" DbType="SmallInt NOT NULL" CanBeNull="false" />
+      <Column Name="idConservacion" Type="System.Int16" DbType="SmallInt NOT NULL" CanBeNull="false" />
+      <Column Name="idCalidadProyecto" Type="System.Int16" DbType="SmallInt NOT NULL" CanBeNull="false" />
+      <Column Name="constructor" Type="System.String" DbType="NVarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="avanceObra" Type="System.Double" DbType="Float NOT NULL" CanBeNull="false" />
+      <Column Name="edad" Type="System.Double" DbType="Float NOT NULL" CanBeNull="false" />
+      <Column Name="vidaUtil" Type="System.Double" DbType="Float NOT NULL" CanBeNull="false" />
+      <Column Name="nivelesConstruccion" Type="System.Int16" DbType="SmallInt NOT NULL" CanBeNull="false" />
+      <Column Name="nivelEdificio" Type="System.Int16" DbType="SmallInt NOT NULL" CanBeNull="false" />
+      <Column Name="horizontal" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
+      <Column Name="vertical" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
+      <Column Name="unidadRentable" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="idCondominio" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Association Name="ConstruccionInmueble_InstalacionConstruccion" Member="InstalacionConstruccion" ThisKey="idConstruccion" OtherKey="idConstruccion" Type="InstalacionConstruccion" />
+      <Association Name="ConstruccionInmueble_InstalacionesEspecialesCondominio" Member="InstalacionesEspecialesCondominio" ThisKey="idConstruccion" OtherKey="idConstruccion" Type="InstalacionesEspecialesCondominio" Cardinality="One" />
+      <Association Name="ConstruccionInmueble_InstalacionesEspecialesConstruccion" Member="InstalacionesEspecialesConstruccion" ThisKey="idConstruccion" OtherKey="idConstruccion" Type="InstalacionesEspecialesConstruccion" Cardinality="One" />
+      <Association Name="ConstruccionInmueble_TipoConstruccion" Member="TipoConstruccion" ThisKey="idConstruccion" OtherKey="idConstruccion" Type="TipoConstruccion" />
+      <Association Name="DatoCondominio_ConstruccionInmueble" Member="DatoCondominio" ThisKey="idCondominio" OtherKey="idCondominio" Type="DatoCondominio" IsForeignKey="true" />
+      <Association Name="Inmueble_ConstruccionInmueble" Member="Inmueble" ThisKey="idInmueble" OtherKey="idInmueble" Type="Inmueble" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.Consulta" Member="Consulta">
+    <Type Name="Consulta">
+      <Column Name="idEntidad" Type="System.Int16" DbType="SmallInt NOT NULL" CanBeNull="false" />
+      <Column Name="idTipoCredito" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="clave" Type="System.String" DbType="NVarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="nombre" Type="System.String" DbType="NVarChar(255) NOT NULL" CanBeNull="false" />
+      <Column Name="financiamiento" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="cofinanciamiento" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+    </Type>
+  </Table>
+  <Table Name="dbo.DatoAcabados" Member="DatoAcabados">
+    <Type Name="DatoAcabados">
+      <Column Name="idDatoAcabado" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="salaPisos" Type="System.String" DbType="NVarChar(100) NOT NULL" CanBeNull="false" />
+      <Column Name="salaMuros" Type="System.String" DbType="NVarChar(100) NOT NULL" CanBeNull="false" />
+      <Column Name="salaPlafones" Type="System.String" DbType="NVarChar(100) NOT NULL" CanBeNull="false" />
+      <Column Name="comedorPisos" Type="System.String" DbType="NVarChar(100) NOT NULL" CanBeNull="false" />
+      <Column Name="comedorMuros" Type="System.String" DbType="NVarChar(100) NOT NULL" CanBeNull="false" />
+      <Column Name="comedorPlafones" Type="System.String" DbType="NVarChar(100) NOT NULL" CanBeNull="false" />
+      <Column Name="cocinaPisos" Type="System.String" DbType="NVarChar(100) NOT NULL" CanBeNull="false" />
+      <Column Name="cocinaMuros" Type="System.String" DbType="NVarChar(100) NOT NULL" CanBeNull="false" />
+      <Column Name="cocinaPlafones" Type="System.String" DbType="NVarChar(100) NOT NULL" CanBeNull="false" />
+      <Column Name="recamarasPisos" Type="System.String" DbType="NVarChar(100) NOT NULL" CanBeNull="false" />
+      <Column Name="recamarasMuros" Type="System.String" DbType="NVarChar(100) NOT NULL" CanBeNull="false" />
+      <Column Name="recamarasPlafones" Type="System.String" DbType="NVarChar(100) NOT NULL" CanBeNull="false" />
+      <Column Name="banosPisos" Type="System.String" DbType="NVarChar(100) NOT NULL" CanBeNull="false" />
+      <Column Name="banosMuros" Type="System.String" DbType="NVarChar(100) NOT NULL" CanBeNull="false" />
+      <Column Name="banosPlafones" Type="System.String" DbType="NVarChar(100) NOT NULL" CanBeNull="false" />
+      <Column Name="patiosPisos" Type="System.String" DbType="NVarChar(100) NOT NULL" CanBeNull="false" />
+      <Column Name="patiosMuros" Type="System.String" DbType="NVarChar(100) NOT NULL" CanBeNull="false" />
+      <Column Name="patiosPlafones" Type="System.String" DbType="NVarChar(100) NOT NULL" CanBeNull="false" />
+      <Column Name="estacionamientoPisos" Type="System.String" DbType="NVarChar(100) NOT NULL" CanBeNull="false" />
+      <Column Name="estacionamientoMuros" Type="System.String" DbType="NVarChar(100) NOT NULL" CanBeNull="false" />
+      <Column Name="estacionamientoPlafones" Type="System.String" DbType="NVarChar(100) NOT NULL" CanBeNull="false" />
+      <Column Name="fachadaPisos" Type="System.String" DbType="NVarChar(100) NOT NULL" CanBeNull="false" />
+    </Type>
+  </Table>
+  <Table Name="dbo.DatoBancario" Member="DatoBancario">
+    <Type Name="DatoBancario">
+      <Column Name="idDatoBancario" Type="System.Int32" DbType="Int NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="idBancoRecepcion" Type="System.Int16" DbType="SmallInt NOT NULL" CanBeNull="false" />
+      <Column Name="idBancoEnvio" Type="System.Int16" DbType="SmallInt" CanBeNull="true" />
+      <Column Name="sucursalRecepcion" Type="System.String" DbType="NVarChar(15) NOT NULL" CanBeNull="false" />
+      <Column Name="cuentaRecepcion" Type="System.String" DbType="Char(10) NOT NULL" CanBeNull="false" />
+      <Column Name="CLABERecepcion" Type="System.String" DbType="Char(15) NOT NULL" CanBeNull="false" />
+      <Column Name="beneficiarioRecepcion" Type="System.String" DbType="NVarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="refNumericaRecepcion" Type="System.String" DbType="NVarChar(30) NOT NULL" CanBeNull="false" />
+      <Column Name="refAlfanumericaRecepcion" Type="System.String" DbType="NVarChar(30) NOT NULL" CanBeNull="false" />
+      <Column Name="refNumericaEnvio" Type="System.String" DbType="NVarChar(30)" CanBeNull="true" />
+      <Column Name="refAlfanuericaEnvio" Type="System.String" DbType="NVarChar(30)" CanBeNull="true" />
+      <Association Name="DatoBancario_Valuador" Member="Valuador" ThisKey="idDatoBancario" OtherKey="idDatoBancario" Type="Valuador" />
+      <Association Name="DatoBancario_Cliente" Member="Cliente" ThisKey="idDatoBancario" OtherKey="idDatoBancario" Type="Cliente" />
+      <Association Name="Banco_DatoBancario" Member="Banco" ThisKey="idBancoEnvio" OtherKey="idBanco" Type="Banco" IsForeignKey="true" />
+      <Association Name="Banco_DatoBancario1" Member="Banco1" ThisKey="idBancoRecepcion" OtherKey="idBanco" Type="Banco" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.DatoCondominio" Member="DatoCondominio">
+    <Type Name="DatoCondominio">
+      <Column Name="idCondominio" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="idInmueble" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="totalTerreno" Type="System.Double" DbType="Float NOT NULL" CanBeNull="false" />
+      <Column Name="indiviso" Type="System.Double" DbType="Float NOT NULL" CanBeNull="false" />
+      <Column Name="privativo" Type="System.Double" DbType="Float NOT NULL" CanBeNull="false" />
+      <Column Name="fuenteIndiviso" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="otraFuenteIndiviso" Type="System.String" DbType="NVarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="fuentePrivativo" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="otraFuentePrivativo" Type="System.String" DbType="NVarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="avanceObra" Type="System.Double" DbType="Float NOT NULL" CanBeNull="false" />
+      <Column Name="unidadesRentables" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="unidadesNucleo" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="unidadesConjunto" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Association Name="DatoCondominio_AreaComun" Member="AreaComun" ThisKey="idCondominio" OtherKey="idCondominio" Type="AreaComun" />
+      <Association Name="DatoCondominio_ConstruccionInmueble" Member="ConstruccionInmueble" ThisKey="idCondominio" OtherKey="idCondominio" Type="ConstruccionInmueble" />
+    </Type>
+  </Table>
+  <Table Name="dbo.DatoContacto" Member="DatoContacto">
+    <Type Name="DatoContacto">
+      <Column Name="idDatoContacto" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="telefono1" Type="System.String" DbType="NVarChar(30)" CanBeNull="true" />
+      <Column Name="extensionTel1" Type="System.String" DbType="NVarChar(10)" CanBeNull="true" />
+      <Column Name="telefono2" Type="System.String" DbType="NVarChar(30)" CanBeNull="true" />
+      <Column Name="extensionTel2" Type="System.String" DbType="NVarChar(10)" CanBeNull="true" />
+      <Column Name="fax" Type="System.String" DbType="NVarChar(30)" CanBeNull="true" />
+      <Column Name="celular" Type="System.String" DbType="NVarChar(30)" CanBeNull="true" />
+      <Column Name="nextel" Type="System.String" DbType="NVarChar(30)" CanBeNull="true" />
+      <Column Name="claveNextel" Type="System.String" DbType="NVarChar(10)" CanBeNull="true" />
+      <Column Name="email1" Type="System.String" DbType="NVarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="email2" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="messenger" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="skype" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Association Name="DatoContacto_Valuador" Member="Valuador" ThisKey="idDatoContacto" OtherKey="idDatoContacto" Type="Valuador" />
+      <Association Name="DatoContacto_Cliente" Member="Cliente" ThisKey="idDatoContacto" OtherKey="idDatoContacto" Type="Cliente" />
+    </Type>
+  </Table>
+  <Table Name="dbo.DatoCredito" Member="DatoCredito">
+    <Type Name="DatoCredito">
+      <Column Name="idAvaluo" Type="System.Int32" DbType="Int NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="idTipoCredito" Type="System.Int16" DbType="SmallInt NOT NULL" CanBeNull="false" />
+      <Column Name="idTipoCreditoInterno" Type="System.Int16" DbType="SmallInt" CanBeNull="true" />
+      <Column Name="idEntidadOtorgante" Type="System.Int16" DbType="SmallInt NOT NULL" CanBeNull="false" />
+      <Column Name="idEntidadCofinanciamiento" Type="System.Int16" DbType="SmallInt" CanBeNull="true" />
+      <Association Name="AvaluoInmobiliario_DatoCredito" Member="AvaluoInmobiliario" ThisKey="idAvaluo" OtherKey="idAvaluo" Type="AvaluoInmobiliario" IsForeignKey="true" DeleteRule="CASCADE" DeleteOnNull="true" />
+      <Association Name="EntidadFinanciamiento_DatoCredito" Member="EntidadFinanciamiento" ThisKey="idEntidadCofinanciamiento" OtherKey="idEntidad" Type="EntidadFinanciamiento" IsForeignKey="true" />
+      <Association Name="EntidadFinanciamiento_DatoCredito1" Member="EntidadFinanciamiento1" ThisKey="idEntidadOtorgante" OtherKey="idEntidad" Type="EntidadFinanciamiento" IsForeignKey="true" />
+      <Association Name="TipoCredito_DatoCredito" Member="TipoCredito" ThisKey="idTipoCredito" OtherKey="idTipoCredito" Type="TipoCredito" IsForeignKey="true" />
+      <Association Name="TipoCreditoInterno_DatoCredito" Member="TipoCreditoInterno" ThisKey="idTipoCreditoInterno" OtherKey="idTipoCreditoInterno" Type="TipoCreditoInterno" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.DatoFacturacion" Member="DatoFacturacion">
+    <Type Name="DatoFacturacion">
+      <Column Name="idDatoFacturacion" Type="System.Int32" DbType="Int NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="idDireccion" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="razonSocial" Type="System.String" DbType="NVarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="nombreComercial" Type="System.String" DbType="NVarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="RFC" Type="System.String" DbType="NVarChar(20) NOT NULL" CanBeNull="false" />
+      <Association Name="DatoFacturacion_DatoFacturacionValuador" Member="DatoFacturacionValuador" ThisKey="idDatoFacturacion" OtherKey="idDatoFacturacion" Type="DatoFacturacionValuador" />
+      <Association Name="Direccion_DatoFacturacion" Member="Direccion" ThisKey="idDireccion" OtherKey="idDireccion" Type="Direccion" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.DatoFacturacionValuador" Member="DatoFacturacionValuador">
+    <Type Name="DatoFacturacionValuador">
+      <Column Name="idDatoFacturacion" Type="System.Int32" DbType="Int NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="idValuador" Type="System.Int32" DbType="Int NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Association Name="DatoFacturacion_DatoFacturacionValuador" Member="DatoFacturacion" ThisKey="idDatoFacturacion" OtherKey="idDatoFacturacion" Type="DatoFacturacion" IsForeignKey="true" DeleteRule="CASCADE" DeleteOnNull="true" />
+      <Association Name="Valuador_DatoFacturacionValuador" Member="Valuador" ThisKey="idValuador" OtherKey="idValuador" Type="Valuador" IsForeignKey="true" DeleteRule="CASCADE" DeleteOnNull="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.DatoPaqueteria" Member="DatoPaqueteria">
+    <Type Name="DatoPaqueteria">
+      <Column Name="idDatoPaqueteria" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="idDireccion" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="atencion" Type="System.String" DbType="NVarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="plaza" Type="System.String" DbType="NVarChar(30)" CanBeNull="true" />
+      <Column Name="envioFacturas" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
+      <Column Name="envioAvaluos" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
+      <Column Name="envioNotasRetencion" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
+      <Association Name="DatoPaqueteria_Valuador" Member="Valuador" ThisKey="idDatoPaqueteria" OtherKey="idDatoPaqueteria" Type="Valuador" />
+      <Association Name="DatoPaqueteria_Cliente" Member="Cliente" ThisKey="idDatoPaqueteria" OtherKey="idDatoPaqueteria" Type="Cliente" />
+      <Association Name="Direccion_DatoPaqueteria" Member="Direccion" ThisKey="idDireccion" OtherKey="idDireccion" Type="Direccion" IsForeignKey="true" DeleteRule="CASCADE" DeleteOnNull="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.Declaraciones" Member="Declaraciones">
+    <Type Name="Declaraciones">
+      <Column Name="idAvaluo" Type="System.Int32" DbType="Int NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="declaracionIdentificacion" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
+      <Column Name="declaracionSuperficies" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
+      <Column Name="declaracionConstrucciones" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
+      <Column Name="declaracionMonumento" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
+      <Column Name="declaracionPatrimonio" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
+      <Column Name="advertenciaDocumentacion" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
+      <Column Name="advertenciaOfertas" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
+      <Column Name="advertenciaUso" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
+      <Column Name="advertenciaObras" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
+      <Column Name="otrasAdvertencias" Type="System.String" DbType="NVarChar(200) NOT NULL" CanBeNull="false" />
+      <Association Name="AvaluoInmobiliario_Declaraciones" Member="AvaluoInmobiliario" ThisKey="idAvaluo" OtherKey="idAvaluo" Type="AvaluoInmobiliario" IsForeignKey="true" DeleteRule="CASCADE" DeleteOnNull="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.Direccion" Member="Direccion">
+    <Type Name="Direccion">
+      <Column Name="idDireccion" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="idCodigoPostal" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="calle" Type="System.String" DbType="NVarChar(80) NOT NULL" CanBeNull="false" />
+      <Column Name="numeroExterior" Type="System.String" DbType="NVarChar(10) NOT NULL" CanBeNull="false" />
+      <Column Name="numeroInterior" Type="System.String" DbType="NVarChar(10)" CanBeNull="true" />
+      <Column Name="entre1" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="entre2" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Association Name="Direccion_Valuador" Member="Valuador" ThisKey="idDireccion" OtherKey="idDireccion" Type="Valuador" />
+      <Association Name="Direccion_Cliente" Member="Cliente" ThisKey="idDireccion" OtherKey="idDireccion" Type="Cliente" />
+      <Association Name="Direccion_DatoFacturacion" Member="DatoFacturacion" ThisKey="idDireccion" OtherKey="idDireccion" Type="DatoFacturacion" />
+      <Association Name="Direccion_DatoPaqueteria" Member="DatoPaqueteria" ThisKey="idDireccion" OtherKey="idDireccion" Type="DatoPaqueteria" />
+      <Association Name="Direccion_DireccionInmueble" Member="DireccionInmueble" ThisKey="idDireccion" OtherKey="idDireccion" Type="DireccionInmueble" />
+      <Association Name="Direccion_Propietario" Member="Propietario" ThisKey="idDireccion" OtherKey="idDireccion" Type="Propietario" />
+      <Association Name="Direccion_Solicitante" Member="Solicitante" ThisKey="idDireccion" OtherKey="idDireccion" Type="Solicitante" />
+      <Association Name="CodigoPostal_Direccion" Member="CodigoPostal" ThisKey="idCodigoPostal" OtherKey="idCodigoPostal" Type="CodigoPostal" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.DireccionInmueble" Member="DireccionInmueble">
+    <Type Name="DireccionInmueble">
+      <Column Name="idDireccionInmueble" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="idDireccion" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="edificio" Type="System.String" DbType="NVarChar(20) NOT NULL" CanBeNull="false" />
+      <Column Name="lote" Type="System.String" DbType="NVarChar(10) NOT NULL" CanBeNull="false" />
+      <Column Name="manzana" Type="System.String" DbType="NVarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="superManzana" Type="System.String" DbType="NVarChar(30) NOT NULL" CanBeNull="false" />
+      <Column Name="condominio" Type="System.String" DbType="NVarChar(30) NOT NULL" CanBeNull="false" />
+      <Association Name="DireccionInmueble_Inmueble" Member="Inmueble" ThisKey="idDireccionInmueble" OtherKey="idDireccionInmueble" Type="Inmueble" />
+      <Association Name="CodigoPostal_DireccionInmueble" Member="CodigoPostal" ThisKey="idDireccion" OtherKey="idCodigoPostal" Type="CodigoPostal" IsForeignKey="true" />
+      <Association Name="Direccion_DireccionInmueble" Member="Direccion" ThisKey="idDireccion" OtherKey="idDireccion" Type="Direccion" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.DocumentoValuador" Member="DocumentoValuador">
+    <Type Name="DocumentoValuador">
+      <Column Name="idDocumento" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="idValuador" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="idTipoDocumento" Type="System.Int16" DbType="SmallInt NOT NULL" CanBeNull="false" />
+      <Association Name="Valuador_DocumentoValuador" Member="Valuador" ThisKey="idValuador" OtherKey="idValuador" Type="Valuador" IsForeignKey="true" DeleteRule="CASCADE" DeleteOnNull="true" />
+      <Association Name="TipoDocumentoValuador_DocumentoValuador" Member="TipoDocumentoValuador" ThisKey="idTipoDocumento" OtherKey="idTipoDocumento" Type="TipoDocumentoValuador" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.EntidadFinanciamiento" Member="EntidadFinanciamiento">
+    <Type Name="EntidadFinanciamiento">
+      <Column Name="idEntidad" Type="System.Int16" DbType="SmallInt NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="idTipoCredito" Type="System.Int16" DbType="SmallInt NOT NULL" CanBeNull="false" />
+      <Column Name="clave" Type="System.String" DbType="NVarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="nombre" Type="System.String" DbType="NVarChar(255) NOT NULL" CanBeNull="false" />
+      <Column Name="financiamiento" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
+      <Column Name="cofinanciamiento" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
+      <Association Name="EntidadFinanciamiento_DatoCredito" Member="DatoCredito" ThisKey="idEntidad" OtherKey="idEntidadCofinanciamiento" Type="DatoCredito" />
+      <Association Name="EntidadFinanciamiento_DatoCredito1" Member="DatoCredito1" ThisKey="idEntidad" OtherKey="idEntidadOtorgante" Type="DatoCredito" />
+      <Association Name="EntidadFinanciamiento_TipoCreditoInterno" Member="TipoCreditoInterno" ThisKey="idEntidad" OtherKey="idEntidad" Type="TipoCreditoInterno" />
+    </Type>
+  </Table>
+  <Table Name="dbo.EntornoInmueble" Member="EntornoInmueble">
+    <Type Name="EntornoInmueble">
+      <Column Name="idInmueble" Type="System.Int32" DbType="Int NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="idTipoClasificacionZona" Type="System.Int16" DbType="SmallInt NOT NULL" CanBeNull="false" />
+      <Column Name="idTipoConstrucciones" Type="System.Int16" DbType="SmallInt NOT NULL" CanBeNull="false" />
+      <Column Name="idTipoDensidadPoblacion" Type="System.Int16" DbType="SmallInt NOT NULL" CanBeNull="false" />
+      <Column Name="idTipoProximidadUrbana" Type="System.Int16" DbType="SmallInt NOT NULL" CanBeNull="false" />
+      <Column Name="idTipoNivelSocioEconomico" Type="System.Int16" DbType="SmallInt NOT NULL" CanBeNull="false" />
+      <Column Name="indiceSaturacion" Type="System.Int16" DbType="SmallInt NOT NULL" CanBeNull="false" />
+      <Association Name="Inmueble_EntornoInmueble" Member="Inmueble" ThisKey="idInmueble" OtherKey="idInmueble" Type="Inmueble" IsForeignKey="true" DeleteRule="CASCADE" DeleteOnNull="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.EquipamientoInmueble" Member="EquipamientoInmueble">
+    <Type Name="EquipamientoInmueble">
+      <Column Name="idInmueble" Type="System.Int32" DbType="Int NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="distanciaIglesia" Type="System.Double" DbType="Float" CanBeNull="true" />
+      <Column Name="distanciaEscuela" Type="System.Double" DbType="Float" CanBeNull="true" />
+      <Column Name="distanciaEstacionTransporte" Type="System.Double" DbType="Float" CanBeNull="true" />
+      <Column Name="distanciaMercado" Type="System.Double" DbType="Float" CanBeNull="true" />
+      <Column Name="distanciaHospital" Type="System.Double" DbType="Float" CanBeNull="true" />
+      <Column Name="distanciaPlaza" Type="System.Double" DbType="Float" CanBeNull="true" />
+      <Column Name="distanciaParque" Type="System.Double" DbType="Float" CanBeNull="true" />
+      <Column Name="distanciaBanco" Type="System.Double" DbType="Float" CanBeNull="true" />
+      <Column Name="proximidadGeneral" Type="System.Double" DbType="Float NOT NULL" CanBeNull="false" />
+      <Column Name="nivelEquipamientoUrbano" Type="System.Int16" DbType="SmallInt NOT NULL" CanBeNull="false" />
+      <Association Name="Inmueble_EquipamientoInmueble" Member="Inmueble" ThisKey="idInmueble" OtherKey="idInmueble" Type="Inmueble" IsForeignKey="true" DeleteRule="CASCADE" DeleteOnNull="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.EscriturasInmueble" Member="EscriturasInmueble">
+    <Type Name="EscriturasInmueble">
+      <Column Name="idInmueble" Type="System.Int32" DbType="Int NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="numero" Type="System.String" DbType="NVarChar(25) NOT NULL" CanBeNull="false" />
+      <Column Name="libro" Type="System.String" DbType="NVarChar(10) NOT NULL" CanBeNull="false" />
+      <Column Name="volumen" Type="System.String" DbType="NVarChar(10) NOT NULL" CanBeNull="false" />
+      <Column Name="notario" Type="System.String" DbType="NVarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="notaria" Type="System.String" DbType="NVarChar(30) NOT NULL" CanBeNull="false" />
+      <Column Name="plaza" Type="System.String" DbType="NVarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="fecha" Type="System.DateTime" DbType="SmallDateTime NOT NULL" CanBeNull="false" />
+      <Association Name="Inmueble_EscriturasInmueble" Member="Inmueble" ThisKey="idInmueble" OtherKey="idInmueble" Type="Inmueble" IsForeignKey="true" DeleteRule="CASCADE" DeleteOnNull="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.Estado" Member="Estado">
+    <Type Name="Estado">
+      <Column Name="claveEstado" Type="System.Int32" DbType="Int NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="nombreEstado" Type="System.String" DbType="NVarChar(50) NOT NULL" CanBeNull="false" />
+      <Association Name="Estado_EstadosColindantes" Member="EstadosColindantes" ThisKey="claveEstado" OtherKey="claveEstado" Type="EstadosColindantes" />
+      <Association Name="Estado_EstadosColindantes1" Member="EstadosColindantes1" ThisKey="claveEstado" OtherKey="claveEstadoColindante" Type="EstadosColindantes" />
+      <Association Name="Estado_Municipio" Member="Municipio" ThisKey="claveEstado" OtherKey="claveEstado" Type="Municipio" />
+    </Type>
+  </Table>
+  <Table Name="dbo.EstadosColindantes" Member="EstadosColindantes">
+    <Type Name="EstadosColindantes">
+      <Column Name="claveEstado" Type="System.Int32" DbType="Int NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="claveEstadoColindante" Type="System.Int32" DbType="Int NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Association Name="Estado_EstadosColindantes" Member="Estado" ThisKey="claveEstado" OtherKey="claveEstado" Type="Estado" IsForeignKey="true" />
+      <Association Name="Estado_EstadosColindantes1" Member="Estado1" ThisKey="claveEstadoColindante" OtherKey="claveEstado" Type="Estado" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.EstructurasTipoConstruccion" Member="EstructurasTipoConstruccion">
+    <Type Name="EstructurasTipoConstruccion">
+      <Column Name="idConstruccion" Type="System.Int32" DbType="Int NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="numeroTipo" Type="System.Int16" DbType="SmallInt NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="cimentacion" Type="System.String" DbType="NVarChar(400) NOT NULL" CanBeNull="false" />
+      <Column Name="entrepisos" Type="System.String" DbType="NVarChar(400) NOT NULL" CanBeNull="false" />
+      <Column Name="muros" Type="System.String" DbType="NVarChar(400) NOT NULL" CanBeNull="false" />
+      <Column Name="trabes" Type="System.String" DbType="NVarChar(400) NOT NULL" CanBeNull="false" />
+      <Column Name="escaleras" Type="System.String" DbType="NVarChar(400) NOT NULL" CanBeNull="false" />
+      <Association Name="TipoConstruccion_EstructurasTipoConstruccion" Member="TipoConstruccion" ThisKey="idConstruccion,numeroTipo" OtherKey="idConstruccion,numeroTipo" Type="TipoConstruccion" IsForeignKey="true" DeleteRule="CASCADE" DeleteOnNull="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.FormacionProfesional" Member="FormacionProfesional">
+    <Type Name="FormacionProfesional">
+      <Column Name="idFormacionProfesional" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="idCarrera" Type="System.Int16" DbType="SmallInt NOT NULL" CanBeNull="false" />
+      <Column Name="idUniversidad" Type="System.Int16" DbType="SmallInt NOT NULL" CanBeNull="false" />
+      <Column Name="cedula" Type="System.String" DbType="NVarChar(20) NOT NULL" CanBeNull="false" />
+      <Column Name="fechaCedula" Type="System.DateTime" DbType="SmallDateTime NOT NULL" CanBeNull="false" />
+      <Association Name="FormacionProfesional_FormacionProfesionalValuador" Member="FormacionProfesionalValuador" ThisKey="idFormacionProfesional" OtherKey="idFormacionProfesional" Type="FormacionProfesionalValuador" />
+      <Association Name="Carrera_FormacionProfesional" Member="Carrera" ThisKey="idCarrera" OtherKey="idCarrera" Type="Carrera" IsForeignKey="true" />
+      <Association Name="Universidad_FormacionProfesional" Member="Universidad" ThisKey="idUniversidad" OtherKey="idUniversidad" Type="Universidad" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.FormacionProfesionalValuador" Member="FormacionProfesionalValuador">
+    <Type Name="FormacionProfesionalValuador">
+      <Column Name="idFormacionProfesional" Type="System.Int32" DbType="Int NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="idValuador" Type="System.Int32" DbType="Int NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="idTipoFormacion" Type="System.Int16" DbType="SmallInt NOT NULL" CanBeNull="false" />
+      <Association Name="FormacionProfesional_FormacionProfesionalValuador" Member="FormacionProfesional" ThisKey="idFormacionProfesional" OtherKey="idFormacionProfesional" Type="FormacionProfesional" IsForeignKey="true" DeleteRule="CASCADE" DeleteOnNull="true" />
+      <Association Name="Valuador_FormacionProfesionalValuador" Member="Valuador" ThisKey="idValuador" OtherKey="idValuador" Type="Valuador" IsForeignKey="true" DeleteRule="CASCADE" DeleteOnNull="true" />
+      <Association Name="TipoFormacionProfesional_FormacionProfesionalValuador" Member="TipoFormacionProfesional" ThisKey="idTipoFormacion" OtherKey="idTipoFormacion" Type="TipoFormacionProfesional" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.FormacionValuador" Member="FormacionValuador">
+    <Type Name="FormacionValuador">
+      <Column Name="idFormacionValuador" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="idColegio" Type="System.Int16" DbType="SmallInt NOT NULL" CanBeNull="false" />
+      <Column Name="registro" Type="System.String" DbType="NVarChar(30) NOT NULL" CanBeNull="false" />
+      <Column Name="fechaIngreso" Type="System.DateTime" DbType="SmallDateTime NOT NULL" CanBeNull="false" />
+      <Association Name="FormacionValuador_Valuador" Member="Valuador" ThisKey="idFormacionValuador" OtherKey="idFormacionValuacion" Type="Valuador" />
+      <Association Name="ColegioValuadores_FormacionValuador" Member="ColegioValuadores" ThisKey="idColegio" OtherKey="idcolegioValuadores" Type="ColegioValuadores" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.GeolocalizacionInmueble" Member="GeolocalizacionInmueble">
+    <Type Name="GeolocalizacionInmueble">
+      <Column Name="idInmueble" Type="System.Int32" DbType="Int NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="formatoAbsoluto" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
+      <Column Name="longitud" Type="System.Decimal" DbType="Decimal(18,0) NOT NULL" CanBeNull="false" />
+      <Column Name="latitud" Type="System.Decimal" DbType="Decimal(18,0) NOT NULL" CanBeNull="false" />
+      <Column Name="altitud" Type="System.Decimal" DbType="Decimal(18,0) NOT NULL" CanBeNull="false" />
+      <Association Name="Inmueble_GeolocalizacionInmueble" Member="Inmueble" ThisKey="idInmueble" OtherKey="idInmueble" Type="Inmueble" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.HistorialRevision" Member="HistorialRevision">
+    <Type Name="HistorialRevision">
+      <Column Name="idHistorial" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="idRevision" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="idCapturaAvaluo" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="observaciones" Type="System.String" DbType="NVarChar(512)" CanBeNull="true" />
+      <Column Name="fechaRevision" Type="System.DateTime" DbType="DateTime NOT NULL" CanBeNull="false" />
+      <Association Name="Archivo_HistorialRevision" Member="Archivo" ThisKey="idCapturaAvaluo" OtherKey="idArchivo" Type="Archivo" IsForeignKey="true" />
+      <Association Name="RevisionAvaluo_HistorialRevision" Member="RevisionAvaluo" ThisKey="idRevision" OtherKey="idRevision" Type="RevisionAvaluo" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.InfraestructuraInmueble" Member="InfraestructuraInmueble">
+    <Type Name="InfraestructuraInmueble">
+      <Column Name="idInmueble" Type="System.Int32" DbType="Int NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="aguaPotable" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
+      <Column Name="aguaPotableSuministro" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
+      <Column Name="electrificacion" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
+      <Column Name="electrificacionRedAerea" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
+      <Column Name="electrificacionConAcometida" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
+      <Column Name="drenaje" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
+      <Column Name="drenajeConexion" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
+      <Column Name="drenajeFosaSeptica" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
+      <Column Name="alumbradoPublico" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
+      <Column Name="alumbradoPublicoAereo" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
+      <Column Name="vialidades" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
+      <Column Name="idTipoVialidades" Type="System.Int16" DbType="SmallInt" CanBeNull="true" />
+      <Column Name="anchoVialidades" Type="System.Double" DbType="Float" CanBeNull="true" />
+      <Column Name="banquetas" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
+      <Column Name="idTipoBanquetas" Type="System.Int16" DbType="SmallInt" CanBeNull="true" />
+      <Column Name="guarniciones" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
+      <Column Name="idTipoGuarniciones" Type="System.Int16" DbType="SmallInt" CanBeNull="true" />
+      <Column Name="nivelInfraestructura" Type="System.Double" DbType="Float NOT NULL" CanBeNull="false" />
+      <Column Name="nivelInfraestructuraSHF" Type="System.Int16" DbType="SmallInt NOT NULL" CanBeNull="false" />
+      <Association Name="Inmueble_InfraestructuraInmueble" Member="Inmueble" ThisKey="idInmueble" OtherKey="idInmueble" Type="Inmueble" IsForeignKey="true" DeleteRule="CASCADE" DeleteOnNull="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.Inmueble" Member="Inmueble">
+    <Type Name="Inmueble">
+      <Column Name="idInmueble" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="idPropietario" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="idTipoInmueble" Type="System.Int16" DbType="SmallInt NOT NULL" CanBeNull="false" />
+      <Column Name="idRegimenPropiedad" Type="System.Int16" DbType="SmallInt NOT NULL" CanBeNull="false" />
+      <Column Name="idDireccionInmueble" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="otroTipoInmueble" Type="System.String" DbType="NVarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="claveCatastral" Type="System.String" DbType="NVarChar(30) NOT NULL" CanBeNull="false" />
+      <Column Name="cuentaPredial" Type="System.String" DbType="NVarChar(30) NOT NULL" CanBeNull="false" />
+      <Column Name="cuentaAgua" Type="System.String" DbType="NVarChar(30) NOT NULL" CanBeNull="false" />
+      <Column Name="telefono" Type="System.String" DbType="NVarChar(30) NOT NULL" CanBeNull="false" />
+      <Association Name="Inmueble_AvaluoInmobiliario" Member="AvaluoInmobiliario" ThisKey="idInmueble" OtherKey="idInmueble" Type="AvaluoInmobiliario" />
+      <Association Name="Inmueble_ConstruccionInmueble" Member="ConstruccionInmueble" ThisKey="idInmueble" OtherKey="idInmueble" Type="ConstruccionInmueble" />
+      <Association Name="Inmueble_EntornoInmueble" Member="EntornoInmueble" ThisKey="idInmueble" OtherKey="idInmueble" Type="EntornoInmueble" Cardinality="One" />
+      <Association Name="Inmueble_EquipamientoInmueble" Member="EquipamientoInmueble" ThisKey="idInmueble" OtherKey="idInmueble" Type="EquipamientoInmueble" Cardinality="One" />
+      <Association Name="Inmueble_EscriturasInmueble" Member="EscriturasInmueble" ThisKey="idInmueble" OtherKey="idInmueble" Type="EscriturasInmueble" Cardinality="One" />
+      <Association Name="Inmueble_GeolocalizacionInmueble" Member="GeolocalizacionInmueble" ThisKey="idInmueble" OtherKey="idInmueble" Type="GeolocalizacionInmueble" Cardinality="One" />
+      <Association Name="Inmueble_InfraestructuraInmueble" Member="InfraestructuraInmueble" ThisKey="idInmueble" OtherKey="idInmueble" Type="InfraestructuraInmueble" Cardinality="One" />
+      <Association Name="Inmueble_ServiciosInmueble" Member="ServiciosInmueble" ThisKey="idInmueble" OtherKey="idInmueble" Type="ServiciosInmueble" Cardinality="One" />
+      <Association Name="Inmueble_SuperficiesInmueble" Member="SuperficiesInmueble" ThisKey="idInmueble" OtherKey="idInmueble" Type="SuperficiesInmueble" Cardinality="One" />
+      <Association Name="Inmueble_UbicacionCallesInmueble" Member="UbicacionCallesInmueble" ThisKey="idInmueble" OtherKey="idInmueble" Type="UbicacionCallesInmueble" Cardinality="One" />
+      <Association Name="Inmueble_UbicacionInmueble" Member="UbicacionInmueble" ThisKey="idInmueble" OtherKey="idInmueble" Type="UbicacionInmueble" Cardinality="One" />
+      <Association Name="Inmueble_UsoActualInmueble" Member="UsoActualInmueble" ThisKey="idInmueble" OtherKey="idInmueble" Type="UsoActualInmueble" />
+      <Association Name="Inmueble_ViasAcceso" Member="ViasAcceso" ThisKey="idInmueble" OtherKey="idInmueble" Type="ViasAcceso" />
+      <Association Name="DireccionInmueble_Inmueble" Member="DireccionInmueble" ThisKey="idDireccionInmueble" OtherKey="idDireccionInmueble" Type="DireccionInmueble" IsForeignKey="true" />
+      <Association Name="Propietario_Inmueble" Member="Propietario" ThisKey="idPropietario" OtherKey="idPropietario" Type="Propietario" IsForeignKey="true" />
+      <Association Name="RegimenPropiedad_Inmueble" Member="RegimenPropiedad" ThisKey="idRegimenPropiedad" OtherKey="idRegimenPropiedad" Type="RegimenPropiedad" IsForeignKey="true" />
+      <Association Name="TipoInmueble_Inmueble" Member="TipoInmueble" ThisKey="idTipoInmueble" OtherKey="idTipoInmueble" Type="TipoInmueble" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.InstalacionConstruccion" Member="InstalacionConstruccion">
+    <Type Name="InstalacionConstruccion">
+      <Column Name="idConstruccion" Type="System.Int32" DbType="Int NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="idInstalacion" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="idTipoUnidad" Type="System.Int16" DbType="SmallInt NOT NULL" CanBeNull="false" />
+      <Column Name="idTipoConservacion" Type="System.Int16" DbType="SmallInt NOT NULL" CanBeNull="false" />
+      <Column Name="descripcion" Type="System.String" DbType="NVarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="cantidad" Type="System.Double" DbType="Float NOT NULL" CanBeNull="false" />
+      <Column Name="edad" Type="System.Double" DbType="Float NOT NULL" CanBeNull="false" />
+      <Column Name="comun" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
+      <Association Name="ConstruccionInmueble_InstalacionConstruccion" Member="ConstruccionInmueble" ThisKey="idConstruccion" OtherKey="idConstruccion" Type="ConstruccionInmueble" IsForeignKey="true" DeleteRule="CASCADE" DeleteOnNull="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.InstalacionesEspecialesCondominio" Member="InstalacionesEspecialesCondominio">
+    <Type Name="InstalacionesEspecialesCondominio">
+      <Column Name="idConstruccion" Type="System.Int32" DbType="Int NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="tratamientoAgua" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
+      <Column Name="captacionAgua" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
+      <Column Name="separacionBasura" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
+      <Column Name="redAguaPurificada" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
+      <Column Name="casetaVigilancia" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
+      <Column Name="localesComerciales" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
+      <Column Name="bardaPerimetral" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
+      <Column Name="elevador" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
+      <Column Name="estacionamientoVisitas" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
+      <Column Name="estacionamientoDiscapacitados" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
+      <Column Name="juegosInfantiles" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
+      <Column Name="canchasDeportivas" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
+      <Association Name="ConstruccionInmueble_InstalacionesEspecialesCondominio" Member="ConstruccionInmueble" ThisKey="idConstruccion" OtherKey="idConstruccion" Type="ConstruccionInmueble" IsForeignKey="true" DeleteRule="CASCADE" DeleteOnNull="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.InstalacionesEspecialesConstruccion" Member="InstalacionesEspecialesConstruccion">
+    <Type Name="InstalacionesEspecialesConstruccion">
+      <Column Name="idConstruccion" Type="System.Int32" DbType="Int NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="economizadorAguaWC" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
+      <Column Name="sistemaDualWC" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
+      <Column Name="regaderaAhorradora" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
+      <Column Name="llavesAhorradoras" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
+      <Column Name="calentadorGasInstantaneo" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
+      <Column Name="calentadorSolarAgua" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
+      <Column Name="aireAcondicionado" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
+      <Column Name="aislamientoTecho" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
+      <Column Name="captacionEnergia" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
+      <Column Name="vozDatos" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
+      <Column Name="interfon" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
+      <Column Name="dosCircuitos" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
+      <Column Name="accesoria" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
+      <Column Name="cisterna" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
+      <Column Name="ductoClima" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
+      <Column Name="jaulaTendido" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
+      <Column Name="rejasVentanas" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
+      <Column Name="banioDiscapacitado" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
+      <Column Name="puertaDiscapacitado" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
+      <Column Name="accesoriosDiscapacitado" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
+      <Column Name="pasamanos" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
+      <Column Name="areasDiscapacitado" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
+      <Column Name="otrasInstalaciones" Type="System.String" DbType="NVarChar(150) NOT NULL" CanBeNull="false" />
+      <Column Name="otrasObras" Type="System.String" DbType="NVarChar(150) NOT NULL" CanBeNull="false" />
+      <Association Name="ConstruccionInmueble_InstalacionesEspecialesConstruccion" Member="ConstruccionInmueble" ThisKey="idConstruccion" OtherKey="idConstruccion" Type="ConstruccionInmueble" IsForeignKey="true" DeleteRule="CASCADE" DeleteOnNull="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.InstalacionesTipoConstruccion" Member="InstalacionesTipoConstruccion">
+    <Type Name="InstalacionesTipoConstruccion">
+      <Column Name="idConstruccion" Type="System.Int32" DbType="Int NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="numeroTipo" Type="System.Int16" DbType="SmallInt NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="idTipoHidraulica" Type="System.String" DbType="NVarChar(120) NOT NULL" CanBeNull="false" />
+      <Column Name="idTipoElectrica" Type="System.String" DbType="NVarChar(120) NOT NULL" CanBeNull="false" />
+      <Column Name="idTipoCanceleria" Type="System.String" DbType="NVarChar(70) NOT NULL" CanBeNull="false" />
+      <Column Name="idTipoHerreria" Type="System.String" DbType="NVarChar(70) NOT NULL" CanBeNull="false" />
+      <Column Name="idTipoCarpinteria" Type="System.String" DbType="NVarChar(70) NOT NULL" CanBeNull="false" />
+      <Column Name="idTipoSanitaria" Type="System.String" DbType="NVarChar(70) NOT NULL" CanBeNull="false" />
+      <Association Name="TipoConstruccion_InstalacionesTipoConstruccion" Member="TipoConstruccion" ThisKey="idConstruccion,numeroTipo" OtherKey="idConstruccion,numeroTipo" Type="TipoConstruccion" IsForeignKey="true" DeleteRule="CASCADE" DeleteOnNull="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.Municipio" Member="Municipio">
+    <Type Name="Municipio">
+      <Column Name="idMunicipio" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="claveMunicipio" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="claveEstado" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="nombreMunicipio" Type="System.String" DbType="NVarChar(50) NOT NULL" CanBeNull="false" />
+      <Association Name="Municipio_Asentamiento" Member="Asentamiento" ThisKey="idMunicipio" OtherKey="idMunicipio" Type="Asentamiento" />
+      <Association Name="Estado_Municipio" Member="Estado" ThisKey="claveEstado" OtherKey="claveEstado" Type="Estado" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.Personal" Member="Personal">
+    <Type Name="Personal">
+      <Column Name="idPersonal" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="idUsuario" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="nombre" Type="System.String" DbType="NVarChar(100) NOT NULL" CanBeNull="false" />
+      <Column Name="fechaAlta" Type="System.DateTime" DbType="DateTime NOT NULL" CanBeNull="false" />
+      <Column Name="activo" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
+      <Association Name="Personal_RechazoAvaluo" Member="RechazoAvaluo" ThisKey="idPersonal" OtherKey="idPersonal" Type="RechazoAvaluo" />
+      <Association Name="Personal_RevisionAvaluo" Member="RevisionAvaluo" ThisKey="idPersonal" OtherKey="idPersonal" Type="RevisionAvaluo" />
+      <Association Name="Usuario_Personal" Member="Usuario" ThisKey="idUsuario" OtherKey="idUsuario" Type="Usuario" IsForeignKey="true" DeleteRule="CASCADE" DeleteOnNull="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.Propietario" Member="Propietario">
+    <Type Name="Propietario">
+      <Column Name="idPropietario" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="idDireccion" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="nombre" Type="System.String" DbType="NVarChar(100) NOT NULL" CanBeNull="false" />
+      <Column Name="CURP" Type="System.String" DbType="NVarChar(30) NOT NULL" CanBeNull="false" />
+      <Column Name="RFC" Type="System.String" DbType="NVarChar(30) NOT NULL" CanBeNull="false" />
+      <Association Name="Propietario_Inmueble" Member="Inmueble" ThisKey="idPropietario" OtherKey="idPropietario" Type="Inmueble" />
+      <Association Name="Direccion_Propietario" Member="Direccion" ThisKey="idDireccion" OtherKey="idDireccion" Type="Direccion" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.PropositoAvaluo" Member="PropositoAvaluo">
+    <Type Name="PropositoAvaluo">
+      <Column Name="idProposito" Type="System.Int16" DbType="SmallInt NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="descripcion" Type="System.String" DbType="NVarChar(30) NOT NULL" CanBeNull="false" />
+      <Association Name="PropositoAvaluo_AvaluoInmobiliario" Member="AvaluoInmobiliario" ThisKey="idProposito" OtherKey="idProposito" Type="AvaluoInmobiliario" />
+    </Type>
+  </Table>
+  <Table Name="dbo.RechazoAvaluo" Member="RechazoAvaluo">
+    <Type Name="RechazoAvaluo">
+      <Column Name="idRechazo" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="idAvaluo" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="idPersonal" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="idControlador" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="comentarios" Type="System.String" DbType="NVarChar(512) NOT NULL" CanBeNull="false" />
+      <Column Name="fechaRechazo" Type="System.DateTime" DbType="DateTime NOT NULL" CanBeNull="false" />
+      <Column Name="corregido" Type="System.Int64" DbType="BigInt NOT NULL" CanBeNull="false" />
+      <Association Name="AvaluoInmobiliario_RechazoAvaluo" Member="AvaluoInmobiliario" ThisKey="idAvaluo" OtherKey="idAvaluo" Type="AvaluoInmobiliario" IsForeignKey="true" />
+      <Association Name="Personal_RechazoAvaluo" Member="Personal" ThisKey="idPersonal" OtherKey="idPersonal" Type="Personal" IsForeignKey="true" />
+      <Association Name="Valuador_RechazoAvaluo" Member="Valuador" ThisKey="idControlador" OtherKey="idValuador" Type="Valuador" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.RegimenPropiedad" Member="RegimenPropiedad">
+    <Type Name="RegimenPropiedad">
+      <Column Name="idRegimenPropiedad" Type="System.Int16" DbType="SmallInt NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="descripcion" Type="System.String" DbType="NVarChar(30) NOT NULL" CanBeNull="false" />
+      <Association Name="RegimenPropiedad_Inmueble" Member="Inmueble" ThisKey="idRegimenPropiedad" OtherKey="idRegimenPropiedad" Type="Inmueble" />
+    </Type>
+  </Table>
+  <Table Name="dbo.RegistroSHF" Member="RegistroSHF">
+    <Type Name="RegistroSHF">
+      <Column Name="idValuador" Type="System.Int32" DbType="Int NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="numeroRegistro" Type="System.Int16" DbType="SmallInt NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="claveSHF" Type="System.String" DbType="NVarChar(30) NOT NULL" CanBeNull="false" />
+      <Column Name="fechaAlta" Type="System.DateTime" DbType="SmallDateTime NOT NULL" CanBeNull="false" />
+      <Column Name="vigencia" Type="System.DateTime" DbType="SmallDateTime NOT NULL" CanBeNull="false" />
+      <Column Name="idEstado" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Association Name="Valuador_RegistroSHF" Member="Valuador" ThisKey="idValuador" OtherKey="idValuador" Type="Valuador" IsForeignKey="true" DeleteRule="CASCADE" DeleteOnNull="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.RevisionAvaluo" Member="RevisionAvaluo">
+    <Type Name="RevisionAvaluo">
+      <Column Name="idRevision" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="idAvaluo" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="idPersonal" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="fechaAsignacion" Type="System.DateTime" DbType="DateTime NOT NULL" CanBeNull="false" />
+      <Column Name="completada" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
+      <Association Name="RevisionAvaluo_HistorialRevision" Member="HistorialRevision" ThisKey="idRevision" OtherKey="idRevision" Type="HistorialRevision" />
+      <Association Name="AvaluoInmobiliario_RevisionAvaluo" Member="AvaluoInmobiliario" ThisKey="idAvaluo" OtherKey="idAvaluo" Type="AvaluoInmobiliario" IsForeignKey="true" />
+      <Association Name="Personal_RevisionAvaluo" Member="Personal" ThisKey="idPersonal" OtherKey="idPersonal" Type="Personal" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.RolSistema" Member="RolSistema">
+    <Type Name="RolSistema">
+      <Column Name="idRol" Type="System.Int16" DbType="SmallInt NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="nombreRol" Type="System.String" DbType="NVarChar(30) NOT NULL" CanBeNull="false" />
+      <Association Name="RolSistema_RolUsuario" Member="RolUsuario" ThisKey="idRol" OtherKey="idRol" Type="RolUsuario" />
+    </Type>
+  </Table>
+  <Table Name="dbo.RolUsuario" Member="RolUsuario">
+    <Type Name="RolUsuario">
+      <Column Name="idUsuario" Type="System.Int32" DbType="Int NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="idRol" Type="System.Int16" DbType="SmallInt NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Association Name="RolSistema_RolUsuario" Member="RolSistema" ThisKey="idRol" OtherKey="idRol" Type="RolSistema" IsForeignKey="true" DeleteRule="CASCADE" DeleteOnNull="true" />
+      <Association Name="Usuario_RolUsuario" Member="Usuario" ThisKey="idUsuario" OtherKey="idUsuario" Type="Usuario" IsForeignKey="true" DeleteRule="CASCADE" DeleteOnNull="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.ServiciosInmueble" Member="ServiciosInmueble">
+    <Type Name="ServiciosInmueble">
+      <Column Name="idInmueble" Type="System.Int32" DbType="Int NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="gasNatural" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
+      <Column Name="gasNaturalSuministro" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
+      <Column Name="redTelefonica" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
+      <Column Name="redTelefonicaAerea" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
+      <Column Name="redTelefonicaAcometida" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
+      <Column Name="transporteUrbano" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
+      <Column Name="transporteUrbanoDistancia" Type="System.Double" DbType="Float" CanBeNull="true" />
+      <Column Name="transporteUrbanoFrecuencia" Type="System.Double" DbType="Float" CanBeNull="true" />
+      <Column Name="transporteSuburbano" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
+      <Column Name="transporteSuburbanoDistancia" Type="System.Double" DbType="Float" CanBeNull="true" />
+      <Column Name="transporteSuburbanoFrecuencia" Type="System.Double" DbType="Float" CanBeNull="true" />
+      <Column Name="vigilancia" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
+      <Column Name="vigilanciaMunicipal" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
+      <Column Name="senalizacionNomencaltura" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
+      <Column Name="recoleccionBasura" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
+      <Association Name="Inmueble_ServiciosInmueble" Member="Inmueble" ThisKey="idInmueble" OtherKey="idInmueble" Type="Inmueble" IsForeignKey="true" DeleteRule="CASCADE" DeleteOnNull="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.Solicitante" Member="Solicitante">
+    <Type Name="Solicitante">
+      <Column Name="idSolicitante" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="idDireccion" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="nombre" Type="System.String" DbType="NVarChar(100) NOT NULL" CanBeNull="false" />
+      <Column Name="NSS" Type="System.String" DbType="NVarChar(30) NOT NULL" CanBeNull="false" />
+      <Column Name="CURP" Type="System.String" DbType="NVarChar(30) NOT NULL" CanBeNull="false" />
+      <Column Name="RFC" Type="System.String" DbType="NVarChar(30) NOT NULL" CanBeNull="false" />
+      <Association Name="Solicitante_AvaluoInmobiliario" Member="AvaluoInmobiliario" ThisKey="idSolicitante" OtherKey="idSolicitante" Type="AvaluoInmobiliario" />
+      <Association Name="Direccion_Solicitante" Member="Direccion" ThisKey="idDireccion" OtherKey="idDireccion" Type="Direccion" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.StatusAvaluo" Member="StatusAvaluo">
+    <Type Name="StatusAvaluo">
+      <Column Name="idStatus" Type="System.Int16" DbType="SmallInt NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="descripcion" Type="System.String" DbType="NVarChar(40) NOT NULL" CanBeNull="false" />
+      <Association Name="StatusAvaluo_AvaluoInmobiliario" Member="AvaluoInmobiliario" ThisKey="idStatus" OtherKey="idStatus" Type="AvaluoInmobiliario" />
+    </Type>
+  </Table>
+  <Table Name="dbo.SuperficiesInmueble" Member="SuperficiesInmueble">
+    <Type Name="SuperficiesInmueble">
+      <Column Name="idInmueble" Type="System.Int32" DbType="Int NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="totalTerreno" Type="System.Double" DbType="Float NOT NULL" CanBeNull="false" />
+      <Column Name="frenteLote" Type="System.Double" DbType="Float NOT NULL" CanBeNull="false" />
+      <Column Name="fuenteTerreno" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="otraFuenteTerreno" Type="System.String" DbType="NVarChar(50) NOT NULL" CanBeNull="false" />
+      <Association Name="Inmueble_SuperficiesInmueble" Member="Inmueble" ThisKey="idInmueble" OtherKey="idInmueble" Type="Inmueble" IsForeignKey="true" DeleteRule="CASCADE" DeleteOnNull="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.TipoAcabado" Member="TipoAcabado">
+    <Type Name="TipoAcabado">
+      <Column Name="idTipoAcabado" Type="System.Int16" DbType="SmallInt NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="nombreAcabado" Type="System.String" DbType="NVarChar(20) NOT NULL" CanBeNull="false" />
+      <Association Name="TipoAcabado_AcabadoTipoConstruccion" Member="AcabadoTipoConstruccion" ThisKey="idTipoAcabado" OtherKey="idTipoAcabado" Type="AcabadoTipoConstruccion" />
+    </Type>
+  </Table>
+  <Table Name="dbo.TipoAsentamiento" Member="TipoAsentamiento">
+    <Type Name="TipoAsentamiento">
+      <Column Name="idTipoAsentamiento" Type="System.Int16" DbType="SmallInt NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="tipoAsentamiento" Member="tipoAsentamiento1" Type="System.String" DbType="NVarChar(30) NOT NULL" CanBeNull="false" />
+      <Association Name="TipoAsentamiento_Asentamiento" Member="Asentamiento" ThisKey="idTipoAsentamiento" OtherKey="idTipoAsentamiento" Type="Asentamiento" />
+    </Type>
+  </Table>
+  <Table Name="dbo.TipoAvaluoInmobiliario" Member="TipoAvaluoInmobiliario">
+    <Type Name="TipoAvaluoInmobiliario">
+      <Column Name="idSubTipo" Type="System.Int16" DbType="SmallInt NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="nombre" Type="System.String" DbType="NVarChar(30) NOT NULL" CanBeNull="false" />
+      <Association Name="TipoAvaluoInmobiliario_AvaluoInmobiliario" Member="AvaluoInmobiliario" ThisKey="idSubTipo" OtherKey="idSubTipo" Type="AvaluoInmobiliario" />
+    </Type>
+  </Table>
+  <Table Name="dbo.TipoCalidadProyecto" Member="TipoCalidadProyecto">
+    <Type Name="TipoCalidadProyecto">
+      <Column Name="idTipoCalidadProyecto" Type="System.Int16" DbType="SmallInt NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="descricion" Type="System.String" DbType="NVarChar(30) NOT NULL" CanBeNull="false" />
+    </Type>
+  </Table>
+  <Table Name="dbo.TipoCaracteristicaPanoramica" Member="TipoCaracteristicaPanoramica">
+    <Type Name="TipoCaracteristicaPanoramica">
+      <Column Name="idTipoCaracteristica" Type="System.Int16" DbType="SmallInt NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="descripcion" Type="System.String" DbType="NVarChar(50) NOT NULL" CanBeNull="false" />
+    </Type>
+  </Table>
+  <Table Name="dbo.TipoClasificacionZona" Member="TipoClasificacionZona">
+    <Type Name="TipoClasificacionZona">
+      <Column Name="idTipoClasificacionZona" Type="System.Int16" DbType="SmallInt NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="descripcion" Type="System.String" DbType="NVarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="idClase" Type="System.Int16" DbType="SmallInt" CanBeNull="true" />
+      <Association Name="ClaseInmueble_TipoClasificacionZona" Member="ClaseInmueble" ThisKey="idClase" OtherKey="idClase" Type="ClaseInmueble" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.TipoColindancia" Member="TipoColindancia">
+    <Type Name="TipoColindancia">
+      <Column Name="idTipoColindancia" Type="System.Int16" DbType="SmallInt NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="descripcion" Type="System.String" DbType="NVarChar(30) NOT NULL" CanBeNull="false" />
+    </Type>
+  </Table>
+  <Table Name="dbo.TipoComparable" Member="TipoComparable">
+    <Type Name="TipoComparable">
+      <Column Name="idTipoComparable" Type="System.Int16" DbType="SmallInt NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="descripcion" Type="System.String" DbType="NVarChar(15) NOT NULL" CanBeNull="false" />
+    </Type>
+  </Table>
+  <Table Name="dbo.TipoConstruccion" Member="TipoConstruccion">
+    <Type Name="TipoConstruccion">
+      <Column Name="idConstruccion" Type="System.Int32" DbType="Int NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="numeroTipo" Type="System.Int16" DbType="SmallInt NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="idClase" Type="System.Int16" DbType="SmallInt NOT NULL" CanBeNull="false" />
+      <Column Name="idConservacion" Type="System.Int16" DbType="SmallInt NOT NULL" CanBeNull="false" />
+      <Column Name="idFuente" Type="System.Int16" DbType="SmallInt NOT NULL" CanBeNull="false" />
+      <Column Name="otraFuente" Type="System.String" DbType="NVarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="descripcion" Type="System.String" DbType="NVarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="superficie" Type="System.Double" DbType="Float NOT NULL" CanBeNull="false" />
+      <Column Name="accesorio" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
+      <Column Name="niveles" Type="System.Int16" DbType="SmallInt NOT NULL" CanBeNull="false" />
+      <Column Name="edad" Type="System.Double" DbType="Float NOT NULL" CanBeNull="false" />
+      <Column Name="avanceObra" Type="System.Double" DbType="Float NOT NULL" CanBeNull="false" />
+      <Column Name="vidaUtil" Type="System.Double" DbType="Float NOT NULL" CanBeNull="false" />
+      <Column Name="nivelesCuerpo" Type="System.Int16" DbType="SmallInt NOT NULL" CanBeNull="false" />
+      <Association Name="TipoConstruccion_AcabadoTipoConstruccion" Member="AcabadoTipoConstruccion" ThisKey="idConstruccion,numeroTipo" OtherKey="idConstruccion,numeroTipo" Type="AcabadoTipoConstruccion" Cardinality="One" />
+      <Association Name="TipoConstruccion_EstructurasTipoConstruccion" Member="EstructurasTipoConstruccion" ThisKey="idConstruccion,numeroTipo" OtherKey="idConstruccion,numeroTipo" Type="EstructurasTipoConstruccion" Cardinality="One" />
+      <Association Name="TipoConstruccion_InstalacionesTipoConstruccion" Member="InstalacionesTipoConstruccion" ThisKey="idConstruccion,numeroTipo" OtherKey="idConstruccion,numeroTipo" Type="InstalacionesTipoConstruccion" Cardinality="One" />
+      <Association Name="ConstruccionInmueble_TipoConstruccion" Member="ConstruccionInmueble" ThisKey="idConstruccion" OtherKey="idConstruccion" Type="ConstruccionInmueble" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.TipoConstruccionPredominante" Member="TipoConstruccionPredominante">
+    <Type Name="TipoConstruccionPredominante">
+      <Column Name="idTipoConstruccionPredominante" Type="System.Int16" DbType="SmallInt NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="descripcion" Type="System.String" DbType="NVarChar(150) NOT NULL" CanBeNull="false" />
+      <Column Name="idClase" Type="System.Int16" DbType="SmallInt" CanBeNull="true" />
+      <Association Name="ClaseInmueble_TipoConstruccionPredominante" Member="ClaseInmueble" ThisKey="idClase" OtherKey="idClase" Type="ClaseInmueble" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.TipoCredito" Member="TipoCredito">
+    <Type Name="TipoCredito">
+      <Column Name="idTipoCredito" Type="System.Int16" DbType="SmallInt NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="decripcion" Type="System.String" DbType="NVarChar(35) NOT NULL" CanBeNull="false" />
+      <Column Name="tieneCofinanciamiento" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
+      <Association Name="TipoCredito_DatoCredito" Member="DatoCredito" ThisKey="idTipoCredito" OtherKey="idTipoCredito" Type="DatoCredito" />
+    </Type>
+  </Table>
+  <Table Name="dbo.TipoCreditoInterno" Member="TipoCreditoInterno">
+    <Type Name="TipoCreditoInterno">
+      <Column Name="idTipoCreditoInterno" Type="System.Int16" DbType="SmallInt NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="idEntidad" Type="System.Int16" DbType="SmallInt NOT NULL" CanBeNull="false" />
+      <Column Name="descripcion" Type="System.String" DbType="NVarChar(30) NOT NULL" CanBeNull="false" />
+      <Association Name="TipoCreditoInterno_DatoCredito" Member="DatoCredito" ThisKey="idTipoCreditoInterno" OtherKey="idTipoCreditoInterno" Type="DatoCredito" />
+      <Association Name="EntidadFinanciamiento_TipoCreditoInterno" Member="EntidadFinanciamiento" ThisKey="idEntidad" OtherKey="idEntidad" Type="EntidadFinanciamiento" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.TipoDensidad" Member="TipoDensidad">
+    <Type Name="TipoDensidad">
+      <Column Name="idTipoDensidad" Type="System.Int16" DbType="SmallInt NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="Densidad" Type="System.String" DbType="NVarChar(30) NOT NULL" CanBeNull="false" />
+      <Column Name="descripcion" Type="System.String" DbType="NVarChar(30) NOT NULL" CanBeNull="false" />
+      <Column Name="idClase" Type="System.Int16" DbType="SmallInt" CanBeNull="true" />
+      <Association Name="ClaseInmueble_TipoDensidad" Member="ClaseInmueble" ThisKey="idClase" OtherKey="idClase" Type="ClaseInmueble" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.TipoDocumentoValuador" Member="TipoDocumentoValuador">
+    <Type Name="TipoDocumentoValuador">
+      <Column Name="idTipoDocumento" Type="System.Int16" DbType="SmallInt NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="nombreTipoDocumento" Type="System.String" DbType="NVarChar(30) NOT NULL" CanBeNull="false" />
+      <Association Name="TipoDocumentoValuador_DocumentoValuador" Member="DocumentoValuador" ThisKey="idTipoDocumento" OtherKey="idTipoDocumento" Type="DocumentoValuador" />
+    </Type>
+  </Table>
+  <Table Name="dbo.TipoEstadoConservacion" Member="TipoEstadoConservacion">
+    <Type Name="TipoEstadoConservacion">
+      <Column Name="idTipoEstadoConservacion" Type="System.Int16" DbType="SmallInt NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="descripcion" Type="System.String" DbType="NVarChar(30) NOT NULL" CanBeNull="false" />
+    </Type>
+  </Table>
+  <Table Name="dbo.TipoFormacionProfesional" Member="TipoFormacionProfesional">
+    <Type Name="TipoFormacionProfesional">
+      <Column Name="idTipoFormacion" Type="System.Int16" DbType="SmallInt NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="nombreFormacion" Type="System.String" DbType="NVarChar(20) NOT NULL" CanBeNull="false" />
+      <Association Name="TipoFormacionProfesional_FormacionProfesionalValuador" Member="FormacionProfesionalValuador" ThisKey="idTipoFormacion" OtherKey="idTipoFormacion" Type="FormacionProfesionalValuador" />
+    </Type>
+  </Table>
+  <Table Name="dbo.TipoFuente" Member="TipoFuente">
+    <Type Name="TipoFuente">
+      <Column Name="idTipoFuente" Type="System.Int16" DbType="SmallInt NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="descripcion" Type="System.String" DbType="NVarChar(40) NOT NULL" CanBeNull="false" />
+      <Column Name="condominio" Type="System.Boolean" DbType="Bit" CanBeNull="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.TipoImportanciaVialidad" Member="TipoImportanciaVialidad">
+    <Type Name="TipoImportanciaVialidad">
+      <Column Name="idImportanciaVialidad" Type="System.Int16" DbType="SmallInt NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="descripcion" Type="System.String" DbType="NVarChar(30) NOT NULL" CanBeNull="false" />
+    </Type>
+  </Table>
+  <Table Name="dbo.TipoInmueble" Member="TipoInmueble">
+    <Type Name="TipoInmueble">
+      <Column Name="idTipoInmueble" Type="System.Int16" DbType="SmallInt NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="descripcion" Type="System.String" DbType="NVarChar(30) NOT NULL" CanBeNull="false" />
+      <Association Name="TipoInmueble_Inmueble" Member="Inmueble" ThisKey="idTipoInmueble" OtherKey="idTipoInmueble" Type="Inmueble" />
+    </Type>
+  </Table>
+  <Table Name="dbo.TipoMaterial" Member="TipoMaterial">
+    <Type Name="TipoMaterial">
+      <Column Name="idTipoMaterial" Type="System.Int16" DbType="SmallInt NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="descripcion" Type="System.String" DbType="NVarChar(30) NOT NULL" CanBeNull="false" />
+      <Association Name="TipoMaterial_ValorMaterial" Member="ValorMaterial" ThisKey="idTipoMaterial" OtherKey="idTipoMaterial" Type="ValorMaterial" />
+    </Type>
+  </Table>
+  <Table Name="dbo.TipoNivelSocioeconomico" Member="TipoNivelSocioeconomico">
+    <Type Name="TipoNivelSocioeconomico">
+      <Column Name="idTipoNivelEconomico" Type="System.Int16" DbType="SmallInt NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="descripcion" Type="System.String" DbType="NVarChar(30) NOT NULL" CanBeNull="false" />
+      <Column Name="idClase" Type="System.Int16" DbType="SmallInt" CanBeNull="true" />
+      <Association Name="ClaseInmueble_TipoNivelSocioeconomico" Member="ClaseInmueble" ThisKey="idClase" OtherKey="idClase" Type="ClaseInmueble" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.TipoOrientacion" Member="TipoOrientacion">
+    <Type Name="TipoOrientacion">
+      <Column Name="idTipoOrientacion" Type="System.Int16" DbType="SmallInt NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="descripcion" Type="System.String" DbType="NVarChar(30) NOT NULL" CanBeNull="false" />
+    </Type>
+  </Table>
+  <Table Name="dbo.TipoProximidadUrbana" Member="TipoProximidadUrbana">
+    <Type Name="TipoProximidadUrbana">
+      <Column Name="idTipoProximidadUrbana" Type="System.Int16" DbType="SmallInt NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="descripcion" Type="System.String" DbType="NVarChar(30) NOT NULL" CanBeNull="false" />
+      <Column Name="idClase" Type="System.Int16" DbType="SmallInt" CanBeNull="true" />
+      <Association Name="ClaseInmueble_TipoProximidadUrbana" Member="ClaseInmueble" ThisKey="idClase" OtherKey="idClase" Type="ClaseInmueble" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.TipoServicio" Member="TipoServicio">
+    <Type Name="TipoServicio">
+      <Column Name="idTipoServicio" Type="System.Int16" DbType="SmallInt NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="descripcion" Type="System.String" DbType="NVarChar(30) NOT NULL" CanBeNull="false" />
+      <Association Name="TipoServicio_ValorServicio" Member="ValorServicio" ThisKey="idTipoServicio" OtherKey="idTipoServicio" Type="ValorServicio" />
+    </Type>
+  </Table>
+  <Table Name="dbo.TipoServidumbre" Member="TipoServidumbre">
+    <Type Name="TipoServidumbre">
+      <Column Name="idTipoServidumbre" Type="System.Int16" DbType="SmallInt NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="descripcion" Type="System.String" DbType="NVarChar(50) NOT NULL" CanBeNull="false" />
+    </Type>
+  </Table>
+  <Table Name="dbo.TipoTopografia" Member="TipoTopografia">
+    <Type Name="TipoTopografia">
+      <Column Name="idTipoTopografia" Type="System.Int16" DbType="SmallInt NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="descripcion" Type="System.String" DbType="NVarChar(100) NOT NULL" CanBeNull="false" />
+    </Type>
+  </Table>
+  <Table Name="dbo.TipoUbicacion" Member="TipoUbicacion">
+    <Type Name="TipoUbicacion">
+      <Column Name="idTipoUbicacion" Type="System.Int16" DbType="SmallInt NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="descripcion" Type="System.String" DbType="NVarChar(30) NOT NULL" CanBeNull="false" />
+    </Type>
+  </Table>
+  <Table Name="dbo.TipoUnidad" Member="TipoUnidad">
+    <Type Name="TipoUnidad">
+      <Column Name="idTipoUnidad" Type="System.Int16" DbType="SmallInt NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="descripcion" Type="System.String" DbType="NVarChar(30) NOT NULL" CanBeNull="false" />
+    </Type>
+  </Table>
+  <Table Name="dbo.TipoUsoConstruccion" Member="TipoUsoConstruccion">
+    <Type Name="TipoUsoConstruccion">
+      <Column Name="idTipoUsoConstruccion" Type="System.Int16" DbType="SmallInt NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="descripcion" Type="System.String" DbType="NVarChar(30) NOT NULL" CanBeNull="false" />
+    </Type>
+  </Table>
+  <Table Name="dbo.TipoUsoSuelo" Member="TipoUsoSuelo">
+    <Type Name="TipoUsoSuelo">
+      <Column Name="idTipoUsoSuelo" Type="System.Int16" DbType="SmallInt NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="descripcion" Type="System.String" DbType="NVarChar(100) NOT NULL" CanBeNull="false" />
+      <Column Name="idClase" Type="System.Int16" DbType="SmallInt" CanBeNull="true" />
+      <Association Name="ClaseInmueble_TipoUsoSuelo" Member="ClaseInmueble" ThisKey="idClase" OtherKey="idClase" Type="ClaseInmueble" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.TipoValuador" Member="TipoValuador">
+    <Type Name="TipoValuador">
+      <Column Name="idTipoValuador" Type="System.Int16" DbType="SmallInt NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="descripcion" Type="System.String" DbType="NVarChar(25) NOT NULL" CanBeNull="false" />
+      <Association Name="TipoValuador_Valuador" Member="Valuador" ThisKey="idTipoValuador" OtherKey="idTipoValuador" Type="Valuador" />
+    </Type>
+  </Table>
+  <Table Name="dbo.UbicacionCallesInmueble" Member="UbicacionCallesInmueble">
+    <Type Name="UbicacionCallesInmueble">
+      <Column Name="idInmueble" Type="System.Int32" DbType="Int NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="idTipoOrientacion1" Type="System.Int16" DbType="SmallInt NOT NULL" CanBeNull="false" />
+      <Column Name="idTipoOrientacion2" Type="System.Int16" DbType="SmallInt NOT NULL" CanBeNull="false" />
+      <Column Name="idTipoOrientacion3" Type="System.Int16" DbType="SmallInt NOT NULL" CanBeNull="false" />
+      <Column Name="calleTransversal1" Type="System.String" DbType="NVarChar(35) NOT NULL" CanBeNull="false" />
+      <Column Name="calleTransversal2" Type="System.String" DbType="NVarChar(35) NOT NULL" CanBeNull="false" />
+      <Column Name="calleLimitrofe" Type="System.String" DbType="NVarChar(35) NOT NULL" CanBeNull="false" />
+      <Association Name="Inmueble_UbicacionCallesInmueble" Member="Inmueble" ThisKey="idInmueble" OtherKey="idInmueble" Type="Inmueble" IsForeignKey="true" DeleteRule="CASCADE" DeleteOnNull="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.UbicacionInmueble" Member="UbicacionInmueble">
+    <Type Name="UbicacionInmueble">
+      <Column Name="idInmueble" Type="System.Int32" DbType="Int NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="idTipoUbicacion" Type="System.Int16" DbType="SmallInt NOT NULL" CanBeNull="false" />
+      <Column Name="idTipotopografia" Type="System.Int16" DbType="SmallInt NOT NULL" CanBeNull="false" />
+      <Column Name="idTipoCaracteristicasPanoramicas" Type="System.Int16" DbType="SmallInt NOT NULL" CanBeNull="false" />
+      <Column Name="idTipoUsoSuelo" Type="System.Int16" DbType="SmallInt NOT NULL" CanBeNull="false" />
+      <Column Name="idTipoServidumbre" Type="System.Int16" DbType="SmallInt NOT NULL" CanBeNull="false" />
+      <Column Name="idFuenteMedida" Type="System.Int16" DbType="SmallInt NOT NULL" CanBeNull="false" />
+      <Column Name="otraFuente" Type="System.String" DbType="NVarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="configuracionRegular" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
+      <Column Name="densidadHabitantes" Type="System.Double" DbType="Float NOT NULL" CanBeNull="false" />
+      <Column Name="densidadViviendas" Type="System.Double" DbType="Float NOT NULL" CanBeNull="false" />
+      <Column Name="frentes" Type="System.Int16" DbType="SmallInt NOT NULL" CanBeNull="false" />
+      <Column Name="lados" Type="System.Int16" DbType="SmallInt NOT NULL" CanBeNull="false" />
+      <Column Name="descripcionColindancias" Type="System.String" DbType="NVarChar(500) NOT NULL" CanBeNull="false" />
+      <Association Name="Inmueble_UbicacionInmueble" Member="Inmueble" ThisKey="idInmueble" OtherKey="idInmueble" Type="Inmueble" IsForeignKey="true" DeleteRule="CASCADE" DeleteOnNull="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.Universidad" Member="Universidad">
+    <Type Name="Universidad">
+      <Column Name="idUniversidad" Type="System.Int16" DbType="SmallInt NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="nombreUniversidad" Type="System.String" DbType="NVarChar(100) NOT NULL" CanBeNull="false" />
+      <Column Name="tienePosgrados" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
+      <Association Name="Universidad_FormacionProfesional" Member="FormacionProfesional" ThisKey="idUniversidad" OtherKey="idUniversidad" Type="FormacionProfesional" />
+    </Type>
+  </Table>
+  <Table Name="dbo.UsoActualArea" Member="UsoActualArea">
+    <Type Name="UsoActualArea">
+      <Column Name="idUsoActual" Type="System.Int32" DbType="Int NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="planta" Type="System.Int16" DbType="SmallInt NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="cuartoServicio" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
+      <Column Name="cuartoLavado" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
+      <Column Name="areaServicio" Type="System.Boolean" DbType="Bit" CanBeNull="true" />
+      <Column Name="vestibuloIngreso" Type="System.Boolean" DbType="Bit" CanBeNull="true" />
+      <Column Name="escaleraPrincipal" Type="System.Boolean" DbType="Bit" CanBeNull="true" />
+      <Column Name="sala" Type="System.Boolean" DbType="Bit" CanBeNull="true" />
+      <Association Name="UsoActualInmueble_UsoActualArea" Member="UsoActualInmueble" ThisKey="idUsoActual" OtherKey="idUsoActual" Type="UsoActualInmueble" IsForeignKey="true" DeleteRule="CASCADE" DeleteOnNull="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.UsoActualInmueble" Member="UsoActualInmueble">
+    <Type Name="UsoActualInmueble">
+      <Column Name="idUsoActual" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="idInmueble" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="idTipoEstacionamiento" Type="System.Int16" DbType="SmallInt NOT NULL" CanBeNull="false" />
+      <Column Name="cupoEstacionamiento" Type="System.Int16" DbType="SmallInt" CanBeNull="true" />
+      <Column Name="jardinesFrontales" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
+      <Column Name="jardinesFondo" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
+      <Column Name="jardinesLateral" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
+      <Column Name="elevador" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
+      <Column Name="cocina" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
+      <Column Name="cocinaMuebles" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
+      <Column Name="cocinaIntegral" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
+      <Column Name="comedor" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
+      <Column Name="despensa" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
+      <Column Name="numBaniosCompletos" Type="System.Int16" DbType="SmallInt NOT NULL" CanBeNull="false" />
+      <Column Name="numBaniosMedios" Type="System.Int16" DbType="SmallInt NOT NULL" CanBeNull="false" />
+      <Association Name="UsoActualInmueble_UsoActualArea" Member="UsoActualArea" ThisKey="idUsoActual" OtherKey="idUsoActual" Type="UsoActualArea" />
+      <Association Name="UsoActualInmueble_UsoActualRecamara" Member="UsoActualRecamara" ThisKey="idUsoActual" OtherKey="idUsoActual" Type="UsoActualRecamara" />
+      <Association Name="Inmueble_UsoActualInmueble" Member="Inmueble" ThisKey="idInmueble" OtherKey="idInmueble" Type="Inmueble" IsForeignKey="true" DeleteRule="CASCADE" DeleteOnNull="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.UsoActualRecamara" Member="UsoActualRecamara">
+    <Type Name="UsoActualRecamara">
+      <Column Name="idUsoRecamara" Type="System.Int16" DbType="SmallInt NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="idUsoActual" Type="System.Int32" DbType="Int NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="cantidad" Type="System.Int16" DbType="SmallInt NOT NULL" CanBeNull="false" />
+      <Column Name="planta" Type="System.Int16" DbType="SmallInt NOT NULL" CanBeNull="false" />
+      <Column Name="espacioCloset" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
+      <Column Name="closetEquipado" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
+      <Column Name="balcon" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
+      <Column Name="vestidor" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
+      <Column Name="terraza" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
+      <Association Name="UsoActualInmueble_UsoActualRecamara" Member="UsoActualInmueble" ThisKey="idUsoActual" OtherKey="idUsoActual" Type="UsoActualInmueble" IsForeignKey="true" DeleteRule="CASCADE" DeleteOnNull="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.Usuario" Member="Usuario">
+    <Type Name="Usuario">
+      <Column Name="idUsuario" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="nombreUsuario" Type="System.String" DbType="NVarChar(30) NOT NULL" CanBeNull="false" />
+      <Column Name="password" Type="System.String" DbType="NVarChar(30) NOT NULL" CanBeNull="false" />
+      <Column Name="fechaCreacion" Type="System.DateTime" DbType="DateTime NOT NULL" CanBeNull="false" />
+      <Column Name="fechaUltimaSesion" Type="System.DateTime" DbType="DateTime NOT NULL" CanBeNull="false" />
+      <Column Name="email" Type="System.String" DbType="NVarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="online" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
+      <Column Name="activo" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
+      <Association Name="Usuario_Personal" Member="Personal" ThisKey="idUsuario" OtherKey="idUsuario" Type="Personal" />
+      <Association Name="Usuario_RolUsuario" Member="RolUsuario" ThisKey="idUsuario" OtherKey="idUsuario" Type="RolUsuario" />
+      <Association Name="Usuario_UsuarioCliente" Member="UsuarioCliente" ThisKey="idUsuario" OtherKey="idUsuario" Type="UsuarioCliente" />
+      <Association Name="Usuario_UsuarioValuador" Member="UsuarioValuador" ThisKey="idUsuario" OtherKey="idUsuario" Type="UsuarioValuador" />
+    </Type>
+  </Table>
+  <Table Name="dbo.UsuarioCliente" Member="UsuarioCliente">
+    <Type Name="UsuarioCliente">
+      <Column Name="idUsuario" Type="System.Int32" DbType="Int NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="idCliente" Type="System.Int32" DbType="Int NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="master" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
+      <Association Name="Cliente_UsuarioCliente" Member="Cliente" ThisKey="idCliente" OtherKey="idCliente" Type="Cliente" IsForeignKey="true" DeleteRule="CASCADE" DeleteOnNull="true" />
+      <Association Name="Usuario_UsuarioCliente" Member="Usuario" ThisKey="idUsuario" OtherKey="idUsuario" Type="Usuario" IsForeignKey="true" DeleteRule="CASCADE" DeleteOnNull="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.UsuarioValuador" Member="UsuarioValuador">
+    <Type Name="UsuarioValuador">
+      <Column Name="idUsuario" Type="System.Int32" DbType="Int NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="idValuador" Type="System.Int32" DbType="Int NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="master" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
+      <Association Name="Usuario_UsuarioValuador" Member="Usuario" ThisKey="idUsuario" OtherKey="idUsuario" Type="Usuario" IsForeignKey="true" DeleteRule="CASCADE" DeleteOnNull="true" />
+      <Association Name="Valuador_UsuarioValuador" Member="Valuador" ThisKey="idValuador" OtherKey="idValuador" Type="Valuador" IsForeignKey="true" DeleteRule="CASCADE" DeleteOnNull="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.ValorMaterial" Member="ValorMaterial">
+    <Type Name="ValorMaterial">
+      <Column Name="idValorMaterial" Type="System.Int32" DbType="Int NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="descripcion" Type="System.String" DbType="NVarChar(100) NOT NULL" CanBeNull="false" />
+      <Column Name="idTipoMaterial" Type="System.Int16" DbType="SmallInt NOT NULL" CanBeNull="false" />
+      <Column Name="idClase" Type="System.Int16" DbType="SmallInt" CanBeNull="true" />
+      <Association Name="ClaseInmueble_ValorMaterial" Member="ClaseInmueble" ThisKey="idClase" OtherKey="idClase" Type="ClaseInmueble" IsForeignKey="true" />
+      <Association Name="TipoMaterial_ValorMaterial" Member="TipoMaterial" ThisKey="idTipoMaterial" OtherKey="idTipoMaterial" Type="TipoMaterial" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.ValorServicio" Member="ValorServicio">
+    <Type Name="ValorServicio">
+      <Column Name="idValorServicio" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="descripcion" Type="System.String" DbType="NVarChar(100) NOT NULL" CanBeNull="false" />
+      <Column Name="idTipoServicio" Type="System.Int16" DbType="SmallInt NOT NULL" CanBeNull="false" />
+      <Association Name="TipoServicio_ValorServicio" Member="TipoServicio" ThisKey="idTipoServicio" OtherKey="idTipoServicio" Type="TipoServicio" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.ViasAcceso" Member="ViasAcceso">
+    <Type Name="ViasAcceso">
+      <Column Name="idViaAcceso" Type="System.Int32" DbType="Int NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="idInmueble" Type="System.Int32" DbType="Int NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="idImportanciaVia" Type="System.Int16" DbType="SmallInt NOT NULL" CanBeNull="false" />
+      <Column Name="nombreVia" Type="System.String" DbType="NVarChar(50) NOT NULL" CanBeNull="false" />
+      <Association Name="Inmueble_ViasAcceso" Member="Inmueble" ThisKey="idInmueble" OtherKey="idInmueble" Type="Inmueble" IsForeignKey="true" DeleteRule="CASCADE" DeleteOnNull="true" />
+    </Type>
+  </Table>
+  <Function Name="dbo.GenerarIDE" Method="GenerarIDE">
+    <Parameter Name="mes" Type="System.Int16" DbType="SmallInt" />
+    <Parameter Name="periodo" Type="System.Int16" DbType="SmallInt" />
+    <Parameter Name="consecutivo" Type="System.Int32" DbType="Int" Direction="InOut" />
+    <Parameter Name="IDE" Parameter="iDE" Type="System.String" DbType="NVarChar(20)" Direction="InOut" />
+    <ElementType Name="GenerarIDEResult">
+      <Column Name="Column1" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+    </ElementType>
+  </Function>
+</Database>
