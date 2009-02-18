@@ -15,7 +15,7 @@ function saveTipoConstruccionAsync( idConstruccion, datosTipoConstruccion, callB
     );
 }
 
-function saveConstruccionInmueble( idConstruccion, datosConstruccion, datosCondominio, callBack) {
+function saveConstruccionInmuebleAsync( idConstruccion, datosConstruccion, datosCondominio, callBack) {
     EntittyWrappers.SaveConstruccionInmueble(
         idConstruccion
         , datosConstruccion
@@ -26,7 +26,7 @@ function saveConstruccionInmueble( idConstruccion, datosConstruccion, datosCondo
    );
 }
 
-function saveSuperficie( idConstruccion, datosSuperficie, datosSuperficieCondominio, datosSuperficieAdicional, callBack) {
+function saveSuperficieAsync( idConstruccion, datosSuperficie, datosSuperficieCondominio, datosSuperficieAdicional, callBack) {
     EntityWrappers.SaveSuperficie(
         idConstruccion
         , datosSuperficie
@@ -58,7 +58,7 @@ function loadDatosConstruccionInmuebleAsync( idConstruccion, callBackList) {
     );
 }
 
-function loadSuperficieAsync( idConstruccion, callBackList) {
+function loadDatosSuperficieAsync( idConstruccion, callBackList) {
     EntityWrappers.LoadSuperficie(
         idConstruccion
         , asyncCallListBack
