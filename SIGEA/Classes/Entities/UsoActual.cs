@@ -133,7 +133,7 @@ namespace SIGEA.Classes.Entities
 
     public partial class UsoActualArea
     {
-        public static Dictionary<string, object>[] GetUsoPlanta(UsoActualInmueble uso_actual)
+        public static Dictionary<string, object>[] GetPlantas(UsoActualInmueble uso_actual)
         {
             var plantas_query = from p in uso_actual.UsoActualArea
                                   orderby p.planta
@@ -144,7 +144,7 @@ namespace SIGEA.Classes.Entities
 
             return plantas_query.ToArray();
         }
-        public static void SetRecamaras(UsoActualInmueble uso_actual, Dictionary<string, object>[] data_set)
+        public static void SePlantas(UsoActualInmueble uso_actual, Dictionary<string, object>[] data_set)
         {
             UsoActualArea planta = null;
             foreach (Dictionary<string, object> data in data_set)
