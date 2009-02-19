@@ -20,6 +20,7 @@ public class EntityWrappers : System.Web.Services.WebService
 
     #region Avaluos
 
+    #region Datos del avaluo
     [WebMethod]
     public int SaveAvaluoInmueble(
         int idAvaluo
@@ -79,41 +80,6 @@ public class EntityWrappers : System.Web.Services.WebService
     }
 
     [WebMethod]
-    public Entity[] LoadAvaluo(int idAvaluo)
-    {
-        Entity[] datos = new Entity[4];
-
-        AvaluoInmobiliario avaluo = AvaluoInmobiliario.GetFromId(common_context, idAvaluo);
-        if (avaluo == null)
-            throw new Exception("El identificador del avalúo es inválido");
-
-        datos[0] = avaluo.GetData();
-        if (avaluo.DatoCredito != null)
-        {
-            datos[1] = avaluo.DatoCredito.GetData();
-        }
-        datos[2] = avaluo.Solicitante.GetData();
-        datos[3] = avaluo.Solicitante.Direccion.GetData();
-
-        return datos;
-    }
-
-    [WebMethod]
-    public void CancelarAvaluo(int idAvaluo)
-    {
-        SIGEADataContext data_context = new SIGEADataContext();
-        AvaluoInmobiliario.Cancel(data_context, idAvaluo);
-
-        data_context.SubmitChanges();
-    }
-
-    [WebMethod]
-    public object GetRegistroAvaluo(int idAvaluo)
-    {
-        return AvaluoInmobiliario.GetRegistro(common_context, idAvaluo);
-    }
-
-    [WebMethod]
     public void SaveAvaluo(
         int idAvaluo
         , Entity datosAvaluo
@@ -142,6 +108,41 @@ public class EntityWrappers : System.Web.Services.WebService
         avaluo.Solicitante.SetData(datosSolicitante);
         CodigoPostal cp_solicitante = CodigoPostal.GetFromData(data_context, datosDireccionSolicitante);
         avaluo.Solicitante.Direccion.SetData(cp_solicitante, datosDireccionSolicitante);
+        data_context.SubmitChanges();
+    }
+
+    [WebMethod]
+    public Entity[] LoadAvaluo(int idAvaluo)
+    {
+        Entity[] datos = new Entity[4];
+
+        AvaluoInmobiliario avaluo = AvaluoInmobiliario.GetFromId(common_context, idAvaluo);
+        if (avaluo == null)
+            throw new Exception("El identificador del avalúo es inválido");
+
+        datos[0] = avaluo.GetData();
+        if (avaluo.DatoCredito != null)
+        {
+            datos[1] = avaluo.DatoCredito.GetData();
+        }
+        datos[2] = avaluo.Solicitante.GetData();
+        datos[3] = avaluo.Solicitante.Direccion.GetData();
+
+        return datos;
+    }
+
+    [WebMethod]
+    public object GetRegistroAvaluo(int idAvaluo)
+    {
+        return AvaluoInmobiliario.GetRegistro(common_context, idAvaluo);
+    }
+
+    [WebMethod]
+    public void CancelarAvaluo(int idAvaluo)
+    {
+        SIGEADataContext data_context = new SIGEADataContext();
+        AvaluoInmobiliario.Cancel(data_context, idAvaluo);
+
         data_context.SubmitChanges();
     }
 
@@ -176,6 +177,9 @@ public class EntityWrappers : System.Web.Services.WebService
 
         return datos;
     }
+    #endregion
+
+    #region Asignacion de avaluos
 
     [WebMethod]
     public void SaveAsignacionAvaluo(int idAvaluo, Entity datosAsignacion)
@@ -200,6 +204,9 @@ public class EntityWrappers : System.Web.Services.WebService
         data_context.SubmitChanges();
     }
 
+    #endregion
+
+    #region Metodos del avaluo
     [WebMethod]
     public object[] VerificarExistenciaAvaluoPorIDE(string IDE)
     {
@@ -227,11 +234,13 @@ public class EntityWrappers : System.Web.Services.WebService
     {
         return AvaluoInmobiliario.GetEstadoInmueble(common_context, idAvaluo);
     }
+    #endregion
 
     #endregion
 
     #region Inmuebles
 
+    #region Datos del inmueble
     [WebMethod]
     public void SaveInmueble(
         int idAvaluo
@@ -255,7 +264,7 @@ public class EntityWrappers : System.Web.Services.WebService
         inmueble.DireccionInmueble.Direccion.SetData(cp_inmueble, datosDireccionInmueble);
         inmueble.Propietario.SetData(datosPropietario);
         inmueble.Propietario.Direccion.SetData(cp_propietario, datosDireccionPropietario);
-        inmueble.AvaluoInmobiliario.Single().UpdateSubTipo(inmueble.idTipoInmueble);
+        inmueble.AvaluoInmobiliario.UpdateSubTipo(inmueble.idTipoInmueble);
 
         data_context.SubmitChanges();
     }
@@ -277,13 +286,15 @@ public class EntityWrappers : System.Web.Services.WebService
 
         return datos;
     }
+    #endregion
 
+    #region Ubicación del inmueble
     [WebMethod]
     public void SaveUbicacionInmueble(
         int idAvaluo
         , Entity datosCalles
         , Entity datosTerreno)
-    { 
+    {
         SIGEADataContext data_context = new SIGEADataContext();
         Inmueble inmueble = Inmueble.GetFromIdAvaluo(data_context, idAvaluo);
 
@@ -293,7 +304,7 @@ public class EntityWrappers : System.Web.Services.WebService
         }
 
         UbicacionCallesInmueble calles = UbicacionCallesInmueble.GetForDataUpdate(data_context, inmueble);
-        UbicacionInmueble ubicacion = UbicacionInmueble.GetForDataUpdate(data_context, inmueble);        
+        UbicacionInmueble ubicacion = UbicacionInmueble.GetForDataUpdate(data_context, inmueble);
 
         ubicacion.SetData(datosTerreno);
         calles.SetData(datosCalles);
@@ -314,12 +325,14 @@ public class EntityWrappers : System.Web.Services.WebService
         Entity[] datos = new Entity[2];
         if (inmueble.UbicacionCallesInmueble != null)
             datos[0] = inmueble.UbicacionCallesInmueble.GetData();
-        if(inmueble.UbicacionInmueble != null)
+        if (inmueble.UbicacionInmueble != null)
             datos[1] = inmueble.UbicacionInmueble.GetData();
 
         return datos;
     }
+    #endregion
 
+    #region Entorno del inmueble
     [WebMethod]
     public void SaveEntorno(
         int idAvaluo
@@ -443,7 +456,9 @@ public class EntityWrappers : System.Web.Services.WebService
 
         return inmueble.EquipamientoInmueble.GetData();
     }
+    #endregion
 
+    #region Uso actual del inmueble
     [WebMethod]
     public void SaveUsoActual(
             int idAvaluo
@@ -512,7 +527,9 @@ public class EntityWrappers : System.Web.Services.WebService
 
         return UsoActualArea.GetPlantas(inmueble.UsoActualInmueble);
     }
+    #endregion
 
+    #region Métodos del inmueble
     [WebMethod]
     public bool GetInmuebleEsCondominal(int idAvaluo)
     {
@@ -524,6 +541,123 @@ public class EntityWrappers : System.Web.Services.WebService
         }
 
         return inmueble.RegimenPropiedad.descripcion.ToLower() == "condominal";
+    }
+    #endregion
+
+    #endregion
+
+    #region Construcciones
+
+    [WebMethod]
+    public void SaveDatosConstruccion(
+        int idAvaluo
+        , Entity[] datosTiposConstruccion
+        , Entity datosConstrucciones)
+    {
+        SIGEADataContext data_context = new SIGEADataContext();
+        Inmueble inmueble = Inmueble.GetFromIdAvaluo(data_context, idAvaluo);
+        if (inmueble == null)
+        {
+            throw new Exception("El avalúo no cuenta con un inmueble registrado");
+        }
+
+        ConstruccionInmueble construccion = ConstruccionInmueble.GetForDataUpdate(inmueble);
+        construccion.SetData(datosConstrucciones);
+        TipoConstruccion.SetTiposConstruccion(construccion, datosTiposConstruccion);
+
+        data_context.SubmitChanges();
+    }
+
+    [WebMethod]
+    public void SaveDatosCondominio(
+        int idAvaluo
+        , Entity datosCondominio
+        , Entity superficiesCondominio
+        , Entity[] datosAreaComun
+        , Entity[] datosAreaComunComplementaria)
+    {
+        SIGEADataContext data_context = new SIGEADataContext();
+        Inmueble inmueble = Inmueble.GetFromIdAvaluo(data_context, idAvaluo);
+        if (inmueble == null)
+        {
+            throw new Exception("El avalúo no cuenta con un inmueble registrado");
+        }
+
+        DatoCondominio condominio = DatoCondominio.GetFromDataUpdate(inmueble);
+        condominio.SetData(datosCondominio);
+        AreaComun.SetAreasComunes(condominio, datosAreaComun, false);
+        AreaComun.SetAreasComunes(condominio, datosAreaComunComplementaria, true);
+
+        data_context.SubmitChanges();
+    }
+
+    [WebMethod]
+    public void SaveSuperficies(
+        int idAvaluo
+        , Entity datosSuperfice)
+    {
+        SIGEADataContext data_context = new SIGEADataContext();
+        Inmueble inmueble = Inmueble.GetFromIdAvaluo(data_context, idAvaluo);
+        if (inmueble == null)
+        {
+            throw new Exception("El avalúo no cuenta con un inmueble registrado");
+        }
+
+        SuperficiesInmueble superficies = SuperficiesInmueble.GetForDataUpdate(inmueble);
+        superficies.SetData(datosSuperfice);
+
+        data_context.SubmitChanges();
+    }
+    #endregion
+
+    #region Comparables
+    [WebMethod]
+    public long SaveComparable(
+        int idComparable
+        , Entity datosComparable
+        , Entity datosUbicacion
+        , Entity datosContacto
+        )
+    {
+        SIGEADataContext data_context = new SIGEADataContext();
+
+        ComparableInmobiliario comparable = ComparableInmobiliario.GetDataForUpdate(data_context, idComparable);
+        if (comparable == null)
+            throw new Exception("El identificador del comparable es inválido");
+
+        CodigoPostal cp_direccion = CodigoPostal.GetFromData(data_context, datosUbicacion);
+        comparable.SetDatos(datosComparable);
+        comparable.DatoContacto.SetData(datosContacto);
+        comparable.Direccion.SetData(cp_direccion, datosUbicacion);
+
+        data_context.SubmitChanges();
+
+        return comparable.idComparable;
+    }
+
+    [WebMethod]
+    public Entity[] LoadComparable(int idComparable)
+    {
+        Entity[] datos = new Entity[4];
+
+        ComparableInmobiliario comparable = ComparableInmobiliario.GetFromId(common_context, idComparable);
+        if (comparable == null)
+            throw new Exception("El identificador del comparable es inválido");
+
+        datos[0] = comparable.GetData();
+        datos[1] = comparable.DatoContacto.GetData();
+        datos[2] = comparable.Direccion.GetData();
+
+        return datos;
+    }
+
+    [WebMethod]
+    public void DeleteComaprable(int idComparable)
+    {
+        SIGEADataContext data_context = new SIGEADataContext();
+        ComparableInmobiliario.Delete(data_context, idComparable);
+
+        data_context.SubmitChanges();
     }
 
     #endregion
@@ -794,111 +928,6 @@ public class EntityWrappers : System.Web.Services.WebService
     }
     #endregion
 
-    #region Comparable
-    [WebMethod]
-    public long SaveComparable(
-        int idComparable
-        , Entity datosComparable
-        , Entity datosUbicacion
-        , Entity datosContacto
-        )
-    {
-        SIGEADataContext data_context = new SIGEADataContext();
-
-        ComparableInmobiliario comparable = ComparableInmobiliario.GetDataForUpdate(data_context, idComparable);
-        if (comparable == null)
-            throw new Exception("El identificador del comparable es inválido");
-
-        CodigoPostal cp_direccion = CodigoPostal.GetFromData(data_context, datosUbicacion);
-        comparable.SetDatos(datosComparable);
-        comparable.DatoContacto.SetData(datosContacto);
-        comparable.Direccion.SetData(cp_direccion, datosUbicacion);
-
-        data_context.SubmitChanges();
-
-        return comparable.idComparable;
-    }
-
-    [WebMethod]
-    public Entity[] LoadComparable(int idComparable)
-    {
-        Entity[] datos = new Entity[4];
-
-        ComparableInmobiliario comparable = ComparableInmobiliario.GetFromId(common_context, idComparable);
-        if (comparable == null)
-            throw new Exception("El identificador del comparable es inválido");
-
-        datos[0] = comparable.GetData();
-        datos[1] = comparable.DatoContacto.GetData();
-        datos[2] = comparable.Direccion.GetData();
-
-        return datos;
-    }
-
-    [WebMethod]
-    public void DeleteComaprable(int idComparable)
-    {
-        SIGEADataContext data_context = new SIGEADataContext();
-        ComparableInmobiliario.Delete(data_context, idComparable);
-
-        data_context.SubmitChanges();
-    }
-
-    #endregion
-
-    #endregion
-
-    #region Construcciones
-
-    [WebMethod]
-    public void SaveTipoConstruccion(
-        int idConstruccion
-        , Entity datosTipoConstruccion)
-    {
-        SIGEADataContext data_context = new SIGEADataContext();
-        TipoConstruccion tipo_construccion = TipoConstruccion.GetForDataUpdate(data_context, idConstruccion);
-
-        if (tipo_construccion == null)
-            throw new Exception("El identificador de la construcción es inválido");
-
-        tipo_construccion.SetData(datosTipoConstruccion);
-        data_context.SubmitChanges();
-    }
-
-    [WebMethod]
-    public void SaveConstruccionInmueble(
-        int idConstruccion
-        , Entity datosConstrucciones
-        , Entity datosCondominios)
-    {
-        SIGEADataContext data_context = new SIGEADataContext();
-        ConstruccionInmueble construccion_inmueble = ConstruccionInmueble.GetForDataUpdate(data_context, idConstruccion);
-
-        if(construccion_inmueble == null)
-            throw new Exception("El identificador de la construcción es inválido");
-
-        construccion_inmueble.SetData(datosConstrucciones);
-        construccion_inmueble.DatoCondominio.SetData(datosCondominios);
-        data_context.SubmitChanges();
-    }
-
-    //[WebMethod]
-    //public void SaveSuperficie(
-    //    int idConstruccion
-    //    , Entity datosSuperfice
-    //    , Entity datosSuperficieCondominio
-    //    , Entity datosSuperficieAdicional)
-    //{
-    //    SIGEADataContext data_context = new SIGEADataContext();
-    //    SuperficiesInmueble superficies = SuperficiesInmueble.GetForDataUpdate(data_context, idConstruccion);
-
-    //    if(superficies == null)
-    //        throw new Exception("El identificador de la construcción es inválido");
-
-    //    superficies.SetData(datosSuperfice);
-    //    superficies.DatoCondominio.SetData(datosSuperficieCondominio);
-    //    superficies.AreaComun.SetData(datosSuperficieAdicional);
-    //}
     #endregion
 }
 

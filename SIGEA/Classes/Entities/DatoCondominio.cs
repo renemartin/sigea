@@ -7,27 +7,14 @@ namespace SIGEA.Classes.Entities
 {
     public partial class DatoCondominio
     {
-        public static DatoCondominio GetFromId(SIGEADataContext data_context, int idCondominio)
+        public static DatoCondominio GetFromDataUpdate(Inmueble inmueble)
         {
-            var dato_condominio = from d in data_context.DatoCondominio
-                                  where d.idCondominio == idCondominio
-                                  select d;
-
-            if (!dato_condominio.Any())
-                return null;
-
-            return dato_condominio.Single();
-        }
-
-        public static DatoCondominio GetFromDataUpdate(SIGEADataContext data_context, int idCondominio)
-        {
-            DatoCondominio dato_condominio = GetFromId(data_context, idCondominio);
+            DatoCondominio dato_condominio = inmueble.DatoCondominio;
 
             if (dato_condominio == null)
             {
                 dato_condominio = new DatoCondominio();
-                dato_condominio.idCondominio = idCondominio;
-                data_context.DatoCondominio.InsertOnSubmit(dato_condominio);
+                inmueble.DatoCondominio = dato_condominio;
             }
 
             return dato_condominio;
@@ -38,12 +25,9 @@ namespace SIGEA.Classes.Entities
             Dictionary<string, object> data = new Dictionary<string, object>();
 
             data.Add("avanceObra", avanceObra);
+            data.Add("unidadesRentables", unidadesRentables);
             data.Add("unidadesNucleo", unidadesNucleo);
             data.Add("unidadesConjunto", unidadesConjunto);
-            data.Add("indiviso", indiviso);
-            data.Add("fuenteIndiviso", fuenteIndiviso);
-            data.Add("privativo", privativo);
-            data.Add("fuentePrivativo", fuentePrivativo);
 
             return data;
         }
@@ -51,11 +35,9 @@ namespace SIGEA.Classes.Entities
         public void SetData(Dictionary<string, object> data)
         {
             avanceObra = float.Parse(data["avanceObra"].ToString());
+            unidadesRentables = int.Parse(data["unidadesRentables"].ToString());
             unidadesNucleo = int.Parse(data["unidadesNucleo"].ToString());
             unidadesConjunto = int.Parse(data["unidadesConjunto"].ToString());
-            fuenteIndiviso = int.Parse(data["fuenteIndiviso"].ToString());
-            privativo = int.Parse(data["privativo"].ToString());
-            fuentePrivativo = int.Parse(data["fuentePrivativo"].ToString());
         }
     }
 }

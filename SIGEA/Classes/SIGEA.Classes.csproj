@@ -80,6 +80,7 @@
     <Compile Include="Entities\RolSistema.cs" />
     <Compile Include="Entities\Solicitante.cs" />
     <Compile Include="Entities\StatusAvaluo.cs" />
+    <Compile Include="Entities\SuperficiesCondominio.cs" />
     <Compile Include="Entities\SuperficiesInmueble.cs" />
     <Compile Include="Entities\TipoComparable.cs" />
     <Compile Include="Entities\TipoConstruccion.cs" />
