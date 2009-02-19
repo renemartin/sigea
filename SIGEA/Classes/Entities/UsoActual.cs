@@ -41,6 +41,7 @@ namespace SIGEA.Classes.Entities
 
             return data;
         }
+
         public void SetData(Dictionary<string, object> data)
         {
             idTipoEstacionamiento = short.Parse(data["idTipoEstacionamiento"].ToString());
