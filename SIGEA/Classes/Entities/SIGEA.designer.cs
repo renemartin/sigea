@@ -30,18 +30,12 @@ namespace SIGEA.Classes.Entities
 		
     #region Extensibility Method Definitions
     partial void OnCreated();
-    partial void InsertAcabadoTipoConstruccion(AcabadoTipoConstruccion instance);
-    partial void UpdateAcabadoTipoConstruccion(AcabadoTipoConstruccion instance);
-    partial void DeleteAcabadoTipoConstruccion(AcabadoTipoConstruccion instance);
     partial void InsertValuador(Valuador instance);
     partial void UpdateValuador(Valuador instance);
     partial void DeleteValuador(Valuador instance);
     partial void InsertArchivo(Archivo instance);
     partial void UpdateArchivo(Archivo instance);
     partial void DeleteArchivo(Archivo instance);
-    partial void InsertAreaComun(AreaComun instance);
-    partial void UpdateAreaComun(AreaComun instance);
-    partial void DeleteAreaComun(AreaComun instance);
     partial void InsertAsentamiento(Asentamiento instance);
     partial void UpdateAsentamiento(Asentamiento instance);
     partial void DeleteAsentamiento(Asentamiento instance);
@@ -81,15 +75,9 @@ namespace SIGEA.Classes.Entities
     partial void InsertConclusionAvaluo(ConclusionAvaluo instance);
     partial void UpdateConclusionAvaluo(ConclusionAvaluo instance);
     partial void DeleteConclusionAvaluo(ConclusionAvaluo instance);
-    partial void InsertConstruccionInmueble(ConstruccionInmueble instance);
-    partial void UpdateConstruccionInmueble(ConstruccionInmueble instance);
-    partial void DeleteConstruccionInmueble(ConstruccionInmueble instance);
     partial void InsertDatoBancario(DatoBancario instance);
     partial void UpdateDatoBancario(DatoBancario instance);
     partial void DeleteDatoBancario(DatoBancario instance);
-    partial void InsertDatoCondominio(DatoCondominio instance);
-    partial void UpdateDatoCondominio(DatoCondominio instance);
-    partial void DeleteDatoCondominio(DatoCondominio instance);
     partial void InsertDatoContacto(DatoContacto instance);
     partial void UpdateDatoContacto(DatoContacto instance);
     partial void DeleteDatoContacto(DatoContacto instance);
@@ -135,9 +123,6 @@ namespace SIGEA.Classes.Entities
     partial void InsertEstadosColindantes(EstadosColindantes instance);
     partial void UpdateEstadosColindantes(EstadosColindantes instance);
     partial void DeleteEstadosColindantes(EstadosColindantes instance);
-    partial void InsertEstructurasTipoConstruccion(EstructurasTipoConstruccion instance);
-    partial void UpdateEstructurasTipoConstruccion(EstructurasTipoConstruccion instance);
-    partial void DeleteEstructurasTipoConstruccion(EstructurasTipoConstruccion instance);
     partial void InsertFormacionProfesional(FormacionProfesional instance);
     partial void UpdateFormacionProfesional(FormacionProfesional instance);
     partial void DeleteFormacionProfesional(FormacionProfesional instance);
@@ -159,18 +144,6 @@ namespace SIGEA.Classes.Entities
     partial void InsertInmueble(Inmueble instance);
     partial void UpdateInmueble(Inmueble instance);
     partial void DeleteInmueble(Inmueble instance);
-    partial void InsertInstalacionConstruccion(InstalacionConstruccion instance);
-    partial void UpdateInstalacionConstruccion(InstalacionConstruccion instance);
-    partial void DeleteInstalacionConstruccion(InstalacionConstruccion instance);
-    partial void InsertInstalacionesEspecialesCondominio(InstalacionesEspecialesCondominio instance);
-    partial void UpdateInstalacionesEspecialesCondominio(InstalacionesEspecialesCondominio instance);
-    partial void DeleteInstalacionesEspecialesCondominio(InstalacionesEspecialesCondominio instance);
-    partial void InsertInstalacionesEspecialesConstruccion(InstalacionesEspecialesConstruccion instance);
-    partial void UpdateInstalacionesEspecialesConstruccion(InstalacionesEspecialesConstruccion instance);
-    partial void DeleteInstalacionesEspecialesConstruccion(InstalacionesEspecialesConstruccion instance);
-    partial void InsertInstalacionesTipoConstruccion(InstalacionesTipoConstruccion instance);
-    partial void UpdateInstalacionesTipoConstruccion(InstalacionesTipoConstruccion instance);
-    partial void DeleteInstalacionesTipoConstruccion(InstalacionesTipoConstruccion instance);
     partial void InsertMunicipio(Municipio instance);
     partial void UpdateMunicipio(Municipio instance);
     partial void DeleteMunicipio(Municipio instance);
@@ -213,9 +186,6 @@ namespace SIGEA.Classes.Entities
     partial void InsertSuperficiesInmueble(SuperficiesInmueble instance);
     partial void UpdateSuperficiesInmueble(SuperficiesInmueble instance);
     partial void DeleteSuperficiesInmueble(SuperficiesInmueble instance);
-    partial void InsertTipoAcabado(TipoAcabado instance);
-    partial void UpdateTipoAcabado(TipoAcabado instance);
-    partial void DeleteTipoAcabado(TipoAcabado instance);
     partial void InsertTipoAsentamiento(TipoAsentamiento instance);
     partial void UpdateTipoAsentamiento(TipoAsentamiento instance);
     partial void DeleteTipoAsentamiento(TipoAsentamiento instance);
@@ -237,9 +207,6 @@ namespace SIGEA.Classes.Entities
     partial void InsertTipoComparable(TipoComparable instance);
     partial void UpdateTipoComparable(TipoComparable instance);
     partial void DeleteTipoComparable(TipoComparable instance);
-    partial void InsertTipoConstruccion(TipoConstruccion instance);
-    partial void UpdateTipoConstruccion(TipoConstruccion instance);
-    partial void DeleteTipoConstruccion(TipoConstruccion instance);
     partial void InsertTipoConstruccionPredominante(TipoConstruccionPredominante instance);
     partial void UpdateTipoConstruccionPredominante(TipoConstruccionPredominante instance);
     partial void DeleteTipoConstruccionPredominante(TipoConstruccionPredominante instance);
@@ -357,6 +324,36 @@ namespace SIGEA.Classes.Entities
     partial void InsertUsoSuelo(UsoSuelo instance);
     partial void UpdateUsoSuelo(UsoSuelo instance);
     partial void DeleteUsoSuelo(UsoSuelo instance);
+    partial void InsertTipoAcabado(TipoAcabado instance);
+    partial void UpdateTipoAcabado(TipoAcabado instance);
+    partial void DeleteTipoAcabado(TipoAcabado instance);
+    partial void InsertTipoConstruccion(TipoConstruccion instance);
+    partial void UpdateTipoConstruccion(TipoConstruccion instance);
+    partial void DeleteTipoConstruccion(TipoConstruccion instance);
+    partial void InsertSuperficiesCondominio(SuperficiesCondominio instance);
+    partial void UpdateSuperficiesCondominio(SuperficiesCondominio instance);
+    partial void DeleteSuperficiesCondominio(SuperficiesCondominio instance);
+    partial void InsertAreaComun(AreaComun instance);
+    partial void UpdateAreaComun(AreaComun instance);
+    partial void DeleteAreaComun(AreaComun instance);
+    partial void InsertDatoCondominio(DatoCondominio instance);
+    partial void UpdateDatoCondominio(DatoCondominio instance);
+    partial void DeleteDatoCondominio(DatoCondominio instance);
+    partial void InsertConstruccionInmueble(ConstruccionInmueble instance);
+    partial void UpdateConstruccionInmueble(ConstruccionInmueble instance);
+    partial void DeleteConstruccionInmueble(ConstruccionInmueble instance);
+    partial void InsertInstalacionesTipoConstruccion(InstalacionesTipoConstruccion instance);
+    partial void UpdateInstalacionesTipoConstruccion(InstalacionesTipoConstruccion instance);
+    partial void DeleteInstalacionesTipoConstruccion(InstalacionesTipoConstruccion instance);
+    partial void InsertInstalacionConstruccion(InstalacionConstruccion instance);
+    partial void UpdateInstalacionConstruccion(InstalacionConstruccion instance);
+    partial void DeleteInstalacionConstruccion(InstalacionConstruccion instance);
+    partial void InsertEstructurasTipoConstruccion(EstructurasTipoConstruccion instance);
+    partial void UpdateEstructurasTipoConstruccion(EstructurasTipoConstruccion instance);
+    partial void DeleteEstructurasTipoConstruccion(EstructurasTipoConstruccion instance);
+    partial void InsertAcabadoTipoConstruccion(AcabadoTipoConstruccion instance);
+    partial void UpdateAcabadoTipoConstruccion(AcabadoTipoConstruccion instance);
+    partial void DeleteAcabadoTipoConstruccion(AcabadoTipoConstruccion instance);
     #endregion
 		
 		public SIGEADataContext() : 
@@ -389,14 +386,6 @@ namespace SIGEA.Classes.Entities
 			OnCreated();
 		}
 		
-		public System.Data.Linq.Table<AcabadoTipoConstruccion> AcabadoTipoConstruccion
-		{
-			get
-			{
-				return this.GetTable<AcabadoTipoConstruccion>();
-			}
-		}
-		
 		public System.Data.Linq.Table<Valuador> Valuador
 		{
 			get
@@ -410,14 +399,6 @@ namespace SIGEA.Classes.Entities
 			get
 			{
 				return this.GetTable<Archivo>();
-			}
-		}
-		
-		public System.Data.Linq.Table<AreaComun> AreaComun
-		{
-			get
-			{
-				return this.GetTable<AreaComun>();
 			}
 		}
 		
@@ -525,14 +506,6 @@ namespace SIGEA.Classes.Entities
 			}
 		}
 		
-		public System.Data.Linq.Table<ConstruccionInmueble> ConstruccionInmueble
-		{
-			get
-			{
-				return this.GetTable<ConstruccionInmueble>();
-			}
-		}
-		
 		public System.Data.Linq.Table<Consulta> Consulta
 		{
 			get
@@ -554,14 +527,6 @@ namespace SIGEA.Classes.Entities
 			get
 			{
 				return this.GetTable<DatoBancario>();
-			}
-		}
-		
-		public System.Data.Linq.Table<DatoCondominio> DatoCondominio
-		{
-			get
-			{
-				return this.GetTable<DatoCondominio>();
 			}
 		}
 		
@@ -685,14 +650,6 @@ namespace SIGEA.Classes.Entities
 			}
 		}
 		
-		public System.Data.Linq.Table<EstructurasTipoConstruccion> EstructurasTipoConstruccion
-		{
-			get
-			{
-				return this.GetTable<EstructurasTipoConstruccion>();
-			}
-		}
-		
 		public System.Data.Linq.Table<FormacionProfesional> FormacionProfesional
 		{
 			get
@@ -746,38 +703,6 @@ namespace SIGEA.Classes.Entities
 			get
 			{
 				return this.GetTable<Inmueble>();
-			}
-		}
-		
-		public System.Data.Linq.Table<InstalacionConstruccion> InstalacionConstruccion
-		{
-			get
-			{
-				return this.GetTable<InstalacionConstruccion>();
-			}
-		}
-		
-		public System.Data.Linq.Table<InstalacionesEspecialesCondominio> InstalacionesEspecialesCondominio
-		{
-			get
-			{
-				return this.GetTable<InstalacionesEspecialesCondominio>();
-			}
-		}
-		
-		public System.Data.Linq.Table<InstalacionesEspecialesConstruccion> InstalacionesEspecialesConstruccion
-		{
-			get
-			{
-				return this.GetTable<InstalacionesEspecialesConstruccion>();
-			}
-		}
-		
-		public System.Data.Linq.Table<InstalacionesTipoConstruccion> InstalacionesTipoConstruccion
-		{
-			get
-			{
-				return this.GetTable<InstalacionesTipoConstruccion>();
 			}
 		}
 		
@@ -893,14 +818,6 @@ namespace SIGEA.Classes.Entities
 			}
 		}
 		
-		public System.Data.Linq.Table<TipoAcabado> TipoAcabado
-		{
-			get
-			{
-				return this.GetTable<TipoAcabado>();
-			}
-		}
-		
 		public System.Data.Linq.Table<TipoAsentamiento> TipoAsentamiento
 		{
 			get
@@ -954,14 +871,6 @@ namespace SIGEA.Classes.Entities
 			get
 			{
 				return this.GetTable<TipoComparable>();
-			}
-		}
-		
-		public System.Data.Linq.Table<TipoConstruccion> TipoConstruccion
-		{
-			get
-			{
-				return this.GetTable<TipoConstruccion>();
 			}
 		}
 		
@@ -1277,6 +1186,86 @@ namespace SIGEA.Classes.Entities
 			}
 		}
 		
+		public System.Data.Linq.Table<TipoAcabado> TipoAcabado
+		{
+			get
+			{
+				return this.GetTable<TipoAcabado>();
+			}
+		}
+		
+		public System.Data.Linq.Table<TipoConstruccion> TipoConstruccion
+		{
+			get
+			{
+				return this.GetTable<TipoConstruccion>();
+			}
+		}
+		
+		public System.Data.Linq.Table<SuperficiesCondominio> SuperficiesCondominio
+		{
+			get
+			{
+				return this.GetTable<SuperficiesCondominio>();
+			}
+		}
+		
+		public System.Data.Linq.Table<AreaComun> AreaComun
+		{
+			get
+			{
+				return this.GetTable<AreaComun>();
+			}
+		}
+		
+		public System.Data.Linq.Table<DatoCondominio> DatoCondominio
+		{
+			get
+			{
+				return this.GetTable<DatoCondominio>();
+			}
+		}
+		
+		public System.Data.Linq.Table<ConstruccionInmueble> ConstruccionInmueble
+		{
+			get
+			{
+				return this.GetTable<ConstruccionInmueble>();
+			}
+		}
+		
+		public System.Data.Linq.Table<InstalacionesTipoConstruccion> InstalacionesTipoConstruccion
+		{
+			get
+			{
+				return this.GetTable<InstalacionesTipoConstruccion>();
+			}
+		}
+		
+		public System.Data.Linq.Table<InstalacionConstruccion> InstalacionConstruccion
+		{
+			get
+			{
+				return this.GetTable<InstalacionConstruccion>();
+			}
+		}
+		
+		public System.Data.Linq.Table<EstructurasTipoConstruccion> EstructurasTipoConstruccion
+		{
+			get
+			{
+				return this.GetTable<EstructurasTipoConstruccion>();
+			}
+		}
+		
+		public System.Data.Linq.Table<AcabadoTipoConstruccion> AcabadoTipoConstruccion
+		{
+			get
+			{
+				return this.GetTable<AcabadoTipoConstruccion>();
+			}
+		}
+		
 		[Function(Name="dbo.GenerarIDE")]
 		public ISingleResult<GenerarIDEResult> GenerarIDE([Parameter(DbType="SmallInt")] System.Nullable<short> mes, [Parameter(DbType="SmallInt")] System.Nullable<short> periodo, [Parameter(DbType="Int")] ref System.Nullable<int> consecutivo, [Parameter(Name="IDE", DbType="NVarChar(20)")] ref string iDE)
 		{
@@ -1284,276 +1273,6 @@ namespace SIGEA.Classes.Entities
 			consecutivo = ((System.Nullable<int>)(result.GetParameterValue(2)));
 			iDE = ((string)(result.GetParameterValue(3)));
 			return ((ISingleResult<GenerarIDEResult>)(result.ReturnValue));
-		}
-	}
-	
-	[Table(Name="dbo.AcabadoTipoConstruccion")]
-	public partial class AcabadoTipoConstruccion : INotifyPropertyChanging, INotifyPropertyChanged
-	{
-		
-		private static PropertyChangingEventArgs emptyChangingEventArgs = new PropertyChangingEventArgs(String.Empty);
-		
-		private int _idConstruccion;
-		
-		private short _numeroTipo;
-		
-		private short _idTipoAcabado;
-		
-		private string _piso;
-		
-		private string _muro;
-		
-		private string _plafon;
-		
-		private EntityRef<TipoAcabado> _TipoAcabado;
-		
-		private EntityRef<TipoConstruccion> _TipoConstruccion;
-		
-    #region Extensibility Method Definitions
-    partial void OnLoaded();
-    partial void OnValidate(System.Data.Linq.ChangeAction action);
-    partial void OnCreated();
-    partial void OnidConstruccionChanging(int value);
-    partial void OnidConstruccionChanged();
-    partial void OnnumeroTipoChanging(short value);
-    partial void OnnumeroTipoChanged();
-    partial void OnidTipoAcabadoChanging(short value);
-    partial void OnidTipoAcabadoChanged();
-    partial void OnpisoChanging(string value);
-    partial void OnpisoChanged();
-    partial void OnmuroChanging(string value);
-    partial void OnmuroChanged();
-    partial void OnplafonChanging(string value);
-    partial void OnplafonChanged();
-    #endregion
-		
-		public AcabadoTipoConstruccion()
-		{
-			this._TipoAcabado = default(EntityRef<TipoAcabado>);
-			this._TipoConstruccion = default(EntityRef<TipoConstruccion>);
-			OnCreated();
-		}
-		
-		[Column(Storage="_idConstruccion", DbType="Int NOT NULL", IsPrimaryKey=true)]
-		public int idConstruccion
-		{
-			get
-			{
-				return this._idConstruccion;
-			}
-			set
-			{
-				if ((this._idConstruccion != value))
-				{
-					if (this._TipoConstruccion.HasLoadedOrAssignedValue)
-					{
-						throw new System.Data.Linq.ForeignKeyReferenceAlreadyHasValueException();
-					}
-					this.OnidConstruccionChanging(value);
-					this.SendPropertyChanging();
-					this._idConstruccion = value;
-					this.SendPropertyChanged("idConstruccion");
-					this.OnidConstruccionChanged();
-				}
-			}
-		}
-		
-		[Column(Storage="_numeroTipo", DbType="SmallInt NOT NULL", IsPrimaryKey=true)]
-		public short numeroTipo
-		{
-			get
-			{
-				return this._numeroTipo;
-			}
-			set
-			{
-				if ((this._numeroTipo != value))
-				{
-					if (this._TipoConstruccion.HasLoadedOrAssignedValue)
-					{
-						throw new System.Data.Linq.ForeignKeyReferenceAlreadyHasValueException();
-					}
-					this.OnnumeroTipoChanging(value);
-					this.SendPropertyChanging();
-					this._numeroTipo = value;
-					this.SendPropertyChanged("numeroTipo");
-					this.OnnumeroTipoChanged();
-				}
-			}
-		}
-		
-		[Column(Storage="_idTipoAcabado", DbType="SmallInt NOT NULL")]
-		public short idTipoAcabado
-		{
-			get
-			{
-				return this._idTipoAcabado;
-			}
-			set
-			{
-				if ((this._idTipoAcabado != value))
-				{
-					if (this._TipoAcabado.HasLoadedOrAssignedValue)
-					{
-						throw new System.Data.Linq.ForeignKeyReferenceAlreadyHasValueException();
-					}
-					this.OnidTipoAcabadoChanging(value);
-					this.SendPropertyChanging();
-					this._idTipoAcabado = value;
-					this.SendPropertyChanged("idTipoAcabado");
-					this.OnidTipoAcabadoChanged();
-				}
-			}
-		}
-		
-		[Column(Storage="_piso", DbType="NVarChar(500) NOT NULL", CanBeNull=false)]
-		public string piso
-		{
-			get
-			{
-				return this._piso;
-			}
-			set
-			{
-				if ((this._piso != value))
-				{
-					this.OnpisoChanging(value);
-					this.SendPropertyChanging();
-					this._piso = value;
-					this.SendPropertyChanged("piso");
-					this.OnpisoChanged();
-				}
-			}
-		}
-		
-		[Column(Storage="_muro", DbType="NVarChar(500) NOT NULL", CanBeNull=false)]
-		public string muro
-		{
-			get
-			{
-				return this._muro;
-			}
-			set
-			{
-				if ((this._muro != value))
-				{
-					this.OnmuroChanging(value);
-					this.SendPropertyChanging();
-					this._muro = value;
-					this.SendPropertyChanged("muro");
-					this.OnmuroChanged();
-				}
-			}
-		}
-		
-		[Column(Storage="_plafon", DbType="NVarChar(500) NOT NULL", CanBeNull=false)]
-		public string plafon
-		{
-			get
-			{
-				return this._plafon;
-			}
-			set
-			{
-				if ((this._plafon != value))
-				{
-					this.OnplafonChanging(value);
-					this.SendPropertyChanging();
-					this._plafon = value;
-					this.SendPropertyChanged("plafon");
-					this.OnplafonChanged();
-				}
-			}
-		}
-		
-		[Association(Name="TipoAcabado_AcabadoTipoConstruccion", Storage="_TipoAcabado", ThisKey="idTipoAcabado", OtherKey="idTipoAcabado", IsForeignKey=true)]
-		public TipoAcabado TipoAcabado
-		{
-			get
-			{
-				return this._TipoAcabado.Entity;
-			}
-			set
-			{
-				TipoAcabado previousValue = this._TipoAcabado.Entity;
-				if (((previousValue != value) 
-							|| (this._TipoAcabado.HasLoadedOrAssignedValue == false)))
-				{
-					this.SendPropertyChanging();
-					if ((previousValue != null))
-					{
-						this._TipoAcabado.Entity = null;
-						previousValue.AcabadoTipoConstruccion.Remove(this);
-					}
-					this._TipoAcabado.Entity = value;
-					if ((value != null))
-					{
-						value.AcabadoTipoConstruccion.Add(this);
-						this._idTipoAcabado = value.idTipoAcabado;
-					}
-					else
-					{
-						this._idTipoAcabado = default(short);
-					}
-					this.SendPropertyChanged("TipoAcabado");
-				}
-			}
-		}
-		
-		[Association(Name="TipoConstruccion_AcabadoTipoConstruccion", Storage="_TipoConstruccion", ThisKey="idConstruccion,numeroTipo", OtherKey="idConstruccion,numeroTipo", IsForeignKey=true, DeleteOnNull=true, DeleteRule="CASCADE")]
-		public TipoConstruccion TipoConstruccion
-		{
-			get
-			{
-				return this._TipoConstruccion.Entity;
-			}
-			set
-			{
-				TipoConstruccion previousValue = this._TipoConstruccion.Entity;
-				if (((previousValue != value) 
-							|| (this._TipoConstruccion.HasLoadedOrAssignedValue == false)))
-				{
-					this.SendPropertyChanging();
-					if ((previousValue != null))
-					{
-						this._TipoConstruccion.Entity = null;
-						previousValue.AcabadoTipoConstruccion = null;
-					}
-					this._TipoConstruccion.Entity = value;
-					if ((value != null))
-					{
-						value.AcabadoTipoConstruccion = this;
-						this._idConstruccion = value.idConstruccion;
-						this._numeroTipo = value.numeroTipo;
-					}
-					else
-					{
-						this._idConstruccion = default(int);
-						this._numeroTipo = default(short);
-					}
-					this.SendPropertyChanged("TipoConstruccion");
-				}
-			}
-		}
-		
-		public event PropertyChangingEventHandler PropertyChanging;
-		
-		public event PropertyChangedEventHandler PropertyChanged;
-		
-		protected virtual void SendPropertyChanging()
-		{
-			if ((this.PropertyChanging != null))
-			{
-				this.PropertyChanging(this, emptyChangingEventArgs);
-			}
-		}
-		
-		protected virtual void SendPropertyChanged(String propertyName)
-		{
-			if ((this.PropertyChanged != null))
-			{
-				this.PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
-			}
 		}
 	}
 	
@@ -2902,181 +2621,6 @@ namespace SIGEA.Classes.Entities
 		{
 			this.SendPropertyChanging();
 			entity.Archivo = null;
-		}
-	}
-	
-	[Table(Name="dbo.AreaComun")]
-	public partial class AreaComun : INotifyPropertyChanging, INotifyPropertyChanged
-	{
-		
-		private static PropertyChangingEventArgs emptyChangingEventArgs = new PropertyChangingEventArgs(String.Empty);
-		
-		private int _idArea;
-		
-		private int _idCondominio;
-		
-		private string _concepto;
-		
-		private double _superficie;
-		
-		private EntityRef<DatoCondominio> _DatoCondominio;
-		
-    #region Extensibility Method Definitions
-    partial void OnLoaded();
-    partial void OnValidate(System.Data.Linq.ChangeAction action);
-    partial void OnCreated();
-    partial void OnidAreaChanging(int value);
-    partial void OnidAreaChanged();
-    partial void OnidCondominioChanging(int value);
-    partial void OnidCondominioChanged();
-    partial void OnconceptoChanging(string value);
-    partial void OnconceptoChanged();
-    partial void OnsuperficieChanging(double value);
-    partial void OnsuperficieChanged();
-    #endregion
-		
-		public AreaComun()
-		{
-			this._DatoCondominio = default(EntityRef<DatoCondominio>);
-			OnCreated();
-		}
-		
-		[Column(Storage="_idArea", AutoSync=AutoSync.OnInsert, DbType="Int NOT NULL IDENTITY", IsPrimaryKey=true, IsDbGenerated=true)]
-		public int idArea
-		{
-			get
-			{
-				return this._idArea;
-			}
-			set
-			{
-				if ((this._idArea != value))
-				{
-					this.OnidAreaChanging(value);
-					this.SendPropertyChanging();
-					this._idArea = value;
-					this.SendPropertyChanged("idArea");
-					this.OnidAreaChanged();
-				}
-			}
-		}
-		
-		[Column(Storage="_idCondominio", DbType="Int NOT NULL")]
-		public int idCondominio
-		{
-			get
-			{
-				return this._idCondominio;
-			}
-			set
-			{
-				if ((this._idCondominio != value))
-				{
-					if (this._DatoCondominio.HasLoadedOrAssignedValue)
-					{
-						throw new System.Data.Linq.ForeignKeyReferenceAlreadyHasValueException();
-					}
-					this.OnidCondominioChanging(value);
-					this.SendPropertyChanging();
-					this._idCondominio = value;
-					this.SendPropertyChanged("idCondominio");
-					this.OnidCondominioChanged();
-				}
-			}
-		}
-		
-		[Column(Storage="_concepto", DbType="NVarChar(40) NOT NULL", CanBeNull=false)]
-		public string concepto
-		{
-			get
-			{
-				return this._concepto;
-			}
-			set
-			{
-				if ((this._concepto != value))
-				{
-					this.OnconceptoChanging(value);
-					this.SendPropertyChanging();
-					this._concepto = value;
-					this.SendPropertyChanged("concepto");
-					this.OnconceptoChanged();
-				}
-			}
-		}
-		
-		[Column(Storage="_superficie", DbType="Float NOT NULL")]
-		public double superficie
-		{
-			get
-			{
-				return this._superficie;
-			}
-			set
-			{
-				if ((this._superficie != value))
-				{
-					this.OnsuperficieChanging(value);
-					this.SendPropertyChanging();
-					this._superficie = value;
-					this.SendPropertyChanged("superficie");
-					this.OnsuperficieChanged();
-				}
-			}
-		}
-		
-		[Association(Name="DatoCondominio_AreaComun", Storage="_DatoCondominio", ThisKey="idCondominio", OtherKey="idCondominio", IsForeignKey=true, DeleteOnNull=true, DeleteRule="CASCADE")]
-		public DatoCondominio DatoCondominio
-		{
-			get
-			{
-				return this._DatoCondominio.Entity;
-			}
-			set
-			{
-				DatoCondominio previousValue = this._DatoCondominio.Entity;
-				if (((previousValue != value) 
-							|| (this._DatoCondominio.HasLoadedOrAssignedValue == false)))
-				{
-					this.SendPropertyChanging();
-					if ((previousValue != null))
-					{
-						this._DatoCondominio.Entity = null;
-						previousValue.AreaComun.Remove(this);
-					}
-					this._DatoCondominio.Entity = value;
-					if ((value != null))
-					{
-						value.AreaComun.Add(this);
-						this._idCondominio = value.idCondominio;
-					}
-					else
-					{
-						this._idCondominio = default(int);
-					}
-					this.SendPropertyChanged("DatoCondominio");
-				}
-			}
-		}
-		
-		public event PropertyChangingEventHandler PropertyChanging;
-		
-		public event PropertyChangedEventHandler PropertyChanged;
-		
-		protected virtual void SendPropertyChanging()
-		{
-			if ((this.PropertyChanging != null))
-			{
-				this.PropertyChanging(this, emptyChangingEventArgs);
-			}
-		}
-		
-		protected virtual void SendPropertyChanged(String propertyName)
-		{
-			if ((this.PropertyChanged != null))
-			{
-				this.PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
-			}
 		}
 	}
 	
@@ -6639,606 +6183,6 @@ namespace SIGEA.Classes.Entities
 		}
 	}
 	
-	[Table(Name="dbo.ConstruccionInmueble")]
-	public partial class ConstruccionInmueble : INotifyPropertyChanging, INotifyPropertyChanged
-	{
-		
-		private static PropertyChangingEventArgs emptyChangingEventArgs = new PropertyChangingEventArgs(String.Empty);
-		
-		private int _idConstruccion;
-		
-		private int _idInmueble;
-		
-		private short _idClase;
-		
-		private short _idConservacion;
-		
-		private short _idCalidadProyecto;
-		
-		private string _constructor;
-		
-		private double _avanceObra;
-		
-		private double _edad;
-		
-		private double _vidaUtil;
-		
-		private short _nivelesConstruccion;
-		
-		private short _nivelEdificio;
-		
-		private bool _horizontal;
-		
-		private bool _vertical;
-		
-		private int _unidadRentable;
-		
-		private int _idCondominio;
-		
-		private EntitySet<InstalacionConstruccion> _InstalacionConstruccion;
-		
-		private EntityRef<InstalacionesEspecialesCondominio> _InstalacionesEspecialesCondominio;
-		
-		private EntityRef<InstalacionesEspecialesConstruccion> _InstalacionesEspecialesConstruccion;
-		
-		private EntitySet<TipoConstruccion> _TipoConstruccion;
-		
-		private EntityRef<DatoCondominio> _DatoCondominio;
-		
-		private EntityRef<Inmueble> _Inmueble;
-		
-    #region Extensibility Method Definitions
-    partial void OnLoaded();
-    partial void OnValidate(System.Data.Linq.ChangeAction action);
-    partial void OnCreated();
-    partial void OnidConstruccionChanging(int value);
-    partial void OnidConstruccionChanged();
-    partial void OnidInmuebleChanging(int value);
-    partial void OnidInmuebleChanged();
-    partial void OnidClaseChanging(short value);
-    partial void OnidClaseChanged();
-    partial void OnidConservacionChanging(short value);
-    partial void OnidConservacionChanged();
-    partial void OnidCalidadProyectoChanging(short value);
-    partial void OnidCalidadProyectoChanged();
-    partial void OnconstructorChanging(string value);
-    partial void OnconstructorChanged();
-    partial void OnavanceObraChanging(double value);
-    partial void OnavanceObraChanged();
-    partial void OnedadChanging(double value);
-    partial void OnedadChanged();
-    partial void OnvidaUtilChanging(double value);
-    partial void OnvidaUtilChanged();
-    partial void OnnivelesConstruccionChanging(short value);
-    partial void OnnivelesConstruccionChanged();
-    partial void OnnivelEdificioChanging(short value);
-    partial void OnnivelEdificioChanged();
-    partial void OnhorizontalChanging(bool value);
-    partial void OnhorizontalChanged();
-    partial void OnverticalChanging(bool value);
-    partial void OnverticalChanged();
-    partial void OnunidadRentableChanging(int value);
-    partial void OnunidadRentableChanged();
-    partial void OnidCondominioChanging(int value);
-    partial void OnidCondominioChanged();
-    #endregion
-		
-		public ConstruccionInmueble()
-		{
-			this._InstalacionConstruccion = new EntitySet<InstalacionConstruccion>(new Action<InstalacionConstruccion>(this.attach_InstalacionConstruccion), new Action<InstalacionConstruccion>(this.detach_InstalacionConstruccion));
-			this._InstalacionesEspecialesCondominio = default(EntityRef<InstalacionesEspecialesCondominio>);
-			this._InstalacionesEspecialesConstruccion = default(EntityRef<InstalacionesEspecialesConstruccion>);
-			this._TipoConstruccion = new EntitySet<TipoConstruccion>(new Action<TipoConstruccion>(this.attach_TipoConstruccion), new Action<TipoConstruccion>(this.detach_TipoConstruccion));
-			this._DatoCondominio = default(EntityRef<DatoCondominio>);
-			this._Inmueble = default(EntityRef<Inmueble>);
-			OnCreated();
-		}
-		
-		[Column(Storage="_idConstruccion", AutoSync=AutoSync.OnInsert, DbType="Int NOT NULL IDENTITY", IsPrimaryKey=true, IsDbGenerated=true)]
-		public int idConstruccion
-		{
-			get
-			{
-				return this._idConstruccion;
-			}
-			set
-			{
-				if ((this._idConstruccion != value))
-				{
-					this.OnidConstruccionChanging(value);
-					this.SendPropertyChanging();
-					this._idConstruccion = value;
-					this.SendPropertyChanged("idConstruccion");
-					this.OnidConstruccionChanged();
-				}
-			}
-		}
-		
-		[Column(Storage="_idInmueble", DbType="Int NOT NULL")]
-		public int idInmueble
-		{
-			get
-			{
-				return this._idInmueble;
-			}
-			set
-			{
-				if ((this._idInmueble != value))
-				{
-					if (this._Inmueble.HasLoadedOrAssignedValue)
-					{
-						throw new System.Data.Linq.ForeignKeyReferenceAlreadyHasValueException();
-					}
-					this.OnidInmuebleChanging(value);
-					this.SendPropertyChanging();
-					this._idInmueble = value;
-					this.SendPropertyChanged("idInmueble");
-					this.OnidInmuebleChanged();
-				}
-			}
-		}
-		
-		[Column(Storage="_idClase", DbType="SmallInt NOT NULL")]
-		public short idClase
-		{
-			get
-			{
-				return this._idClase;
-			}
-			set
-			{
-				if ((this._idClase != value))
-				{
-					this.OnidClaseChanging(value);
-					this.SendPropertyChanging();
-					this._idClase = value;
-					this.SendPropertyChanged("idClase");
-					this.OnidClaseChanged();
-				}
-			}
-		}
-		
-		[Column(Storage="_idConservacion", DbType="SmallInt NOT NULL")]
-		public short idConservacion
-		{
-			get
-			{
-				return this._idConservacion;
-			}
-			set
-			{
-				if ((this._idConservacion != value))
-				{
-					this.OnidConservacionChanging(value);
-					this.SendPropertyChanging();
-					this._idConservacion = value;
-					this.SendPropertyChanged("idConservacion");
-					this.OnidConservacionChanged();
-				}
-			}
-		}
-		
-		[Column(Storage="_idCalidadProyecto", DbType="SmallInt NOT NULL")]
-		public short idCalidadProyecto
-		{
-			get
-			{
-				return this._idCalidadProyecto;
-			}
-			set
-			{
-				if ((this._idCalidadProyecto != value))
-				{
-					this.OnidCalidadProyectoChanging(value);
-					this.SendPropertyChanging();
-					this._idCalidadProyecto = value;
-					this.SendPropertyChanged("idCalidadProyecto");
-					this.OnidCalidadProyectoChanged();
-				}
-			}
-		}
-		
-		[Column(Storage="_constructor", DbType="NVarChar(50) NOT NULL", CanBeNull=false)]
-		public string constructor
-		{
-			get
-			{
-				return this._constructor;
-			}
-			set
-			{
-				if ((this._constructor != value))
-				{
-					this.OnconstructorChanging(value);
-					this.SendPropertyChanging();
-					this._constructor = value;
-					this.SendPropertyChanged("constructor");
-					this.OnconstructorChanged();
-				}
-			}
-		}
-		
-		[Column(Storage="_avanceObra", DbType="Float NOT NULL")]
-		public double avanceObra
-		{
-			get
-			{
-				return this._avanceObra;
-			}
-			set
-			{
-				if ((this._avanceObra != value))
-				{
-					this.OnavanceObraChanging(value);
-					this.SendPropertyChanging();
-					this._avanceObra = value;
-					this.SendPropertyChanged("avanceObra");
-					this.OnavanceObraChanged();
-				}
-			}
-		}
-		
-		[Column(Storage="_edad", DbType="Float NOT NULL")]
-		public double edad
-		{
-			get
-			{
-				return this._edad;
-			}
-			set
-			{
-				if ((this._edad != value))
-				{
-					this.OnedadChanging(value);
-					this.SendPropertyChanging();
-					this._edad = value;
-					this.SendPropertyChanged("edad");
-					this.OnedadChanged();
-				}
-			}
-		}
-		
-		[Column(Storage="_vidaUtil", DbType="Float NOT NULL")]
-		public double vidaUtil
-		{
-			get
-			{
-				return this._vidaUtil;
-			}
-			set
-			{
-				if ((this._vidaUtil != value))
-				{
-					this.OnvidaUtilChanging(value);
-					this.SendPropertyChanging();
-					this._vidaUtil = value;
-					this.SendPropertyChanged("vidaUtil");
-					this.OnvidaUtilChanged();
-				}
-			}
-		}
-		
-		[Column(Storage="_nivelesConstruccion", DbType="SmallInt NOT NULL")]
-		public short nivelesConstruccion
-		{
-			get
-			{
-				return this._nivelesConstruccion;
-			}
-			set
-			{
-				if ((this._nivelesConstruccion != value))
-				{
-					this.OnnivelesConstruccionChanging(value);
-					this.SendPropertyChanging();
-					this._nivelesConstruccion = value;
-					this.SendPropertyChanged("nivelesConstruccion");
-					this.OnnivelesConstruccionChanged();
-				}
-			}
-		}
-		
-		[Column(Storage="_nivelEdificio", DbType="SmallInt NOT NULL")]
-		public short nivelEdificio
-		{
-			get
-			{
-				return this._nivelEdificio;
-			}
-			set
-			{
-				if ((this._nivelEdificio != value))
-				{
-					this.OnnivelEdificioChanging(value);
-					this.SendPropertyChanging();
-					this._nivelEdificio = value;
-					this.SendPropertyChanged("nivelEdificio");
-					this.OnnivelEdificioChanged();
-				}
-			}
-		}
-		
-		[Column(Storage="_horizontal", DbType="Bit NOT NULL")]
-		public bool horizontal
-		{
-			get
-			{
-				return this._horizontal;
-			}
-			set
-			{
-				if ((this._horizontal != value))
-				{
-					this.OnhorizontalChanging(value);
-					this.SendPropertyChanging();
-					this._horizontal = value;
-					this.SendPropertyChanged("horizontal");
-					this.OnhorizontalChanged();
-				}
-			}
-		}
-		
-		[Column(Storage="_vertical", DbType="Bit NOT NULL")]
-		public bool vertical
-		{
-			get
-			{
-				return this._vertical;
-			}
-			set
-			{
-				if ((this._vertical != value))
-				{
-					this.OnverticalChanging(value);
-					this.SendPropertyChanging();
-					this._vertical = value;
-					this.SendPropertyChanged("vertical");
-					this.OnverticalChanged();
-				}
-			}
-		}
-		
-		[Column(Storage="_unidadRentable", DbType="Int NOT NULL")]
-		public int unidadRentable
-		{
-			get
-			{
-				return this._unidadRentable;
-			}
-			set
-			{
-				if ((this._unidadRentable != value))
-				{
-					this.OnunidadRentableChanging(value);
-					this.SendPropertyChanging();
-					this._unidadRentable = value;
-					this.SendPropertyChanged("unidadRentable");
-					this.OnunidadRentableChanged();
-				}
-			}
-		}
-		
-		[Column(Storage="_idCondominio", DbType="Int NOT NULL")]
-		public int idCondominio
-		{
-			get
-			{
-				return this._idCondominio;
-			}
-			set
-			{
-				if ((this._idCondominio != value))
-				{
-					if (this._DatoCondominio.HasLoadedOrAssignedValue)
-					{
-						throw new System.Data.Linq.ForeignKeyReferenceAlreadyHasValueException();
-					}
-					this.OnidCondominioChanging(value);
-					this.SendPropertyChanging();
-					this._idCondominio = value;
-					this.SendPropertyChanged("idCondominio");
-					this.OnidCondominioChanged();
-				}
-			}
-		}
-		
-		[Association(Name="ConstruccionInmueble_InstalacionConstruccion", Storage="_InstalacionConstruccion", ThisKey="idConstruccion", OtherKey="idConstruccion")]
-		public EntitySet<InstalacionConstruccion> InstalacionConstruccion
-		{
-			get
-			{
-				return this._InstalacionConstruccion;
-			}
-			set
-			{
-				this._InstalacionConstruccion.Assign(value);
-			}
-		}
-		
-		[Association(Name="ConstruccionInmueble_InstalacionesEspecialesCondominio", Storage="_InstalacionesEspecialesCondominio", ThisKey="idConstruccion", OtherKey="idConstruccion", IsUnique=true, IsForeignKey=false)]
-		public InstalacionesEspecialesCondominio InstalacionesEspecialesCondominio
-		{
-			get
-			{
-				return this._InstalacionesEspecialesCondominio.Entity;
-			}
-			set
-			{
-				InstalacionesEspecialesCondominio previousValue = this._InstalacionesEspecialesCondominio.Entity;
-				if (((previousValue != value) 
-							|| (this._InstalacionesEspecialesCondominio.HasLoadedOrAssignedValue == false)))
-				{
-					this.SendPropertyChanging();
-					if ((previousValue != null))
-					{
-						this._InstalacionesEspecialesCondominio.Entity = null;
-						previousValue.ConstruccionInmueble = null;
-					}
-					this._InstalacionesEspecialesCondominio.Entity = value;
-					if ((value != null))
-					{
-						value.ConstruccionInmueble = this;
-					}
-					this.SendPropertyChanged("InstalacionesEspecialesCondominio");
-				}
-			}
-		}
-		
-		[Association(Name="ConstruccionInmueble_InstalacionesEspecialesConstruccion", Storage="_InstalacionesEspecialesConstruccion", ThisKey="idConstruccion", OtherKey="idConstruccion", IsUnique=true, IsForeignKey=false)]
-		public InstalacionesEspecialesConstruccion InstalacionesEspecialesConstruccion
-		{
-			get
-			{
-				return this._InstalacionesEspecialesConstruccion.Entity;
-			}
-			set
-			{
-				InstalacionesEspecialesConstruccion previousValue = this._InstalacionesEspecialesConstruccion.Entity;
-				if (((previousValue != value) 
-							|| (this._InstalacionesEspecialesConstruccion.HasLoadedOrAssignedValue == false)))
-				{
-					this.SendPropertyChanging();
-					if ((previousValue != null))
-					{
-						this._InstalacionesEspecialesConstruccion.Entity = null;
-						previousValue.ConstruccionInmueble = null;
-					}
-					this._InstalacionesEspecialesConstruccion.Entity = value;
-					if ((value != null))
-					{
-						value.ConstruccionInmueble = this;
-					}
-					this.SendPropertyChanged("InstalacionesEspecialesConstruccion");
-				}
-			}
-		}
-		
-		[Association(Name="ConstruccionInmueble_TipoConstruccion", Storage="_TipoConstruccion", ThisKey="idConstruccion", OtherKey="idConstruccion")]
-		public EntitySet<TipoConstruccion> TipoConstruccion
-		{
-			get
-			{
-				return this._TipoConstruccion;
-			}
-			set
-			{
-				this._TipoConstruccion.Assign(value);
-			}
-		}
-		
-		[Association(Name="DatoCondominio_ConstruccionInmueble", Storage="_DatoCondominio", ThisKey="idCondominio", OtherKey="idCondominio", IsForeignKey=true)]
-		public DatoCondominio DatoCondominio
-		{
-			get
-			{
-				return this._DatoCondominio.Entity;
-			}
-			set
-			{
-				DatoCondominio previousValue = this._DatoCondominio.Entity;
-				if (((previousValue != value) 
-							|| (this._DatoCondominio.HasLoadedOrAssignedValue == false)))
-				{
-					this.SendPropertyChanging();
-					if ((previousValue != null))
-					{
-						this._DatoCondominio.Entity = null;
-						previousValue.ConstruccionInmueble.Remove(this);
-					}
-					this._DatoCondominio.Entity = value;
-					if ((value != null))
-					{
-						value.ConstruccionInmueble.Add(this);
-						this._idCondominio = value.idCondominio;
-					}
-					else
-					{
-						this._idCondominio = default(int);
-					}
-					this.SendPropertyChanged("DatoCondominio");
-				}
-			}
-		}
-		
-		[Association(Name="Inmueble_ConstruccionInmueble", Storage="_Inmueble", ThisKey="idInmueble", OtherKey="idInmueble", IsForeignKey=true)]
-		public Inmueble Inmueble
-		{
-			get
-			{
-				return this._Inmueble.Entity;
-			}
-			set
-			{
-				Inmueble previousValue = this._Inmueble.Entity;
-				if (((previousValue != value) 
-							|| (this._Inmueble.HasLoadedOrAssignedValue == false)))
-				{
-					this.SendPropertyChanging();
-					if ((previousValue != null))
-					{
-						this._Inmueble.Entity = null;
-						previousValue.ConstruccionInmueble.Remove(this);
-					}
-					this._Inmueble.Entity = value;
-					if ((value != null))
-					{
-						value.ConstruccionInmueble.Add(this);
-						this._idInmueble = value.idInmueble;
-					}
-					else
-					{
-						this._idInmueble = default(int);
-					}
-					this.SendPropertyChanged("Inmueble");
-				}
-			}
-		}
-		
-		public event PropertyChangingEventHandler PropertyChanging;
-		
-		public event PropertyChangedEventHandler PropertyChanged;
-		
-		protected virtual void SendPropertyChanging()
-		{
-			if ((this.PropertyChanging != null))
-			{
-				this.PropertyChanging(this, emptyChangingEventArgs);
-			}
-		}
-		
-		protected virtual void SendPropertyChanged(String propertyName)
-		{
-			if ((this.PropertyChanged != null))
-			{
-				this.PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
-			}
-		}
-		
-		private void attach_InstalacionConstruccion(InstalacionConstruccion entity)
-		{
-			this.SendPropertyChanging();
-			entity.ConstruccionInmueble = this;
-		}
-		
-		private void detach_InstalacionConstruccion(InstalacionConstruccion entity)
-		{
-			this.SendPropertyChanging();
-			entity.ConstruccionInmueble = null;
-		}
-		
-		private void attach_TipoConstruccion(TipoConstruccion entity)
-		{
-			this.SendPropertyChanging();
-			entity.ConstruccionInmueble = this;
-		}
-		
-		private void detach_TipoConstruccion(TipoConstruccion entity)
-		{
-			this.SendPropertyChanging();
-			entity.ConstruccionInmueble = null;
-		}
-	}
-	
 	[Table(Name="dbo.Consulta")]
 	public partial class Consulta
 	{
@@ -8216,412 +7160,6 @@ namespace SIGEA.Classes.Entities
 		{
 			this.SendPropertyChanging();
 			entity.DatoBancario = null;
-		}
-	}
-	
-	[Table(Name="dbo.DatoCondominio")]
-	public partial class DatoCondominio : INotifyPropertyChanging, INotifyPropertyChanged
-	{
-		
-		private static PropertyChangingEventArgs emptyChangingEventArgs = new PropertyChangingEventArgs(String.Empty);
-		
-		private int _idCondominio;
-		
-		private int _idInmueble;
-		
-		private double _totalTerreno;
-		
-		private double _indiviso;
-		
-		private double _privativo;
-		
-		private int _fuenteIndiviso;
-		
-		private string _otraFuenteIndiviso;
-		
-		private int _fuentePrivativo;
-		
-		private string _otraFuentePrivativo;
-		
-		private double _avanceObra;
-		
-		private int _unidadesRentables;
-		
-		private int _unidadesNucleo;
-		
-		private int _unidadesConjunto;
-		
-		private EntitySet<AreaComun> _AreaComun;
-		
-		private EntitySet<ConstruccionInmueble> _ConstruccionInmueble;
-		
-    #region Extensibility Method Definitions
-    partial void OnLoaded();
-    partial void OnValidate(System.Data.Linq.ChangeAction action);
-    partial void OnCreated();
-    partial void OnidCondominioChanging(int value);
-    partial void OnidCondominioChanged();
-    partial void OnidInmuebleChanging(int value);
-    partial void OnidInmuebleChanged();
-    partial void OntotalTerrenoChanging(double value);
-    partial void OntotalTerrenoChanged();
-    partial void OnindivisoChanging(double value);
-    partial void OnindivisoChanged();
-    partial void OnprivativoChanging(double value);
-    partial void OnprivativoChanged();
-    partial void OnfuenteIndivisoChanging(int value);
-    partial void OnfuenteIndivisoChanged();
-    partial void OnotraFuenteIndivisoChanging(string value);
-    partial void OnotraFuenteIndivisoChanged();
-    partial void OnfuentePrivativoChanging(int value);
-    partial void OnfuentePrivativoChanged();
-    partial void OnotraFuentePrivativoChanging(string value);
-    partial void OnotraFuentePrivativoChanged();
-    partial void OnavanceObraChanging(double value);
-    partial void OnavanceObraChanged();
-    partial void OnunidadesRentablesChanging(int value);
-    partial void OnunidadesRentablesChanged();
-    partial void OnunidadesNucleoChanging(int value);
-    partial void OnunidadesNucleoChanged();
-    partial void OnunidadesConjuntoChanging(int value);
-    partial void OnunidadesConjuntoChanged();
-    #endregion
-		
-		public DatoCondominio()
-		{
-			this._AreaComun = new EntitySet<AreaComun>(new Action<AreaComun>(this.attach_AreaComun), new Action<AreaComun>(this.detach_AreaComun));
-			this._ConstruccionInmueble = new EntitySet<ConstruccionInmueble>(new Action<ConstruccionInmueble>(this.attach_ConstruccionInmueble), new Action<ConstruccionInmueble>(this.detach_ConstruccionInmueble));
-			OnCreated();
-		}
-		
-		[Column(Storage="_idCondominio", AutoSync=AutoSync.OnInsert, DbType="Int NOT NULL IDENTITY", IsPrimaryKey=true, IsDbGenerated=true)]
-		public int idCondominio
-		{
-			get
-			{
-				return this._idCondominio;
-			}
-			set
-			{
-				if ((this._idCondominio != value))
-				{
-					this.OnidCondominioChanging(value);
-					this.SendPropertyChanging();
-					this._idCondominio = value;
-					this.SendPropertyChanged("idCondominio");
-					this.OnidCondominioChanged();
-				}
-			}
-		}
-		
-		[Column(Storage="_idInmueble", DbType="Int NOT NULL")]
-		public int idInmueble
-		{
-			get
-			{
-				return this._idInmueble;
-			}
-			set
-			{
-				if ((this._idInmueble != value))
-				{
-					this.OnidInmuebleChanging(value);
-					this.SendPropertyChanging();
-					this._idInmueble = value;
-					this.SendPropertyChanged("idInmueble");
-					this.OnidInmuebleChanged();
-				}
-			}
-		}
-		
-		[Column(Storage="_totalTerreno", DbType="Float NOT NULL")]
-		public double totalTerreno
-		{
-			get
-			{
-				return this._totalTerreno;
-			}
-			set
-			{
-				if ((this._totalTerreno != value))
-				{
-					this.OntotalTerrenoChanging(value);
-					this.SendPropertyChanging();
-					this._totalTerreno = value;
-					this.SendPropertyChanged("totalTerreno");
-					this.OntotalTerrenoChanged();
-				}
-			}
-		}
-		
-		[Column(Storage="_indiviso", DbType="Float NOT NULL")]
-		public double indiviso
-		{
-			get
-			{
-				return this._indiviso;
-			}
-			set
-			{
-				if ((this._indiviso != value))
-				{
-					this.OnindivisoChanging(value);
-					this.SendPropertyChanging();
-					this._indiviso = value;
-					this.SendPropertyChanged("indiviso");
-					this.OnindivisoChanged();
-				}
-			}
-		}
-		
-		[Column(Storage="_privativo", DbType="Float NOT NULL")]
-		public double privativo
-		{
-			get
-			{
-				return this._privativo;
-			}
-			set
-			{
-				if ((this._privativo != value))
-				{
-					this.OnprivativoChanging(value);
-					this.SendPropertyChanging();
-					this._privativo = value;
-					this.SendPropertyChanged("privativo");
-					this.OnprivativoChanged();
-				}
-			}
-		}
-		
-		[Column(Storage="_fuenteIndiviso", DbType="Int NOT NULL")]
-		public int fuenteIndiviso
-		{
-			get
-			{
-				return this._fuenteIndiviso;
-			}
-			set
-			{
-				if ((this._fuenteIndiviso != value))
-				{
-					this.OnfuenteIndivisoChanging(value);
-					this.SendPropertyChanging();
-					this._fuenteIndiviso = value;
-					this.SendPropertyChanged("fuenteIndiviso");
-					this.OnfuenteIndivisoChanged();
-				}
-			}
-		}
-		
-		[Column(Storage="_otraFuenteIndiviso", DbType="NVarChar(50) NOT NULL", CanBeNull=false)]
-		public string otraFuenteIndiviso
-		{
-			get
-			{
-				return this._otraFuenteIndiviso;
-			}
-			set
-			{
-				if ((this._otraFuenteIndiviso != value))
-				{
-					this.OnotraFuenteIndivisoChanging(value);
-					this.SendPropertyChanging();
-					this._otraFuenteIndiviso = value;
-					this.SendPropertyChanged("otraFuenteIndiviso");
-					this.OnotraFuenteIndivisoChanged();
-				}
-			}
-		}
-		
-		[Column(Storage="_fuentePrivativo", DbType="Int NOT NULL")]
-		public int fuentePrivativo
-		{
-			get
-			{
-				return this._fuentePrivativo;
-			}
-			set
-			{
-				if ((this._fuentePrivativo != value))
-				{
-					this.OnfuentePrivativoChanging(value);
-					this.SendPropertyChanging();
-					this._fuentePrivativo = value;
-					this.SendPropertyChanged("fuentePrivativo");
-					this.OnfuentePrivativoChanged();
-				}
-			}
-		}
-		
-		[Column(Storage="_otraFuentePrivativo", DbType="NVarChar(50) NOT NULL", CanBeNull=false)]
-		public string otraFuentePrivativo
-		{
-			get
-			{
-				return this._otraFuentePrivativo;
-			}
-			set
-			{
-				if ((this._otraFuentePrivativo != value))
-				{
-					this.OnotraFuentePrivativoChanging(value);
-					this.SendPropertyChanging();
-					this._otraFuentePrivativo = value;
-					this.SendPropertyChanged("otraFuentePrivativo");
-					this.OnotraFuentePrivativoChanged();
-				}
-			}
-		}
-		
-		[Column(Storage="_avanceObra", DbType="Float NOT NULL")]
-		public double avanceObra
-		{
-			get
-			{
-				return this._avanceObra;
-			}
-			set
-			{
-				if ((this._avanceObra != value))
-				{
-					this.OnavanceObraChanging(value);
-					this.SendPropertyChanging();
-					this._avanceObra = value;
-					this.SendPropertyChanged("avanceObra");
-					this.OnavanceObraChanged();
-				}
-			}
-		}
-		
-		[Column(Storage="_unidadesRentables", DbType="Int NOT NULL")]
-		public int unidadesRentables
-		{
-			get
-			{
-				return this._unidadesRentables;
-			}
-			set
-			{
-				if ((this._unidadesRentables != value))
-				{
-					this.OnunidadesRentablesChanging(value);
-					this.SendPropertyChanging();
-					this._unidadesRentables = value;
-					this.SendPropertyChanged("unidadesRentables");
-					this.OnunidadesRentablesChanged();
-				}
-			}
-		}
-		
-		[Column(Storage="_unidadesNucleo", DbType="Int NOT NULL")]
-		public int unidadesNucleo
-		{
-			get
-			{
-				return this._unidadesNucleo;
-			}
-			set
-			{
-				if ((this._unidadesNucleo != value))
-				{
-					this.OnunidadesNucleoChanging(value);
-					this.SendPropertyChanging();
-					this._unidadesNucleo = value;
-					this.SendPropertyChanged("unidadesNucleo");
-					this.OnunidadesNucleoChanged();
-				}
-			}
-		}
-		
-		[Column(Storage="_unidadesConjunto", DbType="Int NOT NULL")]
-		public int unidadesConjunto
-		{
-			get
-			{
-				return this._unidadesConjunto;
-			}
-			set
-			{
-				if ((this._unidadesConjunto != value))
-				{
-					this.OnunidadesConjuntoChanging(value);
-					this.SendPropertyChanging();
-					this._unidadesConjunto = value;
-					this.SendPropertyChanged("unidadesConjunto");
-					this.OnunidadesConjuntoChanged();
-				}
-			}
-		}
-		
-		[Association(Name="DatoCondominio_AreaComun", Storage="_AreaComun", ThisKey="idCondominio", OtherKey="idCondominio")]
-		public EntitySet<AreaComun> AreaComun
-		{
-			get
-			{
-				return this._AreaComun;
-			}
-			set
-			{
-				this._AreaComun.Assign(value);
-			}
-		}
-		
-		[Association(Name="DatoCondominio_ConstruccionInmueble", Storage="_ConstruccionInmueble", ThisKey="idCondominio", OtherKey="idCondominio")]
-		public EntitySet<ConstruccionInmueble> ConstruccionInmueble
-		{
-			get
-			{
-				return this._ConstruccionInmueble;
-			}
-			set
-			{
-				this._ConstruccionInmueble.Assign(value);
-			}
-		}
-		
-		public event PropertyChangingEventHandler PropertyChanging;
-		
-		public event PropertyChangedEventHandler PropertyChanged;
-		
-		protected virtual void SendPropertyChanging()
-		{
-			if ((this.PropertyChanging != null))
-			{
-				this.PropertyChanging(this, emptyChangingEventArgs);
-			}
-		}
-		
-		protected virtual void SendPropertyChanged(String propertyName)
-		{
-			if ((this.PropertyChanged != null))
-			{
-				this.PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
-			}
-		}
-		
-		private void attach_AreaComun(AreaComun entity)
-		{
-			this.SendPropertyChanging();
-			entity.DatoCondominio = this;
-		}
-		
-		private void detach_AreaComun(AreaComun entity)
-		{
-			this.SendPropertyChanging();
-			entity.DatoCondominio = null;
-		}
-		
-		private void attach_ConstruccionInmueble(ConstruccionInmueble entity)
-		{
-			this.SendPropertyChanging();
-			entity.DatoCondominio = this;
-		}
-		
-		private void detach_ConstruccionInmueble(ConstruccionInmueble entity)
-		{
-			this.SendPropertyChanging();
-			entity.DatoCondominio = null;
 		}
 	}
 	
@@ -12903,259 +11441,6 @@ namespace SIGEA.Classes.Entities
 		}
 	}
 	
-	[Table(Name="dbo.EstructurasTipoConstruccion")]
-	public partial class EstructurasTipoConstruccion : INotifyPropertyChanging, INotifyPropertyChanged
-	{
-		
-		private static PropertyChangingEventArgs emptyChangingEventArgs = new PropertyChangingEventArgs(String.Empty);
-		
-		private int _idConstruccion;
-		
-		private short _numeroTipo;
-		
-		private string _cimentacion;
-		
-		private string _entrepisos;
-		
-		private string _muros;
-		
-		private string _trabes;
-		
-		private string _escaleras;
-		
-		private EntityRef<TipoConstruccion> _TipoConstruccion;
-		
-    #region Extensibility Method Definitions
-    partial void OnLoaded();
-    partial void OnValidate(System.Data.Linq.ChangeAction action);
-    partial void OnCreated();
-    partial void OnidConstruccionChanging(int value);
-    partial void OnidConstruccionChanged();
-    partial void OnnumeroTipoChanging(short value);
-    partial void OnnumeroTipoChanged();
-    partial void OncimentacionChanging(string value);
-    partial void OncimentacionChanged();
-    partial void OnentrepisosChanging(string value);
-    partial void OnentrepisosChanged();
-    partial void OnmurosChanging(string value);
-    partial void OnmurosChanged();
-    partial void OntrabesChanging(string value);
-    partial void OntrabesChanged();
-    partial void OnescalerasChanging(string value);
-    partial void OnescalerasChanged();
-    #endregion
-		
-		public EstructurasTipoConstruccion()
-		{
-			this._TipoConstruccion = default(EntityRef<TipoConstruccion>);
-			OnCreated();
-		}
-		
-		[Column(Storage="_idConstruccion", DbType="Int NOT NULL", IsPrimaryKey=true)]
-		public int idConstruccion
-		{
-			get
-			{
-				return this._idConstruccion;
-			}
-			set
-			{
-				if ((this._idConstruccion != value))
-				{
-					if (this._TipoConstruccion.HasLoadedOrAssignedValue)
-					{
-						throw new System.Data.Linq.ForeignKeyReferenceAlreadyHasValueException();
-					}
-					this.OnidConstruccionChanging(value);
-					this.SendPropertyChanging();
-					this._idConstruccion = value;
-					this.SendPropertyChanged("idConstruccion");
-					this.OnidConstruccionChanged();
-				}
-			}
-		}
-		
-		[Column(Storage="_numeroTipo", DbType="SmallInt NOT NULL", IsPrimaryKey=true)]
-		public short numeroTipo
-		{
-			get
-			{
-				return this._numeroTipo;
-			}
-			set
-			{
-				if ((this._numeroTipo != value))
-				{
-					if (this._TipoConstruccion.HasLoadedOrAssignedValue)
-					{
-						throw new System.Data.Linq.ForeignKeyReferenceAlreadyHasValueException();
-					}
-					this.OnnumeroTipoChanging(value);
-					this.SendPropertyChanging();
-					this._numeroTipo = value;
-					this.SendPropertyChanged("numeroTipo");
-					this.OnnumeroTipoChanged();
-				}
-			}
-		}
-		
-		[Column(Storage="_cimentacion", DbType="NVarChar(400) NOT NULL", CanBeNull=false)]
-		public string cimentacion
-		{
-			get
-			{
-				return this._cimentacion;
-			}
-			set
-			{
-				if ((this._cimentacion != value))
-				{
-					this.OncimentacionChanging(value);
-					this.SendPropertyChanging();
-					this._cimentacion = value;
-					this.SendPropertyChanged("cimentacion");
-					this.OncimentacionChanged();
-				}
-			}
-		}
-		
-		[Column(Storage="_entrepisos", DbType="NVarChar(400) NOT NULL", CanBeNull=false)]
-		public string entrepisos
-		{
-			get
-			{
-				return this._entrepisos;
-			}
-			set
-			{
-				if ((this._entrepisos != value))
-				{
-					this.OnentrepisosChanging(value);
-					this.SendPropertyChanging();
-					this._entrepisos = value;
-					this.SendPropertyChanged("entrepisos");
-					this.OnentrepisosChanged();
-				}
-			}
-		}
-		
-		[Column(Storage="_muros", DbType="NVarChar(400) NOT NULL", CanBeNull=false)]
-		public string muros
-		{
-			get
-			{
-				return this._muros;
-			}
-			set
-			{
-				if ((this._muros != value))
-				{
-					this.OnmurosChanging(value);
-					this.SendPropertyChanging();
-					this._muros = value;
-					this.SendPropertyChanged("muros");
-					this.OnmurosChanged();
-				}
-			}
-		}
-		
-		[Column(Storage="_trabes", DbType="NVarChar(400) NOT NULL", CanBeNull=false)]
-		public string trabes
-		{
-			get
-			{
-				return this._trabes;
-			}
-			set
-			{
-				if ((this._trabes != value))
-				{
-					this.OntrabesChanging(value);
-					this.SendPropertyChanging();
-					this._trabes = value;
-					this.SendPropertyChanged("trabes");
-					this.OntrabesChanged();
-				}
-			}
-		}
-		
-		[Column(Storage="_escaleras", DbType="NVarChar(400) NOT NULL", CanBeNull=false)]
-		public string escaleras
-		{
-			get
-			{
-				return this._escaleras;
-			}
-			set
-			{
-				if ((this._escaleras != value))
-				{
-					this.OnescalerasChanging(value);
-					this.SendPropertyChanging();
-					this._escaleras = value;
-					this.SendPropertyChanged("escaleras");
-					this.OnescalerasChanged();
-				}
-			}
-		}
-		
-		[Association(Name="TipoConstruccion_EstructurasTipoConstruccion", Storage="_TipoConstruccion", ThisKey="idConstruccion,numeroTipo", OtherKey="idConstruccion,numeroTipo", IsForeignKey=true, DeleteOnNull=true, DeleteRule="CASCADE")]
-		public TipoConstruccion TipoConstruccion
-		{
-			get
-			{
-				return this._TipoConstruccion.Entity;
-			}
-			set
-			{
-				TipoConstruccion previousValue = this._TipoConstruccion.Entity;
-				if (((previousValue != value) 
-							|| (this._TipoConstruccion.HasLoadedOrAssignedValue == false)))
-				{
-					this.SendPropertyChanging();
-					if ((previousValue != null))
-					{
-						this._TipoConstruccion.Entity = null;
-						previousValue.EstructurasTipoConstruccion = null;
-					}
-					this._TipoConstruccion.Entity = value;
-					if ((value != null))
-					{
-						value.EstructurasTipoConstruccion = this;
-						this._idConstruccion = value.idConstruccion;
-						this._numeroTipo = value.numeroTipo;
-					}
-					else
-					{
-						this._idConstruccion = default(int);
-						this._numeroTipo = default(short);
-					}
-					this.SendPropertyChanged("TipoConstruccion");
-				}
-			}
-		}
-		
-		public event PropertyChangingEventHandler PropertyChanging;
-		
-		public event PropertyChangedEventHandler PropertyChanged;
-		
-		protected virtual void SendPropertyChanging()
-		{
-			if ((this.PropertyChanging != null))
-			{
-				this.PropertyChanging(this, emptyChangingEventArgs);
-			}
-		}
-		
-		protected virtual void SendPropertyChanged(String propertyName)
-		{
-			if ((this.PropertyChanged != null))
-			{
-				this.PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
-			}
-		}
-	}
-	
 	[Table(Name="dbo.FormacionProfesional")]
 	public partial class FormacionProfesional : INotifyPropertyChanging, INotifyPropertyChanged
 	{
@@ -14886,8 +13171,6 @@ namespace SIGEA.Classes.Entities
 		
 		private EntitySet<AvaluoInmobiliario> _AvaluoInmobiliario;
 		
-		private EntitySet<ConstruccionInmueble> _ConstruccionInmueble;
-		
 		private EntityRef<EntornoInmueble> _EntornoInmueble;
 		
 		private EntityRef<EquipamientoInmueble> _EquipamientoInmueble;
@@ -14909,6 +13192,8 @@ namespace SIGEA.Classes.Entities
 		private EntityRef<UsoActualInmueble> _UsoActualInmueble;
 		
 		private EntitySet<ViasAcceso> _ViasAcceso;
+		
+		private EntitySet<ConstruccionInmueble> _ConstruccionInmueble;
 		
 		private EntityRef<DireccionInmueble> _DireccionInmueble;
 		
@@ -14947,7 +13232,6 @@ namespace SIGEA.Classes.Entities
 		public Inmueble()
 		{
 			this._AvaluoInmobiliario = new EntitySet<AvaluoInmobiliario>(new Action<AvaluoInmobiliario>(this.attach_AvaluoInmobiliario), new Action<AvaluoInmobiliario>(this.detach_AvaluoInmobiliario));
-			this._ConstruccionInmueble = new EntitySet<ConstruccionInmueble>(new Action<ConstruccionInmueble>(this.attach_ConstruccionInmueble), new Action<ConstruccionInmueble>(this.detach_ConstruccionInmueble));
 			this._EntornoInmueble = default(EntityRef<EntornoInmueble>);
 			this._EquipamientoInmueble = default(EntityRef<EquipamientoInmueble>);
 			this._EscriturasInmueble = default(EntityRef<EscriturasInmueble>);
@@ -14959,6 +13243,7 @@ namespace SIGEA.Classes.Entities
 			this._UbicacionInmueble = default(EntityRef<UbicacionInmueble>);
 			this._UsoActualInmueble = default(EntityRef<UsoActualInmueble>);
 			this._ViasAcceso = new EntitySet<ViasAcceso>(new Action<ViasAcceso>(this.attach_ViasAcceso), new Action<ViasAcceso>(this.detach_ViasAcceso));
+			this._ConstruccionInmueble = new EntitySet<ConstruccionInmueble>(new Action<ConstruccionInmueble>(this.attach_ConstruccionInmueble), new Action<ConstruccionInmueble>(this.detach_ConstruccionInmueble));
 			this._DireccionInmueble = default(EntityRef<DireccionInmueble>);
 			this._Propietario = default(EntityRef<Propietario>);
 			this._RegimenPropiedad = default(EntityRef<RegimenPropiedad>);
@@ -15192,19 +13477,6 @@ namespace SIGEA.Classes.Entities
 			set
 			{
 				this._AvaluoInmobiliario.Assign(value);
-			}
-		}
-		
-		[Association(Name="Inmueble_ConstruccionInmueble", Storage="_ConstruccionInmueble", ThisKey="idInmueble", OtherKey="idInmueble")]
-		public EntitySet<ConstruccionInmueble> ConstruccionInmueble
-		{
-			get
-			{
-				return this._ConstruccionInmueble;
-			}
-			set
-			{
-				this._ConstruccionInmueble.Assign(value);
 			}
 		}
 		
@@ -15511,6 +13783,19 @@ namespace SIGEA.Classes.Entities
 			}
 		}
 		
+		[Association(Name="Inmueble_ConstruccionInmueble", Storage="_ConstruccionInmueble", ThisKey="idInmueble", OtherKey="idInmueble")]
+		public EntitySet<ConstruccionInmueble> ConstruccionInmueble
+		{
+			get
+			{
+				return this._ConstruccionInmueble;
+			}
+			set
+			{
+				this._ConstruccionInmueble.Assign(value);
+			}
+		}
+		
 		[Association(Name="DireccionInmueble_Inmueble", Storage="_DireccionInmueble", ThisKey="idDireccionInmueble", OtherKey="idDireccionInmueble", IsForeignKey=true)]
 		public DireccionInmueble DireccionInmueble
 		{
@@ -15679,18 +13964,6 @@ namespace SIGEA.Classes.Entities
 			entity.Inmueble = null;
 		}
 		
-		private void attach_ConstruccionInmueble(ConstruccionInmueble entity)
-		{
-			this.SendPropertyChanging();
-			entity.Inmueble = this;
-		}
-		
-		private void detach_ConstruccionInmueble(ConstruccionInmueble entity)
-		{
-			this.SendPropertyChanging();
-			entity.Inmueble = null;
-		}
-		
 		private void attach_ViasAcceso(ViasAcceso entity)
 		{
 			this.SendPropertyChanging();
@@ -15702,1623 +13975,17 @@ namespace SIGEA.Classes.Entities
 			this.SendPropertyChanging();
 			entity.Inmueble = null;
 		}
-	}
-	
-	[Table(Name="dbo.InstalacionConstruccion")]
-	public partial class InstalacionConstruccion : INotifyPropertyChanging, INotifyPropertyChanged
-	{
 		
-		private static PropertyChangingEventArgs emptyChangingEventArgs = new PropertyChangingEventArgs(String.Empty);
-		
-		private int _idConstruccion;
-		
-		private int _idInstalacion;
-		
-		private short _idTipoUnidad;
-		
-		private short _idTipoConservacion;
-		
-		private string _descripcion;
-		
-		private double _cantidad;
-		
-		private double _edad;
-		
-		private bool _comun;
-		
-		private EntityRef<ConstruccionInmueble> _ConstruccionInmueble;
-		
-    #region Extensibility Method Definitions
-    partial void OnLoaded();
-    partial void OnValidate(System.Data.Linq.ChangeAction action);
-    partial void OnCreated();
-    partial void OnidConstruccionChanging(int value);
-    partial void OnidConstruccionChanged();
-    partial void OnidInstalacionChanging(int value);
-    partial void OnidInstalacionChanged();
-    partial void OnidTipoUnidadChanging(short value);
-    partial void OnidTipoUnidadChanged();
-    partial void OnidTipoConservacionChanging(short value);
-    partial void OnidTipoConservacionChanged();
-    partial void OndescripcionChanging(string value);
-    partial void OndescripcionChanged();
-    partial void OncantidadChanging(double value);
-    partial void OncantidadChanged();
-    partial void OnedadChanging(double value);
-    partial void OnedadChanged();
-    partial void OncomunChanging(bool value);
-    partial void OncomunChanged();
-    #endregion
-		
-		public InstalacionConstruccion()
-		{
-			this._ConstruccionInmueble = default(EntityRef<ConstruccionInmueble>);
-			OnCreated();
-		}
-		
-		[Column(Storage="_idConstruccion", DbType="Int NOT NULL", IsPrimaryKey=true)]
-		public int idConstruccion
-		{
-			get
-			{
-				return this._idConstruccion;
-			}
-			set
-			{
-				if ((this._idConstruccion != value))
-				{
-					if (this._ConstruccionInmueble.HasLoadedOrAssignedValue)
-					{
-						throw new System.Data.Linq.ForeignKeyReferenceAlreadyHasValueException();
-					}
-					this.OnidConstruccionChanging(value);
-					this.SendPropertyChanging();
-					this._idConstruccion = value;
-					this.SendPropertyChanged("idConstruccion");
-					this.OnidConstruccionChanged();
-				}
-			}
-		}
-		
-		[Column(Storage="_idInstalacion", AutoSync=AutoSync.OnInsert, DbType="Int NOT NULL IDENTITY", IsPrimaryKey=true, IsDbGenerated=true)]
-		public int idInstalacion
-		{
-			get
-			{
-				return this._idInstalacion;
-			}
-			set
-			{
-				if ((this._idInstalacion != value))
-				{
-					this.OnidInstalacionChanging(value);
-					this.SendPropertyChanging();
-					this._idInstalacion = value;
-					this.SendPropertyChanged("idInstalacion");
-					this.OnidInstalacionChanged();
-				}
-			}
-		}
-		
-		[Column(Storage="_idTipoUnidad", DbType="SmallInt NOT NULL")]
-		public short idTipoUnidad
-		{
-			get
-			{
-				return this._idTipoUnidad;
-			}
-			set
-			{
-				if ((this._idTipoUnidad != value))
-				{
-					this.OnidTipoUnidadChanging(value);
-					this.SendPropertyChanging();
-					this._idTipoUnidad = value;
-					this.SendPropertyChanged("idTipoUnidad");
-					this.OnidTipoUnidadChanged();
-				}
-			}
-		}
-		
-		[Column(Storage="_idTipoConservacion", DbType="SmallInt NOT NULL")]
-		public short idTipoConservacion
-		{
-			get
-			{
-				return this._idTipoConservacion;
-			}
-			set
-			{
-				if ((this._idTipoConservacion != value))
-				{
-					this.OnidTipoConservacionChanging(value);
-					this.SendPropertyChanging();
-					this._idTipoConservacion = value;
-					this.SendPropertyChanged("idTipoConservacion");
-					this.OnidTipoConservacionChanged();
-				}
-			}
-		}
-		
-		[Column(Storage="_descripcion", DbType="NVarChar(50) NOT NULL", CanBeNull=false)]
-		public string descripcion
-		{
-			get
-			{
-				return this._descripcion;
-			}
-			set
-			{
-				if ((this._descripcion != value))
-				{
-					this.OndescripcionChanging(value);
-					this.SendPropertyChanging();
-					this._descripcion = value;
-					this.SendPropertyChanged("descripcion");
-					this.OndescripcionChanged();
-				}
-			}
-		}
-		
-		[Column(Storage="_cantidad", DbType="Float NOT NULL")]
-		public double cantidad
-		{
-			get
-			{
-				return this._cantidad;
-			}
-			set
-			{
-				if ((this._cantidad != value))
-				{
-					this.OncantidadChanging(value);
-					this.SendPropertyChanging();
-					this._cantidad = value;
-					this.SendPropertyChanged("cantidad");
-					this.OncantidadChanged();
-				}
-			}
-		}
-		
-		[Column(Storage="_edad", DbType="Float NOT NULL")]
-		public double edad
-		{
-			get
-			{
-				return this._edad;
-			}
-			set
-			{
-				if ((this._edad != value))
-				{
-					this.OnedadChanging(value);
-					this.SendPropertyChanging();
-					this._edad = value;
-					this.SendPropertyChanged("edad");
-					this.OnedadChanged();
-				}
-			}
-		}
-		
-		[Column(Storage="_comun", DbType="Bit NOT NULL")]
-		public bool comun
-		{
-			get
-			{
-				return this._comun;
-			}
-			set
-			{
-				if ((this._comun != value))
-				{
-					this.OncomunChanging(value);
-					this.SendPropertyChanging();
-					this._comun = value;
-					this.SendPropertyChanged("comun");
-					this.OncomunChanged();
-				}
-			}
-		}
-		
-		[Association(Name="ConstruccionInmueble_InstalacionConstruccion", Storage="_ConstruccionInmueble", ThisKey="idConstruccion", OtherKey="idConstruccion", IsForeignKey=true, DeleteOnNull=true, DeleteRule="CASCADE")]
-		public ConstruccionInmueble ConstruccionInmueble
-		{
-			get
-			{
-				return this._ConstruccionInmueble.Entity;
-			}
-			set
-			{
-				ConstruccionInmueble previousValue = this._ConstruccionInmueble.Entity;
-				if (((previousValue != value) 
-							|| (this._ConstruccionInmueble.HasLoadedOrAssignedValue == false)))
-				{
-					this.SendPropertyChanging();
-					if ((previousValue != null))
-					{
-						this._ConstruccionInmueble.Entity = null;
-						previousValue.InstalacionConstruccion.Remove(this);
-					}
-					this._ConstruccionInmueble.Entity = value;
-					if ((value != null))
-					{
-						value.InstalacionConstruccion.Add(this);
-						this._idConstruccion = value.idConstruccion;
-					}
-					else
-					{
-						this._idConstruccion = default(int);
-					}
-					this.SendPropertyChanged("ConstruccionInmueble");
-				}
-			}
-		}
-		
-		public event PropertyChangingEventHandler PropertyChanging;
-		
-		public event PropertyChangedEventHandler PropertyChanged;
-		
-		protected virtual void SendPropertyChanging()
-		{
-			if ((this.PropertyChanging != null))
-			{
-				this.PropertyChanging(this, emptyChangingEventArgs);
-			}
-		}
-		
-		protected virtual void SendPropertyChanged(String propertyName)
-		{
-			if ((this.PropertyChanged != null))
-			{
-				this.PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
-			}
-		}
-	}
-	
-	[Table(Name="dbo.InstalacionesEspecialesCondominio")]
-	public partial class InstalacionesEspecialesCondominio : INotifyPropertyChanging, INotifyPropertyChanged
-	{
-		
-		private static PropertyChangingEventArgs emptyChangingEventArgs = new PropertyChangingEventArgs(String.Empty);
-		
-		private int _idConstruccion;
-		
-		private bool _tratamientoAgua;
-		
-		private bool _captacionAgua;
-		
-		private bool _separacionBasura;
-		
-		private bool _redAguaPurificada;
-		
-		private bool _casetaVigilancia;
-		
-		private bool _localesComerciales;
-		
-		private bool _bardaPerimetral;
-		
-		private bool _elevador;
-		
-		private bool _estacionamientoVisitas;
-		
-		private bool _estacionamientoDiscapacitados;
-		
-		private bool _juegosInfantiles;
-		
-		private bool _canchasDeportivas;
-		
-		private EntityRef<ConstruccionInmueble> _ConstruccionInmueble;
-		
-    #region Extensibility Method Definitions
-    partial void OnLoaded();
-    partial void OnValidate(System.Data.Linq.ChangeAction action);
-    partial void OnCreated();
-    partial void OnidConstruccionChanging(int value);
-    partial void OnidConstruccionChanged();
-    partial void OntratamientoAguaChanging(bool value);
-    partial void OntratamientoAguaChanged();
-    partial void OncaptacionAguaChanging(bool value);
-    partial void OncaptacionAguaChanged();
-    partial void OnseparacionBasuraChanging(bool value);
-    partial void OnseparacionBasuraChanged();
-    partial void OnredAguaPurificadaChanging(bool value);
-    partial void OnredAguaPurificadaChanged();
-    partial void OncasetaVigilanciaChanging(bool value);
-    partial void OncasetaVigilanciaChanged();
-    partial void OnlocalesComercialesChanging(bool value);
-    partial void OnlocalesComercialesChanged();
-    partial void OnbardaPerimetralChanging(bool value);
-    partial void OnbardaPerimetralChanged();
-    partial void OnelevadorChanging(bool value);
-    partial void OnelevadorChanged();
-    partial void OnestacionamientoVisitasChanging(bool value);
-    partial void OnestacionamientoVisitasChanged();
-    partial void OnestacionamientoDiscapacitadosChanging(bool value);
-    partial void OnestacionamientoDiscapacitadosChanged();
-    partial void OnjuegosInfantilesChanging(bool value);
-    partial void OnjuegosInfantilesChanged();
-    partial void OncanchasDeportivasChanging(bool value);
-    partial void OncanchasDeportivasChanged();
-    #endregion
-		
-		public InstalacionesEspecialesCondominio()
-		{
-			this._ConstruccionInmueble = default(EntityRef<ConstruccionInmueble>);
-			OnCreated();
-		}
-		
-		[Column(Storage="_idConstruccion", DbType="Int NOT NULL", IsPrimaryKey=true)]
-		public int idConstruccion
-		{
-			get
-			{
-				return this._idConstruccion;
-			}
-			set
-			{
-				if ((this._idConstruccion != value))
-				{
-					if (this._ConstruccionInmueble.HasLoadedOrAssignedValue)
-					{
-						throw new System.Data.Linq.ForeignKeyReferenceAlreadyHasValueException();
-					}
-					this.OnidConstruccionChanging(value);
-					this.SendPropertyChanging();
-					this._idConstruccion = value;
-					this.SendPropertyChanged("idConstruccion");
-					this.OnidConstruccionChanged();
-				}
-			}
-		}
-		
-		[Column(Storage="_tratamientoAgua", DbType="Bit NOT NULL")]
-		public bool tratamientoAgua
-		{
-			get
-			{
-				return this._tratamientoAgua;
-			}
-			set
-			{
-				if ((this._tratamientoAgua != value))
-				{
-					this.OntratamientoAguaChanging(value);
-					this.SendPropertyChanging();
-					this._tratamientoAgua = value;
-					this.SendPropertyChanged("tratamientoAgua");
-					this.OntratamientoAguaChanged();
-				}
-			}
-		}
-		
-		[Column(Storage="_captacionAgua", DbType="Bit NOT NULL")]
-		public bool captacionAgua
-		{
-			get
-			{
-				return this._captacionAgua;
-			}
-			set
-			{
-				if ((this._captacionAgua != value))
-				{
-					this.OncaptacionAguaChanging(value);
-					this.SendPropertyChanging();
-					this._captacionAgua = value;
-					this.SendPropertyChanged("captacionAgua");
-					this.OncaptacionAguaChanged();
-				}
-			}
-		}
-		
-		[Column(Storage="_separacionBasura", DbType="Bit NOT NULL")]
-		public bool separacionBasura
-		{
-			get
-			{
-				return this._separacionBasura;
-			}
-			set
-			{
-				if ((this._separacionBasura != value))
-				{
-					this.OnseparacionBasuraChanging(value);
-					this.SendPropertyChanging();
-					this._separacionBasura = value;
-					this.SendPropertyChanged("separacionBasura");
-					this.OnseparacionBasuraChanged();
-				}
-			}
-		}
-		
-		[Column(Storage="_redAguaPurificada", DbType="Bit NOT NULL")]
-		public bool redAguaPurificada
-		{
-			get
-			{
-				return this._redAguaPurificada;
-			}
-			set
-			{
-				if ((this._redAguaPurificada != value))
-				{
-					this.OnredAguaPurificadaChanging(value);
-					this.SendPropertyChanging();
-					this._redAguaPurificada = value;
-					this.SendPropertyChanged("redAguaPurificada");
-					this.OnredAguaPurificadaChanged();
-				}
-			}
-		}
-		
-		[Column(Storage="_casetaVigilancia", DbType="Bit NOT NULL")]
-		public bool casetaVigilancia
-		{
-			get
-			{
-				return this._casetaVigilancia;
-			}
-			set
-			{
-				if ((this._casetaVigilancia != value))
-				{
-					this.OncasetaVigilanciaChanging(value);
-					this.SendPropertyChanging();
-					this._casetaVigilancia = value;
-					this.SendPropertyChanged("casetaVigilancia");
-					this.OncasetaVigilanciaChanged();
-				}
-			}
-		}
-		
-		[Column(Storage="_localesComerciales", DbType="Bit NOT NULL")]
-		public bool localesComerciales
-		{
-			get
-			{
-				return this._localesComerciales;
-			}
-			set
-			{
-				if ((this._localesComerciales != value))
-				{
-					this.OnlocalesComercialesChanging(value);
-					this.SendPropertyChanging();
-					this._localesComerciales = value;
-					this.SendPropertyChanged("localesComerciales");
-					this.OnlocalesComercialesChanged();
-				}
-			}
-		}
-		
-		[Column(Storage="_bardaPerimetral", DbType="Bit NOT NULL")]
-		public bool bardaPerimetral
-		{
-			get
-			{
-				return this._bardaPerimetral;
-			}
-			set
-			{
-				if ((this._bardaPerimetral != value))
-				{
-					this.OnbardaPerimetralChanging(value);
-					this.SendPropertyChanging();
-					this._bardaPerimetral = value;
-					this.SendPropertyChanged("bardaPerimetral");
-					this.OnbardaPerimetralChanged();
-				}
-			}
-		}
-		
-		[Column(Storage="_elevador", DbType="Bit NOT NULL")]
-		public bool elevador
-		{
-			get
-			{
-				return this._elevador;
-			}
-			set
-			{
-				if ((this._elevador != value))
-				{
-					this.OnelevadorChanging(value);
-					this.SendPropertyChanging();
-					this._elevador = value;
-					this.SendPropertyChanged("elevador");
-					this.OnelevadorChanged();
-				}
-			}
-		}
-		
-		[Column(Storage="_estacionamientoVisitas", DbType="Bit NOT NULL")]
-		public bool estacionamientoVisitas
-		{
-			get
-			{
-				return this._estacionamientoVisitas;
-			}
-			set
-			{
-				if ((this._estacionamientoVisitas != value))
-				{
-					this.OnestacionamientoVisitasChanging(value);
-					this.SendPropertyChanging();
-					this._estacionamientoVisitas = value;
-					this.SendPropertyChanged("estacionamientoVisitas");
-					this.OnestacionamientoVisitasChanged();
-				}
-			}
-		}
-		
-		[Column(Storage="_estacionamientoDiscapacitados", DbType="Bit NOT NULL")]
-		public bool estacionamientoDiscapacitados
-		{
-			get
-			{
-				return this._estacionamientoDiscapacitados;
-			}
-			set
-			{
-				if ((this._estacionamientoDiscapacitados != value))
-				{
-					this.OnestacionamientoDiscapacitadosChanging(value);
-					this.SendPropertyChanging();
-					this._estacionamientoDiscapacitados = value;
-					this.SendPropertyChanged("estacionamientoDiscapacitados");
-					this.OnestacionamientoDiscapacitadosChanged();
-				}
-			}
-		}
-		
-		[Column(Storage="_juegosInfantiles", DbType="Bit NOT NULL")]
-		public bool juegosInfantiles
-		{
-			get
-			{
-				return this._juegosInfantiles;
-			}
-			set
-			{
-				if ((this._juegosInfantiles != value))
-				{
-					this.OnjuegosInfantilesChanging(value);
-					this.SendPropertyChanging();
-					this._juegosInfantiles = value;
-					this.SendPropertyChanged("juegosInfantiles");
-					this.OnjuegosInfantilesChanged();
-				}
-			}
-		}
-		
-		[Column(Storage="_canchasDeportivas", DbType="Bit NOT NULL")]
-		public bool canchasDeportivas
-		{
-			get
-			{
-				return this._canchasDeportivas;
-			}
-			set
-			{
-				if ((this._canchasDeportivas != value))
-				{
-					this.OncanchasDeportivasChanging(value);
-					this.SendPropertyChanging();
-					this._canchasDeportivas = value;
-					this.SendPropertyChanged("canchasDeportivas");
-					this.OncanchasDeportivasChanged();
-				}
-			}
-		}
-		
-		[Association(Name="ConstruccionInmueble_InstalacionesEspecialesCondominio", Storage="_ConstruccionInmueble", ThisKey="idConstruccion", OtherKey="idConstruccion", IsForeignKey=true, DeleteOnNull=true, DeleteRule="CASCADE")]
-		public ConstruccionInmueble ConstruccionInmueble
-		{
-			get
-			{
-				return this._ConstruccionInmueble.Entity;
-			}
-			set
-			{
-				ConstruccionInmueble previousValue = this._ConstruccionInmueble.Entity;
-				if (((previousValue != value) 
-							|| (this._ConstruccionInmueble.HasLoadedOrAssignedValue == false)))
-				{
-					this.SendPropertyChanging();
-					if ((previousValue != null))
-					{
-						this._ConstruccionInmueble.Entity = null;
-						previousValue.InstalacionesEspecialesCondominio = null;
-					}
-					this._ConstruccionInmueble.Entity = value;
-					if ((value != null))
-					{
-						value.InstalacionesEspecialesCondominio = this;
-						this._idConstruccion = value.idConstruccion;
-					}
-					else
-					{
-						this._idConstruccion = default(int);
-					}
-					this.SendPropertyChanged("ConstruccionInmueble");
-				}
-			}
-		}
-		
-		public event PropertyChangingEventHandler PropertyChanging;
-		
-		public event PropertyChangedEventHandler PropertyChanged;
-		
-		protected virtual void SendPropertyChanging()
-		{
-			if ((this.PropertyChanging != null))
-			{
-				this.PropertyChanging(this, emptyChangingEventArgs);
-			}
-		}
-		
-		protected virtual void SendPropertyChanged(String propertyName)
-		{
-			if ((this.PropertyChanged != null))
-			{
-				this.PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
-			}
-		}
-	}
-	
-	[Table(Name="dbo.InstalacionesEspecialesConstruccion")]
-	public partial class InstalacionesEspecialesConstruccion : INotifyPropertyChanging, INotifyPropertyChanged
-	{
-		
-		private static PropertyChangingEventArgs emptyChangingEventArgs = new PropertyChangingEventArgs(String.Empty);
-		
-		private int _idConstruccion;
-		
-		private bool _economizadorAguaWC;
-		
-		private bool _sistemaDualWC;
-		
-		private bool _regaderaAhorradora;
-		
-		private bool _llavesAhorradoras;
-		
-		private bool _calentadorGasInstantaneo;
-		
-		private bool _calentadorSolarAgua;
-		
-		private bool _aireAcondicionado;
-		
-		private bool _aislamientoTecho;
-		
-		private bool _captacionEnergia;
-		
-		private bool _vozDatos;
-		
-		private bool _interfon;
-		
-		private bool _dosCircuitos;
-		
-		private bool _accesoria;
-		
-		private bool _cisterna;
-		
-		private bool _ductoClima;
-		
-		private bool _jaulaTendido;
-		
-		private bool _rejasVentanas;
-		
-		private bool _banioDiscapacitado;
-		
-		private bool _puertaDiscapacitado;
-		
-		private bool _accesoriosDiscapacitado;
-		
-		private bool _pasamanos;
-		
-		private bool _areasDiscapacitado;
-		
-		private string _otrasInstalaciones;
-		
-		private string _otrasObras;
-		
-		private EntityRef<ConstruccionInmueble> _ConstruccionInmueble;
-		
-    #region Extensibility Method Definitions
-    partial void OnLoaded();
-    partial void OnValidate(System.Data.Linq.ChangeAction action);
-    partial void OnCreated();
-    partial void OnidConstruccionChanging(int value);
-    partial void OnidConstruccionChanged();
-    partial void OneconomizadorAguaWCChanging(bool value);
-    partial void OneconomizadorAguaWCChanged();
-    partial void OnsistemaDualWCChanging(bool value);
-    partial void OnsistemaDualWCChanged();
-    partial void OnregaderaAhorradoraChanging(bool value);
-    partial void OnregaderaAhorradoraChanged();
-    partial void OnllavesAhorradorasChanging(bool value);
-    partial void OnllavesAhorradorasChanged();
-    partial void OncalentadorGasInstantaneoChanging(bool value);
-    partial void OncalentadorGasInstantaneoChanged();
-    partial void OncalentadorSolarAguaChanging(bool value);
-    partial void OncalentadorSolarAguaChanged();
-    partial void OnaireAcondicionadoChanging(bool value);
-    partial void OnaireAcondicionadoChanged();
-    partial void OnaislamientoTechoChanging(bool value);
-    partial void OnaislamientoTechoChanged();
-    partial void OncaptacionEnergiaChanging(bool value);
-    partial void OncaptacionEnergiaChanged();
-    partial void OnvozDatosChanging(bool value);
-    partial void OnvozDatosChanged();
-    partial void OninterfonChanging(bool value);
-    partial void OninterfonChanged();
-    partial void OndosCircuitosChanging(bool value);
-    partial void OndosCircuitosChanged();
-    partial void OnaccesoriaChanging(bool value);
-    partial void OnaccesoriaChanged();
-    partial void OncisternaChanging(bool value);
-    partial void OncisternaChanged();
-    partial void OnductoClimaChanging(bool value);
-    partial void OnductoClimaChanged();
-    partial void OnjaulaTendidoChanging(bool value);
-    partial void OnjaulaTendidoChanged();
-    partial void OnrejasVentanasChanging(bool value);
-    partial void OnrejasVentanasChanged();
-    partial void OnbanioDiscapacitadoChanging(bool value);
-    partial void OnbanioDiscapacitadoChanged();
-    partial void OnpuertaDiscapacitadoChanging(bool value);
-    partial void OnpuertaDiscapacitadoChanged();
-    partial void OnaccesoriosDiscapacitadoChanging(bool value);
-    partial void OnaccesoriosDiscapacitadoChanged();
-    partial void OnpasamanosChanging(bool value);
-    partial void OnpasamanosChanged();
-    partial void OnareasDiscapacitadoChanging(bool value);
-    partial void OnareasDiscapacitadoChanged();
-    partial void OnotrasInstalacionesChanging(string value);
-    partial void OnotrasInstalacionesChanged();
-    partial void OnotrasObrasChanging(string value);
-    partial void OnotrasObrasChanged();
-    #endregion
-		
-		public InstalacionesEspecialesConstruccion()
-		{
-			this._ConstruccionInmueble = default(EntityRef<ConstruccionInmueble>);
-			OnCreated();
-		}
-		
-		[Column(Storage="_idConstruccion", DbType="Int NOT NULL", IsPrimaryKey=true)]
-		public int idConstruccion
-		{
-			get
-			{
-				return this._idConstruccion;
-			}
-			set
-			{
-				if ((this._idConstruccion != value))
-				{
-					if (this._ConstruccionInmueble.HasLoadedOrAssignedValue)
-					{
-						throw new System.Data.Linq.ForeignKeyReferenceAlreadyHasValueException();
-					}
-					this.OnidConstruccionChanging(value);
-					this.SendPropertyChanging();
-					this._idConstruccion = value;
-					this.SendPropertyChanged("idConstruccion");
-					this.OnidConstruccionChanged();
-				}
-			}
-		}
-		
-		[Column(Storage="_economizadorAguaWC", DbType="Bit NOT NULL")]
-		public bool economizadorAguaWC
-		{
-			get
-			{
-				return this._economizadorAguaWC;
-			}
-			set
-			{
-				if ((this._economizadorAguaWC != value))
-				{
-					this.OneconomizadorAguaWCChanging(value);
-					this.SendPropertyChanging();
-					this._economizadorAguaWC = value;
-					this.SendPropertyChanged("economizadorAguaWC");
-					this.OneconomizadorAguaWCChanged();
-				}
-			}
-		}
-		
-		[Column(Storage="_sistemaDualWC", DbType="Bit NOT NULL")]
-		public bool sistemaDualWC
-		{
-			get
-			{
-				return this._sistemaDualWC;
-			}
-			set
-			{
-				if ((this._sistemaDualWC != value))
-				{
-					this.OnsistemaDualWCChanging(value);
-					this.SendPropertyChanging();
-					this._sistemaDualWC = value;
-					this.SendPropertyChanged("sistemaDualWC");
-					this.OnsistemaDualWCChanged();
-				}
-			}
-		}
-		
-		[Column(Storage="_regaderaAhorradora", DbType="Bit NOT NULL")]
-		public bool regaderaAhorradora
-		{
-			get
-			{
-				return this._regaderaAhorradora;
-			}
-			set
-			{
-				if ((this._regaderaAhorradora != value))
-				{
-					this.OnregaderaAhorradoraChanging(value);
-					this.SendPropertyChanging();
-					this._regaderaAhorradora = value;
-					this.SendPropertyChanged("regaderaAhorradora");
-					this.OnregaderaAhorradoraChanged();
-				}
-			}
-		}
-		
-		[Column(Storage="_llavesAhorradoras", DbType="Bit NOT NULL")]
-		public bool llavesAhorradoras
-		{
-			get
-			{
-				return this._llavesAhorradoras;
-			}
-			set
-			{
-				if ((this._llavesAhorradoras != value))
-				{
-					this.OnllavesAhorradorasChanging(value);
-					this.SendPropertyChanging();
-					this._llavesAhorradoras = value;
-					this.SendPropertyChanged("llavesAhorradoras");
-					this.OnllavesAhorradorasChanged();
-				}
-			}
-		}
-		
-		[Column(Storage="_calentadorGasInstantaneo", DbType="Bit NOT NULL")]
-		public bool calentadorGasInstantaneo
-		{
-			get
-			{
-				return this._calentadorGasInstantaneo;
-			}
-			set
-			{
-				if ((this._calentadorGasInstantaneo != value))
-				{
-					this.OncalentadorGasInstantaneoChanging(value);
-					this.SendPropertyChanging();
-					this._calentadorGasInstantaneo = value;
-					this.SendPropertyChanged("calentadorGasInstantaneo");
-					this.OncalentadorGasInstantaneoChanged();
-				}
-			}
-		}
-		
-		[Column(Storage="_calentadorSolarAgua", DbType="Bit NOT NULL")]
-		public bool calentadorSolarAgua
-		{
-			get
-			{
-				return this._calentadorSolarAgua;
-			}
-			set
-			{
-				if ((this._calentadorSolarAgua != value))
-				{
-					this.OncalentadorSolarAguaChanging(value);
-					this.SendPropertyChanging();
-					this._calentadorSolarAgua = value;
-					this.SendPropertyChanged("calentadorSolarAgua");
-					this.OncalentadorSolarAguaChanged();
-				}
-			}
-		}
-		
-		[Column(Storage="_aireAcondicionado", DbType="Bit NOT NULL")]
-		public bool aireAcondicionado
-		{
-			get
-			{
-				return this._aireAcondicionado;
-			}
-			set
-			{
-				if ((this._aireAcondicionado != value))
-				{
-					this.OnaireAcondicionadoChanging(value);
-					this.SendPropertyChanging();
-					this._aireAcondicionado = value;
-					this.SendPropertyChanged("aireAcondicionado");
-					this.OnaireAcondicionadoChanged();
-				}
-			}
-		}
-		
-		[Column(Storage="_aislamientoTecho", DbType="Bit NOT NULL")]
-		public bool aislamientoTecho
-		{
-			get
-			{
-				return this._aislamientoTecho;
-			}
-			set
-			{
-				if ((this._aislamientoTecho != value))
-				{
-					this.OnaislamientoTechoChanging(value);
-					this.SendPropertyChanging();
-					this._aislamientoTecho = value;
-					this.SendPropertyChanged("aislamientoTecho");
-					this.OnaislamientoTechoChanged();
-				}
-			}
-		}
-		
-		[Column(Storage="_captacionEnergia", DbType="Bit NOT NULL")]
-		public bool captacionEnergia
-		{
-			get
-			{
-				return this._captacionEnergia;
-			}
-			set
-			{
-				if ((this._captacionEnergia != value))
-				{
-					this.OncaptacionEnergiaChanging(value);
-					this.SendPropertyChanging();
-					this._captacionEnergia = value;
-					this.SendPropertyChanged("captacionEnergia");
-					this.OncaptacionEnergiaChanged();
-				}
-			}
-		}
-		
-		[Column(Storage="_vozDatos", DbType="Bit NOT NULL")]
-		public bool vozDatos
-		{
-			get
-			{
-				return this._vozDatos;
-			}
-			set
-			{
-				if ((this._vozDatos != value))
-				{
-					this.OnvozDatosChanging(value);
-					this.SendPropertyChanging();
-					this._vozDatos = value;
-					this.SendPropertyChanged("vozDatos");
-					this.OnvozDatosChanged();
-				}
-			}
-		}
-		
-		[Column(Storage="_interfon", DbType="Bit NOT NULL")]
-		public bool interfon
-		{
-			get
-			{
-				return this._interfon;
-			}
-			set
-			{
-				if ((this._interfon != value))
-				{
-					this.OninterfonChanging(value);
-					this.SendPropertyChanging();
-					this._interfon = value;
-					this.SendPropertyChanged("interfon");
-					this.OninterfonChanged();
-				}
-			}
-		}
-		
-		[Column(Storage="_dosCircuitos", DbType="Bit NOT NULL")]
-		public bool dosCircuitos
-		{
-			get
-			{
-				return this._dosCircuitos;
-			}
-			set
-			{
-				if ((this._dosCircuitos != value))
-				{
-					this.OndosCircuitosChanging(value);
-					this.SendPropertyChanging();
-					this._dosCircuitos = value;
-					this.SendPropertyChanged("dosCircuitos");
-					this.OndosCircuitosChanged();
-				}
-			}
-		}
-		
-		[Column(Storage="_accesoria", DbType="Bit NOT NULL")]
-		public bool accesoria
-		{
-			get
-			{
-				return this._accesoria;
-			}
-			set
-			{
-				if ((this._accesoria != value))
-				{
-					this.OnaccesoriaChanging(value);
-					this.SendPropertyChanging();
-					this._accesoria = value;
-					this.SendPropertyChanged("accesoria");
-					this.OnaccesoriaChanged();
-				}
-			}
-		}
-		
-		[Column(Storage="_cisterna", DbType="Bit NOT NULL")]
-		public bool cisterna
-		{
-			get
-			{
-				return this._cisterna;
-			}
-			set
-			{
-				if ((this._cisterna != value))
-				{
-					this.OncisternaChanging(value);
-					this.SendPropertyChanging();
-					this._cisterna = value;
-					this.SendPropertyChanged("cisterna");
-					this.OncisternaChanged();
-				}
-			}
-		}
-		
-		[Column(Storage="_ductoClima", DbType="Bit NOT NULL")]
-		public bool ductoClima
-		{
-			get
-			{
-				return this._ductoClima;
-			}
-			set
-			{
-				if ((this._ductoClima != value))
-				{
-					this.OnductoClimaChanging(value);
-					this.SendPropertyChanging();
-					this._ductoClima = value;
-					this.SendPropertyChanged("ductoClima");
-					this.OnductoClimaChanged();
-				}
-			}
-		}
-		
-		[Column(Storage="_jaulaTendido", DbType="Bit NOT NULL")]
-		public bool jaulaTendido
-		{
-			get
-			{
-				return this._jaulaTendido;
-			}
-			set
-			{
-				if ((this._jaulaTendido != value))
-				{
-					this.OnjaulaTendidoChanging(value);
-					this.SendPropertyChanging();
-					this._jaulaTendido = value;
-					this.SendPropertyChanged("jaulaTendido");
-					this.OnjaulaTendidoChanged();
-				}
-			}
-		}
-		
-		[Column(Storage="_rejasVentanas", DbType="Bit NOT NULL")]
-		public bool rejasVentanas
-		{
-			get
-			{
-				return this._rejasVentanas;
-			}
-			set
-			{
-				if ((this._rejasVentanas != value))
-				{
-					this.OnrejasVentanasChanging(value);
-					this.SendPropertyChanging();
-					this._rejasVentanas = value;
-					this.SendPropertyChanged("rejasVentanas");
-					this.OnrejasVentanasChanged();
-				}
-			}
-		}
-		
-		[Column(Storage="_banioDiscapacitado", DbType="Bit NOT NULL")]
-		public bool banioDiscapacitado
-		{
-			get
-			{
-				return this._banioDiscapacitado;
-			}
-			set
-			{
-				if ((this._banioDiscapacitado != value))
-				{
-					this.OnbanioDiscapacitadoChanging(value);
-					this.SendPropertyChanging();
-					this._banioDiscapacitado = value;
-					this.SendPropertyChanged("banioDiscapacitado");
-					this.OnbanioDiscapacitadoChanged();
-				}
-			}
-		}
-		
-		[Column(Storage="_puertaDiscapacitado", DbType="Bit NOT NULL")]
-		public bool puertaDiscapacitado
-		{
-			get
-			{
-				return this._puertaDiscapacitado;
-			}
-			set
-			{
-				if ((this._puertaDiscapacitado != value))
-				{
-					this.OnpuertaDiscapacitadoChanging(value);
-					this.SendPropertyChanging();
-					this._puertaDiscapacitado = value;
-					this.SendPropertyChanged("puertaDiscapacitado");
-					this.OnpuertaDiscapacitadoChanged();
-				}
-			}
-		}
-		
-		[Column(Storage="_accesoriosDiscapacitado", DbType="Bit NOT NULL")]
-		public bool accesoriosDiscapacitado
-		{
-			get
-			{
-				return this._accesoriosDiscapacitado;
-			}
-			set
-			{
-				if ((this._accesoriosDiscapacitado != value))
-				{
-					this.OnaccesoriosDiscapacitadoChanging(value);
-					this.SendPropertyChanging();
-					this._accesoriosDiscapacitado = value;
-					this.SendPropertyChanged("accesoriosDiscapacitado");
-					this.OnaccesoriosDiscapacitadoChanged();
-				}
-			}
-		}
-		
-		[Column(Storage="_pasamanos", DbType="Bit NOT NULL")]
-		public bool pasamanos
-		{
-			get
-			{
-				return this._pasamanos;
-			}
-			set
-			{
-				if ((this._pasamanos != value))
-				{
-					this.OnpasamanosChanging(value);
-					this.SendPropertyChanging();
-					this._pasamanos = value;
-					this.SendPropertyChanged("pasamanos");
-					this.OnpasamanosChanged();
-				}
-			}
-		}
-		
-		[Column(Storage="_areasDiscapacitado", DbType="Bit NOT NULL")]
-		public bool areasDiscapacitado
-		{
-			get
-			{
-				return this._areasDiscapacitado;
-			}
-			set
-			{
-				if ((this._areasDiscapacitado != value))
-				{
-					this.OnareasDiscapacitadoChanging(value);
-					this.SendPropertyChanging();
-					this._areasDiscapacitado = value;
-					this.SendPropertyChanged("areasDiscapacitado");
-					this.OnareasDiscapacitadoChanged();
-				}
-			}
-		}
-		
-		[Column(Storage="_otrasInstalaciones", DbType="NVarChar(150) NOT NULL", CanBeNull=false)]
-		public string otrasInstalaciones
-		{
-			get
-			{
-				return this._otrasInstalaciones;
-			}
-			set
-			{
-				if ((this._otrasInstalaciones != value))
-				{
-					this.OnotrasInstalacionesChanging(value);
-					this.SendPropertyChanging();
-					this._otrasInstalaciones = value;
-					this.SendPropertyChanged("otrasInstalaciones");
-					this.OnotrasInstalacionesChanged();
-				}
-			}
-		}
-		
-		[Column(Storage="_otrasObras", DbType="NVarChar(150) NOT NULL", CanBeNull=false)]
-		public string otrasObras
-		{
-			get
-			{
-				return this._otrasObras;
-			}
-			set
-			{
-				if ((this._otrasObras != value))
-				{
-					this.OnotrasObrasChanging(value);
-					this.SendPropertyChanging();
-					this._otrasObras = value;
-					this.SendPropertyChanged("otrasObras");
-					this.OnotrasObrasChanged();
-				}
-			}
-		}
-		
-		[Association(Name="ConstruccionInmueble_InstalacionesEspecialesConstruccion", Storage="_ConstruccionInmueble", ThisKey="idConstruccion", OtherKey="idConstruccion", IsForeignKey=true, DeleteOnNull=true, DeleteRule="CASCADE")]
-		public ConstruccionInmueble ConstruccionInmueble
-		{
-			get
-			{
-				return this._ConstruccionInmueble.Entity;
-			}
-			set
-			{
-				ConstruccionInmueble previousValue = this._ConstruccionInmueble.Entity;
-				if (((previousValue != value) 
-							|| (this._ConstruccionInmueble.HasLoadedOrAssignedValue == false)))
-				{
-					this.SendPropertyChanging();
-					if ((previousValue != null))
-					{
-						this._ConstruccionInmueble.Entity = null;
-						previousValue.InstalacionesEspecialesConstruccion = null;
-					}
-					this._ConstruccionInmueble.Entity = value;
-					if ((value != null))
-					{
-						value.InstalacionesEspecialesConstruccion = this;
-						this._idConstruccion = value.idConstruccion;
-					}
-					else
-					{
-						this._idConstruccion = default(int);
-					}
-					this.SendPropertyChanged("ConstruccionInmueble");
-				}
-			}
-		}
-		
-		public event PropertyChangingEventHandler PropertyChanging;
-		
-		public event PropertyChangedEventHandler PropertyChanged;
-		
-		protected virtual void SendPropertyChanging()
-		{
-			if ((this.PropertyChanging != null))
-			{
-				this.PropertyChanging(this, emptyChangingEventArgs);
-			}
-		}
-		
-		protected virtual void SendPropertyChanged(String propertyName)
-		{
-			if ((this.PropertyChanged != null))
-			{
-				this.PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
-			}
-		}
-	}
-	
-	[Table(Name="dbo.InstalacionesTipoConstruccion")]
-	public partial class InstalacionesTipoConstruccion : INotifyPropertyChanging, INotifyPropertyChanged
-	{
-		
-		private static PropertyChangingEventArgs emptyChangingEventArgs = new PropertyChangingEventArgs(String.Empty);
-		
-		private int _idConstruccion;
-		
-		private short _numeroTipo;
-		
-		private string _idTipoHidraulica;
-		
-		private string _idTipoElectrica;
-		
-		private string _idTipoCanceleria;
-		
-		private string _idTipoHerreria;
-		
-		private string _idTipoCarpinteria;
-		
-		private string _idTipoSanitaria;
-		
-		private EntityRef<TipoConstruccion> _TipoConstruccion;
-		
-    #region Extensibility Method Definitions
-    partial void OnLoaded();
-    partial void OnValidate(System.Data.Linq.ChangeAction action);
-    partial void OnCreated();
-    partial void OnidConstruccionChanging(int value);
-    partial void OnidConstruccionChanged();
-    partial void OnnumeroTipoChanging(short value);
-    partial void OnnumeroTipoChanged();
-    partial void OnidTipoHidraulicaChanging(string value);
-    partial void OnidTipoHidraulicaChanged();
-    partial void OnidTipoElectricaChanging(string value);
-    partial void OnidTipoElectricaChanged();
-    partial void OnidTipoCanceleriaChanging(string value);
-    partial void OnidTipoCanceleriaChanged();
-    partial void OnidTipoHerreriaChanging(string value);
-    partial void OnidTipoHerreriaChanged();
-    partial void OnidTipoCarpinteriaChanging(string value);
-    partial void OnidTipoCarpinteriaChanged();
-    partial void OnidTipoSanitariaChanging(string value);
-    partial void OnidTipoSanitariaChanged();
-    #endregion
-		
-		public InstalacionesTipoConstruccion()
-		{
-			this._TipoConstruccion = default(EntityRef<TipoConstruccion>);
-			OnCreated();
-		}
-		
-		[Column(Storage="_idConstruccion", DbType="Int NOT NULL", IsPrimaryKey=true)]
-		public int idConstruccion
-		{
-			get
-			{
-				return this._idConstruccion;
-			}
-			set
-			{
-				if ((this._idConstruccion != value))
-				{
-					if (this._TipoConstruccion.HasLoadedOrAssignedValue)
-					{
-						throw new System.Data.Linq.ForeignKeyReferenceAlreadyHasValueException();
-					}
-					this.OnidConstruccionChanging(value);
-					this.SendPropertyChanging();
-					this._idConstruccion = value;
-					this.SendPropertyChanged("idConstruccion");
-					this.OnidConstruccionChanged();
-				}
-			}
-		}
-		
-		[Column(Storage="_numeroTipo", DbType="SmallInt NOT NULL", IsPrimaryKey=true)]
-		public short numeroTipo
-		{
-			get
-			{
-				return this._numeroTipo;
-			}
-			set
-			{
-				if ((this._numeroTipo != value))
-				{
-					if (this._TipoConstruccion.HasLoadedOrAssignedValue)
-					{
-						throw new System.Data.Linq.ForeignKeyReferenceAlreadyHasValueException();
-					}
-					this.OnnumeroTipoChanging(value);
-					this.SendPropertyChanging();
-					this._numeroTipo = value;
-					this.SendPropertyChanged("numeroTipo");
-					this.OnnumeroTipoChanged();
-				}
-			}
-		}
-		
-		[Column(Storage="_idTipoHidraulica", DbType="NVarChar(120) NOT NULL", CanBeNull=false)]
-		public string idTipoHidraulica
-		{
-			get
-			{
-				return this._idTipoHidraulica;
-			}
-			set
-			{
-				if ((this._idTipoHidraulica != value))
-				{
-					this.OnidTipoHidraulicaChanging(value);
-					this.SendPropertyChanging();
-					this._idTipoHidraulica = value;
-					this.SendPropertyChanged("idTipoHidraulica");
-					this.OnidTipoHidraulicaChanged();
-				}
-			}
-		}
-		
-		[Column(Storage="_idTipoElectrica", DbType="NVarChar(120) NOT NULL", CanBeNull=false)]
-		public string idTipoElectrica
-		{
-			get
-			{
-				return this._idTipoElectrica;
-			}
-			set
-			{
-				if ((this._idTipoElectrica != value))
-				{
-					this.OnidTipoElectricaChanging(value);
-					this.SendPropertyChanging();
-					this._idTipoElectrica = value;
-					this.SendPropertyChanged("idTipoElectrica");
-					this.OnidTipoElectricaChanged();
-				}
-			}
-		}
-		
-		[Column(Storage="_idTipoCanceleria", DbType="NVarChar(70) NOT NULL", CanBeNull=false)]
-		public string idTipoCanceleria
-		{
-			get
-			{
-				return this._idTipoCanceleria;
-			}
-			set
-			{
-				if ((this._idTipoCanceleria != value))
-				{
-					this.OnidTipoCanceleriaChanging(value);
-					this.SendPropertyChanging();
-					this._idTipoCanceleria = value;
-					this.SendPropertyChanged("idTipoCanceleria");
-					this.OnidTipoCanceleriaChanged();
-				}
-			}
-		}
-		
-		[Column(Storage="_idTipoHerreria", DbType="NVarChar(70) NOT NULL", CanBeNull=false)]
-		public string idTipoHerreria
-		{
-			get
-			{
-				return this._idTipoHerreria;
-			}
-			set
-			{
-				if ((this._idTipoHerreria != value))
-				{
-					this.OnidTipoHerreriaChanging(value);
-					this.SendPropertyChanging();
-					this._idTipoHerreria = value;
-					this.SendPropertyChanged("idTipoHerreria");
-					this.OnidTipoHerreriaChanged();
-				}
-			}
-		}
-		
-		[Column(Storage="_idTipoCarpinteria", DbType="NVarChar(70) NOT NULL", CanBeNull=false)]
-		public string idTipoCarpinteria
-		{
-			get
-			{
-				return this._idTipoCarpinteria;
-			}
-			set
-			{
-				if ((this._idTipoCarpinteria != value))
-				{
-					this.OnidTipoCarpinteriaChanging(value);
-					this.SendPropertyChanging();
-					this._idTipoCarpinteria = value;
-					this.SendPropertyChanged("idTipoCarpinteria");
-					this.OnidTipoCarpinteriaChanged();
-				}
-			}
-		}
-		
-		[Column(Storage="_idTipoSanitaria", DbType="NVarChar(70) NOT NULL", CanBeNull=false)]
-		public string idTipoSanitaria
-		{
-			get
-			{
-				return this._idTipoSanitaria;
-			}
-			set
-			{
-				if ((this._idTipoSanitaria != value))
-				{
-					this.OnidTipoSanitariaChanging(value);
-					this.SendPropertyChanging();
-					this._idTipoSanitaria = value;
-					this.SendPropertyChanged("idTipoSanitaria");
-					this.OnidTipoSanitariaChanged();
-				}
-			}
-		}
-		
-		[Association(Name="TipoConstruccion_InstalacionesTipoConstruccion", Storage="_TipoConstruccion", ThisKey="idConstruccion,numeroTipo", OtherKey="idConstruccion,numeroTipo", IsForeignKey=true, DeleteOnNull=true, DeleteRule="CASCADE")]
-		public TipoConstruccion TipoConstruccion
-		{
-			get
-			{
-				return this._TipoConstruccion.Entity;
-			}
-			set
-			{
-				TipoConstruccion previousValue = this._TipoConstruccion.Entity;
-				if (((previousValue != value) 
-							|| (this._TipoConstruccion.HasLoadedOrAssignedValue == false)))
-				{
-					this.SendPropertyChanging();
-					if ((previousValue != null))
-					{
-						this._TipoConstruccion.Entity = null;
-						previousValue.InstalacionesTipoConstruccion = null;
-					}
-					this._TipoConstruccion.Entity = value;
-					if ((value != null))
-					{
-						value.InstalacionesTipoConstruccion = this;
-						this._idConstruccion = value.idConstruccion;
-						this._numeroTipo = value.numeroTipo;
-					}
-					else
-					{
-						this._idConstruccion = default(int);
-						this._numeroTipo = default(short);
-					}
-					this.SendPropertyChanged("TipoConstruccion");
-				}
-			}
-		}
-		
-		public event PropertyChangingEventHandler PropertyChanging;
-		
-		public event PropertyChangedEventHandler PropertyChanged;
-		
-		protected virtual void SendPropertyChanging()
+		private void attach_ConstruccionInmueble(ConstruccionInmueble entity)
 		{
-			if ((this.PropertyChanging != null))
-			{
-				this.PropertyChanging(this, emptyChangingEventArgs);
-			}
+			this.SendPropertyChanging();
+			entity.Inmueble = this;
 		}
 		
-		protected virtual void SendPropertyChanged(String propertyName)
+		private void detach_ConstruccionInmueble(ConstruccionInmueble entity)
 		{
-			if ((this.PropertyChanged != null))
-			{
-				this.PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
-			}
+			this.SendPropertyChanging();
+			entity.Inmueble = null;
 		}
 	}
 	
@@ -20364,120 +17031,6 @@ namespace SIGEA.Classes.Entities
 		}
 	}
 	
-	[Table(Name="dbo.TipoAcabado")]
-	public partial class TipoAcabado : INotifyPropertyChanging, INotifyPropertyChanged
-	{
-		
-		private static PropertyChangingEventArgs emptyChangingEventArgs = new PropertyChangingEventArgs(String.Empty);
-		
-		private short _idTipoAcabado;
-		
-		private string _nombreAcabado;
-		
-		private EntitySet<AcabadoTipoConstruccion> _AcabadoTipoConstruccion;
-		
-    #region Extensibility Method Definitions
-    partial void OnLoaded();
-    partial void OnValidate(System.Data.Linq.ChangeAction action);
-    partial void OnCreated();
-    partial void OnidTipoAcabadoChanging(short value);
-    partial void OnidTipoAcabadoChanged();
-    partial void OnnombreAcabadoChanging(string value);
-    partial void OnnombreAcabadoChanged();
-    #endregion
-		
-		public TipoAcabado()
-		{
-			this._AcabadoTipoConstruccion = new EntitySet<AcabadoTipoConstruccion>(new Action<AcabadoTipoConstruccion>(this.attach_AcabadoTipoConstruccion), new Action<AcabadoTipoConstruccion>(this.detach_AcabadoTipoConstruccion));
-			OnCreated();
-		}
-		
-		[Column(Storage="_idTipoAcabado", DbType="SmallInt NOT NULL", IsPrimaryKey=true)]
-		public short idTipoAcabado
-		{
-			get
-			{
-				return this._idTipoAcabado;
-			}
-			set
-			{
-				if ((this._idTipoAcabado != value))
-				{
-					this.OnidTipoAcabadoChanging(value);
-					this.SendPropertyChanging();
-					this._idTipoAcabado = value;
-					this.SendPropertyChanged("idTipoAcabado");
-					this.OnidTipoAcabadoChanged();
-				}
-			}
-		}
-		
-		[Column(Storage="_nombreAcabado", DbType="NVarChar(20) NOT NULL", CanBeNull=false)]
-		public string nombreAcabado
-		{
-			get
-			{
-				return this._nombreAcabado;
-			}
-			set
-			{
-				if ((this._nombreAcabado != value))
-				{
-					this.OnnombreAcabadoChanging(value);
-					this.SendPropertyChanging();
-					this._nombreAcabado = value;
-					this.SendPropertyChanged("nombreAcabado");
-					this.OnnombreAcabadoChanged();
-				}
-			}
-		}
-		
-		[Association(Name="TipoAcabado_AcabadoTipoConstruccion", Storage="_AcabadoTipoConstruccion", ThisKey="idTipoAcabado", OtherKey="idTipoAcabado")]
-		public EntitySet<AcabadoTipoConstruccion> AcabadoTipoConstruccion
-		{
-			get
-			{
-				return this._AcabadoTipoConstruccion;
-			}
-			set
-			{
-				this._AcabadoTipoConstruccion.Assign(value);
-			}
-		}
-		
-		public event PropertyChangingEventHandler PropertyChanging;
-		
-		public event PropertyChangedEventHandler PropertyChanged;
-		
-		protected virtual void SendPropertyChanging()
-		{
-			if ((this.PropertyChanging != null))
-			{
-				this.PropertyChanging(this, emptyChangingEventArgs);
-			}
-		}
-		
-		protected virtual void SendPropertyChanged(String propertyName)
-		{
-			if ((this.PropertyChanged != null))
-			{
-				this.PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
-			}
-		}
-		
-		private void attach_AcabadoTipoConstruccion(AcabadoTipoConstruccion entity)
-		{
-			this.SendPropertyChanging();
-			entity.TipoAcabado = this;
-		}
-		
-		private void detach_AcabadoTipoConstruccion(AcabadoTipoConstruccion entity)
-		{
-			this.SendPropertyChanging();
-			entity.TipoAcabado = null;
-		}
-	}
-	
 	[Table(Name="dbo.TipoAsentamiento")]
 	public partial class TipoAsentamiento : INotifyPropertyChanging, INotifyPropertyChanged
 	{
@@ -21226,517 +17779,6 @@ namespace SIGEA.Classes.Entities
 		{
 			this.SendPropertyChanging();
 			entity.TipoComparable = null;
-		}
-	}
-	
-	[Table(Name="dbo.TipoConstruccion")]
-	public partial class TipoConstruccion : INotifyPropertyChanging, INotifyPropertyChanged
-	{
-		
-		private static PropertyChangingEventArgs emptyChangingEventArgs = new PropertyChangingEventArgs(String.Empty);
-		
-		private int _idConstruccion;
-		
-		private short _numeroTipo;
-		
-		private short _idClase;
-		
-		private short _idConservacion;
-		
-		private short _idFuente;
-		
-		private string _otraFuente;
-		
-		private string _descripcion;
-		
-		private double _superficie;
-		
-		private bool _accesorio;
-		
-		private short _niveles;
-		
-		private double _edad;
-		
-		private double _avanceObra;
-		
-		private double _vidaUtil;
-		
-		private short _nivelesCuerpo;
-		
-		private EntityRef<AcabadoTipoConstruccion> _AcabadoTipoConstruccion;
-		
-		private EntityRef<EstructurasTipoConstruccion> _EstructurasTipoConstruccion;
-		
-		private EntityRef<InstalacionesTipoConstruccion> _InstalacionesTipoConstruccion;
-		
-		private EntityRef<ConstruccionInmueble> _ConstruccionInmueble;
-		
-    #region Extensibility Method Definitions
-    partial void OnLoaded();
-    partial void OnValidate(System.Data.Linq.ChangeAction action);
-    partial void OnCreated();
-    partial void OnidConstruccionChanging(int value);
-    partial void OnidConstruccionChanged();
-    partial void OnnumeroTipoChanging(short value);
-    partial void OnnumeroTipoChanged();
-    partial void OnidClaseChanging(short value);
-    partial void OnidClaseChanged();
-    partial void OnidConservacionChanging(short value);
-    partial void OnidConservacionChanged();
-    partial void OnidFuenteChanging(short value);
-    partial void OnidFuenteChanged();
-    partial void OnotraFuenteChanging(string value);
-    partial void OnotraFuenteChanged();
-    partial void OndescripcionChanging(string value);
-    partial void OndescripcionChanged();
-    partial void OnsuperficieChanging(double value);
-    partial void OnsuperficieChanged();
-    partial void OnaccesorioChanging(bool value);
-    partial void OnaccesorioChanged();
-    partial void OnnivelesChanging(short value);
-    partial void OnnivelesChanged();
-    partial void OnedadChanging(double value);
-    partial void OnedadChanged();
-    partial void OnavanceObraChanging(double value);
-    partial void OnavanceObraChanged();
-    partial void OnvidaUtilChanging(double value);
-    partial void OnvidaUtilChanged();
-    partial void OnnivelesCuerpoChanging(short value);
-    partial void OnnivelesCuerpoChanged();
-    #endregion
-		
-		public TipoConstruccion()
-		{
-			this._AcabadoTipoConstruccion = default(EntityRef<AcabadoTipoConstruccion>);
-			this._EstructurasTipoConstruccion = default(EntityRef<EstructurasTipoConstruccion>);
-			this._InstalacionesTipoConstruccion = default(EntityRef<InstalacionesTipoConstruccion>);
-			this._ConstruccionInmueble = default(EntityRef<ConstruccionInmueble>);
-			OnCreated();
-		}
-		
-		[Column(Storage="_idConstruccion", DbType="Int NOT NULL", IsPrimaryKey=true)]
-		public int idConstruccion
-		{
-			get
-			{
-				return this._idConstruccion;
-			}
-			set
-			{
-				if ((this._idConstruccion != value))
-				{
-					if (this._ConstruccionInmueble.HasLoadedOrAssignedValue)
-					{
-						throw new System.Data.Linq.ForeignKeyReferenceAlreadyHasValueException();
-					}
-					this.OnidConstruccionChanging(value);
-					this.SendPropertyChanging();
-					this._idConstruccion = value;
-					this.SendPropertyChanged("idConstruccion");
-					this.OnidConstruccionChanged();
-				}
-			}
-		}
-		
-		[Column(Storage="_numeroTipo", DbType="SmallInt NOT NULL", IsPrimaryKey=true)]
-		public short numeroTipo
-		{
-			get
-			{
-				return this._numeroTipo;
-			}
-			set
-			{
-				if ((this._numeroTipo != value))
-				{
-					this.OnnumeroTipoChanging(value);
-					this.SendPropertyChanging();
-					this._numeroTipo = value;
-					this.SendPropertyChanged("numeroTipo");
-					this.OnnumeroTipoChanged();
-				}
-			}
-		}
-		
-		[Column(Storage="_idClase", DbType="SmallInt NOT NULL")]
-		public short idClase
-		{
-			get
-			{
-				return this._idClase;
-			}
-			set
-			{
-				if ((this._idClase != value))
-				{
-					this.OnidClaseChanging(value);
-					this.SendPropertyChanging();
-					this._idClase = value;
-					this.SendPropertyChanged("idClase");
-					this.OnidClaseChanged();
-				}
-			}
-		}
-		
-		[Column(Storage="_idConservacion", DbType="SmallInt NOT NULL")]
-		public short idConservacion
-		{
-			get
-			{
-				return this._idConservacion;
-			}
-			set
-			{
-				if ((this._idConservacion != value))
-				{
-					this.OnidConservacionChanging(value);
-					this.SendPropertyChanging();
-					this._idConservacion = value;
-					this.SendPropertyChanged("idConservacion");
-					this.OnidConservacionChanged();
-				}
-			}
-		}
-		
-		[Column(Storage="_idFuente", DbType="SmallInt NOT NULL")]
-		public short idFuente
-		{
-			get
-			{
-				return this._idFuente;
-			}
-			set
-			{
-				if ((this._idFuente != value))
-				{
-					this.OnidFuenteChanging(value);
-					this.SendPropertyChanging();
-					this._idFuente = value;
-					this.SendPropertyChanged("idFuente");
-					this.OnidFuenteChanged();
-				}
-			}
-		}
-		
-		[Column(Storage="_otraFuente", DbType="NVarChar(50) NOT NULL", CanBeNull=false)]
-		public string otraFuente
-		{
-			get
-			{
-				return this._otraFuente;
-			}
-			set
-			{
-				if ((this._otraFuente != value))
-				{
-					this.OnotraFuenteChanging(value);
-					this.SendPropertyChanging();
-					this._otraFuente = value;
-					this.SendPropertyChanged("otraFuente");
-					this.OnotraFuenteChanged();
-				}
-			}
-		}
-		
-		[Column(Storage="_descripcion", DbType="NVarChar(50) NOT NULL", CanBeNull=false)]
-		public string descripcion
-		{
-			get
-			{
-				return this._descripcion;
-			}
-			set
-			{
-				if ((this._descripcion != value))
-				{
-					this.OndescripcionChanging(value);
-					this.SendPropertyChanging();
-					this._descripcion = value;
-					this.SendPropertyChanged("descripcion");
-					this.OndescripcionChanged();
-				}
-			}
-		}
-		
-		[Column(Storage="_superficie", DbType="Float NOT NULL")]
-		public double superficie
-		{
-			get
-			{
-				return this._superficie;
-			}
-			set
-			{
-				if ((this._superficie != value))
-				{
-					this.OnsuperficieChanging(value);
-					this.SendPropertyChanging();
-					this._superficie = value;
-					this.SendPropertyChanged("superficie");
-					this.OnsuperficieChanged();
-				}
-			}
-		}
-		
-		[Column(Storage="_accesorio", DbType="Bit NOT NULL")]
-		public bool accesorio
-		{
-			get
-			{
-				return this._accesorio;
-			}
-			set
-			{
-				if ((this._accesorio != value))
-				{
-					this.OnaccesorioChanging(value);
-					this.SendPropertyChanging();
-					this._accesorio = value;
-					this.SendPropertyChanged("accesorio");
-					this.OnaccesorioChanged();
-				}
-			}
-		}
-		
-		[Column(Storage="_niveles", DbType="SmallInt NOT NULL")]
-		public short niveles
-		{
-			get
-			{
-				return this._niveles;
-			}
-			set
-			{
-				if ((this._niveles != value))
-				{
-					this.OnnivelesChanging(value);
-					this.SendPropertyChanging();
-					this._niveles = value;
-					this.SendPropertyChanged("niveles");
-					this.OnnivelesChanged();
-				}
-			}
-		}
-		
-		[Column(Storage="_edad", DbType="Float NOT NULL")]
-		public double edad
-		{
-			get
-			{
-				return this._edad;
-			}
-			set
-			{
-				if ((this._edad != value))
-				{
-					this.OnedadChanging(value);
-					this.SendPropertyChanging();
-					this._edad = value;
-					this.SendPropertyChanged("edad");
-					this.OnedadChanged();
-				}
-			}
-		}
-		
-		[Column(Storage="_avanceObra", DbType="Float NOT NULL")]
-		public double avanceObra
-		{
-			get
-			{
-				return this._avanceObra;
-			}
-			set
-			{
-				if ((this._avanceObra != value))
-				{
-					this.OnavanceObraChanging(value);
-					this.SendPropertyChanging();
-					this._avanceObra = value;
-					this.SendPropertyChanged("avanceObra");
-					this.OnavanceObraChanged();
-				}
-			}
-		}
-		
-		[Column(Storage="_vidaUtil", DbType="Float NOT NULL")]
-		public double vidaUtil
-		{
-			get
-			{
-				return this._vidaUtil;
-			}
-			set
-			{
-				if ((this._vidaUtil != value))
-				{
-					this.OnvidaUtilChanging(value);
-					this.SendPropertyChanging();
-					this._vidaUtil = value;
-					this.SendPropertyChanged("vidaUtil");
-					this.OnvidaUtilChanged();
-				}
-			}
-		}
-		
-		[Column(Storage="_nivelesCuerpo", DbType="SmallInt NOT NULL")]
-		public short nivelesCuerpo
-		{
-			get
-			{
-				return this._nivelesCuerpo;
-			}
-			set
-			{
-				if ((this._nivelesCuerpo != value))
-				{
-					this.OnnivelesCuerpoChanging(value);
-					this.SendPropertyChanging();
-					this._nivelesCuerpo = value;
-					this.SendPropertyChanged("nivelesCuerpo");
-					this.OnnivelesCuerpoChanged();
-				}
-			}
-		}
-		
-		[Association(Name="TipoConstruccion_AcabadoTipoConstruccion", Storage="_AcabadoTipoConstruccion", ThisKey="idConstruccion,numeroTipo", OtherKey="idConstruccion,numeroTipo", IsUnique=true, IsForeignKey=false)]
-		public AcabadoTipoConstruccion AcabadoTipoConstruccion
-		{
-			get
-			{
-				return this._AcabadoTipoConstruccion.Entity;
-			}
-			set
-			{
-				AcabadoTipoConstruccion previousValue = this._AcabadoTipoConstruccion.Entity;
-				if (((previousValue != value) 
-							|| (this._AcabadoTipoConstruccion.HasLoadedOrAssignedValue == false)))
-				{
-					this.SendPropertyChanging();
-					if ((previousValue != null))
-					{
-						this._AcabadoTipoConstruccion.Entity = null;
-						previousValue.TipoConstruccion = null;
-					}
-					this._AcabadoTipoConstruccion.Entity = value;
-					if ((value != null))
-					{
-						value.TipoConstruccion = this;
-					}
-					this.SendPropertyChanged("AcabadoTipoConstruccion");
-				}
-			}
-		}
-		
-		[Association(Name="TipoConstruccion_EstructurasTipoConstruccion", Storage="_EstructurasTipoConstruccion", ThisKey="idConstruccion,numeroTipo", OtherKey="idConstruccion,numeroTipo", IsUnique=true, IsForeignKey=false)]
-		public EstructurasTipoConstruccion EstructurasTipoConstruccion
-		{
-			get
-			{
-				return this._EstructurasTipoConstruccion.Entity;
-			}
-			set
-			{
-				EstructurasTipoConstruccion previousValue = this._EstructurasTipoConstruccion.Entity;
-				if (((previousValue != value) 
-							|| (this._EstructurasTipoConstruccion.HasLoadedOrAssignedValue == false)))
-				{
-					this.SendPropertyChanging();
-					if ((previousValue != null))
-					{
-						this._EstructurasTipoConstruccion.Entity = null;
-						previousValue.TipoConstruccion = null;
-					}
-					this._EstructurasTipoConstruccion.Entity = value;
-					if ((value != null))
-					{
-						value.TipoConstruccion = this;
-					}
-					this.SendPropertyChanged("EstructurasTipoConstruccion");
-				}
-			}
-		}
-		
-		[Association(Name="TipoConstruccion_InstalacionesTipoConstruccion", Storage="_InstalacionesTipoConstruccion", ThisKey="idConstruccion,numeroTipo", OtherKey="idConstruccion,numeroTipo", IsUnique=true, IsForeignKey=false)]
-		public InstalacionesTipoConstruccion InstalacionesTipoConstruccion
-		{
-			get
-			{
-				return this._InstalacionesTipoConstruccion.Entity;
-			}
-			set
-			{
-				InstalacionesTipoConstruccion previousValue = this._InstalacionesTipoConstruccion.Entity;
-				if (((previousValue != value) 
-							|| (this._InstalacionesTipoConstruccion.HasLoadedOrAssignedValue == false)))
-				{
-					this.SendPropertyChanging();
-					if ((previousValue != null))
-					{
-						this._InstalacionesTipoConstruccion.Entity = null;
-						previousValue.TipoConstruccion = null;
-					}
-					this._InstalacionesTipoConstruccion.Entity = value;
-					if ((value != null))
-					{
-						value.TipoConstruccion = this;
-					}
-					this.SendPropertyChanged("InstalacionesTipoConstruccion");
-				}
-			}
-		}
-		
-		[Association(Name="ConstruccionInmueble_TipoConstruccion", Storage="_ConstruccionInmueble", ThisKey="idConstruccion", OtherKey="idConstruccion", IsForeignKey=true)]
-		public ConstruccionInmueble ConstruccionInmueble
-		{
-			get
-			{
-				return this._ConstruccionInmueble.Entity;
-			}
-			set
-			{
-				ConstruccionInmueble previousValue = this._ConstruccionInmueble.Entity;
-				if (((previousValue != value) 
-							|| (this._ConstruccionInmueble.HasLoadedOrAssignedValue == false)))
-				{
-					this.SendPropertyChanging();
-					if ((previousValue != null))
-					{
-						this._ConstruccionInmueble.Entity = null;
-						previousValue.TipoConstruccion.Remove(this);
-					}
-					this._ConstruccionInmueble.Entity = value;
-					if ((value != null))
-					{
-						value.TipoConstruccion.Add(this);
-						this._idConstruccion = value.idConstruccion;
-					}
-					else
-					{
-						this._idConstruccion = default(int);
-					}
-					this.SendPropertyChanged("ConstruccionInmueble");
-				}
-			}
-		}
-		
-		public event PropertyChangingEventHandler PropertyChanging;
-		
-		public event PropertyChangedEventHandler PropertyChanged;
-		
-		protected virtual void SendPropertyChanging()
-		{
-			if ((this.PropertyChanging != null))
-			{
-				this.PropertyChanging(this, emptyChangingEventArgs);
-			}
-		}
-		
-		protected virtual void SendPropertyChanged(String propertyName)
-		{
-			if ((this.PropertyChanged != null))
-			{
-				this.PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
-			}
 		}
 	}
 	
@@ -28742,6 +24784,2902 @@ namespace SIGEA.Classes.Entities
 		{
 			this.SendPropertyChanging();
 			entity.UsoSuelo = null;
+		}
+	}
+	
+	[Table(Name="dbo.TipoAcabado")]
+	public partial class TipoAcabado : INotifyPropertyChanging, INotifyPropertyChanged
+	{
+		
+		private static PropertyChangingEventArgs emptyChangingEventArgs = new PropertyChangingEventArgs(String.Empty);
+		
+		private short _idTipoAcabado;
+		
+		private string _nombreAcabado;
+		
+		private EntitySet<AcabadoTipoConstruccion> _AcabadoTipoConstruccion;
+		
+    #region Extensibility Method Definitions
+    partial void OnLoaded();
+    partial void OnValidate(System.Data.Linq.ChangeAction action);
+    partial void OnCreated();
+    partial void OnidTipoAcabadoChanging(short value);
+    partial void OnidTipoAcabadoChanged();
+    partial void OnnombreAcabadoChanging(string value);
+    partial void OnnombreAcabadoChanged();
+    #endregion
+		
+		public TipoAcabado()
+		{
+			this._AcabadoTipoConstruccion = new EntitySet<AcabadoTipoConstruccion>(new Action<AcabadoTipoConstruccion>(this.attach_AcabadoTipoConstruccion), new Action<AcabadoTipoConstruccion>(this.detach_AcabadoTipoConstruccion));
+			OnCreated();
+		}
+		
+		[Column(Storage="_idTipoAcabado", DbType="SmallInt NOT NULL", IsPrimaryKey=true)]
+		public short idTipoAcabado
+		{
+			get
+			{
+				return this._idTipoAcabado;
+			}
+			set
+			{
+				if ((this._idTipoAcabado != value))
+				{
+					this.OnidTipoAcabadoChanging(value);
+					this.SendPropertyChanging();
+					this._idTipoAcabado = value;
+					this.SendPropertyChanged("idTipoAcabado");
+					this.OnidTipoAcabadoChanged();
+				}
+			}
+		}
+		
+		[Column(Storage="_nombreAcabado", DbType="NVarChar(20) NOT NULL", CanBeNull=false)]
+		public string nombreAcabado
+		{
+			get
+			{
+				return this._nombreAcabado;
+			}
+			set
+			{
+				if ((this._nombreAcabado != value))
+				{
+					this.OnnombreAcabadoChanging(value);
+					this.SendPropertyChanging();
+					this._nombreAcabado = value;
+					this.SendPropertyChanged("nombreAcabado");
+					this.OnnombreAcabadoChanged();
+				}
+			}
+		}
+		
+		[Association(Name="TipoAcabado_AcabadoTipoConstruccion", Storage="_AcabadoTipoConstruccion", ThisKey="idTipoAcabado", OtherKey="idTipoAcabado")]
+		public EntitySet<AcabadoTipoConstruccion> AcabadoTipoConstruccion
+		{
+			get
+			{
+				return this._AcabadoTipoConstruccion;
+			}
+			set
+			{
+				this._AcabadoTipoConstruccion.Assign(value);
+			}
+		}
+		
+		public event PropertyChangingEventHandler PropertyChanging;
+		
+		public event PropertyChangedEventHandler PropertyChanged;
+		
+		protected virtual void SendPropertyChanging()
+		{
+			if ((this.PropertyChanging != null))
+			{
+				this.PropertyChanging(this, emptyChangingEventArgs);
+			}
+		}
+		
+		protected virtual void SendPropertyChanged(String propertyName)
+		{
+			if ((this.PropertyChanged != null))
+			{
+				this.PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
+			}
+		}
+		
+		private void attach_AcabadoTipoConstruccion(AcabadoTipoConstruccion entity)
+		{
+			this.SendPropertyChanging();
+			entity.TipoAcabado = this;
+		}
+		
+		private void detach_AcabadoTipoConstruccion(AcabadoTipoConstruccion entity)
+		{
+			this.SendPropertyChanging();
+			entity.TipoAcabado = null;
+		}
+	}
+	
+	[Table(Name="dbo.TipoConstruccion")]
+	public partial class TipoConstruccion : INotifyPropertyChanging, INotifyPropertyChanged
+	{
+		
+		private static PropertyChangingEventArgs emptyChangingEventArgs = new PropertyChangingEventArgs(String.Empty);
+		
+		private int _idConstruccion;
+		
+		private short _numeroTipo;
+		
+		private short _idClase;
+		
+		private short _idConservacion;
+		
+		private short _idFuente;
+		
+		private string _otraFuente;
+		
+		private string _descripcion;
+		
+		private double _superficie;
+		
+		private bool _accesorio;
+		
+		private short _niveles;
+		
+		private double _edad;
+		
+		private double _avanceObra;
+		
+		private double _vidaUtil;
+		
+		private short _nivelesCuerpo;
+		
+		private EntityRef<InstalacionesTipoConstruccion> _InstalacionesTipoConstruccion;
+		
+		private EntityRef<EstructurasTipoConstruccion> _EstructurasTipoConstruccion;
+		
+		private EntitySet<AcabadoTipoConstruccion> _AcabadoTipoConstruccion;
+		
+		private EntityRef<ConstruccionInmueble> _ConstruccionInmueble;
+		
+    #region Extensibility Method Definitions
+    partial void OnLoaded();
+    partial void OnValidate(System.Data.Linq.ChangeAction action);
+    partial void OnCreated();
+    partial void OnidConstruccionChanging(int value);
+    partial void OnidConstruccionChanged();
+    partial void OnnumeroTipoChanging(short value);
+    partial void OnnumeroTipoChanged();
+    partial void OnidClaseChanging(short value);
+    partial void OnidClaseChanged();
+    partial void OnidConservacionChanging(short value);
+    partial void OnidConservacionChanged();
+    partial void OnidFuenteChanging(short value);
+    partial void OnidFuenteChanged();
+    partial void OnotraFuenteChanging(string value);
+    partial void OnotraFuenteChanged();
+    partial void OndescripcionChanging(string value);
+    partial void OndescripcionChanged();
+    partial void OnsuperficieChanging(double value);
+    partial void OnsuperficieChanged();
+    partial void OnaccesorioChanging(bool value);
+    partial void OnaccesorioChanged();
+    partial void OnnivelesChanging(short value);
+    partial void OnnivelesChanged();
+    partial void OnedadChanging(double value);
+    partial void OnedadChanged();
+    partial void OnavanceObraChanging(double value);
+    partial void OnavanceObraChanged();
+    partial void OnvidaUtilChanging(double value);
+    partial void OnvidaUtilChanged();
+    partial void OnnivelesCuerpoChanging(short value);
+    partial void OnnivelesCuerpoChanged();
+    #endregion
+		
+		public TipoConstruccion()
+		{
+			this._InstalacionesTipoConstruccion = default(EntityRef<InstalacionesTipoConstruccion>);
+			this._EstructurasTipoConstruccion = default(EntityRef<EstructurasTipoConstruccion>);
+			this._AcabadoTipoConstruccion = new EntitySet<AcabadoTipoConstruccion>(new Action<AcabadoTipoConstruccion>(this.attach_AcabadoTipoConstruccion), new Action<AcabadoTipoConstruccion>(this.detach_AcabadoTipoConstruccion));
+			this._ConstruccionInmueble = default(EntityRef<ConstruccionInmueble>);
+			OnCreated();
+		}
+		
+		[Column(Storage="_idConstruccion", DbType="Int NOT NULL", IsPrimaryKey=true)]
+		public int idConstruccion
+		{
+			get
+			{
+				return this._idConstruccion;
+			}
+			set
+			{
+				if ((this._idConstruccion != value))
+				{
+					if (this._ConstruccionInmueble.HasLoadedOrAssignedValue)
+					{
+						throw new System.Data.Linq.ForeignKeyReferenceAlreadyHasValueException();
+					}
+					this.OnidConstruccionChanging(value);
+					this.SendPropertyChanging();
+					this._idConstruccion = value;
+					this.SendPropertyChanged("idConstruccion");
+					this.OnidConstruccionChanged();
+				}
+			}
+		}
+		
+		[Column(Storage="_numeroTipo", DbType="SmallInt NOT NULL", IsPrimaryKey=true)]
+		public short numeroTipo
+		{
+			get
+			{
+				return this._numeroTipo;
+			}
+			set
+			{
+				if ((this._numeroTipo != value))
+				{
+					this.OnnumeroTipoChanging(value);
+					this.SendPropertyChanging();
+					this._numeroTipo = value;
+					this.SendPropertyChanged("numeroTipo");
+					this.OnnumeroTipoChanged();
+				}
+			}
+		}
+		
+		[Column(Storage="_idClase", DbType="SmallInt NOT NULL")]
+		public short idClase
+		{
+			get
+			{
+				return this._idClase;
+			}
+			set
+			{
+				if ((this._idClase != value))
+				{
+					this.OnidClaseChanging(value);
+					this.SendPropertyChanging();
+					this._idClase = value;
+					this.SendPropertyChanged("idClase");
+					this.OnidClaseChanged();
+				}
+			}
+		}
+		
+		[Column(Storage="_idConservacion", DbType="SmallInt NOT NULL")]
+		public short idConservacion
+		{
+			get
+			{
+				return this._idConservacion;
+			}
+			set
+			{
+				if ((this._idConservacion != value))
+				{
+					this.OnidConservacionChanging(value);
+					this.SendPropertyChanging();
+					this._idConservacion = value;
+					this.SendPropertyChanged("idConservacion");
+					this.OnidConservacionChanged();
+				}
+			}
+		}
+		
+		[Column(Storage="_idFuente", DbType="SmallInt NOT NULL")]
+		public short idFuente
+		{
+			get
+			{
+				return this._idFuente;
+			}
+			set
+			{
+				if ((this._idFuente != value))
+				{
+					this.OnidFuenteChanging(value);
+					this.SendPropertyChanging();
+					this._idFuente = value;
+					this.SendPropertyChanged("idFuente");
+					this.OnidFuenteChanged();
+				}
+			}
+		}
+		
+		[Column(Storage="_otraFuente", DbType="NVarChar(50) NOT NULL", CanBeNull=false)]
+		public string otraFuente
+		{
+			get
+			{
+				return this._otraFuente;
+			}
+			set
+			{
+				if ((this._otraFuente != value))
+				{
+					this.OnotraFuenteChanging(value);
+					this.SendPropertyChanging();
+					this._otraFuente = value;
+					this.SendPropertyChanged("otraFuente");
+					this.OnotraFuenteChanged();
+				}
+			}
+		}
+		
+		[Column(Storage="_descripcion", DbType="NVarChar(50) NOT NULL", CanBeNull=false)]
+		public string descripcion
+		{
+			get
+			{
+				return this._descripcion;
+			}
+			set
+			{
+				if ((this._descripcion != value))
+				{
+					this.OndescripcionChanging(value);
+					this.SendPropertyChanging();
+					this._descripcion = value;
+					this.SendPropertyChanged("descripcion");
+					this.OndescripcionChanged();
+				}
+			}
+		}
+		
+		[Column(Storage="_superficie", DbType="Float NOT NULL")]
+		public double superficie
+		{
+			get
+			{
+				return this._superficie;
+			}
+			set
+			{
+				if ((this._superficie != value))
+				{
+					this.OnsuperficieChanging(value);
+					this.SendPropertyChanging();
+					this._superficie = value;
+					this.SendPropertyChanged("superficie");
+					this.OnsuperficieChanged();
+				}
+			}
+		}
+		
+		[Column(Storage="_accesorio", DbType="Bit NOT NULL")]
+		public bool accesorio
+		{
+			get
+			{
+				return this._accesorio;
+			}
+			set
+			{
+				if ((this._accesorio != value))
+				{
+					this.OnaccesorioChanging(value);
+					this.SendPropertyChanging();
+					this._accesorio = value;
+					this.SendPropertyChanged("accesorio");
+					this.OnaccesorioChanged();
+				}
+			}
+		}
+		
+		[Column(Storage="_niveles", DbType="SmallInt NOT NULL")]
+		public short niveles
+		{
+			get
+			{
+				return this._niveles;
+			}
+			set
+			{
+				if ((this._niveles != value))
+				{
+					this.OnnivelesChanging(value);
+					this.SendPropertyChanging();
+					this._niveles = value;
+					this.SendPropertyChanged("niveles");
+					this.OnnivelesChanged();
+				}
+			}
+		}
+		
+		[Column(Storage="_edad", DbType="Float NOT NULL")]
+		public double edad
+		{
+			get
+			{
+				return this._edad;
+			}
+			set
+			{
+				if ((this._edad != value))
+				{
+					this.OnedadChanging(value);
+					this.SendPropertyChanging();
+					this._edad = value;
+					this.SendPropertyChanged("edad");
+					this.OnedadChanged();
+				}
+			}
+		}
+		
+		[Column(Storage="_avanceObra", DbType="Float NOT NULL")]
+		public double avanceObra
+		{
+			get
+			{
+				return this._avanceObra;
+			}
+			set
+			{
+				if ((this._avanceObra != value))
+				{
+					this.OnavanceObraChanging(value);
+					this.SendPropertyChanging();
+					this._avanceObra = value;
+					this.SendPropertyChanged("avanceObra");
+					this.OnavanceObraChanged();
+				}
+			}
+		}
+		
+		[Column(Storage="_vidaUtil", DbType="Float NOT NULL")]
+		public double vidaUtil
+		{
+			get
+			{
+				return this._vidaUtil;
+			}
+			set
+			{
+				if ((this._vidaUtil != value))
+				{
+					this.OnvidaUtilChanging(value);
+					this.SendPropertyChanging();
+					this._vidaUtil = value;
+					this.SendPropertyChanged("vidaUtil");
+					this.OnvidaUtilChanged();
+				}
+			}
+		}
+		
+		[Column(Storage="_nivelesCuerpo", DbType="SmallInt NOT NULL")]
+		public short nivelesCuerpo
+		{
+			get
+			{
+				return this._nivelesCuerpo;
+			}
+			set
+			{
+				if ((this._nivelesCuerpo != value))
+				{
+					this.OnnivelesCuerpoChanging(value);
+					this.SendPropertyChanging();
+					this._nivelesCuerpo = value;
+					this.SendPropertyChanged("nivelesCuerpo");
+					this.OnnivelesCuerpoChanged();
+				}
+			}
+		}
+		
+		[Association(Name="TipoConstruccion_InstalacionesTipoConstruccion", Storage="_InstalacionesTipoConstruccion", ThisKey="idConstruccion,numeroTipo", OtherKey="idConstruccion,numeroTipo", IsUnique=true, IsForeignKey=false)]
+		public InstalacionesTipoConstruccion InstalacionesTipoConstruccion
+		{
+			get
+			{
+				return this._InstalacionesTipoConstruccion.Entity;
+			}
+			set
+			{
+				InstalacionesTipoConstruccion previousValue = this._InstalacionesTipoConstruccion.Entity;
+				if (((previousValue != value) 
+							|| (this._InstalacionesTipoConstruccion.HasLoadedOrAssignedValue == false)))
+				{
+					this.SendPropertyChanging();
+					if ((previousValue != null))
+					{
+						this._InstalacionesTipoConstruccion.Entity = null;
+						previousValue.TipoConstruccion = null;
+					}
+					this._InstalacionesTipoConstruccion.Entity = value;
+					if ((value != null))
+					{
+						value.TipoConstruccion = this;
+					}
+					this.SendPropertyChanged("InstalacionesTipoConstruccion");
+				}
+			}
+		}
+		
+		[Association(Name="TipoConstruccion_EstructurasTipoConstruccion", Storage="_EstructurasTipoConstruccion", ThisKey="idConstruccion,numeroTipo", OtherKey="idConstruccion,numeroTipo", IsUnique=true, IsForeignKey=false)]
+		public EstructurasTipoConstruccion EstructurasTipoConstruccion
+		{
+			get
+			{
+				return this._EstructurasTipoConstruccion.Entity;
+			}
+			set
+			{
+				EstructurasTipoConstruccion previousValue = this._EstructurasTipoConstruccion.Entity;
+				if (((previousValue != value) 
+							|| (this._EstructurasTipoConstruccion.HasLoadedOrAssignedValue == false)))
+				{
+					this.SendPropertyChanging();
+					if ((previousValue != null))
+					{
+						this._EstructurasTipoConstruccion.Entity = null;
+						previousValue.TipoConstruccion = null;
+					}
+					this._EstructurasTipoConstruccion.Entity = value;
+					if ((value != null))
+					{
+						value.TipoConstruccion = this;
+					}
+					this.SendPropertyChanged("EstructurasTipoConstruccion");
+				}
+			}
+		}
+		
+		[Association(Name="TipoConstruccion_AcabadoTipoConstruccion", Storage="_AcabadoTipoConstruccion", ThisKey="idConstruccion,numeroTipo", OtherKey="idConstruccion,numeroTipo")]
+		public EntitySet<AcabadoTipoConstruccion> AcabadoTipoConstruccion
+		{
+			get
+			{
+				return this._AcabadoTipoConstruccion;
+			}
+			set
+			{
+				this._AcabadoTipoConstruccion.Assign(value);
+			}
+		}
+		
+		[Association(Name="ConstruccionInmueble_TipoConstruccion", Storage="_ConstruccionInmueble", ThisKey="idConstruccion", OtherKey="idConstruccion", IsForeignKey=true)]
+		public ConstruccionInmueble ConstruccionInmueble
+		{
+			get
+			{
+				return this._ConstruccionInmueble.Entity;
+			}
+			set
+			{
+				ConstruccionInmueble previousValue = this._ConstruccionInmueble.Entity;
+				if (((previousValue != value) 
+							|| (this._ConstruccionInmueble.HasLoadedOrAssignedValue == false)))
+				{
+					this.SendPropertyChanging();
+					if ((previousValue != null))
+					{
+						this._ConstruccionInmueble.Entity = null;
+						previousValue.TipoConstruccion.Remove(this);
+					}
+					this._ConstruccionInmueble.Entity = value;
+					if ((value != null))
+					{
+						value.TipoConstruccion.Add(this);
+						this._idConstruccion = value.idConstruccion;
+					}
+					else
+					{
+						this._idConstruccion = default(int);
+					}
+					this.SendPropertyChanged("ConstruccionInmueble");
+				}
+			}
+		}
+		
+		public event PropertyChangingEventHandler PropertyChanging;
+		
+		public event PropertyChangedEventHandler PropertyChanged;
+		
+		protected virtual void SendPropertyChanging()
+		{
+			if ((this.PropertyChanging != null))
+			{
+				this.PropertyChanging(this, emptyChangingEventArgs);
+			}
+		}
+		
+		protected virtual void SendPropertyChanged(String propertyName)
+		{
+			if ((this.PropertyChanged != null))
+			{
+				this.PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
+			}
+		}
+		
+		private void attach_AcabadoTipoConstruccion(AcabadoTipoConstruccion entity)
+		{
+			this.SendPropertyChanging();
+			entity.TipoConstruccion = this;
+		}
+		
+		private void detach_AcabadoTipoConstruccion(AcabadoTipoConstruccion entity)
+		{
+			this.SendPropertyChanging();
+			entity.TipoConstruccion = null;
+		}
+	}
+	
+	[Table(Name="dbo.SuperficiesCondominio")]
+	public partial class SuperficiesCondominio : INotifyPropertyChanging, INotifyPropertyChanged
+	{
+		
+		private static PropertyChangingEventArgs emptyChangingEventArgs = new PropertyChangingEventArgs(String.Empty);
+		
+		private int _idCondominio;
+		
+		private double _totalTerreno;
+		
+		private double _indiviso;
+		
+		private double _privativo;
+		
+		private int _fuenteIndiviso;
+		
+		private string _otraFuenteIndiviso;
+		
+		private int _fuentePrivativo;
+		
+		private string _otraFuentePrivativo;
+		
+		private EntityRef<DatoCondominio> _DatoCondominio;
+		
+    #region Extensibility Method Definitions
+    partial void OnLoaded();
+    partial void OnValidate(System.Data.Linq.ChangeAction action);
+    partial void OnCreated();
+    partial void OnidCondominioChanging(int value);
+    partial void OnidCondominioChanged();
+    partial void OntotalTerrenoChanging(double value);
+    partial void OntotalTerrenoChanged();
+    partial void OnindivisoChanging(double value);
+    partial void OnindivisoChanged();
+    partial void OnprivativoChanging(double value);
+    partial void OnprivativoChanged();
+    partial void OnfuenteIndivisoChanging(int value);
+    partial void OnfuenteIndivisoChanged();
+    partial void OnotraFuenteIndivisoChanging(string value);
+    partial void OnotraFuenteIndivisoChanged();
+    partial void OnfuentePrivativoChanging(int value);
+    partial void OnfuentePrivativoChanged();
+    partial void OnotraFuentePrivativoChanging(string value);
+    partial void OnotraFuentePrivativoChanged();
+    #endregion
+		
+		public SuperficiesCondominio()
+		{
+			this._DatoCondominio = default(EntityRef<DatoCondominio>);
+			OnCreated();
+		}
+		
+		[Column(Storage="_idCondominio", DbType="Int NOT NULL", IsPrimaryKey=true)]
+		public int idCondominio
+		{
+			get
+			{
+				return this._idCondominio;
+			}
+			set
+			{
+				if ((this._idCondominio != value))
+				{
+					if (this._DatoCondominio.HasLoadedOrAssignedValue)
+					{
+						throw new System.Data.Linq.ForeignKeyReferenceAlreadyHasValueException();
+					}
+					this.OnidCondominioChanging(value);
+					this.SendPropertyChanging();
+					this._idCondominio = value;
+					this.SendPropertyChanged("idCondominio");
+					this.OnidCondominioChanged();
+				}
+			}
+		}
+		
+		[Column(Storage="_totalTerreno", DbType="Float NOT NULL")]
+		public double totalTerreno
+		{
+			get
+			{
+				return this._totalTerreno;
+			}
+			set
+			{
+				if ((this._totalTerreno != value))
+				{
+					this.OntotalTerrenoChanging(value);
+					this.SendPropertyChanging();
+					this._totalTerreno = value;
+					this.SendPropertyChanged("totalTerreno");
+					this.OntotalTerrenoChanged();
+				}
+			}
+		}
+		
+		[Column(Storage="_indiviso", DbType="Float NOT NULL")]
+		public double indiviso
+		{
+			get
+			{
+				return this._indiviso;
+			}
+			set
+			{
+				if ((this._indiviso != value))
+				{
+					this.OnindivisoChanging(value);
+					this.SendPropertyChanging();
+					this._indiviso = value;
+					this.SendPropertyChanged("indiviso");
+					this.OnindivisoChanged();
+				}
+			}
+		}
+		
+		[Column(Storage="_privativo", DbType="Float NOT NULL")]
+		public double privativo
+		{
+			get
+			{
+				return this._privativo;
+			}
+			set
+			{
+				if ((this._privativo != value))
+				{
+					this.OnprivativoChanging(value);
+					this.SendPropertyChanging();
+					this._privativo = value;
+					this.SendPropertyChanged("privativo");
+					this.OnprivativoChanged();
+				}
+			}
+		}
+		
+		[Column(Storage="_fuenteIndiviso", DbType="Int NOT NULL")]
+		public int fuenteIndiviso
+		{
+			get
+			{
+				return this._fuenteIndiviso;
+			}
+			set
+			{
+				if ((this._fuenteIndiviso != value))
+				{
+					this.OnfuenteIndivisoChanging(value);
+					this.SendPropertyChanging();
+					this._fuenteIndiviso = value;
+					this.SendPropertyChanged("fuenteIndiviso");
+					this.OnfuenteIndivisoChanged();
+				}
+			}
+		}
+		
+		[Column(Storage="_otraFuenteIndiviso", DbType="NVarChar(50)")]
+		public string otraFuenteIndiviso
+		{
+			get
+			{
+				return this._otraFuenteIndiviso;
+			}
+			set
+			{
+				if ((this._otraFuenteIndiviso != value))
+				{
+					this.OnotraFuenteIndivisoChanging(value);
+					this.SendPropertyChanging();
+					this._otraFuenteIndiviso = value;
+					this.SendPropertyChanged("otraFuenteIndiviso");
+					this.OnotraFuenteIndivisoChanged();
+				}
+			}
+		}
+		
+		[Column(Storage="_fuentePrivativo", DbType="Int NOT NULL")]
+		public int fuentePrivativo
+		{
+			get
+			{
+				return this._fuentePrivativo;
+			}
+			set
+			{
+				if ((this._fuentePrivativo != value))
+				{
+					this.OnfuentePrivativoChanging(value);
+					this.SendPropertyChanging();
+					this._fuentePrivativo = value;
+					this.SendPropertyChanged("fuentePrivativo");
+					this.OnfuentePrivativoChanged();
+				}
+			}
+		}
+		
+		[Column(Storage="_otraFuentePrivativo", DbType="NVarChar(50)")]
+		public string otraFuentePrivativo
+		{
+			get
+			{
+				return this._otraFuentePrivativo;
+			}
+			set
+			{
+				if ((this._otraFuentePrivativo != value))
+				{
+					this.OnotraFuentePrivativoChanging(value);
+					this.SendPropertyChanging();
+					this._otraFuentePrivativo = value;
+					this.SendPropertyChanged("otraFuentePrivativo");
+					this.OnotraFuentePrivativoChanged();
+				}
+			}
+		}
+		
+		[Association(Name="DatoCondominio_SuperficiesCondominio", Storage="_DatoCondominio", ThisKey="idCondominio", OtherKey="idCondominio", IsForeignKey=true, DeleteOnNull=true, DeleteRule="CASCADE")]
+		public DatoCondominio DatoCondominio
+		{
+			get
+			{
+				return this._DatoCondominio.Entity;
+			}
+			set
+			{
+				DatoCondominio previousValue = this._DatoCondominio.Entity;
+				if (((previousValue != value) 
+							|| (this._DatoCondominio.HasLoadedOrAssignedValue == false)))
+				{
+					this.SendPropertyChanging();
+					if ((previousValue != null))
+					{
+						this._DatoCondominio.Entity = null;
+						previousValue.SuperficiesCondominio = null;
+					}
+					this._DatoCondominio.Entity = value;
+					if ((value != null))
+					{
+						value.SuperficiesCondominio = this;
+						this._idCondominio = value.idCondominio;
+					}
+					else
+					{
+						this._idCondominio = default(int);
+					}
+					this.SendPropertyChanged("DatoCondominio");
+				}
+			}
+		}
+		
+		public event PropertyChangingEventHandler PropertyChanging;
+		
+		public event PropertyChangedEventHandler PropertyChanged;
+		
+		protected virtual void SendPropertyChanging()
+		{
+			if ((this.PropertyChanging != null))
+			{
+				this.PropertyChanging(this, emptyChangingEventArgs);
+			}
+		}
+		
+		protected virtual void SendPropertyChanged(String propertyName)
+		{
+			if ((this.PropertyChanged != null))
+			{
+				this.PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
+			}
+		}
+	}
+	
+	[Table(Name="dbo.AreaComun")]
+	public partial class AreaComun : INotifyPropertyChanging, INotifyPropertyChanged
+	{
+		
+		private static PropertyChangingEventArgs emptyChangingEventArgs = new PropertyChangingEventArgs(String.Empty);
+		
+		private short _idArea;
+		
+		private int _idCondominio;
+		
+		private string _concepto;
+		
+		private double _superficie;
+		
+		private bool _complemetaria;
+		
+		private EntityRef<DatoCondominio> _DatoCondominio;
+		
+    #region Extensibility Method Definitions
+    partial void OnLoaded();
+    partial void OnValidate(System.Data.Linq.ChangeAction action);
+    partial void OnCreated();
+    partial void OnidAreaChanging(short value);
+    partial void OnidAreaChanged();
+    partial void OnidCondominioChanging(int value);
+    partial void OnidCondominioChanged();
+    partial void OnconceptoChanging(string value);
+    partial void OnconceptoChanged();
+    partial void OnsuperficieChanging(double value);
+    partial void OnsuperficieChanged();
+    partial void OncomplemetariaChanging(bool value);
+    partial void OncomplemetariaChanged();
+    #endregion
+		
+		public AreaComun()
+		{
+			this._DatoCondominio = default(EntityRef<DatoCondominio>);
+			OnCreated();
+		}
+		
+		[Column(Storage="_idArea", DbType="SmallInt NOT NULL", IsPrimaryKey=true)]
+		public short idArea
+		{
+			get
+			{
+				return this._idArea;
+			}
+			set
+			{
+				if ((this._idArea != value))
+				{
+					this.OnidAreaChanging(value);
+					this.SendPropertyChanging();
+					this._idArea = value;
+					this.SendPropertyChanged("idArea");
+					this.OnidAreaChanged();
+				}
+			}
+		}
+		
+		[Column(Storage="_idCondominio", DbType="Int NOT NULL", IsPrimaryKey=true)]
+		public int idCondominio
+		{
+			get
+			{
+				return this._idCondominio;
+			}
+			set
+			{
+				if ((this._idCondominio != value))
+				{
+					if (this._DatoCondominio.HasLoadedOrAssignedValue)
+					{
+						throw new System.Data.Linq.ForeignKeyReferenceAlreadyHasValueException();
+					}
+					this.OnidCondominioChanging(value);
+					this.SendPropertyChanging();
+					this._idCondominio = value;
+					this.SendPropertyChanged("idCondominio");
+					this.OnidCondominioChanged();
+				}
+			}
+		}
+		
+		[Column(Storage="_concepto", DbType="NVarChar(40) NOT NULL", CanBeNull=false)]
+		public string concepto
+		{
+			get
+			{
+				return this._concepto;
+			}
+			set
+			{
+				if ((this._concepto != value))
+				{
+					this.OnconceptoChanging(value);
+					this.SendPropertyChanging();
+					this._concepto = value;
+					this.SendPropertyChanged("concepto");
+					this.OnconceptoChanged();
+				}
+			}
+		}
+		
+		[Column(Storage="_superficie", DbType="Float NOT NULL")]
+		public double superficie
+		{
+			get
+			{
+				return this._superficie;
+			}
+			set
+			{
+				if ((this._superficie != value))
+				{
+					this.OnsuperficieChanging(value);
+					this.SendPropertyChanging();
+					this._superficie = value;
+					this.SendPropertyChanged("superficie");
+					this.OnsuperficieChanged();
+				}
+			}
+		}
+		
+		[Column(Storage="_complemetaria", DbType="Bit NOT NULL", IsPrimaryKey=true)]
+		public bool complemetaria
+		{
+			get
+			{
+				return this._complemetaria;
+			}
+			set
+			{
+				if ((this._complemetaria != value))
+				{
+					this.OncomplemetariaChanging(value);
+					this.SendPropertyChanging();
+					this._complemetaria = value;
+					this.SendPropertyChanged("complemetaria");
+					this.OncomplemetariaChanged();
+				}
+			}
+		}
+		
+		[Association(Name="DatoCondominio_AreaComun", Storage="_DatoCondominio", ThisKey="idCondominio", OtherKey="idCondominio", IsForeignKey=true, DeleteOnNull=true, DeleteRule="CASCADE")]
+		public DatoCondominio DatoCondominio
+		{
+			get
+			{
+				return this._DatoCondominio.Entity;
+			}
+			set
+			{
+				DatoCondominio previousValue = this._DatoCondominio.Entity;
+				if (((previousValue != value) 
+							|| (this._DatoCondominio.HasLoadedOrAssignedValue == false)))
+				{
+					this.SendPropertyChanging();
+					if ((previousValue != null))
+					{
+						this._DatoCondominio.Entity = null;
+						previousValue.AreaComun.Remove(this);
+					}
+					this._DatoCondominio.Entity = value;
+					if ((value != null))
+					{
+						value.AreaComun.Add(this);
+						this._idCondominio = value.idCondominio;
+					}
+					else
+					{
+						this._idCondominio = default(int);
+					}
+					this.SendPropertyChanged("DatoCondominio");
+				}
+			}
+		}
+		
+		public event PropertyChangingEventHandler PropertyChanging;
+		
+		public event PropertyChangedEventHandler PropertyChanged;
+		
+		protected virtual void SendPropertyChanging()
+		{
+			if ((this.PropertyChanging != null))
+			{
+				this.PropertyChanging(this, emptyChangingEventArgs);
+			}
+		}
+		
+		protected virtual void SendPropertyChanged(String propertyName)
+		{
+			if ((this.PropertyChanged != null))
+			{
+				this.PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
+			}
+		}
+	}
+	
+	[Table(Name="dbo.DatoCondominio")]
+	public partial class DatoCondominio : INotifyPropertyChanging, INotifyPropertyChanged
+	{
+		
+		private static PropertyChangingEventArgs emptyChangingEventArgs = new PropertyChangingEventArgs(String.Empty);
+		
+		private int _idCondominio;
+		
+		private double _avanceObra;
+		
+		private int _unidadesRentables;
+		
+		private int _unidadesNucleo;
+		
+		private int _unidadesConjunto;
+		
+		private EntityRef<SuperficiesCondominio> _SuperficiesCondominio;
+		
+		private EntitySet<AreaComun> _AreaComun;
+		
+		private EntitySet<ConstruccionInmueble> _ConstruccionInmueble;
+		
+    #region Extensibility Method Definitions
+    partial void OnLoaded();
+    partial void OnValidate(System.Data.Linq.ChangeAction action);
+    partial void OnCreated();
+    partial void OnidCondominioChanging(int value);
+    partial void OnidCondominioChanged();
+    partial void OnavanceObraChanging(double value);
+    partial void OnavanceObraChanged();
+    partial void OnunidadesRentablesChanging(int value);
+    partial void OnunidadesRentablesChanged();
+    partial void OnunidadesNucleoChanging(int value);
+    partial void OnunidadesNucleoChanged();
+    partial void OnunidadesConjuntoChanging(int value);
+    partial void OnunidadesConjuntoChanged();
+    #endregion
+		
+		public DatoCondominio()
+		{
+			this._SuperficiesCondominio = default(EntityRef<SuperficiesCondominio>);
+			this._AreaComun = new EntitySet<AreaComun>(new Action<AreaComun>(this.attach_AreaComun), new Action<AreaComun>(this.detach_AreaComun));
+			this._ConstruccionInmueble = new EntitySet<ConstruccionInmueble>(new Action<ConstruccionInmueble>(this.attach_ConstruccionInmueble), new Action<ConstruccionInmueble>(this.detach_ConstruccionInmueble));
+			OnCreated();
+		}
+		
+		[Column(Storage="_idCondominio", AutoSync=AutoSync.OnInsert, DbType="Int NOT NULL IDENTITY", IsPrimaryKey=true, IsDbGenerated=true)]
+		public int idCondominio
+		{
+			get
+			{
+				return this._idCondominio;
+			}
+			set
+			{
+				if ((this._idCondominio != value))
+				{
+					this.OnidCondominioChanging(value);
+					this.SendPropertyChanging();
+					this._idCondominio = value;
+					this.SendPropertyChanged("idCondominio");
+					this.OnidCondominioChanged();
+				}
+			}
+		}
+		
+		[Column(Storage="_avanceObra", DbType="Float NOT NULL")]
+		public double avanceObra
+		{
+			get
+			{
+				return this._avanceObra;
+			}
+			set
+			{
+				if ((this._avanceObra != value))
+				{
+					this.OnavanceObraChanging(value);
+					this.SendPropertyChanging();
+					this._avanceObra = value;
+					this.SendPropertyChanged("avanceObra");
+					this.OnavanceObraChanged();
+				}
+			}
+		}
+		
+		[Column(Storage="_unidadesRentables", DbType="Int NOT NULL")]
+		public int unidadesRentables
+		{
+			get
+			{
+				return this._unidadesRentables;
+			}
+			set
+			{
+				if ((this._unidadesRentables != value))
+				{
+					this.OnunidadesRentablesChanging(value);
+					this.SendPropertyChanging();
+					this._unidadesRentables = value;
+					this.SendPropertyChanged("unidadesRentables");
+					this.OnunidadesRentablesChanged();
+				}
+			}
+		}
+		
+		[Column(Storage="_unidadesNucleo", DbType="Int NOT NULL")]
+		public int unidadesNucleo
+		{
+			get
+			{
+				return this._unidadesNucleo;
+			}
+			set
+			{
+				if ((this._unidadesNucleo != value))
+				{
+					this.OnunidadesNucleoChanging(value);
+					this.SendPropertyChanging();
+					this._unidadesNucleo = value;
+					this.SendPropertyChanged("unidadesNucleo");
+					this.OnunidadesNucleoChanged();
+				}
+			}
+		}
+		
+		[Column(Storage="_unidadesConjunto", DbType="Int NOT NULL")]
+		public int unidadesConjunto
+		{
+			get
+			{
+				return this._unidadesConjunto;
+			}
+			set
+			{
+				if ((this._unidadesConjunto != value))
+				{
+					this.OnunidadesConjuntoChanging(value);
+					this.SendPropertyChanging();
+					this._unidadesConjunto = value;
+					this.SendPropertyChanged("unidadesConjunto");
+					this.OnunidadesConjuntoChanged();
+				}
+			}
+		}
+		
+		[Association(Name="DatoCondominio_SuperficiesCondominio", Storage="_SuperficiesCondominio", ThisKey="idCondominio", OtherKey="idCondominio", IsUnique=true, IsForeignKey=false)]
+		public SuperficiesCondominio SuperficiesCondominio
+		{
+			get
+			{
+				return this._SuperficiesCondominio.Entity;
+			}
+			set
+			{
+				SuperficiesCondominio previousValue = this._SuperficiesCondominio.Entity;
+				if (((previousValue != value) 
+							|| (this._SuperficiesCondominio.HasLoadedOrAssignedValue == false)))
+				{
+					this.SendPropertyChanging();
+					if ((previousValue != null))
+					{
+						this._SuperficiesCondominio.Entity = null;
+						previousValue.DatoCondominio = null;
+					}
+					this._SuperficiesCondominio.Entity = value;
+					if ((value != null))
+					{
+						value.DatoCondominio = this;
+					}
+					this.SendPropertyChanged("SuperficiesCondominio");
+				}
+			}
+		}
+		
+		[Association(Name="DatoCondominio_AreaComun", Storage="_AreaComun", ThisKey="idCondominio", OtherKey="idCondominio")]
+		public EntitySet<AreaComun> AreaComun
+		{
+			get
+			{
+				return this._AreaComun;
+			}
+			set
+			{
+				this._AreaComun.Assign(value);
+			}
+		}
+		
+		[Association(Name="DatoCondominio_ConstruccionInmueble", Storage="_ConstruccionInmueble", ThisKey="idCondominio", OtherKey="idCondominio")]
+		public EntitySet<ConstruccionInmueble> ConstruccionInmueble
+		{
+			get
+			{
+				return this._ConstruccionInmueble;
+			}
+			set
+			{
+				this._ConstruccionInmueble.Assign(value);
+			}
+		}
+		
+		public event PropertyChangingEventHandler PropertyChanging;
+		
+		public event PropertyChangedEventHandler PropertyChanged;
+		
+		protected virtual void SendPropertyChanging()
+		{
+			if ((this.PropertyChanging != null))
+			{
+				this.PropertyChanging(this, emptyChangingEventArgs);
+			}
+		}
+		
+		protected virtual void SendPropertyChanged(String propertyName)
+		{
+			if ((this.PropertyChanged != null))
+			{
+				this.PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
+			}
+		}
+		
+		private void attach_AreaComun(AreaComun entity)
+		{
+			this.SendPropertyChanging();
+			entity.DatoCondominio = this;
+		}
+		
+		private void detach_AreaComun(AreaComun entity)
+		{
+			this.SendPropertyChanging();
+			entity.DatoCondominio = null;
+		}
+		
+		private void attach_ConstruccionInmueble(ConstruccionInmueble entity)
+		{
+			this.SendPropertyChanging();
+			entity.DatoCondominio = this;
+		}
+		
+		private void detach_ConstruccionInmueble(ConstruccionInmueble entity)
+		{
+			this.SendPropertyChanging();
+			entity.DatoCondominio = null;
+		}
+	}
+	
+	[Table(Name="dbo.ConstruccionInmueble")]
+	public partial class ConstruccionInmueble : INotifyPropertyChanging, INotifyPropertyChanged
+	{
+		
+		private static PropertyChangingEventArgs emptyChangingEventArgs = new PropertyChangingEventArgs(String.Empty);
+		
+		private int _idConstruccion;
+		
+		private int _idInmueble;
+		
+		private short _idClaseGeneral;
+		
+		private short _idConservacionGeneral;
+		
+		private short _idCalidadProyecto;
+		
+		private string _constructor;
+		
+		private double _avanceObraGeneral;
+		
+		private short _nivelesConstruccion;
+		
+		private short _nivelEdificio;
+		
+		private bool _horizontal;
+		
+		private bool _vertical;
+		
+		private int _unidadesRentable;
+		
+		private int _idCondominio;
+		
+		private EntitySet<TipoConstruccion> _TipoConstruccion;
+		
+		private EntitySet<InstalacionConstruccion> _InstalacionConstruccion;
+		
+		private EntityRef<DatoCondominio> _DatoCondominio;
+		
+		private EntityRef<Inmueble> _Inmueble;
+		
+    #region Extensibility Method Definitions
+    partial void OnLoaded();
+    partial void OnValidate(System.Data.Linq.ChangeAction action);
+    partial void OnCreated();
+    partial void OnidConstruccionChanging(int value);
+    partial void OnidConstruccionChanged();
+    partial void OnidInmuebleChanging(int value);
+    partial void OnidInmuebleChanged();
+    partial void OnidClaseGeneralChanging(short value);
+    partial void OnidClaseGeneralChanged();
+    partial void OnidConservacionGeneralChanging(short value);
+    partial void OnidConservacionGeneralChanged();
+    partial void OnidCalidadProyectoChanging(short value);
+    partial void OnidCalidadProyectoChanged();
+    partial void OnconstructorChanging(string value);
+    partial void OnconstructorChanged();
+    partial void OnavanceObraGeneralChanging(double value);
+    partial void OnavanceObraGeneralChanged();
+    partial void OnnivelesConstruccionChanging(short value);
+    partial void OnnivelesConstruccionChanged();
+    partial void OnnivelEdificioChanging(short value);
+    partial void OnnivelEdificioChanged();
+    partial void OnhorizontalChanging(bool value);
+    partial void OnhorizontalChanged();
+    partial void OnverticalChanging(bool value);
+    partial void OnverticalChanged();
+    partial void OnunidadesRentableChanging(int value);
+    partial void OnunidadesRentableChanged();
+    partial void OnidCondominioChanging(int value);
+    partial void OnidCondominioChanged();
+    #endregion
+		
+		public ConstruccionInmueble()
+		{
+			this._TipoConstruccion = new EntitySet<TipoConstruccion>(new Action<TipoConstruccion>(this.attach_TipoConstruccion), new Action<TipoConstruccion>(this.detach_TipoConstruccion));
+			this._InstalacionConstruccion = new EntitySet<InstalacionConstruccion>(new Action<InstalacionConstruccion>(this.attach_InstalacionConstruccion), new Action<InstalacionConstruccion>(this.detach_InstalacionConstruccion));
+			this._DatoCondominio = default(EntityRef<DatoCondominio>);
+			this._Inmueble = default(EntityRef<Inmueble>);
+			OnCreated();
+		}
+		
+		[Column(Storage="_idConstruccion", AutoSync=AutoSync.OnInsert, DbType="Int NOT NULL IDENTITY", IsPrimaryKey=true, IsDbGenerated=true)]
+		public int idConstruccion
+		{
+			get
+			{
+				return this._idConstruccion;
+			}
+			set
+			{
+				if ((this._idConstruccion != value))
+				{
+					this.OnidConstruccionChanging(value);
+					this.SendPropertyChanging();
+					this._idConstruccion = value;
+					this.SendPropertyChanged("idConstruccion");
+					this.OnidConstruccionChanged();
+				}
+			}
+		}
+		
+		[Column(Storage="_idInmueble", DbType="Int NOT NULL")]
+		public int idInmueble
+		{
+			get
+			{
+				return this._idInmueble;
+			}
+			set
+			{
+				if ((this._idInmueble != value))
+				{
+					if (this._Inmueble.HasLoadedOrAssignedValue)
+					{
+						throw new System.Data.Linq.ForeignKeyReferenceAlreadyHasValueException();
+					}
+					this.OnidInmuebleChanging(value);
+					this.SendPropertyChanging();
+					this._idInmueble = value;
+					this.SendPropertyChanged("idInmueble");
+					this.OnidInmuebleChanged();
+				}
+			}
+		}
+		
+		[Column(Storage="_idClaseGeneral", DbType="SmallInt NOT NULL")]
+		public short idClaseGeneral
+		{
+			get
+			{
+				return this._idClaseGeneral;
+			}
+			set
+			{
+				if ((this._idClaseGeneral != value))
+				{
+					this.OnidClaseGeneralChanging(value);
+					this.SendPropertyChanging();
+					this._idClaseGeneral = value;
+					this.SendPropertyChanged("idClaseGeneral");
+					this.OnidClaseGeneralChanged();
+				}
+			}
+		}
+		
+		[Column(Storage="_idConservacionGeneral", DbType="SmallInt NOT NULL")]
+		public short idConservacionGeneral
+		{
+			get
+			{
+				return this._idConservacionGeneral;
+			}
+			set
+			{
+				if ((this._idConservacionGeneral != value))
+				{
+					this.OnidConservacionGeneralChanging(value);
+					this.SendPropertyChanging();
+					this._idConservacionGeneral = value;
+					this.SendPropertyChanged("idConservacionGeneral");
+					this.OnidConservacionGeneralChanged();
+				}
+			}
+		}
+		
+		[Column(Storage="_idCalidadProyecto", DbType="SmallInt NOT NULL")]
+		public short idCalidadProyecto
+		{
+			get
+			{
+				return this._idCalidadProyecto;
+			}
+			set
+			{
+				if ((this._idCalidadProyecto != value))
+				{
+					this.OnidCalidadProyectoChanging(value);
+					this.SendPropertyChanging();
+					this._idCalidadProyecto = value;
+					this.SendPropertyChanged("idCalidadProyecto");
+					this.OnidCalidadProyectoChanged();
+				}
+			}
+		}
+		
+		[Column(Storage="_constructor", DbType="NVarChar(50) NOT NULL", CanBeNull=false)]
+		public string constructor
+		{
+			get
+			{
+				return this._constructor;
+			}
+			set
+			{
+				if ((this._constructor != value))
+				{
+					this.OnconstructorChanging(value);
+					this.SendPropertyChanging();
+					this._constructor = value;
+					this.SendPropertyChanged("constructor");
+					this.OnconstructorChanged();
+				}
+			}
+		}
+		
+		[Column(Storage="_avanceObraGeneral", DbType="Float NOT NULL")]
+		public double avanceObraGeneral
+		{
+			get
+			{
+				return this._avanceObraGeneral;
+			}
+			set
+			{
+				if ((this._avanceObraGeneral != value))
+				{
+					this.OnavanceObraGeneralChanging(value);
+					this.SendPropertyChanging();
+					this._avanceObraGeneral = value;
+					this.SendPropertyChanged("avanceObraGeneral");
+					this.OnavanceObraGeneralChanged();
+				}
+			}
+		}
+		
+		[Column(Storage="_nivelesConstruccion", DbType="SmallInt NOT NULL")]
+		public short nivelesConstruccion
+		{
+			get
+			{
+				return this._nivelesConstruccion;
+			}
+			set
+			{
+				if ((this._nivelesConstruccion != value))
+				{
+					this.OnnivelesConstruccionChanging(value);
+					this.SendPropertyChanging();
+					this._nivelesConstruccion = value;
+					this.SendPropertyChanged("nivelesConstruccion");
+					this.OnnivelesConstruccionChanged();
+				}
+			}
+		}
+		
+		[Column(Storage="_nivelEdificio", DbType="SmallInt NOT NULL")]
+		public short nivelEdificio
+		{
+			get
+			{
+				return this._nivelEdificio;
+			}
+			set
+			{
+				if ((this._nivelEdificio != value))
+				{
+					this.OnnivelEdificioChanging(value);
+					this.SendPropertyChanging();
+					this._nivelEdificio = value;
+					this.SendPropertyChanged("nivelEdificio");
+					this.OnnivelEdificioChanged();
+				}
+			}
+		}
+		
+		[Column(Storage="_horizontal", DbType="Bit NOT NULL")]
+		public bool horizontal
+		{
+			get
+			{
+				return this._horizontal;
+			}
+			set
+			{
+				if ((this._horizontal != value))
+				{
+					this.OnhorizontalChanging(value);
+					this.SendPropertyChanging();
+					this._horizontal = value;
+					this.SendPropertyChanged("horizontal");
+					this.OnhorizontalChanged();
+				}
+			}
+		}
+		
+		[Column(Storage="_vertical", DbType="Bit NOT NULL")]
+		public bool vertical
+		{
+			get
+			{
+				return this._vertical;
+			}
+			set
+			{
+				if ((this._vertical != value))
+				{
+					this.OnverticalChanging(value);
+					this.SendPropertyChanging();
+					this._vertical = value;
+					this.SendPropertyChanged("vertical");
+					this.OnverticalChanged();
+				}
+			}
+		}
+		
+		[Column(Storage="_unidadesRentable", DbType="Int NOT NULL")]
+		public int unidadesRentable
+		{
+			get
+			{
+				return this._unidadesRentable;
+			}
+			set
+			{
+				if ((this._unidadesRentable != value))
+				{
+					this.OnunidadesRentableChanging(value);
+					this.SendPropertyChanging();
+					this._unidadesRentable = value;
+					this.SendPropertyChanged("unidadesRentable");
+					this.OnunidadesRentableChanged();
+				}
+			}
+		}
+		
+		[Column(Storage="_idCondominio", DbType="Int NOT NULL")]
+		public int idCondominio
+		{
+			get
+			{
+				return this._idCondominio;
+			}
+			set
+			{
+				if ((this._idCondominio != value))
+				{
+					if (this._DatoCondominio.HasLoadedOrAssignedValue)
+					{
+						throw new System.Data.Linq.ForeignKeyReferenceAlreadyHasValueException();
+					}
+					this.OnidCondominioChanging(value);
+					this.SendPropertyChanging();
+					this._idCondominio = value;
+					this.SendPropertyChanged("idCondominio");
+					this.OnidCondominioChanged();
+				}
+			}
+		}
+		
+		[Association(Name="ConstruccionInmueble_TipoConstruccion", Storage="_TipoConstruccion", ThisKey="idConstruccion", OtherKey="idConstruccion")]
+		public EntitySet<TipoConstruccion> TipoConstruccion
+		{
+			get
+			{
+				return this._TipoConstruccion;
+			}
+			set
+			{
+				this._TipoConstruccion.Assign(value);
+			}
+		}
+		
+		[Association(Name="ConstruccionInmueble_InstalacionConstruccion", Storage="_InstalacionConstruccion", ThisKey="idConstruccion", OtherKey="idConstruccion")]
+		public EntitySet<InstalacionConstruccion> InstalacionConstruccion
+		{
+			get
+			{
+				return this._InstalacionConstruccion;
+			}
+			set
+			{
+				this._InstalacionConstruccion.Assign(value);
+			}
+		}
+		
+		[Association(Name="DatoCondominio_ConstruccionInmueble", Storage="_DatoCondominio", ThisKey="idCondominio", OtherKey="idCondominio", IsForeignKey=true)]
+		public DatoCondominio DatoCondominio
+		{
+			get
+			{
+				return this._DatoCondominio.Entity;
+			}
+			set
+			{
+				DatoCondominio previousValue = this._DatoCondominio.Entity;
+				if (((previousValue != value) 
+							|| (this._DatoCondominio.HasLoadedOrAssignedValue == false)))
+				{
+					this.SendPropertyChanging();
+					if ((previousValue != null))
+					{
+						this._DatoCondominio.Entity = null;
+						previousValue.ConstruccionInmueble.Remove(this);
+					}
+					this._DatoCondominio.Entity = value;
+					if ((value != null))
+					{
+						value.ConstruccionInmueble.Add(this);
+						this._idCondominio = value.idCondominio;
+					}
+					else
+					{
+						this._idCondominio = default(int);
+					}
+					this.SendPropertyChanged("DatoCondominio");
+				}
+			}
+		}
+		
+		[Association(Name="Inmueble_ConstruccionInmueble", Storage="_Inmueble", ThisKey="idInmueble", OtherKey="idInmueble", IsForeignKey=true)]
+		public Inmueble Inmueble
+		{
+			get
+			{
+				return this._Inmueble.Entity;
+			}
+			set
+			{
+				Inmueble previousValue = this._Inmueble.Entity;
+				if (((previousValue != value) 
+							|| (this._Inmueble.HasLoadedOrAssignedValue == false)))
+				{
+					this.SendPropertyChanging();
+					if ((previousValue != null))
+					{
+						this._Inmueble.Entity = null;
+						previousValue.ConstruccionInmueble.Remove(this);
+					}
+					this._Inmueble.Entity = value;
+					if ((value != null))
+					{
+						value.ConstruccionInmueble.Add(this);
+						this._idInmueble = value.idInmueble;
+					}
+					else
+					{
+						this._idInmueble = default(int);
+					}
+					this.SendPropertyChanged("Inmueble");
+				}
+			}
+		}
+		
+		public event PropertyChangingEventHandler PropertyChanging;
+		
+		public event PropertyChangedEventHandler PropertyChanged;
+		
+		protected virtual void SendPropertyChanging()
+		{
+			if ((this.PropertyChanging != null))
+			{
+				this.PropertyChanging(this, emptyChangingEventArgs);
+			}
+		}
+		
+		protected virtual void SendPropertyChanged(String propertyName)
+		{
+			if ((this.PropertyChanged != null))
+			{
+				this.PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
+			}
+		}
+		
+		private void attach_TipoConstruccion(TipoConstruccion entity)
+		{
+			this.SendPropertyChanging();
+			entity.ConstruccionInmueble = this;
+		}
+		
+		private void detach_TipoConstruccion(TipoConstruccion entity)
+		{
+			this.SendPropertyChanging();
+			entity.ConstruccionInmueble = null;
+		}
+		
+		private void attach_InstalacionConstruccion(InstalacionConstruccion entity)
+		{
+			this.SendPropertyChanging();
+			entity.ConstruccionInmueble = this;
+		}
+		
+		private void detach_InstalacionConstruccion(InstalacionConstruccion entity)
+		{
+			this.SendPropertyChanging();
+			entity.ConstruccionInmueble = null;
+		}
+	}
+	
+	[Table(Name="dbo.InstalacionesTipoConstruccion")]
+	public partial class InstalacionesTipoConstruccion : INotifyPropertyChanging, INotifyPropertyChanged
+	{
+		
+		private static PropertyChangingEventArgs emptyChangingEventArgs = new PropertyChangingEventArgs(String.Empty);
+		
+		private int _idConstruccion;
+		
+		private short _numeroTipo;
+		
+		private string _hidraulicas;
+		
+		private string _sanitarias;
+		
+		private string _electricas;
+		
+		private string _carpinteria;
+		
+		private string _herreria;
+		
+		private string _canceleria;
+		
+		private EntityRef<TipoConstruccion> _TipoConstruccion;
+		
+    #region Extensibility Method Definitions
+    partial void OnLoaded();
+    partial void OnValidate(System.Data.Linq.ChangeAction action);
+    partial void OnCreated();
+    partial void OnidConstruccionChanging(int value);
+    partial void OnidConstruccionChanged();
+    partial void OnnumeroTipoChanging(short value);
+    partial void OnnumeroTipoChanged();
+    partial void OnhidraulicasChanging(string value);
+    partial void OnhidraulicasChanged();
+    partial void OnsanitariasChanging(string value);
+    partial void OnsanitariasChanged();
+    partial void OnelectricasChanging(string value);
+    partial void OnelectricasChanged();
+    partial void OncarpinteriaChanging(string value);
+    partial void OncarpinteriaChanged();
+    partial void OnherreriaChanging(string value);
+    partial void OnherreriaChanged();
+    partial void OncanceleriaChanging(string value);
+    partial void OncanceleriaChanged();
+    #endregion
+		
+		public InstalacionesTipoConstruccion()
+		{
+			this._TipoConstruccion = default(EntityRef<TipoConstruccion>);
+			OnCreated();
+		}
+		
+		[Column(Storage="_idConstruccion", DbType="Int NOT NULL", IsPrimaryKey=true)]
+		public int idConstruccion
+		{
+			get
+			{
+				return this._idConstruccion;
+			}
+			set
+			{
+				if ((this._idConstruccion != value))
+				{
+					if (this._TipoConstruccion.HasLoadedOrAssignedValue)
+					{
+						throw new System.Data.Linq.ForeignKeyReferenceAlreadyHasValueException();
+					}
+					this.OnidConstruccionChanging(value);
+					this.SendPropertyChanging();
+					this._idConstruccion = value;
+					this.SendPropertyChanged("idConstruccion");
+					this.OnidConstruccionChanged();
+				}
+			}
+		}
+		
+		[Column(Storage="_numeroTipo", DbType="SmallInt NOT NULL", IsPrimaryKey=true)]
+		public short numeroTipo
+		{
+			get
+			{
+				return this._numeroTipo;
+			}
+			set
+			{
+				if ((this._numeroTipo != value))
+				{
+					if (this._TipoConstruccion.HasLoadedOrAssignedValue)
+					{
+						throw new System.Data.Linq.ForeignKeyReferenceAlreadyHasValueException();
+					}
+					this.OnnumeroTipoChanging(value);
+					this.SendPropertyChanging();
+					this._numeroTipo = value;
+					this.SendPropertyChanged("numeroTipo");
+					this.OnnumeroTipoChanged();
+				}
+			}
+		}
+		
+		[Column(Storage="_hidraulicas", DbType="NVarChar(300) NOT NULL", CanBeNull=false)]
+		public string hidraulicas
+		{
+			get
+			{
+				return this._hidraulicas;
+			}
+			set
+			{
+				if ((this._hidraulicas != value))
+				{
+					this.OnhidraulicasChanging(value);
+					this.SendPropertyChanging();
+					this._hidraulicas = value;
+					this.SendPropertyChanged("hidraulicas");
+					this.OnhidraulicasChanged();
+				}
+			}
+		}
+		
+		[Column(Storage="_sanitarias", DbType="NVarChar(300) NOT NULL", CanBeNull=false)]
+		public string sanitarias
+		{
+			get
+			{
+				return this._sanitarias;
+			}
+			set
+			{
+				if ((this._sanitarias != value))
+				{
+					this.OnsanitariasChanging(value);
+					this.SendPropertyChanging();
+					this._sanitarias = value;
+					this.SendPropertyChanged("sanitarias");
+					this.OnsanitariasChanged();
+				}
+			}
+		}
+		
+		[Column(Storage="_electricas", DbType="NVarChar(300) NOT NULL", CanBeNull=false)]
+		public string electricas
+		{
+			get
+			{
+				return this._electricas;
+			}
+			set
+			{
+				if ((this._electricas != value))
+				{
+					this.OnelectricasChanging(value);
+					this.SendPropertyChanging();
+					this._electricas = value;
+					this.SendPropertyChanged("electricas");
+					this.OnelectricasChanged();
+				}
+			}
+		}
+		
+		[Column(Storage="_carpinteria", DbType="NVarChar(300) NOT NULL", CanBeNull=false)]
+		public string carpinteria
+		{
+			get
+			{
+				return this._carpinteria;
+			}
+			set
+			{
+				if ((this._carpinteria != value))
+				{
+					this.OncarpinteriaChanging(value);
+					this.SendPropertyChanging();
+					this._carpinteria = value;
+					this.SendPropertyChanged("carpinteria");
+					this.OncarpinteriaChanged();
+				}
+			}
+		}
+		
+		[Column(Storage="_herreria", DbType="NVarChar(300) NOT NULL", CanBeNull=false)]
+		public string herreria
+		{
+			get
+			{
+				return this._herreria;
+			}
+			set
+			{
+				if ((this._herreria != value))
+				{
+					this.OnherreriaChanging(value);
+					this.SendPropertyChanging();
+					this._herreria = value;
+					this.SendPropertyChanged("herreria");
+					this.OnherreriaChanged();
+				}
+			}
+		}
+		
+		[Column(Storage="_canceleria", DbType="NVarChar(300) NOT NULL", CanBeNull=false)]
+		public string canceleria
+		{
+			get
+			{
+				return this._canceleria;
+			}
+			set
+			{
+				if ((this._canceleria != value))
+				{
+					this.OncanceleriaChanging(value);
+					this.SendPropertyChanging();
+					this._canceleria = value;
+					this.SendPropertyChanged("canceleria");
+					this.OncanceleriaChanged();
+				}
+			}
+		}
+		
+		[Association(Name="TipoConstruccion_InstalacionesTipoConstruccion", Storage="_TipoConstruccion", ThisKey="idConstruccion,numeroTipo", OtherKey="idConstruccion,numeroTipo", IsForeignKey=true, DeleteOnNull=true, DeleteRule="CASCADE")]
+		public TipoConstruccion TipoConstruccion
+		{
+			get
+			{
+				return this._TipoConstruccion.Entity;
+			}
+			set
+			{
+				TipoConstruccion previousValue = this._TipoConstruccion.Entity;
+				if (((previousValue != value) 
+							|| (this._TipoConstruccion.HasLoadedOrAssignedValue == false)))
+				{
+					this.SendPropertyChanging();
+					if ((previousValue != null))
+					{
+						this._TipoConstruccion.Entity = null;
+						previousValue.InstalacionesTipoConstruccion = null;
+					}
+					this._TipoConstruccion.Entity = value;
+					if ((value != null))
+					{
+						value.InstalacionesTipoConstruccion = this;
+						this._idConstruccion = value.idConstruccion;
+						this._numeroTipo = value.numeroTipo;
+					}
+					else
+					{
+						this._idConstruccion = default(int);
+						this._numeroTipo = default(short);
+					}
+					this.SendPropertyChanged("TipoConstruccion");
+				}
+			}
+		}
+		
+		public event PropertyChangingEventHandler PropertyChanging;
+		
+		public event PropertyChangedEventHandler PropertyChanged;
+		
+		protected virtual void SendPropertyChanging()
+		{
+			if ((this.PropertyChanging != null))
+			{
+				this.PropertyChanging(this, emptyChangingEventArgs);
+			}
+		}
+		
+		protected virtual void SendPropertyChanged(String propertyName)
+		{
+			if ((this.PropertyChanged != null))
+			{
+				this.PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
+			}
+		}
+	}
+	
+	[Table(Name="dbo.InstalacionConstruccion")]
+	public partial class InstalacionConstruccion : INotifyPropertyChanging, INotifyPropertyChanged
+	{
+		
+		private static PropertyChangingEventArgs emptyChangingEventArgs = new PropertyChangingEventArgs(String.Empty);
+		
+		private int _idConstruccion;
+		
+		private short _idInstalacion;
+		
+		private short _idTipoUnidad;
+		
+		private short _idTipoConservacion;
+		
+		private string _descripcion;
+		
+		private double _cantidad;
+		
+		private double _edad;
+		
+		private bool _comun;
+		
+		private EntityRef<ConstruccionInmueble> _ConstruccionInmueble;
+		
+    #region Extensibility Method Definitions
+    partial void OnLoaded();
+    partial void OnValidate(System.Data.Linq.ChangeAction action);
+    partial void OnCreated();
+    partial void OnidConstruccionChanging(int value);
+    partial void OnidConstruccionChanged();
+    partial void OnidInstalacionChanging(short value);
+    partial void OnidInstalacionChanged();
+    partial void OnidTipoUnidadChanging(short value);
+    partial void OnidTipoUnidadChanged();
+    partial void OnidTipoConservacionChanging(short value);
+    partial void OnidTipoConservacionChanged();
+    partial void OndescripcionChanging(string value);
+    partial void OndescripcionChanged();
+    partial void OncantidadChanging(double value);
+    partial void OncantidadChanged();
+    partial void OnedadChanging(double value);
+    partial void OnedadChanged();
+    partial void OncomunChanging(bool value);
+    partial void OncomunChanged();
+    #endregion
+		
+		public InstalacionConstruccion()
+		{
+			this._ConstruccionInmueble = default(EntityRef<ConstruccionInmueble>);
+			OnCreated();
+		}
+		
+		[Column(Storage="_idConstruccion", DbType="Int NOT NULL", IsPrimaryKey=true)]
+		public int idConstruccion
+		{
+			get
+			{
+				return this._idConstruccion;
+			}
+			set
+			{
+				if ((this._idConstruccion != value))
+				{
+					if (this._ConstruccionInmueble.HasLoadedOrAssignedValue)
+					{
+						throw new System.Data.Linq.ForeignKeyReferenceAlreadyHasValueException();
+					}
+					this.OnidConstruccionChanging(value);
+					this.SendPropertyChanging();
+					this._idConstruccion = value;
+					this.SendPropertyChanged("idConstruccion");
+					this.OnidConstruccionChanged();
+				}
+			}
+		}
+		
+		[Column(Storage="_idInstalacion", DbType="SmallInt NOT NULL", IsPrimaryKey=true)]
+		public short idInstalacion
+		{
+			get
+			{
+				return this._idInstalacion;
+			}
+			set
+			{
+				if ((this._idInstalacion != value))
+				{
+					this.OnidInstalacionChanging(value);
+					this.SendPropertyChanging();
+					this._idInstalacion = value;
+					this.SendPropertyChanged("idInstalacion");
+					this.OnidInstalacionChanged();
+				}
+			}
+		}
+		
+		[Column(Storage="_idTipoUnidad", DbType="SmallInt NOT NULL")]
+		public short idTipoUnidad
+		{
+			get
+			{
+				return this._idTipoUnidad;
+			}
+			set
+			{
+				if ((this._idTipoUnidad != value))
+				{
+					this.OnidTipoUnidadChanging(value);
+					this.SendPropertyChanging();
+					this._idTipoUnidad = value;
+					this.SendPropertyChanged("idTipoUnidad");
+					this.OnidTipoUnidadChanged();
+				}
+			}
+		}
+		
+		[Column(Storage="_idTipoConservacion", DbType="SmallInt NOT NULL")]
+		public short idTipoConservacion
+		{
+			get
+			{
+				return this._idTipoConservacion;
+			}
+			set
+			{
+				if ((this._idTipoConservacion != value))
+				{
+					this.OnidTipoConservacionChanging(value);
+					this.SendPropertyChanging();
+					this._idTipoConservacion = value;
+					this.SendPropertyChanged("idTipoConservacion");
+					this.OnidTipoConservacionChanged();
+				}
+			}
+		}
+		
+		[Column(Storage="_descripcion", DbType="NVarChar(50) NOT NULL", CanBeNull=false)]
+		public string descripcion
+		{
+			get
+			{
+				return this._descripcion;
+			}
+			set
+			{
+				if ((this._descripcion != value))
+				{
+					this.OndescripcionChanging(value);
+					this.SendPropertyChanging();
+					this._descripcion = value;
+					this.SendPropertyChanged("descripcion");
+					this.OndescripcionChanged();
+				}
+			}
+		}
+		
+		[Column(Storage="_cantidad", DbType="Float NOT NULL")]
+		public double cantidad
+		{
+			get
+			{
+				return this._cantidad;
+			}
+			set
+			{
+				if ((this._cantidad != value))
+				{
+					this.OncantidadChanging(value);
+					this.SendPropertyChanging();
+					this._cantidad = value;
+					this.SendPropertyChanged("cantidad");
+					this.OncantidadChanged();
+				}
+			}
+		}
+		
+		[Column(Storage="_edad", DbType="Float NOT NULL")]
+		public double edad
+		{
+			get
+			{
+				return this._edad;
+			}
+			set
+			{
+				if ((this._edad != value))
+				{
+					this.OnedadChanging(value);
+					this.SendPropertyChanging();
+					this._edad = value;
+					this.SendPropertyChanged("edad");
+					this.OnedadChanged();
+				}
+			}
+		}
+		
+		[Column(Storage="_comun", DbType="Bit NOT NULL", IsPrimaryKey=true)]
+		public bool comun
+		{
+			get
+			{
+				return this._comun;
+			}
+			set
+			{
+				if ((this._comun != value))
+				{
+					this.OncomunChanging(value);
+					this.SendPropertyChanging();
+					this._comun = value;
+					this.SendPropertyChanged("comun");
+					this.OncomunChanged();
+				}
+			}
+		}
+		
+		[Association(Name="ConstruccionInmueble_InstalacionConstruccion", Storage="_ConstruccionInmueble", ThisKey="idConstruccion", OtherKey="idConstruccion", IsForeignKey=true, DeleteOnNull=true, DeleteRule="CASCADE")]
+		public ConstruccionInmueble ConstruccionInmueble
+		{
+			get
+			{
+				return this._ConstruccionInmueble.Entity;
+			}
+			set
+			{
+				ConstruccionInmueble previousValue = this._ConstruccionInmueble.Entity;
+				if (((previousValue != value) 
+							|| (this._ConstruccionInmueble.HasLoadedOrAssignedValue == false)))
+				{
+					this.SendPropertyChanging();
+					if ((previousValue != null))
+					{
+						this._ConstruccionInmueble.Entity = null;
+						previousValue.InstalacionConstruccion.Remove(this);
+					}
+					this._ConstruccionInmueble.Entity = value;
+					if ((value != null))
+					{
+						value.InstalacionConstruccion.Add(this);
+						this._idConstruccion = value.idConstruccion;
+					}
+					else
+					{
+						this._idConstruccion = default(int);
+					}
+					this.SendPropertyChanged("ConstruccionInmueble");
+				}
+			}
+		}
+		
+		public event PropertyChangingEventHandler PropertyChanging;
+		
+		public event PropertyChangedEventHandler PropertyChanged;
+		
+		protected virtual void SendPropertyChanging()
+		{
+			if ((this.PropertyChanging != null))
+			{
+				this.PropertyChanging(this, emptyChangingEventArgs);
+			}
+		}
+		
+		protected virtual void SendPropertyChanged(String propertyName)
+		{
+			if ((this.PropertyChanged != null))
+			{
+				this.PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
+			}
+		}
+	}
+	
+	[Table(Name="dbo.EstructurasTipoConstruccion")]
+	public partial class EstructurasTipoConstruccion : INotifyPropertyChanging, INotifyPropertyChanged
+	{
+		
+		private static PropertyChangingEventArgs emptyChangingEventArgs = new PropertyChangingEventArgs(String.Empty);
+		
+		private int _idConstruccion;
+		
+		private short _numeroTipo;
+		
+		private string _cimentacion;
+		
+		private string _entrepisos;
+		
+		private string _muros;
+		
+		private string _trabes;
+		
+		private string _escaleras;
+		
+		private EntityRef<TipoConstruccion> _TipoConstruccion;
+		
+    #region Extensibility Method Definitions
+    partial void OnLoaded();
+    partial void OnValidate(System.Data.Linq.ChangeAction action);
+    partial void OnCreated();
+    partial void OnidConstruccionChanging(int value);
+    partial void OnidConstruccionChanged();
+    partial void OnnumeroTipoChanging(short value);
+    partial void OnnumeroTipoChanged();
+    partial void OncimentacionChanging(string value);
+    partial void OncimentacionChanged();
+    partial void OnentrepisosChanging(string value);
+    partial void OnentrepisosChanged();
+    partial void OnmurosChanging(string value);
+    partial void OnmurosChanged();
+    partial void OntrabesChanging(string value);
+    partial void OntrabesChanged();
+    partial void OnescalerasChanging(string value);
+    partial void OnescalerasChanged();
+    #endregion
+		
+		public EstructurasTipoConstruccion()
+		{
+			this._TipoConstruccion = default(EntityRef<TipoConstruccion>);
+			OnCreated();
+		}
+		
+		[Column(Storage="_idConstruccion", DbType="Int NOT NULL", IsPrimaryKey=true)]
+		public int idConstruccion
+		{
+			get
+			{
+				return this._idConstruccion;
+			}
+			set
+			{
+				if ((this._idConstruccion != value))
+				{
+					if (this._TipoConstruccion.HasLoadedOrAssignedValue)
+					{
+						throw new System.Data.Linq.ForeignKeyReferenceAlreadyHasValueException();
+					}
+					this.OnidConstruccionChanging(value);
+					this.SendPropertyChanging();
+					this._idConstruccion = value;
+					this.SendPropertyChanged("idConstruccion");
+					this.OnidConstruccionChanged();
+				}
+			}
+		}
+		
+		[Column(Storage="_numeroTipo", DbType="SmallInt NOT NULL", IsPrimaryKey=true)]
+		public short numeroTipo
+		{
+			get
+			{
+				return this._numeroTipo;
+			}
+			set
+			{
+				if ((this._numeroTipo != value))
+				{
+					if (this._TipoConstruccion.HasLoadedOrAssignedValue)
+					{
+						throw new System.Data.Linq.ForeignKeyReferenceAlreadyHasValueException();
+					}
+					this.OnnumeroTipoChanging(value);
+					this.SendPropertyChanging();
+					this._numeroTipo = value;
+					this.SendPropertyChanged("numeroTipo");
+					this.OnnumeroTipoChanged();
+				}
+			}
+		}
+		
+		[Column(Storage="_cimentacion", DbType="NVarChar(400) NOT NULL", CanBeNull=false)]
+		public string cimentacion
+		{
+			get
+			{
+				return this._cimentacion;
+			}
+			set
+			{
+				if ((this._cimentacion != value))
+				{
+					this.OncimentacionChanging(value);
+					this.SendPropertyChanging();
+					this._cimentacion = value;
+					this.SendPropertyChanged("cimentacion");
+					this.OncimentacionChanged();
+				}
+			}
+		}
+		
+		[Column(Storage="_entrepisos", DbType="NVarChar(400) NOT NULL", CanBeNull=false)]
+		public string entrepisos
+		{
+			get
+			{
+				return this._entrepisos;
+			}
+			set
+			{
+				if ((this._entrepisos != value))
+				{
+					this.OnentrepisosChanging(value);
+					this.SendPropertyChanging();
+					this._entrepisos = value;
+					this.SendPropertyChanged("entrepisos");
+					this.OnentrepisosChanged();
+				}
+			}
+		}
+		
+		[Column(Storage="_muros", DbType="NVarChar(400) NOT NULL", CanBeNull=false)]
+		public string muros
+		{
+			get
+			{
+				return this._muros;
+			}
+			set
+			{
+				if ((this._muros != value))
+				{
+					this.OnmurosChanging(value);
+					this.SendPropertyChanging();
+					this._muros = value;
+					this.SendPropertyChanged("muros");
+					this.OnmurosChanged();
+				}
+			}
+		}
+		
+		[Column(Storage="_trabes", DbType="NVarChar(400) NOT NULL", CanBeNull=false)]
+		public string trabes
+		{
+			get
+			{
+				return this._trabes;
+			}
+			set
+			{
+				if ((this._trabes != value))
+				{
+					this.OntrabesChanging(value);
+					this.SendPropertyChanging();
+					this._trabes = value;
+					this.SendPropertyChanged("trabes");
+					this.OntrabesChanged();
+				}
+			}
+		}
+		
+		[Column(Storage="_escaleras", DbType="NVarChar(400) NOT NULL", CanBeNull=false)]
+		public string escaleras
+		{
+			get
+			{
+				return this._escaleras;
+			}
+			set
+			{
+				if ((this._escaleras != value))
+				{
+					this.OnescalerasChanging(value);
+					this.SendPropertyChanging();
+					this._escaleras = value;
+					this.SendPropertyChanged("escaleras");
+					this.OnescalerasChanged();
+				}
+			}
+		}
+		
+		[Association(Name="TipoConstruccion_EstructurasTipoConstruccion", Storage="_TipoConstruccion", ThisKey="idConstruccion,numeroTipo", OtherKey="idConstruccion,numeroTipo", IsForeignKey=true, DeleteOnNull=true, DeleteRule="CASCADE")]
+		public TipoConstruccion TipoConstruccion
+		{
+			get
+			{
+				return this._TipoConstruccion.Entity;
+			}
+			set
+			{
+				TipoConstruccion previousValue = this._TipoConstruccion.Entity;
+				if (((previousValue != value) 
+							|| (this._TipoConstruccion.HasLoadedOrAssignedValue == false)))
+				{
+					this.SendPropertyChanging();
+					if ((previousValue != null))
+					{
+						this._TipoConstruccion.Entity = null;
+						previousValue.EstructurasTipoConstruccion = null;
+					}
+					this._TipoConstruccion.Entity = value;
+					if ((value != null))
+					{
+						value.EstructurasTipoConstruccion = this;
+						this._idConstruccion = value.idConstruccion;
+						this._numeroTipo = value.numeroTipo;
+					}
+					else
+					{
+						this._idConstruccion = default(int);
+						this._numeroTipo = default(short);
+					}
+					this.SendPropertyChanged("TipoConstruccion");
+				}
+			}
+		}
+		
+		public event PropertyChangingEventHandler PropertyChanging;
+		
+		public event PropertyChangedEventHandler PropertyChanged;
+		
+		protected virtual void SendPropertyChanging()
+		{
+			if ((this.PropertyChanging != null))
+			{
+				this.PropertyChanging(this, emptyChangingEventArgs);
+			}
+		}
+		
+		protected virtual void SendPropertyChanged(String propertyName)
+		{
+			if ((this.PropertyChanged != null))
+			{
+				this.PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
+			}
+		}
+	}
+	
+	[Table(Name="dbo.AcabadoTipoConstruccion")]
+	public partial class AcabadoTipoConstruccion : INotifyPropertyChanging, INotifyPropertyChanged
+	{
+		
+		private static PropertyChangingEventArgs emptyChangingEventArgs = new PropertyChangingEventArgs(String.Empty);
+		
+		private int _idConstruccion;
+		
+		private short _numeroTipo;
+		
+		private short _idTipoAcabado;
+		
+		private string _piso;
+		
+		private string _muro;
+		
+		private string _plafon;
+		
+		private EntityRef<TipoAcabado> _TipoAcabado;
+		
+		private EntityRef<TipoConstruccion> _TipoConstruccion;
+		
+    #region Extensibility Method Definitions
+    partial void OnLoaded();
+    partial void OnValidate(System.Data.Linq.ChangeAction action);
+    partial void OnCreated();
+    partial void OnidConstruccionChanging(int value);
+    partial void OnidConstruccionChanged();
+    partial void OnnumeroTipoChanging(short value);
+    partial void OnnumeroTipoChanged();
+    partial void OnidTipoAcabadoChanging(short value);
+    partial void OnidTipoAcabadoChanged();
+    partial void OnpisoChanging(string value);
+    partial void OnpisoChanged();
+    partial void OnmuroChanging(string value);
+    partial void OnmuroChanged();
+    partial void OnplafonChanging(string value);
+    partial void OnplafonChanged();
+    #endregion
+		
+		public AcabadoTipoConstruccion()
+		{
+			this._TipoAcabado = default(EntityRef<TipoAcabado>);
+			this._TipoConstruccion = default(EntityRef<TipoConstruccion>);
+			OnCreated();
+		}
+		
+		[Column(Storage="_idConstruccion", DbType="Int NOT NULL", IsPrimaryKey=true)]
+		public int idConstruccion
+		{
+			get
+			{
+				return this._idConstruccion;
+			}
+			set
+			{
+				if ((this._idConstruccion != value))
+				{
+					if (this._TipoConstruccion.HasLoadedOrAssignedValue)
+					{
+						throw new System.Data.Linq.ForeignKeyReferenceAlreadyHasValueException();
+					}
+					this.OnidConstruccionChanging(value);
+					this.SendPropertyChanging();
+					this._idConstruccion = value;
+					this.SendPropertyChanged("idConstruccion");
+					this.OnidConstruccionChanged();
+				}
+			}
+		}
+		
+		[Column(Storage="_numeroTipo", DbType="SmallInt NOT NULL", IsPrimaryKey=true)]
+		public short numeroTipo
+		{
+			get
+			{
+				return this._numeroTipo;
+			}
+			set
+			{
+				if ((this._numeroTipo != value))
+				{
+					if (this._TipoConstruccion.HasLoadedOrAssignedValue)
+					{
+						throw new System.Data.Linq.ForeignKeyReferenceAlreadyHasValueException();
+					}
+					this.OnnumeroTipoChanging(value);
+					this.SendPropertyChanging();
+					this._numeroTipo = value;
+					this.SendPropertyChanged("numeroTipo");
+					this.OnnumeroTipoChanged();
+				}
+			}
+		}
+		
+		[Column(Storage="_idTipoAcabado", DbType="SmallInt NOT NULL", IsPrimaryKey=true)]
+		public short idTipoAcabado
+		{
+			get
+			{
+				return this._idTipoAcabado;
+			}
+			set
+			{
+				if ((this._idTipoAcabado != value))
+				{
+					if (this._TipoAcabado.HasLoadedOrAssignedValue)
+					{
+						throw new System.Data.Linq.ForeignKeyReferenceAlreadyHasValueException();
+					}
+					this.OnidTipoAcabadoChanging(value);
+					this.SendPropertyChanging();
+					this._idTipoAcabado = value;
+					this.SendPropertyChanged("idTipoAcabado");
+					this.OnidTipoAcabadoChanged();
+				}
+			}
+		}
+		
+		[Column(Storage="_piso", DbType="NVarChar(500) NOT NULL", CanBeNull=false)]
+		public string piso
+		{
+			get
+			{
+				return this._piso;
+			}
+			set
+			{
+				if ((this._piso != value))
+				{
+					this.OnpisoChanging(value);
+					this.SendPropertyChanging();
+					this._piso = value;
+					this.SendPropertyChanged("piso");
+					this.OnpisoChanged();
+				}
+			}
+		}
+		
+		[Column(Storage="_muro", DbType="NVarChar(500) NOT NULL", CanBeNull=false)]
+		public string muro
+		{
+			get
+			{
+				return this._muro;
+			}
+			set
+			{
+				if ((this._muro != value))
+				{
+					this.OnmuroChanging(value);
+					this.SendPropertyChanging();
+					this._muro = value;
+					this.SendPropertyChanged("muro");
+					this.OnmuroChanged();
+				}
+			}
+		}
+		
+		[Column(Storage="_plafon", DbType="NVarChar(500) NOT NULL", CanBeNull=false)]
+		public string plafon
+		{
+			get
+			{
+				return this._plafon;
+			}
+			set
+			{
+				if ((this._plafon != value))
+				{
+					this.OnplafonChanging(value);
+					this.SendPropertyChanging();
+					this._plafon = value;
+					this.SendPropertyChanged("plafon");
+					this.OnplafonChanged();
+				}
+			}
+		}
+		
+		[Association(Name="TipoAcabado_AcabadoTipoConstruccion", Storage="_TipoAcabado", ThisKey="idTipoAcabado", OtherKey="idTipoAcabado", IsForeignKey=true)]
+		public TipoAcabado TipoAcabado
+		{
+			get
+			{
+				return this._TipoAcabado.Entity;
+			}
+			set
+			{
+				TipoAcabado previousValue = this._TipoAcabado.Entity;
+				if (((previousValue != value) 
+							|| (this._TipoAcabado.HasLoadedOrAssignedValue == false)))
+				{
+					this.SendPropertyChanging();
+					if ((previousValue != null))
+					{
+						this._TipoAcabado.Entity = null;
+						previousValue.AcabadoTipoConstruccion.Remove(this);
+					}
+					this._TipoAcabado.Entity = value;
+					if ((value != null))
+					{
+						value.AcabadoTipoConstruccion.Add(this);
+						this._idTipoAcabado = value.idTipoAcabado;
+					}
+					else
+					{
+						this._idTipoAcabado = default(short);
+					}
+					this.SendPropertyChanged("TipoAcabado");
+				}
+			}
+		}
+		
+		[Association(Name="TipoConstruccion_AcabadoTipoConstruccion", Storage="_TipoConstruccion", ThisKey="idConstruccion,numeroTipo", OtherKey="idConstruccion,numeroTipo", IsForeignKey=true, DeleteOnNull=true, DeleteRule="CASCADE")]
+		public TipoConstruccion TipoConstruccion
+		{
+			get
+			{
+				return this._TipoConstruccion.Entity;
+			}
+			set
+			{
+				TipoConstruccion previousValue = this._TipoConstruccion.Entity;
+				if (((previousValue != value) 
+							|| (this._TipoConstruccion.HasLoadedOrAssignedValue == false)))
+				{
+					this.SendPropertyChanging();
+					if ((previousValue != null))
+					{
+						this._TipoConstruccion.Entity = null;
+						previousValue.AcabadoTipoConstruccion.Remove(this);
+					}
+					this._TipoConstruccion.Entity = value;
+					if ((value != null))
+					{
+						value.AcabadoTipoConstruccion.Add(this);
+						this._idConstruccion = value.idConstruccion;
+						this._numeroTipo = value.numeroTipo;
+					}
+					else
+					{
+						this._idConstruccion = default(int);
+						this._numeroTipo = default(short);
+					}
+					this.SendPropertyChanged("TipoConstruccion");
+				}
+			}
+		}
+		
+		public event PropertyChangingEventHandler PropertyChanging;
+		
+		public event PropertyChangedEventHandler PropertyChanged;
+		
+		protected virtual void SendPropertyChanging()
+		{
+			if ((this.PropertyChanging != null))
+			{
+				this.PropertyChanging(this, emptyChangingEventArgs);
+			}
+		}
+		
+		protected virtual void SendPropertyChanged(String propertyName)
+		{
+			if ((this.PropertyChanged != null))
+			{
+				this.PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
+			}
 		}
 	}
 	
