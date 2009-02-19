@@ -40,22 +40,38 @@
         function loadForm(key_id) {
             idAvaluo = key_id;
 
-            loadDatosDistribucion();
-            loadDatosRecamaras();
-            loadDatosPlantas();
+            loadDatosUsoActual();
+//            loadDatosDistribucion();
+//            loadDatosRecamaras();
+//            loadDatosPlantas();
         }
-        function loadDatosDistribucion() {
-            //TODO: Cargar datos de clasificaciones
-            loadForm_Success() // Temporal
+        function loadDatosUsoActualDistribucion() {
+            var callBackList = new Array();
+            
+            callBackList[0] = loadForm_Success;
+            callBackList[1] = setDatosUsoActualDistribucion;
+            
+            loadDatosUsoActualDistribucionAync(idAvaluo, callBackList);
         }
-        function loadDatosRecamaras() {
-            //TODO: Cargar datos de construcciones
-            loadForm_Success() // Temporal
+        
+        function loadDatosUsoActualRecamaras() {
+            var callBackList = new Array();
+            
+            callBackList[0] = loadForm_Success;
+            callBackList[1] = setDatosUsoActualRecamaras;
+            
+            loadDatosUsoActualRecamarasAync(idAvaluo, callBackList);
         }
-        function loadDatosPlantas() {
-            //TODO: Cargar datos de superficies
-            loadForm_Success() // Temporal
+        
+        function loadDatosUsoActualPlantas() {
+            var callBackList = new Array();
+            
+            callBackList[0] = loadForm_Success;
+            callBackList[1] = setDatosUsoActualPlantas;
+            
+            loadDatosUsoActualPlantasAync(idAvaluo, callBackList);
         }
+        
         function loadForm_Success() {
             if (num_bloques_cargados != undefined) {
                 num_bloques_cargados++;
@@ -70,9 +86,17 @@
             if (getVisibility($get("<%= guardar_uso_actual_ImBtn.ClientID %>")))
                 saveUsoActual();
         }
+        
         function saveUsoActual() {
-            saveUsoActual_Success();
+            saveUsoActualAsync(
+                idAvaluo
+                , getDatosUsoActualDistribucion()
+                , getDatosUsoActualRecamaras()
+                , getDatosUsoActualPlanta()
+                , saveUsoActual_Success()
+             );
         }
+        
         function saveUsoActual_Success() {
             terminateEdit("form_uso_actual",
                 "<%= editar_uso_actual_ImBtn.ClientID %>",
