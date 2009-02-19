@@ -7,37 +7,51 @@ namespace SIGEA.Classes.Entities
 {
     public partial class TipoConstruccion
     {
-        public static TipoConstruccion GetFromId(SIGEADataContext data_context, int idConstruccion)
+        public static Dictionary<string, object>[] GetTiposConstruccion(ConstruccionInmueble construccion)
         {
-            var tipoConstruccion_query = from t in data_context.TipoConstruccion
-                                         where t.idConstruccion == idConstruccion
-                                         select t;
+            var tipos_construccion_query = from tc in construccion.TipoConstruccion
+                                           orderby tc.numeroTipo
+                                           select tc.GetData();
 
-            if (!tipoConstruccion_query.Any())
+            if (!tipos_construccion_query.Any())
                 return null;
 
-            return tipoConstruccion_query.Single();
+            return tipos_construccion_query.ToArray();
         }
-
-        public static TipoConstruccion GetForDataUpdate(SIGEADataContext data_context, int idConstruccion)
+        public static void SetTiposConstruccion(ConstruccionInmueble construccion, Dictionary<string, object>[] data_set)
         {
-            TipoConstruccion tipo_construccion = GetFromId(data_context, idConstruccion);
-
-            if (tipo_construccion == null)
+            TipoConstruccion tipo_construccion = null;
+            foreach (Dictionary<string, object> data in data_set)
             {
-                tipo_construccion = new TipoConstruccion();
-                tipo_construccion.idConstruccion = idConstruccion;
-                data_context.TipoConstruccion.InsertOnSubmit(tipo_construccion);
+                var tipos_construccion_query = from tc in construccion.TipoConstruccion
+                                      where tc.numeroTipo == short.Parse(data["numeroTipo"].ToString())
+                                      select tc;
+
+                if (tipos_construccion_query.Any())
+                {
+                    tipo_construccion = tipos_construccion_query.Single();
+                }
+                else
+                {
+                    tipo_construccion = new TipoConstruccion();
+                    construccion.TipoConstruccion.Add(tipo_construccion);
+                }
+
+                tipo_construccion.SetData(data);
             }
 
-            return tipo_construccion;
+            var delete_query = from tc in construccion.TipoConstruccion
+                               where tc.numeroTipo > data_set.Length
+                               select tc;
+            foreach (TipoConstruccion delete_item in delete_query.ToList())
+                construccion.TipoConstruccion.Remove(delete_item);
         }
 
         public Dictionary<string, object> GetData()
         {
             Dictionary<string, object> data = new Dictionary<string, object>();
 
-            data.Add("idConstruccion", idConstruccion);
+            data.Add("numeroTipo", numeroTipo);
             data.Add("idClase", idClase);
             data.Add("idConservacion", idConservacion);
             data.Add("idFuente", idFuente);
@@ -55,7 +69,7 @@ namespace SIGEA.Classes.Entities
 
         public void SetData(Dictionary<string, object> data)
         {
-            idConstruccion = int.Parse(data["idConstruccion"].ToString());
+            numeroTipo = short.Parse(data["numeroTipo"].ToString());
             idClase = short.Parse(data["idClase"].ToString());
             idConservacion = short.Parse(data["idConservacion"].ToString());
             idFuente = short.Parse(data["idFuente"].ToString());

@@ -4,6 +4,14 @@ public partial class Cuentas_Valuacion_Controles_DatosDistribucion : System.Web.
 {
     protected void Page_Load(object sender, EventArgs e)
     {
+        if (!IsPostBack)
+        {
+            SetAttributes();
+        }
+    }
 
+    private void SetAttributes()
+    {
+        cocina_CBox.Attributes.Add("onclick", "setCocinaSelection(this.checked);");
     }
 }

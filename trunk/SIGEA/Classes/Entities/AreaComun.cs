@@ -7,36 +7,54 @@ namespace SIGEA.Classes.Entities
 {
     public partial class AreaComun
     {
-        public static AreaComun GetFromId(SIGEADataContext data_context, int idArea)
+        public static Dictionary<string, object>[] GetAreasComunes(DatoCondominio dato_condominio, bool complementarias)
         {
-            var areaComun_query = from a in data_context.AreaComun
-                                  where a.idArea == idArea
-                                  select a;
+            var area_comun_query = from ac in dato_condominio.AreaComun
+                                   where ac.complemetaria == complementarias
+                                   orderby ac.idArea
+                                   select ac.GetData();
 
-            if (!areaComun_query.Any())
+            if (!area_comun_query.Any())
                 return null;
 
-            return areaComun_query.Single();
+            return area_comun_query.ToArray();
         }
-
-        public static AreaComun GetFromDataUpdate(SIGEADataContext data_context, int idArea)
+        public static void SetAreasComunes(DatoCondominio dato_condominio, Dictionary<string, object>[] data_set, bool complementarias)
         {
-            AreaComun area_comun = GetFromId(data_context, idArea);
-
-            if (area_comun == null)
+            AreaComun area_comun = null;
+            foreach (Dictionary<string, object> data in data_set)
             {
-                area_comun = new AreaComun();
-                area_comun.idArea = idArea;
-                data_context.AreaComun.InsertOnSubmit(area_comun);
+                var areas_comunes_query = from ac in dato_condominio.AreaComun
+                                          where ac.complemetaria == complementarias 
+                                            && ac.idArea == short.Parse(data["idArea"].ToString())
+                                          select ac;
+
+                if (areas_comunes_query.Any())
+                {
+                    area_comun = areas_comunes_query.Single();
+                }
+                else
+                {
+                    area_comun = new AreaComun();
+                    area_comun.complemetaria = complementarias;
+                    dato_condominio.AreaComun.Add(area_comun);
+                }
+
+                area_comun.SetData(data);
             }
 
-            return area_comun;
+            var delete_query = from ac in dato_condominio.AreaComun
+                               where ac.idArea > data_set.Length && ac.complemetaria == complementarias
+                               select ac;
+            foreach (AreaComun delete_item in delete_query.ToList())
+                dato_condominio.AreaComun.Remove(delete_item);
         }
 
         public Dictionary<string, object> GetData()
         {
             Dictionary<string, object> data = new Dictionary<string, object>();
 
+            data.Add("idArea", idArea);
             data.Add("concepto", concepto);
             data.Add("superficie", superficie);
 
@@ -45,6 +63,7 @@ namespace SIGEA.Classes.Entities
 
         public void SetData(Dictionary<string, object> data)
         {
+            idArea = short.Parse(data["idArea"].ToString());
             concepto = data["concepto"].ToString();
             superficie = float.Parse(data["superficie"].ToString());
         }
