@@ -557,7 +557,7 @@
       <Column Name="cuentaPredial" Type="System.String" DbType="NVarChar(30) NOT NULL" CanBeNull="false" />
       <Column Name="cuentaAgua" Type="System.String" DbType="NVarChar(30) NOT NULL" CanBeNull="false" />
       <Column Name="telefono" Type="System.String" DbType="NVarChar(30) NOT NULL" CanBeNull="false" />
-      <Association Name="Inmueble_AvaluoInmobiliario" Member="AvaluoInmobiliario" ThisKey="idInmueble" OtherKey="idInmueble" Type="AvaluoInmobiliario" />
+      <Association Name="Inmueble_AvaluoInmobiliario" Member="AvaluoInmobiliario" ThisKey="idInmueble" OtherKey="idInmueble" Type="AvaluoInmobiliario" Cardinality="One" />
       <Association Name="Inmueble_EntornoInmueble" Member="EntornoInmueble" ThisKey="idInmueble" OtherKey="idInmueble" Type="EntornoInmueble" Cardinality="One" />
       <Association Name="Inmueble_EquipamientoInmueble" Member="EquipamientoInmueble" ThisKey="idInmueble" OtherKey="idInmueble" Type="EquipamientoInmueble" Cardinality="One" />
       <Association Name="Inmueble_EscriturasInmueble" Member="EscriturasInmueble" ThisKey="idInmueble" OtherKey="idInmueble" Type="EscriturasInmueble" Cardinality="One" />
@@ -569,7 +569,8 @@
       <Association Name="Inmueble_UbicacionInmueble" Member="UbicacionInmueble" ThisKey="idInmueble" OtherKey="idInmueble" Type="UbicacionInmueble" Cardinality="One" />
       <Association Name="Inmueble_UsoActualInmueble" Member="UsoActualInmueble" ThisKey="idInmueble" OtherKey="idInmueble" Type="UsoActualInmueble" Cardinality="One" />
       <Association Name="Inmueble_ViasAcceso" Member="ViasAcceso" ThisKey="idInmueble" OtherKey="idInmueble" Type="ViasAcceso" />
-      <Association Name="Inmueble_ConstruccionInmueble" Member="ConstruccionInmueble" ThisKey="idInmueble" OtherKey="idInmueble" Type="ConstruccionInmueble" />
+      <Association Name="Inmueble_ConstruccionInmueble" Member="ConstruccionInmueble" ThisKey="idInmueble" OtherKey="idInmueble" Type="ConstruccionInmueble" Cardinality="One" />
+      <Association Name="Inmueble_DatoCondominio" Member="DatoCondominio" ThisKey="idInmueble" OtherKey="idInmueble" Type="DatoCondominio" Cardinality="One" />
       <Association Name="DireccionInmueble_Inmueble" Member="DireccionInmueble" ThisKey="idDireccionInmueble" OtherKey="idDireccionInmueble" Type="DireccionInmueble" IsForeignKey="true" />
       <Association Name="Propietario_Inmueble" Member="Propietario" ThisKey="idPropietario" OtherKey="idPropietario" Type="Propietario" IsForeignKey="true" />
       <Association Name="RegimenPropiedad_Inmueble" Member="RegimenPropiedad" ThisKey="idRegimenPropiedad" OtherKey="idRegimenPropiedad" Type="RegimenPropiedad" IsForeignKey="true" />
@@ -1188,39 +1189,6 @@
       <Association Name="DatoCondominio_AreaComun" Member="DatoCondominio" ThisKey="idCondominio" OtherKey="idCondominio" Type="DatoCondominio" IsForeignKey="true" DeleteRule="CASCADE" DeleteOnNull="true" />
     </Type>
   </Table>
-  <Table Name="dbo.DatoCondominio" Member="DatoCondominio">
-    <Type Name="DatoCondominio">
-      <Column Name="idCondominio" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
-      <Column Name="avanceObra" Type="System.Double" DbType="Float NOT NULL" CanBeNull="false" />
-      <Column Name="unidadesRentables" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
-      <Column Name="unidadesNucleo" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
-      <Column Name="unidadesConjunto" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
-      <Association Name="DatoCondominio_SuperficiesCondominio" Member="SuperficiesCondominio" ThisKey="idCondominio" OtherKey="idCondominio" Type="SuperficiesCondominio" Cardinality="One" />
-      <Association Name="DatoCondominio_AreaComun" Member="AreaComun" ThisKey="idCondominio" OtherKey="idCondominio" Type="AreaComun" />
-      <Association Name="DatoCondominio_ConstruccionInmueble" Member="ConstruccionInmueble" ThisKey="idCondominio" OtherKey="idCondominio" Type="ConstruccionInmueble" />
-    </Type>
-  </Table>
-  <Table Name="dbo.ConstruccionInmueble" Member="ConstruccionInmueble">
-    <Type Name="ConstruccionInmueble">
-      <Column Name="idConstruccion" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
-      <Column Name="idInmueble" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
-      <Column Name="idClaseGeneral" Type="System.Int16" DbType="SmallInt NOT NULL" CanBeNull="false" />
-      <Column Name="idConservacionGeneral" Type="System.Int16" DbType="SmallInt NOT NULL" CanBeNull="false" />
-      <Column Name="idCalidadProyecto" Type="System.Int16" DbType="SmallInt NOT NULL" CanBeNull="false" />
-      <Column Name="constructor" Type="System.String" DbType="NVarChar(50) NOT NULL" CanBeNull="false" />
-      <Column Name="avanceObraGeneral" Type="System.Double" DbType="Float NOT NULL" CanBeNull="false" />
-      <Column Name="nivelesConstruccion" Type="System.Int16" DbType="SmallInt NOT NULL" CanBeNull="false" />
-      <Column Name="nivelEdificio" Type="System.Int16" DbType="SmallInt NOT NULL" CanBeNull="false" />
-      <Column Name="horizontal" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
-      <Column Name="vertical" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
-      <Column Name="unidadesRentable" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
-      <Column Name="idCondominio" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
-      <Association Name="ConstruccionInmueble_TipoConstruccion" Member="TipoConstruccion" ThisKey="idConstruccion" OtherKey="idConstruccion" Type="TipoConstruccion" />
-      <Association Name="ConstruccionInmueble_InstalacionConstruccion" Member="InstalacionConstruccion" ThisKey="idConstruccion" OtherKey="idConstruccion" Type="InstalacionConstruccion" />
-      <Association Name="DatoCondominio_ConstruccionInmueble" Member="DatoCondominio" ThisKey="idCondominio" OtherKey="idCondominio" Type="DatoCondominio" IsForeignKey="true" />
-      <Association Name="Inmueble_ConstruccionInmueble" Member="Inmueble" ThisKey="idInmueble" OtherKey="idInmueble" Type="Inmueble" IsForeignKey="true" />
-    </Type>
-  </Table>
   <Table Name="dbo.InstalacionesTipoConstruccion" Member="InstalacionesTipoConstruccion">
     <Type Name="InstalacionesTipoConstruccion">
       <Column Name="idConstruccion" Type="System.Int32" DbType="Int NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
@@ -1269,6 +1237,39 @@
       <Column Name="plafon" Type="System.String" DbType="NVarChar(500) NOT NULL" CanBeNull="false" />
       <Association Name="TipoAcabado_AcabadoTipoConstruccion" Member="TipoAcabado" ThisKey="idTipoAcabado" OtherKey="idTipoAcabado" Type="TipoAcabado" IsForeignKey="true" />
       <Association Name="TipoConstruccion_AcabadoTipoConstruccion" Member="TipoConstruccion" ThisKey="idConstruccion,numeroTipo" OtherKey="idConstruccion,numeroTipo" Type="TipoConstruccion" IsForeignKey="true" DeleteRule="CASCADE" DeleteOnNull="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.ConstruccionInmueble" Member="ConstruccionInmueble">
+    <Type Name="ConstruccionInmueble">
+      <Column Name="idConstruccion" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="idInmueble" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="idClaseGeneral" Type="System.Int16" DbType="SmallInt NOT NULL" CanBeNull="false" />
+      <Column Name="idConservacionGeneral" Type="System.Int16" DbType="SmallInt NOT NULL" CanBeNull="false" />
+      <Column Name="idCalidadProyecto" Type="System.Int16" DbType="SmallInt NOT NULL" CanBeNull="false" />
+      <Column Name="idCondominio" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="constructor" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="avanceObraGeneral" Type="System.Double" DbType="Float NOT NULL" CanBeNull="false" />
+      <Column Name="nivelesConstruccion" Type="System.Int16" DbType="SmallInt NOT NULL" CanBeNull="false" />
+      <Column Name="nivelEdificio" Type="System.Int16" DbType="SmallInt NOT NULL" CanBeNull="false" />
+      <Column Name="horizontal" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
+      <Column Name="vertical" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
+      <Column Name="unidadesRentables" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Association Name="ConstruccionInmueble_TipoConstruccion" Member="TipoConstruccion" ThisKey="idConstruccion" OtherKey="idConstruccion" Type="TipoConstruccion" />
+      <Association Name="ConstruccionInmueble_InstalacionConstruccion" Member="InstalacionConstruccion" ThisKey="idConstruccion" OtherKey="idConstruccion" Type="InstalacionConstruccion" />
+      <Association Name="Inmueble_ConstruccionInmueble" Member="Inmueble" ThisKey="idInmueble" OtherKey="idInmueble" Type="Inmueble" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.DatoCondominio" Member="DatoCondominio">
+    <Type Name="DatoCondominio">
+      <Column Name="idCondominio" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="idInmueble" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="avanceObra" Type="System.Double" DbType="Float NOT NULL" CanBeNull="false" />
+      <Column Name="unidadesRentables" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="unidadesNucleo" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="unidadesConjunto" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Association Name="DatoCondominio_SuperficiesCondominio" Member="SuperficiesCondominio" ThisKey="idCondominio" OtherKey="idCondominio" Type="SuperficiesCondominio" Cardinality="One" />
+      <Association Name="DatoCondominio_AreaComun" Member="AreaComun" ThisKey="idCondominio" OtherKey="idCondominio" Type="AreaComun" />
+      <Association Name="Inmueble_DatoCondominio" Member="Inmueble" ThisKey="idInmueble" OtherKey="idInmueble" Type="Inmueble" IsForeignKey="true" DeleteRule="CASCADE" DeleteOnNull="true" />
     </Type>
   </Table>
   <Function Name="dbo.GenerarIDE" Method="GenerarIDE">
