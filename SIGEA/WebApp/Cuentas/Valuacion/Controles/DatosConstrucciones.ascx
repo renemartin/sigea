@@ -16,12 +16,18 @@
         $get("<%= avanceObraGral_TBox.ClientID %>").value = data.avanceObra;
         $get("<%= claseGral_DDList.ClientID %>").selectedValue = data.idClase;
         $get("<%= estadoConservacionGral_DDList.ClientID %>").selectedValue = data.idConservacion;
-        $get("<%= unidadesRentables_TBox.ClientID %>").value = data.unidadRentable;
+        $get("<%= unidadesRentables_TBox.ClientID %>").value = data.unidadesRentables;
+        $get("<%= constructor_TBox.ClientID %>").value = data.unidadRentable;
+        $get("<%= nivelesConstruccion_TBox.ClientID %>").value = data.nivelesConstruccion;
+        $get("<%= nivelEdificio_TBox.ClientID %>").value = data.nivelEdificio;
+        $get("<%= horizontal_CBox.ClientID %>").checked = data.horizontal;
+        $get("<%= vertical_CBox.ClientID %>").checked = data.vertical;
+        
     }
     function setDatosCondominios(data) {
         $get("<%= avanceAComunes_TBox.ClientID %>").value = data.avanceObra;
         $get("<%= unidRentNucleo_TBox.ClientID %>").value = data.unidadesNucelo;
-        $get("<%= unidRentConjunto_TBox.ClientID %>").value = data.unidadesConjunto;
+        $get("<%= unidRentConjunto_TBox.ClientID %>").value = data.unidadesConjunto;       
     }
     
     //guardar datos
@@ -32,8 +38,13 @@
         data.avanceObra = $get("<%= avanceObraGral_TBox.ClientID %>").value;
         data.idClase = $get("<%= claseGral_DDList.ClientID %>").selectedValue;
         data.idConservacion = $get("<%= estadoConservacionGral_DDList.ClientID %>").selectedValue;
-        data.unidadRentable = $get("<%= unidadesRentables_TBox.ClientID %>").value = data.unidadRentable;
-        
+        data.unidadesRentables = $get("<%= unidadesRentables_TBox.ClientID %>").value = data.unidadRentable;
+        data.constructor = $get("<%= constructor_TBox.ClientID %>").value;
+        data.nivelesConstruccion = $get("<%= nivelesConstruccion_TBox.ClientID %>").value;
+        data.nivelEdificio = $get("<%= nivelEdificio_TBox.ClientID %>").value;
+        data.horizontal = $get("<%= horizontal_CBox.ClientID %>").checked;
+        data.vertical = $get("<%= vertical_CBox.ClientID %>").checked; 
+         
         return data;
     }
     function getDatosCondominios() {
@@ -91,6 +102,34 @@
         </td>
         <td class="celdaValor" colspan="3">
             <asp:TextBox ID="unidadesRentables_TBox" runat="server" SkinID="Numero"></asp:TextBox>
+        </td>
+        <td class="celdaTitulo">
+            Niveles Construccion:
+        </td>
+        <td class="celdaValor" colspan="3">
+            <asp:TextBox ID="nivelesConstruccion_TBox" runat="server" SkinID="Numero"></asp:TextBox>
+        </td>
+    </tr>
+    <tr>
+        <td class="celdaTitulo">
+            Constructor:
+        </td> 
+        <td class="celdaValor">
+            <asp:TextBox ID="constructor_TBox" runat="server" SkinID="Numero"></asp:TextBox>
+        </td>
+    </tr>
+    <tr>
+        <td class="celdaTitulo">
+            Niveles Edificio:
+        </td>
+        <td class="celdaValor">
+            <asp:TextBox ID="nivelesEdificio_TBox" runat="server" SkinID="Numero"></asp:TextBox>
+        </td>
+    </tr>
+    <tr>
+        <td class="celdaValor">
+            <asp:CheckBox ID="horizontal_CBox" Text="Horizontal" runat="server" />
+            <asp:CheckBox ID="vertical_CBox" Text="vertical" runat="server"
         </td>
     </tr>
 </table>
