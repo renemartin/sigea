@@ -487,7 +487,7 @@ public class EntityWrappers : System.Web.Services.WebService
 
         if (inmueble == null)
         {
-            throw new Exception("El avalúo no cuenta con un inmueble registrado");
+            throw new Exception("El avalúo no cuenta con un uso actual registrado");
         }
 
         if (inmueble.UsoActualInmueble == null)
