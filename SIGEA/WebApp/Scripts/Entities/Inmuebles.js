@@ -218,17 +218,17 @@ function saveUsoActualAsync(idAvaluo, datosDistribucion, datosRecamaras, datosPl
     );
 }
 
-function loadDatosUsoActualDistribucionAsync(idAvaluo, callBackList) {
+function loadUsoActualDistribucionAsync(idAvaluo, callBackList) {
     EntityWrappers.LoadUsoActualDistribucion(
         idAvaluo, asyncCallSingleListBack, asyncCallFail, callBackList);
 }
 
-function loadDatosUsoActualRecamarasAsync(idAvaluo, callBackList) {
+function loadUsoActualRecamarasAsync(idAvaluo, callBackList) {
     EntityWrappers.LoadUsoActualRecamaras(
         idAvaluo, asyncCallSingleListBack, asyncCallFail, callBackList);
 }
 
-function loadDatosUsoActualPlantasAync(idAvaluo, callBackList) {
-    EntityWrappers.LoadUsoActualDistribucion(
+function loadUsoActualPlantasAsync(idAvaluo, callBackList) {
+    EntityWrappers.LoadUsoActualPlantas(
         idAvaluo, asyncCallSingleListBack, asyncCallFail, callBackList);
 }

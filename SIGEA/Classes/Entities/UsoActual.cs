@@ -145,7 +145,7 @@ namespace SIGEA.Classes.Entities
 
             return plantas_query.ToArray();
         }
-        public static void SePlantas(UsoActualInmueble uso_actual, Dictionary<string, object>[] data_set)
+        public static void SetPlantas(UsoActualInmueble uso_actual, Dictionary<string, object>[] data_set)
         {
             UsoActualArea planta = null;
             foreach (Dictionary<string, object> data in data_set)

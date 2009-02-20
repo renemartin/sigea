@@ -41,8 +41,8 @@
             idAvaluo = key_id;
 
             loadDatosUsoActualDistribucion();
-            loadDatosUsoActualRecamaras();
-            loadDatosUsoActualPlantas();
+//            loadDatosUsoActualRecamaras();
+//            loadDatosUsoActualPlantas();
         }
         function loadDatosUsoActualDistribucion() {
             var callBackList = new Array();
@@ -50,7 +50,7 @@
             callBackList[0] = loadForm_Success;
             callBackList[1] = setDatosUsoActualDistribucion;
             
-            loadDatosUsoActualDistribucionAync(idAvaluo, callBackList);
+            loadUsoActualDistribucionAsync(idAvaluo, callBackList);
         }
         
         function loadDatosUsoActualRecamaras() {
@@ -59,7 +59,7 @@
             callBackList[0] = loadForm_Success;
             callBackList[1] = setDatosUsoActualRecamaras;
 
-            loadDatosUsoActualRecamarasAync(idAvaluo, callBackList);
+            loadUsoActualRecamarasAsync(idAvaluo, callBackList);
         }
         
         function loadDatosUsoActualPlantas() {
@@ -68,7 +68,7 @@
             callBackList[0] = loadForm_Success;
             callBackList[1] = setDatosUsoActualPlantas;
             
-            loadDatosUsoActualPlantasAync(idAvaluo, callBackList);
+            loadUsoActualPlantasAsync(idAvaluo, callBackList);
         }
         
         function loadForm_Success() {
@@ -117,7 +117,7 @@
             <asp:ScriptReference Path="~/Scripts/DataFillers.js" />
             <asp:ScriptReference Path="~/Scripts/Tables.js" />
             <asp:ScriptReference Path="~/Scripts/Forms.js" />
-            <asp:ScriptReference Path="~/Scripts/Entities/UsoActual.js" />
+            <asp:ScriptReference Path="~/Scripts/Entities/Inmuebles.js" />
         </Scripts>
     </asp:ScriptManager>
     <h1>
