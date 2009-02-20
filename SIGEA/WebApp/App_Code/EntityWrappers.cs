@@ -477,7 +477,7 @@ public class EntityWrappers : System.Web.Services.WebService
         UsoActualInmueble uso_actual = UsoActualInmueble.GetForDataUpdate(data_context, inmueble);
         uso_actual.SetData(datosDistribucion);
         UsoActualRecamara.SetRecamaras(uso_actual, datosRecamaras);
-        UsoActualArea.SePlantas(uso_actual, datosPlantas);
+        UsoActualArea.SetPlantas(uso_actual, datosPlantas);
     }
 
     [WebMethod]
