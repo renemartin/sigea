@@ -40,10 +40,9 @@
         function loadForm(key_id) {
             idAvaluo = key_id;
 
-            loadDatosUsoActual();
-//            loadDatosDistribucion();
-//            loadDatosRecamaras();
-//            loadDatosPlantas();
+            loadDatosDistribucion();
+            loadDatosRecamaras();
+            loadDatosPlantas();
         }
         function loadDatosUsoActualDistribucion() {
             var callBackList = new Array();
