@@ -1264,7 +1264,6 @@
       <Column Name="idCondominio" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
       <Column Name="idInmueble" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
       <Column Name="avanceObra" Type="System.Double" DbType="Float NOT NULL" CanBeNull="false" />
-      <Column Name="unidadesRentables" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
       <Column Name="unidadesNucleo" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
       <Column Name="unidadesConjunto" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
       <Association Name="DatoCondominio_SuperficiesCondominio" Member="SuperficiesCondominio" ThisKey="idCondominio" OtherKey="idCondominio" Type="SuperficiesCondominio" Cardinality="One" />

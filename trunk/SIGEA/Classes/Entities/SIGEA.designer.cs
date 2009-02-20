@@ -27448,8 +27448,6 @@ namespace SIGEA.Classes.Entities
 		
 		private double _avanceObra;
 		
-		private int _unidadesRentables;
-		
 		private int _unidadesNucleo;
 		
 		private int _unidadesConjunto;
@@ -27470,8 +27468,6 @@ namespace SIGEA.Classes.Entities
     partial void OnidInmuebleChanged();
     partial void OnavanceObraChanging(double value);
     partial void OnavanceObraChanged();
-    partial void OnunidadesRentablesChanging(int value);
-    partial void OnunidadesRentablesChanged();
     partial void OnunidadesNucleoChanging(int value);
     partial void OnunidadesNucleoChanged();
     partial void OnunidadesConjuntoChanging(int value);
@@ -27546,26 +27542,6 @@ namespace SIGEA.Classes.Entities
 					this._avanceObra = value;
 					this.SendPropertyChanged("avanceObra");
 					this.OnavanceObraChanged();
-				}
-			}
-		}
-		
-		[Column(Storage="_unidadesRentables", DbType="Int NOT NULL")]
-		public int unidadesRentables
-		{
-			get
-			{
-				return this._unidadesRentables;
-			}
-			set
-			{
-				if ((this._unidadesRentables != value))
-				{
-					this.OnunidadesRentablesChanging(value);
-					this.SendPropertyChanging();
-					this._unidadesRentables = value;
-					this.SendPropertyChanged("unidadesRentables");
-					this.OnunidadesRentablesChanged();
 				}
 			}
 		}
