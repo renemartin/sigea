@@ -5,6 +5,8 @@
 
 //guardar datos
 
+//edgar floripondeo
+
 function saveTipoConstruccionAsync( idConstruccion, datosTipoConstruccion, callBack) {
     EntityWrappers.SaveTipoConstruccion(
         idConstruccion
