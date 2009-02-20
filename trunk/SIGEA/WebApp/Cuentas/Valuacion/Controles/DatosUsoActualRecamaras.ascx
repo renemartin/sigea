@@ -9,7 +9,7 @@
     }
     
     //mostrar datos
-    function setDatosUsoActualRecamara(data) {
+    function setDatosUsoActualRecamaras(data) {
         var i = null;
         var parent_id = "<%= ClientID %>";
         var filas_borrar = getCloningTableCount('tabla_recamaras') - data.length;
@@ -22,7 +22,7 @@
         for( i=1; i<=data.length; i++ ) {
         
             $get( parent_id + "_cantidad_TBox_" + i).value = data[i].cantidad;
-            $get( parent_id + "_tipoPlanta_DDList_" + i).selectedValue = data[i].nivel;
+            $get( parent_id + "_tipoPlanta_DDList_" + i).selectedValue = data[i].planta;
             $get( parent_id + "_espacioCloset_RBtn_" + i).checked = data[i].espacioCloset;
             $get( parent_id + "_closetEquipado_RBtn_" + i).checked = data[i].closetEquipado;
             $get( parent_id + "_terraza_CBox_" + i).checked = data[i].terraza;
@@ -35,7 +35,7 @@
         }
         
         //guardar datos Tabla UsoActualRecamaras
-        function getDatosUsoActualRecamara( parent_id ) {
+        function getDatosUsoActualRecamaras( parent_id ) {
             var data = new Object();
             var i = null;
             var numero_tablas = getCloningTableCount('tabla_recamaras');
