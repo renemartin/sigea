@@ -205,3 +205,30 @@ function calcularNivelEquipamiento(datosEquipamiento) {
 
     return nivel;
 }
+
+function saveUsoActualAsync(idAvaluo, datosDistribucion, datosRecamaras, datosPlantas, callBack) {
+    EntityWrappers.SaveUsoActual(
+        idAvaluo
+        , datosDistribucion
+        , datosRecamaras
+        , datosPlantas
+        , asyncCallResultBack
+        , asyncCallFail
+        , callBack
+    );
+}
+
+function loadDatosUsoActualDistribucionAsync(idAvaluo, callBackList) {
+    EntityWrappers.LoadUsoActualDistribucion(
+        idAvaluo, asyncCallSingleListBack, asyncCallFail, callBackList);
+}
+
+function loadDatosUsoActualRecamarasAsync(idAvaluo, callBackList) {
+    EntityWrappers.LoadUsoActualRecamaras(
+        idAvaluo, asyncCallSingleListBack, asyncCallFail, callBackList);
+}
+
+function loadDatosUsoActualPlantasAync(idAvaluo, callBackList) {
+    EntityWrappers.LoadUsoActualDistribucion(
+        idAvaluo, asyncCallSingleListBack, asyncCallFail, callBackList);
+}
