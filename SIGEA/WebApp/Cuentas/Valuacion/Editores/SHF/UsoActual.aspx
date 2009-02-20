@@ -40,9 +40,9 @@
         function loadForm(key_id) {
             idAvaluo = key_id;
 
-            loadDatosDistribucion();
-            loadDatosRecamaras();
-            loadDatosPlantas();
+            loadDatosUsoActualDistribucion();
+            loadDatosUsoActualRecamaras();
+            loadDatosUsoActualPlantas();
         }
         function loadDatosUsoActualDistribucion() {
             var callBackList = new Array();
@@ -117,7 +117,7 @@
             <asp:ScriptReference Path="~/Scripts/DataFillers.js" />
             <asp:ScriptReference Path="~/Scripts/Tables.js" />
             <asp:ScriptReference Path="~/Scripts/Forms.js" />
-            <asp:ScriptReference Path="~/Scripts/Entities/Inmuebles.js" />
+            <asp:ScriptReference Path="~/Scripts/Entities/UsoActual.js" />
         </Scripts>
     </asp:ScriptManager>
     <h1>
