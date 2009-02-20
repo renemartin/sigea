@@ -1,5 +1,48 @@
 ﻿<%@ Control Language="C#" AutoEventWireup="true" CodeFile="DatosUsoActualPlantas.ascx.cs"
     Inherits="Cuentas_Valuacion_Controles_DatosUsoActualPlantas" %>
+<script type="text/javascript">
+    
+    //cargar datos
+    function setDatosUsoActualPlantas(data) {
+        if(data != null){
+            $get("<%= PB_vestibuloIngreso_CBox.ClientID %>").checked = data.vestibuloIngreso;
+            $get("<%= PB_escaleraPrincipal_CBox.ClientID %>").checked = data.escaleraPrincipal;
+            $get("<%= PB_sala_CBox.ClientID %>").checked = data.sala;
+            $get("<%= PB_cuartosServicio_CBox.ClientID %>").checked = data.cuartoServicio;
+            $get("<%= PB_cuartoLavado_CBox.ClientID %>").checked = data.cuartoLavado;
+            $get("<%= PB_areaServicioDescubierta_CBox.ClientID %>").checked = data.areaServicio;
+            
+            $get("<%= PB_escaleraServicio_CBox.ClientID %>").checked = data.vestibuloIngreso;
+            $get("<%= PA_cuartoServicio_CBox.ClientID %>").checked = data.vestibuloIngreso;
+            $get("<%= PA_cuartoLavado_CBox.ClientID %>").checked = data.vestibuloIngreso;
+            $get("<%= PA_areaServicioDescubierta_CBox.ClientID %>").checked = data.vestibuloIngreso;
+            $get("<%= PA_escaleraServicio_CBox.ClientID %>").checked = data.vestibuloIngreso;
+            $get("<%= ON_cuartoServicio_CBox.ClientID %>").checked = data.vestibuloIngreso;
+            $get("<%= ON_cuartoLavado_CBox.ClientID %>").checked = data.vestibuloIngreso;
+            $get("<%= ON_areaServicioDescubierta_CBox.ClientID %>").checked = data.vestibuloIngreso;
+            $get("<%= ON_escaleraServicio_CBox.ClientID %>").checked = data.vestibuloIngreso;
+            $get("<%= SOT_cuartoServicio_CBox.ClientID %>").checked = data.vestibuloIngreso;
+            $get("<%= SOT_cuartoLavado_CBox.ClientID %>").checked = data.vestibuloIngreso;
+            $get("<%= SOT_escaleraServicio_CBox.ClientID %>").checked = data.vestibuloIngreso;
+            
+        }
+    }    
+    
+    //guardar datos
+    function getDatosUsoActualPlantas() {
+        var data = new Object();
+ 
+             data.vestibuloIngreso = $get("<%= PB_vestibuloIngreso_CBox.ClientID %>").checked;
+             data.escaleraPrincipal = $get("<%= PB_escaleraPrincipal_CBox.ClientID %>").checked;
+             data.sala = $get("<%= PB_sala_CBox.ClientID %>").checked = data.sala;
+             data.cuartoServicio = $get("<%= PB_cuartosServicio_CBox.ClientID %>").checked;
+             data.cuartoLavado= $get("<%= PB_cuartoLavado_CBox.ClientID %>").checked;
+             data.areaServicio = $get("<%= PB_areaServicioDescubierta_CBox.ClientID %>").checked;       
+             
+             return data;
+    }
+
+</script>
 <table>
     <tr>
         <td class="celdaHeader" colspan="4">
