@@ -1,6 +1,6 @@
 ﻿<%@ Control Language="C#" AutoEventWireup="true" CodeFile="DatosUsoActualPlantas.ascx.cs"
     Inherits="Cuentas_Valuacion_Controles_DatosUsoActualPlantas" %>
-<script type="text/javascript">
+<%--<script type="text/javascript">
     
     //cargar datos
     function setDatosUsoActualPlantas(data) {
@@ -42,7 +42,7 @@
              return data;
     }
 
-</script>
+</script>--%>
 <table>
     <tr>
         <td class="celdaHeader" colspan="4">
