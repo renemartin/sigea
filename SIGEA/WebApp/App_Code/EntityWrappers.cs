@@ -481,9 +481,6 @@ public class EntityWrappers : System.Web.Services.WebService
     }
 
     [WebMethod]
-    public Entity LoadUsoActual (int idAvaluo,
-
-    [WebMethod]
     public Entity LoadUsoActualDistribucion(int idAvaluo)
     {
         Inmueble inmueble = Inmueble.GetFromIdAvaluo(common_context, idAvaluo);
