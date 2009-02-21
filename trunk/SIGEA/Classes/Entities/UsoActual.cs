@@ -185,7 +185,7 @@ namespace SIGEA.Classes.Entities
             data.Add("vestibuloIngreso", vestibuloIngreso);
             data.Add("escaleraPrincipal", escaleraPrincipal);
             data.Add("sala", sala);
-            data.Add("escaleraServicio", escaleraPrincipal);
+            data.Add("escaleraServicio", escaleraServicio);
 
             return data;
         }
@@ -198,6 +198,8 @@ namespace SIGEA.Classes.Entities
             vestibuloIngreso = (bool)data["vestibuloIngreso"];
             escaleraPrincipal = (bool)data["escaleraPrincipal"];
             sala = (bool)data["sala"];
+            escaleraServicio = (bool)data["escaleraServicio"];
+            
         }
     }
 }
