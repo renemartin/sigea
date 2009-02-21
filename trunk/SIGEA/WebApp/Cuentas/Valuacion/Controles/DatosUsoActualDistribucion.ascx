@@ -26,7 +26,7 @@
     function getDatosUsoActualDistribucion() {
         var data = new Object();
 
-        data.idTipoEstacionamiento = $get("<%= tipoEstacionamiento_DDList.ClientID %>").selectedValue;
+        data.idTipoEstacionamiento = $get("<%= tipoEstacionamiento_DDList.ClientID %>").value;
         data.cupoEstacionamiento = $get("<%= cupoCarros_TBox.ClientID %>").value;
         data.jardinesFrontales = $get("<%= jardin_CBox.ClientID %>").checked;
         data.jardinesFondo = $get("<%= jardinFondo_CBox.ClientID %>").checked;
