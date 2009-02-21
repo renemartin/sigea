@@ -90,8 +90,8 @@
             saveUsoActualAsync(
                 idAvaluo
                 , getDatosUsoActualDistribucion()
-                , getDatosUsoActualRecamaras()
-                , getDatosUsoActualPlanta()
+                //, getDatosUsoActualRecamaras()
+                , getDatosUsoActualPlantas()
                 , saveUsoActual_Success()
              );
         }
