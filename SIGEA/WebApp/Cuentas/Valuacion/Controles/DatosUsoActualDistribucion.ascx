@@ -17,10 +17,8 @@
             $get("<%= cocina_CBox.ClientID %>").checked = data.cocina;
             $get("<%= comedor_CBox.ClientID %>").checked = data.comedor;
             $get("<%= despensa_CBox.ClientID %>").checked = data.despensa;
-            $get("<%= conTarja_RBtn.ClientID %>").checked = data.tarja;
             $get("<%= mueblesCocina_RBtn.ClientID %>").checked = data.cocinaMuebles;
             $get("<%= cocinaIntegral_RBtn.ClientID %>").checked = data.cocinaIntegral;
-            $get("<%= forjadaSitio_RBtn.ClientID %>").checked = data.forjadaSitio;
         }
     }
 
@@ -37,10 +35,8 @@
         data.numBaniosCompletos = $get("<%= banosCompletos_TBox.ClientID %>").value;
         data.numBaniosMedios = $get("<%= banosMedios_TBox.ClientID %>").value;
         data.cocina = $get("<%= cocina_CBox.ClientID %>").checked;
-        data.tarja = $get("<%= conTarja_RBtn.ClientID %>").checked;
         data.cocinaMuebles = $get("<%= mueblesCocina_RBtn.ClientID %>").checked;
         data.cocinaIntegral = $get("<%= cocinaIntegral_RBtn.ClientID %>").checked;
-        data.forjadaSitio = $get("<%= forjadaSitio_RBtn.ClientID %>").checked;
         data.comedor = $get("<%= comedor_CBox.ClientID %>").checked;
         data.despensa = $get("<%= despensa_CBox.ClientID %>").checked;
 
