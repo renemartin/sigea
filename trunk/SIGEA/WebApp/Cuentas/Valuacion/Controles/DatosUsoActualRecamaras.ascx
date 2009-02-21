@@ -10,6 +10,9 @@
     
     //mostrar datos
     function setDatosUsoActualRecamaras(data) {
+        if(data == null)
+            return;
+        
         var i = null;
         var parent_id = "<%= ClientID %>";
         var filas_borrar = getCloningTableCount('tabla_recamaras') - data.length;
@@ -21,41 +24,42 @@
                     
         for( i=1; i<=data.length; i++ ) {
         
-            $get( parent_id + "_cantidad_TBox_" + i).value = data[i].cantidad;
-            $get( parent_id + "_tipoPlanta_DDList_" + i).selectedValue = data[i].planta;
-            $get( parent_id + "_espacioCloset_RBtn_" + i).checked = data[i].espacioCloset;
-            $get( parent_id + "_closetEquipado_RBtn_" + i).checked = data[i].closetEquipado;
-            $get( parent_id + "_terraza_CBox_" + i).checked = data[i].terraza;
-            $get( parent_id + "_balcon_CBox_" + i).checked = data[i].balcon;
-            $get( parent_id + "_vestidor_CBox_" + i).checked = data[i].vestidor;        
+            $get( parent_id + "_cantidad_TBox_" + i).value = data[i-1].cantidad;
+            $get( parent_id + "_tipoPlanta_DDList_" + i).selectedValue = data[i-1].planta;
+            $get( parent_id + "_espacioCloset_RBtn_" + i).checked = data[i-1].espacioCloset;
+            $get( parent_id + "_closetEquipado_RBtn_" + i).checked = data[i-1].closetEquipado;
+            $get( parent_id + "_terraza_CBox_" + i).checked = data[i-1].terraza;
+            $get( parent_id + "_balcon_CBox_" + i).checked = data[i-1].balcon;
+            $get( parent_id + "_vestidor_CBox_" + i).checked = data[i-1].vestidor;        
                         
             if ( i != data.length ) {
                 addClonedRow('tabla_recamaras');
             }
         }
+     }   
+    //guardar datos Tabla UsoActualRecamaras
+    function getDatosUsoActualRecamaras() {
+        var data_set = new Array();
+        var data = null;
+        var i = null;
+        var parent_id = "<%= ClientID %>";
+        var numero_tablas = getCloningTableCount('tabla_recamaras');
         
-        //guardar datos Tabla UsoActualRecamaras
-        function getDatosUsoActualRecamaras() {
-            var data = new Object();
-            var i = null;
-            var parent_id = "<%= ClientID %>";
-            var numero_tablas = getCloningTableCount('tabla_recamaras');
+        for ( i = 1; i<= numero_tablas; i++ ) {
+            data = new Object();
+            data[i-1].cantidad =1;// $get( parent_id + "_cantidad_TBox_" + i).value;
+            data[i-1].planta = 1; //$get( parent_id + "_tipoPlanta_DDList_" + i).selectedValue;
+            data[i-1].espacioCloset = 1; //$get( parent_id + "_espacioCloset_RBtn_" + i).checked;
+            data[i-1].closetEquipado =1;// $get( parent_id + "_closetEquipado_RBtn_" + i).checked;
+            data[i-1].terraza =1; //$get( parent_id + "_terraza_CBtn_" + i).checked;
+            data[i-1].balcon =1; //$get( parent_id + "_balcon_CBtn_" + i).checked;
+            data[i-1].vestidor =1; //$get( parent_id + "_vestidor_CBtn_" + i).checked;
             
-            for ( i = 0; i<= numero_tablas; i++ ) {
-            
-                data[i].cantidad = $get( parent_id + "_cantidad_TBox_" + i).value;
-                data[i].planta = $get( parent_id + "_tipoPlanta_DDList_" + i).selectedValue;
-                data[i].espacioCloset = $get( parent_id + "_espacioCloset_RBtn_" + i).checked;
-                data[i].closetEquipado = $get( parent_id + "_closetEquipado_RBtn_" + i).checked;
-                data[i].terraza = $get( parent_id + "_terraza_CBtn_" + i).checked;
-                data[i].balcon = $get( parent_id + "_balcon_CBtn_" + i).checked;
-                data[i].vestidor = $get( parent_id + "_vestidor_CBtn_" + i).checked;
-           }
-           
-           return data;
+            data_set[i-1] = data;
         }
+       
+       return data_set;
     }
-
 </script>
 
 <table id="tabla_recamaras">
