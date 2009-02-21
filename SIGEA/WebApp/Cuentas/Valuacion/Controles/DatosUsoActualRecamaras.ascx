@@ -48,7 +48,7 @@
         for ( i = 1; i<= numero_tablas; i++ ) {
             data = new Object();
             data.cantidad = $get( parent_id + "_cantidad_TBox_" + i).value;
-            data.planta = $get( parent_id + "_tipoPlanta_DDList_" + i).selectedValue;
+            data.planta = $get( parent_id + "_tipoPlanta_DDList_" + i).value;
             data.espacioCloset = $get( parent_id + "_espacioCloset_RBtn_" + i).checked;
             data.closetEquipado = $get( parent_id + "_closetEquipado_RBtn_" + i).checked;
             data.terraza = $get( parent_id + "_terraza_CBox_" + i).checked;
