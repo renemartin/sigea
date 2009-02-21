@@ -35,15 +35,16 @@
         }
         
         //guardar datos Tabla UsoActualRecamaras
-        function getDatosUsoActualRecamaras( parent_id ) {
+        function getDatosUsoActualRecamaras() {
             var data = new Object();
             var i = null;
+            var parent_id = "<%= ClientID %>";
             var numero_tablas = getCloningTableCount('tabla_recamaras');
             
-            for ( i = 1; i<= numero_tablas; i++ ) {
+            for ( i = 0; i<= numero_tablas; i++ ) {
             
                 data[i].cantidad = $get( parent_id + "_cantidad_TBox_" + i).value;
-                data[i].nivel = $get( parent_id + "_tipoPlanta_DDList_" + i).selectedValue;
+                data[i].planta = $get( parent_id + "_tipoPlanta_DDList_" + i).selectedValue;
                 data[i].espacioCloset = $get( parent_id + "_espacioCloset_RBtn_" + i).checked;
                 data[i].closetEquipado = $get( parent_id + "_closetEquipado_RBtn_" + i).checked;
                 data[i].terraza = $get( parent_id + "_terraza_CBtn_" + i).checked;
