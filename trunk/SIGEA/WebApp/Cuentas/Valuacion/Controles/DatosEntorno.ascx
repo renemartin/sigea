@@ -9,7 +9,8 @@
         fillProximidadUrbana("<%= proximidadUrbana_DDList.ClientID %>");
         fillNivelSocioeconomico("<%= nivelSocioeconomico_DDList.ClientID %>");
         fillConstruccionPredominante("<%= construccionPredominante_DDList.ClientID %>");
-        fillDensidad("<%= densidadPoblacion_DDList.ClientID %>");        
+        fillDensidad("<%= densidadPoblacion_DDList.ClientID %>");
+        fillImportanciaVialidad("<%= importanciaVia_DDList_1.ClientID %>");     
     }
 
     function setupTablaVias() {
@@ -49,12 +50,11 @@
 
         for (i = 1; i <= data.length; i++) {
             $get(parent_id + "_via_TBox_" + i).value = data[i-1].nombreVia;
-            $get(parent_id + "_importanciaVia_DDList_" + i).selectedValue = data[i-1].idImportanciaVia;
-
-            fillImportanciaVialidad(parent_id + "_importanciaVia_DDList_" + i);
+            $get(parent_id + "_importanciaVia_DDList_" + i).selectedValue = data[i-1].idImportanciaVia;            
 
             if (i != data.length) {
                 addClonedRow('tabla_vias');
+                fillImportanciaVialidad(parent_id + "_importanciaVia_DDList_" + (i+1));
             }
         }
     }

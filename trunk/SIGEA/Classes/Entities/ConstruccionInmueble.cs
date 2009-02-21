@@ -41,7 +41,7 @@ namespace SIGEA.Classes.Entities
             data.Add("idClaseGeneral", idClaseGeneral);
             data.Add("idConservacionGeneral", idConservacionGeneral);
             data.Add("idCalidadProyecto", idCalidadProyecto);
-            data.Add("constructor", constructor);
+            data.Add("nombreConstructor", constructor);
             data.Add("avanceObraGeneral", avanceObraGeneral);
             data.Add("nivelesConstruccion", nivelesConstruccion);
             data.Add("nivelEdificio", nivelEdificio);
@@ -57,7 +57,7 @@ namespace SIGEA.Classes.Entities
             idClaseGeneral = short.Parse(data["idClaseGeneral"].ToString());
             idConservacionGeneral = short.Parse(data["idConservacionGeneral"].ToString());
             idCalidadProyecto = short.Parse(data["idCalidadProyecto"].ToString());
-            constructor = data["constructor"].ToString();
+            constructor = data["nombreConstructor"].ToString();
             avanceObraGeneral = float.Parse(data["avanceObraGeneral"].ToString());
             nivelesConstruccion = short.Parse(data["nivelesConstruccion"].ToString());
             nivelEdificio = short.Parse(data["nivelEdificio"].ToString());

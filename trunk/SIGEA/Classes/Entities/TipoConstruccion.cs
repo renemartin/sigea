@@ -73,6 +73,7 @@ namespace SIGEA.Classes.Entities
             idClase = short.Parse(data["idClase"].ToString());
             idConservacion = short.Parse(data["idConservacion"].ToString());
             idFuente = short.Parse(data["idFuente"].ToString());
+            otraFuente = "";
             descripcion = data["descripcion"].ToString();
             superficie = float.Parse(data["superficie"].ToString());
             accesorio = (bool)data["accesorio"];

@@ -316,7 +316,6 @@ public class EntityWrappers : System.Web.Services.WebService
     public Entity[] LoadUbicacionInmueble(int idAvaluo)
     {
         Inmueble inmueble = Inmueble.GetFromIdAvaluo(common_context, idAvaluo);
-
         if (inmueble == null)
         {
             throw new Exception("El avalúo no cuenta con un inmueble registrado");
@@ -548,6 +547,7 @@ public class EntityWrappers : System.Web.Services.WebService
 
     #region Construcciones
 
+    #region Construccion inmueble
     [WebMethod]
     public void SaveDatosConstruccion(
         int idAvaluo
@@ -569,6 +569,28 @@ public class EntityWrappers : System.Web.Services.WebService
     }
 
     [WebMethod]
+    public Entity[] LoadTiposConstrucciones(int idAvaluo)
+    {
+        ConstruccionInmueble construccion = ConstruccionInmueble.GetFromIdAvaluo(common_context, idAvaluo);
+        if (construccion == null)
+            return null;
+
+        return TipoConstruccion.GetTiposConstruccion(construccion);
+    }
+
+    [WebMethod]
+    public Entity LoadDatosConstrucciones(int idAvaluo)
+    {
+        ConstruccionInmueble construccion = ConstruccionInmueble.GetFromIdAvaluo(common_context, idAvaluo);
+        if (construccion == null)
+            return null;
+
+        return construccion.GetData();
+    }
+    #endregion
+
+    #region Condominio
+    [WebMethod]
     public void SaveDatosCondominio(
         int idAvaluo
         , Entity datosCondominio
@@ -585,12 +607,41 @@ public class EntityWrappers : System.Web.Services.WebService
 
         DatoCondominio condominio = DatoCondominio.GetFromDataUpdate(inmueble);
         condominio.SetData(datosCondominio);
+        SuperficiesCondominio superficies = SuperficiesCondominio.GetForDataUpdate(condominio);
+        superficies.SetData(superficiesCondominio);
         AreaComun.SetAreasComunes(condominio, datosAreaComun, false);
         AreaComun.SetAreasComunes(condominio, datosAreaComunComplementaria, true);
 
         data_context.SubmitChanges();
     }
 
+    [WebMethod]
+    public Entity[] LoadDatosCondominio(int idAvaluo)
+    {
+        DatoCondominio condominio = DatoCondominio.GetFromIdAvaluo(common_context, idAvaluo);
+        if (condominio == null)
+            return null;
+
+        Entity[] datos = new Entity[2];
+        datos[0] = condominio.GetData();
+        if(condominio.SuperficiesCondominio != null)
+            datos[1] = condominio.SuperficiesCondominio.GetData();
+
+        return datos;
+    }
+
+    [WebMethod]
+    public Entity[] LoadDatosAreaComun(int idAvaluo, bool complementarias)
+    {
+        DatoCondominio condominio = DatoCondominio.GetFromIdAvaluo(common_context, idAvaluo);
+        if (condominio == null)
+            return null;
+
+        return AreaComun.GetAreasComunes(condominio, complementarias);        
+    }
+    #endregion
+
+    #region Superficies
     [WebMethod]
     public void SaveSuperficies(
         int idAvaluo
@@ -608,6 +659,23 @@ public class EntityWrappers : System.Web.Services.WebService
 
         data_context.SubmitChanges();
     }
+
+    [WebMethod]
+    public Entity LoadSuperficies(int idAvaluo)
+    {
+        Inmueble inmueble = Inmueble.GetFromIdAvaluo(common_context, idAvaluo);
+        if (inmueble == null)
+        {
+            throw new Exception("El avalúo no cuenta con un inmueble registrado");
+        }
+
+        if (inmueble.SuperficiesInmueble == null)
+            return null;
+
+        return inmueble.SuperficiesInmueble.GetData();
+    }
+    #endregion
+
     #endregion
 
     #region Comparables
