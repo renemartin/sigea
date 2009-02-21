@@ -1,70 +1,59 @@
 ﻿/// <reference name="MicrosoftAjax.js"/>
 /// <reference path="~/Scripts/AsyncCalls.js"/>
-/// <reference path="~/Services/MethodCallers.asmx">
 /// <reference path="~/Services/EntityWrappers.asmx">
 
-//guardar datos
+// Guardado de registros
 
-//edgar floripondeo
-
-function saveTipoConstruccionAsync( idConstruccion, datosTipoConstruccion, callBack) {
-    EntityWrappers.SaveTipoConstruccion(
-        idConstruccion
-        , datosTipoConstruccion
-        , asyncCallResultBack
-        , asyncCallFail
-        , callBack
-    );
-}
-
-function saveConstruccionInmuebleAsync( idConstruccion, datosConstruccion, datosCondominio, callBack) {
-    EntittyWrappers.SaveConstruccionInmueble(
-        idConstruccion
+function saveDatosConstruccionesAsync(idAvaluo, datosTiposConstruccion,
+    datosConstruccion, callBack) {
+    EntityWrappers.SaveDatosConstruccion(
+        idAvaluo
+        , datosTiposConstruccion
         , datosConstruccion
+        , asyncCallResultBack
+        , asyncCallFail
+        , callBack);
+}
+function saveDatosCondominioAsync(idAvaluo, datosCondominio, datosSuperficieCondominio,
+    datosAreaComun, datosAreaComunComplementaria, callBack) {
+    EntityWrappers.SaveDatosCondominio(
+        idAvaluo
         , datosCondominio
-        , asyncCallResultBack
-        , asyncCallFail
-        , callBack
-   );
-}
-
-function saveSuperficieAsync( idConstruccion, datosSuperficie, datosSuperficieCondominio, datosSuperficieAdicional, callBack) {
-    EntityWrappers.SaveSuperficie(
-        idConstruccion
-        , datosSuperficie
         , datosSuperficieCondominio
-        , datosSuperficieAdicional
+        , datosAreaComun
+        , datosAreaComunComplementaria
         , asyncCallResultBack
         , asyncCallFail
-        , callBack
-    );
-}  
-
-//cargar datos
-
-function loadDatosTipoConstruccionAsync( idConstruccion, callBackList) {
-    EntityWrappers.LoadTipoConstruccion(
-        idConstruccion
-        , asyncCallListBack
+        , callBack);
+}
+function saveSuperficiesInmuebleAsync(idAvaluo, datosSuperficies, callBack) {
+    EntityWrappers.SaveSuperficies(
+        idAvaluo
+        , datosSuperficies
+        , asyncCallResultBack
         , asyncCallFail
-        , callBackList
-    );
+        , callBack);
 }
 
-function loadDatosConstruccionInmuebleAsync( idConstruccion, callBackList) {
-    EntityWrappers.LoadConstruccionInmueble(
-        idConstruccion
-        , asyncCallListBack
-        , asyncCallFail
-        , callBackList
-    );
-}
+// Carga de datos
 
-function loadDatosSuperficieAsync( idConstruccion, callBackList) {
-    EntityWrappers.LoadSuperficie(
-        idConstruccion
-        , asyncCallListBack
-        , asyncCallFail
-        , callBackList
-    );
+function loadTiposConstruccionesAsync(idAvaluo, callBackList) {
+    EntityWrappers.LoadTiposConstrucciones(
+        idAvaluo, asyncCallSingleListBack, asyncCallFail, callBackList);
+}
+function loadDatosConstruccionesAsync(idAvaluo, callBackList) {
+    EntityWrappers.LoadDatosConstrucciones(
+        idAvaluo, asyncCallSingleListBack, asyncCallFail, callBackList);
+}
+function loadDatosCondominioAsync(idAvaluo, callBackList) {
+    EntityWrappers.LoadDatosCondominio(
+        idAvaluo, asyncCallListBack, asyncCallFail, callBackList);
+}
+function loadDatosSuperficiesCondominioAsync(idAvaluo, complementarias, callBackList) {
+    EntityWrappers.LoadDatosAreaComun(
+        idAvaluo, complementarias, asyncCallSingleListBack, asyncCallFail, callBackList);
+}
+function loadSuperficiesInmuebleAsync(idAvaluo, callBackList) {
+    EntityWrappers.LoadSuperficies(
+        idAvaluo, asyncCallSingleListBack, asyncCallFail, callBackList);
 }
