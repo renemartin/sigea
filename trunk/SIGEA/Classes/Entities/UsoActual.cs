@@ -59,6 +59,7 @@ namespace SIGEA.Classes.Entities
             despensa = (bool)data["despensa"];
             numBaniosCompletos = short.Parse(data["numBaniosCompletos"].ToString());
             numBaniosMedios = short.Parse(data["numBaniosMedios"].ToString());
+            tarja = (bool)data["tarja"];
         }
     }
 
