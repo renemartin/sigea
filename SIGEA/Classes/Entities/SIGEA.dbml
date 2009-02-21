@@ -997,7 +997,6 @@
       <Column Name="despensa" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
       <Column Name="numBaniosCompletos" Type="System.Int16" DbType="SmallInt NOT NULL" CanBeNull="false" />
       <Column Name="numBaniosMedios" Type="System.Int16" DbType="SmallInt NOT NULL" CanBeNull="false" />
-      <Column Member="tarja" Type="System.Boolean" CanBeNull="false" />
       <Association Name="UsoActualInmueble_UsoActualArea" Member="UsoActualArea" ThisKey="idUsoActual" OtherKey="idUsoActual" Type="UsoActualArea" />
       <Association Name="UsoActualInmueble_UsoActualRecamara" Member="UsoActualRecamara" ThisKey="idUsoActual" OtherKey="idUsoActual" Type="UsoActualRecamara" />
       <Association Name="Inmueble_UsoActualInmueble" Member="Inmueble" ThisKey="idInmueble" OtherKey="idInmueble" Type="Inmueble" IsForeignKey="true" DeleteRule="CASCADE" DeleteOnNull="true" />
