@@ -1,4 +1,5 @@
-﻿<%@ Control Language="C#" AutoEventWireup="true" CodeFile="DatosConstruccionesClasificacion.ascx.cs" Inherits="Cuentas_Valuacion_Controles_DatosConstruccionesClasificacion" %>
+﻿<%@ Control Language="C#" AutoEventWireup="true" CodeFile="DatosConstruccionesClasificacion.ascx.cs"
+    Inherits="Cuentas_Valuacion_Controles_DatosConstruccionesClasificacion" %>
 <link href="~/App_Themes/Default/DefaultStyle.css" rel="stylesheet" type="text/css" />
 
 <script type="text/javascript">
@@ -8,62 +9,69 @@
         fillFuente("<%= fuente_DDList_1.ClientID %>");
         fillEstadoConservacion("<%= estadoCons_DDList_1.ClientID %>");
     }
-
     function setupTablaConstrucciones() {
         addCloningTable($get("tabla_construcciones"), 1, 5);
     }
     
-    //mostrar datos
+    // Databindings
     function setDatosConstruccionesClasificacion(data) {
+        if (data == null)
+            return;
+    
         var i = null;
         var parent_id = "<%= ClientID %>";
-        var filas_borrar = getCloningTableCount( parent_id + 'tabla_contrucciones') - data.length;
         
-        if ( filas_borrar > 0 ) {
-            while ( filas_borrar-- != 0 )
-                removeClonedRow( parent_id + 'tabla_construcciones' );
-        }
-        
-        for ( i = 1; i <= data.length; i++ ) {
-            $get( parent_id + "_tipo_CBox_" + i).checked = data.accesorio;
-            $get( parent_id + "_descripcion_TBox_" + i).value = data.descripcion;
-            $get( parent_id + "_clase_DDList_" + i).selectedValue = data.idClase;
-            $get( parent_id + "_superficie_TBox_" + i).value = data.superficie;
-            $get( parent_id + "_fuente_DDList_" + i).selectedValue = data.idFuente;
-            $get( parent_id + "_nivelesTipo_TBox_" + i).value = data.niveles;
-            $get( parent_id + "_nivelesCuerpo_TBox_" + i).value = data.nivelesCuerpo;
-            $get( parent_id + "_edad_TBox_" + i).value = data.edad;
-            $get( parent_id + "_avance_TBox_" + i).value = data.avanceObra;
-            $get( parent_id + "_vidaUtil_TBox_" + i).value = data.vidaUtil;
-            $get( parent_id + "_estadoConst_DDList_" + i).selectedValue = data.idConservacion; 
-        }
-        
-        if ( i != data.length ) {
-            addClonedRow('tabla_construcciones');
-        }
+        for ( i=1; i <= data.length; i++ ) {
+            $get( parent_id + "_tipo_CBox_" + i).checked = data[i-1].accesorio;
+            $get( parent_id + "_descripcion_TBox_" + i).value = data[i-1].descripcion;
+            $get( parent_id + "_clase_DDList_" + i).selectedValue = data[i-1].idClase;
+            $get( parent_id + "_superficie_TBox_" + i).value = data[i-1].superficie;
+            $get( parent_id + "_fuente_DDList_" + i).selectedValue = data[i-1].idFuente;
+            $get( parent_id + "_nivelesTipo_TBox_" + i).value = data[i-1].niveles;
+            $get( parent_id + "_nivelesCuerpo_TBox_" + i).value = data[i-1].nivelesCuerpo;
+            $get( parent_id + "_edad_TBox_" + i).value = data[i-1].edad;
+            $get( parent_id + "_avance_TBox_" + i).value = data[i-1].avanceObra;
+            $get( parent_id + "_vidaUtil_TBox_" + i).value = data[i-1].vidaUtil;
+            $get( parent_id + "_estadoCons_DDList_" + i).selectedValue = data[i-1].idConservacion;
+
+            if (i != data.length) {
+                addClonedRow('tabla_construcciones');
+                fillEstadoConservacion(parent_id + "_estadoCons_DDList_" + (i + 1));
+                fillClaseInmueble(parent_id + "_clase_DDList_" + (i + 1));
+                fillFuente(parent_id + "_fuente_DDList_" + (i + 1));
+                fillEstadoConservacion(parent_id + "_estadoCons_DDList_" + (i + 1));                
+            }
+        }                       
     }
     
-    //guardar datos
-    function getDatosContruccionesClasificacion() {
-        var data = new Object();
+    function getDatosConstruccionesClasificacion() {
+        var data_set = new Array();
+        var data = null;
         var i = null;
         var numero_tablas= getCloningTableCount('tabla_construcciones');
+
+        var parent_id = "<%= ClientID %>";
         
         for ( i = 1; i <= numero_tablas; i++ ) {
+            data = new Object();
+            data.numeroTipo = i;
             data.accesorio = $get( parent_id + "_tipo_CBox_" + i).checked;
             data.descripcion = $get( parent_id + "_descripcion_TBox_" + i).value;
-            data.idClase = $get( parent_id + "_clase_DDList_" + i).selectedValue;
+            data.idClase = $get( parent_id + "_clase_DDList_" + i).value;
             data.superficie = $get( parent_id + "_superficie_TBox_" + i).value;
-            data.idFuente = $get( parent_id + "_fuente_DDList_" + i).selectedValue;
+            data.idFuente = $get( parent_id + "_fuente_DDList_" + i).value;
+            data.otraFuente = "";
             data.niveles = $get( parent_id + "_nivelesTipo_TBox_" + i).value;
             data.nivelesCuerpo = $get( parent_id + "_nivelesCuerpo_TBox_" + i).value;
             data.edad = $get( parent_id + "_edad_TBox_" + i).value;
             data.avanceObra = $get( parent_id + "_avance_TBox_" + i).value;
             data.vidaUtil = $get( parent_id + "_vidaUtil_TBox_" + i).value;
-            data.idConservacion = $get( parent_id + "_estadoConst_DDList_" + i).selectedValue;
+            data.idConservacion = $get( parent_id + "_estadoCons_DDList_" + i).value;
+            
+            data_set[i-1] = data;
         }
         
-        return data;
+        return data_set;
     }
 
 </script>

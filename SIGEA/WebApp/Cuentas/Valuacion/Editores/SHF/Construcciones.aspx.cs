@@ -46,10 +46,6 @@ public partial class Cuentas_Valuacion_Editores_SHF_Construcciones : System.Web.
     }
     private void SetAttributes()
     {
-        SetEdit("form_clasificacion", editar_clasificacion_ImBtn, guardar_clasificacion_ImBtn, cancelar_clasificacion_ImBtn);
-        SetCancel("form_clasificacion", editar_clasificacion_ImBtn, guardar_clasificacion_ImBtn, cancelar_clasificacion_ImBtn);
-        guardar_clasificacion_ImBtn.OnClientClick = "saveDatosClasificacion(); return false;";
-
         SetEdit("form_construcciones", editar_construcciones_ImBtn, guardar_construcciones_ImBtn, cancelar_construcciones_ImBtn);
         SetCancel("form_construcciones", editar_construcciones_ImBtn, guardar_construcciones_ImBtn, cancelar_construcciones_ImBtn);
         guardar_construcciones_ImBtn.OnClientClick = "saveDatosConstrucciones(); return false;";
@@ -57,6 +53,10 @@ public partial class Cuentas_Valuacion_Editores_SHF_Construcciones : System.Web.
         SetEdit("form_superficies", editar_superficies_ImBtn, guardar_superficies_ImBtn, cancelar_superficies_ImBtn);
         SetCancel("form_superficies", editar_superficies_ImBtn, guardar_superficies_ImBtn, cancelar_superficies_ImBtn);
         guardar_superficies_ImBtn.OnClientClick = "saveSuperficies(); return false;";
+
+        SetEdit("form_condominio", editar_condominio_ImBtn, guardar_condominio_ImBtn, cancelar_condominio_ImBtn);
+        SetCancel("form_condominio", editar_condominio_ImBtn, guardar_condominio_ImBtn, cancelar_condominio_ImBtn);
+        guardar_condominio_ImBtn.OnClientClick = "saveCondominio(); return false;";
     }
 
     private void SetEdit(string form, ImageButton editar, ImageButton guardar, ImageButton cancelar)

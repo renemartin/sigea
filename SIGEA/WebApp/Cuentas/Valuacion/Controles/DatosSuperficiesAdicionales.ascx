@@ -7,40 +7,40 @@
         tabla = $get(parent_id + "_tabla_adicionales");
         addCloningTable(tabla, 1, 5);
     }
+
+    // Databindings
+    function setDatosSuperficiesAdicionales(parent_id, data) {
+        if (data == null)
+            return;
     
-    //mostrar datos
-    function setDatosSuperficiesAdicionales(data) { 
         var i = null;
-        var parent_id = "<%= ClientID %>";
         
-        var filas_borrar = getCloningTableCount(parent_id + "_tabla_adicionales") - data.length;
-        
-        if ( filas_borrar > 0 ) {
-            while(filas_borrar-- != 0 )
-                removeClonedRow(parent_id + '_tabla_adicionales');
-        }
-        
-        for( i=1; i<=data.length; i++ ) {
-            $get( parent_id + "_Concepto_TBox_" + i).value = data[i].concepto;
-            $get( parent_id + "_Superficie_TBox_" + i).value = data[i].superficie;       
-        }
-        
-        if ( i != data.length )
-            addClonedRow(parent_id + '_tabla_adicionales');     
+        for (i = 1; i <= data.length; i++) {
+            $get(parent_id + "_Concepto_TBox_" + i).value = data[i-1].concepto;
+            $get(parent_id + "_Superficie_TBox_" + i).value = data[i-1].superficie;
+
+            if (i != data.length) {
+                addClonedRow(parent_id + '_tabla_adicionales');
+            }
+        }        
     }
-    
+
     //guardar datos
-    function getDatosSuperficiesAdicionales( parent_id ) {
-        var data = new Object();
+    function getDatosSuperficiesAdicionales(parent_id) {
+        var data_set = new Array();
         var i = null;
         var numero_tablas = getCloningTableCount(parent_id + '_tabla_adicionales');
-        
-        for ( i=1; i<=numero_tablas; i++ ) {
-            data[i].concepto = $get(parent_id + "_Concepto_TBox" + i).value;
-            data[i].superficie = $get(parent_id + "_Superficie_TBox" + i).value;
+
+        for (i = 1; i <= numero_tablas; i++) {
+            data = new Object();
+            data.idArea = i;
+            data.concepto = $get(parent_id + "_Concepto_TBox_" + i).value;
+            data.superficie = $get(parent_id + "_Superficie_TBox_" + i).value;
+
+            data_set[i - 1] = data;
         }
-        
-        return data;
+
+        return data_set;
     }
 </script>
 
@@ -65,6 +65,7 @@
             <asp:TextBox ID="Superficie_TBox_1" runat="server"></asp:TextBox>
             <span class="textoChico">m²</span>
         </td>
-        <td></td>
+        <td>
+        </td>
     </tr>
 </table>

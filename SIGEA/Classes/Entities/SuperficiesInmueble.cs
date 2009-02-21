@@ -35,7 +35,7 @@ namespace SIGEA.Classes.Entities
         public void SetData(Dictionary<string, object> data)
         {
             totalTerreno = float.Parse(data["totalTerreno"].ToString());
-            frenteLote = float.Parse(data["fenteLote"].ToString());
+            frenteLote = float.Parse(data["frenteLote"].ToString());
             fuenteTerreno = int.Parse(data["fuenteTerreno"].ToString());
             otraFuenteTerreno = data["otraFuenteTerreno"].ToString();
         }
