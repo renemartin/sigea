@@ -47,13 +47,13 @@
         
         for ( i = 1; i<= numero_tablas; i++ ) {
             data = new Object();
-            data[i-1].cantidad =1;// $get( parent_id + "_cantidad_TBox_" + i).value;
-            data[i-1].planta = 1; //$get( parent_id + "_tipoPlanta_DDList_" + i).selectedValue;
-            data[i-1].espacioCloset = 1; //$get( parent_id + "_espacioCloset_RBtn_" + i).checked;
-            data[i-1].closetEquipado =1;// $get( parent_id + "_closetEquipado_RBtn_" + i).checked;
-            data[i-1].terraza =1; //$get( parent_id + "_terraza_CBtn_" + i).checked;
-            data[i-1].balcon =1; //$get( parent_id + "_balcon_CBtn_" + i).checked;
-            data[i-1].vestidor =1; //$get( parent_id + "_vestidor_CBtn_" + i).checked;
+            data.cantidad = $get( parent_id + "_cantidad_TBox_" + i).value;
+            data.planta = $get( parent_id + "_tipoPlanta_DDList_" + i).selectedValue;
+            data.espacioCloset = $get( parent_id + "_espacioCloset_RBtn_" + i).checked;
+            data.closetEquipado = $get( parent_id + "_closetEquipado_RBtn_" + i).checked;
+            data.terraza = $get( parent_id + "_terraza_CBox_" + i).checked;
+            data.balcon = $get( parent_id + "_balcon_CBox_" + i).checked;
+            data.vestidor = $get( parent_id + "_vestidor_CBox_" + i).checked;
             
             data_set[i-1] = data;
         }
