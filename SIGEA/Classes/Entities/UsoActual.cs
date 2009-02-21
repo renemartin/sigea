@@ -59,7 +59,6 @@ namespace SIGEA.Classes.Entities
             despensa = (bool)data["despensa"];
             numBaniosCompletos = short.Parse(data["numBaniosCompletos"].ToString());
             numBaniosMedios = short.Parse(data["numBaniosMedios"].ToString());
-            tarja = (bool)data["tarja"];
         }
     }
 
@@ -186,6 +185,7 @@ namespace SIGEA.Classes.Entities
             data.Add("vestibuloIngreso", vestibuloIngreso);
             data.Add("escaleraPrincipal", escaleraPrincipal);
             data.Add("sala", sala);
+            data.Add("escaleraServicio", escaleraPrincipal);
 
             return data;
         }
