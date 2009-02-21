@@ -21222,6 +21222,8 @@ namespace SIGEA.Classes.Entities
 		
 		private System.Nullable<bool> _sala;
 		
+		private bool _escaleraServicio;
+		
 		private EntityRef<UsoActualInmueble> _UsoActualInmueble;
 		
     #region Extensibility Method Definitions
@@ -21244,6 +21246,8 @@ namespace SIGEA.Classes.Entities
     partial void OnescaleraPrincipalChanged();
     partial void OnsalaChanging(System.Nullable<bool> value);
     partial void OnsalaChanged();
+    partial void OnescaleraServicioChanging(bool value);
+    partial void OnescaleraServicioChanged();
     #endregion
 		
 		public UsoActualArea()
@@ -21412,6 +21416,26 @@ namespace SIGEA.Classes.Entities
 					this._sala = value;
 					this.SendPropertyChanged("sala");
 					this.OnsalaChanged();
+				}
+			}
+		}
+		
+		[Column(Storage="_escaleraServicio", DbType="Bit")]
+		public bool escaleraServicio
+		{
+			get
+			{
+				return this._escaleraServicio;
+			}
+			set
+			{
+				if ((this._escaleraServicio != value))
+				{
+					this.OnescaleraServicioChanging(value);
+					this.SendPropertyChanging();
+					this._escaleraServicio = value;
+					this.SendPropertyChanged("escaleraServicio");
+					this.OnescaleraServicioChanged();
 				}
 			}
 		}

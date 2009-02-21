@@ -977,6 +977,7 @@
       <Column Name="vestibuloIngreso" Type="System.Boolean" DbType="Bit" CanBeNull="true" />
       <Column Name="escaleraPrincipal" Type="System.Boolean" DbType="Bit" CanBeNull="true" />
       <Column Name="sala" Type="System.Boolean" DbType="Bit" CanBeNull="true" />
+      <Column Name="escaleraServicio" Type="System.Boolean" DbType="Bit" CanBeNull="false" />
       <Association Name="UsoActualInmueble_UsoActualArea" Member="UsoActualInmueble" ThisKey="idUsoActual" OtherKey="idUsoActual" Type="UsoActualInmueble" IsForeignKey="true" DeleteRule="CASCADE" DeleteOnNull="true" />
     </Type>
   </Table>
