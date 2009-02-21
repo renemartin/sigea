@@ -5,21 +5,23 @@
 <script type="text/javascript">
     //mostrar datos
     function setDatosUsoActualDistribucion(data) {
-        $get("<%= tipoEstacionamiento_DDList.ClientID %>").selectedValue = data.idTipoEstacionamiento;
-        $get("<%= cupoCarros_TBox.ClientID %>").value = data.cupoEstacionamiento;
-        $get("<%= jardin_CBox.ClientID %>").checked = data.jardinesFrontales;
-        $get("<%= jardinFondo_CBox.ClientID %>").checked = data.jardinesFondo;
-        $get("<%= jardinLateral_CBox.ClientID %>").checked = data.jardinesLateral;
-        $get("<%= elevador_CBox.ClientID %>").checked = data.elevador;
-        $get("<%= banosCompletos_TBox.ClientID %>").value = data.numBaniosCompletos;
-        $get("<%= banosMedios_TBox.ClientID %>").value = data.numBaniosMedios;
-        $get("<%= cocina_CBox.ClientID %>").checked = data.cocina;
-        $get("<%= comedor_CBox.ClientID %>").checked = data.comedor;
-        $get("<%= despensa_CBox.ClientID %>").checked = data.despensa;
-        $get("<%= conTarja_RBtn.ClientID %>").checked = data.tarja;
-        $get("<%= mueblesCocina_RBtn.ClientID %>").checked = data.cocinaMuebles;
-        $get("<%= cocinaIntegral_RBtn.ClientID %>").checked = data.cocinaIntegral;
-        $get("<%= forjadaSitio_RBtn.ClientID %>").checked = data.forjadaSitio;
+        if(data != null ) {
+            $get("<%= tipoEstacionamiento_DDList.ClientID %>").selectedValue = data.idTipoEstacionamiento;
+            $get("<%= cupoCarros_TBox.ClientID %>").value = data.cupoEstacionamiento;
+            $get("<%= jardin_CBox.ClientID %>").checked = data.jardinesFrontales;
+            $get("<%= jardinFondo_CBox.ClientID %>").checked = data.jardinesFondo;
+            $get("<%= jardinLateral_CBox.ClientID %>").checked = data.jardinesLateral;
+            $get("<%= elevador_CBox.ClientID %>").checked = data.elevador;
+            $get("<%= banosCompletos_TBox.ClientID %>").value = data.numBaniosCompletos;
+            $get("<%= banosMedios_TBox.ClientID %>").value = data.numBaniosMedios;
+            $get("<%= cocina_CBox.ClientID %>").checked = data.cocina;
+            $get("<%= comedor_CBox.ClientID %>").checked = data.comedor;
+            $get("<%= despensa_CBox.ClientID %>").checked = data.despensa;
+            $get("<%= conTarja_RBtn.ClientID %>").checked = data.tarja;
+            $get("<%= mueblesCocina_RBtn.ClientID %>").checked = data.cocinaMuebles;
+            $get("<%= cocinaIntegral_RBtn.ClientID %>").checked = data.cocinaIntegral;
+            $get("<%= forjadaSitio_RBtn.ClientID %>").checked = data.forjadaSitio;
+        }
     }
 
     //guardar datos Tabla UsoActualInmueble

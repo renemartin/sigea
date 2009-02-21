@@ -4,6 +4,8 @@
     
     //cargar datos
     function setDatosUsoActualPlantas(data) {
+        id(data == null)
+            return;
         //datos planta baja
 //          $get("<%= PB_cuartoServicio_CBox.ClientID %>").checked = data[0].cuartoServicio;
 //        $get("<%= PB_cuartoLavado_CBox.ClientID %>").checked = data[0].cuartoLavado;
@@ -34,39 +36,48 @@
     
     //guardar datos
     function getDatosUsoActualPlantas() {
-        var data = new Array();
-            
+        var data_set = new Array();
+        
         //datos planta baja
-        data[0].planta = 1;
-        data[0].cuartoServicio = $get("<%= PB_cuartoServicio_CBox.ClientID %>").checked;
-        data[0].cuartoLavado = $get("<%= PB_cuartoLavado_CBox.ClientID %>").checked;
-        data[0].areaServicio = $get("<%= PB_areaServicioDescubierta_CBox.ClientID %>").checked;
-        data[0].vestibuloIngreso = $get("<%= PB_vestibuloIngreso_CBox.ClientID %>").checked;
-        data[0].escaleraPrincipal = $get("<%= PB_escaleraPrincipal_CBox.ClientID %>").checked;
-        data[0].sala = $get("<%= PB_sala_CBox.ClientID %>").checked;
-        data[0].escaleraServicio = $get("<%= PB_escaleraServicio_CBox.ClientID %>").checked;
+        var dataPB = new Object();
+        dataPB.planta = 0;
+        dataPB.cuartoServicio = $get("<%= PB_cuartoServicio_CBox.ClientID %>").checked;
+        dataPB.cuartoLavado = $get("<%= PB_cuartoLavado_CBox.ClientID %>").checked;
+        dataPB.areaServicio = $get("<%= PB_areaServicioDescubierta_CBox.ClientID %>").checked;
+        dataPB.vestibuloIngreso = $get("<%= PB_vestibuloIngreso_CBox.ClientID %>").checked;
+        dataPB.escaleraPrincipal = $get("<%= PB_escaleraPrincipal_CBox.ClientID %>").checked;
+        dataPB.sala = $get("<%= PB_sala_CBox.ClientID %>").checked;
+        dataPB.escaleraServicio = $get("<%= PB_escaleraServicio_CBox.ClientID %>").checked;
         
         //datos planta alta
-        data[1].planta = 2;
-        data[1].cuartoServicio = $get("<%= PA_cuartoServicio_CBox.ClientID %>").checked;
-        data[1].cuartoLavado = $get("<%= PA_cuartoLavado_CBox.ClientID %>").checked;
-        data[1].areaServicio = $get("<%= PA_areaServicioDescubierta_CBox.ClientID %>").checked;
-        data[1].escaleraServicio = $get("<%= PA_escaleraServicio_CBox.ClientID %>").checked;
+        var dataPA = new Object();
+        dataPA.planta = 1;
+        dataPA.cuartoServicio = $get("<%= PA_cuartoServicio_CBox.ClientID %>").checked;
+        dataPA.cuartoLavado = $get("<%= PA_cuartoLavado_CBox.ClientID %>").checked;
+        dataPA.areaServicio = $get("<%= PA_areaServicioDescubierta_CBox.ClientID %>").checked;
+        dataPA.escaleraServicio = $get("<%= PA_escaleraServicio_CBox.ClientID %>").checked;
         
         //datos otros niveles
-        data[2].planta = 3;
-        data[2].cuartoServicio = $get("<%= ON_cuartoServicio_CBox.ClientID %>").checked;
-        data[2].cuartoLavado = $get("<%= ON_cuartoLavado_CBox.ClientID %>").checked;
-        data[2].areaServicio = $get("<%= ON_areaServicioDescubierta_CBox.ClientID %>").checked;
-        data[2].escaleraServicio = $get("<%= ON_escaleraServicio_CBox.ClientID %>").checked;
+        var dataON = new Object();
+        dataON.planta = 2;
+        dataON.cuartoServicio = $get("<%= ON_cuartoServicio_CBox.ClientID %>").checked;
+        dataON.cuartoLavado = $get("<%= ON_cuartoLavado_CBox.ClientID %>").checked;
+        dataON.areaServicio = $get("<%= ON_areaServicioDescubierta_CBox.ClientID %>").checked;
+        dataON.escaleraServicio = $get("<%= ON_escaleraServicio_CBox.ClientID %>").checked;
         
         //datos otros sotano
-        data[3].planta = 4;
-        data[3].cuartoServicio = $get("<%= SO_cuartoServicio_CBox.ClientID %>").checked;
-        data[3].cuartoLavado = $get("<%= SO_cuartoLavado_CBox.ClientID %>").checked;
-        data[3].escaleraServicio = $get("<%= SO_escaleraServicio_CBox.ClientID %>").checked;
+        var dataSO = new Object();
+        dataSO.planta = 3;
+        dataSO.cuartoServicio = $get("<%= SO_cuartoServicio_CBox.ClientID %>").checked;
+        dataSO.cuartoLavado = $get("<%= SO_cuartoLavado_CBox.ClientID %>").checked;
+        dataSO.escaleraServicio = $get("<%= SO_escaleraServicio_CBox.ClientID %>").checked;
+        
+        data_set[0] = dataPB;
+        data_set[1] = dataPA;
+        data_set[2] = dataON;
+        data_set[3] = dataSO;
             
-        return data;
+        return data_set;
     }
 
 </script>
