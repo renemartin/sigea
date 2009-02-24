@@ -37,9 +37,9 @@ public partial class Cuentas_Valuacion_AvaluoAlta : System.Web.UI.Page
     {
         scripts.AppendLine("fillAvaluoData();");
         scripts.AppendLine("fillInmuebleData();");
-        scripts.AppendLine("fillDireccionData_Aux('" + datosInmueble_Ctrl.DireccionID + "');");
-        scripts.AppendLine("fillDireccionData_Aux('" + datosSolicitante_Ctrl.DireccionID + "');");
-        scripts.AppendLine("fillDireccionData_Aux('" + datosPropietario_Ctrl.DireccionID + "');");
+        //scripts.AppendLine("fillDireccionData_Aux('" + datosInmueble_Ctrl.DireccionID + "');");
+        //scripts.AppendLine("fillDireccionData_Aux('" + datosSolicitante_Ctrl.DireccionID + "');");
+        //scripts.AppendLine("fillDireccionData_Aux('" + datosPropietario_Ctrl.DireccionID + "');");
     }
     private void RegisterScripts()
     {

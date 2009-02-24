@@ -26,19 +26,19 @@
 
         // Guardar
         function saveAvaluo() {
-            saveAvaluoInmuebleAsync(
-                idAvaluo
-                , getDatosAvaluo()
-                , getDatosCredito()
-                , getDatosSolicitante()
-                , getDatosDireccion_Aux("<%= datosSolicitante_Ctrl.DireccionID%>")
-                , getDatosInmueble()
-                , getDatosUbicacionInmueble()
-                , getDatosDireccion_Aux("<%= datosInmueble_Ctrl.DireccionID %>")
-                , getDatosPropietario()
-                , getDatosDireccion_Aux("<%= datosPropietario_Ctrl.DireccionID%>")
-                , saveAvaluo_Success
-            );
+//            saveAvaluoInmuebleAsync(
+//                idAvaluo
+//                , getDatosAvaluo()
+//                , getDatosCredito()
+//                , getDatosSolicitante()
+//                , getDatosDireccion_Aux
+//                , getDatosInmueble()
+//                , getDatosUbicacionInmueble()
+//                , getDatosDireccion_Aux
+//                , getDatosPropietario()
+//                , getDatosDireccion_Aux
+//                , saveAvaluo_Success
+//            );
         }
         function saveAvaluo_Success(id) {
             idAvaluo = id;
