@@ -18,6 +18,6 @@ public partial class Controles_DatosDireccion : System.Web.UI.UserControl
 
     private void SetAttributes()
     {
-        estado_DDList.Attributes.Add("onchange", "updateMunicipios_Aux('"+ this.ClientID +"');");
+        estado_DDList.Attributes.Add("onchange", ID + ".updateMunicipios();");
     }
 }
