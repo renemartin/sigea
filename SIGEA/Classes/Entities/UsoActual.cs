@@ -121,7 +121,7 @@ namespace SIGEA.Classes.Entities
         }
         public void SetData(Dictionary<string, object> data)
         {
-            idUsoRecamara = short.Parse(data["idUsoRecamara"].ToString());
+            //idUsoRecamara = short.Parse(data["idUsoRecamara"].ToString());
             cantidad = short.Parse(data["cantidad"].ToString());
             planta = short.Parse(data["planta"].ToString());
             espacioCloset = (bool)data["espacioCloset"];
