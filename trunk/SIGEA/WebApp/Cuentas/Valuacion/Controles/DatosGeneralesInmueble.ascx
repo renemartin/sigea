@@ -2,44 +2,7 @@
     Inherits="Cuentas_Valuacion_DatosGeneralesInmueble" %>
 <%@ Register Src="DatosDireccionInmueble.ascx" TagName="DatosDireccionInmueble" TagPrefix="SIGEA" %>
 <%@ Register Src="~/Controles/DatosDireccion.ascx" TagName="DatosDireccion" TagPrefix="SIGEA" %>
-
-<script type="text/javascript">
-    // DataBindings
-    function getDatosInmueble() {
-        var data = new Object();
-
-        data["idTipoInmueble"] = $get("<%= tipoInmueble_DDList.ClientID %>").value;
-        data["idRegimenPropiedad"] = $get("<%= regimenPropiedad_DDList.ClientID %>").value;
-        data["otroTipoInmueble"] = "";
-        data["claveCatastral"] = $get("<%= claveCatastral_TBox.ClientID %>").value;
-        data["cuentaPredial"] = $get("<%= cuentaPredial_TBox.ClientID %>").value;
-        data["cuentaAgua"] = $get("<%= cuentaAgua_TBox.ClientID %>").value;
-        data["telefono"] = $get("<%= telefono_TBox.ClientID %>").value;
-
-        return data;
-    }
-    function setDatosInmueble(data) {
-        $get("<%= tipoInmueble_DDList.ClientID %>").selectedValue = data["idTipoInmueble"];
-        $get("<%= regimenPropiedad_DDList.ClientID %>").selectedValue = data["idRegimenPropiedad"];
-        $get("<%= claveCatastral_TBox.ClientID %>").value = data["claveCatastral"];
-        $get("<%= cuentaPredial_TBox.ClientID %>").value = data["cuentaPredial"]
-        $get("<%= cuentaAgua_TBox.ClientID %>").value = data["cuentaAgua"];
-        $get("<%= telefono_TBox.ClientID %>").value = data["telefono"];
-    }
-
-    // Llenado de datos
-    function fillInmuebleData() {
-        fillTipoInmueble("<%= tipoInmueble_DDList.ClientID %>");
-        fillRegimenPropiedad("<%= regimenPropiedad_DDList.ClientID %>");
-    }
-
-    // Obtención de datos
-
-    function getIdTipoInmueble() {
-        return $get("<%= tipoInmueble_DDList.ClientID %>").value;
-    }
-   
-</script>
+<link href="../../../App_Themes/Default/DefaultStyle.css" rel="stylesheet" type="text/css" />
 
 <table>
     <tr>
@@ -100,3 +63,97 @@
         </td>
     </tr>
 </table>
+
+<script type="text/javascript">
+    function Inmueble() {
+
+        // Inicialización
+        if (typeof (Inmueble_Init) == "undefined") {
+            Inmueble_Init = true;
+            Inmueble.prototype.getData = getData;
+            Inmueble.prototype.setData = setData;
+            Inmueble.prototype.fillData = fillData;
+            Inmueble.prototype.getIdTipo = getIdTipo;
+            Inmueble.prototype.validate = validate;
+        }
+
+        // Inicialización de validadores
+        this.controls = new Array(
+            $get("<%= tipoInmueble_DDList.ClientID %>"),        // 0
+            $get("<%= regimenPropiedad_DDList.ClientID %>"),    // 1
+            $get("<%= claveCatastral_TBox.ClientID %>"),        // 2
+            $get("<%= cuentaPredial_TBox.ClientID %>"),         // 3
+            $get("<%= cuentaAgua_TBox.ClientID %>"),            // 4
+            $get("<%= telefono_TBox.ClientID %>")               // 5
+        );
+        this.validator = new ControlValidator(this.controls);
+        this.validator.addOptionalField(2);
+        this.validator.addOptionalField(3);
+        this.validator.addOptionalField(4);
+        this.validator.addOptionalField(5);
+    
+        // DataBindings
+        function getData() {
+            var data_set = new Array();
+
+            data_set[0] = new Object();
+            data_set[0].idTipoInmueble = $get("<%= tipoInmueble_DDList.ClientID %>").value;
+            data_set[0].idRegimenPropiedad = $get("<%= regimenPropiedad_DDList.ClientID %>").value;
+            data_set[0].otroTipoInmueble = "";
+            data_set[0].claveCatastral = $get("<%= claveCatastral_TBox.ClientID %>").value;
+            data_set[0].cuentaPredial = $get("<%= cuentaPredial_TBox.ClientID %>").value;
+            data_set[0].cuentaAgua = $get("<%= cuentaAgua_TBox.ClientID %>").value;
+            data_set[0].telefono = $get("<%= telefono_TBox.ClientID %>").value;
+
+            data_set[1] = direccion_Ctrl.getData();
+            data_set[2] = ubicacion_Ctrl.getData();
+    
+            return data_set;
+        }
+        function setData(data_set) {
+            if (data_set != null) {
+                $get("<%= tipoInmueble_DDList.ClientID %>").selectedValue = data_set[0].idTipoInmueble;
+                $get("<%= regimenPropiedad_DDList.ClientID %>").selectedValue = data_set[0].idRegimenPropiedad;
+                $get("<%= claveCatastral_TBox.ClientID %>").value = data_set[0].claveCatastral;
+                $get("<%= cuentaPredial_TBox.ClientID %>").value = data_set[0].cuentaPredial;
+                $get("<%= cuentaAgua_TBox.ClientID %>").value = data_set[0].cuentaAgua;
+                $get("<%= telefono_TBox.ClientID %>").value = data_set[0].telefono;
+
+                direccion_Ctrl.setData(data_set[1]);
+                ubicacion_Ctrl.setData(data_set[2]);
+            }
+            else {
+                direccion_Ctrl.fillData();
+            }
+
+            this.fillData();
+        }
+
+        // Llenado de datos
+        function fillData() {
+            fillTipoInmueble("<%= tipoInmueble_DDList.ClientID %>");
+            fillRegimenPropiedad("<%= regimenPropiedad_DDList.ClientID %>");
+        }
+
+        // Validación
+        function validate() {
+            var validated = true
+            if (!this.validator.validate())
+                validated = false;
+            if (!direccion_Ctrl.validate())
+                validated = false;
+            if (!ubicacion_Ctrl.validate())
+                validated = false;
+
+            return validated;
+        }
+
+        // Obtención de datos
+        function getIdTipo() {
+            return $get("<%= tipoInmueble_DDList.ClientID %>").value;
+        }
+    }
+
+    this["<%= ID %>"] = new Inmueble();
+   
+</script>
