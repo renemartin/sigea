@@ -479,6 +479,7 @@ public class EntityWrappers : System.Web.Services.WebService
         uso_actual.SetData(datosDistribucion);
         UsoActualRecamara.SetRecamaras(uso_actual, datosRecamaras);
         UsoActualArea.SetPlantas(uso_actual, datosPlantas);
+        data_context.SubmitChanges();
     }
 
     [WebMethod]
@@ -494,7 +495,7 @@ public class EntityWrappers : System.Web.Services.WebService
         if (inmueble.UsoActualInmueble == null)
             return null;
 
-        return inmueble.InfraestructuraInmueble.GetData();
+        return inmueble.UsoActualInmueble.GetData();
     }
     [WebMethod]
 
