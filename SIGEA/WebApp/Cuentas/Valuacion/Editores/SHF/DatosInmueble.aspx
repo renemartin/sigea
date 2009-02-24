@@ -36,11 +36,8 @@
 
         // Llenado de datos
         function fillData() {
-            fillInmuebleData();
             fillTerrenoData();
             fillTerrenoCallesData();
-            fillDireccionData_Aux("<%= datosInmueble_Ctrl.DireccionID %>");
-            fillDireccionData_Aux("<%= datosPropietario_Ctrl.DireccionID %>");
         }
 
         // Carga de registros
@@ -51,21 +48,8 @@
             loadDatosTerreno();
         }
         function loadDatosInmueble() {
-            var callBackList = new Array();
-            callBackList[0] = loadForm_Success;
-            callBackList[1] = setDatosInmueble;
-            callBackList[2] = setDatosUbicacionInmueble;
-            callBackList[3] = setDatosDireccionInmueble;
-            callBackList[4] = setDatosPropietario;
-            callBackList[5] = setDatosDireccionPropietario;
-
-            loadInmuebleAsync(idAvaluo, callBackList);
-        }
-        function setDatosDireccionInmueble(data) {
-            setDatosDireccion_Aux("<%= datosInmueble_Ctrl.DireccionID %>", data);
-        }
-        function setDatosDireccionPropietario(data) {
-            setDatosDireccion_Aux("<%= datosPropietario_Ctrl.DireccionID%>", data);
+            loadInmuebleAsync(idAvaluo, inmueble_Ctrl);
+            loadPropietarioAsync(idAvaluo, propietario_Ctrl);
         }
         function loadDatosTerreno() {
             var callBackList = new Array();
@@ -92,14 +76,19 @@
                 saveDatosTerreno();
         }
         function saveDatosInmueble() {
-            saveInmuebleAsync(
-                idAvaluo
-                , getDatosInmueble()
-                , getDatosUbicacionInmueble()
-                , getDatosDireccion("<%= datosInmueble_Ctrl.DireccionID %>")
-                , getDatosPropietario()
-                , getDatosDireccion_Aux("<%= datosPropietario_Ctrl.DireccionID%>")
-                , saveDatosInmueble_Success);
+            var validated = true;
+            if (!inmueble_Ctrl.validate())
+                validated = false;
+            if (!propietario_Ctrl.validate())
+                validated = false;
+        
+            if (validated) {
+                saveInmuebleAsync(
+                    idAvaluo
+                    , inmueble_Ctrl.getData()
+                    , propietario_Ctrl.getData()
+                    , saveDatosInmueble_Success);
+            }
         }
         function saveDatosInmueble_Success() {
             terminateEdit("form_inmueble",
@@ -136,6 +125,7 @@
             <asp:ScriptReference Path="~/Scripts/AsyncCalls.js" />
             <asp:ScriptReference Path="~/Scripts/DataFillers.js" />
             <asp:ScriptReference Path="~/Scripts/Forms.js" />
+            <asp:ScriptReference Path="~/Scripts/Validation.js" />
             <asp:ScriptReference Path="~/Scripts/Entities/Inmuebles.js" />
         </Scripts>
     </asp:ScriptManager>
@@ -146,10 +136,10 @@
         <asp:ImageButton ID="editar_inmueble_ImBtn" runat="server" SkinID="Edit" />
     </div>
     <div id="form_inmueble" class="formulario">
-        <SIGEA:DatosGeneralesInmueble ID="datosInmueble_Ctrl" runat="server" />
+        <SIGEA:DatosGeneralesInmueble ID="inmueble_Ctrl" runat="server" />
         <h2>
             Datos del propietario</h2>
-        <SIGEA:DatosPropietario ID="datosPropietario_Ctrl" runat="server" />
+        <SIGEA:DatosPropietario ID="propietario_Ctrl" runat="server" />
     </div>
     <div class="barraAcciones">
         <asp:ImageButton ID="guardar_inmueble_ImBtn" runat="server" SkinID="Save" CssClass="hidden" />
