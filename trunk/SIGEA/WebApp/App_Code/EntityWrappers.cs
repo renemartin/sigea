@@ -240,7 +240,7 @@ public class EntityWrappers : System.Web.Services.WebService
 
     #region Inmuebles
 
-    #region data del inmueble
+    #region Datos del inmueble
     [WebMethod]
     public void SaveInmueble(
         int idAvaluo
@@ -276,13 +276,26 @@ public class EntityWrappers : System.Web.Services.WebService
         if (inmueble == null)
             throw new Exception("El identificador del avalúo es inválido");
 
-        Entity[] data = new Entity[5];
+        Entity[] data = new Entity[3];
 
         data[0] = inmueble.GetData();
         data[1] = inmueble.DireccionInmueble.GetData();
         data[2] = inmueble.DireccionInmueble.Direccion.GetData();
-        data[3] = inmueble.Propietario.GetData();
-        data[4] = inmueble.Propietario.Direccion.GetData();
+
+        return data;
+    }
+
+    [WebMethod]
+    public Entity[] LoadPropietario(int idAvaluo)
+    {
+        Inmueble inmueble = Inmueble.GetFromIdAvaluo(common_context, idAvaluo);
+        if (inmueble == null)
+            throw new Exception("El identificador del avalúo es inválido");
+
+        Entity[] data = new Entity[2];
+
+        data[0] = inmueble.Propietario.GetData();
+        data[1] = inmueble.Propietario.Direccion.GetData();
 
         return data;
     }
