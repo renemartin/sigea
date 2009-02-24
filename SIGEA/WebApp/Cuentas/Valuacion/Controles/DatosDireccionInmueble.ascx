@@ -1,27 +1,5 @@
 ﻿<%@ Control Language="C#" AutoEventWireup="true" CodeFile="DatosDireccionInmueble.ascx.cs" Inherits="Cuentas_Valuacion_Controles_DatosDireccionInmueble" %>
-
-<script type="text/javascript">
-    // DataBindings
-    function getDatosUbicacionInmueble() {
-        var data = new Object();
-
-        data["edificio"] = $get("<%= edificio_TBox.ClientID%>").value;
-        data["lote"] = $get("<%= lote_TBox.ClientID%>").value;
-        data["manzana"] = $get("<%= manzana_TBox.ClientID%>").value;
-        data["superManzana"] = $get("<%= superManzana_TBox.ClientID%>").value;
-        data["condominio"] = $get("<%= condominio_TBox.ClientID%>").value;
-
-        return data;
-    }
-
-    function setDatosUbicacionInmueble(data) {
-        $get("<%= edificio_TBox.ClientID%>").value = data["edificio"];
-        $get("<%= lote_TBox.ClientID%>").value = data["lote"];
-        $get("<%= manzana_TBox.ClientID%>").value = data["manzana"];
-        $get("<%= superManzana_TBox.ClientID%>").value = data["superManzana"];
-        $get("<%= condominio_TBox.ClientID%>").value = data["condominio"];
-    }
-</script>
+<link href="../../../App_Themes/Default/DefaultStyle.css" rel="stylesheet" type="text/css" />
 
 <table>
     <tr>
@@ -61,3 +39,59 @@
         </td>
     </tr>
 </table>
+
+<script type="text/javascript">
+    function UbicacionInmueble() {
+
+        // Inicialización
+        if (typeof (UbicacionInmueble_Init) == "undefined") {
+            UbicacionInmueble_Init = true;
+            UbicacionInmueble.prototype.getData = getData;
+            UbicacionInmueble.prototype.setData = setData;
+            UbicacionInmueble.prototype.validate = validate;
+        }
+
+        // Inicialización de validador
+        this.controls = new Array(
+            $get("<%= edificio_TBox.ClientID%>"),       // 0
+            $get("<%= lote_TBox.ClientID%>"),           // 1
+            $get("<%= manzana_TBox.ClientID%>"),        // 2
+            $get("<%= superManzana_TBox.ClientID%>"),   // 3
+            $get("<%= condominio_TBox.ClientID%>")      // 4
+        );
+        this.validator = new ControlValidator(this.controls);
+        this.validator.addOptionalField(3);
+        this.validator.addOptionalField(4);
+                
+        // DataBindings
+        function getData() {
+            var data = new Object();
+
+            data.edificio = $get("<%= edificio_TBox.ClientID%>").value;
+            data.lote = $get("<%= lote_TBox.ClientID%>").value;
+            data.manzana = $get("<%= manzana_TBox.ClientID%>").value;
+            data.superManzana = $get("<%= superManzana_TBox.ClientID%>").value;
+            data.condominio = $get("<%= condominio_TBox.ClientID%>").value;
+
+            return data;
+        }
+
+        function setData(data) {
+            if (data != null) {
+                $get("<%= edificio_TBox.ClientID%>").value = data.edificio;
+                $get("<%= lote_TBox.ClientID%>").value = data.lote;
+                $get("<%= manzana_TBox.ClientID%>").value = data.manzana;
+                $get("<%= superManzana_TBox.ClientID%>").value = data.superManzana;
+                $get("<%= condominio_TBox.ClientID%>").value = data.condominio;
+            }
+        }
+
+        // Validación
+        function validate() {
+            return this.validator.validate();
+        }
+    }
+
+    this["<%= ID %>"] = new UbicacionInmueble();
+    
+</script>
