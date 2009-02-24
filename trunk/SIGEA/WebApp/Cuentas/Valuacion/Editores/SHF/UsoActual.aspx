@@ -41,8 +41,8 @@
             idAvaluo = key_id;
 
             loadDatosUsoActualDistribucion();
-//            loadDatosUsoActualRecamaras();
-//            loadDatosUsoActualPlantas();
+            loadDatosUsoActualRecamaras();
+            loadDatosUsoActualPlantas();
         }
         function loadDatosUsoActualDistribucion() {
             var callBackList = new Array();

@@ -6,7 +6,7 @@
     //mostrar datos
     function setDatosUsoActualDistribucion(data) {
         if(data != null ) {
-            $get("<%= tipoEstacionamiento_DDList.ClientID %>").selectedValue = data.idTipoEstacionamiento;
+            $get("<%= tipoEstacionamiento_DDList.ClientID %>").value = data.idTipoEstacionamiento;
             $get("<%= cupoCarros_TBox.ClientID %>").value = data.cupoEstacionamiento;
             $get("<%= jardin_CBox.ClientID %>").checked = data.jardinesFrontales;
             $get("<%= jardinFondo_CBox.ClientID %>").checked = data.jardinesFondo;
