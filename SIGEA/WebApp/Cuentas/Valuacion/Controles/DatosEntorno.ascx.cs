@@ -23,7 +23,7 @@ public partial class Cuentas_Administracion_DatosEntorno : System.Web.UI.UserCon
 
     private void AddAttributes()
     {
-        agregarFila_ImBtn.OnClientClick = "addClonedRow('tabla_vias'); return false;";
-        removerFila_ImBtn.OnClientClick = "removeClonedRow('tabla_vias'); return false;";
+        agregarFila_ImBtn.OnClientClick = ID + ".addViasRow(); return false;";
+        removerFila_ImBtn.OnClientClick = ID + ".removeViasRow(); return false;";
     }
 }

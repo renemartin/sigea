@@ -17,13 +17,13 @@ public partial class Cuentas_Valuacion_Controles_DatosEntornoEquipamiento : Syst
 
     private void SetAttributes()
     {
-        distanciaBanco_TBox.Attributes.Add("onchange", "updateNivelEquipamiento();");
-        distanciaEscuela_TBox.Attributes.Add("onchange", "updateNivelEquipamiento();");
-        distanciaHospital_TBox.Attributes.Add("onchange", "updateNivelEquipamiento();");
-        distanciaIglesia_TBox.Attributes.Add("onchange", "updateNivelEquipamiento();");
-        distanciaMercado_TBox.Attributes.Add("onchange", "updateNivelEquipamiento();");
-        distanciaParque_TBox.Attributes.Add("onchange", "updateNivelEquipamiento();");
-        distanciaPlaza_TBox.Attributes.Add("onchange", "updateNivelEquipamiento();");
-        distanciaTransporte_TBox.Attributes.Add("onchange", "updateNivelEquipamiento();");
+        distanciaBanco_TBox.Attributes.Add("onchange", ID + ".updateNivelEquipamiento();");
+        distanciaEscuela_TBox.Attributes.Add("onchange", ID + ".updateNivelEquipamiento();");
+        distanciaHospital_TBox.Attributes.Add("onchange", ID + ".updateNivelEquipamiento();");
+        distanciaIglesia_TBox.Attributes.Add("onchange", ID + ".updateNivelEquipamiento();");
+        distanciaMercado_TBox.Attributes.Add("onchange", ID + ".updateNivelEquipamiento();");
+        distanciaParque_TBox.Attributes.Add("onchange", ID + ".updateNivelEquipamiento();");
+        distanciaPlaza_TBox.Attributes.Add("onchange", ID + ".updateNivelEquipamiento();");
+        distanciaTransporte_TBox.Attributes.Add("onchange", ID + ".updateNivelEquipamiento();");
     }
 }

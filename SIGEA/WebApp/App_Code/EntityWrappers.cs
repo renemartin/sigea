@@ -20,7 +20,7 @@ public class EntityWrappers : System.Web.Services.WebService
 
     #region Avaluos
 
-    #region Datos del avaluo
+    #region data del avaluo
     [WebMethod]
     public int SaveAvaluoInmueble(
         int idAvaluo
@@ -114,21 +114,21 @@ public class EntityWrappers : System.Web.Services.WebService
     [WebMethod]
     public Entity[] LoadAvaluo(int idAvaluo)
     {
-        Entity[] datos = new Entity[4];
+        Entity[] data = new Entity[4];
 
         AvaluoInmobiliario avaluo = AvaluoInmobiliario.GetFromId(common_context, idAvaluo);
         if (avaluo == null)
             throw new Exception("El identificador del avalúo es inválido");
 
-        datos[0] = avaluo.GetData();
+        data[0] = avaluo.GetData();
         if (avaluo.DatoCredito != null)
         {
-            datos[1] = avaluo.DatoCredito.GetData();
+            data[1] = avaluo.DatoCredito.GetData();
         }
-        datos[2] = avaluo.Solicitante.GetData();
-        datos[3] = avaluo.Solicitante.Direccion.GetData();
+        data[2] = avaluo.Solicitante.GetData();
+        data[3] = avaluo.Solicitante.Direccion.GetData();
 
-        return datos;
+        return data;
     }
 
     [WebMethod]
@@ -165,17 +165,17 @@ public class EntityWrappers : System.Web.Services.WebService
     [WebMethod]
     public Entity[] LoadDeclaraciones(int idAvaluo)
     {
-        Entity[] datos = new Entity[2];
+        Entity[] data = new Entity[2];
 
         Declaraciones declaraciones = Declaraciones.GetFromId(common_context, idAvaluo);
 
         if (declaraciones != null)
         {
-            datos[0] = declaraciones.GetDataDeclaraciones();
-            datos[1] = declaraciones.GetDataAdvertencias();
+            data[0] = declaraciones.GetDataDeclaraciones();
+            data[1] = declaraciones.GetDataAdvertencias();
         }
 
-        return datos;
+        return data;
     }
     #endregion
 
@@ -240,7 +240,7 @@ public class EntityWrappers : System.Web.Services.WebService
 
     #region Inmuebles
 
-    #region Datos del inmueble
+    #region data del inmueble
     [WebMethod]
     public void SaveInmueble(
         int idAvaluo
@@ -276,15 +276,15 @@ public class EntityWrappers : System.Web.Services.WebService
         if (inmueble == null)
             throw new Exception("El identificador del avalúo es inválido");
 
-        Entity[] datos = new Entity[5];
+        Entity[] data = new Entity[5];
 
-        datos[0] = inmueble.GetData();
-        datos[1] = inmueble.DireccionInmueble.GetData();
-        datos[2] = inmueble.DireccionInmueble.Direccion.GetData();
-        datos[3] = inmueble.Propietario.GetData();
-        datos[4] = inmueble.Propietario.Direccion.GetData();
+        data[0] = inmueble.GetData();
+        data[1] = inmueble.DireccionInmueble.GetData();
+        data[2] = inmueble.DireccionInmueble.Direccion.GetData();
+        data[3] = inmueble.Propietario.GetData();
+        data[4] = inmueble.Propietario.Direccion.GetData();
 
-        return datos;
+        return data;
     }
     #endregion
 
@@ -321,13 +321,13 @@ public class EntityWrappers : System.Web.Services.WebService
             throw new Exception("El avalúo no cuenta con un inmueble registrado");
         }
 
-        Entity[] datos = new Entity[2];
+        Entity[] data = new Entity[2];
         if (inmueble.UbicacionCallesInmueble != null)
-            datos[0] = inmueble.UbicacionCallesInmueble.GetData();
+            data[0] = inmueble.UbicacionCallesInmueble.GetData();
         if (inmueble.UbicacionInmueble != null)
-            datos[1] = inmueble.UbicacionInmueble.GetData();
+            data[1] = inmueble.UbicacionInmueble.GetData();
 
-        return datos;
+        return data;
     }
     #endregion
 
@@ -354,7 +354,7 @@ public class EntityWrappers : System.Web.Services.WebService
     }
 
     [WebMethod]
-    public Entity LoadEntorno(int idAvaluo)
+    public object[] LoadEntorno(int idAvaluo)
     {
         Inmueble inmueble = Inmueble.GetFromIdAvaluo(common_context, idAvaluo);
 
@@ -363,23 +363,12 @@ public class EntityWrappers : System.Web.Services.WebService
             throw new Exception("El avalúo no cuenta con un inmueble registrado");
         }
 
-        if (inmueble.EntornoInmueble == null)
-            return null;
+        object[] data = new object[2];
+        if (inmueble.EntornoInmueble != null)
+            data[0] = inmueble.EntornoInmueble.GetData();
+        data[1] = ViasAcceso.GetViasAcceso(inmueble);
 
-        return inmueble.EntornoInmueble.GetData();
-    }
-
-    [WebMethod]
-    public Entity[] LoadViasAcceso(int idAvaluo)
-    {
-        Inmueble inmueble = Inmueble.GetFromIdAvaluo(common_context, idAvaluo);
-
-        if (inmueble == null)
-        {
-            throw new Exception("El avalúo no cuenta con un inmueble registrado");
-        }
-
-        return ViasAcceso.GetViasAcceso(inmueble);
+        return data;
     }
 
     [WebMethod]
@@ -415,13 +404,13 @@ public class EntityWrappers : System.Web.Services.WebService
             throw new Exception("El avalúo no cuenta con un inmueble registrado");
         }
 
-        Entity[] datos = new Entity[2];
+        Entity[] data = new Entity[2];
         if (inmueble.InfraestructuraInmueble != null)
-            datos[0] = inmueble.InfraestructuraInmueble.GetData();
+            data[0] = inmueble.InfraestructuraInmueble.GetData();
         if (inmueble.ServiciosInmueble != null)
-            datos[1] = inmueble.ServiciosInmueble.GetData();
+            data[1] = inmueble.ServiciosInmueble.GetData();
 
-        return datos;
+        return data;
     }
 
     [WebMethod]
@@ -622,17 +611,17 @@ public class EntityWrappers : System.Web.Services.WebService
         if (condominio == null)
             return null;
 
-        object[] datos = new object[4];
+        object[] data = new object[4];
 
-        datos[0] = condominio.GetData();
+        data[0] = condominio.GetData();
 
         if (condominio.SuperficiesCondominio != null)
-            datos[1] = condominio.SuperficiesCondominio.GetData();
+            data[1] = condominio.SuperficiesCondominio.GetData();
 
-        datos[2] = AreaComun.GetAreasComunes(condominio, false);
-        datos[3] = AreaComun.GetAreasComunes(condominio, true);
+        data[2] = AreaComun.GetAreasComunes(condominio, false);
+        data[3] = AreaComun.GetAreasComunes(condominio, true);
 
-        return datos;
+        return data;
     }
     #endregion
 
@@ -701,17 +690,17 @@ public class EntityWrappers : System.Web.Services.WebService
     [WebMethod]
     public Entity[] LoadComparable(int idComparable)
     {
-        Entity[] datos = new Entity[4];
+        Entity[] data = new Entity[4];
 
         ComparableInmobiliario comparable = ComparableInmobiliario.GetFromId(common_context, idComparable);
         if (comparable == null)
             throw new Exception("El identificador del comparable es inválido");
 
-        datos[0] = comparable.GetData();
-        datos[1] = comparable.DatoContacto.GetData();
-        datos[2] = comparable.Direccion.GetData();
+        data[0] = comparable.GetData();
+        data[1] = comparable.DatoContacto.GetData();
+        data[2] = comparable.Direccion.GetData();
 
-        return datos;
+        return data;
     }
 
     [WebMethod]
@@ -787,7 +776,7 @@ public class EntityWrappers : System.Web.Services.WebService
     [WebMethod]
     public Entity[] LoadValuador(int idValuador)
     {
-        Entity[] datos = new Entity[4];
+        Entity[] data = new Entity[4];
 
         Valuador valuador = Valuador.GetFromId(common_context, idValuador);
         if (valuador == null)
@@ -795,15 +784,15 @@ public class EntityWrappers : System.Web.Services.WebService
 
         Usuario usuario = Valuador.GetUsuarioFromId(common_context, idValuador);
 
-        datos[0] = valuador.GetData();
-        datos[1] = valuador.DatoContacto.GetData();
-        datos[2] = valuador.Direccion.GetData();
+        data[0] = valuador.GetData();
+        data[1] = valuador.DatoContacto.GetData();
+        data[2] = valuador.Direccion.GetData();
         if (usuario != null)
-            datos[3] = usuario.GetData();
+            data[3] = usuario.GetData();
         else
-            datos[3] = null;
+            data[3] = null;
 
-        return datos;
+        return data;
     }
 
     [WebMethod]
@@ -882,7 +871,7 @@ public class EntityWrappers : System.Web.Services.WebService
     [WebMethod]
     public Entity[] LoadCliente(int idCliente)
     {
-        Entity[] datos = new Entity[4];
+        Entity[] data = new Entity[4];
 
         Cliente cliente = Cliente.GetFromId(common_context, idCliente);
         if (cliente == null)
@@ -890,15 +879,15 @@ public class EntityWrappers : System.Web.Services.WebService
 
         Usuario usuario = Cliente.GetUsuarioFromId(common_context, idCliente);
 
-        datos[0] = cliente.GetData();
-        datos[1] = cliente.DatoContacto.GetData();
-        datos[2] = cliente.Direccion.GetData();
+        data[0] = cliente.GetData();
+        data[1] = cliente.DatoContacto.GetData();
+        data[2] = cliente.Direccion.GetData();
         if (usuario != null)
-            datos[3] = usuario.GetData();
+            data[3] = usuario.GetData();
         else
-            datos[3] = null;
+            data[3] = null;
 
-        return datos;
+        return data;
     }
 
     [WebMethod]
@@ -965,20 +954,20 @@ public class EntityWrappers : System.Web.Services.WebService
     public Entity[] LoadPersonal(int idPersonal)
     {
         SIGEADataContext data_context = new SIGEADataContext();
-        Entity[] datos = new Entity[2];
+        Entity[] data = new Entity[2];
 
         Personal personal = Personal.GetFromId(data_context, idPersonal);
         if (personal == null)
             throw new Exception("El identificador del personal es inválido");
 
 
-        datos[0] = personal.GetData();
+        data[0] = personal.GetData();
         if (personal.Usuario != null)
-            datos[1] = personal.Usuario.GetData();
+            data[1] = personal.Usuario.GetData();
         else
-            datos[1] = null;
+            data[1] = null;
 
-        return datos;
+        return data;
     }
 
     [WebMethod]

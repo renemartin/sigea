@@ -84,9 +84,7 @@
         function saveSuperficies() {
             if (superficies_Ctrl.validate()) {
                 saveSuperficiesInmuebleAsync(
-                idAvaluo
-                , superficies_Ctrl.getData()
-                , saveSuperficies_Success);
+                    idAvaluo, superficies_Ctrl.getData(), saveSuperficies_Success);
             }
         }
         function saveSuperficies_Success() {        
@@ -99,9 +97,7 @@
         function saveCondominio() {
             if (condominio_Ctrl.validate()) {
                 saveDatosCondominioAsync(
-                idAvaluo
-                , condominio_Ctrl.getData()
-                , saveCondominio_Success);
+                    idAvaluo, condominio_Ctrl.getData(), saveCondominio_Success);
             }
         }
         function saveCondominio_Success() {

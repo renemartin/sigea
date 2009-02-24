@@ -15,7 +15,6 @@
     <script type="text/javascript">
         // Variables
         var idAvaluo = 0;
-        var num_bloques_datos = 4;
 
         // Inicialización
         function setupForm() {
@@ -31,14 +30,6 @@
             disableControls($get('form_entorno'));
             disableControls($get('form_infraestructura'));
             disableControls($get('form_equipamiento'));
-
-            setupTablaVias();
-        }
-
-        // Llenado de datos
-        function fillData() {
-            fillEntornoData(0);
-            fillEntornoInfraestructuraData();
         }
 
         // Carga de registros
@@ -50,36 +41,13 @@
             loadDatosEquipamiento();
         }
         function loadDatosEntorno() {
-            var callBackList1 = new Array();
-            callBackList1[0] = loadForm_Success;
-            callBackList1[1] = setDatosEntorno;
-            loadEntornoInmuebleAsync(idAvaluo, callBackList1);
-
-            var callBackList2 = new Array();
-            callBackList2[0] = loadForm_Success;
-            callBackList2[1] = setDatosViasAcceso;
-            loadViasAccesoInmuebleAsync(idAvaluo, callBackList2);
+            loadEntornoInmuebleAsync(idAvaluo, entorno_Ctrl);
         }
         function loadDatosInfraestructura() {
-            var callBackList = new Array();
-            callBackList[0] = loadForm_Success;
-            callBackList[1] = setDatosEntornoInfraestructura;
-            callBackList[2] = setDatosEntornoServicios;
-            loadInfraestructuraInmuebleAsync(idAvaluo, callBackList);
+            loadInfraestructuraInmuebleAsync(idAvaluo, infraestructura_Ctrl);
         }
         function loadDatosEquipamiento() {
-            var callBackList = new Array();
-            callBackList[0] = loadForm_Success;
-            callBackList[1] = setDatosEntornoEquipamiento;
-            loadEquipamientoInmuebleAsync(idAvaluo, callBackList);
-        }
-        function loadForm_Success() {
-            if (num_bloques_cargados != undefined) {
-                num_bloques_cargados++;
-                if (num_bloques_cargados == num_bloques_datos) {
-                    fillData();
-                }
-            }
+            loadEquipamientoInmuebleAsync(idAvaluo, equipamiento_Ctrl);
         }
 
         // Guardado de registros
@@ -92,11 +60,10 @@
                 saveDatosEquipamiento();
         }
         function saveDatosEntorno() {
-            saveEntornoInmuebleAsync(
-                idAvaluo
-                , getDatosEntorno()
-                , getDatosViasAcceso()
-                , saveDatosEntorno_Success);
+            if (entorno_Ctrl.validate()) {
+                saveEntornoInmuebleAsync(
+                    idAvaluo, entorno_Ctrl.getData(), saveDatosEntorno_Success);
+            }
         }
         function saveDatosEntorno_Success() {
             terminateEdit("form_entorno",
@@ -106,11 +73,10 @@
         }
 
         function saveDatosInfraestructura() {
-            saveInfraestructuraInmuebleAsync(
-                idAvaluo
-                , getDatosEntornoInfraestructura()
-                , getDatosEntornoServicios()
-                , saveDatosInfraestructura_Success);
+            if (infraestructura_Ctrl.validate()) {
+                saveInfraestructuraInmuebleAsync(
+                    idAvaluo, infraestructura_Ctrl.getData(), saveDatosInfraestructura_Success);
+            }
         }
         function saveDatosInfraestructura_Success() {
             terminateEdit("form_infraestructura",
@@ -120,10 +86,10 @@
         }
 
         function saveDatosEquipamiento() {
-            saveEquipamientoInmuebleAsync(
-                idAvaluo
-                , getDatosEntornoEquipamiento()
-                , saveDatosEquipamiento_Success);
+            if (equipamiento_Ctrl.validate()) {
+                saveEquipamientoInmuebleAsync(
+                    idAvaluo, equipamiento_Ctrl.getData(), saveDatosEquipamiento_Success);
+            }
         }
         function saveDatosEquipamiento_Success() {
             terminateEdit("form_equipamiento",
@@ -147,6 +113,7 @@
             <asp:ScriptReference Path="~/Scripts/DataFillers.js" />
             <asp:ScriptReference Path="~/Scripts/Tables.js" />
             <asp:ScriptReference Path="~/Scripts/Forms.js" />
+            <asp:ScriptReference Path="~/Scripts/Validation.js" />
             <asp:ScriptReference Path="~/Scripts/Entities/Inmuebles.js" />
         </Scripts>
     </asp:ScriptManager>
@@ -157,7 +124,7 @@
         <asp:ImageButton ID="editar_entorno_ImBtn" runat="server" SkinID="Edit" />
     </div>
     <div id="form_entorno" class="formulario">
-        <SIGEA:DatosEntorno ID="datosEntorno_Ctrl" runat="server" />
+        <SIGEA:DatosEntorno ID="entorno_Ctrl" runat="server" />
     </div>
     <div class="barraAcciones">
         <asp:ImageButton ID="guardar_entorno_ImBtn" runat="server" SkinID="Save" CssClass="hidden" />

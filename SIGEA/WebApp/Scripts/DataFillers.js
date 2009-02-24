@@ -170,10 +170,10 @@ function fillServidumbre(target_id) {
     MethodCallers.GetListaTiposServidumbre(
         fillSelect, asyncCallFail, target_id);
 }
-function fillClasificacionZona(target_id, idClase) {
+function fillClasificacionZona(target_id) {
     showControlLoading(target_id);
     MethodCallers.GetListaTiposClasificacionZona(
-        idClase, fillSelect, asyncCallFail, target_id);
+        0, fillSelect, asyncCallFail, target_id);
 }
 function fillProximidadUrbana(target_id) {
     showControlLoading(target_id);
