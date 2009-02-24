@@ -2,34 +2,6 @@
     Inherits="Cuentas_Valuacion_Controles_DatosSuperficies" %>
 <link href="~/App_Themes/Default/DefaultStyle.css" rel="stylesheet" type="text/css" />
 
-<script type="text/javascript">
-    // Llenado de datos
-    function fillSuperficiesData() {
-        fillFuente("<%= fuenteTerreno_DDList.ClientID %>");
-    }
-
-    // DataBindings
-    function setDatosSuperficies(data) {
-        if (data != null) {
-            $get("<%= superficieTerreno_TBox.ClientID %>").value = data.totalTerreno;
-            $get("<%= fuenteTerreno_DDList.ClientID %>").selectedValue = data.fuenteTerreno;
-            $get("<%= especFuenteTerreno_TBox.ClientID %>").value = data.otraFuenteTerreno;
-            $get("<%= superficieFrente_TBox.ClientID %>").value = data.frenteLote;
-        }
-    }
-    function getDatosSuperficies() {
-        var data = new Object();
-
-        data.totalTerreno = $get("<%= superficieTerreno_TBox.ClientID %>").value;
-        data.fuenteTerreno = $get("<%= fuenteTerreno_DDList.ClientID %>").value;
-        data.otraFuenteTerreno = $get("<%= especFuenteTerreno_TBox.ClientID %>").value;
-        data.frenteLote = $get("<%= superficieFrente_TBox.ClientID %>").value;
-
-        return data;
-    }
-    
-</script>
-
 <table>
     <tr>
         <td class="celdaTitulo">
@@ -60,3 +32,63 @@
         </td>
     </tr>
 </table>
+
+<script type="text/javascript">
+
+    function Superficies() {
+        // Inicialización
+        if (typeof (Superficies_Init) == "undefined") {
+            Superficies_Init = true;
+            Superficies.prototype.fillData = fillData;
+            Superficies.prototype.setData = setData;
+            Superficies.prototype.getData = getData;
+            Superficies.prototype.validate = validate;
+        }
+
+        // Inicialización de validador
+        this.controls = new Array(
+            $get("<%= superficieTerreno_TBox.ClientID %>"),   // 0
+            $get("<%= fuenteTerreno_DDList.ClientID %>"),     // 1
+            $get("<%= especFuenteTerreno_TBox.ClientID %>"),  // 2
+            $get("<%= superficieFrente_TBox.ClientID %>")     // 3
+        );
+        this.validator = new ControlValidator(this.controls);
+        this.validator.addNumericField(0, true);
+        this.validator.addNumericField(3, true);
+    
+        // Llenado de datos
+        function fillData() {
+            fillFuente("<%= fuenteTerreno_DDList.ClientID %>");
+        }
+
+        // DataBindings
+        function setData(data) {
+            if (data != null) {
+                $get("<%= superficieTerreno_TBox.ClientID %>").value = data.totalTerreno;
+                $get("<%= fuenteTerreno_DDList.ClientID %>").selectedValue = data.fuenteTerreno;
+                $get("<%= especFuenteTerreno_TBox.ClientID %>").value = data.otraFuenteTerreno;
+                $get("<%= superficieFrente_TBox.ClientID %>").value = data.frenteLote;
+            }
+
+            this.fillData();
+        }
+        function getData() {
+            var data = new Object();
+
+            data.totalTerreno = $get("<%= superficieTerreno_TBox.ClientID %>").value;
+            data.fuenteTerreno = $get("<%= fuenteTerreno_DDList.ClientID %>").value;
+            data.otraFuenteTerreno = $get("<%= especFuenteTerreno_TBox.ClientID %>").value;
+            data.frenteLote = $get("<%= superficieFrente_TBox.ClientID %>").value;
+
+            return data;
+        }
+
+        // Validacion
+        function validate() {
+            return this.validator.validate();
+        }
+    }
+
+    this["<%= ID %>"] = new Superficies();
+    
+</script>

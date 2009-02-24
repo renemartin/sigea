@@ -4,8 +4,7 @@
 
 // Guardado de registros
 
-function saveDatosConstruccionesAsync(idAvaluo, datosTiposConstruccion,
-    datosConstruccion, callBack) {
+function saveDatosConstruccionesAsync(idAvaluo, datosTiposConstruccion, datosConstruccion, callBack) {
     EntityWrappers.SaveDatosConstruccion(
         idAvaluo
         , datosTiposConstruccion
@@ -14,14 +13,13 @@ function saveDatosConstruccionesAsync(idAvaluo, datosTiposConstruccion,
         , asyncCallFail
         , callBack);
 }
-function saveDatosCondominioAsync(idAvaluo, datosCondominio, datosSuperficieCondominio,
-    datosAreaComun, datosAreaComunComplementaria, callBack) {
+function saveDatosCondominioAsync(idAvaluo, datosCondominio, callBack) {   
     EntityWrappers.SaveDatosCondominio(
         idAvaluo
-        , datosCondominio
-        , datosSuperficieCondominio
-        , datosAreaComun
-        , datosAreaComunComplementaria
+        , datosCondominio[0]
+        , datosCondominio[1]
+        , datosCondominio[2]
+        , datosCondominio[3]
         , asyncCallResultBack
         , asyncCallFail
         , callBack);
@@ -37,23 +35,19 @@ function saveSuperficiesInmuebleAsync(idAvaluo, datosSuperficies, callBack) {
 
 // Carga de datos
 
-function loadTiposConstruccionesAsync(idAvaluo, callBackList) {
+function loadTiposConstruccionesAsync(idAvaluo, control) {
     EntityWrappers.LoadTiposConstrucciones(
-        idAvaluo, asyncCallSingleListBack, asyncCallFail, callBackList);
+        idAvaluo, asyncControlLoad, asyncCallFail, control);
 }
-function loadDatosConstruccionesAsync(idAvaluo, callBackList) {
+function loadDatosConstruccionesAsync(idAvaluo, control) {
     EntityWrappers.LoadDatosConstrucciones(
-        idAvaluo, asyncCallSingleListBack, asyncCallFail, callBackList);
+        idAvaluo, asyncControlLoad, asyncCallFail, control);
 }
 function loadDatosCondominioAsync(idAvaluo, callBackList) {
     EntityWrappers.LoadDatosCondominio(
-        idAvaluo, asyncCallListBack, asyncCallFail, callBackList);
-}
-function loadDatosSuperficiesCondominioAsync(idAvaluo, complementarias, callBackList) {
-    EntityWrappers.LoadDatosAreaComun(
-        idAvaluo, complementarias, asyncCallSingleListBack, asyncCallFail, callBackList);
+        idAvaluo, asyncControlLoad, asyncCallFail, callBackList);
 }
 function loadSuperficiesInmuebleAsync(idAvaluo, callBackList) {
     EntityWrappers.LoadSuperficies(
-        idAvaluo, asyncCallSingleListBack, asyncCallFail, callBackList);
+        idAvaluo, asyncControlLoad, asyncCallFail, callBackList);
 }

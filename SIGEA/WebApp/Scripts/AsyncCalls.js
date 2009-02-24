@@ -34,3 +34,6 @@ function asyncCallSingleListBack(result, callBackList) {
         callBackList[0]();
     }
 }
+function asyncControlLoad(data, control) {
+    control.setData(data);
+}

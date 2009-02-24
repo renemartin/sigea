@@ -11,13 +11,4 @@ public partial class Cuentas_Valuacion_Controles_DatosCondominio : System.Web.UI
     {
 
     }
-
-    public string SuperficiesConstruccionesID
-    {
-        get { return superficiesConstrucciones_Ctrl.ClientID; }
-    }
-    public string SuperficiesObrasID
-    {
-        get { return superficiesObras_Ctrl.ClientID; }
-    }
 }

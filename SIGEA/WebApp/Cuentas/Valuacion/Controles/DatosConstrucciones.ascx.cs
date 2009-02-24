@@ -9,6 +9,5 @@ public partial class Cuentas_Valuacion_DatosConstrucciones : System.Web.UI.UserC
 {
     protected void Page_Load(object sender, EventArgs e)
     {
-
     }
 }

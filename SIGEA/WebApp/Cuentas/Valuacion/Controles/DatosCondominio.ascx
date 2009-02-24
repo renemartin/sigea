@@ -4,58 +4,6 @@
     TagName="SuperficiesAdicionales" TagPrefix="SIGEA" %>
 <link href="~/App_Themes/Default/DefaultStyle.css" rel="stylesheet" type="text/css" />
 
-<script type="text/javascript">
-    // Llenado de datos
-    function fillCondominiosData() {
-        fillFuente("<%= fuenteIndiviso_DDList.ClientID %>");
-        fillFuente("<%= fuentePrivativo_DDList.ClientID %>");
-    }
-
-    // Databindings
-    function setDatosCondominio(data) {
-        if (data != null) {
-            $get("<%= avanceAComunes_TBox.ClientID %>").value = data.avanceObra;
-            $get("<%= unidRentNucleo_TBox.ClientID %>").value = data.unidadesRentNucleo;
-            $get("<%= unidRentConjunto_TBox.ClientID %>").value = data.unidadesRentConjunto;
-        }
-    }
-    function getDatosCondominio() {
-        var data = new Object();
-
-        data.avanceObra = $get("<%= avanceAComunes_TBox.ClientID %>").value;
-        data.unidadesRentNucleo = $get("<%= unidRentNucleo_TBox.ClientID %>").value;
-        data.unidadesRentConjunto = $get("<%= unidRentConjunto_TBox.ClientID %>").value;
-
-        return data;
-    }
-
-    function setDatosSuperficiesCondominio(data) {
-        if (data != null) {
-            $get("<%= indiviso_TBox.ClientID %>").value = data.indiviso;
-            $get("<%= superficieTerreno_TBox.ClientID %>").value = data.totalTerreno;
-            $get("<%= fuenteIndiviso_DDList.ClientID %>").selectedValue = data.fuenteIndiviso;
-            $get("<%= especFuenteIndiviso_TBox.ClientID %>").value = data.otraFuenteIndiviso;
-            $get("<%= lotePrivativo_TBox.ClientID %>").value = data.privativo;
-            $get("<%= fuentePrivativo_DDList.ClientID %>").value = data.fuentePrivativo;
-            $get("<%= especFuentePrivativo_TBox.ClientID %>").value = data.otraFuentePrivativo;
-        }
-    }
-    function getDatosSuperficiesCondominio() {
-        var data = new Object();
-
-        data.indiviso = $get("<%= indiviso_TBox.ClientID %>").value;
-        data.totalTerreno = $get("<%= superficieTerreno_TBox.ClientID %>").value;
-        data.fuenteIndiviso = $get("<%= fuenteIndiviso_DDList.ClientID %>").value;
-        data.otraFuenteIndiviso = $get("<%= especFuenteIndiviso_TBox.ClientID %>").value;
-        data.privativo = $get("<%= lotePrivativo_TBox.ClientID %>").value;
-        data.fuentePrivativo = $get("<%= fuentePrivativo_DDList.ClientID %>").value;
-        data.otraFuentePrivativo = $get("<%= especFuentePrivativo_TBox.ClientID %>").value;
-
-        return data;
-    }
-    
-</script>
-
 <table>
     <tr>
         <td class="celdaTitulo">
@@ -158,3 +106,101 @@
         </td>
     </tr>
 </table>
+
+<script type="text/javascript">
+    function Condominio() {
+        // Inicialización
+        if (typeof (Condominio_Init) == "undefined") {
+            Condominio_Init = true;
+            Condominio.prototype.fillData = fillData;
+            Condominio.prototype.setData = setData;
+            Condominio.prototype.getData = getData;
+            Condominio.prototype.validate = validate;
+        }
+
+        // Inicialización de validador
+        this.controls = new Array(
+            $get("<%= avanceAComunes_TBox.ClientID %>"),          // 0
+            $get("<%= unidRentNucleo_TBox.ClientID %>"),          // 1
+            $get("<%= unidRentConjunto_TBox.ClientID %>"),        // 2
+            $get("<%= indiviso_TBox.ClientID %>"),                // 3
+            $get("<%= superficieTerreno_TBox.ClientID %>"),       // 4
+            $get("<%= fuenteIndiviso_DDList.ClientID %>"),        // 5
+            $get("<%= especFuenteIndiviso_TBox.ClientID %>"),     // 6
+            $get("<%= lotePrivativo_TBox.ClientID %>"),           // 7
+            $get("<%= fuentePrivativo_DDList.ClientID %>"),       // 8
+            $get("<%= especFuentePrivativo_TBox.ClientID %>")     // 9
+        );
+        this.validator = new ControlValidator(this.controls);
+        this.validator.addOptionalField(6);
+        this.validator.addOptionalField(9);
+        this.validator.addNumericField(0, true);
+        this.validator.addNumericField(1, false);
+        this.validator.addNumericField(2, false);
+        this.validator.addNumericField(3, true);
+        this.validator.addNumericField(4, true);
+        this.validator.addNumericField(7, true);
+    
+        // Llenado de datos
+        function fillData() {
+            fillFuente("<%= fuenteIndiviso_DDList.ClientID %>");
+            fillFuente("<%= fuentePrivativo_DDList.ClientID %>");
+        }
+
+        // Databindings
+        function setData(data_set) {
+            if (data_set != null) {
+                $get("<%= avanceAComunes_TBox.ClientID %>").value = data_set[0].avanceObra;
+                $get("<%= unidRentNucleo_TBox.ClientID %>").value = data_set[0].unidadesRentNucleo;
+                $get("<%= unidRentConjunto_TBox.ClientID %>").value = data_set[0].unidadesRentConjunto;
+
+                $get("<%= indiviso_TBox.ClientID %>").value = data_set[1].indiviso;
+                $get("<%= superficieTerreno_TBox.ClientID %>").value = data_set[1].totalTerreno;
+                $get("<%= fuenteIndiviso_DDList.ClientID %>").selectedValue = data_set[1].fuenteIndiviso;
+                $get("<%= especFuenteIndiviso_TBox.ClientID %>").value = data_set[1].otraFuenteIndiviso;
+                $get("<%= lotePrivativo_TBox.ClientID %>").value = data_set[1].privativo;
+                $get("<%= fuentePrivativo_DDList.ClientID %>").value = data_set[1].fuentePrivativo;
+                $get("<%= especFuentePrivativo_TBox.ClientID %>").value = data_set[1].otraFuentePrivativo;
+
+                superficiesConstrucciones_Ctrl.setData(data_set[2]);
+                superficiesObras_Ctrl.setData(data_set[3]);
+            }
+
+            this.fillData();
+        }
+        function getData() {
+            var data_set = new Array();
+
+            data_set[0] = new Object();
+            data_set[0].avanceObra = $get("<%= avanceAComunes_TBox.ClientID %>").value;
+            data_set[0].unidadesRentNucleo = $get("<%= unidRentNucleo_TBox.ClientID %>").value;
+            data_set[0].unidadesRentConjunto = $get("<%= unidRentConjunto_TBox.ClientID %>").value;
+
+            data_set[1] = new Object();
+            data_set[1].indiviso = $get("<%= indiviso_TBox.ClientID %>").value;
+            data_set[1].totalTerreno = $get("<%= superficieTerreno_TBox.ClientID %>").value;
+            data_set[1].fuenteIndiviso = $get("<%= fuenteIndiviso_DDList.ClientID %>").value;
+            data_set[1].otraFuenteIndiviso = $get("<%= especFuenteIndiviso_TBox.ClientID %>").value;
+            data_set[1].privativo = $get("<%= lotePrivativo_TBox.ClientID %>").value;
+            data_set[1].fuentePrivativo = $get("<%= fuentePrivativo_DDList.ClientID %>").value;
+            data_set[1].otraFuentePrivativo = $get("<%= especFuentePrivativo_TBox.ClientID %>").value;
+
+            data_set[2] = superficiesConstrucciones_Ctrl.getData();
+            data_set[3] = superficiesObras_Ctrl.getData();
+            
+            return data_set;
+        }
+
+        // Validación
+        function validate() {
+            var condominio_valid = this.validator.validate();
+            var construcciones_valid = superficiesConstrucciones_Ctrl.validate()
+            var obras_valid = superficiesObras_Ctrl.validate();
+
+            return condominio_valid && construcciones_valid && obras_valid;
+        }
+    }
+
+    this["<%= ID %>"] = new Condominio();
+    
+</script>

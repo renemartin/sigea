@@ -616,28 +616,23 @@ public class EntityWrappers : System.Web.Services.WebService
     }
 
     [WebMethod]
-    public Entity[] LoadDatosCondominio(int idAvaluo)
+    public object[] LoadDatosCondominio(int idAvaluo)
     {
         DatoCondominio condominio = DatoCondominio.GetFromIdAvaluo(common_context, idAvaluo);
         if (condominio == null)
             return null;
 
-        Entity[] datos = new Entity[2];
+        object[] datos = new object[4];
+
         datos[0] = condominio.GetData();
-        if(condominio.SuperficiesCondominio != null)
+
+        if (condominio.SuperficiesCondominio != null)
             datos[1] = condominio.SuperficiesCondominio.GetData();
 
+        datos[2] = AreaComun.GetAreasComunes(condominio, false);
+        datos[3] = AreaComun.GetAreasComunes(condominio, true);
+
         return datos;
-    }
-
-    [WebMethod]
-    public Entity[] LoadDatosAreaComun(int idAvaluo, bool complementarias)
-    {
-        DatoCondominio condominio = DatoCondominio.GetFromIdAvaluo(common_context, idAvaluo);
-        if (condominio == null)
-            return null;
-
-        return AreaComun.GetAreasComunes(condominio, complementarias);        
     }
     #endregion
 
