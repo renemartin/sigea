@@ -16,7 +16,6 @@
     <script type="text/javascript">
         // Variables
         var idAvaluo = 0;
-        var num_bloques_datos = 6;
 
         // Inicialización
         function setupForm() {
@@ -32,18 +31,6 @@
             disableControls($get('form_construcciones'));
             disableControls($get('form_superficies'));
             disableControls($get('form_condominio'));
-
-            setupTablaConstrucciones();
-            setupTablaSuperficiesAdicionales("<%= condominio_Ctrl.SuperficiesConstruccionesID %>");
-            setupTablaSuperficiesAdicionales("<%= condominio_Ctrl.SuperficiesObrasID %>");
-        }
-
-        // Llenado de datos
-        function fillData() {
-            fillConstruccionesData();
-            fillConstruccionesClasificacionData();
-            fillSuperficiesData();
-            fillCondominiosData();
         }
 
         // Carga de registros
@@ -55,53 +42,14 @@
             loadDatosCondominio();
         }
         function loadDatosConstrucciones() {
-            var callBackList1 = new Array();
-            callBackList1[0] = loadForm_Success;
-            callBackList1[1] = setDatosConstrucciones;
-            loadDatosConstruccionesAsync(idAvaluo, callBackList1);
-
-            var callBackList2 = new Array();
-            callBackList2[0] = loadForm_Success;
-            callBackList2[1] = setDatosConstruccionesClasificacion;
-            loadTiposConstruccionesAsync(idAvaluo, callBackList2);
+            loadDatosConstruccionesAsync(idAvaluo, construcciones_Ctrl);
+            loadTiposConstruccionesAsync(idAvaluo, construccionesClasificacion_Ctrl);
         }
         function loadDatosSuperficies() {
-            var callBackList = new Array();
-            callBackList[0] = loadForm_Success;
-            callBackList[1] = setDatosSuperficies;
-            loadSuperficiesInmuebleAsync(idAvaluo, callBackList);
+            loadSuperficiesInmuebleAsync(idAvaluo, superficies_Ctrl);
         }
         function loadDatosCondominio() {
-            var callBackList1 = new Array();
-            callBackList1[0] = loadForm_Success;
-            callBackList1[1] = setDatosCondominio;
-            callBackList1[2] = setDatosSuperficiesCondominio;
-            loadDatosCondominioAsync(idAvaluo, callBackList1);
-
-            var callBackList2 = new Array();
-            callBackList2[0] = loadForm_Success;
-            callBackList2[1] = setDatosSuperficiesCond;
-            loadDatosSuperficiesCondominioAsync(idAvaluo, false, callBackList2);
-
-            var callBackList3 = new Array();
-            callBackList3[0] = loadForm_Success;
-            callBackList3[1] = setDatosSuperficiesCondComp;
-            loadDatosSuperficiesCondominioAsync(idAvaluo, true, callBackList3);
-        }
-        function setDatosSuperficiesCond(data) {
-            setDatosSuperficiesAdicionales("<%= condominio_Ctrl.SuperficiesConstruccionesID %>", data);
-        }
-        function setDatosSuperficiesCondComp(data) {
-            setDatosSuperficiesAdicionales("<%= condominio_Ctrl.SuperficiesObrasID %>", data);
-        }
-
-        function loadForm_Success() {
-            if (num_bloques_cargados != undefined) {
-                num_bloques_cargados++;
-                if (num_bloques_cargados == num_bloques_datos) {
-                    fillData();
-                }
-            }
+            loadDatosCondominioAsync(idAvaluo, condominio_Ctrl);
         }
 
         // Guardado de registros
@@ -115,11 +63,16 @@
         }
 
         function saveDatosConstrucciones() {
-            saveDatosConstruccionesAsync(
-                idAvaluo
-                , getDatosConstruccionesClasificacion()
-                , getDatosConstrucciones()
-                , saveDatosConstrucciones_Success);
+            var clasificacion_valid = construccionesClasificacion_Ctrl.validate()
+            var construcciones_valid = construcciones_Ctrl.validate()
+
+            if (clasificacion_valid && construcciones_valid) {
+                saveDatosConstruccionesAsync(
+                    idAvaluo
+                    , construccionesClasificacion_Ctrl.getData()
+                    , construcciones_Ctrl.getData()
+                    , saveDatosConstrucciones_Success);
+            }
         }
         function saveDatosConstrucciones_Success() {
             terminateEdit("form_construcciones",
@@ -129,12 +82,14 @@
         }
 
         function saveSuperficies() {
-            saveSuperficiesInmuebleAsync(
+            if (superficies_Ctrl.validate()) {
+                saveSuperficiesInmuebleAsync(
                 idAvaluo
-                , getDatosSuperficies()
+                , superficies_Ctrl.getData()
                 , saveSuperficies_Success);
+            }
         }
-        function saveSuperficies_Success() {
+        function saveSuperficies_Success() {        
             terminateEdit("form_superficies",
                 "<%= editar_superficies_ImBtn.ClientID %>",
                 "<%= guardar_superficies_ImBtn.ClientID %>",
@@ -142,13 +97,12 @@
         }
 
         function saveCondominio() {
-            saveDatosCondominioAsync(
+            if (condominio_Ctrl.validate()) {
+                saveDatosCondominioAsync(
                 idAvaluo
-                , getDatosCondominio()
-                , getDatosSuperficiesCondominio()
-                , getDatosSuperficiesAdicionales("<%= condominio_Ctrl.SuperficiesConstruccionesID %>")
-                , getDatosSuperficiesAdicionales("<%= condominio_Ctrl.SuperficiesObrasID %>")
+                , condominio_Ctrl.getData()
                 , saveCondominio_Success);
+            }
         }
         function saveCondominio_Success() {
             terminateEdit("form_condominio",
@@ -171,6 +125,7 @@
             <asp:ScriptReference Path="~/Scripts/DataFillers.js" />
             <asp:ScriptReference Path="~/Scripts/Tables.js" />
             <asp:ScriptReference Path="~/Scripts/Forms.js" />
+            <asp:ScriptReference Path="~/Scripts/Validation.js" />
             <asp:ScriptReference Path="~/Scripts/Entities/Construcciones.js" />
         </Scripts>
     </asp:ScriptManager>

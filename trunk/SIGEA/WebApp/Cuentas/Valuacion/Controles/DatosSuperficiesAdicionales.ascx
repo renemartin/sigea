@@ -2,48 +2,6 @@
     Inherits="Cuentas_Valuacion_Controles_DatosSuperficiesAdicionales" %>
 <link href="~/App_Themes/Default/DefaultStyle.css" rel="stylesheet" type="text/css" />
 
-<script type="text/javascript">
-    function setupTablaSuperficiesAdicionales(parent_id) {
-        tabla = $get(parent_id + "_tabla_adicionales");
-        addCloningTable(tabla, 1, 5);
-    }
-
-    // Databindings
-    function setDatosSuperficiesAdicionales(parent_id, data) {
-        if (data == null)
-            return;
-    
-        var i = null;
-        
-        for (i = 1; i <= data.length; i++) {
-            $get(parent_id + "_Concepto_TBox_" + i).value = data[i-1].concepto;
-            $get(parent_id + "_Superficie_TBox_" + i).value = data[i-1].superficie;
-
-            if (i != data.length) {
-                addClonedRow(parent_id + '_tabla_adicionales');
-            }
-        }        
-    }
-
-    //guardar datos
-    function getDatosSuperficiesAdicionales(parent_id) {
-        var data_set = new Array();
-        var i = null;
-        var numero_tablas = getCloningTableCount(parent_id + '_tabla_adicionales');
-
-        for (i = 1; i <= numero_tablas; i++) {
-            data = new Object();
-            data.idArea = i;
-            data.concepto = $get(parent_id + "_Concepto_TBox_" + i).value;
-            data.superficie = $get(parent_id + "_Superficie_TBox_" + i).value;
-
-            data_set[i - 1] = data;
-        }
-
-        return data_set;
-    }
-</script>
-
 <table id="<%= ClientID %>_tabla_adicionales">
     <tr class="filaHeader">
         <td>
@@ -69,3 +27,103 @@
         </td>
     </tr>
 </table>
+
+<script type="text/javascript">
+    function SuperficiesAdicionales() {
+
+        // Inicialización
+        if (typeof (SuperficiesAdicionales_Init) == "undefined") {
+            SuperficiesAdicionales.prototype.addSuperficieRow = addSuperficieRow;
+            SuperficiesAdicionales.prototype.removeSuperficieRow = removeSuperficieRow;
+            SuperficiesAdicionales.prototype.setData = setData;
+            SuperficiesAdicionales.prototype.getData = getData;
+            SuperficiesAdicionales.prototype.validate = validate;
+            SuperficiesAdicionales.prototype.addRowValidator = addRowValidator;
+        }
+        
+        this.parent_id = "<%= ClientID %>";
+        this.validators = new Array();
+        this.addRowValidator(1);
+        addCloningTable($get(this.parent_id + "_tabla_adicionales"), 1, 5);
+
+        // Control de filas
+        function addSuperficieRow() {
+            var row_num = getCloningTableCount(this.parent_id + "_tabla_adicionales");
+            addClonedRow(this.parent_id + "_tabla_adicionales");
+            this.addRowValidator(row_num + 1);
+        }
+
+        function removeSuperficieRow(data) {
+            var row_num = getCloningTableCount(this.parent_id + "_tabla_adicionales");
+            removeClonedRow(this.parent_id + "_tabla_adicionales");
+            this.validators[row_num - 1] = null;
+        }
+
+        // Databindings
+        function setData(data) {
+            if (data == null)
+                return;
+
+            var i = null;
+            for (i = 1; i <= data.length; i++) {
+                $get(this.parent_id + "_Concepto_TBox_" + i).value = data[i - 1].concepto;
+                $get(this.parent_id + "_Superficie_TBox_" + i).value = data[i - 1].superficie;
+
+                if (i != data.length) {
+                    this.addSuperficieRow();
+                }
+            }
+        }
+
+        function getData() {
+            var data_set = new Array();
+            var i = null;
+            var row_num = getCloningTableCount(this.parent_id + '_tabla_adicionales');
+
+            for (i = 1; i <= row_num; i++) {
+                data = new Object();
+                data.idArea = i;
+                data.concepto = $get(this.parent_id + "_Concepto_TBox_" + i).value;
+                data.superficie = $get(this.parent_id + "_Superficie_TBox_" + i).value;
+
+                data_set[i - 1] = data;
+            }
+
+            return data_set;
+        }
+
+        // Validación
+        function validate() {
+            var validated = true;
+            var row_num = getCloningTableCount(this.parent_id + "_tabla_adicionales");
+            var i = null;
+
+            for (i = 0; i < row_num; i++) {
+                if (this.validators[i] != null) {
+                    if (!this.validators[i].validate())
+                        validated = false;
+                }
+                else {
+                    validated = false;
+                }
+            }
+
+            return validated;
+        }
+
+        function addRowValidator(row_num) {
+            var controls = new Array(
+                $get(this.parent_id + "_Concepto_TBox_" + row_num),    // 0
+                $get(this.parent_id + "_Superficie_TBox_" + row_num)   // 1
+            );
+
+            var validator = new ControlValidator(controls);
+            validator.addNumericField(1, true);
+
+            this.validators[row_num - 1] = validator;
+        }
+    }
+
+    this["<%= ID %>"] = new SuperficiesAdicionales();
+    
+</script>

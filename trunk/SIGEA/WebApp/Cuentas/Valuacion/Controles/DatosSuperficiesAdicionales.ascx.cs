@@ -12,7 +12,7 @@ public partial class Cuentas_Valuacion_Controles_DatosSuperficiesAdicionales : S
 
     private void AddAttributes()
     {
-        agregarFila_ImBtn.OnClientClick = "addClonedRow('"+ ClientID +"_tabla_adicionales'); return false;";
-        removerFila_ImBtn.OnClientClick = "removeClonedRow('" + ClientID + "_tabla_adicionales'); return false;";
+        agregarFila_ImBtn.OnClientClick = ID + ".addSuperficieRow(); return false;";
+        removerFila_ImBtn.OnClientClick = ID + ".removeSuperficieRow(); return false;";
     }
 }

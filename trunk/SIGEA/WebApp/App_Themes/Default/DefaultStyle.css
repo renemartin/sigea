@@ -102,6 +102,12 @@ hr
 	display: none;
 }
 
+.controlError
+{
+	border: 1px solid #840D00;
+	background-color: #FF513E;
+}
+
 .controlCompacto
 {
 	font-size: 1em;
@@ -111,7 +117,6 @@ hr
 
 .controlBox
 {
-	background-color: #FFFFFF;
 	border: 1px solid #C0C0C0;
 	margin-top: 1px;
 	margin-bottom: 1px;
@@ -121,7 +126,6 @@ hr
 {
 	padding: 2px;
 	border: 1px solid #C0C0C0;
-	background-color: #FFFFFF;
 }
 
 .textBoxNumero
