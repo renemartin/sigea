@@ -17,7 +17,6 @@
     <script type="text/javascript">
         // Variables
         var idAvaluo = 0;
-        var num_bloques_datos = 2;
 
         // Inicialización
         function setupForm() {
@@ -34,12 +33,6 @@
             disableControls($get('form_terreno'));
         }
 
-        // Llenado de datos
-        function fillData() {
-            fillTerrenoData();
-            fillTerrenoCallesData();
-        }
-
         // Carga de registros
         function loadForm(key_id) {
             idAvaluo = key_id;
@@ -52,20 +45,8 @@
             loadPropietarioAsync(idAvaluo, propietario_Ctrl);
         }
         function loadDatosTerreno() {
-            var callBackList = new Array();
-            callBackList[0] = loadForm_Success;
-            callBackList[1] = setDatosTerrenoCalles;
-            callBackList[2] = setDatosTerreno;
-
-            loadUbicacionInmuebleAsync(idAvaluo, callBackList);
-        }
-        function loadForm_Success() {
-            if (num_bloques_cargados != undefined) {
-                num_bloques_cargados++;
-                if (num_bloques_cargados == num_bloques_datos) {
-                    fillData();
-                }
-            }
+            loadDatosTerrenoCallesAsync(idAvaluo, terrenoCalles_Ctrl);
+            loadDatosTerrenoAsync(idAvaluo, terreno_Ctrl);
         }
 
         // Guardado de registros
@@ -98,11 +79,19 @@
         }
 
         function saveDatosTerreno() {
-            saveUbicacionInmuebleAsync(
-                idAvaluo
-                , getDatosTerrenoCalles()
-                , getDatosTerreno()
-                , saveDatosTerreno_Success);
+            var validated = true;
+            if (!terrenoCalles_Ctrl.validate())
+                validated = false;
+            if (!terreno_Ctrl.validate())
+                validated = false;
+
+            if (validated) {
+                saveUbicacionInmuebleAsync(
+                    idAvaluo
+                    , terrenoCalles_Ctrl.getData()
+                    , terreno_Ctrl.getData()
+                    , saveDatosTerreno_Success);
+            }
         }
         function saveDatosTerreno_Success() {
             terminateEdit("form_terreno",
@@ -152,8 +141,8 @@
         <asp:ImageButton ID="editar_terreno_ImBtn" runat="server" SkinID="Edit" />
     </div>
     <div id="form_terreno" class="formulario">
-        <SIGEA:DatosTerrenoCalles ID="datosTerrenoCalles_Ctrl" runat="server" />
-        <SIGEA:DatosTerreno ID="datosTerreno_Ctrl" runat="server" />
+        <SIGEA:DatosTerrenoCalles ID="terrenoCalles_Ctrl" runat="server" />
+        <SIGEA:DatosTerreno ID="terreno_Ctrl" runat="server" />
     </div>
     <div class="barraAcciones">
         <asp:ImageButton ID="guardar_terreno_ImBtn" runat="server" SkinID="Save" CssClass="hidden" />

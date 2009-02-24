@@ -73,9 +73,13 @@ function loadPropietarioAsync(idAvaluo, control) {
     EntityWrappers.LoadPropietario(
         idAvaluo, asyncControlLoad, asyncCallFail, control);
 }
-function loadUbicacionInmuebleAsync(idAvaluo, callBackList) {
-    EntityWrappers.LoadUbicacionInmueble(
-        idAvaluo, asyncCallListBack, asyncCallFail, callBackList);
+function loadDatosTerrenoAsync(idAvaluo, control) {
+    EntityWrappers.LoadDatosTerreno(
+        idAvaluo, asyncControlLoad, asyncCallFail, control);
+}
+function loadDatosTerrenoCallesAsync(idAvaluo, control) {
+    EntityWrappers.LoadDatosTerrenoCalles(
+        idAvaluo, asyncControlLoad, asyncCallFail, control);
 }
 function loadEntornoInmuebleAsync(idAvaluo, control) {
     EntityWrappers.LoadEntorno(

@@ -3,7 +3,6 @@
 <%@ Register Src="DatosDireccionInmueble.ascx" TagName="DatosDireccionInmueble" TagPrefix="SIGEA" %>
 <%@ Register Src="~/Controles/DatosDireccion.ascx" TagName="DatosDireccion" TagPrefix="SIGEA" %>
 <link href="../../../App_Themes/Default/DefaultStyle.css" rel="stylesheet" type="text/css" />
-
 <table>
     <tr>
         <td class="celdaTitulo">
@@ -21,10 +20,11 @@
         <td class="celdaValor">
             <asp:DropDownList ID="regimenPropiedad_DDList" runat="server">
             </asp:DropDownList>
+        </td>
     </tr>
 </table>
-<SIGEA:DatosDireccion ID="direccion_Ctrl" runat="server" />
-<SIGEA:DatosDireccionInmueble id="ubicacion_Ctrl" runat="server" />
+<SIGEA:DatosDireccion ID="direccionInmueble_Ctrl" runat="server" />
+<SIGEA:DatosDireccionInmueble ID="ubicacion_Ctrl" runat="server" />
 <table>
     <tr>
         <td class="celdaTitulo">
@@ -52,7 +52,7 @@
         <td class="celdaTitulo">
             Cuenta agua:
         </td>
-        <td class="celdaValor" >
+        <td class="celdaValor">
             <asp:TextBox ID="cuentaAgua_TBox" runat="server"></asp:TextBox>
         </td>
         <td class="celdaTituloSec">
@@ -91,7 +91,7 @@
         this.validator.addOptionalField(3);
         this.validator.addOptionalField(4);
         this.validator.addOptionalField(5);
-    
+
         // DataBindings
         function getData() {
             var data_set = new Array();
@@ -105,9 +105,9 @@
             data_set[0].cuentaAgua = $get("<%= cuentaAgua_TBox.ClientID %>").value;
             data_set[0].telefono = $get("<%= telefono_TBox.ClientID %>").value;
 
-            data_set[1] = direccion_Ctrl.getData();
-            data_set[2] = ubicacion_Ctrl.getData();
-    
+            data_set[1] = ubicacion_Ctrl.getData();
+            data_set[2] = direccionInmueble_Ctrl.getData();            
+
             return data_set;
         }
         function setData(data_set) {
@@ -119,11 +119,11 @@
                 $get("<%= cuentaAgua_TBox.ClientID %>").value = data_set[0].cuentaAgua;
                 $get("<%= telefono_TBox.ClientID %>").value = data_set[0].telefono;
 
-                direccion_Ctrl.setData(data_set[1]);
-                ubicacion_Ctrl.setData(data_set[2]);
+                ubicacion_Ctrl.setData(data_set[1]);
+                direccionInmueble_Ctrl.setData(data_set[2]);                
             }
             else {
-                direccion_Ctrl.fillData();
+                direccionInmueble_Ctrl.fillData();
             }
 
             this.fillData();
@@ -140,7 +140,7 @@
             var validated = true
             if (!this.validator.validate())
                 validated = false;
-            if (!direccion_Ctrl.validate())
+            if (!direccionInmueble_Ctrl.validate())
                 validated = false;
             if (!ubicacion_Ctrl.validate())
                 validated = false;
@@ -157,3 +157,4 @@
     this["<%= ID %>"] = new Inmueble();
    
 </script>
+

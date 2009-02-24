@@ -326,7 +326,7 @@ public class EntityWrappers : System.Web.Services.WebService
     }
 
     [WebMethod]
-    public Entity[] LoadUbicacionInmueble(int idAvaluo)
+    public Entity LoadDatosTerreno(int idAvaluo)
     {
         Inmueble inmueble = Inmueble.GetFromIdAvaluo(common_context, idAvaluo);
         if (inmueble == null)
@@ -334,13 +334,25 @@ public class EntityWrappers : System.Web.Services.WebService
             throw new Exception("El avalúo no cuenta con un inmueble registrado");
         }
 
-        Entity[] data = new Entity[2];
-        if (inmueble.UbicacionCallesInmueble != null)
-            data[0] = inmueble.UbicacionCallesInmueble.GetData();
-        if (inmueble.UbicacionInmueble != null)
-            data[1] = inmueble.UbicacionInmueble.GetData();
+        if (inmueble.UbicacionInmueble == null)
+            return null;
+            
+        return inmueble.UbicacionInmueble.GetData();
+    }
 
-        return data;
+    [WebMethod]
+    public Entity LoadDatosTerrenoCalles(int idAvaluo)
+    {
+        Inmueble inmueble = Inmueble.GetFromIdAvaluo(common_context, idAvaluo);
+        if (inmueble == null)
+        {
+            throw new Exception("El avalúo no cuenta con un inmueble registrado");
+        }
+
+        if (inmueble.UbicacionCallesInmueble == null)
+            return null;
+
+        return inmueble.UbicacionCallesInmueble.GetData();
     }
     #endregion
 

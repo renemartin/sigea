@@ -1,7 +1,6 @@
 ﻿<%@ Control Language="C#" AutoEventWireup="true" CodeFile="DatosDireccion.ascx.cs"
     Inherits="Controles_DatosDireccion" %>
 <link href="../App_Themes/Default/DefaultStyle.css" rel="stylesheet" type="text/css" />
-
 <table>
     <tr>
         <td class="celdaTitulo">
@@ -65,14 +64,11 @@
     function Direccion() {
 
         // Inicialización
-        if (typeof (Direccion_Init) == "undefined") {
-            Direccion_Init = true;
-            Direccion.prototype.getData = getData;
-            Direccion.prototype.setData = setData;
-            Direccion.prototype.fillData = fillData;
-            Direccion.prototype.updateMunicipios = updateMunicipios;
-            Direccion.prototype.validate = validate;
-        }
+        Direccion.prototype.getData = getData;
+        Direccion.prototype.setData = setData;
+        Direccion.prototype.fillData = fillData;
+        Direccion.prototype.updateMunicipios = updateMunicipios;
+        Direccion.prototype.validate = validate;
         this.parent_id = "<%= ClientID %>";
 
         // Inicialización de validador
@@ -91,7 +87,7 @@
         this.validator.addOptionalField(1);
         this.validator.addOptionalField(2);
         this.validator.addOptionalField(4);
-        this.validator.addNumericField(8, false);        
+        this.validator.addNumericField(8, false);
 
         // DataBindings
         function getData() {
@@ -143,3 +139,4 @@
     this["<%= ID %>"] = new Direccion();
     
 </script>
+
