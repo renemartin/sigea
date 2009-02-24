@@ -26,20 +26,20 @@ function saveUbicacionInmuebleAsync(idAvaluo, datosCalles, datosTerreno, callBac
         , asyncCallFail
         , callBack);
 }
-function saveEntornoInmuebleAsync(idAvaluo, datosEntorno, datosViasAcceso, callBack) {
+function saveEntornoInmuebleAsync(idAvaluo, datosEntorno, callBack) {
     EntityWrappers.SaveEntorno(
         idAvaluo
-        , datosEntorno
-        , datosViasAcceso
+        , datosEntorno[0]
+        , datosEntorno[1]
         , asyncCallResultBack
         , asyncCallFail
         , callBack);
 }
-function saveInfraestructuraInmuebleAsync(idAvaluo, datosInfraestructura, datosServicios, callBack) {
+function saveInfraestructuraInmuebleAsync(idAvaluo, datosInfraestructura, callBack) {
     EntityWrappers.SaveInfraestructura(
         idAvaluo
-        , datosInfraestructura
-        , datosServicios
+        , datosInfraestructura[0]
+        , datosInfraestructura[1]
         , asyncCallResultBack
         , asyncCallFail
         , callBack);
@@ -52,6 +52,17 @@ function saveEquipamientoInmuebleAsync(idAvaluo, datosEquipamiento, callBack) {
         , asyncCallFail
         , callBack);
 }
+function saveUsoActualAsync(idAvaluo, datosDistribucion, datosRecamaras, datosPlantas, callBack) {
+    EntityWrappers.SaveUsoActual(
+        idAvaluo
+        , datosDistribucion
+        , datosRecamaras
+        , datosPlantas
+        , asyncCallResultBack
+        , asyncCallFail
+        , callBack
+    );
+}
 
 // Carga de datos
 
@@ -63,20 +74,28 @@ function loadUbicacionInmuebleAsync(idAvaluo, callBackList) {
     EntityWrappers.LoadUbicacionInmueble(
         idAvaluo, asyncCallListBack, asyncCallFail, callBackList);
 }
-function loadEntornoInmuebleAsync(idAvaluo, callBackList) {
+function loadEntornoInmuebleAsync(idAvaluo, control) {
     EntityWrappers.LoadEntorno(
-        idAvaluo, asyncCallSingleListBack, asyncCallFail, callBackList);
+        idAvaluo, asyncControlLoad, asyncCallFail, control);
 }
-function loadViasAccesoInmuebleAsync(idAvaluo, callBackList) {
-    EntityWrappers.LoadViasAcceso(
-        idAvaluo, asyncCallSingleListBack, asyncCallFail, callBackList);
-}
-function loadInfraestructuraInmuebleAsync(idAvaluo, callBackList) {
+function loadInfraestructuraInmuebleAsync(idAvaluo, control) {
     EntityWrappers.LoadInfraestructura(
-        idAvaluo, asyncCallListBack, asyncCallFail, callBackList);
+        idAvaluo, asyncControlLoad, asyncCallFail, control);
 }
-function loadEquipamientoInmuebleAsync(idAvaluo, callBackList) {
+function loadEquipamientoInmuebleAsync(idAvaluo, control) {
     EntityWrappers.LoadEquipamiento(
+        idAvaluo, asyncControlLoad, asyncCallFail, control);
+}
+function loadUsoActualDistribucionAsync(idAvaluo, callBackList) {
+    EntityWrappers.LoadUsoActualDistribucion(
+        idAvaluo, asyncCallSingleListBack, asyncCallFail, callBackList);
+}
+function loadUsoActualRecamarasAsync(idAvaluo, callBackList) {
+    EntityWrappers.LoadUsoActualRecamaras(
+        idAvaluo, asyncCallSingleListBack, asyncCallFail, callBackList);
+}
+function loadUsoActualPlantasAsync(idAvaluo, callBackList) {
+    EntityWrappers.LoadUsoActualPlantas(
         idAvaluo, asyncCallSingleListBack, asyncCallFail, callBackList);
 }
 
@@ -204,31 +223,4 @@ function calcularNivelEquipamiento(datosEquipamiento) {
     }
 
     return nivel;
-}
-
-function saveUsoActualAsync(idAvaluo, datosDistribucion, datosRecamaras, datosPlantas, callBack) {
-    EntityWrappers.SaveUsoActual(
-        idAvaluo
-        , datosDistribucion
-        , datosRecamaras
-        , datosPlantas
-        , asyncCallResultBack
-        , asyncCallFail
-        , callBack
-    );
-}
-
-function loadUsoActualDistribucionAsync(idAvaluo, callBackList) {
-    EntityWrappers.LoadUsoActualDistribucion(
-        idAvaluo, asyncCallSingleListBack, asyncCallFail, callBackList);
-}
-
-function loadUsoActualRecamarasAsync(idAvaluo, callBackList) {
-    EntityWrappers.LoadUsoActualRecamaras(
-        idAvaluo, asyncCallSingleListBack, asyncCallFail, callBackList);
-}
-
-function loadUsoActualPlantasAsync(idAvaluo, callBackList) {
-    EntityWrappers.LoadUsoActualPlantas(
-        idAvaluo, asyncCallSingleListBack, asyncCallFail, callBackList);
 }

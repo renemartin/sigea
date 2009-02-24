@@ -95,34 +95,36 @@ function ControlValidator(controls, show_errors) {
             error_message = "";
             field = this.numericFields[i];
 
-            if (!field.is_float) {
-                number = parseInt(this.controls[field.index].value);
-                if (!isNaN(number)) {
-                    this.controls[field.index].value = number;
+            if (this.controls[field.index].value != "") {
+                if (!field.is_float) {
+                    number = parseInt(this.controls[field.index].value);
+                    if (!isNaN(number)) {
+                        this.controls[field.index].value = number;
+                    }
+                    else {
+                        error_message = "Formato de número entero inválido";
+                    }
                 }
                 else {
-                    error_message = "Formato de número entero inválido";
+                    number = parseFloat(this.controls[field.index].value);
+                    if (isNaN(number)) {
+                        error_message = "Formato de número decimal inválido";
+                    }
                 }
-            }
-            else {
-                number = parseFloat(this.controls[field.index].value);
-                if (isNaN(number)) {
-                    error_message = "Formato de número decimal inválido";
-                }
-            }
 
-            if (!isNaN(number)) {
-                if (!isNaN(field.max_num) && number > field.max_num) {
-                    error_message = "Número mayor al máximo permitido (" + field.max_num + ")";
+                if (!isNaN(number)) {
+                    if (!isNaN(field.max_num) && number > field.max_num) {
+                        error_message = "Número mayor al máximo permitido (" + field.max_num + ")";
+                    }
+                    if (!isNaN(field.min_num) && number < field.min_num) {
+                        error_message = "Número mayor al mínimo permitido (" + field.min_num + ")";
+                    }
                 }
-                if (!isNaN(field.min_num) && number < field.min_num) {
-                    error_message = "Número mayor al mínimo permitido (" + field.min_num + ")";
-                }
-            }
 
-            if (error_message != "") {
-                validated = false;
-                this.invalid[this.invalid.length] = [this.controls[field.index], error_message];
+                if (error_message != "") {
+                    validated = false;
+                    this.invalid[this.invalid.length] = [this.controls[field.index], error_message];
+                }
             }
         }
 

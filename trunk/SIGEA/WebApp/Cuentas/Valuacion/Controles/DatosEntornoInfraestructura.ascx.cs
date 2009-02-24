@@ -24,38 +24,38 @@ public partial class Cuentas_Valuacion_Controles_Infraestructura : System.Web.UI
     private void SetAttributes()
     {
         aguaPotable_CBox.Attributes.Add("onclick",
-            "setVisibility($get('seccion_agua_potable'), this.checked);"
-            + " updateNivelInfraestructura();");
+            "setVisibility($get('seccion_agua_potable'), this.checked); "
+            + ID + ".updateNivelInfraestructura();");
         drenaje_CBox.Attributes.Add("onclick",
-            "setVisibility($get('seccion_drenaje'), this.checked);"
-            + " updateNivelInfraestructura();");
+            "setVisibility($get('seccion_drenaje'), this.checked); "
+            + ID + ".updateNivelInfraestructura();");
         electrificacion_CBox.Attributes.Add("onclick",
-            "setVisibility($get('seccion_electrificacion'), this.checked);"
-            + " updateNivelInfraestructura();");
+            "setVisibility($get('seccion_electrificacion'), this.checked); "
+            + ID + ".updateNivelInfraestructura();");
         alumbradoPublico_CBox.Attributes.Add("onclick",
-            "setVisibility($get('seccion_alumbrado'), this.checked);"
-            + " updateNivelInfraestructura();"); ;
+            "setVisibility($get('seccion_alumbrado'), this.checked); "
+            + ID + ".updateNivelInfraestructura();"); ;
         vialidades_CBox.Attributes.Add("onclick",
-            "setVisibility($get('seccion_vialidades'), this.checked);"
-            + " updateNivelInfraestructura();"); ;
+            "setVisibility($get('seccion_vialidades'), this.checked); "
+            + ID + ".updateNivelInfraestructura();"); ;
         banquetas_CBox.Attributes.Add("onclick",
-            "setVisibility($get('seccion_banquetas'), this.checked);"
-            + " updateNivelInfraestructura();"); ;
+            "setVisibility($get('seccion_banquetas'), this.checked); "
+            + ID + ".updateNivelInfraestructura();"); ;
         guarniciones_CBox.Attributes.Add("onclick",
-            "setVisibility($get('seccion_guarniciones'), this.checked);"
-            + " updateNivelInfraestructura();");
+            "setVisibility($get('seccion_guarniciones'), this.checked); "
+            + ID + ".updateNivelInfraestructura();");
 
         gasNatural_CBox.Attributes.Add("onclick",
-            "setVisibility($get('seccion_gas_natural'), this.checked);"
-            + " updateNivelInfraestructura();");
+            "setVisibility($get('seccion_gas_natural'), this.checked); "
+            + ID + ".updateNivelInfraestructura();");
         redTelefonica_CBox.Attributes.Add("onclick", 
-            "setVisibility($get('seccion_red_telefonica'), this.checked);");
+            "setVisibility($get('seccion_red_telefonica'), this.checked); ");
         transporteUrbano_CBox.Attributes.Add("onclick", 
-            "setVisibility($get('seccion_transporte_urbano'), this.checked);");
+            "setVisibility($get('seccion_transporte_urbano'), this.checked); ");
         transporteSuburbano_CBox.Attributes.Add("onclick", 
-            "setVisibility($get('seccion_transporte_suburbano'), this.checked);");
+            "setVisibility($get('seccion_transporte_suburbano'), this.checked); ");
         vigilancia_CBox.Attributes.Add("onclick",
-            "setVisibility($get('seccion_vigilancia_municipal'), this.checked);"
-            + " updateNivelInfraestructura();");
+            "setVisibility($get('seccion_vigilancia_municipal'), this.checked); "
+            + ID + ".updateNivelInfraestructura();");
     }
 }

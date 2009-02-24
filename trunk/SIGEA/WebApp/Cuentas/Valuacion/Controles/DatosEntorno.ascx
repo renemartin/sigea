@@ -2,83 +2,6 @@
     Inherits="Cuentas_Administracion_DatosEntorno" %>
 <link href="~/App_Themes/Default/DefaultStyle.css" rel="stylesheet" type="text/css" />
 
-<script type="text/javascript">
-    // Llenado de datos
-    function fillEntornoData(idClase) {
-        fillClasificacionZona("<%= clasificacionZona_DDList.ClientID %>", idClase);
-        fillProximidadUrbana("<%= proximidadUrbana_DDList.ClientID %>");
-        fillNivelSocioeconomico("<%= nivelSocioeconomico_DDList.ClientID %>");
-        fillConstruccionPredominante("<%= construccionPredominante_DDList.ClientID %>");
-        fillDensidad("<%= densidadPoblacion_DDList.ClientID %>");
-        fillImportanciaVialidad("<%= importanciaVia_DDList_1.ClientID %>");     
-    }
-
-    function setupTablaVias() {
-        addCloningTable($get("tabla_vias"), 1, 3);
-    }
-
-    // Databindngs
-    function setDatosEntorno(data) {
-        if (data != null) {
-            $get("<%= clasificacionZona_DDList.ClientID %>").selectedValue = data.idTipoClasificacionZona;
-            $get("<%= proximidadUrbana_DDList.ClientID %>").selectedValue = data.idTipoProximidadUrbana;
-            $get("<%= nivelSocioeconomico_DDList.ClientID %>").selectedValue = data.idTipoNivelSocioEconomico;
-            $get("<%= construccionPredominante_DDList.ClientID %>").selectedValue = data.idTipoConstrucciones;
-            $get("<%= densidadPoblacion_DDList.ClientID %>").selectedValue = data.idTipoDensidadPoblacion;
-            $get("<%= indiceSaturacion_TBox.ClientID %>").value = data.indiceSaturacion;
-        }
-    }
-    function getDatosEntorno() {
-        var data = new Object();
-
-        data.idTipoClasificacionZona = $get("<%= clasificacionZona_DDList.ClientID %>").value;
-        data.idTipoProximidadUrbana = $get("<%= proximidadUrbana_DDList.ClientID %>").value;
-        data.idTipoNivelSocioEconomico = $get("<%= nivelSocioeconomico_DDList.ClientID %>").value;
-        data.idTipoConstrucciones = $get("<%= construccionPredominante_DDList.ClientID %>").value;
-        data.idTipoDensidadPoblacion = $get("<%= densidadPoblacion_DDList.ClientID %>").value;
-        data.indiceSaturacion = $get("<%= indiceSaturacion_TBox.ClientID %>").value;
-
-        return data;
-    }
-
-    function setDatosViasAcceso(data) {
-        if (data == null)
-            return;
-            
-        var i = null;
-        var parent_id = "<%= ClientID %>";
-
-        for (i = 1; i <= data.length; i++) {
-            $get(parent_id + "_via_TBox_" + i).value = data[i-1].nombreVia;
-            $get(parent_id + "_importanciaVia_DDList_" + i).selectedValue = data[i-1].idImportanciaVia;            
-
-            if (i != data.length) {
-                addClonedRow('tabla_vias');
-                fillImportanciaVialidad(parent_id + "_importanciaVia_DDList_" + (i+1));
-            }
-        }
-    }
-
-    //guardar datos
-    function getDatosViasAcceso() {
-        var data_set = new Array();
-        var data = null;
-        var parent_id = "<%= ClientID %>";
-        var numero_filas = getCloningTableCount('tabla_vias');
-        var i = null;
-
-        for (i = 1; i <= numero_filas; i++) {
-            data = new Object();
-            data.idViaAcceso = i;
-            data.nombreVia = $get(parent_id + "_via_TBox_" + i).value;
-            data.idImportanciaVia = $get(parent_id + "_importanciaVia_DDList_" + i).value;
-            data_set[i - 1] = data;
-        }
-
-        return data_set;
-    }
-</script>
-
 <table>
     <tr>
         <td class="celdaTitulo">
@@ -163,3 +86,164 @@
         </td>
     </tr>
 </table>
+
+<script type="text/javascript">
+    function Entorno() {
+
+        // Inicialización
+        if (typeof (Entorno_Init) == "undefined") {
+            Entorno_Init = true;
+            Entorno.prototype.fillData = fillData;
+            Entorno.prototype.fillViasRowData = fillViasRowData;
+            Entorno.prototype.addViasRow = addViasRow;
+            Entorno.prototype.removeViasRow = removeViasRow;
+            Entorno.prototype.setData = setData;
+            Entorno.prototype.setDataVias = setDataVias;
+            Entorno.prototype.getData = getData;
+            Entorno.prototype.getDataVias = getDataVias;
+            Entorno.prototype.validate = validate;
+            Entorno.prototype.addViasRowValidator = addViasRowValidator;
+        }                
+        this.parent_id = "<%= ClientID %>";
+        addCloningTable($get("tabla_vias"), 1, 3);
+
+        // Inicialización de validadores
+        this.controls = new Array(
+            $get("<%= clasificacionZona_DDList.ClientID %>"),           // 0
+            $get("<%= proximidadUrbana_DDList.ClientID %>"),            // 1
+            $get("<%= nivelSocioeconomico_DDList.ClientID %>"),         // 2
+            $get("<%= construccionPredominante_DDList.ClientID %>"),    // 3
+            $get("<%= densidadPoblacion_DDList.ClientID %>"),           // 4
+            $get("<%= indiceSaturacion_TBox.ClientID %>")               // 5
+        );
+        this.entorno_validator = new ControlValidator(this.controls);
+        this.entorno_validator.addNumericField(5, true);
+
+        this.vias_validators = new Array();        
+        this.addViasRowValidator(1);
+
+        // Llenado de datos
+        function fillData() {
+            fillClasificacionZona("<%= clasificacionZona_DDList.ClientID %>");
+            fillProximidadUrbana("<%= proximidadUrbana_DDList.ClientID %>");
+            fillNivelSocioeconomico("<%= nivelSocioeconomico_DDList.ClientID %>");
+            fillConstruccionPredominante("<%= construccionPredominante_DDList.ClientID %>");
+            fillDensidad("<%= densidadPoblacion_DDList.ClientID %>");
+        }
+
+        function fillViasRowData(row_num) {
+            fillImportanciaVialidad(this.parent_id + "_importanciaVia_DDList_"+ row_num);
+        }
+
+        // Control de filas
+        function addViasRow() {
+            var row_num = getCloningTableCount('tabla_vias');
+            addClonedRow("tabla_vias");
+            this.addViasRowValidator(row_num + 1);
+        }
+
+        function removeViasRow(data) {
+            var row_num = getCloningTableCount('tabla_vias');
+            removeClonedRow("tabla_vias");
+            this.vias_validators[row_num - 1] = null;
+        }
+
+        // Databindngs
+        function setData(data_set) {
+            if (data_set != null) {
+                $get("<%= clasificacionZona_DDList.ClientID %>").selectedValue = data_set[0].idTipoClasificacionZona;
+                $get("<%= proximidadUrbana_DDList.ClientID %>").selectedValue = data_set[0].idTipoProximidadUrbana;
+                $get("<%= nivelSocioeconomico_DDList.ClientID %>").selectedValue = data_set[0].idTipoNivelSocioEconomico;
+                $get("<%= construccionPredominante_DDList.ClientID %>").selectedValue = data_set[0].idTipoConstrucciones;
+                $get("<%= densidadPoblacion_DDList.ClientID %>").selectedValue = data_set[0].idTipoDensidadPoblacion;
+                $get("<%= indiceSaturacion_TBox.ClientID %>").value = data_set[0].indiceSaturacion;
+
+                this.setDataVias(data_set[1]);
+            }
+            else {
+                this.fillViasRowData(1);
+            }
+
+            this.fillData();            
+        }
+        function setDataVias(data) {
+            var i = null;
+            for (i = 1; i <= data.length; i++) {
+                $get(this.parent_id + "_via_TBox_" + i).value = data[i - 1].nombreVia;
+                $get(this.parent_id + "_importanciaVia_DDList_" + i).selectedValue = data[i - 1].idImportanciaVia;
+
+                if (i != data.length) {
+                    this.addViasRow();
+                }
+
+                this.fillViasRowData(i);
+            }
+        }
+        
+        function getData() {
+            var data_set = Array();
+
+            data_set[0] = new Object();
+            data_set[0].idTipoClasificacionZona = $get("<%= clasificacionZona_DDList.ClientID %>").value;
+            data_set[0].idTipoProximidadUrbana = $get("<%= proximidadUrbana_DDList.ClientID %>").value;
+            data_set[0].idTipoNivelSocioEconomico = $get("<%= nivelSocioeconomico_DDList.ClientID %>").value;
+            data_set[0].idTipoConstrucciones = $get("<%= construccionPredominante_DDList.ClientID %>").value;
+            data_set[0].idTipoDensidadPoblacion = $get("<%= densidadPoblacion_DDList.ClientID %>").value;
+            data_set[0].indiceSaturacion = $get("<%= indiceSaturacion_TBox.ClientID %>").value;
+
+            data_set[1] = this.getDataVias();
+
+            return data_set;
+        }
+        function getDataVias() {
+            var data_set = new Array();
+            var row_num = getCloningTableCount('tabla_vias');
+            var data = null;
+            var i = null;
+
+            for (i = 1; i <= row_num; i++) {
+                data = new Object();
+                data.idViaAcceso = i;
+                data.nombreVia = $get(this.parent_id + "_via_TBox_" + i).value;
+                data.idImportanciaVia = $get(this.parent_id + "_importanciaVia_DDList_" + i).value;
+                data_set[i - 1] = data;
+            }
+
+            return data_set;
+        }
+
+        // Validación
+        function validate() {
+            var validated = true;
+            var row_num = getCloningTableCount('tabla_vias');
+            var i = null;
+
+            validated = this.entorno_validator.validate();
+            
+            for (i = 0; i < row_num; i++) {
+                if (this.vias_validators[i] != null) {
+                    if (!this.vias_validators[i].validate())
+                        validated = false;
+                }
+                else {
+                    validated = false;
+                }
+            }
+
+            return validated;
+        }
+
+        function addViasRowValidator(row_num) {
+            var controls = new Array(
+                $get(this.parent_id + "_via_TBox_" + row_num),                // 0
+                $get(this.parent_id + "_importanciaVia_DDList_" + row_num)    // 1
+            );
+            var validator = new ControlValidator(controls);
+
+            this.vias_validators[row_num - 1] = validator;
+        }
+    }
+
+    this["<%= ID %>"] = new Entorno();
+    
+</script>
