@@ -4,15 +4,14 @@
 
 // Guardado de registros
 
-function saveInmuebleAsync(idAvaluo, datosInmueble, datosUbicacionInmueble,
-        datosDireccionInmueble, datosPropietario, datosDireccionPropietario, callBack) {
+function saveInmuebleAsync(idAvaluo, datosInmueble, datosPropietario, callBack) {
     EntityWrappers.SaveInmueble(
         idAvaluo
-        , datosInmueble
-        , datosUbicacionInmueble
-        , datosDireccionInmueble
-        , datosPropietario
-        , datosDireccionInmueble
+        , datosInmueble[0]
+        , datosInmueble[1]
+        , datosInmueble[2]
+        , datosPropietario[0]
+        , datosPropietario[1]
         , asyncCallResultBack
         , asyncCallFail
         , callBack);
@@ -66,9 +65,13 @@ function saveUsoActualAsync(idAvaluo, datosDistribucion, datosRecamaras, datosPl
 
 // Carga de datos
 
-function loadInmuebleAsync(idAvaluo, callBackList) {
+function loadInmuebleAsync(idAvaluo, control) {
     EntityWrappers.LoadInmueble(
-        idAvaluo, asyncCallListBack, asyncCallFail, callBackList);
+        idAvaluo, asyncControlLoad, asyncCallFail, control);
+}
+function loadPropietarioAsync(idAvaluo, control) {
+    EntityWrappers.LoadPropietario(
+        idAvaluo, asyncControlLoad, asyncCallFail, control);
 }
 function loadUbicacionInmuebleAsync(idAvaluo, callBackList) {
     EntityWrappers.LoadUbicacionInmueble(
