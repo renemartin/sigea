@@ -1,56 +1,6 @@
 ﻿<%@ Control Language="C#" AutoEventWireup="true" CodeFile="DatosDireccion.ascx.cs"
     Inherits="Controles_DatosDireccion" %>
-
-<script type="text/javascript">
-    // DataBindings
-    function getDatosDireccion() {
-        return getDatosDireccion_Aux("<%= this.ClientID%>");
-    }
-    function getDatosDireccion_Aux(parent_id) {
-        var data = new Object();
-
-        data["calle"] = $get(parent_id + "_calle_TBox").value;
-        data["entre1"] = $get(parent_id + "_entre1_TBox").value;
-        data["entre2"] = $get(parent_id + "_entre2_TBox").value;
-        data["numeroExterior"] = $get(parent_id + "_numExt_TBox").value;
-        data["numeroInterior"] = $get(parent_id + "_numInt_TBox").value;
-        data["claveEstado"] = $get(parent_id + "_estado_DDList").value;
-        data["idMunicipio"] = $get(parent_id + "_municipio_DDList").value;
-        data["nombreAsentamiento"] = $get(parent_id + "_asentamiento_TBox").value;
-        data["codigoPostal"] = $get(parent_id + "_cp_TBox").value;
-
-        return data;
-    }
-    function setDatosDireccion(data) {
-        setDatosDireccion_Aux("<%= this.ClientID%>", data);
-    }
-    function setDatosDireccion_Aux(parent_id, data) {
-        $get(parent_id + "_calle_TBox").value = data["calle"];
-        $get(parent_id + "_entre1_TBox").value = data["entre1"];
-        $get(parent_id + "_entre2_TBox").value = data["entre2"]
-        $get(parent_id + "_numExt_TBox").value = data["numeroExterior"];
-        $get(parent_id + "_numInt_TBox").value = data["numeroInterior"]
-        $get(parent_id + "_estado_DDList").selectedValue = data["claveEstado"]
-        $get(parent_id + "_municipio_DDList").selectedValue = data["idMunicipio"]
-        $get(parent_id + "_asentamiento_TBox").value = data["nombreAsentamiento"];
-        $get(parent_id + "_cp_TBox").value = data["codigoPostal"];
-    }
-
-    // Llenado de datos
-    function fillDireccionData() {        
-        fillDireccionData_Aux("<%= this.ClientID%>");
-    }
-    function fillDireccionData_Aux(parent_id) {
-        fillEstados(parent_id + "_estado_DDList");
-        updateMunicipios_Aux(parent_id);
-    }
-    function updateMunicipios() {
-        updateMunicipios_Aux("<%= this.ClientID%>");
-    }
-    function updateMunicipios_Aux(parent_id) {
-        fillMunicipios(parent_id + "_municipio_DDList", parent_id + "_estado_DDList");
-    }
-</script>
+<link href="../App_Themes/Default/DefaultStyle.css" rel="stylesheet" type="text/css" />
 
 <table>
     <tr>
@@ -69,7 +19,7 @@
         <td class="celdaTitulo">
             Entre:
         </td>
-        <td class="celdaContenido">
+        <td class="celdaValor">
             <asp:TextBox ID="entre1_TBox" runat="server"></asp:TextBox><br />
             <asp:TextBox ID="entre2_TBox" runat="server"></asp:TextBox>
         </td>
@@ -78,7 +28,7 @@
         <td class="celdaTitulo">
             Estado:
         </td>
-        <td class="celdaContenido">
+        <td class="celdaValor">
             <asp:DropDownList ID="estado_DDList" runat="server">
             </asp:DropDownList>
         </td>
@@ -87,7 +37,7 @@
         <td class="celdaTitulo">
             Municipio:
         </td>
-        <td class="celdaContenido">
+        <td class="celdaValor">
             <asp:DropDownList ID="municipio_DDList" runat="server">
             </asp:DropDownList>
         </td>
@@ -96,7 +46,7 @@
         <td class="celdaTitulo">
             C.P:
         </td>
-        <td class="celdaContenido">
+        <td class="celdaValor">
             <asp:TextBox ID="cp_TBox" runat="server"></asp:TextBox>
         </td>
     </tr>
@@ -104,8 +54,92 @@
         <td class="celdaTitulo">
             Asentamiento:
         </td>
-        <td class="celdaContenido">
+        <td class="celdaValor">
             <asp:TextBox ID="asentamiento_TBox" runat="server"></asp:TextBox>
         </td>
     </tr>
 </table>
+
+<script type="text/javascript">
+
+    function Direccion() {
+
+        // Inicialización
+        if (typeof (Direccion_Init) == "undefined") {
+            Direccion_Init = true;
+            Direccion.prototype.getData = getData;
+            Direccion.prototype.setData = setData;
+            Direccion.prototype.fillData = fillData;
+            Direccion.prototype.updateMunicipios = updateMunicipios;
+            Direccion.prototype.validate = validate;
+        }
+        this.parent_id = "<%= ClientID %>";
+
+        // Inicialización de validador
+        this.controls = new Array(
+            $get(this.parent_id + "_calle_TBox"),           // 0
+            $get(this.parent_id + "_entre1_TBox"),          // 1
+            $get(this.parent_id + "_entre2_TBox"),          // 2
+            $get(this.parent_id + "_numExt_TBox"),          // 3
+            $get(this.parent_id + "_numInt_TBox"),          // 4
+            $get(this.parent_id + "_estado_DDList"),        // 5
+            $get(this.parent_id + "_municipio_DDList"),     // 6
+            $get(this.parent_id + "_asentamiento_TBox"),    // 7
+            $get(this.parent_id + "_cp_TBox")               // 8
+        );
+        this.validator = new ControlValidator(this.controls);
+        this.validator.addOptionalField(1);
+        this.validator.addOptionalField(2);
+        this.validator.addOptionalField(4);
+        this.validator.addNumericField(8, false);        
+
+        // DataBindings
+        function getData() {
+            var data = new Object();
+
+            data.calle = $get(this.parent_id + "_calle_TBox").value;
+            data.entre1 = $get(this.parent_id + "_entre1_TBox").value;
+            data.entre2 = $get(this.parent_id + "_entre2_TBox").value;
+            data.numeroExterior = $get(this.parent_id + "_numExt_TBox").value;
+            data.numeroInterior = $get(this.parent_id + "_numInt_TBox").value;
+            data.claveEstado = $get(this.parent_id + "_estado_DDList").value;
+            data.idMunicipio = $get(this.parent_id + "_municipio_DDList").value;
+            data.nombreAsentamiento = $get(this.parent_id + "_asentamiento_TBox").value;
+            data.codigoPostal = $get(this.parent_id + "_cp_TBox").value;
+
+            return data;
+        }
+        function setData(data) {
+            if (data != null) {
+                $get(this.parent_id + "_calle_TBox").value = data.calle;
+                $get(this.parent_id + "_entre1_TBox").value = data.entre1;
+                $get(this.parent_id + "_entre2_TBox").value = data.entre2
+                $get(this.parent_id + "_numExt_TBox").value = data.numeroExterior;
+                $get(this.parent_id + "_numInt_TBox").value = data.numeroInterior
+                $get(this.parent_id + "_estado_DDList").selectedValue = data.claveEstado
+                $get(this.parent_id + "_municipio_DDList").selectedValue = data.idMunicipio
+                $get(this.parent_id + "_asentamiento_TBox").value = data.nombreAsentamiento;
+                $get(this.parent_id + "_cp_TBox").value = data.codigoPostal;
+            }
+
+            this.fillData();
+        }
+
+        // Llenado de datos
+        function fillData() {
+            fillEstados(this.parent_id + "_estado_DDList");
+            this.updateMunicipios();
+        }
+        function updateMunicipios() {
+            fillMunicipios(this.parent_id + "_municipio_DDList", this.parent_id + "_estado_DDList");
+        }
+
+        // Validación
+        function validate() {
+            return this.validator.validate();
+        }
+    }
+
+    this["<%= ID %>"] = new Direccion();
+    
+</script>
