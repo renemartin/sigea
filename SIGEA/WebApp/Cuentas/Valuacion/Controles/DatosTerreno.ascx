@@ -2,69 +2,6 @@
     Inherits="Cuentas_Valuacion_Controles_DatosTerreno" %>
 <link href="~/App_Themes/Default/DefaultStyle.css" rel="stylesheet" type="text/css" />
 
-<script type="text/javascript">
-    // Llenado de datos
-    function fillTerrenoData() {        
-        fillUbicacion("<%= ubicacion_DDList.ClientID %>");
-        fillTopografia("<%= topografia_DDList.ClientID %>");
-        fillCaracPanoramicas("<%= caracPanoramicas_DDList.ClientID %>");
-        fillUsoSuelo("<%= usoSuelo_DDList.ClientID %>");
-        fillServidumbre("<%= servidumbre_DDList.ClientID %>");
-        fillFuente("<%= fuenteMedidas_DDList.ClientID %>");
-    }
-   
-    // Databindings
-    function setDatosTerreno(data) {
-        if (data != null) {
-            $get("<%= frentes_TBox.ClientID %>").value = data.frentes;
-            $get("<%= configuracionRegular_CBox.ClientID %>").checked = data.configuracionRegular;
-            $get("<%= lados_TBox.ClientID %>").value = data.lados;
-            $get("<%= ubicacion_DDList.ClientID %>").selectedValue = data.idTipoUbicacion;
-            $get("<%= topografia_DDList.ClientID %>").selectedValue = data.idTipoTopografia;
-            $get("<%= caracPanoramicas_DDList.ClientID %>").selectedValue = data.idTipoCaracteristicasPanoramicas;
-            $get("<%= usoSuelo_DDList.ClientID %>").selectedValue = data.idTipoUsoSuelo;
-            $get("<%= habHectarea_TBox.ClientID %>").value = data.densidadHabitantes;
-            $get("<%= vivHectarea_TBox.ClientID %>").value = data.densidadViviendas;
-            $get("<%= servidumbre_DDList.ClientID %>").selectedValue = data.idTipoServidumbre;
-            $get("<%= fuenteMedidas_DDList.ClientID %>").selectedValue = data.idFuenteMedidas;
-            $get("<%= otraFuente_TBox.ClientID %>").value = data.otraFuente;
-            $get("<%= colindancias_TBox.ClientID %>").value = data.descripcionColindancias;
-
-            setVisibility($get("seccion_fuente_medidas"), data.otraFuente != "");                       
-        }
-    }
-    
-    function getDatosTerreno() {
-        var data = new Object();
-        
-        data.frentes = $get("<%= frentes_TBox.ClientID %>").value;
-        data.configuracionRegular = $get("<%= configuracionRegular_CBox.ClientID %>").checked;
-        data.lados = $get("<%= lados_TBox.ClientID %>").value;
-        data.idTipoUbicacion = $get("<%= ubicacion_DDList.ClientID %>").value;
-        data.idTipoTopografia = $get("<%= topografia_DDList.ClientID %>").value;
-        data.idTipoCaracteristicasPanoramicas = $get("<%= caracPanoramicas_DDList.ClientID %>").value;
-        data.idTipoUsoSuelo = $get("<%= usoSuelo_DDList.ClientID %>").value;
-        data.densidadHabitantes = $get("<%= habHectarea_TBox.ClientID %>").value;
-        data.densidadViviendas = $get("<%= vivHectarea_TBox.ClientID %>").value;
-        data.idTipoServidumbre = $get("<%= servidumbre_DDList.ClientID %>").value;
-        data.idFuenteMedidas = $get("<%= fuenteMedidas_DDList.ClientID %>").value;
-        data.otraFuente = getVisibility($get("seccion_fuente_medidas"))
-            ? $get("<%= otraFuente_TBox.ClientID %>").value : "";
-        data.descripcionColindancias = $get("<%= colindancias_TBox.ClientID %>").value;
-        
-        return data;
-    }
-
-    // Validacion de selecciones
-    function setFuenteMedidasSelection() {
-        var fuente_medidas = $get("<%= fuenteMedidas_DDList.ClientID %>");
-
-        setVisibility($get("seccion_fuente_medidas"),
-            fuente_medidas.options[fuente_medidas.selectedIndex].text.toLowerCase() == "otra");
-    }
-    
-</script>
-
 <table>
     <tr>
         <td class="celdaTitulo">
@@ -176,3 +113,112 @@
         </td>
     </tr>
 </table>
+
+<script type="text/javascript">
+
+    function DatosTerreno() {
+
+        // Inicialización
+        if (typeof (DatosTerreno_Init) == "undefined") {
+            DatosTerreno_Init = true;
+            DatosTerreno.prototype.fillData = fillData;
+            DatosTerreno.prototype.setData = setData;
+            DatosTerreno.prototype.getData = getData;
+            DatosTerreno.prototype.validate = validate;
+        }
+
+        // Inicialización de validador
+        this.controls = new Array(
+            $get("<%= frentes_TBox.ClientID %>"),               // 0
+            $get("<%= configuracionRegular_CBox.ClientID %>"),  // 1
+            $get("<%= lados_TBox.ClientID %>"),                 // 2
+            $get("<%= ubicacion_DDList.ClientID %>"),           // 3
+            $get("<%= topografia_DDList.ClientID %>"),          // 4
+            $get("<%= caracPanoramicas_DDList.ClientID %>"),    // 5
+            $get("<%= usoSuelo_DDList.ClientID %>"),            // 6
+            $get("<%= habHectarea_TBox.ClientID %>"),           // 7
+            $get("<%= vivHectarea_TBox.ClientID %>"),           // 8
+            $get("<%= servidumbre_DDList.ClientID %>"),         // 9
+            $get("<%= fuenteMedidas_DDList.ClientID %>"),       // 10
+            $get("<%= otraFuente_TBox.ClientID %>"),            // 11
+            $get("<%= colindancias_TBox.ClientID %>")           // 12
+        );
+        this.validator = new ControlValidator(this.controls);
+        this.validator.addOptionalField(11);
+        this.validator.addNumericField(0, false);
+        this.validator.addNumericField(2, false);
+        this.validator.addNumericField(7, true);
+        this.validator.addNumericField(8, true);
+
+        // Llenado de datos
+        function fillData() {
+            fillUbicacion("<%= ubicacion_DDList.ClientID %>");
+            fillTopografia("<%= topografia_DDList.ClientID %>");
+            fillCaracPanoramicas("<%= caracPanoramicas_DDList.ClientID %>");
+            fillUsoSuelo("<%= usoSuelo_DDList.ClientID %>");
+            fillServidumbre("<%= servidumbre_DDList.ClientID %>");
+            fillFuente("<%= fuenteMedidas_DDList.ClientID %>");
+        }
+
+        // Databindings
+        function setData(data) {
+            if (data != null) {
+                $get("<%= frentes_TBox.ClientID %>").value = data.frentes;
+                $get("<%= configuracionRegular_CBox.ClientID %>").checked = data.configuracionRegular;
+                $get("<%= lados_TBox.ClientID %>").value = data.lados;
+                $get("<%= ubicacion_DDList.ClientID %>").selectedValue = data.idTipoUbicacion;
+                $get("<%= topografia_DDList.ClientID %>").selectedValue = data.idTipoTopografia;
+                $get("<%= caracPanoramicas_DDList.ClientID %>").selectedValue = data.idTipoCaracteristicasPanoramicas;
+                $get("<%= usoSuelo_DDList.ClientID %>").selectedValue = data.idTipoUsoSuelo;
+                $get("<%= habHectarea_TBox.ClientID %>").value = data.densidadHabitantes;
+                $get("<%= vivHectarea_TBox.ClientID %>").value = data.densidadViviendas;
+                $get("<%= servidumbre_DDList.ClientID %>").selectedValue = data.idTipoServidumbre;
+                $get("<%= fuenteMedidas_DDList.ClientID %>").selectedValue = data.idFuenteMedidas;
+                $get("<%= otraFuente_TBox.ClientID %>").value = data.otraFuente;
+                $get("<%= colindancias_TBox.ClientID %>").value = data.descripcionColindancias;
+
+                setVisibility($get("seccion_fuente_medidas"), data.otraFuente != "");
+            }
+
+            this.fillData();
+        }
+
+        function getData() {
+            var data = new Object();
+
+            data.frentes = $get("<%= frentes_TBox.ClientID %>").value;
+            data.configuracionRegular = $get("<%= configuracionRegular_CBox.ClientID %>").checked;
+            data.lados = $get("<%= lados_TBox.ClientID %>").value;
+            data.idTipoUbicacion = $get("<%= ubicacion_DDList.ClientID %>").value;
+            data.idTipoTopografia = $get("<%= topografia_DDList.ClientID %>").value;
+            data.idTipoCaracteristicasPanoramicas = $get("<%= caracPanoramicas_DDList.ClientID %>").value;
+            data.idTipoUsoSuelo = $get("<%= usoSuelo_DDList.ClientID %>").value;
+            data.densidadHabitantes = $get("<%= habHectarea_TBox.ClientID %>").value;
+            data.densidadViviendas = $get("<%= vivHectarea_TBox.ClientID %>").value;
+            data.idTipoServidumbre = $get("<%= servidumbre_DDList.ClientID %>").value;
+            data.idFuenteMedidas = $get("<%= fuenteMedidas_DDList.ClientID %>").value;
+            data.otraFuente = getVisibility($get("seccion_fuente_medidas"))
+            ? $get("<%= otraFuente_TBox.ClientID %>").value : "";
+            data.descripcionColindancias = $get("<%= colindancias_TBox.ClientID %>").value;
+
+            return data;
+        }
+
+        // Validación
+        function validate() {
+            return this.validator.validate();
+        }
+        
+    }
+
+    // Validacion de selecciones
+    function setFuenteMedidasSelection() {
+        var fuente_medidas = $get("<%= fuenteMedidas_DDList.ClientID %>");
+
+        setVisibility($get("seccion_fuente_medidas"),
+            fuente_medidas.options[fuente_medidas.selectedIndex].text.toLowerCase() == "otra");
+    }
+
+    this["<%= ID %>"] = new DatosTerreno();
+    
+</script>

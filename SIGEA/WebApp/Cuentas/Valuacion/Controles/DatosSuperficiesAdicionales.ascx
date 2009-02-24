@@ -1,7 +1,6 @@
 ﻿<%@ Control Language="C#" AutoEventWireup="true" CodeFile="DatosSuperficiesAdicionales.ascx.cs"
     Inherits="Cuentas_Valuacion_Controles_DatosSuperficiesAdicionales" %>
 <link href="~/App_Themes/Default/DefaultStyle.css" rel="stylesheet" type="text/css" />
-
 <table id="<%= ClientID %>_tabla_adicionales">
     <tr class="filaHeader">
         <td>
@@ -32,15 +31,13 @@
     function SuperficiesAdicionales() {
 
         // Inicialización
-        if (typeof (SuperficiesAdicionales_Init) == "undefined") {
-            SuperficiesAdicionales.prototype.addSuperficieRow = addSuperficieRow;
-            SuperficiesAdicionales.prototype.removeSuperficieRow = removeSuperficieRow;
-            SuperficiesAdicionales.prototype.setData = setData;
-            SuperficiesAdicionales.prototype.getData = getData;
-            SuperficiesAdicionales.prototype.validate = validate;
-            SuperficiesAdicionales.prototype.addRowValidator = addRowValidator;
-        }
-        
+        SuperficiesAdicionales.prototype.addSuperficieRow = addSuperficieRow;
+        SuperficiesAdicionales.prototype.removeSuperficieRow = removeSuperficieRow;
+        SuperficiesAdicionales.prototype.setData = setData;
+        SuperficiesAdicionales.prototype.getData = getData;
+        SuperficiesAdicionales.prototype.validate = validate;
+        SuperficiesAdicionales.prototype.addRowValidator = addRowValidator;
+
         this.parent_id = "<%= ClientID %>";
         this.validators = new Array();
         this.addRowValidator(1);
@@ -127,3 +124,4 @@
     this["<%= ID %>"] = new SuperficiesAdicionales();
     
 </script>
+

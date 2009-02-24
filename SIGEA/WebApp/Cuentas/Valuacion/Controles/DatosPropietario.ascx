@@ -26,7 +26,7 @@
         </td>
     </tr>
 </table>
-<SIGEA:DatosDireccion ID="direccion_Ctrl" runat="server" />
+<SIGEA:DatosDireccion ID="direccionPropietario_Ctrl" runat="server" />
 
 <script type="text/javascript">
 
@@ -56,7 +56,7 @@
             data_set[0].RFC = $get("<%= RFC_TBox.ClientID %>").value;
             data_set[0].CURP = $get("<%= CURP_TBox.ClientID %>").value;
 
-            data_set[1] = direccion_Ctrl.getData();
+            data_set[1] = direccionPropietario_Ctrl.getData();
 
             return data_set;
         }
@@ -66,10 +66,10 @@
                 $get("<%= RFC_TBox.ClientID %>").value = data_set[0].RFC;
                 $get("<%= CURP_TBox.ClientID %>").value = data_set[0].CURP;
 
-                direccion_Ctrl.setData(data_set[1]);
+                direccionPropietario_Ctrl.setData(data_set[1]);
             }
             else {
-                direccion_Ctrl.fillData();
+                direccionPropietario_Ctrl.fillData();
             }
         }
 
@@ -79,7 +79,7 @@
             
             if (!this.validator.validate())
                 validated = false;
-            if (!direccion_Ctrl.validate())
+            if (!direccionPropietario_Ctrl.validate())
                 validated = false;
             
             return validated;

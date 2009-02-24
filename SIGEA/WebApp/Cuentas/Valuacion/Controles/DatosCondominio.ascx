@@ -159,7 +159,7 @@
                 $get("<%= fuenteIndiviso_DDList.ClientID %>").selectedValue = data_set[1].fuenteIndiviso;
                 $get("<%= especFuenteIndiviso_TBox.ClientID %>").value = data_set[1].otraFuenteIndiviso;
                 $get("<%= lotePrivativo_TBox.ClientID %>").value = data_set[1].privativo;
-                $get("<%= fuentePrivativo_DDList.ClientID %>").value = data_set[1].fuentePrivativo;
+                $get("<%= fuentePrivativo_DDList.ClientID %>").selectedValue = data_set[1].fuentePrivativo;
                 $get("<%= especFuentePrivativo_TBox.ClientID %>").value = data_set[1].otraFuentePrivativo;
 
                 superficiesConstrucciones_Ctrl.setData(data_set[2]);
