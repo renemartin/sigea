@@ -20,7 +20,7 @@ public class EntityWrappers : System.Web.Services.WebService
 
     #region Avaluos
 
-    #region data del avaluo
+    #region Datos del avaluo
     [WebMethod]
     public int SaveAvaluoInmueble(
         int idAvaluo
@@ -114,7 +114,7 @@ public class EntityWrappers : System.Web.Services.WebService
     [WebMethod]
     public Entity[] LoadAvaluo(int idAvaluo)
     {
-        Entity[] data = new Entity[4];
+        Entity[] data = new Entity[2];
 
         AvaluoInmobiliario avaluo = AvaluoInmobiliario.GetFromId(common_context, idAvaluo);
         if (avaluo == null)
@@ -125,8 +125,21 @@ public class EntityWrappers : System.Web.Services.WebService
         {
             data[1] = avaluo.DatoCredito.GetData();
         }
-        data[2] = avaluo.Solicitante.GetData();
-        data[3] = avaluo.Solicitante.Direccion.GetData();
+
+        return data;
+    }
+
+    [WebMethod]
+    public Entity[] LoadSolicitante(int idAvaluo)
+    {
+        Entity[] data = new Entity[2];
+
+        AvaluoInmobiliario avaluo = AvaluoInmobiliario.GetFromId(common_context, idAvaluo);
+        if (avaluo == null)
+            throw new Exception("El identificador del avalúo es inválido");
+
+        data[0] = avaluo.Solicitante.GetData();
+        data[1] = avaluo.Solicitante.Direccion.GetData();
 
         return data;
     }
@@ -163,19 +176,25 @@ public class EntityWrappers : System.Web.Services.WebService
     }
 
     [WebMethod]
-    public Entity[] LoadDeclaraciones(int idAvaluo)
+    public Entity LoadDeclaraciones(int idAvaluo)
     {
-        Entity[] data = new Entity[2];
-
         Declaraciones declaraciones = Declaraciones.GetFromId(common_context, idAvaluo);
 
-        if (declaraciones != null)
-        {
-            data[0] = declaraciones.GetDataDeclaraciones();
-            data[1] = declaraciones.GetDataAdvertencias();
-        }
+        if (declaraciones == null)
+            return null;
 
-        return data;
+        return declaraciones.GetDataDeclaraciones();
+    }
+
+    [WebMethod]
+    public Entity LoadAdvertencias(int idAvaluo)
+    {
+        Declaraciones declaraciones = Declaraciones.GetFromId(common_context, idAvaluo);
+
+        if (declaraciones == null)
+            return null;
+
+        return declaraciones.GetDataAdvertencias();
     }
     #endregion
 

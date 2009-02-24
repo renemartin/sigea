@@ -16,7 +16,6 @@
     <script type="text/javascript">
         // Variables
         var idAvaluo = 0;
-        var num_bloques_datos = 2;
 
         // Inicialización
         function setupForm() {
@@ -33,12 +32,6 @@
             disableControls($get("form_declaraciones"));
         }
 
-        // Llenado de datos
-        function fillData() {
-            fillAvaluoData();
-            fillDireccionData();
-        }
-
         // Carga de registros
         function loadForm(key_id) {
             idAvaluo = key_id;
@@ -47,30 +40,12 @@
             loadDatosDeclaraciones();
         }
         function loadDatosAvaluo() {
-            var callBackList = new Array();
-            callBackList[0] = loadForm_Success;
-            callBackList[1] = setDatosAvaluo;
-            callBackList[2] = setDatosCredito;
-            callBackList[3] = setDatosSolicitante;
-            callBackList[4] = setDatosDireccion;
-
-            loadDatosAvaluoAsync(idAvaluo, callBackList);
+            loadDatosAvaluoAsync(idAvaluo, avaluo_Ctrl);
+            loadDatosSolicitanteAsync(idAvaluo, solicitante_Ctrl);
         }
         function loadDatosDeclaraciones() {
-            var callBackList = new Array();
-            callBackList[0] = loadForm_Success;
-            callBackList[1] = setDatosDeclaraciones;
-            callBackList[2] = setDatosAdvertencias;
-
-            loadDeclaracionesAsync(idAvaluo, callBackList);
-        }
-        function loadForm_Success() {
-            if (num_bloques_cargados != undefined) {
-                num_bloques_cargados++;
-                if (num_bloques_cargados == num_bloques_datos) {
-                    fillData();
-                }
-            }
+            loadDeclaracionesAsync(idAvaluo, declaraciones_Ctrl);
+            loadAdvertenciasAsync(idAvaluo, advertencias_Ctrl);
         }
 
         // Guardado de registros
@@ -82,14 +57,20 @@
         }
 
         function saveDatosGenerales() {
-            saveAvaluoAsync(
-                idAvaluo
-                , getDatosAvaluo()
-                , getDatosCredito()
-                , getDatosSolicitante()
-                , getDatosDireccion()
-                , saveDatosAvaluo_Success
-            );
+            var validated = true;
+            if (!avaluo_Ctrl.validate())
+                validated = false;
+            if (!solicitante_Ctrl.validate())
+                validated = false;
+
+            if (validated) {
+                saveAvaluoAsync(
+                    idAvaluo
+                    , avaluo_Ctrl.getData()
+                    , solicitante_Ctrl.getData()
+                    , saveDatosAvaluo_Success
+                );
+            }
         }
         function saveDatosAvaluo_Success() {
             terminateEdit("form_datos_generales",
@@ -101,8 +82,8 @@
         function saveDeclaraciones() {
             saveDeclaracionesAsync(
                 idAvaluo
-                , getDatosDeclaraciones()
-                , getDatosAdvertencias()
+                , declaraciones_Ctrl.getData()
+                , advertencias_Ctrl.getData()
                 , saveDeclaraciones_Success
             );
         }
@@ -126,8 +107,9 @@
             <asp:ScriptReference Path="~/Scripts/Utils.js" />
             <asp:ScriptReference Path="~/Scripts/AsyncCalls.js" />
             <asp:ScriptReference Path="~/Scripts/DataFillers.js" />
-            <asp:ScriptReference Path="~/Scripts/Entities/Avaluos.js" />
             <asp:ScriptReference Path="~/Scripts/Forms.js" />
+            <asp:ScriptReference Path="~/Scripts/Validation.js" />
+            <asp:ScriptReference Path="~/Scripts/Entities/Avaluos.js" />            
         </Scripts>
     </asp:ScriptManager>
     <SIGEA:EditorSHFNavegador ID="navegador_Ctrl" runat="server" />
@@ -139,11 +121,11 @@
     <div id="form_datos_generales" class="formulario">
         <h2>
             Datos generales del avalúo</h2>
-        <SIGEA:DatosGeneralesAvaluo ID="datosAvaluo_Ctrl" runat="server" />
+        <SIGEA:DatosGeneralesAvaluo ID="avaluo_Ctrl" runat="server" />
         <h2>
             del solicitante
         </h2>
-        <SIGEA:DatosSolicitante ID="datosSolicitante_Ctrl" runat="server" />
+        <SIGEA:DatosSolicitante ID="solicitante_Ctrl" runat="server" />
     </div>
     <div class="barraAcciones">
         <asp:ImageButton ID="guardar_datos_generales_ImBtn" runat="server" SkinID="Save"
@@ -161,11 +143,11 @@
         <h2>
             Declaraciones
         </h2>
-        <SIGEA:DatosDeclaraciones ID="datosDeclaraciones_Ctrl" runat="server" />
+        <SIGEA:DatosDeclaraciones ID="declaraciones_Ctrl" runat="server" />
         <h2>
             Advertencias
         </h2>
-        <SIGEA:DatosAdvertencias ID="datosAdvertencias_Ctrl" runat="server" />
+        <SIGEA:DatosAdvertencias ID="advertencias_Ctrl" runat="server" />
     </div>
     <div class="barraAcciones">
         <asp:ImageButton ID="guardar_declaraciones_ImBtn" runat="server" SkinID="Save" CssClass="hidden" />

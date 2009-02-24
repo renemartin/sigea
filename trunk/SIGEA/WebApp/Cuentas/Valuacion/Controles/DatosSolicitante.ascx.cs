@@ -7,8 +7,4 @@ using System.Web.UI.WebControls;
 
 public partial class Cuentas_Valuacion_DatosSolicitante : System.Web.UI.UserControl
 {
-    public string DireccionID
-    {
-        get { return direccion_Ctrl.ClientID; }
-    }
 }

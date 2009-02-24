@@ -1,50 +1,6 @@
 ﻿<%@ Control Language="C#" AutoEventWireup="true" CodeFile="DatosDeclaraciones.ascx.cs"
     Inherits="Cuentas_Valuacion_Controles_DatosDeclaraciones" %>
 <link href="~/App_Themes/Default/DefaultStyle.css" rel="stylesheet" type="text/css" />
-<script type="text/javascript">
-    
-    //mostrar datos
-    function setDatosDeclaraciones(data) {
-        if (data != null) {
-            $get("<%= identificacionCoincide_RBtn.ClientID %>").checked = data.declaracionIdentificacion;
-            $get("<%= identificacionNOCoincide_RBtn.ClientID %>").checked = !data.declaracionIdentificacion;
-            $get("<%= superficiesCoinciden_RBtn.ClientID %>").checked = data.declaracionSuperficies;
-            $get("<%= superficiesNoCoinciden_RBtn.ClientID %>").checked = !data.declaracionSuperficies;
-            $get("<%= construccionCumple_RBtn.ClientID %>").checked = data.declaracionConstrucciones;
-            $get("<%= construccionNoCumple_RBtn.ClientID %>").checked = !data.declaracionConstrucciones;
-            $get("<%= inmuebleMonumento_RBtn.ClientID %>").checked = data.declaracionMonumento;
-            $get("<%= inmuebleNoMonumento_RBtn.ClientID %>").checked = !data.declaracionMonumento;
-            $get("<%= inmueblePatrimonio_RBtn.ClientID %>").checked = data.declaracionPatrimonio;
-            $get("<%= inmuebleNoPatrimonio_RBtn.ClientID %>").checked = !data.declaracionPatrimonio;
-        }
-        else {
-            $get("<%= identificacionCoincide_RBtn.ClientID %>").checked = false;
-            $get("<%= identificacionNOCoincide_RBtn.ClientID %>").checked = false;
-            $get("<%= superficiesCoinciden_RBtn.ClientID %>").checked = false;
-            $get("<%= superficiesNoCoinciden_RBtn.ClientID %>").checked = false;
-            $get("<%= construccionCumple_RBtn.ClientID %>").checked = false;
-            $get("<%= construccionNoCumple_RBtn.ClientID %>").checked = false;
-            $get("<%= inmuebleMonumento_RBtn.ClientID %>").checked = false;
-            $get("<%= inmuebleNoMonumento_RBtn.ClientID %>").checked = false;
-            $get("<%= inmueblePatrimonio_RBtn.ClientID %>").checked = false;
-            $get("<%= inmuebleNoPatrimonio_RBtn.ClientID %>").checked = false;
-        }
-    }
-   
-     //guardar datos
-    function getDatosDeclaraciones() {
-        var data  = new Object();
-        
-         data.declaracionIdentificacion = $get("<%= identificacionCoincide_RBtn.ClientID %>").checked;
-         data.declaracionSuperficies = $get("<%= superficiesCoinciden_RBtn.ClientID %>").checked;
-         data.declaracionConstrucciones = $get("<%= construccionCumple_RBtn.ClientID %>").checked;         
-         data.declaracionMonumento = $get("<%= inmuebleMonumento_RBtn.ClientID %>").checked         
-         data.declaracionPatrimonio = $get("<%= inmueblePatrimonio_RBtn.ClientID %>").checked
-            
-        return data;
-    }
-
-</script>
 
 <ol>
     <li>SE VERIFICÓ EL ESTADO DE LA CONSTRUCCIÓN Y CONSERVACIÓN DEL INMUEBLE
@@ -90,3 +46,59 @@
             CssClass="textoNegritas" />
         &nbsp; CONSIDERADO PATRIMONIO ARQUITECTONICO POR EL I.N.B.A. </li>
 </ol>
+
+<script type="text/javascript">
+
+    function Declaraciones() {
+
+        // Inicialización
+        if (typeof (Declaraciones_Init) == "undefined") {
+            Declaraciones_Init = true;
+            Declaraciones.prototype.setData = setData;
+            Declaraciones.prototype.getData = getData;
+        }
+    
+        // DataBindings
+        function setData(data) {
+            if (data != null) {
+                $get("<%= identificacionCoincide_RBtn.ClientID %>").checked = data.declaracionIdentificacion;
+                $get("<%= identificacionNOCoincide_RBtn.ClientID %>").checked = !data.declaracionIdentificacion;
+                $get("<%= superficiesCoinciden_RBtn.ClientID %>").checked = data.declaracionSuperficies;
+                $get("<%= superficiesNoCoinciden_RBtn.ClientID %>").checked = !data.declaracionSuperficies;
+                $get("<%= construccionCumple_RBtn.ClientID %>").checked = data.declaracionConstrucciones;
+                $get("<%= construccionNoCumple_RBtn.ClientID %>").checked = !data.declaracionConstrucciones;
+                $get("<%= inmuebleMonumento_RBtn.ClientID %>").checked = data.declaracionMonumento;
+                $get("<%= inmuebleNoMonumento_RBtn.ClientID %>").checked = !data.declaracionMonumento;
+                $get("<%= inmueblePatrimonio_RBtn.ClientID %>").checked = data.declaracionPatrimonio;
+                $get("<%= inmuebleNoPatrimonio_RBtn.ClientID %>").checked = !data.declaracionPatrimonio;
+            }
+            else {
+                $get("<%= identificacionCoincide_RBtn.ClientID %>").checked = false;
+                $get("<%= identificacionNOCoincide_RBtn.ClientID %>").checked = false;
+                $get("<%= superficiesCoinciden_RBtn.ClientID %>").checked = false;
+                $get("<%= superficiesNoCoinciden_RBtn.ClientID %>").checked = false;
+                $get("<%= construccionCumple_RBtn.ClientID %>").checked = false;
+                $get("<%= construccionNoCumple_RBtn.ClientID %>").checked = false;
+                $get("<%= inmuebleMonumento_RBtn.ClientID %>").checked = false;
+                $get("<%= inmuebleNoMonumento_RBtn.ClientID %>").checked = false;
+                $get("<%= inmueblePatrimonio_RBtn.ClientID %>").checked = false;
+                $get("<%= inmuebleNoPatrimonio_RBtn.ClientID %>").checked = false;
+            }
+        }
+
+        function getData() {
+            var data = new Object();
+
+            data.declaracionIdentificacion = $get("<%= identificacionCoincide_RBtn.ClientID %>").checked;
+            data.declaracionSuperficies = $get("<%= superficiesCoinciden_RBtn.ClientID %>").checked;
+            data.declaracionConstrucciones = $get("<%= construccionCumple_RBtn.ClientID %>").checked;
+            data.declaracionMonumento = $get("<%= inmuebleMonumento_RBtn.ClientID %>").checked
+            data.declaracionPatrimonio = $get("<%= inmueblePatrimonio_RBtn.ClientID %>").checked
+
+            return data;
+        }
+    }
+
+    this["<%= ID %>"] = new Declaraciones();
+
+</script>
