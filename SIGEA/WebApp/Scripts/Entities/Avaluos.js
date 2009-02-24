@@ -31,13 +31,13 @@ function saveAsignacionAvaluoAsync(idAvaluo, datosAsignacion, callBack) {
         , asyncCallFail
         , callBack);
 }
-function saveAvaluoAsync(idAvaluo, datosAvaluo, datosCredito, datosSolicitante, datosDireccion, callBack) {
+function saveAvaluoAsync(idAvaluo, datosAvaluo, datosSolicitante, callBack) {
     EntityWrappers.SaveAvaluo(
         idAvaluo
-        , datosAvaluo
-        , datosCredito
-        , datosSolicitante
-        , datosDireccion
+        , datosAvaluo[0]
+        , datosAvaluo[1]
+        , datosSolicitante[0]
+        , datosSolicitante[1]
         , asyncCallResultBack
         , asyncCallFail
         , callBack
@@ -56,47 +56,37 @@ function saveDeclaracionesAsync(idAvaluo, datosDeclaraciones, datosAdvertencias,
 
 // Carga de datos
 
-function loadDatosAvaluoAsync(idAvaluo, callBackList) {
+function loadDatosAvaluoAsync(idAvaluo, control) {
     EntityWrappers.LoadAvaluo(
-        idAvaluo
-        , asyncCallListBack
-        , asyncCallFail
-        , callBackList);
+        idAvaluo, asyncControlLoad, asyncCallFail, control);
+}
+function loadDatosSolicitanteAsync(idAvaluo, control) {
+    EntityWrappers.LoadSolicitante(
+        idAvaluo, asyncControlLoad, asyncCallFail, control);
+}
+function loadDeclaracionesAsync(idAvaluo, control) {
+    EntityWrappers.LoadDeclaraciones(
+        idAvaluo, asyncControlLoad, asyncCallFail, control);
+}
+function loadAdvertenciasAsync(idAvaluo, control) {
+    EntityWrappers.LoadAdvertencias(
+        idAvaluo, asyncControlLoad, asyncCallFail, control);
 }
 function getRegistroAvaluoAsync(idAvaluo, callBack) {
     EntityWrappers.GetRegistroAvaluo(
-        idAvaluo
-        , asyncCallResultBack
-        , asyncCallFail
-        , callBack);
+        idAvaluo, asyncCallResultBack, asyncCallFail, callBack);
 }
 function loadAsignacionAvaluoAsync(idAvaluo, callBack) {
     EntityWrappers.LoadAsignacionAvaluo(
-        idAvaluo
-        , asyncCallResultBack
-        , asyncCallFail
-        , callBack);
-}
-function loadDeclaracionesAsync(idAvaluo, callBackList) {
-    EntityWrappers.LoadDeclaraciones(
-        idAvaluo
-        , asyncCallListBack
-        , asyncCallFail
-        , callBackList);
+        idAvaluo, asyncCallResultBack, asyncCallFail, callBack);
 }
 function verificarExistenciaAvaluoPorIDEAsync(IDE, callBack) {
     EntityWrappers.VerificarExistenciaAvaluoPorIDE(
-        IDE
-        , asyncCallResultBack
-        , asyncCallFail
-        , callBack);
+        IDE, asyncCallResultBack, asyncCallFail, callBack);
 }
 function getEstadoInmuebleAvaluoAsync(idAvaluo, callBack) {
     EntityWrappers.GetEstadoInmuebleAvaluo(
-        idAvaluo
-        , asyncCallResultBack
-        , asyncCallFail
-        , callBack);
+        idAvaluo, asyncCallResultBack, asyncCallFail, callBack);
 }
 
 // Cancelación de avalúo
