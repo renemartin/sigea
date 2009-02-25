@@ -25964,9 +25964,9 @@ namespace SIGEA.Classes.Entities
 		
 		private string _canceleria;
 		
-		private EntityRef<TipoConstruccion> _TipoConstruccion;
+		private EntitySet<ConstruccionInmueble> _ConstruccionInmueble;
 		
-		private EntityRef<ConstruccionInmueble> _ConstruccionInmueble;
+		private EntityRef<TipoConstruccion> _TipoConstruccion;
 		
     #region Extensibility Method Definitions
     partial void OnLoaded();
@@ -25992,8 +25992,8 @@ namespace SIGEA.Classes.Entities
 		
 		public InstalacionesTipoConstruccion()
 		{
+			this._ConstruccionInmueble = new EntitySet<ConstruccionInmueble>(new Action<ConstruccionInmueble>(this.attach_ConstruccionInmueble), new Action<ConstruccionInmueble>(this.detach_ConstruccionInmueble));
 			this._TipoConstruccion = default(EntityRef<TipoConstruccion>);
-			this._ConstruccionInmueble = default(EntityRef<ConstruccionInmueble>);
 			OnCreated();
 		}
 		
@@ -26165,6 +26165,19 @@ namespace SIGEA.Classes.Entities
 			}
 		}
 		
+		[Association(Name="InstalacionesTipoConstruccion_ConstruccionInmueble", Storage="_ConstruccionInmueble", ThisKey="idConstruccion", OtherKey="idConstruccion")]
+		public EntitySet<ConstruccionInmueble> ConstruccionInmueble
+		{
+			get
+			{
+				return this._ConstruccionInmueble;
+			}
+			set
+			{
+				this._ConstruccionInmueble.Assign(value);
+			}
+		}
+		
 		[Association(Name="TipoConstruccion_InstalacionesTipoConstruccion", Storage="_TipoConstruccion", ThisKey="idConstruccion,numeroTipo", OtherKey="idConstruccion,numeroTipo", IsForeignKey=true, DeleteOnNull=true, DeleteRule="CASCADE")]
 		public TipoConstruccion TipoConstruccion
 		{
@@ -26201,40 +26214,6 @@ namespace SIGEA.Classes.Entities
 			}
 		}
 		
-		[Association(Name="ConstruccionInmueble_InstalacionesTipoConstruccion", Storage="_ConstruccionInmueble", ThisKey="idConstruccion", OtherKey="idConstruccion", IsForeignKey=true)]
-		public ConstruccionInmueble ConstruccionInmueble
-		{
-			get
-			{
-				return this._ConstruccionInmueble.Entity;
-			}
-			set
-			{
-				ConstruccionInmueble previousValue = this._ConstruccionInmueble.Entity;
-				if (((previousValue != value) 
-							|| (this._ConstruccionInmueble.HasLoadedOrAssignedValue == false)))
-				{
-					this.SendPropertyChanging();
-					if ((previousValue != null))
-					{
-						this._ConstruccionInmueble.Entity = null;
-						previousValue.InstalacionesTipoConstruccion.Remove(this);
-					}
-					this._ConstruccionInmueble.Entity = value;
-					if ((value != null))
-					{
-						value.InstalacionesTipoConstruccion.Add(this);
-						this._idConstruccion = value.idConstruccion;
-					}
-					else
-					{
-						this._idConstruccion = default(int);
-					}
-					this.SendPropertyChanged("ConstruccionInmueble");
-				}
-			}
-		}
-		
 		public event PropertyChangingEventHandler PropertyChanging;
 		
 		public event PropertyChangedEventHandler PropertyChanged;
@@ -26253,6 +26232,18 @@ namespace SIGEA.Classes.Entities
 			{
 				this.PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
 			}
+		}
+		
+		private void attach_ConstruccionInmueble(ConstruccionInmueble entity)
+		{
+			this.SendPropertyChanging();
+			entity.InstalacionesTipoConstruccion = this;
+		}
+		
+		private void detach_ConstruccionInmueble(ConstruccionInmueble entity)
+		{
+			this.SendPropertyChanging();
+			entity.InstalacionesTipoConstruccion = null;
 		}
 	}
 	
@@ -26278,9 +26269,9 @@ namespace SIGEA.Classes.Entities
 		
 		private bool _comun;
 		
-		private EntityRef<ConstruccionInmueble> _ConstruccionInmueble;
+		private EntitySet<ConstruccionInmueble> _ConstruccionInmueble1;
 		
-		private EntityRef<ConstruccionInmueble> _ConstruccionInmueble1;
+		private EntityRef<ConstruccionInmueble> _ConstruccionInmueble;
 		
     #region Extensibility Method Definitions
     partial void OnLoaded();
@@ -26306,8 +26297,8 @@ namespace SIGEA.Classes.Entities
 		
 		public InstalacionConstruccion()
 		{
+			this._ConstruccionInmueble1 = new EntitySet<ConstruccionInmueble>(new Action<ConstruccionInmueble>(this.attach_ConstruccionInmueble1), new Action<ConstruccionInmueble>(this.detach_ConstruccionInmueble1));
 			this._ConstruccionInmueble = default(EntityRef<ConstruccionInmueble>);
-			this._ConstruccionInmueble1 = default(EntityRef<ConstruccionInmueble>);
 			OnCreated();
 		}
 		
@@ -26475,6 +26466,19 @@ namespace SIGEA.Classes.Entities
 			}
 		}
 		
+		[Association(Name="InstalacionConstruccion_ConstruccionInmueble", Storage="_ConstruccionInmueble1", ThisKey="idConstruccion", OtherKey="idConstruccion")]
+		public EntitySet<ConstruccionInmueble> ConstruccionInmueble1
+		{
+			get
+			{
+				return this._ConstruccionInmueble1;
+			}
+			set
+			{
+				this._ConstruccionInmueble1.Assign(value);
+			}
+		}
+		
 		[Association(Name="ConstruccionInmueble_InstalacionConstruccion", Storage="_ConstruccionInmueble", ThisKey="idConstruccion", OtherKey="idConstruccion", IsForeignKey=true, DeleteOnNull=true, DeleteRule="CASCADE")]
 		public ConstruccionInmueble ConstruccionInmueble
 		{
@@ -26509,40 +26513,6 @@ namespace SIGEA.Classes.Entities
 			}
 		}
 		
-		[Association(Name="ConstruccionInmueble_InstalacionConstruccion1", Storage="_ConstruccionInmueble1", ThisKey="idConstruccion", OtherKey="idConstruccion", IsForeignKey=true)]
-		public ConstruccionInmueble ConstruccionInmueble1
-		{
-			get
-			{
-				return this._ConstruccionInmueble1.Entity;
-			}
-			set
-			{
-				ConstruccionInmueble previousValue = this._ConstruccionInmueble1.Entity;
-				if (((previousValue != value) 
-							|| (this._ConstruccionInmueble1.HasLoadedOrAssignedValue == false)))
-				{
-					this.SendPropertyChanging();
-					if ((previousValue != null))
-					{
-						this._ConstruccionInmueble1.Entity = null;
-						previousValue.InstalacionConstruccion1.Remove(this);
-					}
-					this._ConstruccionInmueble1.Entity = value;
-					if ((value != null))
-					{
-						value.InstalacionConstruccion1.Add(this);
-						this._idConstruccion = value.idConstruccion;
-					}
-					else
-					{
-						this._idConstruccion = default(int);
-					}
-					this.SendPropertyChanged("ConstruccionInmueble1");
-				}
-			}
-		}
-		
 		public event PropertyChangingEventHandler PropertyChanging;
 		
 		public event PropertyChangedEventHandler PropertyChanged;
@@ -26561,6 +26531,18 @@ namespace SIGEA.Classes.Entities
 			{
 				this.PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
 			}
+		}
+		
+		private void attach_ConstruccionInmueble1(ConstruccionInmueble entity)
+		{
+			this.SendPropertyChanging();
+			entity.InstalacionConstruccion1 = this;
+		}
+		
+		private void detach_ConstruccionInmueble1(ConstruccionInmueble entity)
+		{
+			this.SendPropertyChanging();
+			entity.InstalacionConstruccion1 = null;
 		}
 	}
 	
@@ -26584,9 +26566,9 @@ namespace SIGEA.Classes.Entities
 		
 		private string _escaleras;
 		
-		private EntityRef<TipoConstruccion> _TipoConstruccion;
+		private EntitySet<ConstruccionInmueble> _ConstruccionInmueble;
 		
-		private EntityRef<ConstruccionInmueble> _ConstruccionInmueble;
+		private EntityRef<TipoConstruccion> _TipoConstruccion;
 		
     #region Extensibility Method Definitions
     partial void OnLoaded();
@@ -26610,8 +26592,8 @@ namespace SIGEA.Classes.Entities
 		
 		public EstructurasTipoConstruccion()
 		{
+			this._ConstruccionInmueble = new EntitySet<ConstruccionInmueble>(new Action<ConstruccionInmueble>(this.attach_ConstruccionInmueble), new Action<ConstruccionInmueble>(this.detach_ConstruccionInmueble));
 			this._TipoConstruccion = default(EntityRef<TipoConstruccion>);
-			this._ConstruccionInmueble = default(EntityRef<ConstruccionInmueble>);
 			OnCreated();
 		}
 		
@@ -26763,6 +26745,19 @@ namespace SIGEA.Classes.Entities
 			}
 		}
 		
+		[Association(Name="EstructurasTipoConstruccion_ConstruccionInmueble", Storage="_ConstruccionInmueble", ThisKey="idConstruccion", OtherKey="idConstruccion")]
+		public EntitySet<ConstruccionInmueble> ConstruccionInmueble
+		{
+			get
+			{
+				return this._ConstruccionInmueble;
+			}
+			set
+			{
+				this._ConstruccionInmueble.Assign(value);
+			}
+		}
+		
 		[Association(Name="TipoConstruccion_EstructurasTipoConstruccion", Storage="_TipoConstruccion", ThisKey="idConstruccion,numeroTipo", OtherKey="idConstruccion,numeroTipo", IsForeignKey=true, DeleteOnNull=true, DeleteRule="CASCADE")]
 		public TipoConstruccion TipoConstruccion
 		{
@@ -26799,40 +26794,6 @@ namespace SIGEA.Classes.Entities
 			}
 		}
 		
-		[Association(Name="ConstruccionInmueble_EstructurasTipoConstruccion", Storage="_ConstruccionInmueble", ThisKey="idConstruccion", OtherKey="idConstruccion", IsForeignKey=true)]
-		public ConstruccionInmueble ConstruccionInmueble
-		{
-			get
-			{
-				return this._ConstruccionInmueble.Entity;
-			}
-			set
-			{
-				ConstruccionInmueble previousValue = this._ConstruccionInmueble.Entity;
-				if (((previousValue != value) 
-							|| (this._ConstruccionInmueble.HasLoadedOrAssignedValue == false)))
-				{
-					this.SendPropertyChanging();
-					if ((previousValue != null))
-					{
-						this._ConstruccionInmueble.Entity = null;
-						previousValue.EstructurasTipoConstruccion.Remove(this);
-					}
-					this._ConstruccionInmueble.Entity = value;
-					if ((value != null))
-					{
-						value.EstructurasTipoConstruccion.Add(this);
-						this._idConstruccion = value.idConstruccion;
-					}
-					else
-					{
-						this._idConstruccion = default(int);
-					}
-					this.SendPropertyChanged("ConstruccionInmueble");
-				}
-			}
-		}
-		
 		public event PropertyChangingEventHandler PropertyChanging;
 		
 		public event PropertyChangedEventHandler PropertyChanged;
@@ -26851,6 +26812,18 @@ namespace SIGEA.Classes.Entities
 			{
 				this.PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
 			}
+		}
+		
+		private void attach_ConstruccionInmueble(ConstruccionInmueble entity)
+		{
+			this.SendPropertyChanging();
+			entity.EstructurasTipoConstruccion = this;
+		}
+		
+		private void detach_ConstruccionInmueble(ConstruccionInmueble entity)
+		{
+			this.SendPropertyChanging();
+			entity.EstructurasTipoConstruccion = null;
 		}
 	}
 	
@@ -26872,11 +26845,11 @@ namespace SIGEA.Classes.Entities
 		
 		private string _plafon;
 		
+		private EntitySet<ConstruccionInmueble> _ConstruccionInmueble;
+		
 		private EntityRef<TipoAcabado> _TipoAcabado;
 		
 		private EntityRef<TipoConstruccion> _TipoConstruccion;
-		
-		private EntityRef<ConstruccionInmueble> _ConstruccionInmueble;
 		
     #region Extensibility Method Definitions
     partial void OnLoaded();
@@ -26898,9 +26871,9 @@ namespace SIGEA.Classes.Entities
 		
 		public AcabadoTipoConstruccion()
 		{
+			this._ConstruccionInmueble = new EntitySet<ConstruccionInmueble>(new Action<ConstruccionInmueble>(this.attach_ConstruccionInmueble), new Action<ConstruccionInmueble>(this.detach_ConstruccionInmueble));
 			this._TipoAcabado = default(EntityRef<TipoAcabado>);
 			this._TipoConstruccion = default(EntityRef<TipoConstruccion>);
-			this._ConstruccionInmueble = default(EntityRef<ConstruccionInmueble>);
 			OnCreated();
 		}
 		
@@ -27036,6 +27009,19 @@ namespace SIGEA.Classes.Entities
 			}
 		}
 		
+		[Association(Name="AcabadoTipoConstruccion_ConstruccionInmueble", Storage="_ConstruccionInmueble", ThisKey="idConstruccion", OtherKey="idConstruccion")]
+		public EntitySet<ConstruccionInmueble> ConstruccionInmueble
+		{
+			get
+			{
+				return this._ConstruccionInmueble;
+			}
+			set
+			{
+				this._ConstruccionInmueble.Assign(value);
+			}
+		}
+		
 		[Association(Name="TipoAcabado_AcabadoTipoConstruccion", Storage="_TipoAcabado", ThisKey="idTipoAcabado", OtherKey="idTipoAcabado", IsForeignKey=true)]
 		public TipoAcabado TipoAcabado
 		{
@@ -27106,40 +27092,6 @@ namespace SIGEA.Classes.Entities
 			}
 		}
 		
-		[Association(Name="ConstruccionInmueble_AcabadoTipoConstruccion", Storage="_ConstruccionInmueble", ThisKey="idConstruccion", OtherKey="idConstruccion", IsForeignKey=true)]
-		public ConstruccionInmueble ConstruccionInmueble
-		{
-			get
-			{
-				return this._ConstruccionInmueble.Entity;
-			}
-			set
-			{
-				ConstruccionInmueble previousValue = this._ConstruccionInmueble.Entity;
-				if (((previousValue != value) 
-							|| (this._ConstruccionInmueble.HasLoadedOrAssignedValue == false)))
-				{
-					this.SendPropertyChanging();
-					if ((previousValue != null))
-					{
-						this._ConstruccionInmueble.Entity = null;
-						previousValue.AcabadoTipoConstruccion.Remove(this);
-					}
-					this._ConstruccionInmueble.Entity = value;
-					if ((value != null))
-					{
-						value.AcabadoTipoConstruccion.Add(this);
-						this._idConstruccion = value.idConstruccion;
-					}
-					else
-					{
-						this._idConstruccion = default(int);
-					}
-					this.SendPropertyChanged("ConstruccionInmueble");
-				}
-			}
-		}
-		
 		public event PropertyChangingEventHandler PropertyChanging;
 		
 		public event PropertyChangedEventHandler PropertyChanged;
@@ -27158,6 +27110,18 @@ namespace SIGEA.Classes.Entities
 			{
 				this.PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
 			}
+		}
+		
+		private void attach_ConstruccionInmueble(ConstruccionInmueble entity)
+		{
+			this.SendPropertyChanging();
+			entity.AcabadoTipoConstruccion = this;
+		}
+		
+		private void detach_ConstruccionInmueble(ConstruccionInmueble entity)
+		{
+			this.SendPropertyChanging();
+			entity.AcabadoTipoConstruccion = null;
 		}
 	}
 	
@@ -27197,15 +27161,15 @@ namespace SIGEA.Classes.Entities
 		
 		private EntitySet<InstalacionConstruccion> _InstalacionConstruccion;
 		
-		private EntitySet<AcabadoTipoConstruccion> _AcabadoTipoConstruccion;
-		
-		private EntitySet<EstructurasTipoConstruccion> _EstructurasTipoConstruccion;
-		
-		private EntitySet<InstalacionConstruccion> _InstalacionConstruccion1;
-		
-		private EntitySet<InstalacionesTipoConstruccion> _InstalacionesTipoConstruccion;
-		
 		private EntityRef<Inmueble> _Inmueble;
+		
+		private EntityRef<EstructurasTipoConstruccion> _EstructurasTipoConstruccion;
+		
+		private EntityRef<AcabadoTipoConstruccion> _AcabadoTipoConstruccion;
+		
+		private EntityRef<InstalacionConstruccion> _InstalacionConstruccion1;
+		
+		private EntityRef<InstalacionesTipoConstruccion> _InstalacionesTipoConstruccion;
 		
     #region Extensibility Method Definitions
     partial void OnLoaded();
@@ -27243,11 +27207,11 @@ namespace SIGEA.Classes.Entities
 		{
 			this._TipoConstruccion = new EntitySet<TipoConstruccion>(new Action<TipoConstruccion>(this.attach_TipoConstruccion), new Action<TipoConstruccion>(this.detach_TipoConstruccion));
 			this._InstalacionConstruccion = new EntitySet<InstalacionConstruccion>(new Action<InstalacionConstruccion>(this.attach_InstalacionConstruccion), new Action<InstalacionConstruccion>(this.detach_InstalacionConstruccion));
-			this._AcabadoTipoConstruccion = new EntitySet<AcabadoTipoConstruccion>(new Action<AcabadoTipoConstruccion>(this.attach_AcabadoTipoConstruccion), new Action<AcabadoTipoConstruccion>(this.detach_AcabadoTipoConstruccion));
-			this._EstructurasTipoConstruccion = new EntitySet<EstructurasTipoConstruccion>(new Action<EstructurasTipoConstruccion>(this.attach_EstructurasTipoConstruccion), new Action<EstructurasTipoConstruccion>(this.detach_EstructurasTipoConstruccion));
-			this._InstalacionConstruccion1 = new EntitySet<InstalacionConstruccion>(new Action<InstalacionConstruccion>(this.attach_InstalacionConstruccion1), new Action<InstalacionConstruccion>(this.detach_InstalacionConstruccion1));
-			this._InstalacionesTipoConstruccion = new EntitySet<InstalacionesTipoConstruccion>(new Action<InstalacionesTipoConstruccion>(this.attach_InstalacionesTipoConstruccion), new Action<InstalacionesTipoConstruccion>(this.detach_InstalacionesTipoConstruccion));
 			this._Inmueble = default(EntityRef<Inmueble>);
+			this._EstructurasTipoConstruccion = default(EntityRef<EstructurasTipoConstruccion>);
+			this._AcabadoTipoConstruccion = default(EntityRef<AcabadoTipoConstruccion>);
+			this._InstalacionConstruccion1 = default(EntityRef<InstalacionConstruccion>);
+			this._InstalacionesTipoConstruccion = default(EntityRef<InstalacionesTipoConstruccion>);
 			OnCreated();
 		}
 		
@@ -27262,6 +27226,10 @@ namespace SIGEA.Classes.Entities
 			{
 				if ((this._idConstruccion != value))
 				{
+					if (this._EstructurasTipoConstruccion.HasLoadedOrAssignedValue)
+					{
+						throw new System.Data.Linq.ForeignKeyReferenceAlreadyHasValueException();
+					}
 					this.OnidConstruccionChanging(value);
 					this.SendPropertyChanging();
 					this._idConstruccion = value;
@@ -27541,58 +27509,6 @@ namespace SIGEA.Classes.Entities
 			}
 		}
 		
-		[Association(Name="ConstruccionInmueble_AcabadoTipoConstruccion", Storage="_AcabadoTipoConstruccion", ThisKey="idConstruccion", OtherKey="idConstruccion")]
-		public EntitySet<AcabadoTipoConstruccion> AcabadoTipoConstruccion
-		{
-			get
-			{
-				return this._AcabadoTipoConstruccion;
-			}
-			set
-			{
-				this._AcabadoTipoConstruccion.Assign(value);
-			}
-		}
-		
-		[Association(Name="ConstruccionInmueble_EstructurasTipoConstruccion", Storage="_EstructurasTipoConstruccion", ThisKey="idConstruccion", OtherKey="idConstruccion")]
-		public EntitySet<EstructurasTipoConstruccion> EstructurasTipoConstruccion
-		{
-			get
-			{
-				return this._EstructurasTipoConstruccion;
-			}
-			set
-			{
-				this._EstructurasTipoConstruccion.Assign(value);
-			}
-		}
-		
-		[Association(Name="ConstruccionInmueble_InstalacionConstruccion1", Storage="_InstalacionConstruccion1", ThisKey="idConstruccion", OtherKey="idConstruccion")]
-		public EntitySet<InstalacionConstruccion> InstalacionConstruccion1
-		{
-			get
-			{
-				return this._InstalacionConstruccion1;
-			}
-			set
-			{
-				this._InstalacionConstruccion1.Assign(value);
-			}
-		}
-		
-		[Association(Name="ConstruccionInmueble_InstalacionesTipoConstruccion", Storage="_InstalacionesTipoConstruccion", ThisKey="idConstruccion", OtherKey="idConstruccion")]
-		public EntitySet<InstalacionesTipoConstruccion> InstalacionesTipoConstruccion
-		{
-			get
-			{
-				return this._InstalacionesTipoConstruccion;
-			}
-			set
-			{
-				this._InstalacionesTipoConstruccion.Assign(value);
-			}
-		}
-		
 		[Association(Name="Inmueble_ConstruccionInmueble", Storage="_Inmueble", ThisKey="idInmueble", OtherKey="idInmueble", IsForeignKey=true)]
 		public Inmueble Inmueble
 		{
@@ -27623,6 +27539,142 @@ namespace SIGEA.Classes.Entities
 						this._idInmueble = default(int);
 					}
 					this.SendPropertyChanged("Inmueble");
+				}
+			}
+		}
+		
+		[Association(Name="EstructurasTipoConstruccion_ConstruccionInmueble", Storage="_EstructurasTipoConstruccion", ThisKey="idConstruccion", OtherKey="idConstruccion", IsForeignKey=true)]
+		public EstructurasTipoConstruccion EstructurasTipoConstruccion
+		{
+			get
+			{
+				return this._EstructurasTipoConstruccion.Entity;
+			}
+			set
+			{
+				EstructurasTipoConstruccion previousValue = this._EstructurasTipoConstruccion.Entity;
+				if (((previousValue != value) 
+							|| (this._EstructurasTipoConstruccion.HasLoadedOrAssignedValue == false)))
+				{
+					this.SendPropertyChanging();
+					if ((previousValue != null))
+					{
+						this._EstructurasTipoConstruccion.Entity = null;
+						previousValue.ConstruccionInmueble.Remove(this);
+					}
+					this._EstructurasTipoConstruccion.Entity = value;
+					if ((value != null))
+					{
+						value.ConstruccionInmueble.Add(this);
+						this._idConstruccion = value.idConstruccion;
+					}
+					else
+					{
+						this._idConstruccion = default(int);
+					}
+					this.SendPropertyChanged("EstructurasTipoConstruccion");
+				}
+			}
+		}
+		
+		[Association(Name="AcabadoTipoConstruccion_ConstruccionInmueble", Storage="_AcabadoTipoConstruccion", ThisKey="idConstruccion", OtherKey="idConstruccion", IsForeignKey=true)]
+		public AcabadoTipoConstruccion AcabadoTipoConstruccion
+		{
+			get
+			{
+				return this._AcabadoTipoConstruccion.Entity;
+			}
+			set
+			{
+				AcabadoTipoConstruccion previousValue = this._AcabadoTipoConstruccion.Entity;
+				if (((previousValue != value) 
+							|| (this._AcabadoTipoConstruccion.HasLoadedOrAssignedValue == false)))
+				{
+					this.SendPropertyChanging();
+					if ((previousValue != null))
+					{
+						this._AcabadoTipoConstruccion.Entity = null;
+						previousValue.ConstruccionInmueble.Remove(this);
+					}
+					this._AcabadoTipoConstruccion.Entity = value;
+					if ((value != null))
+					{
+						value.ConstruccionInmueble.Add(this);
+						this._idConstruccion = value.idConstruccion;
+					}
+					else
+					{
+						this._idConstruccion = default(int);
+					}
+					this.SendPropertyChanged("AcabadoTipoConstruccion");
+				}
+			}
+		}
+		
+		[Association(Name="InstalacionConstruccion_ConstruccionInmueble", Storage="_InstalacionConstruccion1", ThisKey="idConstruccion", OtherKey="idConstruccion", IsForeignKey=true)]
+		public InstalacionConstruccion InstalacionConstruccion1
+		{
+			get
+			{
+				return this._InstalacionConstruccion1.Entity;
+			}
+			set
+			{
+				InstalacionConstruccion previousValue = this._InstalacionConstruccion1.Entity;
+				if (((previousValue != value) 
+							|| (this._InstalacionConstruccion1.HasLoadedOrAssignedValue == false)))
+				{
+					this.SendPropertyChanging();
+					if ((previousValue != null))
+					{
+						this._InstalacionConstruccion1.Entity = null;
+						previousValue.ConstruccionInmueble1.Remove(this);
+					}
+					this._InstalacionConstruccion1.Entity = value;
+					if ((value != null))
+					{
+						value.ConstruccionInmueble1.Add(this);
+						this._idConstruccion = value.idConstruccion;
+					}
+					else
+					{
+						this._idConstruccion = default(int);
+					}
+					this.SendPropertyChanged("InstalacionConstruccion1");
+				}
+			}
+		}
+		
+		[Association(Name="InstalacionesTipoConstruccion_ConstruccionInmueble", Storage="_InstalacionesTipoConstruccion", ThisKey="idConstruccion", OtherKey="idConstruccion", IsForeignKey=true)]
+		public InstalacionesTipoConstruccion InstalacionesTipoConstruccion
+		{
+			get
+			{
+				return this._InstalacionesTipoConstruccion.Entity;
+			}
+			set
+			{
+				InstalacionesTipoConstruccion previousValue = this._InstalacionesTipoConstruccion.Entity;
+				if (((previousValue != value) 
+							|| (this._InstalacionesTipoConstruccion.HasLoadedOrAssignedValue == false)))
+				{
+					this.SendPropertyChanging();
+					if ((previousValue != null))
+					{
+						this._InstalacionesTipoConstruccion.Entity = null;
+						previousValue.ConstruccionInmueble.Remove(this);
+					}
+					this._InstalacionesTipoConstruccion.Entity = value;
+					if ((value != null))
+					{
+						value.ConstruccionInmueble.Add(this);
+						this._idConstruccion = value.idConstruccion;
+					}
+					else
+					{
+						this._idConstruccion = default(int);
+					}
+					this.SendPropertyChanged("InstalacionesTipoConstruccion");
 				}
 			}
 		}
@@ -27666,54 +27718,6 @@ namespace SIGEA.Classes.Entities
 		}
 		
 		private void detach_InstalacionConstruccion(InstalacionConstruccion entity)
-		{
-			this.SendPropertyChanging();
-			entity.ConstruccionInmueble = null;
-		}
-		
-		private void attach_AcabadoTipoConstruccion(AcabadoTipoConstruccion entity)
-		{
-			this.SendPropertyChanging();
-			entity.ConstruccionInmueble = this;
-		}
-		
-		private void detach_AcabadoTipoConstruccion(AcabadoTipoConstruccion entity)
-		{
-			this.SendPropertyChanging();
-			entity.ConstruccionInmueble = null;
-		}
-		
-		private void attach_EstructurasTipoConstruccion(EstructurasTipoConstruccion entity)
-		{
-			this.SendPropertyChanging();
-			entity.ConstruccionInmueble = this;
-		}
-		
-		private void detach_EstructurasTipoConstruccion(EstructurasTipoConstruccion entity)
-		{
-			this.SendPropertyChanging();
-			entity.ConstruccionInmueble = null;
-		}
-		
-		private void attach_InstalacionConstruccion1(InstalacionConstruccion entity)
-		{
-			this.SendPropertyChanging();
-			entity.ConstruccionInmueble1 = this;
-		}
-		
-		private void detach_InstalacionConstruccion1(InstalacionConstruccion entity)
-		{
-			this.SendPropertyChanging();
-			entity.ConstruccionInmueble1 = null;
-		}
-		
-		private void attach_InstalacionesTipoConstruccion(InstalacionesTipoConstruccion entity)
-		{
-			this.SendPropertyChanging();
-			entity.ConstruccionInmueble = this;
-		}
-		
-		private void detach_InstalacionesTipoConstruccion(InstalacionesTipoConstruccion entity)
 		{
 			this.SendPropertyChanging();
 			entity.ConstruccionInmueble = null;
