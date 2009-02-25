@@ -53,18 +53,39 @@
             loadDatosEstructuras();
             loadDatosAcabados();
             loadDatosInstalaciones();
+            loadDatosInstalacionesAdicionales();
         }
         function loadDatosEstructuras() {
-            //TODO: Cargar datos de estructuras
-            loadForm_Success() // Temporal
+            var callBackList = new Array();
+            
+            callBackList[0] = loadForm_Success;
+            callBackList[1] = setDatosEstructuras;
+            
+            loadEstrucutrasAsync(idAvaluo, callBackList);
         }
         function loadDatosAcabados() {
-            //TODO: Cargar datos de acabados
-            loadForm_Success() // Temporal
+            var callBackList = new Array();
+            
+            callBackList[0] = loadForm_Success;
+            callBackList[1] = setDatosAcabados;
+            
+            loadAcabadosAsync(idAvaluo, callBackList);
         }
         function loadDatosInstalaciones() {
-            //TODO: Cargar datos de instalaciones
-            loadForm_Success() // Temporal
+            var callBackList = new Array();
+            
+            callBackList[0] = loadForm_Success;
+            callBackList[1] = setDatosInstalaciones;
+            
+            loadInstalacionesAsync(idAvaluo, callBackList);
+        }
+        function loadDatosInstalaciones() {
+            var callBackList = new Array();
+            
+            callBackList[0] = loadForm_Success;
+            callBackList[1] = setDatosInstalacionesAdicionles;
+            
+            loadInstalacionesAdicionalesAsync(idAvaluo, callBackList);
         }
         function loadForm_Success() {
             if (num_bloques_cargados != undefined) {
@@ -87,6 +108,11 @@
                 saveDatosInstalaciones();
         }
         function saveDatosEstructuras() {
+            saveDatosEstrucutrasAsync(
+                idAvaluo
+                , getDatosEstructuras()
+                , saveDatosEstructuras_Success()
+                );
         }
         function saveDatosEstructuras_Success() {
             terminateEdit("form_estructuras",
@@ -96,6 +122,11 @@
         }
 
         function saveDatosAcabados() {
+            saveDatosAcabadosAsync(
+                idAvaluo
+                , getDatosAcabados()
+                , saveDatosAcabados_Success()
+                );
         }
         function saveDatosAcabados_Success() {
             terminateEdit("form_acabados",
@@ -105,6 +136,12 @@
         }
 
         function saveDatosInstalaciones() {
+            saveDatosInstalacionesConstruccionAsync(
+                idAvaluo
+                , getDatosInstalaciones()
+                , getDatosInstalacionesAdicionales()
+                , saveDatosInstalaciones_Success()
+                );
         }
         function saveDatosInstalaciones_Success() {
             terminateEdit("form_instalaciones",
