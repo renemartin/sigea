@@ -60,7 +60,10 @@
             $get("<%= condominio_TBox.ClientID%>")      // 4
         );
         this.validator = new ControlValidator(this.controls);
-        this.validator.addOptionalField(3);
+        this.validator.addOptionalField(0);
+        this.validator.addOptionalField(1);
+        this.validator.addOptionalField(2);
+        this.validator.addOptionalField(3)
         this.validator.addOptionalField(4);
                 
         // DataBindings

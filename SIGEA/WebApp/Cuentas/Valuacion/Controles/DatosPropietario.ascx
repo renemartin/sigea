@@ -34,6 +34,7 @@
 
         // Inicialización
         if (typeof (Propietario_Init) == "undefined") {
+            Propietario.prototype.fillData = fillData;
             Propietario.prototype.getData = getData;
             Propietario.prototype.setData = setData;
             Propietario.prototype.validate = validate;
@@ -46,6 +47,13 @@
             $get("<%= CURP_TBox.ClientID %>")       // 2
         );
         this.validator = new ControlValidator(this.controls);
+        this.validator.addOptionalField(1);
+        this.validator.addOptionalField(2);
+
+        // Llenado de datos
+        function fillData() {
+            direccionPropietario_Ctrl.fillData()
+        }
         
         // DataBindings
         function getData() {
@@ -69,7 +77,7 @@
                 direccionPropietario_Ctrl.setData(data_set[1]);
             }
             else {
-                direccionPropietario_Ctrl.fillData();
+                this.fillData();
             }
         }
 

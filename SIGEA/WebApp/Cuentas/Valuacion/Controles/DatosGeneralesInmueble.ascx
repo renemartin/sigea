@@ -126,13 +126,15 @@
                 direccionInmueble_Ctrl.fillData();
             }
 
-            this.fillData();
+            fillTipoInmueble("<%= tipoInmueble_DDList.ClientID %>");
+            fillRegimenPropiedad("<%= regimenPropiedad_DDList.ClientID %>");
         }
 
         // Llenado de datos
         function fillData() {
             fillTipoInmueble("<%= tipoInmueble_DDList.ClientID %>");
             fillRegimenPropiedad("<%= regimenPropiedad_DDList.ClientID %>");
+            direccionInmueble_Ctrl.fillData();
         }
 
         // Validación

@@ -45,6 +45,7 @@
         // Inicialización
         if(typeof(Solicitante_Init) == "undefined") {
             Solicitante_Init = true;
+            Solicitante.prototype.fillData = fillData;
             Solicitante.prototype.getData = getData;
             Solicitante.prototype.setData = setData;
             Solicitante.prototype.validate = validate;
@@ -61,6 +62,11 @@
         this.validator.addOptionalField(1);        
         this.validator.addOptionalField(2);
         this.validator.addOptionalField(3);
+
+        // Llenado de datos
+        function fillData() {
+            direccionSolicitante_Ctrl.fillData();
+        }
 
         // DataBindings
         function getData() {
@@ -88,7 +94,7 @@
                 direccionSolicitante_Ctrl.setData(data_set[1]);           
             }
             else {
-                direccionSolicitante_Ctrl.fillData();   
+                this.fillData();   
             }                       
         }
         
