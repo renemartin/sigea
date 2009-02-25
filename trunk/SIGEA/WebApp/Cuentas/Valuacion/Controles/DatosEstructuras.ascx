@@ -3,32 +3,32 @@
 
 <script type="text/javascript">
     // Llenado de datos
-    function fillEstructurasData(idClase) {
-        fillMaterial("<%= cimentacion_DDList.ClientID %>", "cimentación");
-        fillMaterial("<%= muros_DDList.ClientID %>", "muros");
-        fillMaterial("<%= escaleras_DDList.ClientID %>", "escaleras");
-        fillMaterial("<%= entrepisosTechos_DDList.ClientID %>", "entrepisos");
-        fillMaterial("<%= trabesColumnas_DDList.ClientID %>", "trabes");        
-    }
+//    function fillEstructurasData(idClase) {
+//        fillMaterial("<%= cimentacion_DDList.ClientID %>", "cimentación");
+//        fillMaterial("<%= muros_DDList.ClientID %>", "muros");
+//        fillMaterial("<%= escaleras_DDList.ClientID %>", "escaleras");
+//        fillMaterial("<%= entrepisosTechos_DDList.ClientID %>", "entrepisos");
+//        fillMaterial("<%= trabesColumnas_DDList.ClientID %>", "trabes");        
+//    }
     
     //mostrar datos
     function setDatosEstructuras(data) {
-        $get("<%= cimentacion_DDList.ClientID %>").selectedValue = data.idTipoCimentacion;
-        $get("<%= muros_DDList.ClientID %>").selectedValue = data.idTipoMuros;
-        $get("<%= escaleras_DDList.ClientID %>").selectedValue = data.idTipoEscaleras;
-        $get("<%= entrepisosTechos_DDList.ClientID %>").selectedValue = data.idTipoEntrepisos;
-        $get("<%= trabesColumnas_DDList.ClientID %>").selectedValue = data.idTipoTrabes;
+        $get("<%= cimentacion_TBox.ClientID %>").value = data.cimentacion;
+        $get("<%= muros_TBox.ClientID %>").value = data.muros;
+        $get("<%= escaleras_TBox.ClientID %>").value = data.escaleras;
+        $get("<%= entrepisosTechos_TBox.ClientID %>").value = data.entrepisos;
+        $get("<%= trabesColumnas_TBox.ClientID %>").value = data.trabes;
     }
     
     //guardar datos
     function getDatosEstructuras() {
         var data = new Object();
         
-        data.idTipoCimentacion = $get("<%= cimentacion_DDList.ClientID %>").selectedValue;
-        data.idTipoMuros = $get("<%= muros_DDList.ClientID %>").selectedValue;
-        data.idTipoEscaleras = $get("<%= escaleras_DDList.ClientID %>").selectedValue;
-        data.idTipoEntrepisos = $get("<%= entrepisosTechos_DDList.ClientID %>").selectedValue;
-        data.idTipoTrabes = $get("<%= trabesColumnas_DDList.ClientID %>").selectedValue;
+        data.cimentacion = $get("<%= cimentacion_TBox.ClientID %>").value;
+        data.muros = $get("<%= muros_TBox.ClientID %>").value;
+        data.escaleras = $get("<%= escaleras_TBox.ClientID %>").value;
+        data.entrepisos = $get("<%= entrepisosTechos_TBox.ClientID %>").value;
+        data.trabes = $get("<%= trabesColumnas_TBox.ClientID %>").value;
         
         return data;
     }
@@ -40,7 +40,7 @@
             Cimentación:
         </td>
         <td class="celdaValor">
-            <asp:DropDownList ID="cimentacion_DDList" runat="server"></asp:DropDownList>
+            <asp:TextBox ID="cimentacion_TBox" runat="server" TextMode="MultiLine" SkinID="MultiLine"></asp:TextBox>
         </td>
     </tr>
     <tr>
@@ -48,7 +48,7 @@
             Muros:
         </td>
         <td class="celdaValor">
-            <asp:DropDownList ID="muros_DDList" runat="server"></asp:DropDownList>
+            <asp:TextBox ID="muros_TBox" runat="server" TextMode="MultiLine" SkinID="MultiLine"></asp:TextBox>
         </td>
     </tr>
     <tr>
@@ -56,7 +56,7 @@
             Escaleras:
         </td>
         <td class="celdaValor">
-            <asp:DropDownList ID="escaleras_DDList" runat="server"></asp:DropDownList>
+            <asp:TextBox ID="escaleras_TBox" runat="server" TextMode="MultiLine" SkinID="MultiLine"></asp:TextBox>
         </td>
     </tr>
     <tr>
@@ -64,7 +64,7 @@
             Entrepisos y techos:
         </td>
         <td class="celdaValor">
-            <asp:DropDownList ID="entrepisosTechos_DDList" runat="server"></asp:DropDownList>
+            <asp:TextBox ID="entrepisosTechos_TBox" runat="server" TextMode="MultiLine" SkinID="MultiLine"></asp:TextBox>
         </td>
     </tr>
     <tr>
@@ -72,7 +72,7 @@
             Trabes y columnas:
         </td>
         <td class="celdaValor">
-            <asp:DropDownList ID="trabesColumnas_DDList" runat="server"></asp:DropDownList>
+            <asp:TextBox ID="trabesColumnas_TBox" runat="server" TextMode="MultiLine" SkinID="MultiLine"></asp:TextBox>
         </td>
     </tr>
     
