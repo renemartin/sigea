@@ -707,7 +707,7 @@ public class EntityWrappers : System.Web.Services.WebService
 
     #region Elementos
     [WebMethod]
-    public  void SaveDatosEstructuras(
+    public  void SaveEstructuras(
         int idAvaluo
         , Entity datosEstructuras
         )
@@ -725,7 +725,7 @@ public class EntityWrappers : System.Web.Services.WebService
     }
 
     [WebMethod]
-    public void SaveDatosAcabados(
+    public void SaveAcabados(
         int idAvaluo
         , Entity[] datosAcabados
         )
@@ -743,7 +743,7 @@ public class EntityWrappers : System.Web.Services.WebService
     }
 
     [WebMethod]
-    public void SaveDatosInstalacionesContruccion(
+    public void SaveInstalacionesConstruccion(
         int idAvaluo
         , Entity datosInstalacionesTipoConstruccion
         , Entity[] datosInstalacionConstruccion
