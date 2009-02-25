@@ -705,6 +705,82 @@ public class EntityWrappers : System.Web.Services.WebService
     }
     #endregion
 
+    #region Elementos
+    [WebMethod]
+
+   public  void SaveDatosElementosConstrucciones(
+        int idAvaluo
+        , Entity datosEstructuras
+        , Entity[] datosAcabados
+        , Entity datosInstalacionesTipoConstruccion
+        , Entity[] datosInstalacionConstruccion
+        , bool comun
+        )
+    {
+        SIGEADataContext data_context = new SIGEADataContext();
+        TipoConstruccion tipo_construccion = TipoConstruccion.GetFromIdAvaluo(data_context, idAvaluo);
+
+        if (tipo_construccion == null)
+        {
+            throw new Exception("El avalúo no cuenta con un tipo de construcción registrado");
+        }
+
+        tipo_construccion.EstructurasTipoConstruccion.SetData(datosEstructuras);
+        AcabadoTipoConstruccion.SetAcabados(tipo_construccion, datosAcabados);
+        tipo_construccion.InstalacionesTipoConstruccion.SetData(datosInstalacionesTipoConstruccion);
+
+        Inmueble inmueble = Inmueble.GetFromIdAvaluo(data_context, idAvaluo);
+        ConstruccionInmueble construccion = ConstruccionInmueble.GetForDataUpdate(inmueble);
+        InstalacionConstruccion.SetInstalacionesConstruccion(construccion, datosInstalacionConstruccion, comun);
+
+        data_context.SubmitChanges();
+    }
+
+    [WebMethod]
+    public Entity LoadEstructuras(int idAvaluo)
+    {
+        TipoConstruccion tipo_construccion = TipoConstruccion.GetFromIdAvaluo(common_context, idAvaluo);
+
+        if (tipo_construccion.ConstruccionInmueble == null)
+            return null;
+
+        return tipo_construccion.EstructurasTipoConstruccion.GetData();
+    }
+
+    [WebMethod]
+    public Entity[] LoadAcabados(int idAvaluo)
+    {
+        TipoConstruccion tipo_construccion = TipoConstruccion.GetFromIdAvaluo(common_context, idAvaluo);
+
+        if (tipo_construccion.ConstruccionInmueble == null)
+            return null;
+
+        return AcabadoTipoConstruccion.GetAcabados(tipo_construccion);
+    }
+
+    [WebMethod]
+    public Entity LoadInstalacionTipoConstruccion(int idAvaluo)
+    {
+        TipoConstruccion tipo_construccion = TipoConstruccion.GetFromIdAvaluo(common_context, idAvaluo);
+
+        if (tipo_construccion.ConstruccionInmueble == null)
+            return null;
+
+        return tipo_construccion.InstalacionesTipoConstruccion.GetData();
+    }
+
+    [WebMethod]
+    public Entity[] LoadInstalacionConstruccion(int idAvaluo, bool comun)
+    {
+        ConstruccionInmueble construccion = ConstruccionInmueble.GetFromIdAvaluo(common_context, idAvaluo);
+
+        if (construccion.InstalacionConstruccion == null)
+            return null;
+
+        return InstalacionConstruccion.GetInstalacionesConstruccion(construccion, comun);
+    }
+    #endregion
+
     #endregion
 
     #region Comparables
