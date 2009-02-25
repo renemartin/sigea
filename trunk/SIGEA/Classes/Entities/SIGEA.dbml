@@ -1201,6 +1201,7 @@
       <Column Name="herreria" Type="System.String" DbType="NVarChar(300) NOT NULL" CanBeNull="false" />
       <Column Name="canceleria" Type="System.String" DbType="NVarChar(300) NOT NULL" CanBeNull="false" />
       <Association Name="TipoConstruccion_InstalacionesTipoConstruccion" Member="TipoConstruccion" ThisKey="idConstruccion,numeroTipo" OtherKey="idConstruccion,numeroTipo" Type="TipoConstruccion" IsForeignKey="true" DeleteRule="CASCADE" DeleteOnNull="true" />
+      <Association Name="ConstruccionInmueble_InstalacionesTipoConstruccion" Member="ConstruccionInmueble" ThisKey="idConstruccion" OtherKey="idConstruccion" Type="ConstruccionInmueble" IsForeignKey="true" />
     </Type>
   </Table>
   <Table Name="dbo.InstalacionConstruccion" Member="InstalacionConstruccion">
@@ -1214,6 +1215,7 @@
       <Column Name="edad" Type="System.Double" DbType="Float NOT NULL" CanBeNull="false" />
       <Column Name="comun" Type="System.Boolean" DbType="Bit NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
       <Association Name="ConstruccionInmueble_InstalacionConstruccion" Member="ConstruccionInmueble" ThisKey="idConstruccion" OtherKey="idConstruccion" Type="ConstruccionInmueble" IsForeignKey="true" DeleteRule="CASCADE" DeleteOnNull="true" />
+      <Association Name="ConstruccionInmueble_InstalacionConstruccion1" Member="ConstruccionInmueble1" ThisKey="idConstruccion" OtherKey="idConstruccion" Type="ConstruccionInmueble" IsForeignKey="true" />
     </Type>
   </Table>
   <Table Name="dbo.EstructurasTipoConstruccion" Member="EstructurasTipoConstruccion">
@@ -1226,6 +1228,7 @@
       <Column Name="trabes" Type="System.String" DbType="NVarChar(400) NOT NULL" CanBeNull="false" />
       <Column Name="escaleras" Type="System.String" DbType="NVarChar(400) NOT NULL" CanBeNull="false" />
       <Association Name="TipoConstruccion_EstructurasTipoConstruccion" Member="TipoConstruccion" ThisKey="idConstruccion,numeroTipo" OtherKey="idConstruccion,numeroTipo" Type="TipoConstruccion" IsForeignKey="true" DeleteRule="CASCADE" DeleteOnNull="true" />
+      <Association Name="ConstruccionInmueble_EstructurasTipoConstruccion" Member="ConstruccionInmueble" ThisKey="idConstruccion" OtherKey="idConstruccion" Type="ConstruccionInmueble" IsForeignKey="true" />
     </Type>
   </Table>
   <Table Name="dbo.AcabadoTipoConstruccion" Member="AcabadoTipoConstruccion">
@@ -1238,6 +1241,7 @@
       <Column Name="plafon" Type="System.String" DbType="NVarChar(500) NOT NULL" CanBeNull="false" />
       <Association Name="TipoAcabado_AcabadoTipoConstruccion" Member="TipoAcabado" ThisKey="idTipoAcabado" OtherKey="idTipoAcabado" Type="TipoAcabado" IsForeignKey="true" />
       <Association Name="TipoConstruccion_AcabadoTipoConstruccion" Member="TipoConstruccion" ThisKey="idConstruccion,numeroTipo" OtherKey="idConstruccion,numeroTipo" Type="TipoConstruccion" IsForeignKey="true" DeleteRule="CASCADE" DeleteOnNull="true" />
+      <Association Name="ConstruccionInmueble_AcabadoTipoConstruccion" Member="ConstruccionInmueble" ThisKey="idConstruccion" OtherKey="idConstruccion" Type="ConstruccionInmueble" IsForeignKey="true" />
     </Type>
   </Table>
   <Table Name="dbo.ConstruccionInmueble" Member="ConstruccionInmueble">
@@ -1257,6 +1261,10 @@
       <Column Name="unidadesRentables" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
       <Association Name="ConstruccionInmueble_TipoConstruccion" Member="TipoConstruccion" ThisKey="idConstruccion" OtherKey="idConstruccion" Type="TipoConstruccion" />
       <Association Name="ConstruccionInmueble_InstalacionConstruccion" Member="InstalacionConstruccion" ThisKey="idConstruccion" OtherKey="idConstruccion" Type="InstalacionConstruccion" />
+      <Association Name="ConstruccionInmueble_AcabadoTipoConstruccion" Member="AcabadoTipoConstruccion" ThisKey="idConstruccion" OtherKey="idConstruccion" Type="AcabadoTipoConstruccion" />
+      <Association Name="ConstruccionInmueble_EstructurasTipoConstruccion" Member="EstructurasTipoConstruccion" ThisKey="idConstruccion" OtherKey="idConstruccion" Type="EstructurasTipoConstruccion" />
+      <Association Name="ConstruccionInmueble_InstalacionConstruccion1" Member="InstalacionConstruccion1" ThisKey="idConstruccion" OtherKey="idConstruccion" Type="InstalacionConstruccion" />
+      <Association Name="ConstruccionInmueble_InstalacionesTipoConstruccion" Member="InstalacionesTipoConstruccion" ThisKey="idConstruccion" OtherKey="idConstruccion" Type="InstalacionesTipoConstruccion" />
       <Association Name="Inmueble_ConstruccionInmueble" Member="Inmueble" ThisKey="idInmueble" OtherKey="idInmueble" Type="Inmueble" IsForeignKey="true" />
     </Type>
   </Table>
