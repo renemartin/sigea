@@ -12,7 +12,7 @@ public partial class Cuentas_Valuacion_Controles_DatosConstruccionesClasificacio
 
     private void AddAttributes()
     {
-        agregarFila_ImBtn.OnClientClick = "addClonedRow('tabla_construcciones'); return false;";
-        removerFila_ImBtn.OnClientClick = "removeClonedRow('tabla_construcciones'); return false;";
+        agregarFila_ImBtn.OnClientClick = ID + ".addConstruccionRow(); return false;";
+        removerFila_ImBtn.OnClientClick = ID + ".removeConstruccionRow(); return false;";
     }
 }

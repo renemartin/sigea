@@ -2,55 +2,6 @@
     Inherits="Cuentas_Valuacion_Controles_DatosDistribucion" %>
 <link href="~/App_Themes/Default/DefaultStyle.css" rel="stylesheet" type="text/css" />
 
-<script type="text/javascript">
-    //mostrar datos
-    function setDatosUsoActualDistribucion(data) {
-        if(data != null ) {
-            $get("<%= tipoEstacionamiento_DDList.ClientID %>").value = data.idTipoEstacionamiento;
-            $get("<%= cupoCarros_TBox.ClientID %>").value = data.cupoEstacionamiento;
-            $get("<%= jardin_CBox.ClientID %>").checked = data.jardinesFrontales;
-            $get("<%= jardinFondo_CBox.ClientID %>").checked = data.jardinesFondo;
-            $get("<%= jardinLateral_CBox.ClientID %>").checked = data.jardinesLateral;
-            $get("<%= elevador_CBox.ClientID %>").checked = data.elevador;
-            $get("<%= banosCompletos_TBox.ClientID %>").value = data.numBaniosCompletos;
-            $get("<%= banosMedios_TBox.ClientID %>").value = data.numBaniosMedios;
-            $get("<%= cocina_CBox.ClientID %>").checked = data.cocina;
-            $get("<%= comedor_CBox.ClientID %>").checked = data.comedor;
-            $get("<%= despensa_CBox.ClientID %>").checked = data.despensa;
-            $get("<%= mueblesCocina_RBtn.ClientID %>").checked = data.cocinaMuebles;
-            $get("<%= cocinaIntegral_RBtn.ClientID %>").checked = data.cocinaIntegral;
-        }
-    }
-
-    //guardar datos Tabla UsoActualInmueble
-    function getDatosUsoActualDistribucion() {
-        var data = new Object();
-
-        data.idTipoEstacionamiento = $get("<%= tipoEstacionamiento_DDList.ClientID %>").value;
-        data.cupoEstacionamiento = $get("<%= cupoCarros_TBox.ClientID %>").value;
-        data.jardinesFrontales = $get("<%= jardin_CBox.ClientID %>").checked;
-        data.jardinesFondo = $get("<%= jardinFondo_CBox.ClientID %>").checked;
-        data.jardinesLateral = $get("<%= jardinLateral_CBox.ClientID %>").checked;
-        data.elevador = $get("<%= elevador_CBox.ClientID %>").checked;
-        data.numBaniosCompletos = $get("<%= banosCompletos_TBox.ClientID %>").value;
-        data.numBaniosMedios = $get("<%= banosMedios_TBox.ClientID %>").value;
-        data.cocina = $get("<%= cocina_CBox.ClientID %>").checked;
-        data.cocinaMuebles = $get("<%= mueblesCocina_RBtn.ClientID %>").checked;
-        data.cocinaIntegral = $get("<%= cocinaIntegral_RBtn.ClientID %>").checked;
-        data.comedor = $get("<%= comedor_CBox.ClientID %>").checked;
-        data.despensa = $get("<%= despensa_CBox.ClientID %>").checked;
-
-        return data;
-    }
-
-    // Validación de selecciones
-    function setCocinaSelection(selected) {
-        setVisibility($get("seccion_muebles_cocina"), selected);
-        setVisibility($get("seccion_tipo_cocina"), selected);
-    }
-    
-</script>
-
 <table>
     <tr>
         <td class="celdaTitulo">
@@ -133,3 +84,82 @@
         </td>
     </tr>
 </table>
+
+<script type="text/javascript">
+    function UsoActualDistribucion() {
+
+        // Inicialización
+        if (typeof (UsoActualDistribucion_Init) == "undefined") {
+            UsoActualDistribucion_Init = true;
+            UsoActualDistribucion.prototype.setData = setData;
+            UsoActualDistribucion.prototype.getData = getData;
+            UsoActualDistribucion.prototype.validate = validate;
+        }
+        
+        // Inicialización de validador
+        this.controls = new Array(
+            $get("<%= tipoEstacionamiento_DDList.ClientID %>"), // 0
+            $get("<%= cupoCarros_TBox.ClientID %>"),            // 1
+            $get("<%= banosCompletos_TBox.ClientID %>"),        // 2
+            $get("<%= banosMedios_TBox.ClientID %>")            // 3
+        );
+        this.validator = new ControlValidator(this.controls);
+        this.validator.addOptionalField(1);
+        this.validator.addNumericField(1, false);
+        this.validator.addNumericField(2, false);
+        this.validator.addNumericField(3, false);
+
+        // Databindings
+        function setData(data) {
+            if (data != null) {
+                $get("<%= tipoEstacionamiento_DDList.ClientID %>").value = data.idTipoEstacionamiento;
+                $get("<%= cupoCarros_TBox.ClientID %>").value = data.cupoEstacionamiento;
+                $get("<%= jardin_CBox.ClientID %>").checked = data.jardinesFrontales;
+                $get("<%= jardinFondo_CBox.ClientID %>").checked = data.jardinesFondo;
+                $get("<%= jardinLateral_CBox.ClientID %>").checked = data.jardinesLateral;
+                $get("<%= elevador_CBox.ClientID %>").checked = data.elevador;
+                $get("<%= banosCompletos_TBox.ClientID %>").value = data.numBaniosCompletos;
+                $get("<%= banosMedios_TBox.ClientID %>").value = data.numBaniosMedios;
+                $get("<%= cocina_CBox.ClientID %>").checked = data.cocina;
+                $get("<%= comedor_CBox.ClientID %>").checked = data.comedor;
+                $get("<%= despensa_CBox.ClientID %>").checked = data.despensa;
+                $get("<%= mueblesCocina_RBtn.ClientID %>").checked = data.cocinaMuebles;
+                $get("<%= cocinaIntegral_RBtn.ClientID %>").checked = data.cocinaIntegral;
+            }
+        }
+
+        function getData() {
+            var data = new Object();
+
+            data.idTipoEstacionamiento = $get("<%= tipoEstacionamiento_DDList.ClientID %>").value;
+            data.cupoEstacionamiento = $get("<%= cupoCarros_TBox.ClientID %>").value;
+            data.jardinesFrontales = $get("<%= jardin_CBox.ClientID %>").checked;
+            data.jardinesFondo = $get("<%= jardinFondo_CBox.ClientID %>").checked;
+            data.jardinesLateral = $get("<%= jardinLateral_CBox.ClientID %>").checked;
+            data.elevador = $get("<%= elevador_CBox.ClientID %>").checked;
+            data.numBaniosCompletos = $get("<%= banosCompletos_TBox.ClientID %>").value;
+            data.numBaniosMedios = $get("<%= banosMedios_TBox.ClientID %>").value;
+            data.cocina = $get("<%= cocina_CBox.ClientID %>").checked;
+            data.cocinaMuebles = $get("<%= mueblesCocina_RBtn.ClientID %>").checked;
+            data.cocinaIntegral = $get("<%= cocinaIntegral_RBtn.ClientID %>").checked;
+            data.comedor = $get("<%= comedor_CBox.ClientID %>").checked;
+            data.despensa = $get("<%= despensa_CBox.ClientID %>").checked;
+
+            return data;
+        }
+
+        // Validación
+        function validate() {
+            return this.validator.validate();
+        }
+    }
+
+    // Validación de selecciones
+    function setCocinaSelection(selected) {
+        setVisibility($get("seccion_muebles_cocina"), selected);
+        setVisibility($get("seccion_tipo_cocina"), selected);
+    }
+
+    this["<%= ID %>"] = new UsoActualDistribucion();
+    
+</script>

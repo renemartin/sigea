@@ -2,15 +2,6 @@
 <link href="~/App_Themes/Default/DefaultStyle.css" rel="stylesheet" type="text/css" />
 
 <script type="text/javascript">
-    // Llenado de datos
-//    function fillInstalacionesData(idClase) {
-//        fillServicio("<%= instHidraulicas_DDList.ClientID %>", "agua potable");
-//        fillServicio("<%= instSanitaria_DDList.ClientID %>", "drenaje");
-//        fillServicio("<%= instElectricas_DDList.ClientID %>", "electrificación");
-//        fillMaterial("<%= carpinteria_DDList.ClientID %>", "carpintería");
-//        fillMaterial("<%= herreria_DDList.ClientID %>", "herrería");        
-//        fillMaterial("<%= canceleria_DDList.ClientID %>", "cancelería"); 
-//    }
     
     //mostrar datos
     function setDatosInstalaciones(data) {

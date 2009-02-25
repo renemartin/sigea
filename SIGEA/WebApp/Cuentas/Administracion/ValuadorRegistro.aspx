@@ -11,28 +11,29 @@
     <script type="text/javascript">
         // Variables
         var idValuador = 0;
+        var validator = null;
 
         // Databindings
         function getDatosPersonales() {
             var data = new Object();
             var fecha_alta = $get("<%= fechaAlta_TBox.ClientID %>").value;
 
-            data["nombre"] = $get("<%= nombre_TBox.ClientID %>").value;
-            data["idTipoValuador"] = $get("<%= tipo_DDList.ClientID %>").value;
-            data["nombreAsistente"] = $get("<%= nombreAsistente_TBox.ClientID %>").value;
-            data["emailAsistente"] = $get("<%= emailAsistente_TBox.ClientID %>").value;
-            data["externo"] = $get("<%= externo_CBox.ClientID %>").checked;
-            data["fechaAlta"] = fecha_alta == "" ? null : getDate(fecha_alta);
+            data.nombre = $get("<%= nombre_TBox.ClientID %>").value;
+            data.idTipoValuador = $get("<%= tipo_DDList.ClientID %>").value;
+            data.nombreAsistente = $get("<%= nombreAsistente_TBox.ClientID %>").value;
+            data.emailAsistente = $get("<%= emailAsistente_TBox.ClientID %>").value;
+            data.externo = $get("<%= externo_CBox.ClientID %>").checked;
+            data.fechaAlta = fecha_alta == "" ? null : getDate(fecha_alta);
 
             return data;
         }
         function setDatosPersonales(data) {
-            $get("<%= nombre_TBox.ClientID %>").value = data["nombre"];
-            $get("<%= tipo_DDList.ClientID %>").selectedValue = data["idTipoValuador"];
-            $get("<%= nombreAsistente_TBox.ClientID %>").value = data["nombreAsistente"];
-            $get("<%= emailAsistente_TBox.ClientID %>").value = data["emailAsistente"];
-            $get("<%= externo_CBox.ClientID %>").checked = data["externo"];
-            setFechaAlta(data["fechaAlta"]);
+            $get("<%= nombre_TBox.ClientID %>").value = data.nombre;
+            $get("<%= tipo_DDList.ClientID %>").selectedValue = data.idTipoValuador;
+            $get("<%= nombreAsistente_TBox.ClientID %>").value = data.nombreAsistente;
+            $get("<%= emailAsistente_TBox.ClientID %>").value = data.emailAsistente;
+            $get("<%= externo_CBox.ClientID %>").checked = data.externo;
+            setFechaAlta(data.fechaAlta);
         }
         function setFechaAlta(date) {
             $get("<%= fechaAlta_TBox.ClientID %>").value = getDateString(date);
@@ -40,19 +41,22 @@
 
         // Guardar
         function saveValuador() {
-            saveValuadorAsync(
-                idValuador
-                , getDatosPersonales()
-                , getDatosContacto()
-                , getDatosDireccion()
-                , getDatosUsuario()
-                , saveValuador_Success
-            );
+            if (validate()) {
+                saveValuadorAsync(
+                    idValuador
+                    , getDatosPersonales()
+                    , contacto_Ctrl.getData()
+                    , direccion_Ctrl.getData()
+                    , usuario_Ctrl.getData()
+                    , saveValuador_Success
+                );
+            }
         }
         function saveValuador_Success(id) {
             idValuador = id;
             setControlsVisibility();
             setFechaAlta(new Date());
+            
             showMessage("Datos guardados");
         }
 
@@ -74,6 +78,16 @@
                 loadValuador_Success();
             }
         }
+        function setDatosContacto(data) {
+            contacto_Ctrl.setData(data);
+        }
+        function setDatosDireccion(data) {
+            direccion_Ctrl.setData(data);
+        }
+        function setDatosUsuario(data) {
+            usuario_Ctrl.setData(data);
+        }
+
         function loadValuador_Success() {
             loadFotografia();
             fillValuadorData();
@@ -82,8 +96,8 @@
 
         // Datos de controles
         function fillValuadorData() {
-            fillTiposValuador("<%= tipo_DDList.ClientID %>");
-            fillDireccionData();
+            fillTiposValuador("<%= tipo_DDList.ClientID %>");            
+            direccion_Ctrl.fillData();
         }
 
         // Navegación
@@ -107,6 +121,28 @@
                 $get("foto").src = "../../" + url;
             }
         }
+
+        // Validación
+        function setupValidator() {
+            var controls = new Array(
+                $get("<%= nombre_TBox.ClientID %>"),
+                $get("<%= tipo_DDList.ClientID %>")
+            );
+            validator = new ControlValidator(controls);
+        }
+        function validate() {
+            var validated = true;
+            if (validator == null || !validator.validate())
+                validated = false;
+            if (!contacto_Ctrl.validate())
+                validated = false;
+            if (!direccion_Ctrl.validate())
+                validated = false;
+            if (!usuario_Ctrl.validate())
+                validated = false;
+
+            return validated;
+        }
     </script>
 
 </asp:Content>
@@ -120,6 +156,7 @@
             <asp:ScriptReference Path="~/Scripts/Utils.js" />
             <asp:ScriptReference Path="~/Scripts/AsyncCalls.js" />
             <asp:ScriptReference Path="~/Scripts/DataFillers.js" />
+            <asp:ScriptReference Path="~/Scripts/Validation.js" />
             <asp:ScriptReference Path="~/Scripts/Entities/Valuadores.js" />
         </Scripts>
     </asp:ScriptManager>
@@ -132,7 +169,7 @@
     <div class="formulario">
         <h2>
             Datos personales</h2>
-        <table style="width: 100%">
+        <table style="width: 100%" border="0" cellpadding="0" cellspacing="0">
             <tr>
                 <td>
                     <table>
@@ -201,6 +238,5 @@
         <div class="barraMenu">
             <asp:ImageButton ID="save_ImBtn" runat="server" SkinID="Save" />
         </div>
-        <asp:ValidationSummary runat="server" />
     </div>
 </asp:Content>

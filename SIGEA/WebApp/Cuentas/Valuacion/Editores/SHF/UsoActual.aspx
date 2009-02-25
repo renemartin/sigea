@@ -13,7 +13,6 @@
     <script type="text/javascript">
         // Variables
         var idAvaluo = 0;
-        var num_bloques_datos = 3;
 
         // Inicialización
         function setupForm() {
@@ -27,13 +26,6 @@
             };
 
             disableControls($get('form_uso_actual'));
-
-            setupTablaRecamaras();
-        }
-
-        // Llenado de datos
-        function fillData() {
-            // Noop;
         }
 
         // Carga de registros
@@ -44,40 +36,16 @@
             loadDatosUsoActualRecamaras();
             loadDatosUsoActualPlantas();
         }
-        function loadDatosUsoActualDistribucion() {
-            var callBackList = new Array();
-            
-            callBackList[0] = loadForm_Success;
-            callBackList[1] = setDatosUsoActualDistribucion;
-            
-            loadUsoActualDistribucionAsync(idAvaluo, callBackList);
+        function loadDatosUsoActualDistribucion() {                        
+            loadUsoActualDistribucionAsync(idAvaluo, distribucion_Ctrl);
         }
         
         function loadDatosUsoActualRecamaras() {
-            var callBackList = new Array();
-        
-            callBackList[0] = loadForm_Success;
-            callBackList[1] = setDatosUsoActualRecamaras;
-
-            loadUsoActualRecamarasAsync(idAvaluo, callBackList);
+            loadUsoActualRecamarasAsync(idAvaluo, recamaras_Ctrl);
         }
         
         function loadDatosUsoActualPlantas() {
-            var callBackList = new Array();
-            
-            callBackList[0] = loadForm_Success;
-            callBackList[1] = setDatosUsoActualPlantas;
-            
-            loadUsoActualPlantasAsync(idAvaluo, callBackList);
-        }
-        
-        function loadForm_Success() {
-            if (num_bloques_cargados != undefined) {
-                num_bloques_cargados++;
-                if (num_bloques_cargados == num_bloques_datos) {
-                    fillData();
-                }
-            }
+            loadUsoActualPlantasAsync(idAvaluo, plantas_Ctrl);
         }
 
         // Guardado de registros
@@ -89,9 +57,9 @@
         function saveUsoActual() {
             saveUsoActualAsync(
                 idAvaluo
-                , getDatosUsoActualDistribucion()
-                , getDatosUsoActualRecamaras()
-                , getDatosUsoActualPlantas()
+                , distribucion_Ctrl.getData()
+                , recamaras_Ctrl.getData()
+                , plantas_Ctrl.getData()
                 , saveUsoActual_Success()
              );
         }
@@ -114,9 +82,9 @@
         <Scripts>
             <asp:ScriptReference Path="~/Scripts/Utils.js" />
             <asp:ScriptReference Path="~/Scripts/AsyncCalls.js" />
-            <asp:ScriptReference Path="~/Scripts/DataFillers.js" />
             <asp:ScriptReference Path="~/Scripts/Tables.js" />
             <asp:ScriptReference Path="~/Scripts/Forms.js" />
+            <asp:ScriptReference Path="~/Scripts/Validation.js" />
             <asp:ScriptReference Path="~/Scripts/Entities/Inmuebles.js" />
         </Scripts>
     </asp:ScriptManager>
