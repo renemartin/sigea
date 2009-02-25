@@ -707,11 +707,44 @@ public class EntityWrappers : System.Web.Services.WebService
 
     #region Elementos
     [WebMethod]
-
-   public  void SaveDatosElementosConstrucciones(
+    public  void SaveDatosEstructuras(
         int idAvaluo
         , Entity datosEstructuras
+        )
+    {
+        SIGEADataContext data_context = new SIGEADataContext();
+        TipoConstruccion tipo_construccion = TipoConstruccion.GetFromIdAvaluo(data_context, idAvaluo);
+
+        if (tipo_construccion == null)
+        {
+            throw new Exception("El avalúo no cuenta con un tipo de construcción registrado");
+        }
+
+        tipo_construccion.EstructurasTipoConstruccion.SetData(datosEstructuras);
+        data_context.SubmitChanges();
+    }
+
+    [WebMethod]
+    public void SaveDatosAcabados(
+        int idAvaluo
         , Entity[] datosAcabados
+        )
+    {
+        SIGEADataContext data_context = new SIGEADataContext();
+        TipoConstruccion tipo_construccion = TipoConstruccion.GetFromIdAvaluo(data_context, idAvaluo);
+
+        if (tipo_construccion == null)
+        {
+            throw new Exception("El avalúo no cuenta con un tipo de construcción registrado");
+        }
+
+        AcabadoTipoConstruccion.SetAcabados(tipo_construccion, datosAcabados);
+        data_context.SubmitChanges();
+    }
+
+    [WebMethod]
+    public void SaveDatosInstalacionesContruccion(
+        int idAvaluo
         , Entity datosInstalacionesTipoConstruccion
         , Entity[] datosInstalacionConstruccion
         , bool comun
@@ -725,10 +758,7 @@ public class EntityWrappers : System.Web.Services.WebService
             throw new Exception("El avalúo no cuenta con un tipo de construcción registrado");
         }
 
-        tipo_construccion.EstructurasTipoConstruccion.SetData(datosEstructuras);
-        AcabadoTipoConstruccion.SetAcabados(tipo_construccion, datosAcabados);
         tipo_construccion.InstalacionesTipoConstruccion.SetData(datosInstalacionesTipoConstruccion);
-
         Inmueble inmueble = Inmueble.GetFromIdAvaluo(data_context, idAvaluo);
         ConstruccionInmueble construccion = ConstruccionInmueble.GetForDataUpdate(inmueble);
         InstalacionConstruccion.SetInstalacionesConstruccion(construccion, datosInstalacionConstruccion, comun);
