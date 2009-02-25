@@ -3,35 +3,35 @@
 
 <script type="text/javascript">
     // Llenado de datos
-    function fillInstalacionesData(idClase) {
-        fillServicio("<%= instHidraulicas_DDList.ClientID %>", "agua potable");
-        fillServicio("<%= instSanitaria_DDList.ClientID %>", "drenaje");
-        fillServicio("<%= instElectricas_DDList.ClientID %>", "electrificación");
-        fillMaterial("<%= carpinteria_DDList.ClientID %>", "carpintería");
-        fillMaterial("<%= herreria_DDList.ClientID %>", "herrería");        
-        fillMaterial("<%= canceleria_DDList.ClientID %>", "cancelería"); 
-    }
+//    function fillInstalacionesData(idClase) {
+//        fillServicio("<%= instHidraulicas_DDList.ClientID %>", "agua potable");
+//        fillServicio("<%= instSanitaria_DDList.ClientID %>", "drenaje");
+//        fillServicio("<%= instElectricas_DDList.ClientID %>", "electrificación");
+//        fillMaterial("<%= carpinteria_DDList.ClientID %>", "carpintería");
+//        fillMaterial("<%= herreria_DDList.ClientID %>", "herrería");        
+//        fillMaterial("<%= canceleria_DDList.ClientID %>", "cancelería"); 
+//    }
     
     //mostrar datos
     function setDatosInstalaciones(data) {
-        $get("<%= instHidraulicas_DDList.ClientID %>").selectedValue = data.idTipoHidraulica;
-        $get("<%= instSanitaria_DDList.ClientID %>").selectedValue = data.idTipoSanitaria;
-        $get("<%= instElectricas_DDList.ClientID %>").selectedValue = data.idTipoElectrica;
-        $get("<%= carpinteria_DDList.ClientID %>").selectedValue = data.idTipoCarpinteria;
-        $get("<%= herreria_DDList.ClientID %>").selectedValue = data.idTipoHerreria;
-        $get("<%= carpinteria_DDList.ClientID %>").selectedValue = data.idTipoCanceleria;
+        $get("<%= instHidraulicas_TBox.ClientID %>").value = data.hidraulicas;
+        $get("<%= instSanitaria_TBox.ClientID %>").value = data.sanitarias;
+        $get("<%= instElectricas_TBox.ClientID %>").value = data.electricas;
+        $get("<%= carpinteria_TBox.ClientID %>").value = data.carpinteria;
+        $get("<%= herreria_TBox.ClientID %>").value = data.herreria;
+        $get("<%= carpinteria_TBox.ClientID %>").value = data.canceleria;
     }
     
     //guardar datos
     function getDatosInstalaciones() {
         var data = new Object();
         
-        data.idTipoHidraulica = $get("<%= instHidraulicas_DDList.ClientID %>").selectedValue;
-        data.idTipoSanitaria = $get("<%= instSanitaria_DDList.ClientID %>").selectedValue;
-        data.idTipoElectrica = $get("<%= instElectricas_DDList.ClientID %>").selectedValue;
-        data.idTipoCarpinteria = $get("<%= carpinteria_DDList.ClientID %>").selectedValue;
-        data.idTipoHerreria = $get("<%= herreria_DDList.ClientID %>").selectedValue;
-        data.idTipoCanceleria = $get("<%= carpinteria_DDList.ClientID %>").selectedValue;
+        data.hidraulica = $get("<%= instHidraulicas_TBox.ClientID %>").value;
+        data.sanitaria = $get("<%= instSanitaria_TBox.ClientID %>").value;
+        data.electrica = $get("<%= instElectricas_TBox.ClientID %>").value;
+        data.carpinteria = $get("<%= carpinteria_TBox.ClientID %>").value;
+        data.herreria = $get("<%= herreria_TBox.ClientID %>").value;
+        data.canceleria = $get("<%= carpinteria_TBox.ClientID %>").value;
         
         return data;       
     }
@@ -42,16 +42,16 @@
         <td class="celdaTitulo">
             Hidráulicas:</td>
         <td class="celdaValor">
-            <asp:DropDownList ID="instHidraulicas_DDList" runat="server">
-            </asp:DropDownList>
+            <asp:TextBox ID="instHidraulicas_TBox" runat="server" TextMode="MultiLine" SkinID="MultiLine">
+            </asp:TextBox>
         </td>
         </tr>
     <tr>
         <td class="celdaTitulo">
             Sanitarias:</td>
         <td class="celdaValor">
-            <asp:DropDownList ID="instSanitaria_DDList" runat="server">
-            </asp:DropDownList>
+            <asp:TextBox ID="instSanitaria_TBox" runat="server" TextMode="MultiLine" SkinID="MultiLine">
+            </asp:TextBox>
         </td>
         </tr>
     <tr>
@@ -59,8 +59,8 @@
              Eléctricas:  
         </td>
         <td class="celdaValor">
-            <asp:DropDownList ID="instElectricas_DDList" runat="server">
-            </asp:DropDownList> 
+            <asp:TextBox ID="instElectricas_TBox" runat="server" TextMode="MultiLine" SkinID="MultiLine">
+            </asp:TextBox> 
         </td>
     </tr>
     <tr>
@@ -71,24 +71,24 @@
         <td class="celdaTitulo">
             Carpinteria:</td>
         <td class="celdaValor">
-            <asp:DropDownList ID="carpinteria_DDList" runat="server">
-            </asp:DropDownList>
+            <asp:TextBox ID="carpinteria_TBox" runat="server" TextMode="MultiLine" SkinID="MultiLine">
+            </asp:TextBox>
         </td>
     </tr>
     <tr>
         <td class="celdaTitulo">
             Herrería:</td>
         <td class="celdaValor">
-            <asp:DropDownList ID="herreria_DDList" runat="server">
-            </asp:DropDownList>
+            <asp:TextBox ID="herreria_TBox" runat="server" TextMode="MultiLine" SkinID="MultiLine">
+            </asp:TextBox>
         </td>
     </tr>
     <tr>
         <td class="celdaTitulo">
             Cancelería:</td>
         <td class="celdaValor">
-            <asp:DropDownList ID="canceleria_DDList" runat="server">
-            </asp:DropDownList>
+            <asp:TextBox ID="canceleria_TBox" runat="server" TextMode="MultiLine" SkinID="MultiLine">
+            </asp:TextBox>
         </td>
     </tr>
 </table>
