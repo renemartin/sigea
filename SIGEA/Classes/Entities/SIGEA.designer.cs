@@ -26271,8 +26271,6 @@ namespace SIGEA.Classes.Entities
 		
 		private EntitySet<ConstruccionInmueble> _ConstruccionInmueble1;
 		
-		private EntityRef<ConstruccionInmueble> _ConstruccionInmueble;
-		
     #region Extensibility Method Definitions
     partial void OnLoaded();
     partial void OnValidate(System.Data.Linq.ChangeAction action);
@@ -26298,7 +26296,6 @@ namespace SIGEA.Classes.Entities
 		public InstalacionConstruccion()
 		{
 			this._ConstruccionInmueble1 = new EntitySet<ConstruccionInmueble>(new Action<ConstruccionInmueble>(this.attach_ConstruccionInmueble1), new Action<ConstruccionInmueble>(this.detach_ConstruccionInmueble1));
-			this._ConstruccionInmueble = default(EntityRef<ConstruccionInmueble>);
 			OnCreated();
 		}
 		
@@ -26313,10 +26310,6 @@ namespace SIGEA.Classes.Entities
 			{
 				if ((this._idConstruccion != value))
 				{
-					if (this._ConstruccionInmueble.HasLoadedOrAssignedValue)
-					{
-						throw new System.Data.Linq.ForeignKeyReferenceAlreadyHasValueException();
-					}
 					this.OnidConstruccionChanging(value);
 					this.SendPropertyChanging();
 					this._idConstruccion = value;
@@ -26476,40 +26469,6 @@ namespace SIGEA.Classes.Entities
 			set
 			{
 				this._ConstruccionInmueble1.Assign(value);
-			}
-		}
-		
-		[Association(Name="ConstruccionInmueble_InstalacionConstruccion", Storage="_ConstruccionInmueble", ThisKey="idConstruccion", OtherKey="idConstruccion", IsForeignKey=true, DeleteOnNull=true, DeleteRule="CASCADE")]
-		public ConstruccionInmueble ConstruccionInmueble
-		{
-			get
-			{
-				return this._ConstruccionInmueble.Entity;
-			}
-			set
-			{
-				ConstruccionInmueble previousValue = this._ConstruccionInmueble.Entity;
-				if (((previousValue != value) 
-							|| (this._ConstruccionInmueble.HasLoadedOrAssignedValue == false)))
-				{
-					this.SendPropertyChanging();
-					if ((previousValue != null))
-					{
-						this._ConstruccionInmueble.Entity = null;
-						previousValue.InstalacionConstruccion.Remove(this);
-					}
-					this._ConstruccionInmueble.Entity = value;
-					if ((value != null))
-					{
-						value.InstalacionConstruccion.Add(this);
-						this._idConstruccion = value.idConstruccion;
-					}
-					else
-					{
-						this._idConstruccion = default(int);
-					}
-					this.SendPropertyChanged("ConstruccionInmueble");
-				}
 			}
 		}
 		
@@ -27159,8 +27118,6 @@ namespace SIGEA.Classes.Entities
 		
 		private EntitySet<TipoConstruccion> _TipoConstruccion;
 		
-		private EntitySet<InstalacionConstruccion> _InstalacionConstruccion;
-		
 		private EntityRef<Inmueble> _Inmueble;
 		
 		private EntityRef<EstructurasTipoConstruccion> _EstructurasTipoConstruccion;
@@ -27206,7 +27163,6 @@ namespace SIGEA.Classes.Entities
 		public ConstruccionInmueble()
 		{
 			this._TipoConstruccion = new EntitySet<TipoConstruccion>(new Action<TipoConstruccion>(this.attach_TipoConstruccion), new Action<TipoConstruccion>(this.detach_TipoConstruccion));
-			this._InstalacionConstruccion = new EntitySet<InstalacionConstruccion>(new Action<InstalacionConstruccion>(this.attach_InstalacionConstruccion), new Action<InstalacionConstruccion>(this.detach_InstalacionConstruccion));
 			this._Inmueble = default(EntityRef<Inmueble>);
 			this._EstructurasTipoConstruccion = default(EntityRef<EstructurasTipoConstruccion>);
 			this._AcabadoTipoConstruccion = default(EntityRef<AcabadoTipoConstruccion>);
@@ -27496,19 +27452,6 @@ namespace SIGEA.Classes.Entities
 			}
 		}
 		
-		[Association(Name="ConstruccionInmueble_InstalacionConstruccion", Storage="_InstalacionConstruccion", ThisKey="idConstruccion", OtherKey="idConstruccion")]
-		public EntitySet<InstalacionConstruccion> InstalacionConstruccion
-		{
-			get
-			{
-				return this._InstalacionConstruccion;
-			}
-			set
-			{
-				this._InstalacionConstruccion.Assign(value);
-			}
-		}
-		
 		[Association(Name="Inmueble_ConstruccionInmueble", Storage="_Inmueble", ThisKey="idInmueble", OtherKey="idInmueble", IsForeignKey=true)]
 		public Inmueble Inmueble
 		{
@@ -27706,18 +27649,6 @@ namespace SIGEA.Classes.Entities
 		}
 		
 		private void detach_TipoConstruccion(TipoConstruccion entity)
-		{
-			this.SendPropertyChanging();
-			entity.ConstruccionInmueble = null;
-		}
-		
-		private void attach_InstalacionConstruccion(InstalacionConstruccion entity)
-		{
-			this.SendPropertyChanging();
-			entity.ConstruccionInmueble = this;
-		}
-		
-		private void detach_InstalacionConstruccion(InstalacionConstruccion entity)
 		{
 			this.SendPropertyChanging();
 			entity.ConstruccionInmueble = null;
