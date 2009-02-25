@@ -7,6 +7,7 @@
     <script type="text/javascript">
         // Variables
         var idPersonal = 0;
+        var validator = null;
 
         // Databindings
         function getDatosPersonales() {
@@ -28,12 +29,14 @@
 
         // Guardar
         function savePersonal() {
-            savePersonalAsync(
-                idPersonal
-                , getDatosPersonales()
-                , getDatosUsuario()
-                , savePersonal_Success
-            );
+            if (validate()) {
+                savePersonalAsync(
+                    idPersonal
+                    , getDatosPersonales()
+                    , usuario_Ctrl.getData()
+                    , savePersonal_Success
+                );
+            }
         }
         function savePersonal_Success(id) {
             idPersonal = id;
@@ -58,6 +61,9 @@
                 loadPersonal_Success();
             }
         }
+        function setDatosUsuario(data) {
+            usuario_Ctrl.setData(data);
+        }
         function loadPersonal_Success() {
             setControlsVisibility();
         }
@@ -67,6 +73,23 @@
             if (idPersonal != 0) {
                 $get("ficha").style.display = "block";
             }
+        }
+
+        // Validación
+        function setupValidator() {
+            var controls = new Array(
+                $get("<%= nombre_TBox.ClientID %>")
+            );
+            validator = new ControlValidator(controls);
+        }
+        function validate() {
+            var validated = true;
+            if (validator == null || !validator.validate())
+                validated = false;
+            if (!usuario_Ctrl.validate())
+                validated = false;
+
+            return validated;
         }
     </script>
 
@@ -79,13 +102,14 @@
         <Scripts>
             <asp:ScriptReference Path="~/Scripts/Utils.js" />
             <asp:ScriptReference Path="~/Scripts/AsyncCalls.js" />
+            <asp:ScriptReference Path="~/Scripts/Validation.js" />
             <asp:ScriptReference Path="~/Scripts/Entities/Personal.js" />
         </Scripts>
     </asp:ScriptManager>
     <h1>
         Datos del usuario</h1>
     <div class="formulario">
-        <table style="width: 100%">
+        <table style="width: 100%" border="0" cellpadding="0" cellspacing="0">
             <tr>
                 <td>
                     <table>

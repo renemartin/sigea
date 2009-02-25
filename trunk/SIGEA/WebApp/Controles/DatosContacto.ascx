@@ -1,42 +1,6 @@
 ﻿<%@ Control Language="C#" AutoEventWireup="true" CodeFile="DatosContacto.ascx.cs"
     Inherits="Controles_DatosContacto" %>
 
-<script type="text/javascript">
-    function getDatosContacto() {
-        var data = new Object();
-
-        data["telefono1"] = $get("<%= telefono1_TBox.ClientID %>").value;
-        data["extensionTel1"] = $get("<%= ext1_TBox.ClientID %>").value;
-        data["telefono2"] = $get("<%= telefono2_TBox.ClientID %>").value;
-        data["extensionTel2"] = $get("<%= ext2_TBox.ClientID %>").value;
-        data["fax"] = $get("<%= fax_TBox.ClientID %>").value;
-        data["celular"] = $get("<%= celular_TBox.ClientID %>").value;
-        data["nextel"] = $get("<%= nextel_TBox.ClientID %>").value;
-        data["claveNextel"] = $get("<%= claveNextel_TBox.ClientID %>").value;
-        data["email1"] = $get("<%= email1_TBox.ClientID %>").value;
-        data["email2"] = $get("<%= email2_TBox.ClientID %>").value;
-        data["messenger"] = $get("<%= messenger_TBox.ClientID %>").value;
-        data["skype"] = $get("<%= skype_TBox.ClientID %>").value;
-
-        return data;
-    }
-
-    function setDatosContacto(data) {
-        $get("<%= telefono1_TBox.ClientID %>").value = data["telefono1"];
-        $get("<%= ext1_TBox.ClientID %>").value = data["extensionTel1"];
-        $get("<%= telefono2_TBox.ClientID %>").value = data["telefono2"];
-        $get("<%= ext2_TBox.ClientID %>").value = data["extensionTel2"];
-        $get("<%= fax_TBox.ClientID %>").value = data["fax"];
-        $get("<%= celular_TBox.ClientID %>").value = data["celular"];
-        $get("<%= nextel_TBox.ClientID %>").value = data["nextel"];
-        $get("<%= claveNextel_TBox.ClientID %>").value = data["claveNextel"];
-        $get("<%= email1_TBox.ClientID %>").value = data["email1"];
-        $get("<%= email2_TBox.ClientID %>").value = data["email2"];
-        $get("<%= messenger_TBox.ClientID %>").value = data["messenger"];
-        $get("<%= skype_TBox.ClientID %>").value = data["skype"];
-    }
-</script>
-
 <table>
     <tr>
         <td class="celdaTitulo">
@@ -129,3 +93,63 @@
         </td>
     </tr>
 </table>
+
+<script type="text/javascript">
+
+    function Contacto() {
+
+        // Inicialización
+        Contacto.prototype.setData = setData;
+        Contacto.prototype.getData = getData;
+        Contacto.prototype.validate = validate;
+
+        // Inicialización de validador
+        this.controls = new Array(
+            $get("<%= telefono1_TBox.ClientID %>")
+        );
+        this.validator = new ControlValidator(this.constructor);
+
+        // Databindings
+        function getData() {
+            var data = new Object();
+
+            data.telefono1 = $get("<%= telefono1_TBox.ClientID %>").value;
+            data.extensionTel1 = $get("<%= ext1_TBox.ClientID %>").value;
+            data.telefono2 = $get("<%= telefono2_TBox.ClientID %>").value;
+            data.extensionTel2 = $get("<%= ext2_TBox.ClientID %>").value;
+            data.fax = $get("<%= fax_TBox.ClientID %>").value;
+            data.celular = $get("<%= celular_TBox.ClientID %>").value;
+            data.nextel = $get("<%= nextel_TBox.ClientID %>").value;
+            data.claveNextel = $get("<%= claveNextel_TBox.ClientID %>").value;
+            data.email1 = $get("<%= email1_TBox.ClientID %>").value;
+            data.email2 = $get("<%= email2_TBox.ClientID %>").value;
+            data.messenger = $get("<%= messenger_TBox.ClientID %>").value;
+            data.skype = $get("<%= skype_TBox.ClientID %>").value;
+
+            return data;
+        }
+
+        function setData(data) {
+            $get("<%= telefono1_TBox.ClientID %>").value = data.telefono1;
+            $get("<%= ext1_TBox.ClientID %>").value = data.extensionTel1;
+            $get("<%= telefono2_TBox.ClientID %>").value = data.telefono2;
+            $get("<%= ext2_TBox.ClientID %>").value = data.extensionTel2;
+            $get("<%= fax_TBox.ClientID %>").value = data.fax;
+            $get("<%= celular_TBox.ClientID %>").value = data.celular;
+            $get("<%= nextel_TBox.ClientID %>").value = data.nextel;
+            $get("<%= claveNextel_TBox.ClientID %>").value = data.claveNextel;
+            $get("<%= email1_TBox.ClientID %>").value = data.email1;
+            $get("<%= email2_TBox.ClientID %>").value = data.email2;
+            $get("<%= messenger_TBox.ClientID %>").value = data.messenger;
+            $get("<%= skype_TBox.ClientID %>").value = data.skype;
+        }
+
+        // Validación
+        function validate() {
+            return this.validator.validate();
+        }
+    }
+
+    this["<%= ID %>"] = new Contacto();
+    
+</script>

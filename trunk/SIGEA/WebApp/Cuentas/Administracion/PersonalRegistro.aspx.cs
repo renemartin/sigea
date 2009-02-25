@@ -34,6 +34,7 @@ public partial class Cuentas_Administracion_PersonalRegistro : System.Web.UI.Pag
     }
     private void RegisterScripts()
     {
+        scripts.AppendLine("setupValidator();");
         Page.ClientScript.RegisterStartupScript(
             typeof(Page), "scriptsPersonalRegistro", scripts.ToString(), true);
     }

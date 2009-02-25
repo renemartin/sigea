@@ -93,17 +93,17 @@ function loadEquipamientoInmuebleAsync(idAvaluo, control) {
     EntityWrappers.LoadEquipamiento(
         idAvaluo, asyncControlLoad, asyncCallFail, control);
 }
-function loadUsoActualDistribucionAsync(idAvaluo, callBackList) {
+function loadUsoActualDistribucionAsync(idAvaluo, control) {
     EntityWrappers.LoadUsoActualDistribucion(
-        idAvaluo, asyncCallSingleListBack, asyncCallFail, callBackList);
+        idAvaluo, asyncControlLoad, asyncCallFail, control);
 }
-function loadUsoActualRecamarasAsync(idAvaluo, callBackList) {
+function loadUsoActualRecamarasAsync(idAvaluo, control) {
     EntityWrappers.LoadUsoActualRecamaras(
-        idAvaluo, asyncCallSingleListBack, asyncCallFail, callBackList);
+        idAvaluo, asyncControlLoad, asyncCallFail, control);
 }
-function loadUsoActualPlantasAsync(idAvaluo, callBackList) {
+function loadUsoActualPlantasAsync(idAvaluo, control) {
     EntityWrappers.LoadUsoActualPlantas(
-        idAvaluo, asyncCallSingleListBack, asyncCallFail, callBackList);
+        idAvaluo, asyncControlLoad, asyncCallFail, control);
 }
 
 // Datos escalares

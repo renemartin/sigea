@@ -30,6 +30,7 @@ public partial class Cuentas_Administracion_ValuadorRegistro : System.Web.UI.Pag
     }
     private void RegisterScripts()
     {
+        scripts.AppendLine("setupValidator();");
         Page.ClientScript.RegisterStartupScript(
             typeof(Page), "scriptsValuadorRegistro", scripts.ToString(), true);
     }

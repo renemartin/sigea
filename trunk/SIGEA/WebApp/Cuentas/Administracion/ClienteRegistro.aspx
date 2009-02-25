@@ -10,6 +10,7 @@
     <script type="text/javascript">
         // Variables
         var idCliente = 0;
+        var validator = null;
 
         // Databindings
         function getDatosPersonales() {
@@ -33,14 +34,16 @@
 
         // Guardar
         function saveCliente() {
-            saveClienteAsync(
-                idCliente
-                , getDatosPersonales()
-                , getDatosContacto()
-                , getDatosDireccion()
-                , getDatosUsuario()
-                , saveCliente_Success
-            );
+            if (validate()) {
+                saveClienteAsync(
+                    idCliente
+                    , getDatosPersonales()
+                    , contacto_Ctrl.getData()
+                    , direccion_Ctrl.getData()
+                    , usuario_Ctrl.getData()
+                    , saveCliente_Success
+                );
+            }
         }
         function saveCliente_Success(id) {
             idCliente = id;
@@ -67,6 +70,15 @@
                 loadCliente_Success();
             }
         }
+        function setDatosContacto(data) {
+            contacto_Ctrl.setData(data);
+        }
+        function setDatosDireccion(data) {
+            direccion_Ctrl.setData(data);
+        }
+        function setDatosUsuario(data) {
+            usuario_Ctrl.setData(data);
+        }
         function loadCliente_Success() {
             loadFotografia();
             fillClienteData();
@@ -75,7 +87,7 @@
 
         // Datos de controles
         function fillClienteData() {
-            fillDireccionData();
+            direccion_Ctrl.fillData();
         }
 
         // Navegación
@@ -99,6 +111,27 @@
                 $get("foto").src = "../../" + url;
             }
         }
+
+        // Validación
+        function setupValidator() {
+            var controls = new Array(
+                $get("<%= nombre_TBox.ClientID %>")
+            );
+            validator = new ControlValidator(controls);
+        }
+        function validate() {
+            var validated = true;
+            if (validator == null || !validator.validate())
+                validated = false;
+            if (!contacto_Ctrl.validate())
+                validated = false;
+            if (!direccion_Ctrl.validate())
+                validated = false;
+            if (!usuario_Ctrl.validate())
+                validated = false;
+
+            return validated;
+        }
     </script>
 
 </asp:Content>
@@ -112,6 +145,7 @@
             <asp:ScriptReference Path="~/Scripts/Utils.js" />
             <asp:ScriptReference Path="~/Scripts/AsyncCalls.js" />
             <asp:ScriptReference Path="~/Scripts/DataFillers.js" />
+            <asp:ScriptReference Path="~/Scripts/Validation.js" />
             <asp:ScriptReference Path="~/Scripts/Entities/Clientes.js" />
         </Scripts>
     </asp:ScriptManager>
@@ -124,7 +158,7 @@
     <div class="formulario">
         <h2>
             Datos personales</h2>
-        <table style="width: 100%">
+        <table style="width: 100%" border="0" cellpadding="0" cellspacing="0">
             <tr>
                 <td>
                     <table>

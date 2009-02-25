@@ -12,7 +12,7 @@ public partial class Cuentas_Valuacion_Controles_DatosRecamara : System.Web.UI.U
 
     private void AddAttributes()
     {
-        agregarFila_ImBtn.OnClientClick = "addClonedRow('tabla_recamaras'); return false;";
-        removerFila_ImBtn.OnClientClick = "removeClonedRow('tabla_recamaras'); return false;";
+        agregarFila_ImBtn.OnClientClick = ID + ".addRecamaraRow(); return false;";
+        removerFila_ImBtn.OnClientClick = ID + ".removeRecamaraRow(); return false;";
     }
 }
