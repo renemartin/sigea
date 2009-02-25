@@ -55,6 +55,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Entities\Acabados.cs" />
     <Compile Include="Entities\Archivo.cs" />
     <Compile Include="Entities\AreaComun.cs" />
     <Compile Include="Entities\AsignacionAvaluo.cs" />
@@ -75,6 +76,7 @@
     <Compile Include="Entities\DireccionInmueble.cs" />
     <Compile Include="Entities\EntornoInmueble.cs" />
     <Compile Include="Entities\Inmueble.cs" />
+    <Compile Include="Entities\Instalaciones.cs" />
     <Compile Include="Entities\Personal.cs" />
     <Compile Include="Entities\Propietario.cs" />
     <Compile Include="Entities\RolSistema.cs" />
