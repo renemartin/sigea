@@ -26,19 +26,26 @@
 
         // Guardar
         function saveAvaluo() {
-//            saveAvaluoInmuebleAsync(
-//                idAvaluo
-//                , getDatosAvaluo()
-//                , getDatosCredito()
-//                , getDatosSolicitante()
-//                , getDatosDireccion_Aux
-//                , getDatosInmueble()
-//                , getDatosUbicacionInmueble()
-//                , getDatosDireccion_Aux
-//                , getDatosPropietario()
-//                , getDatosDireccion_Aux
-//                , saveAvaluo_Success
-//            );
+            var validated = true;
+            if (!datosAvaluo_Ctrl.validate())
+                validated = false;
+            if (!datosSolicitante_Ctrl.validate())
+                validated = false;
+            if (!datosInmueble_Ctrl.validate())
+                validated = false;
+            if (!datosPropietario_Ctrl.validate())
+                validated = false;
+
+            if (validated) {
+                saveAvaluoInmuebleAsync(
+                    idAvaluo
+                    , datosAvaluo_Ctrl.getData()
+                    , datosSolicitante_Ctrl.getData()
+                    , datosInmueble_Ctrl.getData()
+                    , datosPropietario_Ctrl.getData()
+                    , saveAvaluo_Success
+                );
+            }
         }
         function saveAvaluo_Success(id) {
             idAvaluo = id;
@@ -65,6 +72,7 @@
             <asp:ScriptReference Path="~/Scripts/Utils.js" />
             <asp:ScriptReference Path="~/Scripts/AsyncCalls.js" />
             <asp:ScriptReference Path="~/Scripts/DataFillers.js" />
+            <asp:ScriptReference Path="~/Scripts/Validation.js" />
             <asp:ScriptReference Path="~/Scripts/Entities/Avaluos.js" />
         </Scripts>
     </asp:ScriptManager>

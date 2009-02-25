@@ -5,19 +5,18 @@
 
 // Guardado de registros
 
-function saveAvaluoInmuebleAsync(idAvaluo, datosAvaluo, datosCredito, datosSolicitante, datosDireccionSolicitante, datosInmueble, datosUbicacionInmueble, 
-        datosDireccionInmueble, datosPropietario, datosDireccionPropietario, callBack) {
+function saveAvaluoInmuebleAsync(idAvaluo, datosAvaluo, datosSolicitante, datosInmueble, datosPropietario, callBack) {
     EntityWrappers.SaveAvaluoInmueble(
         idAvaluo
-        , datosAvaluo
-        , datosCredito
-        , datosSolicitante
-        , datosDireccionSolicitante
-        , datosInmueble
-        , datosUbicacionInmueble
-        , datosDireccionInmueble
-        , datosPropietario
-        , datosDireccionPropietario
+        , datosAvaluo[0]
+        , datosAvaluo[1]
+        , datosSolicitante[0]
+        , datosSolicitante[1]
+        , datosInmueble[0]
+        , datosInmueble[1]
+        , datosInmueble[2]
+        , datosPropietario[0]
+        , datosPropietario[1]
         , asyncCallResultBack
         , asyncCallFail
         , callBack

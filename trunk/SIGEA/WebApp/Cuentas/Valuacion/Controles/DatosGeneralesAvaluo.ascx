@@ -117,6 +117,7 @@
         this.validator.addOptionalField(2);
         this.validator.addOptionalField(3);
         this.validator.addOptionalField(4);
+        this.validator.addOptionalField(6);
         this.validator.addOptionalField(7);
         this.validator.addOptionalField(8);
         this.validator.addOptionalField(9);
