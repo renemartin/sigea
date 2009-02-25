@@ -33,6 +33,36 @@ function saveSuperficiesInmuebleAsync(idAvaluo, datosSuperficies, callBack) {
         , callBack);
 }
 
+function saveDatosEstructurasAsync(idAvaluo, datosEstructuras, callBack) {
+    EntityWrappers.SaveEstructuras(
+        idAvaluo
+        , datosEstructuras
+        , asyncCallResultBack
+        , asyncCallFail
+        , callBack
+    );
+}
+function saveDatosAcabadosAsync(idAvaluo, datosAcabados, callBack) {
+    EntityWrappers.SaveAcabados(
+        idAvaluo
+        , datosAcabados
+        , asyncCallResultBack
+        , asyncCallFail
+        , callBack
+    );
+}
+function saveDatosInstalacionesConstruccionAsync(idAvaluo, datosInstalacionesTipoConstruccion, datosInstalacionesConstruccion, comun, callBack) {
+    EntityWrappers.SaveInstalacionesConstruccion(
+        idAvaluo
+        , datosInstalacionesTipoConstruccion
+        , datosInstalacionesConstruccion
+        , comun
+        , asyncCallResultBack
+        , asyncCallFail
+        , callBack
+    );
+}
+
 // Carga de datos
 
 function loadTiposConstruccionesAsync(idAvaluo, control) {
@@ -50,4 +80,25 @@ function loadDatosCondominioAsync(idAvaluo, control) {
 function loadSuperficiesInmuebleAsync(idAvaluo, control) {
     EntityWrappers.LoadSuperficies(
         idAvaluo, asyncControlLoad, asyncCallFail, control);
+}
+
+function loadEstructurasAsync(idAvaluo, control) {
+    EntityWrappers.LoadEstructuras(
+        idAvaluo, asyncControlLoad, asyncCallFail, control
+        );
+}
+function loadAcabadosAsync(idAvaluo, control) {
+    EntityWrappers.LoadAcabados(
+        idAvaluo, asyncControlLoad, asyncCallFail, control
+        );
+}
+function loadInstalacionesAsync(idAvaluo, control) {
+    EntityWrappers.LoadInstalacionTipoConstruccion(
+        idAvaluo, asyncControlLoad, asyncCallFail, control
+        );
+}
+function loadInstalacionesAdicionalesAsync(idAvaluo, control) {
+    EntityWrappers.LoadInstalacionConstruccion(
+        idAvaluo, asyncControlLoad, asyncCallFail, control
+        );
 }
