@@ -61,7 +61,7 @@
             callBackList[0] = loadForm_Success;
             callBackList[1] = setDatosEstructuras;
             
-            loadEstrucutrasAsync(idAvaluo, callBackList);
+            loadEstructurasAsync(idAvaluo, callBackList);
         }
         function loadDatosAcabados() {
             var callBackList = new Array();
@@ -83,7 +83,7 @@
             var callBackList = new Array();
             
             callBackList[0] = loadForm_Success;
-            callBackList[1] = setDatosInstalacionesAdicionles;
+            callBackList[1] = setDatosInstalacionesAdicionales;
             
             loadInstalacionesAdicionalesAsync(idAvaluo, callBackList);
         }
@@ -108,7 +108,7 @@
                 saveDatosInstalaciones();
         }
         function saveDatosEstructuras() {
-            saveDatosEstrucutrasAsync(
+            saveDatosEstructurasAsync(
                 idAvaluo
                 , getDatosEstructuras()
                 , saveDatosEstructuras_Success()
@@ -139,7 +139,8 @@
             saveDatosInstalacionesConstruccionAsync(
                 idAvaluo
                 , getDatosInstalaciones()
-                , getDatosInstalacionesAdicionales()
+                , getDatosInstalacionesAdicionales("<%= instalacionesPrivativas_Ctrl.ClientID %>")
+                , getDatosInstalacionesAdicionales("<%= instalacionesComunes_Ctrl.ClientID %>")
                 , saveDatosInstalaciones_Success()
                 );
         }
@@ -171,6 +172,7 @@
             <asp:ScriptReference Path="~/Scripts/Tables.js" />
             <asp:ScriptReference Path="~/Scripts/Forms.js" />
             <asp:ScriptReference Path="~/Scripts/Entities/Inmuebles.js" />
+            <asp:ScriptReference Path="~/Scripts/Entities/Construcciones.js" />
         </Scripts>
     </asp:ScriptManager>
     <SIGEA:EditorSHFNavegador ID="navegador_Ctrl" runat="server" />

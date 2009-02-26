@@ -5,6 +5,8 @@
     
     //mostrar datos
     function setDatosEstructuras(data) {
+        if(data == null)
+            return;
         $get("<%= cimentacion_TBox.ClientID %>").value = data.cimentacion;
         $get("<%= muros_TBox.ClientID %>").value = data.muros;
         $get("<%= escaleras_TBox.ClientID %>").value = data.escaleras;

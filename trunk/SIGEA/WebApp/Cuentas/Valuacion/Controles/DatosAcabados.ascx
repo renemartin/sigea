@@ -4,7 +4,7 @@
 
 <script type="text/javascript">
     //mostrar datos
-    function setDatosDatosAcabados(data_set) {
+    function setDatosAcabados(data_set) {
     
         if(data_set == null)
             return;
@@ -79,7 +79,7 @@
 //        }
     }
     //guardar datos
-    function getDatosDatosAcabados() {
+    function getDatosAcabados() {
         var data_set = new Array();
         
         //datos Sala

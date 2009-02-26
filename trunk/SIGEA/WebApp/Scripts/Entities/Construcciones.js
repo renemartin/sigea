@@ -51,12 +51,12 @@ function saveDatosAcabadosAsync(idAvaluo, datosAcabados, callBack) {
         , callBack
     );
 }
-function saveDatosInstalacionesConstruccionAsync(idAvaluo, datosInstalacionesTipoConstruccion, datosInstalacionesConstruccion, comun, callBack) {
+function saveDatosInstalacionesConstruccionAsync(idAvaluo, datosInstalacionesTipoConstruccion, datosInstalacionesPrivativas, datosInstalacionesComunes, callBack) {
     EntityWrappers.SaveInstalacionesConstruccion(
         idAvaluo
         , datosInstalacionesTipoConstruccion
-        , datosInstalacionesConstruccion
-        , comun
+        , datosInstalacionesPrivativas
+        , datosInstalacionesComunes
         , asyncCallResultBack
         , asyncCallFail
         , callBack
@@ -82,23 +82,23 @@ function loadSuperficiesInmuebleAsync(idAvaluo, control) {
         idAvaluo, asyncControlLoad, asyncCallFail, control);
 }
 
-function loadEstructurasAsync(idAvaluo, control) {
+function loadEstructurasAsync(idAvaluo, callBackList) {
     EntityWrappers.LoadEstructuras(
-        idAvaluo, asyncControlLoad, asyncCallFail, control
+        idAvaluo, asyncCallListBack, asyncCallFail, callBackList
         );
 }
-function loadAcabadosAsync(idAvaluo, control) {
+function loadAcabadosAsync(idAvaluo, callBackList) {
     EntityWrappers.LoadAcabados(
-        idAvaluo, asyncControlLoad, asyncCallFail, control
+        idAvaluo, asyncCallSingleListBack, asyncCallFail, callBackList
         );
 }
-function loadInstalacionesAsync(idAvaluo, control) {
+function loadInstalacionesAsync(idAvaluo, callBackList) {
     EntityWrappers.LoadInstalacionTipoConstruccion(
-        idAvaluo, asyncControlLoad, asyncCallFail, control
+        idAvaluo, asyncCallListBack, asyncCallFail, callBackList
         );
 }
-function loadInstalacionesAdicionalesAsync(idAvaluo, control) {
+function loadInstalacionesAdicionalesAsync(idAvaluo, callBackList) {
     EntityWrappers.LoadInstalacionConstruccion(
-        idAvaluo, asyncControlLoad, asyncCallFail, control
+        idAvaluo, asyncCallSingleListBack, asyncCallFail, callBackList
         );
 }
