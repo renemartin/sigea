@@ -19,5 +19,8 @@ public partial class Controles_DatosDireccion : System.Web.UI.UserControl
     private void SetAttributes()
     {
         estado_DDList.Attributes.Add("onchange", ID + ".updateMunicipios();");
+        municipio_DDList.Attributes.Add("onchange", ID + ".onMunicipioChanged();");
+        asentamiento_TBox.Attributes.Add("onblur", ID + ".onAsentamientoLostFocus();");
+        cp_TBox.Attributes.Add("onblur", ID + ".onCPLostFocus();");
     }
 }

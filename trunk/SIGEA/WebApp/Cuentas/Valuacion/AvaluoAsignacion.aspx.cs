@@ -46,5 +46,7 @@ public partial class Cuentas_Valuacion_AvaluoAsignacion : System.Web.UI.Page
     {
         guardar_ImBtn.OnClientClick = "saveAsignacionAvaluo(); return false;";
         eliminar_ImBtn.OnClientClick = "deleteAsignacionAvaluo(); return false;";
+        agregarFiltro_ImBtn.OnClientClick = "agregarFiltro(); return false;";
+        removerFiltro_ImBtn.OnClientClick = "removerFiltro(); return false;";
     }
 }

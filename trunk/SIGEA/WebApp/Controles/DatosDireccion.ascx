@@ -1,5 +1,6 @@
 ﻿<%@ Control Language="C#" AutoEventWireup="true" CodeFile="DatosDireccion.ascx.cs"
     Inherits="Controles_DatosDireccion" %>
+<%@ Register Assembly="AjaxControlToolkit" Namespace="AjaxControlToolkit" TagPrefix="cc1" %>
 <link href="../App_Themes/Default/DefaultStyle.css" rel="stylesheet" type="text/css" />
 <table>
     <tr>
@@ -43,18 +44,24 @@
     </tr>
     <tr>
         <td class="celdaTitulo">
-            C.P:
-        </td>
-        <td class="celdaValor">
-            <asp:TextBox ID="cp_TBox" runat="server"></asp:TextBox>
-        </td>
-    </tr>
-    <tr>
-        <td class="celdaTitulo">
             Asentamiento:
         </td>
         <td class="celdaValor">
             <asp:TextBox ID="asentamiento_TBox" runat="server"></asp:TextBox>
+            <cc1:AutoCompleteExtender ID="asentamiento_TBox_AutoCompleteExtender" runat="server"
+                TargetControlID="asentamiento_TBox" ServicePath="~/Services/MethodCallers.asmx"
+                ServiceMethod="GetAsentamientos" CompletionInterval="500"
+                FirstRowSelected="True" MinimumPrefixLength="0" UseContextKey="True" 
+                ContextKey="">
+            </cc1:AutoCompleteExtender>
+        </td>
+    </tr>
+    <tr>
+        <td class="celdaTitulo">
+            C.P:
+        </td>
+        <td class="celdaValor">
+            <asp:TextBox ID="cp_TBox" runat="server"></asp:TextBox>
         </td>
     </tr>
 </table>
@@ -69,6 +76,10 @@
         Direccion.prototype.fillData = fillData;
         Direccion.prototype.updateMunicipios = updateMunicipios;
         Direccion.prototype.validate = validate;
+        Direccion.prototype.onMunicipioChanged = onMunicipioChanged;
+        Direccion.prototype.onAsentamientoLostFocus = onAsentamientoLostFocus;
+        Direccion.prototype.onCPLostFocus = onCPLostFocus;
+        Direccion.prototype.setAsentamientoContextKey = setAsentamientoContextKey;
         this.parent_id = "<%= ClientID %>";
 
         // Inicialización de validador
@@ -133,6 +144,43 @@
         // Validación
         function validate() {
             return this.validator.validate();
+        }
+
+        // Autocompletes
+
+        function onMunicipioChanged() {
+            this.setAsentamientoContextKey();
+        }
+
+        function onAsentamientoLostFocus() {
+            var municipio = $get(this.parent_id + "_municipio_DDList");
+            var asentamiento = $get(this.parent_id + "_asentamiento_TBox");
+            var codigo_postal = $get(this.parent_id + "_cp_TBox");
+
+            if (asentamiento.value != "" && codigo_postal.value == "") {
+                getCodigoPostal(municipio.value, asentamiento.value, codigo_postal);
+            }
+        }
+
+        function onCPLostFocus() {
+            var codigo_postal = $get(this.parent_id + "_cp_TBox");
+            this.setAsentamientoContextKey();
+        }
+
+        function setAsentamientoContextKey() {
+            var context_key = "";
+            var municipio = $get(this.parent_id + "_municipio_DDList");
+            var codigo_postal = $get(this.parent_id + "_cp_TBox");
+            var auto_complete = $get(this.parent_id + "_asentamiento_TBox").AutoCompleteBehavior;
+
+            if (municipio != null && municipio.value != "0") {
+                context_key = municipio.value;
+                if (codigo_postal != null && codigo_postal.value != "") {
+                    context_key += "," + codigo_postal.value;
+                }
+            }
+
+            auto_complete.set_contextKey(context_key);
         }
     }
 

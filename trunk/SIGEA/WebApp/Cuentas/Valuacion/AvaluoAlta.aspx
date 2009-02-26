@@ -55,7 +55,7 @@
             }
             else {
                 if (requestConfirmation("Datos guardados\n\n¿Desea establecer las asignaciones?")) {
-                    openModalWindow("AvaluoAsignacion.aspx?idAvaluo=" + idAvaluo, 350, 150);
+                    openModalWindow("AvaluoAsignacion.aspx?idAvaluo=" + idAvaluo, 450, 180);
                 }
             }
         }
