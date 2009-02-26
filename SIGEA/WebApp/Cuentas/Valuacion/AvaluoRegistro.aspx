@@ -25,7 +25,7 @@
         // Acciones
         function asignarAvaluo() {
             var result = openModalWindow(
-                "AvaluoAsignacion.aspx?idAvaluo=" + idAvaluo, 350, 150);
+                "AvaluoAsignacion.aspx?idAvaluo=" + idAvaluo, 450, 180);
             if (result != undefined) {
                 window.returnValue = result;
             }           

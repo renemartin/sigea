@@ -20,6 +20,8 @@
 <asp:ImageButton runat="server" SkinId="Asign" CssClass="botonImagen" ImageUrl="~/Images/Icons/Asignar.gif" ToolTip="Asignar el registro" />
 <asp:ImageButton runat="server" SkinId="Review" CssClass="botonImagen" ImageUrl="~/Images/Icons/Revisar.gif" ToolTip="Revisar el registro" />
 <asp:ImageButton runat="server" SkinId="PDF" CssClass="botonImagen" ImageUrl="~/Images/Icons/PDF.gif" ToolTip="Descargar en PDF" />
+<asp:ImageButton runat="server" SkinId="DeleteSmall" CssClass="botonImagen" ImageUrl="~/Images/Icons/EliminarChico.gif" ToolTip="Eliminar elemento" />
+<asp:ImageButton runat="server" SkinId="SearchSmall" CssClass="botonImagen" ImageUrl="~/Images/Icons/BuscarChico.gif" ToolTip="Buscar elemento" />
 <asp:ImageButton runat="server" SkinId="AddSmall" CssClass="botonImagen" ImageUrl="~/Images/Icons/AgregarChico.gif" ToolTip="Agregar elemento" />
 <asp:ImageButton runat="server" SkinId="RemoveSmall" CssClass="botonImagen" ImageUrl="~/Images/Icons/RemoverChico.gif" ToolTip="Remover elemento" />
 <asp:ImageButton runat="server" SkinId="EditSmall" CssClass="botonImagen" ImageUrl="~/Images/Icons/EditarChico.gif" ToolTip="Editar elmento" />

@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data.Linq;
 using System.IO;
 using System.Linq;
 using System.Text;
@@ -83,7 +84,51 @@ namespace SIGEA.Classes.Entities
 
             return valuador.Archivo.GetUrl();
         }
-        
+        public static string[] GetNombresValuadores(SIGEADataContext data_context, string prefix, int count, int claveEstado)
+        {
+            var entidad_query = from v in data_context.Valuador
+                               where (string.IsNullOrEmpty(prefix) 
+                                || v.nombre.ToLower().StartsWith(prefix.Trim().ToLower()))
+                                && v.TipoValuador.descripcion.ToLower() != "controlador" 
+                               select v;
+
+            if (claveEstado != 0)
+            {
+                entidad_query = entidad_query.Where(v => v.Direccion.CodigoPostal.Asentamiento.Municipio.Estado.claveEstado == claveEstado);
+            }
+
+            var nombres_query = entidad_query.Select(v => v.nombre);
+
+            if (count != 0)
+            {
+                nombres_query = nombres_query.Take(count);
+            }
+
+            return nombres_query.ToArray();
+        }
+        public static string[] GetNombresControladores(SIGEADataContext data_context, string prefix, int count, int claveEstado)
+        {
+            var entidad_query = from v in data_context.Valuador
+                                where (string.IsNullOrEmpty(prefix)
+                                 || v.nombre.ToLower().StartsWith(prefix.Trim().ToLower()))
+                                 && v.TipoValuador.descripcion.ToLower() == "controlador"
+                                select v;
+
+            if (claveEstado != 0)
+            {
+                entidad_query = entidad_query.Where(v => v.Direccion.CodigoPostal.Asentamiento.Municipio.Estado.claveEstado == claveEstado);
+            }
+
+            var nombres_query = entidad_query.Select(v => v.nombre);
+
+            if (count != 0)
+            {
+                nombres_query = nombres_query.Take(count);
+            }
+
+            return nombres_query.ToArray();
+        }
+
         public static void Delete(SIGEADataContext data_context, int idValuador)
         {
             Valuador valuador_delete = GetFromId(data_context, idValuador);

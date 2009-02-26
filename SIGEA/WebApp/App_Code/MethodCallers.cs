@@ -364,5 +364,58 @@ public class MethodCallers : System.Web.Services.WebService
     #endregion
 
     #endregion
+
+    #region Auto completes
+
+    [WebMethod]
+    public string[] GetAsentamientos(string prefixText, int count, string contextKey)
+    {
+        List<string> lista = new List<string>();
+ 
+        if (!string.IsNullOrEmpty(contextKey))
+        {
+            string[] context_params = contextKey.Split(',');
+            int idMunicipio = 0;
+            string codigoPostal = string.Empty;
+
+            if (int.TryParse(context_params[0], out idMunicipio))
+            {
+                if (context_params.Length > 1)
+                {
+                    codigoPostal = context_params[1];
+                }
+
+                lista = Ubicaciones.GetAsentamientos(data_context, prefixText, count, idMunicipio, codigoPostal);
+            }
+        }
+
+        return lista.ToArray();
+    }
+
+    [WebMethod]
+    public string[] GetNombresValuadores(string prefixText, int count, string contextKey)
+    {
+        int claveEstado = 0;
+        int.TryParse(contextKey, out claveEstado);
+        return Valuador.GetNombresValuadores(data_context, prefixText, count, claveEstado);
+    }
+
+    [WebMethod]
+    public string[] GetNombresControladores(string prefixText, int count, string contextKey)
+    {
+        int claveEstado = 0;
+        int.TryParse(contextKey, out claveEstado);
+        return Valuador.GetNombresControladores(data_context, prefixText, count, claveEstado);
+    }
+
+    #endregion
+
+    #region Búsquedas escalares
+    [WebMethod]
+    public string GetCodigoPostal(int idMunicipio, string asentamiento)
+    {
+        return Ubicaciones.GetCodigoPostal(data_context, idMunicipio, asentamiento);
+    }
+    #endregion
 }
 

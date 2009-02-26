@@ -230,9 +230,16 @@ function fillUnidad(target_id) {
         fillSelect, asyncCallFail, target_id);
 }
 
-//Comparables
+// Comparables
 function fillTipoComparable(target_id) {
     showControlLoading(target_id);
     MethodCallers.GetListaTipoComparable(
         fillSelect, asyncCallFail, target_id);
+}
+
+// Búsquedas escalares
+function getCodigoPostal(idMunicipio, asentamiento, target) {
+    showControlLoading(target.id);
+    MethodCallers.GetCodigoPostal(
+        idMunicipio, asentamiento, asyncSetTextResult, asyncCallFail, target);
 }

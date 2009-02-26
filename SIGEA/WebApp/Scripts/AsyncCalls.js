@@ -37,3 +37,9 @@ function asyncCallSingleListBack(result, callBackList) {
 function asyncControlLoad(data, control) {
     control.setData(data);
 }
+function asyncSetTextResult(data, target) {
+    if (target != null && target.value != undefined) {
+        hideControlLoading(target.id);
+        target.value = data;
+    }
+}
