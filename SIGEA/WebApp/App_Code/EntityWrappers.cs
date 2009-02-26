@@ -746,8 +746,8 @@ public class EntityWrappers : System.Web.Services.WebService
     public void SaveInstalacionesConstruccion(
         int idAvaluo
         , Entity datosInstalacionesTipoConstruccion
-        , Entity[] datosInstalacionConstruccion
-        , bool comun
+        , Entity[] datosInstalacionesPrivativas
+        , Entity[] datosInstalacionesComunes
         )
     {
         SIGEADataContext data_context = new SIGEADataContext();
@@ -761,7 +761,8 @@ public class EntityWrappers : System.Web.Services.WebService
         tipo_construccion.InstalacionesTipoConstruccion.SetData(datosInstalacionesTipoConstruccion);
         Inmueble inmueble = Inmueble.GetFromIdAvaluo(data_context, idAvaluo);
         ConstruccionInmueble construccion = ConstruccionInmueble.GetForDataUpdate(inmueble);
-        InstalacionConstruccion.SetInstalacionesConstruccion(construccion, datosInstalacionConstruccion, comun);
+        InstalacionConstruccion.SetInstalacionesConstruccion(construccion, datosInstalacionesPrivativas, false);
+        InstalacionConstruccion.SetInstalacionesConstruccion(construccion, datosInstalacionesComunes, true);
 
         data_context.SubmitChanges();
     }
@@ -771,7 +772,7 @@ public class EntityWrappers : System.Web.Services.WebService
     {
         TipoConstruccion tipo_construccion = TipoConstruccion.GetFromIdAvaluo(common_context, idAvaluo);
 
-        if (tipo_construccion.ConstruccionInmueble == null)
+        if (tipo_construccion.EstructurasTipoConstruccion == null)
             return null;
 
         return tipo_construccion.EstructurasTipoConstruccion.GetData();
@@ -782,7 +783,7 @@ public class EntityWrappers : System.Web.Services.WebService
     {
         TipoConstruccion tipo_construccion = TipoConstruccion.GetFromIdAvaluo(common_context, idAvaluo);
 
-        if (tipo_construccion.ConstruccionInmueble == null)
+        if (tipo_construccion.AcabadoTipoConstruccion == null)
             return null;
 
         return AcabadoTipoConstruccion.GetAcabados(tipo_construccion);
@@ -793,7 +794,7 @@ public class EntityWrappers : System.Web.Services.WebService
     {
         TipoConstruccion tipo_construccion = TipoConstruccion.GetFromIdAvaluo(common_context, idAvaluo);
 
-        if (tipo_construccion.ConstruccionInmueble == null)
+        if (tipo_construccion.InstalacionesTipoConstruccion == null)
             return null;
 
         return tipo_construccion.InstalacionesTipoConstruccion.GetData();
