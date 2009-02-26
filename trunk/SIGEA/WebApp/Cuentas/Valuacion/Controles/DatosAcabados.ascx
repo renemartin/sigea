@@ -4,58 +4,147 @@
 
 <script type="text/javascript">
     //mostrar datos
-    function setDatosDatosAcabados(data) {
-        $get("<%= salaPisos_TBox.ClientID %>").value = data.salaPisos;
-        $get("<%= salaMuros_TBox.ClientID %>").value = data.salaMuros;
-        $get("<%= salaPlafones_TBox.ClientID %>").value = data.salaPlafones;
-        $get("<%= comedorPisos_TBox.ClientID %>").value = data.comedorPisos;
-        $get("<%= comedorMuros_TBox.ClientID %>").value = data.comedorMuros;
-        $get("<%= comedorPlafones_TBox.ClientID %>").value = data.comedorPlafones;
-        $get("<%= cocinaPisos_TBox.ClientID %>").value = data.cocinaPisos;
-        $get("<%= cocinaMuros_TBox.ClientID %>").value = data.cocinaMuros;
-        $get("<%= cocinaPlafones_TBox.ClientID %>").value = data.cocinaPlafones;
-        $get("<%= recamarasPisos_TBox.ClientID %>").value = data.recamarasPisos;
-        $get("<%= recamarasMuros_TBox.ClientID %>").value = data.recamarasMuros;
-        $get("<%= recamarasPlafones_TBox.ClientID %>").value = data.recamarasPlafones;
-        $get("<%= banosPisos_TBox.ClientID %>").value = data.banosPisos;
-        $get("<%= banosMuros_TBox.ClientID %>").value = data.banosMuros;
-        $get("<%= banosPlafones_TBox.ClientID %>").value = data.banosPlafones;
-        $get("<%= patiosPisos_TBox.ClientID %>").value = data.patiosPisos;
-        $get("<%= patiosMuros_TBox.ClientID %>").value = data.patiosMuros;
-        $get("<%= patiosPlafones_TBox.ClientID %>").value = data.patiosPlafones;
-        $get("<%= estacionamientoPisos_TBox.ClientID %>").value = data.estacionamientoPisos;
-        $get("<%= estacionamientoMuros_TBox.ClientID %>").value = data.estacionamientoMuros;
-        $get("<%= estacionamientoPlafones_TBox.ClientID %>").value = data.estacionmientoPlafones;
-        $get("<%= fachada_TBox.ClientID %>").value = data.fachadaPisos;
+    function setDatosDatosAcabados(data_set) {
+    
+        if(data_set == null)
+            return;
+            
+        //datos recamaras
+        if(data_set[0] != null) {
+            var dataRecamaras = new Object();
+            dataRecamaras = data_set[0];
+            $get("<%= salaPisos_TBox.ClientID %>").value = dataRecamaras.piso;
+            $get("<%= salaMuros_TBox.ClientID %>").value = dataRecamaras.muro;
+            $get("<%= salaPlafones_TBox.ClientID %>").value = dataRecamaras.plafon;
+        }
+        
+        //datos comedor
+        if(data_set[1] != null) {
+            var dataComedor = new Object();
+            dataComedor = data_set[1];
+            $get("<%= comedorPisos_TBox.ClientID %>").value = dataComedor.piso;
+            $get("<%= comedorMuros_TBox.ClientID %>").value = dataComedor.muro;
+            $get("<%= comedorPlafones_TBox.ClientID %>").value = dataComedor.plafon;
+        }
+        
+        //datos cocina
+        if(data_set[2] != null) {
+            var dataCocina = new Object();
+            dataCocina = data_set[2];
+            $get("<%= cocinaPisos_TBox.ClientID %>").value = dataCocina.piso;
+            $get("<%= cocinaMuros_TBox.ClientID %>").value = dataCocina.muro;
+            $get("<%= cocinaPlafones_TBox.ClientID %>").value = dataCocina.plafon;
+        }
+        
+        //datos recamaras
+        if(data_set[3] != null) {
+            var dataRecamaras = new Object();
+            dataRecamaras = data_set[3];
+            $get("<%= recamarasPisos_TBox.ClientID %>").value = dataRecamaras.piso;
+            $get("<%= recamarasMuros_TBox.ClientID %>").value = dataRecamaras.muro;
+            $get("<%= recamarasPlafones_TBox.ClientID %>").value = dataRecamaras.plafon;
+        }
+        
+        //datos banos
+        if(data_set[4] != null) {
+            var dataBanos = new Object();
+            dataBanos = data_set[4];    
+            $get("<%= banosPisos_TBox.ClientID %>").value = dataBanos.piso;
+            $get("<%= banosMuros_TBox.ClientID %>").value = dataBanos.muro;
+            $get("<%= banosPlafones_TBox.ClientID %>").value = dataBanos.plafon;
+        }
+        
+        //datos pisos
+        if(data_set[5] != null) {
+            var dataPisos = new Object();
+            dataPisos = data_set[5];
+            $get("<%= patiosPisos_TBox.ClientID %>").value = dataPisos.piso;
+            $get("<%= patiosMuros_TBox.ClientID %>").value = dataPisos.muro;
+            $get("<%= patiosPlafones_TBox.ClientID %>").value = dataPisos.plafon;
+        }
+        
+        //datos estacionamientos
+        if(data_set[6] != null) {
+            var dataEstacionamientos = new Object();
+            dataEstacionamientos = data_set[6];
+            $get("<%= estacionamientoPisos_TBox.ClientID %>").value = dataEstacionamientos.piso;
+            $get("<%= estacionamientoMuros_TBox.ClientID %>").value = dataEstacionamientos.muro;
+            $get("<%= estacionamientoPlafones_TBox.ClientID %>").value = dataEstacionamientos.plafon;
+        }
+        
+//        if(data_set[7] != null)   {
+//            var dataFachada = new Object();
+//            dataFachada = data_set[7];
+//            $get("<%= fachada_TBox.ClientID %>").value = dataFachada.fachada;
+//        }
     }
     //guardar datos
     function getDatosDatosAcabados() {
-        var data = new Object();
+        var data_set = new Array();
         
-        data.salaPisos = $get("<%= salaPisos_TBox.ClientID %>").value;
-        data.salaMuros = $get("<%= salaMuros_TBox.ClientID %>").value;
-        data.salaPlafones = $get("<%= salaPlafones_TBox.ClientID %>").value;
-        data.comedorPisos = $get("<%= comedorPisos_TBox.ClientID %>").value;
-        data.comedorMuros = $get("<%= comedorMuros_TBox.ClientID %>").value;
-        data.comedorPlafones = $get("<%= comedorPlafones_TBox.ClientID %>").value;
-        data.cocinaPisos = $get("<%= cocinaPisos_TBox.ClientID %>").value;
-        data.cocinaMuros = $get("<%= cocinaMuros_TBox.ClientID %>").value;
-        data.cocinaPlafones = $get("<%= cocinaPlafones_TBox.ClientID %>").value;
-        data.recamarasPisos = $get("<%= recamarasPisos_TBox.ClientID %>").value;
-        data.recamarasMuros = $get("<%= recamarasMuros_TBox.ClientID %>").value;
-        data.recamarasPlafones = $get("<%= recamarasPlafones_TBox.ClientID %>").value;
-        data.banosPisos = $get("<%= banosPisos_TBox.ClientID %>").value;
-        data.banosMuros = $get("<%= banosMuros_TBox.ClientID %>").value;
-        data.banosPlafones = $get("<%= banosPlafones_TBox.ClientID %>").value;
-        data.patiosPisos = $get("<%= patiosPisos_TBox.ClientID %>").value;
-        data.patiosMuros = $get("<%= patiosMuros_TBox.ClientID %>").value;
-        data.patiosPlafones = $get("<%= patiosPlafones_TBox.ClientID %>").value;
-        data.estacionamientoPisos = $get("<%= estacionamientoPisos_TBox.ClientID %>").value;
-        data.estacionamientoMuros = $get("<%= estacionamientoMuros_TBox.ClientID %>").value;
-        data.estacionamientoPlafones = $get("<%= estacionamientoPlafones_TBox.ClientID %>").value;
-        data.fachadaPisos = $get("<%= fachada_TBox.ClientID %>").value;
+        //datos Sala
+        var dataSala = new Object();
+        dataSala.idTipoAcabado = 0;
+        dataSala.piso = $get("<%= salaPisos_TBox.ClientID %>").value;
+        dataSala.muro = $get("<%= salaMuros_TBox.ClientID %>").value;
+        dataSala.plafon = $get("<%= salaPlafones_TBox.ClientID %>").value;
         
-        return data;
+        //datos Comedor
+        var dataComedor = new Object();
+        dataComedor.idTipoAcabado = 1;
+        dataComedor.piso = $get("<%= comedorPisos_TBox.ClientID %>").value;
+        dataComedor.muro = $get("<%= comedorMuros_TBox.ClientID %>").value;
+        dataComedor.plafon = $get("<%= comedorPlafones_TBox.ClientID %>").value;
+        
+        //datos Cocina
+        var dataCocina = new Object();
+        dataCocina.idTipoAcabado = 2;
+        dataCocina.piso = $get("<%= cocinaPisos_TBox.ClientID %>").value;
+        dataCocina.muro = $get("<%= cocinaMuros_TBox.ClientID %>").value;
+        dataCocina.plafon = $get("<%= cocinaPlafones_TBox.ClientID %>").value;
+        
+        //datos Recamaras
+        var dataRecamaras = new Object();
+        dataRecamaras = idTipoAcabado = 3;
+        dataRecamaras.piso = $get("<%= recamarasPisos_TBox.ClientID %>").value;
+        dataRecamaras.muro = $get("<%= recamarasMuros_TBox.ClientID %>").value;
+        dataRecamaras.plafon = $get("<%= recamarasPlafones_TBox.ClientID %>").value;
+            
+        //datos Banos
+        var dataBanos = new Object();
+        dataBanos.idTipoAcabado = 4;    
+        dataBanos.piso = $get("<%= banosPisos_TBox.ClientID %>").value;
+        dataBanos.muro = $get("<%= banosMuros_TBox.ClientID %>").value;
+        dataBanos.plafon = $get("<%= banosPlafones_TBox.ClientID %>").value;
+        
+        //datos Patios
+        var dataPatios = new Object();
+        dataPatios.idTipoAcabado = 5;
+        dataPatios.piso = $get("<%= patiosPisos_TBox.ClientID %>").value;
+        dataPatios.muro = $get("<%= patiosMuros_TBox.ClientID %>").value;
+        dataPatios.plafon = $get("<%= patiosPlafones_TBox.ClientID %>").value;
+        
+        //datos Estacionamientos
+        var dataEstacionamientos = new Object();
+        dataEstacionamientos.idTipoAcabado = 6;
+        dataEstacionamientos.piso = $get("<%= estacionamientoPisos_TBox.ClientID %>").value;
+        dataEstacionamientos.muro = $get("<%= estacionamientoMuros_TBox.ClientID %>").value;
+        dataEstacionamientos.plafon = $get("<%= estacionamientoPlafones_TBox.ClientID %>").value;
+        
+        //datos Fachada
+//        var dataFachada = new Object();
+//        dataFachada.fachada = $get("<%= fachada_TBox.ClientID %>").value;
+        
+        data_set[0] = dataSala;
+        data_set[1] = dataComedor;
+        data_set[2] = dataCocina;
+        data_set[3] = dataRecamaras;
+        data_set[4] = dataBanos;
+        data_set[5] = dataPatios;
+        data_set[6] = dataEstacionamientos;
+        //data_set[7] = dataFachada;
+        
+        return data_set;
     }
     
 </script>
