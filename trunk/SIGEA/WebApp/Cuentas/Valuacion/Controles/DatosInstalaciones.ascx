@@ -5,9 +5,12 @@
     
     //mostrar datos
     function setDatosInstalaciones(data) {
-        $get("<%= instHidraulicas_TBox.ClientID %>").value = data.hidraulicas;
-        $get("<%= instSanitaria_TBox.ClientID %>").value = data.sanitarias;
-        $get("<%= instElectricas_TBox.ClientID %>").value = data.electricas;
+        if(data == null)
+            return;
+            
+        $get("<%= hidraulicas_TBox.ClientID %>").value = data.hidraulicas;
+        $get("<%= sanitarias_TBox.ClientID %>").value = data.sanitarias;
+        $get("<%= electricas_TBox.ClientID %>").value = data.electricas;
         $get("<%= carpinteria_TBox.ClientID %>").value = data.carpinteria;
         $get("<%= herreria_TBox.ClientID %>").value = data.herreria;
         $get("<%= carpinteria_TBox.ClientID %>").value = data.canceleria;
@@ -17,9 +20,9 @@
     function getDatosInstalaciones() {
         var data = new Object();
         
-        data.hidraulica = $get("<%= instHidraulicas_TBox.ClientID %>").value;
-        data.sanitaria = $get("<%= instSanitaria_TBox.ClientID %>").value;
-        data.electrica = $get("<%= instElectricas_TBox.ClientID %>").value;
+        data.hidraulicas = $get("<%= hidraulicas_TBox.ClientID %>").value;
+        data.sanitarias = $get("<%= sanitarias_TBox.ClientID %>").value;
+        data.electricas = $get("<%= electricas_TBox.ClientID %>").value;
         data.carpinteria = $get("<%= carpinteria_TBox.ClientID %>").value;
         data.herreria = $get("<%= herreria_TBox.ClientID %>").value;
         data.canceleria = $get("<%= carpinteria_TBox.ClientID %>").value;
@@ -33,7 +36,7 @@
         <td class="celdaTitulo">
             Hidráulicas:</td>
         <td class="celdaValor">
-            <asp:TextBox ID="instHidraulicas_TBox" runat="server" TextMode="MultiLine" SkinID="MultiLine">
+            <asp:TextBox ID="hidraulicas_TBox" runat="server" TextMode="MultiLine" SkinID="MultiLine">
             </asp:TextBox>
         </td>
         </tr>
@@ -41,7 +44,7 @@
         <td class="celdaTitulo">
             Sanitarias:</td>
         <td class="celdaValor">
-            <asp:TextBox ID="instSanitaria_TBox" runat="server" TextMode="MultiLine" SkinID="MultiLine">
+            <asp:TextBox ID="sanitarias_TBox" runat="server" TextMode="MultiLine" SkinID="MultiLine">
             </asp:TextBox>
         </td>
         </tr>
@@ -50,7 +53,7 @@
              Eléctricas:  
         </td>
         <td class="celdaValor">
-            <asp:TextBox ID="instElectricas_TBox" runat="server" TextMode="MultiLine" SkinID="MultiLine">
+            <asp:TextBox ID="electricas_TBox" runat="server" TextMode="MultiLine" SkinID="MultiLine">
             </asp:TextBox> 
         </td>
     </tr>

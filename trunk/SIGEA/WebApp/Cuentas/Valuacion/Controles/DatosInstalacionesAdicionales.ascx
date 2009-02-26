@@ -15,7 +15,10 @@
     }
     
     //mostrar datos
-    function setDatosInstalacionesAdicionles(data) {
+    function setDatosInstalacionesAdicionales(data) {
+        if(data == null)
+            return;
+            
         var i = null;
         var parent_id = "<%= ClientID %>";
         var filas_borrar = getCloningTableCount(parent_id +'_tabla_instalaciones') - data.length;

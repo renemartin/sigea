@@ -720,7 +720,8 @@ public class EntityWrappers : System.Web.Services.WebService
             throw new Exception("El avalúo no cuenta con un tipo de construcción registrado");
         }
 
-        tipo_construccion.EstructurasTipoConstruccion.SetData(datosEstructuras);
+        EstructurasTipoConstruccion estructuras = EstructurasTipoConstruccion.GetForDataUpdate(data_context, tipo_construccion);
+        estructuras.SetData(datosEstructuras);
         data_context.SubmitChanges();
     }
 

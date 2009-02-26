@@ -40,8 +40,8 @@
 
         // Llenado de datos
         function fillData() {
-            fillEstructurasData();
-            fillInstalacionesData();
+//            fillEstructurasData();
+//            fillInstalacionesData();
             fillInstalacionesAdicionalesData("<%= instalacionesPrivativas_Ctrl.ClientID %>");
             fillInstalacionesAdicionalesData("<%= instalacionesComunes_Ctrl.ClientID %>");
         }
@@ -53,7 +53,7 @@
             loadDatosEstructuras();
             loadDatosAcabados();
             loadDatosInstalaciones();
-            loadDatosInstalacionesAdicionales();
+//            loadDatosInstalacionesAdicionales();
         }
         function loadDatosEstructuras() {
             var callBackList = new Array();
@@ -79,11 +79,12 @@
             
             loadInstalacionesAsync(idAvaluo, callBackList);
         }
-        function loadDatosInstalaciones() {
+        function loadDatosInstalacionesAdicionales() {
             var callBackList = new Array();
             
             callBackList[0] = loadForm_Success;
-            callBackList[1] = setDatosInstalacionesAdicionales;
+            callBackList[1] = setDatosInstalacionesAdicionales("<%= instalacionesPrivativas_Ctrl.ClientID %>");
+            callBackList[1] = setDatosInstalacionesAdicionales("<%= instalacionesComunes_Ctrl.ClientID %>");
             
             loadInstalacionesAdicionalesAsync(idAvaluo, callBackList);
         }
