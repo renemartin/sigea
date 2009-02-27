@@ -9,16 +9,19 @@ body, html
 
 body
 {
+	background-position: 0px 0px;
 	font: .8em sans-serif, verdana, helvetica;
 	margin-left: 5px;
 	margin-right: 5px;
 	margin-bottom: 20px;
+	background-image: url('Images/BKTop.jpg');
+	background-repeat: repeat-x;
 }
 
 h1
 {
 	font-size: 2em;
-	color: #EDA50E;
+	color: #F28409;
 }
 
 h2
@@ -40,7 +43,7 @@ a, a:active, a:link, a:visited
 
 a:hover
 {
-	color: #00CC00;
+	color: #00A800;
 }
 
 hr
@@ -65,7 +68,7 @@ hr
 
 .textoNota
 {
-	font-size: .6em;
+	font-size: .7em;
 }
 
 .textoNegritas
@@ -80,7 +83,7 @@ hr
 
 .textoChico
 {
-	font-size: .7em;
+	font-size: .85em;
 }
 
 .glosario
@@ -168,7 +171,7 @@ hr
 	font-size: .8em;
 }
 
-.tablaExtendida .tablaCompactaExtendida
+.tablaExtendida, .tablaCompactaExtendida
 {
 	width: 100%;
 	border: 0;
@@ -181,6 +184,65 @@ hr
 	font-size: .85em;
 }
 
+/* Grid */
+.grid
+{
+	border: 1px solid #FEF3C7;
+	background-color: #FFFFFF;
+	padding: 5px;
+}
+
+.grid .header
+{
+	background-color: #00641E;
+	color: #FFFFFF;
+	font-weight: bold;
+	font-size: .85em;
+	border: 1px solid #004616;
+	text-align: left;
+	background-image: url('Images/BKHeader.jpg');
+	background-repeat: repeat-x;	
+}
+
+.grid .row
+{
+	background-color: #F1FAF1;
+}
+
+.grid .row-a
+{
+	background-color: #E0F3E0;
+}
+
+.grid .footer
+{
+	background-color: #00641E;
+	color: #FFFFFF;
+	font-size: .85em;
+	border: 1px solid #004616;
+	background-image: url('Images/BKHeader.jpg');
+	background-repeat: repeat-x;	
+}
+
+.grid .pager
+{
+	border-top-style: solid;
+	border-width: 1px;
+	border-color: #FF6600;
+	margin-top: 10px;
+	margin-left: 5px;
+}
+
+.grid .header a, a:active, a:link, a:visited
+{
+	color: #FFFFFF;
+}
+
+.grid .header a:hover
+{
+	color: #99FF99;
+}
+
 /* Barras */
 
 .barraMenu
@@ -190,6 +252,8 @@ hr
 	border: 1px solid #C0C0C0;
 	margin-top: 20px;
 	padding-right: 5px;
+	background-image: url('Images/BKBarra.jpg');
+	background-repeat: repeat-x;	
 }
 
 .barraAcciones
@@ -198,6 +262,8 @@ hr
 	border: 1px solid #C0C0C0;
 	margin-left: 5px;
 	margin-right: 5px;
+	background-image: url('Images/BKBarra.jpg');
+	background-repeat: repeat-x;		
 }
 
 /* Menús */
@@ -205,9 +271,12 @@ hr
 .menu
 {
 	list-style: none;
-	padding: 0 0 0 5;
-	background-color: #E2E9E0;
+	background-image: url('Images/BKMenu.jpg');
+	background-repeat: repeat-x;
+	padding-left: 5px;
+	padding-bottom: 3px;
 	margin-left: -5px;
+	margin-right: -5px;	
 }
 
 .menu a, a:active, a:link, a:visited
@@ -217,7 +286,7 @@ hr
 
 .menu a:hover
 {
-	color: #00CC00;
+	color: #00A800;
 }
 
 .menu ul
@@ -238,6 +307,8 @@ hr
 	background-color: #FFFFFF;
 	padding-right: 5px;
 	padding-left: 5px;
+	background-image: url('Images/BKTop.jpg');
+	background-repeat: repeat-x;	
 }
 
 .submenu
@@ -296,7 +367,7 @@ hr
 
 .formulario .subCampo
 {
-	font-size: smaller;
+	font-size: .85em;
 	margin-left: 2px;
 }
 
@@ -336,8 +407,9 @@ hr
 
 .etiqueta1, .etiqueta2, .etiqueta3
 {
+	border: 1px solid #F8D99A;
 	padding: 4px;
-	background-color: #FAF9E2;
+	background-color: #F5F3C5;
 }
 
 .foto
@@ -347,9 +419,10 @@ hr
 
 .sinDatos
 {
+	padding: 15px;
 	height: 100px;
 	vertical-align: middle;
-	color: #CCCCCC;
+	color: #333333;
 }
 
 /* Botones */
@@ -357,4 +430,18 @@ hr
 .botonImagen
 {
 	cursor: pointer;
+}
+
+/* Elementos generales */
+
+.mainHeader
+{
+	margin-left: -5px;
+	margin-right: -5px;
+}
+
+.logo
+{
+	display: inline;
+	margin-left: 20px;
 }

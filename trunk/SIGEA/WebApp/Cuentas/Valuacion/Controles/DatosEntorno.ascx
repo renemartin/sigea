@@ -151,13 +151,14 @@
         // Databindngs
         function setData(data_set) {
             if (data_set != null) {
-                $get("<%= clasificacionZona_DDList.ClientID %>").selectedValue = data_set[0].idTipoClasificacionZona;
-                $get("<%= proximidadUrbana_DDList.ClientID %>").selectedValue = data_set[0].idTipoProximidadUrbana;
-                $get("<%= nivelSocioeconomico_DDList.ClientID %>").selectedValue = data_set[0].idTipoNivelSocioEconomico;
-                $get("<%= construccionPredominante_DDList.ClientID %>").selectedValue = data_set[0].idTipoConstrucciones;
-                $get("<%= densidadPoblacion_DDList.ClientID %>").selectedValue = data_set[0].idTipoDensidadPoblacion;
-                $get("<%= indiceSaturacion_TBox.ClientID %>").value = data_set[0].indiceSaturacion;
-
+                if (data_set[0] != null) {
+                    $get("<%= clasificacionZona_DDList.ClientID %>").selectedValue = data_set[0].idTipoClasificacionZona;
+                    $get("<%= proximidadUrbana_DDList.ClientID %>").selectedValue = data_set[0].idTipoProximidadUrbana;
+                    $get("<%= nivelSocioeconomico_DDList.ClientID %>").selectedValue = data_set[0].idTipoNivelSocioEconomico;
+                    $get("<%= construccionPredominante_DDList.ClientID %>").selectedValue = data_set[0].idTipoConstrucciones;
+                    $get("<%= densidadPoblacion_DDList.ClientID %>").selectedValue = data_set[0].idTipoDensidadPoblacion;
+                    $get("<%= indiceSaturacion_TBox.ClientID %>").value = data_set[0].indiceSaturacion;
+                }
                 this.setDataVias(data_set[1]);
             }
             else {
@@ -167,6 +168,9 @@
             this.fillData();            
         }
         function setDataVias(data) {
+            if (data == null)
+                return;
+        
             var i = null;
             for (i = 1; i <= data.length; i++) {
                 $get(this.parent_id + "_via_TBox_" + i).value = data[i - 1].nombreVia;

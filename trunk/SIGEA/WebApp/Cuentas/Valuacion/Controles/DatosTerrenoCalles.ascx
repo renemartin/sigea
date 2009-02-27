@@ -1,7 +1,6 @@
 ﻿<%@ Control Language="C#" AutoEventWireup="true" CodeFile="DatosTerrenoCalles.ascx.cs"
     Inherits="Cuentas_Valuacion_Controles_DatosTerrenoCalles" %>
 <link href="~/App_Themes/Default/DefaultStyle.css" rel="stylesheet" type="text/css" />
-
 <table>
     <tr>
         <td class="celdaTitulo" valign="top">
@@ -24,7 +23,8 @@
                 </tr>
                 <tr>
                     <td class="subCampo">
-                        Calle transversal:                     </td>
+                        Calle transversal:
+                    </td>
                     <td class="celdaValor">
                         <asp:TextBox ID="calleTrans2_TBox" runat="server"></asp:TextBox>
                     </td>
@@ -36,7 +36,8 @@
                 </tr>
                 <tr>
                     <td class="subCampo">
-                        Calle limítrofe:                     </td>
+                        Calle limítrofe:
+                    </td>
                     <td class="celdaValor">
                         <asp:TextBox ID="calleLimitrofe_TBox" runat="server"></asp:TextBox>
                     </td>
@@ -117,3 +118,4 @@
     this["<%= ID %>"] = new TerrenoCalles();
     
 </script>
+

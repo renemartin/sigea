@@ -27,4 +27,7 @@
 <asp:ImageButton runat="server" SkinId="EditSmall" CssClass="botonImagen" ImageUrl="~/Images/Icons/EditarChico.gif" ToolTip="Editar elmento" />
 <asp:ImageButton runat="server" SkinId="ToggleActive" CssClass="botonImagen" ToolTip="Cambiar estátus activo/inactivo" />
 
-<asp:GridView runat="server" />
+<asp:GridView runat="server" CssClass="grid" HeaderStyle-CssClass="header" RowStyle-CssClass="row" 
+    AlternatingRowStyle-CssClass="row-a" PagerStyle-CssClass="pager" 
+    FooterStyle-CssClass="footer" BorderStyle="Solid" CellPadding="4" 
+    ShowFooter="True" GridLines="None" />

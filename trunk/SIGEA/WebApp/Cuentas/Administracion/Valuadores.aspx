@@ -73,9 +73,7 @@
             ChildrenAsTriggers="False">
             <ContentTemplate>
                 <asp:GridView ID="data_gridView" runat="server" AutoGenerateColumns="False" DataSourceID="valuadores_DS"
-                    AllowPaging="True" AllowSorting="True" CellPadding="4" ForeColor="#333333" 
-                    GridLines="None" Width="500px">
-                    <RowStyle BackColor="#E3EAEB" />
+                    AllowPaging="True" AllowSorting="True" Width="500px">
                     <Columns>
                         <asp:BoundField DataField="nombre" HeaderText="Nombre" ReadOnly="True" SortExpression="nombre" />
                         <asp:TemplateField HeaderText="Tipo" SortExpression="TipoValuador.idTipoValuador">
@@ -99,17 +97,11 @@
                             <ItemStyle Width="100px" />
                         </asp:TemplateField>
                     </Columns>
-                    <FooterStyle BackColor="#1C5E55" Font-Bold="True" ForeColor="White" />
-                    <PagerStyle BackColor="#666666" ForeColor="White" HorizontalAlign="Center" />
                     <EmptyDataTemplate>
                         <div class="sinDatos">
                             Sin registros...
                         </div>
                     </EmptyDataTemplate>
-                    <SelectedRowStyle BackColor="#C5BBAF" Font-Bold="True" ForeColor="#333333" />
-                    <HeaderStyle BackColor="#1C5E55" Font-Bold="True" ForeColor="White" />
-                    <EditRowStyle BackColor="#7C6F57" />
-                    <AlternatingRowStyle BackColor="White" />
                 </asp:GridView>
                 <asp:LinqDataSource ID="valuadores_DS" runat="server" ContextTypeName="SIGEA.Classes.Entities.SIGEADataContext"
                     OrderBy="nombre" Select="new (idValuador, nombre, externo, activo, DatoContacto, TipoValuador)"

@@ -239,66 +239,70 @@
         function setData(data_set) {
             if (data_set != null) {
                 // Infraestructura
-                $get("<%= aguaPotable_CBox.ClientID %>").checked = data_set[0].aguaPotable;
-                $get("<%= aguaPotableSuministro_CBox.ClientID %>").checked = data_set[0].aguaPotableSuministro;
-                $get("<%= drenaje_CBox.ClientID %>").checked = data_set[0].drenaje;
-                $get("<%= drenajeConexion_CBox.ClientID %>").checked = data_set[0].drenajeConexion;
-                $get("<%= drenajeFosaSeptica_CBox.ClientID %>").checked = data_set[0].drenajeFosaSeptica;
-                $get("<%= electrificacion_CBox.ClientID %>").checked = data_set[0].electrificacion;
-                $get("<%= electrificacionRedAerea_CBox.ClientID %>").checked = data_set[0].electrificacionRedAerea;
-                $get("<%= electrificacionConAcometida_CBox.ClientID %>").checked = data_set[0].electrificacionConAcometida;
-                $get("<%= alumbradoPublico_CBox.ClientID %>").checked = data_set[0].alumbradoPublico;
-                $get("<%= alumbradoPublicoAereo_CBox.ClientID %>").checked = data_set[0].alumbradoPublicoAereo;
-                $get("<%= vialidades_CBox.ClientID %>").checked = data_set[0].vialidades;
-                if (data_set[0].vialidades) {
-                    $get("<%= materialVialidades_DDList.ClientID %>").value = data_set[0].idTipoVialidades;
-                    $get("<%= anchoVialidad_TBox.ClientID %>").value = data_set[0].anchoVialidades;
-                }
-                $get("<%= banquetas_CBox.ClientID %>").checked = data_set[0].banquetas;
-                if (data_set[0].banquetas) {
-                    $get("<%= materialBanquetas_DDList.ClientID %>").value = data_set[0].idTipoBanquetas;
-                }
-                $get("<%= guarniciones_CBox.ClientID %>").checked = data_set[0].guarniciones;
-                if (data_set[0].guarniciones) {
-                    $get("<%= materialGuarniciones_DDList.ClientID %>").value = data_set[0].idTipoGuarniciones;
-                }
-                $get("<%= nivelInfraestructura_Lbl.ClientID %>").innerHTML = getNumString(data_set[0].nivelInfraestructura, 2);
-                $get("<%= nivelInfraestructuraSHF_Lbl.ClientID %>").innerHTML = getNumString(data_set[0].nivelInfraestructuraSHF);
+                if (data_set[0] != null) {
+                    $get("<%= aguaPotable_CBox.ClientID %>").checked = data_set[0].aguaPotable;
+                    $get("<%= aguaPotableSuministro_CBox.ClientID %>").checked = data_set[0].aguaPotableSuministro;
+                    $get("<%= drenaje_CBox.ClientID %>").checked = data_set[0].drenaje;
+                    $get("<%= drenajeConexion_CBox.ClientID %>").checked = data_set[0].drenajeConexion;
+                    $get("<%= drenajeFosaSeptica_CBox.ClientID %>").checked = data_set[0].drenajeFosaSeptica;
+                    $get("<%= electrificacion_CBox.ClientID %>").checked = data_set[0].electrificacion;
+                    $get("<%= electrificacionRedAerea_CBox.ClientID %>").checked = data_set[0].electrificacionRedAerea;
+                    $get("<%= electrificacionConAcometida_CBox.ClientID %>").checked = data_set[0].electrificacionConAcometida;
+                    $get("<%= alumbradoPublico_CBox.ClientID %>").checked = data_set[0].alumbradoPublico;
+                    $get("<%= alumbradoPublicoAereo_CBox.ClientID %>").checked = data_set[0].alumbradoPublicoAereo;
+                    $get("<%= vialidades_CBox.ClientID %>").checked = data_set[0].vialidades;
+                    if (data_set[0].vialidades) {
+                        $get("<%= materialVialidades_DDList.ClientID %>").value = data_set[0].idTipoVialidades;
+                        $get("<%= anchoVialidad_TBox.ClientID %>").value = data_set[0].anchoVialidades;
+                    }
+                    $get("<%= banquetas_CBox.ClientID %>").checked = data_set[0].banquetas;
+                    if (data_set[0].banquetas) {
+                        $get("<%= materialBanquetas_DDList.ClientID %>").value = data_set[0].idTipoBanquetas;
+                    }
+                    $get("<%= guarniciones_CBox.ClientID %>").checked = data_set[0].guarniciones;
+                    if (data_set[0].guarniciones) {
+                        $get("<%= materialGuarniciones_DDList.ClientID %>").value = data_set[0].idTipoGuarniciones;
+                    }
+                    $get("<%= nivelInfraestructura_Lbl.ClientID %>").innerHTML = getNumString(data_set[0].nivelInfraestructura, 2);
+                    $get("<%= nivelInfraestructuraSHF_Lbl.ClientID %>").innerHTML = getNumString(data_set[0].nivelInfraestructuraSHF);
 
-                setVisibility($get("seccion_agua_potable"), data_set[0].aguaPotable);
-                setVisibility($get("seccion_drenaje"), data_set[0].drenaje);
-                setVisibility($get("seccion_electrificacion"), data_set[0].electrificacion);
-                setVisibility($get("seccion_alumbrado"), data_set[0].alumbradoPublico);
-                setVisibility($get("seccion_vialidades"), data_set[0].vialidades);
-                setVisibility($get("seccion_banquetas"), data_set[0].banquetas);
-                setVisibility($get("seccion_guarniciones"), data_set[0].guarniciones);
+                    setVisibility($get("seccion_agua_potable"), data_set[0].aguaPotable);
+                    setVisibility($get("seccion_drenaje"), data_set[0].drenaje);
+                    setVisibility($get("seccion_electrificacion"), data_set[0].electrificacion);
+                    setVisibility($get("seccion_alumbrado"), data_set[0].alumbradoPublico);
+                    setVisibility($get("seccion_vialidades"), data_set[0].vialidades);
+                    setVisibility($get("seccion_banquetas"), data_set[0].banquetas);
+                    setVisibility($get("seccion_guarniciones"), data_set[0].guarniciones);
+                }
 
                 // Servicios
-                $get("<%= gasNatural_CBox.ClientID %>").checked = data_set[1].gasNatural;
-                $get("<%= gasNaturalSuministro_CBox.ClientID %>").checked = data_set[1].gasNaturalSuministro;
-                $get("<%= redTelefonica_CBox.ClientID %>").checked = data_set[1].redTelefonica;
-                $get("<%= redTelefonicaAerea_CBox.ClientID %>").checked = data_set[1].redTelefonicaAerea;
-                $get("<%= redTelefonicaAcometida_CBox.ClientID %>").checked = data_set[1].redTelefonicaAcometida;
-                $get("<%= senalizacionNomenclatura_CBox.ClientID %>").checked = data_set[1].senalizacionNomenclatura;
-                $get("<%= transporteUrbano_CBox.ClientID %>").checked = data_set[1].transporteUrbano;
-                if (data_set[1].transporteUrbano) {
-                    $get("<%= transporteUrbanoDistancia_TBox.ClientID %>").value = data_set[1].transporteUrbanoDistancia;
-                    $get("<%= transporteUrbanoFrecuencia_TBox.ClientID %>").value = data_set[1].transporteUrbanoFrecuencia;
-                }
-                $get("<%= transporteSuburbano_CBox.ClientID %>").checked = data_set[1].transporteSuburbano;
-                if (data_set[1].transporteSuburbano) {
-                    $get("<%= transporteSuburbanoDistancia_TBox.ClientID %>").value = data_set[1].transporteSuburbanoDistancia;
-                    $get("<%= transporteSuburbanoFrecuencia_TBox.ClientID %>").value = data_set[1].transporteSuburbanoFrecuencia;
-                }
-                $get("<%= vigilancia_CBox.ClientID %>").checked = data_set[1].vigilancia;
-                $get("<%= vigilanciaMunicipal_CBox.ClientID %>").checked = data_set[1].vigilanciaMunicipal;
-                $get("<%= recoleccionBasura_CBox.ClientID %>").checked = data_set[1].recoleccionBasura;
+                if (data_set[1] != null) {
+                    $get("<%= gasNatural_CBox.ClientID %>").checked = data_set[1].gasNatural;
+                    $get("<%= gasNaturalSuministro_CBox.ClientID %>").checked = data_set[1].gasNaturalSuministro;
+                    $get("<%= redTelefonica_CBox.ClientID %>").checked = data_set[1].redTelefonica;
+                    $get("<%= redTelefonicaAerea_CBox.ClientID %>").checked = data_set[1].redTelefonicaAerea;
+                    $get("<%= redTelefonicaAcometida_CBox.ClientID %>").checked = data_set[1].redTelefonicaAcometida;
+                    $get("<%= senalizacionNomenclatura_CBox.ClientID %>").checked = data_set[1].senalizacionNomenclatura;
+                    $get("<%= transporteUrbano_CBox.ClientID %>").checked = data_set[1].transporteUrbano;
+                    if (data_set[1].transporteUrbano) {
+                        $get("<%= transporteUrbanoDistancia_TBox.ClientID %>").value = data_set[1].transporteUrbanoDistancia;
+                        $get("<%= transporteUrbanoFrecuencia_TBox.ClientID %>").value = data_set[1].transporteUrbanoFrecuencia;
+                    }
+                    $get("<%= transporteSuburbano_CBox.ClientID %>").checked = data_set[1].transporteSuburbano;
+                    if (data_set[1].transporteSuburbano) {
+                        $get("<%= transporteSuburbanoDistancia_TBox.ClientID %>").value = data_set[1].transporteSuburbanoDistancia;
+                        $get("<%= transporteSuburbanoFrecuencia_TBox.ClientID %>").value = data_set[1].transporteSuburbanoFrecuencia;
+                    }
+                    $get("<%= vigilancia_CBox.ClientID %>").checked = data_set[1].vigilancia;
+                    $get("<%= vigilanciaMunicipal_CBox.ClientID %>").checked = data_set[1].vigilanciaMunicipal;
+                    $get("<%= recoleccionBasura_CBox.ClientID %>").checked = data_set[1].recoleccionBasura;
 
-                setVisibility($get("seccion_gas_natural"), data_set[1].gasNatural);
-                setVisibility($get("seccion_red_telefonica"), data_set[1].redTelefonica);
-                setVisibility($get("seccion_transporte_urbano"), data_set[1].transporteUrbano);
-                setVisibility($get("seccion_transporte_suburbano"), data_set[1].transporteSuburbano);
-                setVisibility($get("seccion_vigilancia_municipal"), data_set[1].vigilanciaMunicipal);
+                    setVisibility($get("seccion_gas_natural"), data_set[1].gasNatural);
+                    setVisibility($get("seccion_red_telefonica"), data_set[1].redTelefonica);
+                    setVisibility($get("seccion_transporte_urbano"), data_set[1].transporteUrbano);
+                    setVisibility($get("seccion_transporte_suburbano"), data_set[1].transporteSuburbano);
+                    setVisibility($get("seccion_vigilancia_municipal"), data_set[1].vigilanciaMunicipal);
+                }
             }
 
             this.fillData();
