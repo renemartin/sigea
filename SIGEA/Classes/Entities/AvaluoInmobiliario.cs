@@ -185,16 +185,17 @@ namespace SIGEA.Classes.Entities
                                 select new
                                 {
                                     idAvaluo = a.idAvaluo,
-                                    nombreSolicitante = a.Solicitante.nombre,
-                                    folioINFONAVIT = "",
-                                    nss = a.Solicitante.NSS,                                    
                                     fechaFinalizacion = a.fechaFinalizacion,
                                     numPaqueteINFONAVIT = 0,
                                     numViviendaINFONAVIT = 0,
+                                    propositoAvaluo = a.PropositoAvaluo,
                                     claveEntidadCredito = a.DatoCredito.EntidadFinanciamiento.clave,
                                     nombreEntidadCredito = a.DatoCredito.EntidadFinanciamiento.nombre,
-                                    constructor = a.Inmueble.ConstruccionInmueble.constructor,
-                                    propositoAvaluo = a.PropositoAvaluo,
+                                    
+                                    nombreSolicitante = a.Solicitante.nombre,
+                                    folioINFONAVIT = "",
+                                    nss = a.Solicitante.NSS,                                                                       
+                                    
                                     tipoInmueble = a.Inmueble.TipoInmueble.descripcion,
                                     calleInmueble = a.Inmueble.DireccionInmueble.Direccion.calle,
                                     numeroExteriorInmueble = a.Inmueble.DireccionInmueble.Direccion.numeroExterior,
@@ -205,32 +206,41 @@ namespace SIGEA.Classes.Entities
                                     municipioInmueble = a.Inmueble.DireccionInmueble.Direccion.CodigoPostal.Asentamiento.Municipio.nombreMunicipio,
                                     estadoInmueble = a.Inmueble.DireccionInmueble.Direccion.CodigoPostal.Asentamiento.Municipio.Estado.nombreEstado,
                                     cuentaPredial = a.Inmueble.cuentaPredial,
+
+                                    longitud = a.Inmueble.GeolocalizacionInmueble.longitud,
+                                    latitud = a.Inmueble.GeolocalizacionInmueble.latitud,
+                                    altitud = a.Inmueble.GeolocalizacionInmueble.altitud
+                                    
                                     referenciaProximidadUrbana = "",
+                                    redTelefonicaAcometida = a.Inmueble.ServiciosInmueble.redTelefonicaAcometida,
                                     nivelInfraestructura = a.Inmueble.InfraestructuraInmueble.nivelInfraestructura,
+                                    nivelEquipamientoUrbano = a.Inmueble.EquipamientoInmueble.nivelEquipamientoUrbano,
+                                    
+                                    numeroEspaciosEstacionamiento = a.Inmueble.UsoActualInmueble.cupoEstacionamiento,
+                                    elevador = a.Inmueble.UsoActualInmueble.elevador,
+                                    numeroBanios = a.Inmueble.UsoActualInmueble.numBaniosCompletos,
+                                    numeroBaniosMedios = a.Inmueble.UsoActualInmueble.numBaniosMedios,
+                                    numeroRecamaras = 0,
+                                    
                                     claseInmueble = "",
+                                    unidadesRentables = a.Inmueble.ConstruccionInmueble.unidadesRentables,                                  
+                                    numeroNiveles = tc.niveles,   
+                                    constructor = a.Inmueble.ConstruccionInmueble.constructor,
                                     vidaUtil = tc.vidaUtil,
-                                    anioTerminacion = 0,
-                                    unidadesRentables = a.Inmueble.ConstruccionInmueble.unidadesRentables,
+                                    anioTerminacion = 0,                                                             
+                                    
                                     superficieTerreno = a.Inmueble.SuperficiesInmueble.totalTerreno,
                                     superficieConstruida = 0,
                                     superficieAccesoria = 0,
                                     superficieVendible = 0,
+                                    
                                     valorMercado = 0,
                                     valorFisicoTerreno = 0,
                                     valorFisicoConstruccion = 0,
                                     valorFisicoInstalaciones = 0,
                                     valorConcluido = 0,
-                                    numeroRecamaras = 0,
-                                    numeroBanios = a.Inmueble.UsoActualInmueble.numBaniosCompletos,
-                                    numeroBaniosMedios = a.Inmueble.UsoActualInmueble.numBaniosMedios,
-                                    numeroNiveles = tc.niveles,
-                                    numeroEspaciosEstacionamiento = a.Inmueble.UsoActualInmueble.cupoEstacionamiento,
-                                    redTelefonicaAcometida = a.Inmueble.ServiciosInmueble.redTelefonicaAcometida,
-                                    nivelEquipamientoUrbano = a.Inmueble.EquipamientoInmueble.nivelEquipamientoUrbano,
-                                    elevador = a.Inmueble.UsoActualInmueble.elevador,
-                                    longitud = a.Inmueble.GeolocalizacionInmueble.longitud,
-                                    latitud = a.Inmueble.GeolocalizacionInmueble.latitud,
-                                    altitud = a.Inmueble.GeolocalizacionInmueble.altitud
+                                    
+                                    
 
                                 };
             return resumen_query.ToArray();
