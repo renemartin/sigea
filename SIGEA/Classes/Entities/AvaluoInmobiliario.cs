@@ -173,5 +173,68 @@ namespace SIGEA.Classes.Entities
         {
             idSubTipo = GetSubTipo(idTipoInmueble);
         }
+
+        public static object GetSintesis(SIGEADataContext data_context, int idAvaluo)
+        {
+                            
+            var resumen_query = from a in data_context.AvaluoInmobiliario
+                                join i in data_context.Inmueble on a.idInmueble equals i.idInmueble
+                                join c in data_context.ConstruccionInmueble on i.idInmueble equals c.idInmueble
+                                join tc in data_context.TipoConstruccion on c.idConstruccion equals tc.idConstruccion 
+                                where a.idAvaluo == idAvaluo &&  tc.numeroTipo == 1
+                                select new
+                                {
+                                    idAvaluo = a.idAvaluo,
+                                    nombreSolicitante = a.Solicitante.nombre,
+                                    folioINFONAVIT = "",
+                                    nss = a.Solicitante.NSS,                                    
+                                    fechaFinalizacion = a.fechaFinalizacion,
+                                    numPaqueteINFONAVIT = 0,
+                                    numViviendaINFONAVIT = 0,
+                                    claveEntidadCredito = a.DatoCredito.EntidadFinanciamiento.clave,
+                                    nombreEntidadCredito = a.DatoCredito.EntidadFinanciamiento.nombre,
+                                    constructor = a.Inmueble.ConstruccionInmueble.constructor,
+                                    propositoAvaluo = a.PropositoAvaluo,
+                                    tipoInmueble = a.Inmueble.TipoInmueble.descripcion,
+                                    calleInmueble = a.Inmueble.DireccionInmueble.Direccion.calle,
+                                    numeroExteriorInmueble = a.Inmueble.DireccionInmueble.Direccion.numeroExterior,
+                                    numeroInteriorInmueble = a.Inmueble.DireccionInmueble.Direccion.numeroInterior,
+                                    nombreCondominio = a.Inmueble.DireccionInmueble.condominio,
+                                    coloniaInmueble = a.Inmueble.DireccionInmueble.Direccion.CodigoPostal.Asentamiento.nombreAsentamiento,
+                                    cpInmueble = a.Inmueble.DireccionInmueble.Direccion.CodigoPostal.codigoPostal1,
+                                    municipioInmueble = a.Inmueble.DireccionInmueble.Direccion.CodigoPostal.Asentamiento.Municipio.nombreMunicipio,
+                                    estadoInmueble = a.Inmueble.DireccionInmueble.Direccion.CodigoPostal.Asentamiento.Municipio.Estado.nombreEstado,
+                                    cuentaPredial = a.Inmueble.cuentaPredial,
+                                    referenciaProximidadUrbana = "",
+                                    nivelInfraestructura = a.Inmueble.InfraestructuraInmueble.nivelInfraestructura,
+                                    claseInmueble = "",
+                                    vidaUtil = tc.vidaUtil,
+                                    anioTerminacion = 0,
+                                    unidadesRentables = a.Inmueble.ConstruccionInmueble.unidadesRentables,
+                                    superficieTerreno = a.Inmueble.SuperficiesInmueble.totalTerreno,
+                                    superficieConstruida = 0,
+                                    superficieAccesoria = 0,
+                                    superficieVendible = 0,
+                                    valorMercado = 0,
+                                    valorFisicoTerreno = 0,
+                                    valorFisicoConstruccion = 0,
+                                    valorFisicoInstalaciones = 0,
+                                    valorConcluido = 0,
+                                    numeroRecamaras = 0,
+                                    numeroBanios = a.Inmueble.UsoActualInmueble.numBaniosCompletos,
+                                    numeroBaniosMedios = a.Inmueble.UsoActualInmueble.numBaniosMedios,
+                                    numeroNiveles = tc.niveles,
+                                    numeroEspaciosEstacionamiento = a.Inmueble.UsoActualInmueble.cupoEstacionamiento,
+                                    redTelefonicaAcometida = a.Inmueble.ServiciosInmueble.redTelefonicaAcometida,
+                                    nivelEquipamientoUrbano = a.Inmueble.EquipamientoInmueble.nivelEquipamientoUrbano,
+                                    elevador = a.Inmueble.UsoActualInmueble.elevador,
+                                    longitud = a.Inmueble.GeolocalizacionInmueble.longitud,
+                                    latitud = a.Inmueble.GeolocalizacionInmueble.latitud,
+                                    altitud = a.Inmueble.GeolocalizacionInmueble.altitud
+
+                                };
+            return resumen_query.ToArray();
+
+        }
     }
 }
