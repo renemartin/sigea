@@ -707,7 +707,7 @@ public class EntityWrappers : System.Web.Services.WebService
 
     #region Elementos
     [WebMethod]
-    public  void SaveEstructuras(
+    public void SaveEstructuras(
         int idAvaluo
         , Entity datosEstructuras
         )
