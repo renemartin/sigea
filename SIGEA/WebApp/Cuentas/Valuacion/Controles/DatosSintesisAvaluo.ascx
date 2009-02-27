@@ -300,7 +300,7 @@
     </tr>
     <tr>
         <td class="celdaTitulo">
-            Vida útil remanente en baños
+            Vida útil remanente en años
         </td>
         <td class="celdaValor" colspan="2">
             <asp:Label ID="vidaUtil_Lbl" runat="server" Text=""></asp:Label>
@@ -361,19 +361,20 @@
             <asp:Label ID="superficieVendible_Lbl" runat="server" Text=""></asp:Label>
         </td>
     </tr>
-    <tr>
-        <td class="celdaTitulo">
-            Valor comparativo de mercado
-        </td>
-        <td class="celdaValor" colspan="2">
-            <asp:Label ID="valorMercado_Lbl" runat="server"></asp:Label>
-        </td>
-    </tr>
+  
     <tr>
         <td colspan="2">
             <h2>
                 Valores concluidos
             </h2>
+        </td>
+    </tr>
+     <tr>
+        <td class="celdaTitulo">
+            Valor comparativo de mercado
+        </td>
+        <td class="celdaValor" colspan="2">
+            <asp:Label ID="valorMercado_Lbl" runat="server"></asp:Label>
         </td>
     </tr>
     <tr>
