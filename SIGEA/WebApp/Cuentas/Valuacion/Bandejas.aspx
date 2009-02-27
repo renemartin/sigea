@@ -150,9 +150,7 @@
                 <asp:UpdatePanel ID="avaluos_UpPanel" runat="server">
                     <ContentTemplate>
                         <asp:GridView ID="avaluos_GridView" runat="server" Width="100%" AllowPaging="True"
-                            AutoGenerateColumns="False" PageSize="20" DataSourceID="bandejas_DS" CellPadding="4"
-                            ForeColor="#333333" GridLines="None">
-                            <RowStyle BackColor="#E3EAEB" />
+                            AutoGenerateColumns="False" PageSize="20" DataSourceID="bandejas_DS" >
                             <Columns>
                                 <asp:TemplateField>
                                     <ItemTemplate>
@@ -178,18 +176,12 @@
                                             onclick="cancelarAvaluo(this, <%# Eval("idAvaluo") %>);" />
                                     </ItemTemplate>
                                 </asp:TemplateField>
-                            </Columns>
-                            <FooterStyle BackColor="#1C5E55" Font-Bold="True" ForeColor="White" />
-                            <PagerStyle BackColor="#666666" ForeColor="White" HorizontalAlign="Center" />
+                            </Columns>                            
                             <EmptyDataTemplate>
                                 <div class="sinDatos">
                                     <%# GetMensajeSinDatos() %>
                                 </div>
                             </EmptyDataTemplate>
-                            <SelectedRowStyle BackColor="#C5BBAF" Font-Bold="True" ForeColor="#333333" />
-                            <HeaderStyle BackColor="#1C5E55" Font-Bold="True" ForeColor="White" />
-                            <EditRowStyle BackColor="#7C6F57" />
-                            <AlternatingRowStyle BackColor="White" />
                         </asp:GridView>
                     </ContentTemplate>
                     <Triggers>

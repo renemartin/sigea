@@ -1,5 +1,6 @@
 ﻿<%@ Master Language="C#" AutoEventWireup="true" CodeFile="Valuacion.master.cs" Inherits="Cuentas_Valuacion_Valuacion" %>
 
+<%@ Register Src="~/Controles/Encabezado.ascx" TagName="Encabezado" TagPrefix="SIGEA" %>
 <%@ Register Src="ValuacionMenu.ascx" TagName="ValuacionMenu" TagPrefix="SIGEA" %>
 
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
@@ -14,8 +15,9 @@
     <form id="form1" runat="server">
     <div>
         <SIGEA:ValuacionMenu ID="menu_Ctrl" runat="server" />
-        <asp:ContentPlaceHolder id="main" runat="server">
+        <SIGEA:Encabezado ID="encabezado_Ctrl" runat="server" />
         
+        <asp:ContentPlaceHolder id="main" runat="server">        
         </asp:ContentPlaceHolder>
     </div>
     </form>
