@@ -15,6 +15,14 @@ public partial class Cuentas_Valuacion_Controles_DatosSuperficies : System.Web.U
 {
     protected void Page_Load(object sender, EventArgs e)
     {
+        if (!IsPostBack)
+        {
+            SetAttributes();
+        }
+    }
 
+    private void SetAttributes()
+    {
+        fuenteTerreno_DDList.Attributes.Add("onchange", "setFuenteTerrenoSelection();");
     }
 }

@@ -24,10 +24,6 @@
                     </td>
                     <td class="celdaValor">
                         <asp:DropDownList ID="tipoPlanta_DDList_1" runat="server">
-                            <asp:ListItem Value="0" Selected="True">Selecione...</asp:ListItem>
-                            <asp:ListItem Value="1">BAJA</asp:ListItem>
-                            <asp:ListItem Value="2">ALTA</asp:ListItem>
-                            <asp:ListItem Value="3">OTROS NIVELES</asp:ListItem>
                         </asp:DropDownList>
                     </td>
                 </tr>
@@ -63,6 +59,7 @@
             UsoActualRecamaras.prototype.removeRecamaraRow = removeRecamaraRow;
             UsoActualRecamaras.prototype.setData = setData;
             UsoActualRecamaras.prototype.getData = getData;
+            UsoActualRecamaras.prototype.fillRowData = fillRowData;
             UsoActualRecamaras.prototype.addRowValidator = addRowValidator;
             UsoActualRecamaras.prototype.validate = validate;
         }
@@ -87,22 +84,27 @@
 
         // DataBindings
         function setData(data) {
-            if (data == null)
-                return;
+            if (data != null) {
 
-            var i = null;
-            for (i = 1; i <= data.length; i++) {
-                $get(this.parent_id + "_cantidad_TBox_" + i).value = data[i - 1].cantidad;
-                $get(this.parent_id + "_tipoPlanta_DDList_" + i).selectedValue = data[i - 1].planta;
-                $get(this.parent_id + "_espacioCloset_RBtn_" + i).checked = data[i - 1].espacioCloset;
-                $get(this.parent_id + "_closetEquipado_RBtn_" + i).checked = data[i - 1].closetEquipado;
-                $get(this.parent_id + "_terraza_CBox_" + i).checked = data[i - 1].terraza;
-                $get(this.parent_id + "_balcon_CBox_" + i).checked = data[i - 1].balcon;
-                $get(this.parent_id + "_vestidor_CBox_" + i).checked = data[i - 1].vestidor;
+                var i = null;
+                for (i = 1; i <= data.length; i++) {
+                    $get(this.parent_id + "_cantidad_TBox_" + i).value = data[i - 1].cantidad;
+                    $get(this.parent_id + "_tipoPlanta_DDList_" + i).selectedValue = data[i - 1].planta;
+                    $get(this.parent_id + "_espacioCloset_RBtn_" + i).checked = data[i - 1].espacioCloset;
+                    $get(this.parent_id + "_closetEquipado_RBtn_" + i).checked = data[i - 1].closetEquipado;
+                    $get(this.parent_id + "_terraza_CBox_" + i).checked = data[i - 1].terraza;
+                    $get(this.parent_id + "_balcon_CBox_" + i).checked = data[i - 1].balcon;
+                    $get(this.parent_id + "_vestidor_CBox_" + i).checked = data[i - 1].vestidor;
 
-                if (i != data.length) {
-                    addClonedRow('tabla_recamaras');
+                    if (i != data.length) {
+                        this.addRecamaraRow();                   
+                    }
+
+                    this.fillRowData(i);
                 }
+            }
+            else {
+                fillRowData(1);
             }
         }
 
@@ -127,6 +129,11 @@
             }
 
             return data_set;
+        }
+
+        // Llenado de datos
+        function fillRowData(row_num) {
+            fillPlanta(this.parent_id + "_tipoPlanta_DDList_" + row_num);
         }
 
         // Validación

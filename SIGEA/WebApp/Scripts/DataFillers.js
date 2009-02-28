@@ -229,6 +229,16 @@ function fillUnidad(target_id) {
     MethodCallers.GetListaTiposUnidad(
         fillSelect, asyncCallFail, target_id);
 }
+function fillEstacionamiento(target_id) {
+    showControlLoading(target_id);
+    MethodCallers.GetListaTiposEstacionamiento(
+        fillSelect, asyncCallFail, target_id);
+}
+function fillPlanta(target_id) {
+    showControlLoading(target_id);
+    MethodCallers.GetListaTiposPlanta(
+        fillSelect, asyncCallFail, target_id);
+}
 
 // Comparables
 function fillTipoComparable(target_id) {
@@ -242,4 +252,10 @@ function getCodigoPostal(idMunicipio, asentamiento, target) {
     showControlLoading(target.id);
     MethodCallers.GetCodigoPostal(
         idMunicipio, asentamiento, asyncSetTextResult, asyncCallFail, target);
+}
+
+function getDescripcionUsoActual(idAvaluo, target) {
+    showControlLoading(target.id);
+    MethodCallers.GetDescripcionUsoActual(
+        idAvaluo, asyncSetTextResult, asyncCallFail, target);
 }

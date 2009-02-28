@@ -78,8 +78,8 @@
             data.totalTerreno = $get("<%= superficieTerreno_TBox.ClientID %>").value;
             data.fuenteTerreno = $get("<%= fuenteTerreno_DDList.ClientID %>").value;
             data.otraFuenteTerreno = $get("<%= especFuenteTerreno_TBox.ClientID %>").value;
-            data.frenteLote = $get("<%= superficieFrente_TBox.ClientID %>").value;
-
+            data.frenteLote = getVisibility($get("seccion_fuente_terreno"))
+                                ? $get("%= superficieFrente_TBox.ClientID %>").value : "";
             return data;
         }
 
@@ -87,6 +87,14 @@
         function validate() {
             return this.validator.validate();
         }
+    }
+
+    // Validacion de selecciones
+    function setFuenteTerrenoSelection() {
+        var fuente_terreno = $get("<%= fuenteTerreno_DDList.ClientID %>");
+
+        setVisibility($get("seccion_fuente_terreno"),
+            fuente_terreno.options[fuente_medidas.selectedIndex].text.toLowerCase() == "otra");
     }
 
     this["<%= ID %>"] = new Superficies();

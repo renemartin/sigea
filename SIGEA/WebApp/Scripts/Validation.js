@@ -158,6 +158,8 @@ function ControlValidator(controls, show_errors) {
                 this.invalid[i][0].setAttribute("normalClass", normal_class);
                 this.invalid[i][0].setAttribute("class", "controlError " + normal_class);
                 this.invalid[i][0].setAttribute("className", "controlError " + normal_class);
+
+                addTooltip(this.invalid[i][0], this.invalid[i][1], "tooltipError");
             }
         }
     }

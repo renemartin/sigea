@@ -345,6 +345,26 @@ public class MethodCallers : System.Web.Services.WebService
         return lista.ToArray();
     }
 
+    [WebMethod]
+    public IEnumerable<object> GetListaTiposEstacionamiento()
+    {
+        var lista = from e in data_context.TipoEstacionamiento
+                    orderby e.idTipoEstacionamiento
+                    select new { display = e.descripcion, value = e.idTipoEstacionamiento };
+
+        return lista.ToArray();
+    }
+
+    [WebMethod]
+    public IEnumerable<object> GetListaTiposPlanta()
+    {
+        var lista = from e in data_context.TipoPlanta
+                    orderby e.idTipoPlanta
+                    select new { display = e.descripcion, value = e.idTipoPlanta };
+
+        return lista.ToArray();
+    }
+
     #endregion
 
     #endregion
@@ -415,6 +435,16 @@ public class MethodCallers : System.Web.Services.WebService
     public string GetCodigoPostal(int idMunicipio, string asentamiento)
     {
         return Ubicaciones.GetCodigoPostal(data_context, idMunicipio, asentamiento);
+    }
+
+    [WebMethod]
+    public string GetDescripcionUsoActual(int idAvaluo)
+    {
+        UsoActualInmueble uso_actual = UsoActualInmueble.GetFromIdAvaluo(data_context, idAvaluo);
+        if (uso_actual == null)
+            return "No especificada...";
+
+        return uso_actual.ToString();
     }
     #endregion
 }

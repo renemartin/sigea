@@ -83,7 +83,7 @@ hr
 
 .textoChico
 {
-	font-size: .85em;
+	font-size: .75em;
 }
 
 .glosario
@@ -444,4 +444,12 @@ hr
 {
 	display: inline;
 	margin-left: 20px;
+}
+
+.tooltipError
+{
+	background-color: #FF3822;
+	color: #FFFFFF;
+	padding: 3px;
+	border: thin solid #FF0000;
 }
