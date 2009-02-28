@@ -40,6 +40,8 @@
             loadDatosConstrucciones();
             loadDatosSuperficies();
             loadDatosCondominio();
+            getDescripcionUsoActual(
+                idAvaluo, $get("<%= descripcionUsoActual_Lbl.ClientID %>"));
         }
         function loadDatosConstrucciones() {
             loadDatosConstruccionesAsync(idAvaluo, construcciones_Ctrl);
@@ -131,7 +133,7 @@
     </h1>
     <div class="etiqueta1">
         <span class="textoNegritas">Descripción de uso actual:</span>
-        <asp:Label ID="descripcion_Lbl" runat="server">No especificada...</asp:Label>
+        <asp:Label ID="descripcionUsoActual_Lbl" CssClass="textoChico" runat="server" />
     </div>
     <h2>
         Clasificación de las construcciones privativas</h2>

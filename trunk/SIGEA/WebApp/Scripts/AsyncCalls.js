@@ -38,8 +38,11 @@ function asyncControlLoad(data, control) {
     control.setData(data);
 }
 function asyncSetTextResult(data, target) {
-    if (target != null && target.value != undefined) {
+    if (target != null) {
         hideControlLoading(target.id);
-        target.value = data;
+        if (target.value != undefined)
+            target.value = data;
+        else if (target.innerHTML != undefined)
+            target.innerHTML = data;            
     }
 }

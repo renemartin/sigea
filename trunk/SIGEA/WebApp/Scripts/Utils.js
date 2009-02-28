@@ -166,3 +166,100 @@ function getCurrString(num) {
         return ""
     return "$ " + num.toFixed(2);
 }
+
+// Eventos
+
+function addEvent(control, event, func) {
+    if (control.addEventListener) {
+        control.addEventListener(event, func, false);
+    }
+    else if (control.attachEvent) {
+        control.attachEvent("on" + event, func);
+    }
+    else {
+        eval("control.on" + event + " = func;");
+    }
+}
+
+function removeEvent(control, event, func) {
+    if (control.removeEventListener) {
+        control.removeEventListener(event);
+    }
+    else if (control.attachEvent) {
+        control.detachEvent("on" + event);
+    }
+    else {
+        eval("control.on" + event + " = null;");
+    }
+}
+
+
+
+// Tooltips
+
+function Tooltip(control, text, class_name) {
+
+    this.div_tip = document.createElement("div");
+    this.div_tip.style.position = "absolute";
+    this.div_tip.style.display = "none";
+    this.div_tip.innerHTML = text;
+    this.div_tip.setAttribute("class", class_name);
+    this.div_tip.setAttribute("className", class_name);
+    
+    control.parentElement.appendChild(this.div_tip);
+
+    Tooltip.prototype.show = show;
+    Tooltip.prototype.hide = hide;
+
+    function show(x, y) {
+        this.div_tip.style.left = x;
+        this.div_tip.style.top = y;
+        this.div_tip.style.display = "block";
+    }
+
+    function hide() {
+        this.div_tip.style.display = "none";
+    }
+}
+
+var tooltips = new Array();
+
+function addTooltip(control, text, class_name) {
+    tooltips[control.id] = new Tooltip(control, text, class_name);
+    addEvent(control, "mouseover", this.showTooltip);
+    addEvent(control, "mouseout", this.hideTooltip);
+}
+
+function removeToolTip(control) {
+    tooltips[control.id] = null;
+    removeEvent(control, "mouseover");
+}
+
+function showTooltip(e) {
+    var cursor = getCursor(e);
+    if (tooltips[e.srcElement.id] != null) {
+        tooltips[e.srcElement.id].show(cursor.x, cursor.y);
+    }
+}
+function hideTooltip(e) {
+    if (tooltips[e.srcElement.id] != null) {
+        tooltips[e.srcElement.id].hide();
+    }
+}
+
+function getCursor(e) {
+    var cursor = { x: 0, y: 0 };
+    if (e.pageX || e.pageY) {
+        cursor.x = e.pageX;
+        cursor.y = e.pageY;
+    }
+    else {
+        var de = document.documentElement;
+        var b = document.body;
+        cursor.x = e.clientX +
+            (de.scrollLeft || b.scrollLeft) - (de.clientLeft || 0);
+        cursor.y = e.clientY +
+            (de.scrollTop || b.scrollTop) - (de.clientTop || 0);
+    }
+    return cursor;
+}

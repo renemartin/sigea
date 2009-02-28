@@ -84,12 +84,13 @@
         }
         
         function setData(data_set) {
-            if(data_set != null)
-            {
-                $get("<%= nombre_TBox.ClientID %>").value = data_set[0].nombre;
-                $get("<%= NSS_TBox.ClientID %>").value = data_set[0].NSS;
-                $get("<%= RFC_TBox.ClientID %>").value = data_set[0].RFC
-                $get("<%= CURP_TBox.ClientID %>").value = data_set[0].CURP;
+            if(data_set != null) {
+                if (data_set[0] != null) {
+                    $get("<%= nombre_TBox.ClientID %>").value = data_set[0].nombre;
+                    $get("<%= NSS_TBox.ClientID %>").value = data_set[0].NSS;
+                    $get("<%= RFC_TBox.ClientID %>").value = data_set[0].RFC
+                    $get("<%= CURP_TBox.ClientID %>").value = data_set[0].CURP;
+                }
 
                 direccionSolicitante_Ctrl.setData(data_set[1]);           
             }

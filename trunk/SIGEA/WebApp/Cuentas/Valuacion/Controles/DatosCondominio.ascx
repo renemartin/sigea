@@ -150,18 +150,24 @@
         // Databindings
         function setData(data_set) {
             if (data_set != null) {
-                $get("<%= avanceAComunes_TBox.ClientID %>").value = data_set[0].avanceObra;
-                $get("<%= unidRentNucleo_TBox.ClientID %>").value = data_set[0].unidadesRentNucleo;
-                $get("<%= unidRentConjunto_TBox.ClientID %>").value = data_set[0].unidadesRentConjunto;
+                if (data_set[0] != null) {
+                    $get("<%= avanceAComunes_TBox.ClientID %>").value = data_set[0].avanceObra;
+                    $get("<%= unidRentNucleo_TBox.ClientID %>").value = data_set[0].unidadesRentNucleo;
+                    $get("<%= unidRentConjunto_TBox.ClientID %>").value = data_set[0].unidadesRentConjunto;
 
-                $get("<%= indiviso_TBox.ClientID %>").value = data_set[1].indiviso;
-                $get("<%= superficieTerreno_TBox.ClientID %>").value = data_set[1].totalTerreno;
-                $get("<%= fuenteIndiviso_DDList.ClientID %>").selectedValue = data_set[1].fuenteIndiviso;
-                $get("<%= especFuenteIndiviso_TBox.ClientID %>").value = data_set[1].otraFuenteIndiviso;
-                $get("<%= lotePrivativo_TBox.ClientID %>").value = data_set[1].privativo;
-                $get("<%= fuentePrivativo_DDList.ClientID %>").selectedValue = data_set[1].fuentePrivativo;
-                $get("<%= especFuentePrivativo_TBox.ClientID %>").value = data_set[1].otraFuentePrivativo;
+                }
 
+                if (data_set[1] != null) {
+                    $get("<%= indiviso_TBox.ClientID %>").value = data_set[1].indiviso;
+                    $get("<%= superficieTerreno_TBox.ClientID %>").value = data_set[1].totalTerreno;
+                    $get("<%= fuenteIndiviso_DDList.ClientID %>").selectedValue = data_set[1].fuenteIndiviso;
+                    $get("<%= especFuenteIndiviso_TBox.ClientID %>").value = data_set[1].otraFuenteIndiviso;
+                    $get("<%= lotePrivativo_TBox.ClientID %>").value = data_set[1].privativo;
+                    $get("<%= fuentePrivativo_DDList.ClientID %>").selectedValue = data_set[1].fuentePrivativo;
+                    $get("<%= especFuentePrivativo_TBox.ClientID %>").value = data_set[1].otraFuentePrivativo;
+
+                }
+                
                 superficiesConstrucciones_Ctrl.setData(data_set[2]);
                 superficiesObras_Ctrl.setData(data_set[3]);
             }

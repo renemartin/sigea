@@ -155,7 +155,7 @@
 
             // Datos planta baja
             var dataPB = new Object();
-            dataPB.planta = 0;
+            dataPB.planta = 1;
             dataPB.cuartoServicio = $get("<%= PB_cuartoServicio_CBox.ClientID %>").checked;
             dataPB.cuartoLavado = $get("<%= PB_cuartoLavado_CBox.ClientID %>").checked;
             dataPB.areaServicio = $get("<%= PB_areaServicioDescubierta_CBox.ClientID %>").checked;
@@ -166,7 +166,7 @@
 
             // Datos planta alta
             var dataPA = new Object();
-            dataPA.planta = 1;
+            dataPA.planta = 2;
             dataPA.cuartoServicio = $get("<%= PA_cuartoServicio_CBox.ClientID %>").checked;
             dataPA.cuartoLavado = $get("<%= PA_cuartoLavado_CBox.ClientID %>").checked;
             dataPA.areaServicio = $get("<%= PA_areaServicioDescubierta_CBox.ClientID %>").checked;
@@ -177,7 +177,7 @@
 
             // Datos otros niveles
             var dataON = new Object();
-            dataON.planta = 2;
+            dataON.planta = 3;
             dataON.cuartoServicio = $get("<%= ON_cuartoServicio_CBox.ClientID %>").checked;
             dataON.cuartoLavado = $get("<%= ON_cuartoLavado_CBox.ClientID %>").checked;
             dataON.areaServicio = $get("<%= ON_areaServicioDescubierta_CBox.ClientID %>").checked;
@@ -188,7 +188,7 @@
 
             // Datos otros sotano
             var dataSO = new Object();
-            dataSO.planta = 3;
+            dataSO.planta = 4;
             dataSO.cuartoServicio = $get("<%= SO_cuartoServicio_CBox.ClientID %>").checked;
             dataSO.cuartoLavado = $get("<%= SO_cuartoLavado_CBox.ClientID %>").checked;
             dataSO.escaleraServicio = $get("<%= SO_escaleraServicio_CBox.ClientID %>").checked;

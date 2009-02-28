@@ -53,15 +53,23 @@
             if (getVisibility($get("<%= guardar_uso_actual_ImBtn.ClientID %>")))
                 saveUsoActual();
         }
-        
+
         function saveUsoActual() {
-            saveUsoActualAsync(
-                idAvaluo
-                , distribucion_Ctrl.getData()
-                , recamaras_Ctrl.getData()
-                , plantas_Ctrl.getData()
-                , saveUsoActual_Success()
-             );
+            var validated = true;
+            if (!distribucion_Ctrl.validate())
+                validated = false;
+            if (!recamaras_Ctrl.validate())
+                validated = false;
+
+            if (validated) {
+                saveUsoActualAsync(
+                    idAvaluo
+                    , distribucion_Ctrl.getData()
+                    , recamaras_Ctrl.getData()
+                    , plantas_Ctrl.getData()
+                    , saveUsoActual_Success()
+                 );
+            }
         }
         
         function saveUsoActual_Success() {
@@ -77,11 +85,13 @@
 <asp:Content ID="mainContent" ContentPlaceHolderID="main" runat="Server">
     <asp:ScriptManager ID="ScriptManager1" runat="server">
         <Services>
+        <asp:ServiceReference Path="~/Services/MethodCallers.asmx" />
             <asp:ServiceReference Path="~/Services/EntityWrappers.asmx" />
         </Services>
         <Scripts>
             <asp:ScriptReference Path="~/Scripts/Utils.js" />
             <asp:ScriptReference Path="~/Scripts/AsyncCalls.js" />
+            <asp:ScriptReference Path="~/Scripts/DataFillers.js" />
             <asp:ScriptReference Path="~/Scripts/Tables.js" />
             <asp:ScriptReference Path="~/Scripts/Forms.js" />
             <asp:ScriptReference Path="~/Scripts/Validation.js" />

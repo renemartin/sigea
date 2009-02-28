@@ -979,6 +979,7 @@
       <Column Name="sala" Type="System.Boolean" DbType="Bit" CanBeNull="true" />
       <Column Name="escaleraServicio" Type="System.Boolean" DbType="Bit" CanBeNull="false" />
       <Association Name="UsoActualInmueble_UsoActualArea" Member="UsoActualInmueble" ThisKey="idUsoActual" OtherKey="idUsoActual" Type="UsoActualInmueble" IsForeignKey="true" DeleteRule="CASCADE" DeleteOnNull="true" />
+      <Association Name="TipoPlanta_UsoActualArea" Member="TipoPlanta" ThisKey="planta" OtherKey="idTipoPlanta" Type="TipoPlanta" IsForeignKey="true" />
     </Type>
   </Table>
   <Table Name="dbo.UsoActualInmueble" Member="UsoActualInmueble">
@@ -1001,6 +1002,7 @@
       <Association Name="UsoActualInmueble_UsoActualArea" Member="UsoActualArea" ThisKey="idUsoActual" OtherKey="idUsoActual" Type="UsoActualArea" />
       <Association Name="UsoActualInmueble_UsoActualRecamara" Member="UsoActualRecamara" ThisKey="idUsoActual" OtherKey="idUsoActual" Type="UsoActualRecamara" />
       <Association Name="Inmueble_UsoActualInmueble" Member="Inmueble" ThisKey="idInmueble" OtherKey="idInmueble" Type="Inmueble" IsForeignKey="true" DeleteRule="CASCADE" DeleteOnNull="true" />
+      <Association Name="TipoEstacionamiento_UsoActualInmueble" Member="TipoEstacionamiento" ThisKey="idTipoEstacionamiento" OtherKey="idTipoEstacionamiento" Type="TipoEstacionamiento" IsForeignKey="true" />
     </Type>
   </Table>
   <Table Name="dbo.UsoActualRecamara" Member="UsoActualRecamara">
@@ -1015,6 +1017,7 @@
       <Column Name="vestidor" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
       <Column Name="terraza" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
       <Association Name="UsoActualInmueble_UsoActualRecamara" Member="UsoActualInmueble" ThisKey="idUsoActual" OtherKey="idUsoActual" Type="UsoActualInmueble" IsForeignKey="true" DeleteRule="CASCADE" DeleteOnNull="true" />
+      <Association Name="TipoPlanta_UsoActualRecamara" Member="TipoPlanta" ThisKey="planta" OtherKey="idTipoPlanta" Type="TipoPlanta" IsForeignKey="true" />
     </Type>
   </Table>
   <Table Name="dbo.Usuario" Member="Usuario">
@@ -1270,6 +1273,21 @@
       <Association Name="DatoCondominio_SuperficiesCondominio" Member="SuperficiesCondominio" ThisKey="idCondominio" OtherKey="idCondominio" Type="SuperficiesCondominio" Cardinality="One" />
       <Association Name="DatoCondominio_AreaComun" Member="AreaComun" ThisKey="idCondominio" OtherKey="idCondominio" Type="AreaComun" />
       <Association Name="Inmueble_DatoCondominio" Member="Inmueble" ThisKey="idInmueble" OtherKey="idInmueble" Type="Inmueble" IsForeignKey="true" DeleteRule="CASCADE" DeleteOnNull="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.TipoEstacionamiento" Member="TipoEstacionamiento">
+    <Type Name="TipoEstacionamiento">
+      <Column Name="idTipoEstacionamiento" Type="System.Int16" DbType="SmallInt NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="descripcion" Type="System.String" DbType="NVarChar(30) NOT NULL" CanBeNull="false" />
+      <Association Name="TipoEstacionamiento_UsoActualInmueble" Member="UsoActualInmueble" ThisKey="idTipoEstacionamiento" OtherKey="idTipoEstacionamiento" Type="UsoActualInmueble" />
+    </Type>
+  </Table>
+  <Table Name="dbo.TipoPlanta" Member="TipoPlanta">
+    <Type Name="TipoPlanta">
+      <Column Name="idTipoPlanta" Type="System.Int16" DbType="SmallInt NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="descripcion" Type="System.String" DbType="NVarChar(30) NOT NULL" CanBeNull="false" />
+      <Association Name="TipoPlanta_UsoActualArea" Member="UsoActualArea" ThisKey="idTipoPlanta" OtherKey="planta" Type="UsoActualArea" />
+      <Association Name="TipoPlanta_UsoActualRecamara" Member="UsoActualRecamara" ThisKey="idTipoPlanta" OtherKey="planta" Type="UsoActualRecamara" />
     </Type>
   </Table>
   <Function Name="dbo.GenerarIDE" Method="GenerarIDE">

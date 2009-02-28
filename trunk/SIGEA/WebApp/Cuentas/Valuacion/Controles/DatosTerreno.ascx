@@ -198,7 +198,7 @@
             data.idTipoServidumbre = $get("<%= servidumbre_DDList.ClientID %>").value;
             data.idFuenteMedidas = $get("<%= fuenteMedidas_DDList.ClientID %>").value;
             data.otraFuente = getVisibility($get("seccion_fuente_medidas"))
-            ? $get("<%= otraFuente_TBox.ClientID %>").value : "";
+                                ? $get("<%= otraFuente_TBox.ClientID %>").value : "";
             data.descripcionColindancias = $get("<%= colindancias_TBox.ClientID %>").value;
 
             return data;

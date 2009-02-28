@@ -13,5 +13,6 @@ public partial class Cuentas_Valuacion_Controles_DatosDistribucion : System.Web.
     private void SetAttributes()
     {
         cocina_CBox.Attributes.Add("onclick", "setCocinaSelection(this.checked);");
+        tipoEstacionamiento_DDList.Attributes.Add("onchange", "setEstacionamientoSeleccion(this.value);");
     }
 }

@@ -7,6 +7,20 @@ namespace SIGEA.Classes.Entities
 {
     public partial class UsoActualInmueble
     {
+        public static UsoActualInmueble GetFromIdAvaluo(SIGEADataContext data_context, int idAvaluo)
+        {
+            var uso_actual_query = from u in data_context.UsoActualInmueble
+                                   join i in data_context.Inmueble on u.idInmueble equals i.idInmueble
+                                   join a in data_context.AvaluoInmobiliario on i.idInmueble equals a.idInmueble
+                                   where a.idAvaluo == idAvaluo
+                                   select u;
+
+            if(!uso_actual_query.Any())
+                return null;
+
+            return uso_actual_query.Single();
+        }
+
         public static UsoActualInmueble GetForDataUpdate(SIGEADataContext data_context, Inmueble inmueble)
         {
             UsoActualInmueble datos_uso_actual = inmueble.UsoActualInmueble;
@@ -60,6 +74,100 @@ namespace SIGEA.Classes.Entities
             numBaniosCompletos = short.Parse(data["numBaniosCompletos"].ToString());
             numBaniosMedios = short.Parse(data["numBaniosMedios"].ToString());
         }
+
+        public override string ToString()
+        {
+            StringBuilder descripcion = new StringBuilder();
+
+            descripcion.AppendFormat(
+                "{0} EN PROPIEDAD {1} CON ELEMENTOS DE CONSTRUCCIÓN",
+                Inmueble.TipoInmueble.descripcion,
+                Inmueble.RegimenPropiedad.descripcion);
+
+            if (TipoEstacionamiento != null)
+            {
+                if (TipoEstacionamiento.descripcion.ToLower() != "no cuenta con estacionamiento")
+                {
+                    descripcion.AppendFormat(", {0} CON CUPO PARA {1} CARRO(S)",
+                        TipoEstacionamiento.descripcion, cupoEstacionamiento);
+                }
+                else
+                {
+                    descripcion.Append(", SIN ESTACIONAMIENTO");
+                }
+            }
+            if (jardinesFrontales)
+                descripcion.Append(", JARDINES FRONTALES");
+            if (jardinesFrontales)
+                descripcion.Append(", JARDINES AL FONDO");
+            if (jardinesFrontales)
+                descripcion.Append(", JARDINES LATERALES");
+            if (elevador)
+                descripcion.Append(", ELEVADOR");
+            if (cocina)
+            {
+                descripcion.Append(", COCINA");
+                if (cocinaIntegral)
+                {
+                    descripcion.Append(" INTEGRAL");
+                }
+                else
+                {
+                    descripcion.Append(" FORJADA EN SITIO");
+                    if (cocinaMuebles)
+                        descripcion.Append(" AMUEBLADA");
+                    else
+                        descripcion.Append(" CON TARJA");
+                }
+            }
+            if (comedor && despensa)
+                descripcion.Append(", CON COMEDOR Y DESPENSA");
+            else if (comedor)
+                descripcion.Append(", CON COMEDOR");
+            else if (despensa)
+                descripcion.Append(", CON DESPENSA");
+            if (numBaniosCompletos != 0)
+            {
+                descripcion.AppendFormat(", {0} BAÑO(S) COMPLETO(S)",
+                    numBaniosCompletos);
+            }
+            if (numBaniosMedios != 0)
+            {
+                descripcion.Append(string.Format(", {0} BAÑO(S) MEDIO(S)",
+                    numBaniosMedios));
+            }
+            descripcion.Append("</BR>");
+
+            foreach (Entities.UsoActualArea area in UsoActualArea)
+            {
+                descripcion.Append(area.TipoPlanta.descripcion + ": ");
+
+                int num_recamaras = UsoActualRecamara.Where(r => r.planta == area.planta).Sum(r => r.cantidad);
+                if (num_recamaras > 0)
+                    descripcion.AppendFormat(" CON {0} RECAMARA(S)", num_recamaras);
+                else
+                    descripcion.AppendFormat(" CON ELEMENTOS DE NIVEL");
+                if (area.vestibuloIngreso.HasValue && area.vestibuloIngreso.Value)
+                    descripcion.Append(", VESTIBULO DE INGRESO");
+                if (area.areaServicio.HasValue && area.areaServicio.Value)
+                    descripcion.Append(", AREA DE SERVICIO DESCUBIERTA");
+                if (area.sala.HasValue && area.sala.Value)
+                    descripcion.Append(", SALA");
+                if (area.escaleraPrincipal.HasValue && area.escaleraPrincipal.Value)
+                    descripcion.Append(", ESCALERA PRINCIPAL");
+                if (area.escaleraServicio)
+                    descripcion.Append(", ESCALERA DE SERVICIO");
+                if (area.cuartoServicio)
+                    descripcion.Append(", CUARTO DE SERVICIO");
+                if (area.cuartoLavado)
+                    descripcion.Append(", CUARTO LAVADO");
+
+                descripcion.Append("<BR/>");
+            }
+
+
+            return descripcion.ToString();
+        }
     }
 
     public partial class UsoActualRecamara
@@ -81,8 +189,8 @@ namespace SIGEA.Classes.Entities
             foreach (Dictionary<string, object> data in data_set)
             {
                 var recamaras_query = from re in uso_actual.UsoActualRecamara
-                                       where re.idUsoRecamara == short.Parse(data["idUsoRecamara"].ToString())
-                                       select re;
+                                      where re.idUsoRecamara == short.Parse(data["idUsoRecamara"].ToString())
+                                      select re;
 
                 if (recamaras_query.Any())
                 {
@@ -137,8 +245,8 @@ namespace SIGEA.Classes.Entities
         public static Dictionary<string, object>[] GetPlantas(UsoActualInmueble uso_actual)
         {
             var plantas_query = from p in uso_actual.UsoActualArea
-                                  orderby p.planta
-                                  select p.GetData();
+                                orderby p.planta
+                                select p.GetData();
 
             if (!plantas_query.Any())
                 return null;
@@ -151,8 +259,8 @@ namespace SIGEA.Classes.Entities
             foreach (Dictionary<string, object> data in data_set)
             {
                 var plantas_query = from p in uso_actual.UsoActualArea
-                                      where p.planta == short.Parse(data["planta"].ToString())
-                                      select p;
+                                    where p.planta == short.Parse(data["planta"].ToString())
+                                    select p;
 
                 if (plantas_query.Any())
                 {
@@ -199,7 +307,7 @@ namespace SIGEA.Classes.Entities
             escaleraPrincipal = (bool)data["escaleraPrincipal"];
             sala = (bool)data["sala"];
             escaleraServicio = (bool)data["escaleraServicio"];
-            
+
         }
     }
 }
