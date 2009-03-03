@@ -53,16 +53,22 @@
         // Guardado de registros
         function saveForm() {
             if (getVisibility($get("<%= guardar_entorno_ImBtn.ClientID %>")))
-                saveDatosEntorno();
+                saveDatosEntorno(false);
             if (getVisibility($get("<%= guardar_infraestructura_ImBtn.ClientID %>")))
-                saveDatosInfraestructura();
+                saveDatosInfraestructura(false);
             if (getVisibility($get("<%= guardar_equipamiento_ImBtn.ClientID %>")))
-                saveDatosEquipamiento();
+                saveDatosEquipamiento(false);
         }
-        function saveDatosEntorno() {
+        function saveDatosEntorno(mostrarAlertas) {
             if (entorno_Ctrl.validate()) {
                 saveEntornoInmuebleAsync(
                     idAvaluo, entorno_Ctrl.getData(), saveDatosEntorno_Success);
+            }
+            else {
+                if (mostrarAlertas != false) {
+                    showMessage("El bloque de datos contiene campos inválidos");
+
+                }
             }
         }
         function saveDatosEntorno_Success() {
@@ -72,10 +78,16 @@
                 "<%= cancelar_entorno_ImBtn.ClientID %>");
         }
 
-        function saveDatosInfraestructura() {
+        function saveDatosInfraestructura(mostrarAlertas) {
             if (infraestructura_Ctrl.validate()) {
                 saveInfraestructuraInmuebleAsync(
                     idAvaluo, infraestructura_Ctrl.getData(), saveDatosInfraestructura_Success);
+            }
+            else {
+                if (mostrarAlertas != false) {
+                    showMessage("El bloque de datos contiene campos inválidos");
+
+                }
             }
         }
         function saveDatosInfraestructura_Success() {
@@ -85,10 +97,16 @@
                 "<%= cancelar_infraestructura_ImBtn.ClientID %>");
         }
 
-        function saveDatosEquipamiento() {
+        function saveDatosEquipamiento(mostrarAlertas) {
             if (equipamiento_Ctrl.validate()) {
                 saveEquipamientoInmuebleAsync(
                     idAvaluo, equipamiento_Ctrl.getData(), saveDatosEquipamiento_Success);
+            }
+            else {
+                if (mostrarAlertas != false) {
+                    showMessage("El bloque de datos contiene campos inválidos");
+
+                }
             }
         }
         function saveDatosEquipamiento_Success() {
