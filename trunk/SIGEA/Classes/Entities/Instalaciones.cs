@@ -61,18 +61,17 @@ namespace SIGEA.Classes.Entities
             data.Add("descripcion", descripcion);
             data.Add("cantidad", cantidad);
             data.Add("edad", edad);
+            data.Add("comun", comun);
 
             return data;
         }
         public void SetData(Dictionary<string, object> data)
         {
-            idInstalacion = short.Parse(data["idInstalacion"].ToString());
             idTipoUnidad = short.Parse(data["idTipoUnidad"].ToString());
             idTipoConservacion = short.Parse(data["idTipoConservacion"].ToString());
             descripcion = data["descripcion"].ToString();
             cantidad = double.Parse(data["cantidad"].ToString());
             edad = double.Parse(data["edad"].ToString());
-
         }
 
     }
