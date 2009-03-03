@@ -46,6 +46,10 @@
                     , saveAvaluo_Success
                 );
             }
+            else {
+               
+                    showMessage("El bloque de datos contiene campos inválidos");
+            }
         }
         function saveAvaluo_Success(id) {
             idAvaluo = id;
