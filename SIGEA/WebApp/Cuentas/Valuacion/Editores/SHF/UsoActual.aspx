@@ -51,10 +51,10 @@
         // Guardado de registros
         function saveForm() {
             if (getVisibility($get("<%= guardar_uso_actual_ImBtn.ClientID %>")))
-                saveUsoActual();
+                saveUsoActual(false);
         }
 
-        function saveUsoActual() {
+        function saveUsoActual(mostrarAlertas) {
             var validated = true;
             if (!distribucion_Ctrl.validate())
                 validated = false;
@@ -69,6 +69,12 @@
                     , plantas_Ctrl.getData()
                     , saveUsoActual_Success()
                  );
+            }
+            else {
+                if (mostrarAlertas != false) {
+                    showMessage("El bloque de datos contiene campos inválidos");
+
+                }
             }
         }
         
