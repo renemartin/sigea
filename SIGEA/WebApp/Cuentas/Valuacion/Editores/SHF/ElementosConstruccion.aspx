@@ -81,8 +81,8 @@
             var callBackList = new Array();
             
             callBackList[0] = loadForm_Success;
-//            callBackList[1] = setDatosInstalacionesAdicionales("<%= instalacionesPrivativas_Ctrl.ClientID %>");
-//            callBackList[1] = setDatosInstalacionesAdicionales("<%= instalacionesComunes_Ctrl.ClientID %>");
+            callBackList[1] = setDatosInstalacionesAdicionales("<%= instalacionesPrivativas_Ctrl.ClientID %>");
+            callBackList[2] = setDatosInstalacionesAdicionales("<%= instalacionesComunes_Ctrl.ClientID %>");
             
             loadInstalacionesAdicionalesAsync(idAvaluo, callBackList);
         }
@@ -205,7 +205,7 @@
         <asp:ImageButton ID="guardar_acabados_ImBtn" runat="server" SkinID="Save" CssClass="hidden" />
         <asp:ImageButton ID="cancelar_acabados_ImBtn" runat="server" SkinID="Cancel" CssClass="hidden" />
     </div>
-    <div id="seccion_instalaciones_condominio"> <%--style="display: none;">--%>
+    <div id="seccion_instalaciones_condominio" style="display: none;">
         <hr />
         <h1>
             Instalaciones
