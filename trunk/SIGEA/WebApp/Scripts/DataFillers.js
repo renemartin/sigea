@@ -240,6 +240,14 @@ function fillPlanta(target_id) {
         fillSelect, asyncCallFail, target_id);
 }
 
+//sintesis
+
+function fillDatosSintesisAsync(idAvaluo, callback) {
+    MethodCallers.GetDatosSintesis(
+        idAvaluo, asyncCallResultBack, asyncCallFail, callback);
+}
+
+
 // Comparables
 function fillTipoComparable(target_id) {
     showControlLoading(target_id);
@@ -259,3 +267,5 @@ function getDescripcionUsoActual(idAvaluo, target) {
     MethodCallers.GetDescripcionUsoActual(
         idAvaluo, asyncSetTextResult, asyncCallFail, target);
 }
+
+
