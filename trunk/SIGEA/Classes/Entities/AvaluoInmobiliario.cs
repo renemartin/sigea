@@ -186,14 +186,14 @@ namespace SIGEA.Classes.Entities
                                 {
                                     idAvaluo = a.idAvaluo,
                                     fechaFinalizacion = a.fechaFinalizacion,
+                                    folioINFONAVIT = "",
                                     numPaqueteINFONAVIT = 0,
                                     numViviendaINFONAVIT = 0,
                                     propositoAvaluo = a.PropositoAvaluo,
                                     claveEntidadCredito = a.DatoCredito.EntidadFinanciamiento.clave,
                                     nombreEntidadCredito = a.DatoCredito.EntidadFinanciamiento.nombre,
                                     
-                                    nombreSolicitante = a.Solicitante.nombre,
-                                    folioINFONAVIT = "",
+                                    nombreSolicitante = a.Solicitante.nombre,                                    
                                     nss = a.Solicitante.NSS,                                                                       
                                     
                                     tipoInmueble = a.Inmueble.TipoInmueble.descripcion,
@@ -209,7 +209,7 @@ namespace SIGEA.Classes.Entities
 
                                     longitud = a.Inmueble.GeolocalizacionInmueble.longitud,
                                     latitud = a.Inmueble.GeolocalizacionInmueble.latitud,
-                                    altitud = a.Inmueble.GeolocalizacionInmueble.altitud
+                                    altitud = a.Inmueble.GeolocalizacionInmueble.altitud,
                                     
                                     referenciaProximidadUrbana = "",
                                     redTelefonicaAcometida = a.Inmueble.ServiciosInmueble.redTelefonicaAcometida,
