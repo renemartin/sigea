@@ -759,7 +759,8 @@ public class EntityWrappers : System.Web.Services.WebService
             throw new Exception("El avalúo no cuenta con un tipo de construcción registrado");
         }
 
-        tipo_construccion.InstalacionesTipoConstruccion.SetData(datosInstalacionesTipoConstruccion);
+        InstalacionesTipoConstruccion instalaciones_tipo = InstalacionesTipoConstruccion.GetForDataUpdate(data_context, tipo_construccion);
+        instalaciones_tipo.SetData(datosInstalacionesTipoConstruccion);
         Inmueble inmueble = Inmueble.GetFromIdAvaluo(data_context, idAvaluo);
         ConstruccionInmueble construccion = ConstruccionInmueble.GetForDataUpdate(inmueble);
         InstalacionConstruccion.SetInstalacionesConstruccion(construccion, datosInstalacionesPrivativas, false);
