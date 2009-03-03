@@ -375,8 +375,8 @@ public class MethodCallers : System.Web.Services.WebService
     public IEnumerable<object> GetListaTipoComparable()
     {
         var lista = from c in data_context.TipoComparable
-                          orderby c.descripcion
-                          select new { display = c.descripcion, value = c.idTipoComparable };
+                    orderby c.descripcion
+                    select new { display = c.descripcion, value = c.idTipoComparable };
 
         return lista.ToArray();
     }
@@ -391,7 +391,7 @@ public class MethodCallers : System.Web.Services.WebService
     public string[] GetAsentamientos(string prefixText, int count, string contextKey)
     {
         List<string> lista = new List<string>();
- 
+
         if (!string.IsNullOrEmpty(contextKey))
         {
             string[] context_params = contextKey.Split(',');
@@ -447,5 +447,14 @@ public class MethodCallers : System.Web.Services.WebService
         return uso_actual.ToString();
     }
     #endregion
+    #region Obtención de registros
+    [WebMethod]
+    public object GetDatosSintesis(int idAvaluo)
+    {
+        return AvaluoInmobiliario.GetSintesis(data_context, idAvaluo);
+    }
+
+    #endregion
+
 }
 
