@@ -82,23 +82,19 @@ function loadSuperficiesInmuebleAsync(idAvaluo, control) {
         idAvaluo, asyncControlLoad, asyncCallFail, control);
 }
 
-function loadEstructurasAsync(idAvaluo, callBackList) {
+function loadEstructurasAsync(idAvaluo, control) {
     EntityWrappers.LoadEstructuras(
-        idAvaluo, asyncCallListBack, asyncCallFail, callBackList
-        );
+        idAvaluo, asyncControlLoad, asyncCallFail, control);
 }
-function loadAcabadosAsync(idAvaluo, callBackList) {
+function loadAcabadosAsync(idAvaluo, control) {
     EntityWrappers.LoadAcabados(
-        idAvaluo, asyncCallSingleListBack, asyncCallFail, callBackList
-        );
+        idAvaluo, asyncControlLoad, asyncCallFail, control);
 }
-function loadInstalacionesAsync(idAvaluo, callBackList) {
+function loadInstalacionesAsync(idAvaluo, control) {
     EntityWrappers.LoadInstalacionTipoConstruccion(
-        idAvaluo, asyncCallListBack, asyncCallFail, callBackList
-        );
+        idAvaluo, asyncControlLoad, asyncCallFail, control);
 }
-function loadInstalacionesAdicionalesAsync(idAvaluo, callBackList) {
+function loadInstalacionesAdicionalesAsync(idAvaluo, comun, control) {
     EntityWrappers.LoadInstalacionConstruccion(
-        idAvaluo, asyncCallSingleListBack, asyncCallFail, callBackList
-        );
+        idAvaluo, comun, asyncControlLoad, asyncCallFail, control);
 }

@@ -1,33 +1,6 @@
 ﻿<%@ Control Language="C#" AutoEventWireup="true" CodeFile="DatosEstructuras.ascx.cs" Inherits="Cuentas_Valuacion_Controles_DatosEstructuras" %>
 <link href="~/App_Themes/Default/DefaultStyle.css" rel="stylesheet" type="text/css" />
 
-<script type="text/javascript">
-    
-    //mostrar datos
-    function setDatosEstructuras(data) {
-        if(data == null)
-            return;
-        $get("<%= cimentacion_TBox.ClientID %>").value = data.cimentacion;
-        $get("<%= muros_TBox.ClientID %>").value = data.muros;
-        $get("<%= escaleras_TBox.ClientID %>").value = data.escaleras;
-        $get("<%= entrepisosTechos_TBox.ClientID %>").value = data.entrepisos;
-        $get("<%= trabesColumnas_TBox.ClientID %>").value = data.trabes;
-    }
-    
-    //guardar datos
-    function getDatosEstructuras() {
-        var data = new Object();
-        
-        data.cimentacion = $get("<%= cimentacion_TBox.ClientID %>").value;
-        data.muros = $get("<%= muros_TBox.ClientID %>").value;
-        data.escaleras = $get("<%= escaleras_TBox.ClientID %>").value;
-        data.entrepisos = $get("<%= entrepisosTechos_TBox.ClientID %>").value;
-        data.trabes = $get("<%= trabesColumnas_TBox.ClientID %>").value;
-        
-        return data;
-    }
-</script>
-
 <table>
     <tr>
         <td class="celdaTitulo">
@@ -71,3 +44,55 @@
     </tr>
     
 </table>
+
+<script type="text/javascript">
+
+    function Estructuras() {
+
+        // Inicialización
+        Estructuras.prototype.setData = setData;
+        Estructuras.prototype.getData = getData;
+        Estructuras.prototype.validate = validate;
+
+        // Inicialización de validador
+        this.controls = new Array(
+            $get("<%= cimentacion_TBox.ClientID %>"),       // 0
+            $get("<%= muros_TBox.ClientID %>"),             // 1
+            $get("<%= escaleras_TBox.ClientID %>"),         // 2
+            $get("<%= entrepisosTechos_TBox.ClientID %>"),  // 3
+            $get("<%= trabesColumnas_TBox.ClientID %>")     // 4
+        );
+        this.validator = new ControlValidator(this.controls);
+
+        // DataBindings
+        function setData(data) {
+            if (data == null)
+                return;
+                
+            $get("<%= cimentacion_TBox.ClientID %>").value = data.cimentacion;
+            $get("<%= muros_TBox.ClientID %>").value = data.muros;
+            $get("<%= escaleras_TBox.ClientID %>").value = data.escaleras;
+            $get("<%= entrepisosTechos_TBox.ClientID %>").value = data.entrepisos;
+            $get("<%= trabesColumnas_TBox.ClientID %>").value = data.trabes;
+        }
+        function getData() {
+            var data = new Object();
+
+            data.cimentacion = $get("<%= cimentacion_TBox.ClientID %>").value;
+            data.muros = $get("<%= muros_TBox.ClientID %>").value;
+            data.escaleras = $get("<%= escaleras_TBox.ClientID %>").value;
+            data.entrepisos = $get("<%= entrepisosTechos_TBox.ClientID %>").value;
+            data.trabes = $get("<%= trabesColumnas_TBox.ClientID %>").value;
+
+            return data;
+        }
+
+        // Validación
+        function validate() {
+            return this.validator.validate();
+        }
+    }
+
+    this["<%= ID %>"] = new Estructuras();
+    
+</script>

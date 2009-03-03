@@ -67,6 +67,7 @@ function ControlValidator(controls, show_errors) {
             if (!this.optionalFields[this.controls[i].id]) {
                 empty = false;
                 switch (this.controls[i].type) {
+                    case "textarea":
                     case "text":
                         if (this.controls[i].value == "") {
                             empty = true;
