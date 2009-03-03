@@ -51,13 +51,21 @@
         // Guardado de registros
         function saveForm() {
             if (getVisibility($get("<%= guardar_datos_generales_ImBtn.ClientID %>")))
-                saveDatosGenerales();
+                saveDatosGenerales(false);
             if (getVisibility($get("<%= guardar_declaraciones_ImBtn.ClientID %>")))
                 saveDeclaraciones();
         }
+        //hay que agregarle a cada una de esas funciones un parametro, que se llama mostrarAlertas
+        //y si la validacion falla checas si mostrarAlertas es nulo o mostrarAlertas es igual a true
+        //        vas a llamar al metodo showMessage("")
+        //SES Sparky dice:
+        //pasandole entre "" el mensaje de "El bloque de datos contiene campos inválidos"
+        //SES Sparky dice:
+        //y cuando se llamen a los metodos desde la funcion de saveForm
 
-        function saveDatosGenerales() {
+        function saveDatosGenerales(mostrarAlertas) {
             var validated = true;
+         
             if (!avaluo_Ctrl.validate())
                 validated = false;
             if (!solicitante_Ctrl.validate())
@@ -71,6 +79,12 @@
                     , saveDatosAvaluo_Success
                 );
             }
+            else {
+                if (mostrarAlertas != false) {
+                    showMessage("El bloque de datos contiene campos inválidos");
+
+                }
+            }
         }
         function saveDatosAvaluo_Success() {
             terminateEdit("form_datos_generales",
@@ -79,13 +93,14 @@
                 "<%= cancelar_datos_generales_ImBtn.ClientID %>");
         }
 
-        function saveDeclaraciones() {
+        function saveDeclaraciones(mostrarAlertas) {
             saveDeclaracionesAsync(
                 idAvaluo
                 , declaraciones_Ctrl.getData()
                 , advertencias_Ctrl.getData()
                 , saveDeclaraciones_Success
             );
+           
         }
         function saveDeclaraciones_Success() {
             terminateEdit("form_declaraciones",
