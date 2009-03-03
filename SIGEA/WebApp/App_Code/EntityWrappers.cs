@@ -597,7 +597,7 @@ public class EntityWrappers : System.Web.Services.WebService
 
         ConstruccionInmueble construccion = ConstruccionInmueble.GetForDataUpdate(inmueble);
         construccion.SetData(datosConstrucciones);
-        TipoConstruccion.SetTiposConstruccion(construccion, datosTiposConstruccion);
+        TipoConstruccion.SetTiposConstruccion(data_context, construccion, datosTiposConstruccion);
 
         data_context.SubmitChanges();
     }
