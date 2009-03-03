@@ -57,14 +57,14 @@
         // Guardado de registros
         function saveForm() {
             if (getVisibility($get("<%= guardar_construcciones_ImBtn.ClientID %>")))
-                saveDatosConstrucciones();
+                saveDatosConstrucciones(false);
             if (getVisibility($get("<%= guardar_superficies_ImBtn.ClientID %>")))
-                saveSuperficies();
+                saveSuperficies(false);
             if (getVisibility($get("<%= guardar_condominio_ImBtn.ClientID %>")))
-                saveCondominio();
+                saveCondominio(false);
         }
 
-        function saveDatosConstrucciones() {
+        function saveDatosConstrucciones(mostrarAlertas) {
             var clasificacion_valid = construccionesClasificacion_Ctrl.validate()
             var construcciones_valid = construcciones_Ctrl.validate()
 
@@ -75,6 +75,12 @@
                     , construcciones_Ctrl.getData()
                     , saveDatosConstrucciones_Success);
             }
+            else {
+                if (mostrarAlertas != false) {
+                    showMessage("El bloque de datos contiene campos inválidos");
+
+                }
+            }
         }
         function saveDatosConstrucciones_Success() {
             terminateEdit("form_construcciones",
@@ -83,10 +89,16 @@
                 "<%= cancelar_construcciones_ImBtn.ClientID %>");
         }
 
-        function saveSuperficies() {
+        function saveSuperficies(mostrarAlertas) {
             if (superficies_Ctrl.validate()) {
                 saveSuperficiesInmuebleAsync(
                     idAvaluo, superficies_Ctrl.getData(), saveSuperficies_Success);
+            }
+            else {
+                if (mostrarAlertas != false) {
+                    showMessage("El bloque de datos contiene campos inválidos");
+
+                }
             }
         }
         function saveSuperficies_Success() {        
@@ -96,10 +108,16 @@
                 "<%= cancelar_superficies_ImBtn.ClientID %>");
         }
 
-        function saveCondominio() {
+        function saveCondominio(mostrarAlertas) {
             if (condominio_Ctrl.validate()) {
                 saveDatosCondominioAsync(
                     idAvaluo, condominio_Ctrl.getData(), saveCondominio_Success);
+            }
+            else {
+                if (mostrarAlertas != false) {
+                    showMessage("El bloque de datos contiene campos inválidos");
+
+                }
             }
         }
         function saveCondominio_Success() {
