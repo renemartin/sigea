@@ -44,6 +44,12 @@
                     , saveCliente_Success
                 );
             }
+            else {
+
+                showMessage("El bloque de datos contiene campos inválidos");
+
+
+            }
         }
         function saveCliente_Success(id) {
             idCliente = id;
@@ -184,8 +190,8 @@
                 <td valign="top">
                     <div id="ficha" style="display: none;">
                         <div>
-                            <img id="foto" class="foto" alt="Cambiar imagen" src="../../Images/NoDisponible.jpg" style="cursor: pointer;"
-                                onclick="changeFotografia()" />
+                            <img id="foto" class="foto" alt="Cambiar imagen" src="../../Images/NoDisponible.jpg"
+                                style="cursor: pointer;" onclick="changeFotografia()" />
                         </div>
                         <br />
                         Fecha de alta:
