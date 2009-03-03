@@ -29,11 +29,11 @@
         }
         
         for ( i = 1; i <= data.length; i++ ) {
-            $get( parent_id + "_descripcion_TBox_" + i).value = data[i].descripcion;
-            $get( parent_id + "_cantidad_TBox_" + i).value = data[i].cantidad;
-            $get( parent_id + "_unidad_DDList" + i).selectedValue = data[i].idTipoUnidad;
-            $get( parent_id + "_edad_TBox_" + i).value = data[i].edad;
-            $get( parent_id + "_conservacion_DDList_" + i).selectedValue = data[i].idTipoConservacion;
+            $get( parent_id + "_descripcion_TBox_" + i).value = data[i-1].descripcion;
+            $get( parent_id + "_cantidad_TBox_" + i).value = data[i-1].cantidad;
+            $get( parent_id + "_unidad_DDList" + i).value = data[i-1].idTipoUnidad;
+            $get( parent_id + "_edad_TBox_" + i).value = data[i-1].edad;
+            $get( parent_id + "_conservacion_DDList_" + i).value = data[i-1].idTipoConservacion;
         }
         
         if ( i != data.length ) {
@@ -43,18 +43,24 @@
     
     //guardar datos
     function getDatosInstalacionesAdicionales( parent_id ) {
-        var data = new Object();
+        var data_set = new Array();
+        var data = null;
+        data = new Object();
         var i = null;
         var numero_tablas = getCloningTableCount( parent_id + '_tabla_instalaciones');
         
         for ( i = 1; i <= numero_tablas; i++ ) {
-            data[i].descripcion = $get( parent_id + "_descripcion_TBox_" + i).value;
-            data[i].cantidad = $get( parent_id + "_cantidad_TBox_" + i).value;
-            data[i].idTipoUnidad = $get( parent_id + "_unidad_DDList" + i).selectedValue;
-            data[i].edad = $get( parent_id + "_edad_TBox_" + i).value;
-            data[i].idTipoConservacion = $get( parent_id + "_conservacion_DDList_" + i).selectedValue;
+            
+            data = new Object();
+            data.descripcion = $get( parent_id + "_descripcion_TBox_" + i).value;
+            data.cantidad = $get( parent_id + "_cantidad_TBox_" + i).value;
+            data.idTipoUnidad = $get( parent_id + "_unidad_DDList_" + i).value;
+            data.edad = $get( parent_id + "_edad_TBox_" + i).value;
+            data.idTipoConservacion = $get( parent_id + "_conservacion_DDList_" + i).value;
+            
+            data_set[i - 1] = data;
         }
-        return data;
+        return data_set;
     }
     
 </script>
