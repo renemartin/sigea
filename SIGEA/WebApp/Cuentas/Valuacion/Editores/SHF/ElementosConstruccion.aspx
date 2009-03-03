@@ -40,8 +40,6 @@
 
         // Llenado de datos
         function fillData() {
-//            fillEstructurasData();
-//            fillInstalacionesData();
             fillInstalacionesAdicionalesData("<%= instalacionesPrivativas_Ctrl.ClientID %>");
             fillInstalacionesAdicionalesData("<%= instalacionesComunes_Ctrl.ClientID %>");
         }
@@ -53,7 +51,7 @@
             loadDatosEstructuras();
             loadDatosAcabados();
             loadDatosInstalaciones();
-//            loadDatosInstalacionesAdicionales();
+            loadDatosInstalacionesAdicionales();
         }
         function loadDatosEstructuras() {
             var callBackList = new Array();
@@ -83,8 +81,8 @@
             var callBackList = new Array();
             
             callBackList[0] = loadForm_Success;
-            callBackList[1] = setDatosInstalacionesAdicionales("<%= instalacionesPrivativas_Ctrl.ClientID %>");
-            callBackList[1] = setDatosInstalacionesAdicionales("<%= instalacionesComunes_Ctrl.ClientID %>");
+//            callBackList[1] = setDatosInstalacionesAdicionales("<%= instalacionesPrivativas_Ctrl.ClientID %>");
+//            callBackList[1] = setDatosInstalacionesAdicionales("<%= instalacionesComunes_Ctrl.ClientID %>");
             
             loadInstalacionesAdicionalesAsync(idAvaluo, callBackList);
         }
@@ -106,7 +104,7 @@
             if (getVisibility($get("<%= guardar_acabados_ImBtn.ClientID %>")))
                 saveDatosAcabados();
             if (getVisibility($get("<%= guardar_instalaciones_ImBtn.ClientID %>")))
-                saveDatosInstalaciones();
+               saveDatosInstalaciones();
         }
         function saveDatosEstructuras() {
             saveDatosEstructurasAsync(
@@ -207,7 +205,7 @@
         <asp:ImageButton ID="guardar_acabados_ImBtn" runat="server" SkinID="Save" CssClass="hidden" />
         <asp:ImageButton ID="cancelar_acabados_ImBtn" runat="server" SkinID="Cancel" CssClass="hidden" />
     </div>
-    <div id="seccion_instalaciones_condominio" style="display: none;">
+    <div id="seccion_instalaciones_condominio"> <%--style="display: none;">--%>
         <hr />
         <h1>
             Instalaciones
