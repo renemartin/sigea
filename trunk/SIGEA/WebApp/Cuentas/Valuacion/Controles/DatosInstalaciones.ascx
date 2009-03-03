@@ -18,7 +18,8 @@
     
     //guardar datos
     function getDatosInstalaciones() {
-        var data = new Object();
+        var data = null;
+        data = new Object();
         
         data.hidraulicas = $get("<%= hidraulicas_TBox.ClientID %>").value;
         data.sanitarias = $get("<%= sanitarias_TBox.ClientID %>").value;
