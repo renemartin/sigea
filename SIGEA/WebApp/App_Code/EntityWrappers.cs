@@ -713,7 +713,7 @@ public class EntityWrappers : System.Web.Services.WebService
         )
     {
         SIGEADataContext data_context = new SIGEADataContext();
-        TipoConstruccion tipo_construccion = TipoConstruccion.GetFromIdAvaluo(data_context, idAvaluo);
+        TipoConstruccion tipo_construccion = TipoConstruccion.GetFromIdAvaluo(data_context, idAvaluo, 1);
 
         if (tipo_construccion == null)
         {
@@ -732,7 +732,7 @@ public class EntityWrappers : System.Web.Services.WebService
         )
     {
         SIGEADataContext data_context = new SIGEADataContext();
-        TipoConstruccion tipo_construccion = TipoConstruccion.GetFromIdAvaluo(data_context, idAvaluo);
+        TipoConstruccion tipo_construccion = TipoConstruccion.GetFromIdAvaluo(data_context, idAvaluo, 1);
 
         if (tipo_construccion == null)
         {
@@ -752,17 +752,17 @@ public class EntityWrappers : System.Web.Services.WebService
         )
     {
         SIGEADataContext data_context = new SIGEADataContext();
-        TipoConstruccion tipo_construccion = TipoConstruccion.GetFromIdAvaluo(data_context, idAvaluo);
+        TipoConstruccion tipo_construccion = TipoConstruccion.GetFromIdAvaluo(data_context, idAvaluo, 1);
+        ConstruccionInmueble construccion = ConstruccionInmueble.GetFromIdAvaluo(data_context, idAvaluo);
 
-        if (tipo_construccion == null)
+        if (tipo_construccion == null || construccion == null)
         {
-            throw new Exception("El avalúo no cuenta con un tipo de construcción registrado");
+            throw new Exception("El avalúo no cuenta con construcciones registradas");
         }
 
         InstalacionesTipoConstruccion instalaciones_tipo = InstalacionesTipoConstruccion.GetForDataUpdate(data_context, tipo_construccion);
-        instalaciones_tipo.SetData(datosInstalacionesTipoConstruccion);
-        Inmueble inmueble = Inmueble.GetFromIdAvaluo(data_context, idAvaluo);
-        ConstruccionInmueble construccion = ConstruccionInmueble.GetForDataUpdate(inmueble);
+        
+        instalaciones_tipo.SetData(datosInstalacionesTipoConstruccion);                       
         InstalacionConstruccion.SetInstalacionesConstruccion(construccion, datosInstalacionesPrivativas, false);
         InstalacionConstruccion.SetInstalacionesConstruccion(construccion, datosInstalacionesComunes, true);
 
@@ -772,7 +772,7 @@ public class EntityWrappers : System.Web.Services.WebService
     [WebMethod]
     public Entity LoadEstructuras(int idAvaluo)
     {
-        TipoConstruccion tipo_construccion = TipoConstruccion.GetFromIdAvaluo(common_context, idAvaluo);
+        TipoConstruccion tipo_construccion = TipoConstruccion.GetFromIdAvaluo(common_context, idAvaluo, 1);
 
         if (tipo_construccion.EstructurasTipoConstruccion == null)
             return null;
@@ -783,7 +783,7 @@ public class EntityWrappers : System.Web.Services.WebService
     [WebMethod]
     public Entity[] LoadAcabados(int idAvaluo)
     {
-        TipoConstruccion tipo_construccion = TipoConstruccion.GetFromIdAvaluo(common_context, idAvaluo);
+        TipoConstruccion tipo_construccion = TipoConstruccion.GetFromIdAvaluo(common_context, idAvaluo, 1);
 
         if (tipo_construccion.AcabadoTipoConstruccion == null)
             return null;
@@ -794,7 +794,7 @@ public class EntityWrappers : System.Web.Services.WebService
     [WebMethod]
     public Entity LoadInstalacionTipoConstruccion(int idAvaluo)
     {
-        TipoConstruccion tipo_construccion = TipoConstruccion.GetFromIdAvaluo(common_context, idAvaluo);
+        TipoConstruccion tipo_construccion = TipoConstruccion.GetFromIdAvaluo(common_context, idAvaluo, 1);
 
         if (tipo_construccion.InstalacionesTipoConstruccion == null)
             return null;

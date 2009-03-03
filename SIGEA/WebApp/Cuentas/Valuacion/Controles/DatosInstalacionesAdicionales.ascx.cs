@@ -12,7 +12,7 @@ public partial class Cuentas_Valuacion_Controles_InstalacionesAdicionales : Syst
 
     private void AddAttributes()
     {
-        agregarFila_ImBtn.OnClientClick = "addClonedRow('" + ClientID + "_tabla_instalaciones'); return false;";
-        removerFila_ImBtn.OnClientClick = "removeClonedRow('" + ClientID + "_tabla_instalaciones'); return false;";
+        agregarFila_ImBtn.OnClientClick = ID + ".addInstalacionesRow(); return false;";
+        removerFila_ImBtn.OnClientClick = ID + ".removeInstalacionesRow(); return false;";
     }
 }

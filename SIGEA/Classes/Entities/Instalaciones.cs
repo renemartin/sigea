@@ -67,6 +67,7 @@ namespace SIGEA.Classes.Entities
         }
         public void SetData(Dictionary<string, object> data)
         {
+            idInstalacion = short.Parse(data["idInstalacion"].ToString());
             idTipoUnidad = short.Parse(data["idTipoUnidad"].ToString());
             idTipoConservacion = short.Parse(data["idTipoConservacion"].ToString());
             descripcion = data["descripcion"].ToString();

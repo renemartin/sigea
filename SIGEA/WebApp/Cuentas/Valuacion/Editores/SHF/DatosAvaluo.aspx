@@ -55,10 +55,10 @@
             if (getVisibility($get("<%= guardar_declaraciones_ImBtn.ClientID %>")))
                 saveDeclaraciones();
         }
-        
+
         function saveDatosGenerales(mostrarAlertas) {
             var validated = true;
-         
+
             if (!avaluo_Ctrl.validate())
                 validated = false;
             if (!solicitante_Ctrl.validate())
@@ -72,11 +72,8 @@
                     , saveDatosAvaluo_Success
                 );
             }
-            else {
-                if (mostrarAlertas != false) {
-                    showMessage("El bloque de datos contiene campos inválidos");
-
-                }
+            else if (mostrarAlertas != false) {
+                showMessage("El bloque de datos contiene campos inválidos");
             }
         }
         function saveDatosAvaluo_Success() {
@@ -93,7 +90,7 @@
                 , advertencias_Ctrl.getData()
                 , saveDeclaraciones_Success
             );
-           
+
         }
         function saveDeclaraciones_Success() {
             terminateEdit("form_declaraciones",
@@ -117,7 +114,7 @@
             <asp:ScriptReference Path="~/Scripts/DataFillers.js" />
             <asp:ScriptReference Path="~/Scripts/Forms.js" />
             <asp:ScriptReference Path="~/Scripts/Validation.js" />
-            <asp:ScriptReference Path="~/Scripts/Entities/Avaluos.js" />            
+            <asp:ScriptReference Path="~/Scripts/Entities/Avaluos.js" />
         </Scripts>
     </asp:ScriptManager>
     <SIGEA:EditorSHFNavegador ID="navegador_Ctrl" runat="server" />

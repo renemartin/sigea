@@ -1,4 +1,4 @@
-ï»¿<%@ Page Title="SIGEA - Editor SHF - Elementos construcciÃ³n" Language="C#" AutoEventWireup="true"
+<%@ Page Title="SIGEA - Editor SHF - Elementos construcción" Language="C#" AutoEventWireup="true"
     MasterPageFile="~/Cuentas/Valuacion/Editores/SHF/EditorSHF.master" CodeFile="ElementosConstruccion.aspx.cs"
     Inherits="Cuentas_Valuacion_Editores_SHF_ElementosConstruccion" %>
 
@@ -17,9 +17,8 @@
     <script type="text/javascript">
         // Variables
         var idAvaluo = 0;
-        var num_bloques_datos = 3;
 
-        // InicializaciÃ³n
+        // Inicialización
         function setupForm() {
             var link = $get("ctl00_menu_Ctrl_elementos_LkBtn")
             link.removeAttribute("href");
@@ -33,15 +32,6 @@
             disableControls($get('form_estructuras'));
             disableControls($get('form_acabados'));
             disableControls($get('form_instalaciones'));
-
-            setupTablaSuperficiesAdicionales("<%= instalacionesPrivativas_Ctrl.ClientID %>");
-            setupTablaSuperficiesAdicionales("<%= instalacionesComunes_Ctrl.ClientID %>");
-        }
-
-        // Llenado de datos
-        function fillData() {
-            fillInstalacionesAdicionalesData("<%= instalacionesPrivativas_Ctrl.ClientID %>");
-            fillInstalacionesAdicionalesData("<%= instalacionesComunes_Ctrl.ClientID %>");
         }
 
         // Carga de registros
@@ -54,64 +44,38 @@
             loadDatosInstalacionesAdicionales();
         }
         function loadDatosEstructuras() {
-            var callBackList = new Array();
-            
-            callBackList[0] = loadForm_Success;
-            callBackList[1] = setDatosEstructuras;
-            
-            loadEstructurasAsync(idAvaluo, callBackList);
+            loadEstructurasAsync(idAvaluo, datosEstructuras_Ctrl);
         }
         function loadDatosAcabados() {
-            var callBackList = new Array();
-            
-            callBackList[0] = loadForm_Success;
-            callBackList[1] = setDatosAcabados;
-            
-            loadAcabadosAsync(idAvaluo, callBackList);
+            loadAcabadosAsync(idAvaluo, datosAcabados_Ctrl);
         }
         function loadDatosInstalaciones() {
-            var callBackList = new Array();
-            
-            callBackList[0] = loadForm_Success;
-            callBackList[1] = setDatosInstalaciones;
-            
-            loadInstalacionesAsync(idAvaluo, callBackList);
+            loadInstalacionesAsync(idAvaluo, instalaciones_Ctrl);
         }
         function loadDatosInstalacionesAdicionales() {
-            var callBackList = new Array();
-            
-            callBackList[0] = loadForm_Success;
-            callBackList[1] = setDatosInstalacionesAdicionales("<%= instalacionesPrivativas_Ctrl.ClientID %>");
-            callBackList[2] = setDatosInstalacionesAdicionales("<%= instalacionesComunes_Ctrl.ClientID %>");
-            
-            loadInstalacionesAdicionalesAsync(idAvaluo, callBackList);
-        }
-        function loadForm_Success() {
-            if (num_bloques_cargados != undefined) {
-                num_bloques_cargados++;
-                if (num_bloques_cargados == num_bloques_datos) {
-                    getInmuebleEscondominalAsync(
-                        idAvaluo, setVisibilidadCondominal);
-                    fillData();
-                }
-            }
+            loadInstalacionesAdicionalesAsync(idAvaluo, false, instalacionesPrivativas_Ctrl);
+            loadInstalacionesAdicionalesAsync(idAvaluo, true, instalacionesComunes_Ctrl);
         }
 
         // Guardado de registros
         function saveForm() {
             if (getVisibility($get("<%= guardar_estructuras_ImBtn.ClientID %>")))
-                saveDatosEstructuras();
+                saveDatosEstructuras(false);
             if (getVisibility($get("<%= guardar_acabados_ImBtn.ClientID %>")))
                 saveDatosAcabados();
             if (getVisibility($get("<%= guardar_instalaciones_ImBtn.ClientID %>")))
-               saveDatosInstalaciones();
+                saveDatosInstalaciones(false);
         }
-        function saveDatosEstructuras() {
-            saveDatosEstructurasAsync(
+        function saveDatosEstructuras(mostrarAlertas) {
+            if (datosEstructuras_Ctrl.validate()) {
+                saveDatosEstructurasAsync(
                 idAvaluo
-                , getDatosEstructuras()
-                , saveDatosEstructuras_Success()
-                );
+                , datosEstructuras_Ctrl.getData()
+                , saveDatosEstructuras_Success);
+            }
+            else if (mostrarAlertas != false) {
+                showMessage("El bloque de datos contiene campos inválidos");
+            }
         }
         function saveDatosEstructuras_Success() {
             terminateEdit("form_estructuras",
@@ -123,9 +87,8 @@
         function saveDatosAcabados() {
             saveDatosAcabadosAsync(
                 idAvaluo
-                , getDatosAcabados()
-                , saveDatosAcabados_Success()
-                );
+                , datosAcabados_Ctrl.getData()
+                , saveDatosAcabados_Success);
         }
         function saveDatosAcabados_Success() {
             terminateEdit("form_acabados",
@@ -134,25 +97,31 @@
                 "<%= cancelar_acabados_ImBtn.ClientID %>");
         }
 
-        function saveDatosInstalaciones() {
-            saveDatosInstalacionesConstruccionAsync(
+        function saveDatosInstalaciones(mostrarAlertas) {
+            var validated = true;
+            if (!instalaciones_Ctrl.validate())
+                validated = false;
+            if (!instalacionesPrivativas_Ctrl.validate())
+                validated = false;
+            if (!instalacionesComunes_Ctrl.validate())
+                validated = false;
+            if (validated) {
+                saveDatosInstalacionesConstruccionAsync(
                 idAvaluo
-                , getDatosInstalaciones()
-                , getDatosInstalacionesAdicionales("<%= instalacionesPrivativas_Ctrl.ClientID %>")
-                , getDatosInstalacionesAdicionales("<%= instalacionesComunes_Ctrl.ClientID %>")
-                , saveDatosInstalaciones_Success()
-                );
+                , instalaciones_Ctrl.getData()
+                , instalacionesPrivativas_Ctrl.getData()
+                , instalacionesComunes_Ctrl.getData()
+                , saveDatosInstalaciones_Success);
+            }
+            else if (mostrarAlertas != false) {
+                showMessage("El bloque de datos contiene campos inválidos");
+            }
         }
         function saveDatosInstalaciones_Success() {
             terminateEdit("form_instalaciones",
                 "<%= editar_instalaciones_ImBtn.ClientID %>",
                 "<%= guardar_instalaciones_ImBtn.ClientID %>",
                 "<%= cancelar_instalaciones_ImBtn.ClientID %>");
-        }
-
-        // Visibilidad secciones
-        function setVisibilidadCondominal(visible) {
-            setVisibility($get("seccion_instalaciones_condominio"), visible);
         }
         
     </script>
@@ -170,7 +139,7 @@
             <asp:ScriptReference Path="~/Scripts/DataFillers.js" />
             <asp:ScriptReference Path="~/Scripts/Tables.js" />
             <asp:ScriptReference Path="~/Scripts/Forms.js" />
-            <asp:ScriptReference Path="~/Scripts/Entities/Inmuebles.js" />
+            <asp:ScriptReference Path="~/Scripts/Validation.js" />
             <asp:ScriptReference Path="~/Scripts/Entities/Construcciones.js" />
         </Scripts>
     </asp:ScriptManager>
@@ -205,7 +174,7 @@
         <asp:ImageButton ID="guardar_acabados_ImBtn" runat="server" SkinID="Save" CssClass="hidden" />
         <asp:ImageButton ID="cancelar_acabados_ImBtn" runat="server" SkinID="Cancel" CssClass="hidden" />
     </div>
-    <div id="seccion_instalaciones_condominio" style="display: none;">
+    <div id="seccion_instalaciones_condominio">
         <hr />
         <h1>
             Instalaciones
@@ -223,7 +192,7 @@
             <h2>
                 Obras complementarias</h2>
             <h3>
-                Instalaciones comÃºnes</h3>
+                Instalaciones comúnes</h3>
             <SIGEA:InstalacionesAdicionales ID="instalacionesComunes_Ctrl" runat="server" />
         </div>
         <div class="barraAcciones">
