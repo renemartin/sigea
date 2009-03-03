@@ -81,69 +81,71 @@
     //guardar datos
     function getDatosAcabados() {
         var data_set = new Array();
+        var dataSala = null;
+        var dataComedor = null;
+        var dataCocina = null;
+        var dataRecamaras = null;
+        var dataBanos = null;
+        var dataPatios = null;
+        var dataEstacionamientos = null;
         
         //datos Sala
-        var dataSala = new Object();
-        dataSala.idTipoAcabado = 0;
+        dataSala = new Object();
+        dataSala.idTipoAcabado = 1;
         dataSala.piso = $get("<%= salaPisos_TBox.ClientID %>").value;
         dataSala.muro = $get("<%= salaMuros_TBox.ClientID %>").value;
         dataSala.plafon = $get("<%= salaPlafones_TBox.ClientID %>").value;
+        data_set[0] = dataSala;
         
         //datos Comedor
-        var dataComedor = new Object();
-        dataComedor.idTipoAcabado = 1;
+        dataComedor = new Object();
+        dataComedor.idTipoAcabado = 2;
         dataComedor.piso = $get("<%= comedorPisos_TBox.ClientID %>").value;
         dataComedor.muro = $get("<%= comedorMuros_TBox.ClientID %>").value;
         dataComedor.plafon = $get("<%= comedorPlafones_TBox.ClientID %>").value;
+        data_set[1] = dataComedor;
         
         //datos Cocina
-        var dataCocina = new Object();
-        dataCocina.idTipoAcabado = 2;
+        dataCocina = new Object();
+        dataCocina.idTipoAcabado = 3;
         dataCocina.piso = $get("<%= cocinaPisos_TBox.ClientID %>").value;
         dataCocina.muro = $get("<%= cocinaMuros_TBox.ClientID %>").value;
         dataCocina.plafon = $get("<%= cocinaPlafones_TBox.ClientID %>").value;
+        data_set[2] = dataCocina;
         
-        //datos Recamaras
-        var dataRecamaras = new Object();
-        dataRecamaras = idTipoAcabado = 3;
+//        //datos Recamaras
+        dataRecamaras = new Object();
+        dataRecamaras.idTipoAcabado = 4;
         dataRecamaras.piso = $get("<%= recamarasPisos_TBox.ClientID %>").value;
         dataRecamaras.muro = $get("<%= recamarasMuros_TBox.ClientID %>").value;
         dataRecamaras.plafon = $get("<%= recamarasPlafones_TBox.ClientID %>").value;
+        data_set[3] = dataRecamaras;
             
         //datos Banos
-        var dataBanos = new Object();
-        dataBanos.idTipoAcabado = 4;    
+        dataBanos = new Object();
+        dataBanos.idTipoAcabado = 5;    
         dataBanos.piso = $get("<%= banosPisos_TBox.ClientID %>").value;
         dataBanos.muro = $get("<%= banosMuros_TBox.ClientID %>").value;
         dataBanos.plafon = $get("<%= banosPlafones_TBox.ClientID %>").value;
+        data_set[4] = dataBanos;
         
         //datos Patios
-        var dataPatios = new Object();
-        dataPatios.idTipoAcabado = 5;
+        dataPatios = new Object();
+        dataPatios.idTipoAcabado = 6;
         dataPatios.piso = $get("<%= patiosPisos_TBox.ClientID %>").value;
         dataPatios.muro = $get("<%= patiosMuros_TBox.ClientID %>").value;
         dataPatios.plafon = $get("<%= patiosPlafones_TBox.ClientID %>").value;
+        data_set[5] = dataPatios;
+ 
         
         //datos Estacionamientos
-        var dataEstacionamientos = new Object();
-        dataEstacionamientos.idTipoAcabado = 6;
+        dataEstacionamientos = new Object();
+        dataEstacionamientos.idTipoAcabado = 7;
         dataEstacionamientos.piso = $get("<%= estacionamientoPisos_TBox.ClientID %>").value;
         dataEstacionamientos.muro = $get("<%= estacionamientoMuros_TBox.ClientID %>").value;
         dataEstacionamientos.plafon = $get("<%= estacionamientoPlafones_TBox.ClientID %>").value;
-        
-        //datos Fachada
-//        var dataFachada = new Object();
-//        dataFachada.fachada = $get("<%= fachada_TBox.ClientID %>").value;
-        
-        data_set[0] = dataSala;
-        data_set[1] = dataComedor;
-        data_set[2] = dataCocina;
-        data_set[3] = dataRecamaras;
-        data_set[4] = dataBanos;
-        data_set[5] = dataPatios;
         data_set[6] = dataEstacionamientos;
-        //data_set[7] = dataFachada;
-        
+                      
         return data_set;
     }
     
