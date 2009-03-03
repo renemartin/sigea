@@ -55,14 +55,7 @@
             if (getVisibility($get("<%= guardar_declaraciones_ImBtn.ClientID %>")))
                 saveDeclaraciones();
         }
-        //hay que agregarle a cada una de esas funciones un parametro, que se llama mostrarAlertas
-        //y si la validacion falla checas si mostrarAlertas es nulo o mostrarAlertas es igual a true
-        //        vas a llamar al metodo showMessage("")
-        //SES Sparky dice:
-        //pasandole entre "" el mensaje de "El bloque de datos contiene campos inválidos"
-        //SES Sparky dice:
-        //y cuando se llamen a los metodos desde la funcion de saveForm
-
+        
         function saveDatosGenerales(mostrarAlertas) {
             var validated = true;
          
