@@ -31,7 +31,7 @@
         for ( i = 1; i <= data.length; i++ ) {
             $get( parent_id + "_descripcion_TBox_" + i).value = data[i-1].descripcion;
             $get( parent_id + "_cantidad_TBox_" + i).value = data[i-1].cantidad;
-            $get( parent_id + "_unidad_DDList" + i).value = data[i-1].idTipoUnidad;
+            $get( parent_id + "_unidad_DDList_" + i).value = data[i-1].idTipoUnidad;
             $get( parent_id + "_edad_TBox_" + i).value = data[i-1].edad;
             $get( parent_id + "_conservacion_DDList_" + i).value = data[i-1].idTipoConservacion;
         }
