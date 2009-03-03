@@ -37,6 +37,11 @@
                     , savePersonal_Success
                 );
             }
+            else {
+
+                showMessage("El bloque de datos contiene campos inválidos");
+
+            }
         }
         function savePersonal_Success(id) {
             idPersonal = id;
