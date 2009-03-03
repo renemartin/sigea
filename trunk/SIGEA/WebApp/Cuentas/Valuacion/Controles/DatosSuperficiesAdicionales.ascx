@@ -3,10 +3,10 @@
 <link href="~/App_Themes/Default/DefaultStyle.css" rel="stylesheet" type="text/css" />
 <table id="<%= ClientID %>_tabla_adicionales">
     <tr class="filaHeader">
-        <td>
+        <td style="width:150px">
             Concepto
         </td>
-        <td>
+        <td style="width:150px">
             Superficie
         </td>
         <td>
@@ -14,12 +14,12 @@
             <asp:ImageButton ID="removerFila_ImBtn" runat="server" SkinID="RemoveSmall" />
         </td>
     </tr>
-    <tr>
+    <tr style="display:none;">
         <td class="celdaValor">
-            <asp:TextBox ID="Concepto_TBox_1" runat="server"></asp:TextBox>
+            <asp:TextBox ID="Concepto_TBox" runat="server"></asp:TextBox>
         </td>
         <td class="celdaValor">
-            <asp:TextBox ID="Superficie_TBox_1" runat="server"></asp:TextBox>
+            <asp:TextBox ID="Superficie_TBox" runat="server"></asp:TextBox>
             <span class="textoChico">m²</span>
         </td>
         <td>
@@ -40,14 +40,14 @@
 
         this.parent_id = "<%= ClientID %>";
         this.validators = new Array();
-        this.addRowValidator(1);
-        addCloningTable($get(this.parent_id + "_tabla_adicionales"), 1, 5);
+        addCloningTable($get(this.parent_id + "_tabla_adicionales"), 1, 0, 5);
 
         // Control de filas
         function addSuperficieRow() {
             var row_num = getCloningTableCount(this.parent_id + "_tabla_adicionales");
-            addClonedRow(this.parent_id + "_tabla_adicionales");
-            this.addRowValidator(row_num + 1);
+            if (addClonedRow(this.parent_id + "_tabla_adicionales")) {
+                this.addRowValidator(row_num + 1);
+            }
         }
 
         function removeSuperficieRow(data) {
@@ -63,12 +63,10 @@
 
             var i = null;
             for (i = 1; i <= data.length; i++) {
+                this.addSuperficieRow();
+                
                 $get(this.parent_id + "_Concepto_TBox_" + i).value = data[i - 1].concepto;
                 $get(this.parent_id + "_Superficie_TBox_" + i).value = data[i - 1].superficie;
-
-                if (i != data.length) {
-                    this.addSuperficieRow();
-                }
             }
         }
 

@@ -11,6 +11,7 @@ function ControlValidator(controls, show_errors) {
         ControlValidator.prototype.setShowErrors = setShowErrors;
         ControlValidator.prototype.getShowErrors = getShowErrors;
         ControlValidator.prototype.addOptionalField = addOptionalField;
+        ControlValidator.prototype.removeOptionalField = removeOptionalField;
         ControlValidator.prototype.addNumericField = addNumericField;
         ControlValidator.prototype.addDateField = addDateField;
         ControlValidator.prototype.validateRequiredFields = validateRequiredFields;
@@ -42,6 +43,10 @@ function ControlValidator(controls, show_errors) {
 
     function addOptionalField(index) {
         this.optionalFields[this.controls[index].id] = true;
+    }
+
+    function removeOptionalField(index) {
+        this.optionalFields[this.controls[index].id] = false;
     }
 
     function addNumericField(index, is_float, max_range, min_range) {
@@ -174,6 +179,8 @@ function ControlValidator(controls, show_errors) {
                 this.invalid[i][0].setAttribute("class", normal_class);
                 this.invalid[i][0].setAttribute("className", normal_class);
                 this.invalid[i][0].removeAttribute("normalClass");
+
+                removeTooltip(this.invalid[i][0]);
             }
         }
     }

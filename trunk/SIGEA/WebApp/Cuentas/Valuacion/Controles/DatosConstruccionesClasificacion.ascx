@@ -41,41 +41,41 @@
             <asp:ImageButton ID="removerFila_ImBtn" runat="server" SkinID="RemoveSmall" />
         </td>
     </tr>
-    <tr>
+    <tr style="display:none;">
         <td class="celdaValor">
-            <asp:CheckBox ID="tipo_CBox_1" Text="Const." runat="server" />
+            <asp:CheckBox ID="tipo_CBox" Text="Const." runat="server" />
         </td>
         <td class="celdaValor">
-            <asp:TextBox ID="descripcion_TBox_1" runat="server" SkinID="Compacto"></asp:TextBox>
+            <asp:TextBox ID="descripcion_TBox" runat="server" SkinID="Compacto"></asp:TextBox>
         </td>
         <td class="celdaValor">
-            <asp:DropDownList ID="clase_DDList_1" runat="server" SkinID="Compacto">
+            <asp:DropDownList ID="clase_DDList" runat="server" SkinID="Compacto">
             </asp:DropDownList>
         </td>
         <td class="celdaValor">
-            <asp:TextBox ID="superficie_TBox_1" runat="server" SkinID="NumeroCompacto"></asp:TextBox>
+            <asp:TextBox ID="superficie_TBox" runat="server" SkinID="NumeroCompacto"></asp:TextBox>
         </td>
         <td class="celdaValor">
-            <asp:DropDownList ID="fuente_DDList_1" runat="server" SkinID="Compacto">
+            <asp:DropDownList ID="fuente_DDList" runat="server" SkinID="Compacto">
             </asp:DropDownList>
         </td>
         <td class="celdaValor">
-            <asp:TextBox ID="nivelesTipo_TBox_1" runat="server" SkinID="NumeroCompacto"></asp:TextBox>
+            <asp:TextBox ID="nivelesTipo_TBox" runat="server" SkinID="NumeroCompacto"></asp:TextBox>
         </td>
         <td class="celdaValor">
-            <asp:TextBox ID="nivelesCuerpo_TBox_1" runat="server" SkinID="NumeroCompacto"></asp:TextBox>
+            <asp:TextBox ID="nivelesCuerpo_TBox" runat="server" SkinID="NumeroCompacto"></asp:TextBox>
         </td>
         <td class="celdaValor">
-            <asp:TextBox ID="edad_TBox_1" runat="server" SkinID="NumeroCompacto"></asp:TextBox>
+            <asp:TextBox ID="edad_TBox" runat="server" SkinID="NumeroCompacto"></asp:TextBox>
         </td>
         <td class="celdaValor">
-            <asp:TextBox ID="avance_TBox_1" runat="server" SkinID="NumeroCompacto"></asp:TextBox>
+            <asp:TextBox ID="avance_TBox" runat="server" SkinID="NumeroCompacto"></asp:TextBox>
         </td>
         <td class="celdaValor">
-            <asp:TextBox ID="vidaUtil_TBox_1" runat="server" SkinID="NumeroCompacto"></asp:TextBox>
+            <asp:TextBox ID="vidaUtil_TBox" runat="server" SkinID="NumeroCompacto"></asp:TextBox>
         </td>
         <td class="celdaValor">
-            <asp:DropDownList ID="estadoCons_DDList_1" runat="server" SkinID="Compacto">
+            <asp:DropDownList ID="estadoCons_DDList" runat="server" SkinID="Compacto">
             </asp:DropDownList>
         </td>
         <td>
@@ -100,13 +100,17 @@
         this.parent_id = parent_id = "<%= ClientID %>";
         this.validators = new Array();
         this.addRowValidator(1);
-        addCloningTable($get("tabla_construcciones"), 1, 5);
+        addCloningTable($get("tabla_construcciones"), 1, 1, 5);
 
         // Control de filas
-        function addConstruccionRow() {
+        function addConstruccionRow(fill) {
             var row_num = getCloningTableCount('tabla_construcciones');
-            addClonedRow("tabla_construcciones");
-            this.addRowValidator(row_num + 1);
+            if (addClonedRow("tabla_construcciones")) {
+                if (fill == null || fill == true) {
+                    this.fillRowData(row_num + 1);
+                }
+                this.addRowValidator(row_num + 1);
+            }
         }
 
         function removeConstruccionRow(data) {
@@ -147,7 +151,9 @@
         function setData(data) {           
             if (data != null) {
                 var i = null;
-                for (i = 1; i <= data.length; i++) {                                        
+                for (i = 1; i <= data.length; i++) {
+                    this.addConstruccionRow(false);                                     
+                    
                     $get(this.parent_id + "_tipo_CBox_" + i).checked = data[i - 1].accesorio;
                     $get(this.parent_id + "_descripcion_TBox_" + i).value = data[i - 1].descripcion;
                     $get(this.parent_id + "_clase_DDList_" + i).selectedValue = data[i - 1].idClase;
@@ -160,15 +166,11 @@
                     $get(this.parent_id + "_vidaUtil_TBox_" + i).value = data[i - 1].vidaUtil;
                     $get(this.parent_id + "_estadoCons_DDList_" + i).selectedValue = data[i - 1].idConservacion;
 
-                    if (i != data.length) {
-                        this.addConstruccionRow();
-                    }
-
                     this.fillRowData(i);
                 }
             }
             else {
-                this.fillRowData(1);
+                this.addConstruccionRow();
             }
         }
 

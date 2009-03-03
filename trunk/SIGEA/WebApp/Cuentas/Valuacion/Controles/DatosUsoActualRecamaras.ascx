@@ -1,15 +1,14 @@
 ﻿<%@ Control Language="C#" AutoEventWireup="true" CodeFile="DatosUsoActualRecamaras.ascx.cs"
     Inherits="Cuentas_Valuacion_Controles_DatosRecamara" %>
 <link href="~/App_Themes/Default/DefaultStyle.css" rel="stylesheet" type="text/css" />
-
 <table id="tabla_recamaras">
     <tr>
-        <td align="right">
+        <td align="right" style="width: 500px;">
             <asp:ImageButton ID="agregarFila_ImBtn" runat="server" SkinID="AddSmall" />
             <asp:ImageButton ID="removerFila_ImBtn" runat="server" SkinID="RemoveSmall" />
         </td>
     </tr>
-    <tr>
+    <tr style="display: none;">
         <td>
             <table>
                 <tr>
@@ -17,30 +16,30 @@
                         Cantidad:
                     </td>
                     <td class="celdaValor">
-                        <asp:TextBox ID="cantidad_TBox_1" runat="server" SkinID="Numero"></asp:TextBox>
+                        <asp:TextBox ID="cantidad_TBox" runat="server" SkinID="Numero"></asp:TextBox>
                     </td>
                     <td class="celdaTituloSec">
                         Planta:
                     </td>
                     <td class="celdaValor">
-                        <asp:DropDownList ID="tipoPlanta_DDList_1" runat="server">
+                        <asp:DropDownList ID="tipoPlanta_DDList" runat="server">
                         </asp:DropDownList>
                     </td>
                 </tr>
                 <tr>
                     <td class="celdaValor" colspan="4">
-                        <asp:RadioButton ID="sinCloset_RBtn_1" Text="Sin closet" GroupName="Closet" runat="server" />
-                        <asp:RadioButton ID="espacioCloset_RBtn_1" Text="Espacio closet" GroupName="Closet"
+                        <asp:RadioButton ID="sinCloset_RBtn" Text="Sin closet" GroupName="Closet" runat="server" />
+                        <asp:RadioButton ID="espacioCloset_RBtn" Text="Espacio closet" GroupName="Closet"
                             runat="server" />
-                        <asp:RadioButton ID="closetEquipado_RBtn_1" Text="Closet Equipado" GroupName="Closet"
+                        <asp:RadioButton ID="closetEquipado_RBtn" Text="Closet Equipado" GroupName="Closet"
                             runat="server" />
                     </td>
                 </tr>
                 <tr>
                     <td class="celdaValor" colspan="4">
-                        <asp:CheckBox ID="terraza_CBox_1" Text="Terraza" runat="server" />
-                        <asp:CheckBox ID="balcon_CBox_1" Text="Balcón" runat="server" />
-                        <asp:CheckBox ID="vestidor_CBox_1" Text="Vestidor" runat="server" />
+                        <asp:CheckBox ID="terraza_CBox" Text="Terraza" runat="server" />
+                        <asp:CheckBox ID="balcon_CBox" Text="Balcón" runat="server" />
+                        <asp:CheckBox ID="vestidor_CBox" Text="Vestidor" runat="server" />
                     </td>
                 </tr>
             </table>
@@ -63,17 +62,21 @@
             UsoActualRecamaras.prototype.addRowValidator = addRowValidator;
             UsoActualRecamaras.prototype.validate = validate;
         }
-        
+
+        addCloningTable($get("tabla_recamaras"), 1, 1, 5);
         this.parent_id = "<%= ClientID %>";
         this.validators = new Array();
         this.addRowValidator(1);
-        addCloningTable($get("tabla_recamaras"), 1, 5);
 
         // Control de filas
-        function addRecamaraRow() {
+        function addRecamaraRow(fill) {
             var row_num = getCloningTableCount('tabla_recamaras');
-            addClonedRow("tabla_recamaras");
-            this.addRowValidator(row_num + 1);
+            if (addClonedRow("tabla_recamaras")) {
+                if (fill == null || fill == true) {
+                    this.fillRowData(row_num + 1);
+                }
+                this.addRowValidator(row_num + 1);
+            }
         }
 
         function removeRecamaraRow(data) {
@@ -88,6 +91,8 @@
 
                 var i = null;
                 for (i = 1; i <= data.length; i++) {
+                    this.addRecamaraRow(false);
+
                     $get(this.parent_id + "_cantidad_TBox_" + i).value = data[i - 1].cantidad;
                     $get(this.parent_id + "_tipoPlanta_DDList_" + i).selectedValue = data[i - 1].planta;
                     $get(this.parent_id + "_espacioCloset_RBtn_" + i).checked = data[i - 1].espacioCloset;
@@ -96,15 +101,11 @@
                     $get(this.parent_id + "_balcon_CBox_" + i).checked = data[i - 1].balcon;
                     $get(this.parent_id + "_vestidor_CBox_" + i).checked = data[i - 1].vestidor;
 
-                    if (i != data.length) {
-                        this.addRecamaraRow();                   
-                    }
-
                     this.fillRowData(i);
                 }
             }
             else {
-                fillRowData(1);
+                this.addRecamaraRow();
             }
         }
 
@@ -176,3 +177,4 @@
     this["<%= ID %>"] = new UsoActualRecamaras();
     
 </script>
+

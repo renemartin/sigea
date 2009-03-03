@@ -252,16 +252,20 @@
                     $get("<%= alumbradoPublicoAereo_CBox.ClientID %>").checked = data_set[0].alumbradoPublicoAereo;
                     $get("<%= vialidades_CBox.ClientID %>").checked = data_set[0].vialidades;
                     if (data_set[0].vialidades) {
-                        $get("<%= materialVialidades_DDList.ClientID %>").value = data_set[0].idTipoVialidades;
+                        $get("<%= materialVialidades_DDList.ClientID %>").selectedValue = data_set[0].idTipoVialidades;
                         $get("<%= anchoVialidad_TBox.ClientID %>").value = data_set[0].anchoVialidades;
+                        this.validator.removeOptionalField(0);
+                        this.validator.removeOptionalField(1);
                     }
                     $get("<%= banquetas_CBox.ClientID %>").checked = data_set[0].banquetas;
                     if (data_set[0].banquetas) {
-                        $get("<%= materialBanquetas_DDList.ClientID %>").value = data_set[0].idTipoBanquetas;
+                        $get("<%= materialBanquetas_DDList.ClientID %>").selectedValue = data_set[0].idTipoBanquetas;
+                        this.validator.removeOptionalField(2);
                     }
                     $get("<%= guarniciones_CBox.ClientID %>").checked = data_set[0].guarniciones;
                     if (data_set[0].guarniciones) {
-                        $get("<%= materialGuarniciones_DDList.ClientID %>").value = data_set[0].idTipoGuarniciones;
+                        $get("<%= materialGuarniciones_DDList.ClientID %>").selectedValue = data_set[0].idTipoGuarniciones;
+                        this.validator.removeOptionalField(3);
                     }
                     $get("<%= nivelInfraestructura_Lbl.ClientID %>").innerHTML = getNumString(data_set[0].nivelInfraestructura, 2);
                     $get("<%= nivelInfraestructuraSHF_Lbl.ClientID %>").innerHTML = getNumString(data_set[0].nivelInfraestructuraSHF);
@@ -287,11 +291,15 @@
                     if (data_set[1].transporteUrbano) {
                         $get("<%= transporteUrbanoDistancia_TBox.ClientID %>").value = data_set[1].transporteUrbanoDistancia;
                         $get("<%= transporteUrbanoFrecuencia_TBox.ClientID %>").value = data_set[1].transporteUrbanoFrecuencia;
+                        this.validator.removeOptionalField(4);
+                        this.validator.removeOptionalField(5);
                     }
                     $get("<%= transporteSuburbano_CBox.ClientID %>").checked = data_set[1].transporteSuburbano;
                     if (data_set[1].transporteSuburbano) {
                         $get("<%= transporteSuburbanoDistancia_TBox.ClientID %>").value = data_set[1].transporteSuburbanoDistancia;
                         $get("<%= transporteSuburbanoFrecuencia_TBox.ClientID %>").value = data_set[1].transporteSuburbanoFrecuencia;
+                        this.validator.removeOptionalField(6);
+                        this.validator.removeOptionalField(7);
                     }
                     $get("<%= vigilancia_CBox.ClientID %>").checked = data_set[1].vigilancia;
                     $get("<%= vigilanciaMunicipal_CBox.ClientID %>").checked = data_set[1].vigilanciaMunicipal;
@@ -324,16 +332,16 @@
             data_set[0].alumbradoPublicoAereo = data_set[0].alumbradoPublico ? $get("<%= alumbradoPublicoAereo_CBox.ClientID %>").checked : false;
             data_set[0].vialidades = $get("<%= vialidades_CBox.ClientID %>").checked;
             if (data_set[0].vialidades) {
-                data_set[0].idTipoVialidades = $get("<%= materialVialidades_DDList.ClientID %>").selectedValue;
+                data_set[0].idTipoVialidades = $get("<%= materialVialidades_DDList.ClientID %>").value;
                 data_set[0].anchoVialidades = $get("<%= anchoVialidad_TBox.ClientID %>").value;
             }
             data_set[0].banquetas = $get("<%= banquetas_CBox.ClientID %>").checked;
             if (data_set[0].banquetas) {
-                data_set[0].idTipoBanquetas = $get("<%= materialBanquetas_DDList.ClientID %>").selectedValue;
+                data_set[0].idTipoBanquetas = $get("<%= materialBanquetas_DDList.ClientID %>").value;
             }
             data_set[0].guarniciones = $get("<%= guarniciones_CBox.ClientID %>").checked;
             if (data_set[0].guarniciones) {
-                data_set[0].idTipoGuarniciones = $get("<%= materialGuarniciones_DDList.ClientID %>").selectedValue;
+                data_set[0].idTipoGuarniciones = $get("<%= materialGuarniciones_DDList.ClientID %>").value;
             }
             data_set[0].nivelInfraestructura = $get("<%= nivelInfraestructura_Lbl.ClientID %>").innerHTML;
             data_set[0].nivelInfraestructuraSHF = $get("<%= nivelInfraestructuraSHF_Lbl.ClientID %>").innerHTML;
@@ -379,6 +387,54 @@
     }
 
     this["<%= ID %>"] = new Infraestructura();
+
+    // Validaciones de seleccion
+    function setVialidadesSelection(value) {
+        if (value) {
+            eval("<%= ID %>").validator.removeOptionalField(0);
+            eval("<%= ID %>").validator.removeOptionalField(1);
+        }
+        else {
+            eval("<%= ID %>").validator.addOptionalField(0);
+            eval("<%= ID %>").validator.addOptionalField(1);
+        }
+    }
+    function setBanquetasSelection(value) {
+        if (value) {
+            eval("<%= ID %>").validator.removeOptionalField(2);
+        }
+        else {
+            eval("<%= ID %>").validator.addOptionalField(2);
+        }
+    }
+    function setGuarnicionesSelection(value) {
+        if (value) {
+            eval("<%= ID %>").validator.removeOptionalField(3);
+        }
+        else {
+            eval("<%= ID %>").validator.addOptionalField(3);
+        }
+    }
+    function setTransporteUrbanoSelection(value) {
+        if (value) {
+            eval("<%= ID %>").validator.removeOptionalField(4);
+            eval("<%= ID %>").validator.removeOptionalField(5);
+        }
+        else {
+            eval("<%= ID %>").validator.addOptionalField(4);
+            eval("<%= ID %>").validator.addOptionalField(5);
+        }
+    }
+    function setTransporteSuburbanoSelection(value) {
+        if (value) {
+            eval("<%= ID %>").validator.removeOptionalField(6);
+            eval("<%= ID %>").validator.removeOptionalField(7);
+        }
+        else {
+            eval("<%= ID %>").validator.addOptionalField(6);
+            eval("<%= ID %>").validator.addOptionalField(7);
+        }
+    }
     
 </script>
 

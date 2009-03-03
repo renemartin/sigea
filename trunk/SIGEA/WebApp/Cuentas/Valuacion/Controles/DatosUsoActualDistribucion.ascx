@@ -131,6 +131,9 @@
                 $get("<%= cocinaIntegral_RBtn.ClientID %>").checked = data.cocinaIntegral;
 
                 setVisibility($get("seccion_cupo_carros"), data.idTipoEstacionamiento != sin_estacionamiento);
+                if(data.idTipoEstacionamiento != sin_estacionamiento) {
+                    this.validator.removeOptionalField(1);
+                }
             }
 
             this.fillData();
@@ -164,6 +167,8 @@
         }
     }
 
+    this["<%= ID %>"] = new UsoActualDistribucion();
+    
     // Validación de selecciones
     function setCocinaSelection(selected) {
         setVisibility($get("seccion_muebles_cocina"), selected);
@@ -171,11 +176,17 @@
     }
 
     function setEstacionamientoSeleccion(valor) {
-        setVisibility($get("seccion_cupo_carros")
-            , valor != sin_estacionamiento && valor != "0");
+    
+        var tiene_estacionamiento = valor != sin_estacionamiento && valor != "0";
+        setVisibility($get("seccion_cupo_carros"), tiene_estacionamiento);
+
+        if(tiene_estacionamiento)
+            eval("<%= ID %>").validator.removeOptionalField(1);
+        else
+            eval("<%= ID %>").validator.addOptionalField(1);
     }
 
-    this["<%= ID %>"] = new UsoActualDistribucion();
+    
     
 </script>
 
