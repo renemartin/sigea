@@ -13,7 +13,7 @@
         $get("<%= electricas_TBox.ClientID %>").value = data.electricas;
         $get("<%= carpinteria_TBox.ClientID %>").value = data.carpinteria;
         $get("<%= herreria_TBox.ClientID %>").value = data.herreria;
-        $get("<%= carpinteria_TBox.ClientID %>").value = data.canceleria;
+        $get("<%= canceleria_TBox.ClientID %>").value = data.canceleria;
     }
     
     //guardar datos
@@ -26,7 +26,7 @@
         data.electricas = $get("<%= electricas_TBox.ClientID %>").value;
         data.carpinteria = $get("<%= carpinteria_TBox.ClientID %>").value;
         data.herreria = $get("<%= herreria_TBox.ClientID %>").value;
-        data.canceleria = $get("<%= carpinteria_TBox.ClientID %>").value;
+        data.canceleria = $get("<%= canceleria_TBox.ClientID %>").value;
         
         return data;       
     }
