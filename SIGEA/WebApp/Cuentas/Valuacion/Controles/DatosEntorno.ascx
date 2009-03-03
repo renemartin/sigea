@@ -1,7 +1,6 @@
 ﻿<%@ Control Language="C#" AutoEventWireup="true" CodeFile="DatosEntorno.ascx.cs"
     Inherits="Cuentas_Administracion_DatosEntorno" %>
 <link href="~/App_Themes/Default/DefaultStyle.css" rel="stylesheet" type="text/css" />
-
 <table>
     <tr>
         <td class="celdaTitulo">
@@ -60,10 +59,10 @@
         <td class="celdaValor" colspan="3">
             <table id="tabla_vias">
                 <tr>
-                    <td class="celdaHeader">
+                    <td class="celdaHeader" style="width: 180px">
                         Nombre de vía
                     </td>
-                    <td class="celdaHeader">
+                    <td class="celdaHeader" style="width: 150px">
                         Importancia
                     </td>
                     <td>
@@ -71,12 +70,12 @@
                         <asp:ImageButton ID="removerFila_ImBtn" runat="server" SkinID="RemoveSmall" />
                     </td>
                 </tr>
-                <tr>
+                <tr style="display: none;">
                     <td class="celdaValor">
-                        <asp:TextBox ID="via_TBox_1" runat="server"></asp:TextBox>
+                        <asp:TextBox ID="via_TBox" runat="server"></asp:TextBox>
                     </td>
                     <td class="celdaValor">
-                        <asp:DropDownList ID="importanciaVia_DDList_1" runat="server">
+                        <asp:DropDownList ID="importanciaVia_DDList" runat="server">
                         </asp:DropDownList>
                     </td>
                     <td>
@@ -103,9 +102,9 @@
             Entorno.prototype.getDataVias = getDataVias;
             Entorno.prototype.validate = validate;
             Entorno.prototype.addViasRowValidator = addViasRowValidator;
-        }                
+        }
         this.parent_id = "<%= ClientID %>";
-        addCloningTable($get("tabla_vias"), 1, 3);
+        addCloningTable($get("tabla_vias"), 1, 0, 3);
 
         // Inicialización de validadores
         this.controls = new Array(
@@ -118,9 +117,7 @@
         );
         this.entorno_validator = new ControlValidator(this.controls);
         this.entorno_validator.addNumericField(5, true);
-
-        this.vias_validators = new Array();        
-        this.addViasRowValidator(1);
+        this.vias_validators = new Array();
 
         // Llenado de datos
         function fillData() {
@@ -132,14 +129,18 @@
         }
 
         function fillViasRowData(row_num) {
-            fillImportanciaVialidad(this.parent_id + "_importanciaVia_DDList_"+ row_num);
+            fillImportanciaVialidad(this.parent_id + "_importanciaVia_DDList_" + row_num);
         }
 
         // Control de filas
-        function addViasRow() {
+        function addViasRow(fill) {
             var row_num = getCloningTableCount('tabla_vias');
-            addClonedRow("tabla_vias");
-            this.addViasRowValidator(row_num + 1);
+            if (addClonedRow("tabla_vias")) {
+                if (fill == null || fill == true) {
+                    this.fillViasRowData(row_num + 1);
+                }
+                this.addViasRowValidator(row_num + 1);
+            }
         }
 
         function removeViasRow(data) {
@@ -161,29 +162,24 @@
                 }
                 this.setDataVias(data_set[1]);
             }
-            else {
-                this.fillViasRowData(1);
-            }
 
-            this.fillData();            
+            this.fillData();
         }
         function setDataVias(data) {
             if (data == null)
                 return;
-        
+
             var i = null;
             for (i = 1; i <= data.length; i++) {
+                this.addViasRow(false);
+
                 $get(this.parent_id + "_via_TBox_" + i).value = data[i - 1].nombreVia;
                 $get(this.parent_id + "_importanciaVia_DDList_" + i).selectedValue = data[i - 1].idImportanciaVia;
-
-                if (i != data.length) {
-                    this.addViasRow();
-                }
 
                 this.fillViasRowData(i);
             }
         }
-        
+
         function getData() {
             var data_set = Array();
 
@@ -223,7 +219,7 @@
             var i = null;
 
             validated = this.entorno_validator.validate();
-            
+
             for (i = 0; i < row_num; i++) {
                 if (this.vias_validators[i] != null) {
                     if (!this.vias_validators[i].validate())
@@ -251,3 +247,4 @@
     this["<%= ID %>"] = new Entorno();
     
 </script>
+

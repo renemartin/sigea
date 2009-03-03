@@ -143,7 +143,8 @@
                     data_set[0].idCliente = $get("<%= cliente_DDList.ClientID %>").value;
                 }
             }
-            
+         
+                        
             // Datos crédito
             if ($get("seccion_credito").style.display == "none") {
                 data_set[1] = null;
@@ -152,10 +153,13 @@
                 data_set[1] = new Object();
                 data_set[1].idTipoCredito = $get("<%= tipoCredito_DDList.ClientID %>").value;
                 data_set[1].idEntidadOtorgante = $get("<%= entidadOtorgante_DDList.ClientID %>").value;
-                if ($get("seccion_cofinanciamiento").style.display != "none")
+
+                if ($get("seccion_cofinanciamiento").style.display != "none") {
                     data_set[1].idEntidadCofinanciamiento = $get("<%= entidadCofinanciamiento_DDList.ClientID %>").value;
-                if ($get("seccion_subtipo_credito").style.display != "none")
+                }
+                if ($get("seccion_subtipo_credito").style.display != "none") {
                     data_set[1].idTipoCreditoInterno = $get("<%= tipoCreditoInterno_DDList.ClientID %>").value;
+                }
             }
 
             return data_set;
@@ -173,6 +177,13 @@
             setVisibility($get("seccion_credito"), data_set[0].operacionContado == false);
             setVisibility($get("seccion_recuperacion"), data_set[0].especRecuperacion != "");
             setVisibility($get("seccion_proposito"), data_set[0].especProposito != "");
+
+            if (data_set[0].especRecuperacion != "") {
+                this.validator.removeOptionalField(2);
+            }
+            if (data_set[0].especProposito != "") {
+                this.validator.removeOptionalField(1);
+            }
             
             // Datos crédito
             if (data_set[1] != null) {
@@ -182,6 +193,16 @@
                 $get("<%= tipoCreditoInterno_DDList.ClientID %>").selectedValue = data_set[1].idTipoCreditoInterno;
 
                 setVisibility($get("seccion_cofinanciamiento"), data_set[1].idEntidadCofinanciamiento != null);
+                setVisibility($get("seccion_subtipo_credito"), data_set[1].idTipoCreditoInterno != null);
+
+                this.validator.removeOptionalField(6);
+                this.validator.removeOptionalField(7);
+                if (data_set[1].idEntidadCofinanciamiento != null) {
+                    this.validator.removeOptionalField(8);
+                }
+                if (data_set[1].idTipoCreditoInterno != null) {
+                    this.validator.removeOptionalField(9);
+                }                
             }
             else {
                 $get("seccion_cofinanciamiento").style.display = "none";
@@ -213,6 +234,8 @@
 
     }
 
+    this["<%= ID %>"] = new AvaluoInmobiliario();
+
     // Validacion de selecciones
     function setPropositoSelection() {
         var proposito = $get("<%= proposito_DDList.ClientID %>");
@@ -225,9 +248,18 @@
 
         if (proposito_text.toLowerCase() == "recuperación") {
             seccion_recuperacion.style.display = "block";
+            eval("<%= ID %>").validator.removeOptionalField(2);
         }
-        else if (proposito_text.toLowerCase() == "otro") {
+        else {
+            eval("<%= ID %>").validator.addOptionalField(2);
+        }
+        
+        if (proposito_text.toLowerCase() == "otro") {
             seccion_proposito.style.display = "block";
+            eval("<%= ID %>").validator.removeOptionalField(1);
+        }
+        else {
+            eval("<%= ID %>").validator.removeOptionalField(1);
         }
     }
     function setContadoSelection() {
@@ -235,6 +267,15 @@
         var sub_display = contado_checked ? "none" : "block";
 
         $get("seccion_credito").style.display = sub_display;
+        if(contado_checked) {
+            eval("<%= ID %>").validator.addOptionalField(6);
+            eval("<%= ID %>").validator.addOptionalField(7);
+        }
+        else {
+            alert("entre aqui");
+            eval("<%= ID %>").validator.removeOptionalField(6);
+            eval("<%= ID %>").validator.removeOptionalField(7);
+        }
     }
     function setTipoCreditoSelection() {
         var tipo_credito = $get("<%= tipoCredito_DDList.ClientID %>");
@@ -249,7 +290,12 @@
             fillEntidadOtorgante("<%= entidadOtorgante_DDList.ClientID %>", "<%= tipoCredito_DDList.ClientID %>", setEntidadFinanciamientoSelection);
             fillEntidadCofinanciamiento("<%= entidadCofinanciamiento_DDList.ClientID %>", "<%= tipoCredito_DDList.ClientID %>");
         }
-
+        if(tiene_cofi) {
+            eval("<%= ID %>").validator.removeOptionalField(8);
+        }
+        else {
+            eval("<%= ID %>").validator.addOptionalField(8);        
+        }
     }
     function setEntidadFinanciamientoSelection() {
         var entidad = $get("<%= entidadOtorgante_DDList.ClientID %>");
@@ -263,6 +309,13 @@
         if (entidad.value != "0") {
             fillCreditoInterno("<%= tipoCreditoInterno_DDList.ClientID %>", "<%= entidadOtorgante_DDList.ClientID %>");
         }
+        
+        if(tiene_credito_interno) {
+            eval("<%= ID %>").validator.removeOptionalField(9);
+        }
+        else {
+            eval("<%= ID %>").validator.addOptionalField(9);        
+        }
     }
     function setPromocionSelection() {
         var promocion_checked = $get("<%= promocionVIASC_CBox.ClientID %>").checked;
@@ -274,9 +327,9 @@
     // Visibilidad controles
     function showSeccionPromocion() {
         $get("seccion_promocion").style.display = "block";
+        eval("<%= ID %>").validator.removeOptionalField(3);
+        eval("<%= ID %>").validator.removeOptionalField(4);
     }
-
-    this["<%= ID %>"] = new AvaluoInmobiliario();
     
 </script>
 

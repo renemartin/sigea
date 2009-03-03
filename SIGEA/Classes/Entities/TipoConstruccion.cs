@@ -34,7 +34,7 @@ namespace SIGEA.Classes.Entities
 
             return tipos_construccion_query.ToArray();
         }
-        public static void SetTiposConstruccion(ConstruccionInmueble construccion, Dictionary<string, object>[] data_set)
+        public static void SetTiposConstruccion(SIGEADataContext data_context, ConstruccionInmueble construccion, Dictionary<string, object>[] data_set)
         {
             TipoConstruccion tipo_construccion = null;
             foreach (Dictionary<string, object> data in data_set)
@@ -59,8 +59,9 @@ namespace SIGEA.Classes.Entities
             var delete_query = from tc in construccion.TipoConstruccion
                                where tc.numeroTipo > data_set.Length
                                select tc;
-            foreach (TipoConstruccion delete_item in delete_query.ToList())
-                construccion.TipoConstruccion.Remove(delete_item);
+            //foreach (TipoConstruccion delete_item in delete_query.ToList())
+            //    construccion.TipoConstruccion.Remove(delete_item);
+            data_context.TipoConstruccion.DeleteAllOnSubmit(delete_query.ToList());
         }
 
         public Dictionary<string, object> GetData()

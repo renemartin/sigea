@@ -154,7 +154,6 @@
                     $get("<%= avanceAComunes_TBox.ClientID %>").value = data_set[0].avanceObra;
                     $get("<%= unidRentNucleo_TBox.ClientID %>").value = data_set[0].unidadesRentNucleo;
                     $get("<%= unidRentConjunto_TBox.ClientID %>").value = data_set[0].unidadesRentConjunto;
-
                 }
 
                 if (data_set[1] != null) {
@@ -166,6 +165,14 @@
                     $get("<%= fuentePrivativo_DDList.ClientID %>").selectedValue = data_set[1].fuentePrivativo;
                     $get("<%= especFuentePrivativo_TBox.ClientID %>").value = data_set[1].otraFuentePrivativo;
 
+                    if (data_set[1].otraFuenteIndiviso != "") {
+                        setVisibility($get("seccion_fuente_indiviso"), true);
+                        this.validator.removeOptionalField(6);
+                    }
+                    if (data_set[1].fuentePrivativo != "") {
+                        setVisibility($get("seccion_fuente_privativo"), true);
+                        this.validator.removeOptionalField(9);
+                    }
                 }
                 
                 superficiesConstrucciones_Ctrl.setData(data_set[2]);
@@ -186,10 +193,12 @@
             data_set[1].indiviso = $get("<%= indiviso_TBox.ClientID %>").value;
             data_set[1].totalTerreno = $get("<%= superficieTerreno_TBox.ClientID %>").value;
             data_set[1].fuenteIndiviso = $get("<%= fuenteIndiviso_DDList.ClientID %>").value;
-            data_set[1].otraFuenteIndiviso = $get("<%= especFuenteIndiviso_TBox.ClientID %>").value;
+            data_set[1].otraFuenteIndiviso = getVisibility($get("seccion_fuente_indiviso"))
+                                ? $get("<%= especFuenteIndiviso_TBox.ClientID %>").value : "";
             data_set[1].privativo = $get("<%= lotePrivativo_TBox.ClientID %>").value;
             data_set[1].fuentePrivativo = $get("<%= fuentePrivativo_DDList.ClientID %>").value;
-            data_set[1].otraFuentePrivativo = $get("<%= especFuentePrivativo_TBox.ClientID %>").value;
+            data_set[1].otraFuentePrivativo = getVisibility($get("seccion_fuente_privativo"))
+                                ? $get("<%= especFuentePrivativo_TBox.ClientID %>").value : "";
 
             data_set[2] = superficiesConstrucciones_Ctrl.getData();
             data_set[3] = superficiesObras_Ctrl.getData();
@@ -208,5 +217,33 @@
     }
 
     this["<%= ID %>"] = new Condominio();
+
+    // Validacion de selecciones
+    function setFuenteIndivisoSelection() {
+        var fuente_indiviso = $get("<%= fuenteIndiviso_DDList.ClientID %>");
+        var otra = fuente_indiviso.options[fuente_indiviso.selectedIndex].text.toLowerCase() == "otra";
+
+        setVisibility($get("seccion_fuente_indiviso"), otra);
+
+        if (otra) {
+            eval("<%= ID %>").validator.removeOptionalField(6);
+        }
+        else {
+            eval("<%= ID %>").validator.addOptionalField(6)
+        }
+    }
+    function setFuentePrivativoSelection() {
+        var fuente_privativo = $get("<%= fuentePrivativo_DDList.ClientID %>");
+        var otra = fuente_privativo.options[fuente_privativo.selectedIndex].text.toLowerCase() == "otra"
+
+        setVisibility($get("seccion_fuente_privativo"), otra);
+
+        if (otra) {
+            eval("<%= ID %>").validator.removeOptionalField(9);
+        }
+        else {
+            eval("<%= ID %>").validator.addOptionalField(9)
+        }
+    }   
     
 </script>

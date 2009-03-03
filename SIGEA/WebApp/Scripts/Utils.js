@@ -230,7 +230,7 @@ function addTooltip(control, text, class_name) {
     addEvent(control, "mouseout", this.hideTooltip);
 }
 
-function removeToolTip(control) {
+function removeTooltip(control) {
     tooltips[control.id] = null;
     removeEvent(control, "mouseover");
 }

@@ -53,6 +53,7 @@
             $get("<%= superficieFrente_TBox.ClientID %>")     // 3
         );
         this.validator = new ControlValidator(this.controls);
+        this.validator.addOptionalField(2);
         this.validator.addNumericField(0, true);
         this.validator.addNumericField(3, true);
     
@@ -68,6 +69,12 @@
                 $get("<%= fuenteTerreno_DDList.ClientID %>").selectedValue = data.fuenteTerreno;
                 $get("<%= especFuenteTerreno_TBox.ClientID %>").value = data.otraFuenteTerreno;
                 $get("<%= superficieFrente_TBox.ClientID %>").value = data.frenteLote;
+
+                var otraFuente = data.otraFuenteTerreno != "";
+                if (otraFuente) {
+                    setVisibility($get("seccion_fuente_terreno"), otraFuente);
+                    this.validator.removeOptionalField(2);
+                }
             }
 
             this.fillData();
@@ -77,9 +84,9 @@
 
             data.totalTerreno = $get("<%= superficieTerreno_TBox.ClientID %>").value;
             data.fuenteTerreno = $get("<%= fuenteTerreno_DDList.ClientID %>").value;
-            data.otraFuenteTerreno = $get("<%= especFuenteTerreno_TBox.ClientID %>").value;
-            data.frenteLote = getVisibility($get("seccion_fuente_terreno"))
-                                ? $get("%= superficieFrente_TBox.ClientID %>").value : "";
+            data.otraFuenteTerreno = getVisibility($get("seccion_fuente_terreno"))
+                                ? $get("<%= especFuenteTerreno_TBox.ClientID %>").value : "";
+            data.frenteLote = $get("<%= superficieFrente_TBox.ClientID %>").value;
             return data;
         }
 
@@ -89,14 +96,20 @@
         }
     }
 
+    this["<%= ID %>"] = new Superficies();
+    
     // Validacion de selecciones
     function setFuenteTerrenoSelection() {
         var fuente_terreno = $get("<%= fuenteTerreno_DDList.ClientID %>");
+        var otra = fuente_terreno.options[fuente_terreno.selectedIndex].text.toLowerCase() == "otra";
 
-        setVisibility($get("seccion_fuente_terreno"),
-            fuente_terreno.options[fuente_medidas.selectedIndex].text.toLowerCase() == "otra");
+        setVisibility($get("seccion_fuente_terreno"), otra);
+        if (otra) {
+            eval("<%= ID %>").validator.removeOptionalField(2);
+        }
+        else {
+            eval("<%= ID %>").validator.addOptionalField(2)
+        }
     }
 
-    this["<%= ID %>"] = new Superficies();
-    
 </script>

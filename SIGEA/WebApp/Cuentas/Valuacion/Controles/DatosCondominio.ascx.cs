@@ -9,6 +9,15 @@ public partial class Cuentas_Valuacion_Controles_DatosCondominio : System.Web.UI
 {
     protected void Page_Load(object sender, EventArgs e)
     {
+        if (!IsPostBack)
+        {
+            SetAttributes();
+        }
+    }
 
+    private void SetAttributes()
+    {
+        fuenteIndiviso_DDList.Attributes.Add("onchange", "setFuenteIndivisoSelection();");
+        fuentePrivativo_DDList.Attributes.Add("onchange", "setFuentePrivativoSelection();");
     }
 }

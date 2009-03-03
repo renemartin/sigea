@@ -178,6 +178,9 @@
                 $get("<%= colindancias_TBox.ClientID %>").value = data.descripcionColindancias;
 
                 setVisibility($get("seccion_fuente_medidas"), data.otraFuente != "");
+                if (data.otraFuente != "") {
+                    this.validator.removeOptionalField(11);
+                }
             }
 
             this.fillData();
@@ -214,9 +217,16 @@
     // Validacion de selecciones
     function setFuenteMedidasSelection() {
         var fuente_medidas = $get("<%= fuenteMedidas_DDList.ClientID %>");
+        var otra = fuente_medidas.options[fuente_medidas.selectedIndex].text.toLowerCase() == "otra";
 
-        setVisibility($get("seccion_fuente_medidas"),
-            fuente_medidas.options[fuente_medidas.selectedIndex].text.toLowerCase() == "otra");
+        setVisibility($get("seccion_fuente_medidas"), otra);
+
+        if (otra) {
+            eval("<%= ID %>").validator.removeOptionalField(11);
+        }
+        else {
+            eval("<%= ID %>").validator.addOptionalField(11)
+        }
     }
 
     this["<%= ID %>"] = new DatosTerreno();
