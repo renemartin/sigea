@@ -1,7 +1,6 @@
 ﻿<%@ Control Language="C#" AutoEventWireup="true" CodeFile="DatosSintesisAvaluo.ascx.cs"
     Inherits="Cuentas_Valuacion_Controles_DatosSintesisAvaluo" %>
 <link href="~/App_Themes/Default/DefaultStyle.css" rel="stylesheet" type="text/css" />
-
 <table>
     <tr>
         <td colspan="2">
@@ -20,10 +19,19 @@
     </tr>
     <tr>
         <td class="celdaTitulo">
+            Folio INFONAVIT
+        </td>
+        <td class="celdaValor">
+            <asp:Label ID="folioInfonavit_Lbl" runat="server" Text=""></asp:Label>
+        </td>
+    </tr>
+    <tr>
+        <td class="celdaTitulo">
             No. del paq. INFONAVIT / No. vivienda
         </td>
         <td class="celdaValor" colspan="2">
             <asp:Label ID="paqInfonavit_Lbl" runat="server" Text=""></asp:Label>
+            <asp:Label ID="numVivienda_Lbl" runat="server" Text=""></asp:Label>
         </td>
     </tr>
     <tr>
@@ -39,6 +47,7 @@
             Clave y nombre de la entidad que otorga el crédito
         </td>
         <td class="celdaValor">
+            <asp:Label ID="claveEntidadCredito_Lbl" runat="server" Text=""></asp:Label>
             <asp:Label ID="entidadCredito_Lbl" runat="server" Text=""></asp:Label>
         </td>
     </tr>
@@ -54,14 +63,6 @@
         </td>
         <td class="celdaValor">
             <asp:Label ID="nombreSolicitante_Lbl" runat="server" Text=""></asp:Label>
-        </td>
-    </tr>
-    <tr>
-        <td class="celdaTitulo">
-            Folio INFONAVIT
-        </td>
-        <td class="celdaValor">
-            <asp:Label ID="folioInfonavit_Lbl" runat="server" Text=""></asp:Label>
         </td>
     </tr>
     <tr>
@@ -91,8 +92,10 @@
         <td class="celdaTitulo">
             Calle y número
         </td>
-        <td colspan="2" class="celdaValor">
+        <td class="celdaValor">
             <asp:Label ID="calle_Lbl" runat="server" Text=""></asp:Label>
+            <asp:Label ID="numExt_Lbl" runat="server"></asp:Label>
+            <asp:Label ID="numInt_Lbl" runat="server"></asp:Label>
         </td>
     </tr>
     <tr>
@@ -209,7 +212,7 @@
             Nivel de equipamiento urbano
         </td>
         <td class="celdaValor" colspan="2">
-            <asp:Label ID="nivelEquipamiento_lbl" runat="server" Text=""></asp:Label>
+            <asp:Label ID="nivelEquipamiento_Lbl" runat="server" Text=""></asp:Label>
         </td>
     </tr>
     <tr>
@@ -361,7 +364,6 @@
             <asp:Label ID="superficieVendible_Lbl" runat="server" Text=""></asp:Label>
         </td>
     </tr>
-  
     <tr>
         <td colspan="2">
             <h2>
@@ -369,7 +371,7 @@
             </h2>
         </td>
     </tr>
-     <tr>
+    <tr>
         <td class="celdaTitulo">
             Valor comparativo de mercado
         </td>
@@ -387,7 +389,7 @@
     </tr>
     <tr>
         <td class="celdaTitulo">
-             Valor físico de la construcción 
+            Valor físico de la construcción
         </td>
         <td class="celdaValor" colspan="2">
             <asp:Label ID="valorConstruccion_Lbl" runat="server"></asp:Label>
@@ -395,7 +397,7 @@
     </tr>
     <tr>
         <td class="celdaTitulo">
-             Valor físico de instalaciones y elementos comunes
+            Valor físico de instalaciones y elementos comunes
         </td>
         <td class="celdaValor" colspan="2">
             <asp:Label ID="valorInstalaciones_Lbl" runat="server"></asp:Label>
@@ -410,3 +412,63 @@
         </td>
     </tr>
 </table>
+
+<script type="text/javascript">
+    //Obtencion de datos
+    function getSintesisAvaluo(id) {
+        idAvaluo = id;
+        fillDatosSintesisAsync(idAvaluo, setData);
+    }
+
+
+    // Vaciado de datos    
+    function setData(data) {
+        $get("<%= fecha_Lbl.ClientID %>").innerHTML = data.fechaFinalizacion;
+        $get("<%= folioInfonavit_Lbl %>").innerHTML = data.folioINFONAVIT;
+        $get("<%= paqInfonavit_Lbl.ClientID %>").innerHTML = data.numPaqueteINFONAVIT;
+        $get("<%= numVivienda_Lbl.ClientID %>").innerHTML = data.numViviendaINFONAVIT;
+        $get("<%= proposito_Lbl.ClientID %>").innerHTML = data.propositoAvaluo;
+        $get("<%= claveEntidadCredito_Lbl %>").innerHTML = data.claveEntidadCredito;
+        $get("<%= entidadCredito_Lbl %>").innerHTML = data.nombreEntidadCredito;
+        $get("<%= nombreSolicitante_Lbl %>").innerHTML = data.nombreSolicitante;
+        $get("<%= nss_Lbl %>").innerHTML = data.nss;
+        $get("<%= tipoInmueble_Lbl %>").innerHTML = data.tipoInmueble;
+        $get("<%= calle_Lbl %>").innerHTML = data.calleInmueble;
+        $get("<%= numExt_Lbl %>").innerHTML = data.numeroExteriorInmueble;
+        $get("<%= numInt_Lbl %>").innerHTML = data.numeroInteriorInmueble;
+        $get("<%= condominio_Lbl %>").innerHTML = data.nombreCondominio;
+        $get("<%= colonia_Lbl %>").innerHTML = data.coloniaInmueble;
+        $get("<%= cp_Lbl %>").innerHTML = data.cpInmueble;
+        $get("<%= municipio_Lbl %>").innerHTML = data.municipioInmueble;
+        $get("<%= estado_Lbl %>").innerHTML = data.estadoInmueble;
+        $get("<%= predial_Lbl %>").innerHTML = data.cuentaPredial;
+        $get("<%= longitud_Lbl %>").innerHTML = data.longitud;
+        $get("<%= latitud_Lbl %>").innerHTML = data.latitud;
+        $get("<%= altitud_Lbl %>").innerHTML = data.altitud;
+        $get("<%= proximidadUrbana_Lbl %>").innerHTML = data.referenciaProximidadUrbana;
+        $get("<%= telefono_Lbl %>").innerHTML = data.redTelefonicaAcometida;
+        $get("<%= nivelInfraestructura_Lbl %>").innerHTML = data.nivelInfraestructura;
+        $get("<%= nivelEquipamiento_Lbl %>").innerHTML = data.nivelEquipamientoUrbano;
+        $get("<%= cupoEstacionamiento_Lbl%>").innerHTML = data.numeroEspaciosEstacionamiento;
+        $get("<%= elevador_Lbl %>").innerHTML = data.elevador;
+        $get("<%= baños_Lbl %>").innerHTML = data.numeroBanios;
+        $get("<%= mediosBaños_Lbl%>").innerHTML = data.numeroBaniosMedios;
+        $get("<%= recamaras_Lbl %>").innerHTML = data.numeroRecamaras;
+        $get("<%= clase_Lbl %>").innerHTML = data.claseInmueble;
+        $get("<%= unidadesRentables_Lbl %>").innerHTML = data.unidadesRentables;
+        $get("<%= niveles_Lbl %>").innerHTML = data.numeroNiveles;
+        $get("<%= constructor_Lbl %>").innerHTML = data.constructor;
+        $get("<%= vidaUtil_Lbl%>").innerHTML = data.vidUtil;
+        $get("<%= añoTerminacion_Lbl %>").innerHTML = data.anioTerminacion;
+        $get("<%= superficieTerreno_Lbl %>").innerHTML = data.superficieTerreno;
+        $get("<%= superficieConstruida_Lbl %>").innerHTML = data.superficieConstruida;
+        $get("<%= superficieAccesoria_Lbl %>").innerHTML = data.superficieAccesoria;
+        $get("<%= superficieVendible_Lbl %>").innerHTML = data.superficieVendible;
+        $get("<%= valorMercado_Lbl%>").innerHTML = data.valorMercado;
+        $get("<%= valorTerreno_Lbl %>").innerHTML = data.valorFisicoTerreno;
+        $get("<%= valorConstruccion_Lbl%>").innerHTML = data.valorFisicoConstruccion;
+        $get("<%= valorInstalaciones_Lbl %>").innerHTML = data.valorFisicoInstalaciones;
+        $get("<%= valorConcluido_Lbl%>").innerHTML = data.valorConcluido;
+    }
+</script>
+
