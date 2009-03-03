@@ -51,12 +51,15 @@
                     , saveValuador_Success
                 );
             }
+            else {
+                showMessage("El bloque de datos contiene campos inválidos");
+            }
         }
         function saveValuador_Success(id) {
             idValuador = id;
             setControlsVisibility();
             setFechaAlta(new Date());
-            
+
             showMessage("Datos guardados");
         }
 
@@ -96,7 +99,7 @@
 
         // Datos de controles
         function fillValuadorData() {
-            fillTiposValuador("<%= tipo_DDList.ClientID %>");            
+            fillTiposValuador("<%= tipo_DDList.ClientID %>");
             direccion_Ctrl.fillData();
         }
 
