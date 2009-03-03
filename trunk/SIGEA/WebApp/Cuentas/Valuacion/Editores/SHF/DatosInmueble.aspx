@@ -52,11 +52,11 @@
         // Guardado de registros
         function saveForm() {
             if (getVisibility($get("<%= guardar_inmueble_ImBtn.ClientID %>")))
-                saveDatosInmueble();
+                saveDatosInmueble(false);
             if (getVisibility($get("<%= guardar_terreno_ImBtn.ClientID %>")))
-                saveDatosTerreno();
+                saveDatosTerreno(false);
         }
-        function saveDatosInmueble() {
+        function saveDatosInmueble(mostrarAlertas) {
             var validated = true;
             if (!inmueble_Ctrl.validate())
                 validated = false;
@@ -70,6 +70,12 @@
                     , propietario_Ctrl.getData()
                     , saveDatosInmueble_Success);
             }
+            else {
+                if (mostrarAlertas != false) {
+                    showMessage("El bloque de datos contiene campos inválidos");
+
+                }
+            }
         }
         function saveDatosInmueble_Success() {
             terminateEdit("form_inmueble",
@@ -78,7 +84,7 @@
                 "<%= cancelar_inmueble_ImBtn.ClientID %>");
         }
 
-        function saveDatosTerreno() {
+        function saveDatosTerreno(mostrarAlertas) {
             var validated = true;
             if (!terrenoCalles_Ctrl.validate())
                 validated = false;
@@ -91,6 +97,12 @@
                     , terrenoCalles_Ctrl.getData()
                     , terreno_Ctrl.getData()
                     , saveDatosTerreno_Success);
+            }
+            else {
+                if (mostrarAlertas != false) {
+                    showMessage("El bloque de datos contiene campos inválidos");
+
+                }
             }
         }
         function saveDatosTerreno_Success() {
