@@ -1,0 +1,459 @@
+﻿/* Tags HTML */
+
+body, html
+{
+	border: 0;
+	padding: 0;
+	margin: 0;
+}
+
+body
+{
+	background-position: 0px 0px;
+	font: .8em sans-serif, verdana, helvetica;
+	margin-left: 5px;
+	margin-right: 5px;
+	margin-bottom: 20px;
+	background-image: url('Images/BKTop.jpg');
+	background-repeat: repeat-x;
+}
+
+h1
+{
+	font-size: 2em;
+	color: #F28409;
+}
+
+h2
+{
+	font-size: 1.5em;
+	color: #006600;
+}
+
+h3, h4, h5
+{
+	font-size: 1.2em;
+	color: #004200;
+}
+
+a, a:active, a:link, a:visited
+{
+	color: #008000;
+}
+
+a:hover
+{
+	color: #00A800;
+}
+
+hr
+{
+	color: #FFFFFF;
+	border-style: none;
+}
+
+/* Texto */
+
+.textoError
+{
+	color: Red;
+}
+
+.textoInstruccion
+{
+	padding: 5px;
+	font-size: .7em;
+	font-style: italic;
+}
+
+.textoNota
+{
+	font-size: .7em;
+}
+
+.textoNegritas
+{
+	font-weight: bold;
+}
+
+.textoCursiva
+{
+	font-style: italic;
+}
+
+.textoChico
+{
+	font-size: .75em;
+}
+
+.glosario
+{
+}
+
+.definicion
+{
+}
+
+.resultadoAplicacion
+{
+}
+
+/* Controles */
+
+.hidden
+{
+	display: none;
+}
+
+.controlError
+{
+	border: 1px solid #840D00;
+	background-color: #FF513E;
+}
+
+.controlCompacto
+{
+	font-size: 1em;
+	margin: 0;
+	padding: 0;
+}
+
+.controlBox
+{
+	border: 1px solid #C0C0C0;
+	margin-top: 1px;
+	margin-bottom: 1px;
+}
+
+.controlBloque
+{
+	padding: 2px;
+	border: 1px solid #C0C0C0;
+}
+
+.textBoxNumero
+{
+	width: 40px;
+}
+
+/* Tablas */
+
+.filaHeader
+{
+	font-weight: bold;
+}
+
+.celdaHeader
+{
+	font-size: 1.2em;
+	color: #004200;
+	padding-top: 10px;
+	padding-bottom: 10px;
+}
+
+.celdaTitulo
+{
+	font-size: .9em;
+	font-weight: bold;
+	padding-right: 5px;
+}
+
+.celdaTituloSec
+{
+	font-size: .9em;
+	font-weight: bold;
+	padding-right: 5px;
+	padding-left: 5px;
+}
+
+.celdaValor
+{
+	font-size: .8em;
+}
+
+.tablaExtendida, .tablaCompactaExtendida
+{
+	width: 100%;
+	border: 0;
+	padding: 0;
+	margin: 0;
+}
+
+.tablaCompactaExtendida
+{
+	font-size: .85em;
+}
+
+/* Grid */
+.grid
+{
+	border: 1px solid #FEF3C7;
+	background-color: #FFFFFF;
+	padding: 5px;
+}
+
+.grid .header
+{
+	background-color: #00641E;
+	color: #FFFFFF;
+	font-weight: bold;
+	font-size: .85em;
+	border: 1px solid #004616;
+	text-align: left;
+	background-image: url('Images/BKHeader.jpg');
+	background-repeat: repeat-x;	
+}
+
+.grid .row
+{
+	background-color: #F1FAF1;
+}
+
+.grid .row-a
+{
+	background-color: #E0F3E0;
+}
+
+.grid .footer
+{
+	background-color: #00641E;
+	color: #FFFFFF;
+	font-size: .85em;
+	border: 1px solid #004616;
+	background-image: url('Images/BKHeader.jpg');
+	background-repeat: repeat-x;	
+}
+
+.grid .pager
+{
+	border-top-style: solid;
+	border-width: 1px;
+	border-color: #FF6600;
+	margin-top: 10px;
+	margin-left: 5px;
+}
+
+.grid .header a, a:active, a:link, a:visited
+{
+	color: #FFFFFF;
+}
+
+.grid .header a:hover
+{
+	color: #99FF99;
+}
+
+/* Barras */
+
+.barraMenu
+{
+	text-align: right;
+	background-color: #F2F2F2;
+	border: 1px solid #C0C0C0;
+	margin-top: 20px;
+	padding-right: 5px;
+	background-image: url('Images/BKBarra.jpg');
+	background-repeat: repeat-x;	
+}
+
+.barraAcciones
+{
+	background-color: #DFDFDF;
+	border: 1px solid #C0C0C0;
+	margin-left: 5px;
+	margin-right: 5px;
+	background-image: url('Images/BKBarra.jpg');
+	background-repeat: repeat-x;		
+}
+
+/* Menús */
+
+.menu
+{
+	list-style: none;
+	background-image: url('Images/BKMenu.jpg');
+	background-repeat: repeat-x;
+	padding-left: 5px;
+	padding-bottom: 3px;
+	margin-left: -5px;
+	margin-right: -5px;	
+}
+
+.menu a, a:active, a:link, a:visited
+{
+	color: #008000;
+}
+
+.menu a:hover
+{
+	color: #00A800;
+}
+
+.menu ul
+{
+	margin: 0;
+	padding: 0;
+	list-style-type: none;
+}
+
+.menu li
+{
+	list-style: none;
+	display: inline;
+}
+
+.menu .current
+{
+	background-color: #FFFFFF;
+	padding-right: 5px;
+	padding-left: 5px;
+	background-image: url('Images/BKTop.jpg');
+	background-repeat: repeat-x;	
+}
+
+.submenu
+{
+	list-style: none;
+	padding: 0;
+}
+
+.submenu ul
+{
+	margin: 0;
+	padding: 0;
+	list-style-type: none;
+}
+
+.submenu li
+{
+	display: inline;
+}
+
+/* Formularios */
+
+.formulario
+{
+	border: 1px solid #C0C0C0;
+	background-color: #FFFFFF;
+	padding: 5px 5px 0px 5px;
+	margin-right: 5px;
+	margin-left: 5px;
+	margin-top: 5px;
+	background-image: url('Images/BKModulo.jpg');
+	background-repeat: repeat-x;
+}
+
+.formularioDeshabilitado
+{
+	border: 1px solid #E6E6E6;
+	background-color: #FCFCFC;
+	padding: 5px 5px 0px 5px;
+	margin-right: 5px;
+	margin-left: 5px;
+	background-image: url('Images/BKModuloInactivo.jpg');
+	background-repeat: repeat-x;
+}
+
+.formulario .barraMenu
+{
+	text-align:left;
+}
+
+.formulario .celdaTitulo
+{
+	width: 200px;
+}
+
+.formularioDeshabilitado .celdaTitulo
+{
+	width: 200px;
+}
+
+.formulario .subCampo
+{
+	font-size: .85em;
+	margin-left: 2px;
+}
+
+/* Paneles */
+
+.panel
+{
+	padding: 5px;
+}
+
+/* Modulos */
+
+.modulo
+{
+	width:100%;
+	height:100%;
+}
+
+/* Bandejas */
+
+.bandejas
+{
+	width: 200px;
+	padding: 10px;
+}
+
+/* Contenedores */
+
+.spinner
+{
+	background-image: url(Images/SpinnerChico.gif);
+	background-repeat: no-repeat;
+	width: 16px;
+	height: 16px;
+	display: inline-block;
+}
+
+.etiqueta1, .etiqueta2, .etiqueta3
+{
+	border: 1px solid #F8D99A;
+	padding: 4px;
+	background-color: #F5F3C5;
+}
+
+.foto
+{
+	border: medium solid #E8ECE6;
+}
+
+.sinDatos
+{
+	padding: 15px;
+	height: 100px;
+	vertical-align: middle;
+	color: #333333;
+}
+
+/* Botones */
+
+.botonImagen
+{
+	cursor: pointer;
+}
+
+/* Elementos generales */
+
+.mainHeader
+{
+	margin-left: -5px;
+	margin-right: -5px;
+}
+
+.logo
+{
+	display: inline;
+	margin-left: 20px;
+}
+
+.tooltipError
+{
+	background-color: #FF3822;
+	color: #FFFFFF;
+	padding: 3px;
+	border: thin solid #FF0000;
+}
