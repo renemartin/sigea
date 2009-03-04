@@ -47,8 +47,7 @@
                 );
             }
             else {
-               
-                    showMessage("El bloque de datos contiene campos inválidos");
+                showMessage("El bloque de datos contiene campos inválidos");
             }
         }
         function saveAvaluo_Success(id) {
