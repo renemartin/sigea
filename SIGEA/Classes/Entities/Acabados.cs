@@ -78,13 +78,6 @@ namespace SIGEA.Classes.Entities
 
                 acabado.SetData(data);
             }
-            var delete_query = from ac in tipo_construccion.AcabadoTipoConstruccion
-                               where ac.idTipoAcabado > data_set.Length
-                               select ac;
-            foreach (AcabadoTipoConstruccion delete_item in delete_query.ToList())
-                tipo_construccion.AcabadoTipoConstruccion.Remove(delete_item);
-
-
         }
 
         public Dictionary<string, object> GetData()
