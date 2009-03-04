@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Configuration;
 using System.Data.Linq;
 using System.Linq;
 using System.Text;
@@ -13,7 +14,7 @@ namespace SIGEA.Classes.Entities
 
         public Bandejas()
         {
-            data_context = new SIGEADataContext();
+            data_context = new SIGEADataContext(ConfigurationManager.ConnectionStrings["SIGEA_ConnectionString"].ConnectionString);
             data_context.ObjectTrackingEnabled = false;
 
             DataLoadOptions options = new DataLoadOptions();

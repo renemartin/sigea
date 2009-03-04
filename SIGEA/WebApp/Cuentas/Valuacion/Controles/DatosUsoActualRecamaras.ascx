@@ -1,6 +1,6 @@
 ﻿<%@ Control Language="C#" AutoEventWireup="true" CodeFile="DatosUsoActualRecamaras.ascx.cs"
     Inherits="Cuentas_Valuacion_Controles_DatosRecamara" %>
-<link href="~/App_Themes/Default/DefaultStyle.css" rel="stylesheet" type="text/css" />
+
 <table id="tabla_recamaras">
     <tr>
         <td align="right" style="width: 500px;">

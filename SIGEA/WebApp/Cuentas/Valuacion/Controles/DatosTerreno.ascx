@@ -1,6 +1,6 @@
 ﻿<%@ Control Language="C#" AutoEventWireup="true" CodeFile="DatosTerreno.ascx.cs"
     Inherits="Cuentas_Valuacion_Controles_DatosTerreno" %>
-<link href="~/App_Themes/Default/DefaultStyle.css" rel="stylesheet" type="text/css" />
+
 
 <table>
     <tr>

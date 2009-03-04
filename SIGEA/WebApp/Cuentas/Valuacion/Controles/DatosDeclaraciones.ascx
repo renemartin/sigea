@@ -1,6 +1,6 @@
 ﻿<%@ Control Language="C#" AutoEventWireup="true" CodeFile="DatosDeclaraciones.ascx.cs"
     Inherits="Cuentas_Valuacion_Controles_DatosDeclaraciones" %>
-<link href="~/App_Themes/Default/DefaultStyle.css" rel="stylesheet" type="text/css" />
+
 
 <ol>
     <li>SE VERIFICÓ EL ESTADO DE LA CONSTRUCCIÓN Y CONSERVACIÓN DEL INMUEBLE

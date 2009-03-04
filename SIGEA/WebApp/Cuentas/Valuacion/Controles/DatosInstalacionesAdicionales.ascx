@@ -1,6 +1,6 @@
 ﻿<%@ Control Language="C#" AutoEventWireup="true" CodeFile="DatosInstalacionesAdicionales.ascx.cs"
     Inherits="Cuentas_Valuacion_Controles_InstalacionesAdicionales" %>
-<link href="~/App_Themes/Default/DefaultStyle.css" rel="stylesheet" type="text/css" />
+
 <table id="<%= ClientID %>_tabla_instalaciones">
     <tr class="filaHeader">
         <td style="width:150px;">

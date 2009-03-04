@@ -1,6 +1,6 @@
 ﻿<%@ Control Language="C#" AutoEventWireup="true" CodeFile="DatosEntornoEquipamiento.ascx.cs"
     Inherits="Cuentas_Valuacion_Controles_DatosEntornoEquipamiento" %>
-<link href="~/App_Themes/Default/DefaultStyle.css" rel="stylesheet" type="text/css" />
+
 
 <table>
     <tr>

@@ -1,6 +1,6 @@
 ﻿<%@ Control Language="C#" AutoEventWireup="true" CodeFile="DatosConstruccionesClasificacion.ascx.cs"
     Inherits="Cuentas_Valuacion_Controles_DatosConstruccionesClasificacion" %>
-<link href="~/App_Themes/Default/DefaultStyle.css" rel="stylesheet" type="text/css" />
+
 <table id="tabla_construcciones" class="tablaCompactaExtendida">
     <tr class="filaHeader">
         <td>

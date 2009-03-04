@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Configuration;
 using System.Linq;
 using System.Text;
 
@@ -141,7 +142,7 @@ namespace SIGEA.Classes.Entities
                 throw new Exception("El avalúo especificado ya contiene un IDE generado");
             }
 
-            SIGEADataContext data_context = new SIGEADataContext();
+            SIGEADataContext data_context = new SIGEADataContext(ConfigurationManager.ConnectionStrings["SIGEA_ConnectionString"].ConnectionString);
 
             int? consecutivo = 0;
             string IDE_generado = string.Empty;

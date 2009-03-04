@@ -2,7 +2,7 @@
     Inherits="Cuentas_Valuacion_Controles_DatosCondominio" %>
 <%@ Register Src="~/Cuentas/Valuacion/Controles/DatosSuperficiesAdicionales.ascx"
     TagName="SuperficiesAdicionales" TagPrefix="SIGEA" %>
-<link href="~/App_Themes/Default/DefaultStyle.css" rel="stylesheet" type="text/css" />
+
 
 <table>
     <tr>

@@ -11,11 +11,6 @@ public partial class Login : System.Web.UI.Page
     {
         if (!IsPostBack)
         {
-            ClientScript.RegisterStartupScript(
-                typeof(Page)
-                , "load"
-                , "fillTiposValuador('popo');"
-                , true);
         }
     }
 }

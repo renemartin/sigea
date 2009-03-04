@@ -1,6 +1,6 @@
 ﻿<%@ Control Language="C#" AutoEventWireup="true" CodeFile="EditorSHFMenu.ascx.cs"
     Inherits="Cuentas_Valuacion_Editores_SHF_EditorSHFMenu" %>
-<link href="~/App_Themes/Default/DefaultStyle.css" rel="stylesheet" type="text/css" />
+
 <div class="menu">
     <ul>
         <li>
