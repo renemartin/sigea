@@ -427,7 +427,19 @@ public class MethodCallers : System.Web.Services.WebService
         int.TryParse(contextKey, out claveEstado);
         return Valuador.GetNombresControladores(data_context, prefixText, count, claveEstado);
     }
+    
+    [WebMethod]
+    public string[] GetNombresMateriales(string prefixText, int count, string contextKey)
+    {
 
+        string[] prueba = new string[3];
+        prueba[0] = "hola";
+        prueba[1] = "holandes";
+        prueba[2] = "holanda";       
+        return prueba;
+
+     }
+ 
     #endregion
 
     #region Búsquedas escalares
