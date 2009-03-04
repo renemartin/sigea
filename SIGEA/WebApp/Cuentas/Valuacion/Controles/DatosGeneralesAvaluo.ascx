@@ -258,7 +258,7 @@
             eval("<%= ID %>").validator.removeOptionalField(1);
         }
         else {
-            eval("<%= ID %>").validator.removeOptionalField(1);
+            eval("<%= ID %>").validator.addOptionalField(1);
         }
     }
     function setContadoSelection() {
