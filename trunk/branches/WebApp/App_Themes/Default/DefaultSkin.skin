@@ -1,0 +1,33 @@
+﻿
+<asp:TextBox runat="server" CssClass="controlBox" />
+<asp:TextBox runat="server" SkinId="Compacto" CssClass="controlCompacto controlBox" />
+<asp:TextBox runat="server" SkinId="Numero" CssClass="textBoxNumero controlBox" />
+<asp:TextBox runat="server" SkinId="NumeroCompacto" CssClass="controlCompacto textBoxNumero controlBox" />
+<asp:TextBox runat="server" SkinId="MultiLine" CssClass="controlBloque" />
+
+<asp:DropDownList runat="server" CssClass="controlBox" />
+<asp:DropDownList runat="server" SkinId="Compacto" CssClass="controlCompacto controlBox" />
+
+<asp:ImageButton runat="server" SkinId="Accept" CssClass="botonImagen" ImageUrl="~/Images/Icons/Aceptar.gif" ToolTip="Realizar operación" />
+<asp:ImageButton runat="server" SkinId="Save" CssClass="botonImagen" ImageUrl="~/Images/Icons/Guardar.gif" ToolTip="Guardar datos" />
+<asp:ImageButton runat="server" SkinId="Cancel" CssClass="botonImagen" ImageUrl="~/Images/Icons/Cancelar.gif" ToolTip="Cancelar operación" />
+<asp:ImageButton runat="server" SkinId="Add" CssClass="botonImagen" ImageUrl="~/Images/Icons/Agregar.gif" ToolTip="Agregar nuevo registro" />
+<asp:ImageButton runat="server" SkinId="Edit" CssClass="botonImagen" ImageUrl="~/Images/Icons/Editar.gif" ToolTip="Editar registro" />
+<asp:ImageButton runat="server" SkinId="Delete" CssClass="botonImagen" ImageUrl="~/Images/Icons/Eliminar.gif" ToolTip="Eliminar registro" />
+<asp:ImageButton runat="server" SkinId="Search" CssClass="botonImagen" ImageUrl="~/Images/Icons/Buscar.gif" ToolTip="Buscar registro" />
+<asp:ImageButton runat="server" SkinId="Refresh" CssClass="botonImagen" ImageUrl="~/Images/Icons/Recargar.gif" ToolTip="Recargar datos" />
+<asp:ImageButton runat="server" SkinId="LoadEditor" CssClass="botonImagen" ImageUrl="~/Images/Icons/Editar.gif" ToolTip="Cargar en editor" />
+<asp:ImageButton runat="server" SkinId="Asign" CssClass="botonImagen" ImageUrl="~/Images/Icons/Asignar.gif" ToolTip="Asignar el registro" />
+<asp:ImageButton runat="server" SkinId="Review" CssClass="botonImagen" ImageUrl="~/Images/Icons/Revisar.gif" ToolTip="Revisar el registro" />
+<asp:ImageButton runat="server" SkinId="PDF" CssClass="botonImagen" ImageUrl="~/Images/Icons/PDF.gif" ToolTip="Descargar en PDF" />
+<asp:ImageButton runat="server" SkinId="DeleteSmall" CssClass="botonImagen" ImageUrl="~/Images/Icons/EliminarChico.gif" ToolTip="Eliminar elemento" />
+<asp:ImageButton runat="server" SkinId="SearchSmall" CssClass="botonImagen" ImageUrl="~/Images/Icons/BuscarChico.gif" ToolTip="Buscar elemento" />
+<asp:ImageButton runat="server" SkinId="AddSmall" CssClass="botonImagen" ImageUrl="~/Images/Icons/AgregarChico.gif" ToolTip="Agregar elemento" />
+<asp:ImageButton runat="server" SkinId="RemoveSmall" CssClass="botonImagen" ImageUrl="~/Images/Icons/RemoverChico.gif" ToolTip="Remover elemento" />
+<asp:ImageButton runat="server" SkinId="EditSmall" CssClass="botonImagen" ImageUrl="~/Images/Icons/EditarChico.gif" ToolTip="Editar elmento" />
+<asp:ImageButton runat="server" SkinId="ToggleActive" CssClass="botonImagen" ToolTip="Cambiar estátus activo/inactivo" />
+
+<asp:GridView runat="server" CssClass="grid" HeaderStyle-CssClass="header" RowStyle-CssClass="row" 
+    AlternatingRowStyle-CssClass="row-a" PagerStyle-CssClass="pager" 
+    FooterStyle-CssClass="footer" BorderStyle="Solid" CellPadding="4" 
+    ShowFooter="True" GridLines="None" />

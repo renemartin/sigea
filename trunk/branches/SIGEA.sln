@@ -1,0 +1,54 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 10.00
+# Visual Studio 2008
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SIGEA.Classes", "Classes\SIGEA.Classes.csproj", "{7A19C2C6-2591-44B6-827D-B03B8281D689}"
+EndProject
+Project("{E24C65DC-7377-472B-9ABA-BC803B73C61A}") = "WebApp", "WebApp\", "{60D29134-7EF0-4BB2-A7B7-EA5963803E4A}"
+	ProjectSection(WebsiteProperties) = preProject
+		SccProjectName = "Svn"
+		SccAuxPath = "Svn"
+		SccLocalPath = "Svn"
+		SccProvider = "SubversionScc"
+		TargetFramework = "3.5"
+		ProjectReferences = "{7A19C2C6-2591-44B6-827D-B03B8281D689}|SIGEA.Classes.dll;"
+		Debug.AspNetCompiler.VirtualPath = "/WebApp"
+		Debug.AspNetCompiler.PhysicalPath = "WebApp\"
+		Debug.AspNetCompiler.TargetPath = "PrecompiledWeb\WebApp\"
+		Debug.AspNetCompiler.Updateable = "true"
+		Debug.AspNetCompiler.ForceOverwrite = "true"
+		Debug.AspNetCompiler.FixedNames = "false"
+		Debug.AspNetCompiler.Debug = "True"
+		Release.AspNetCompiler.VirtualPath = "/WebApp"
+		Release.AspNetCompiler.PhysicalPath = "WebApp\"
+		Release.AspNetCompiler.TargetPath = "PrecompiledWeb\WebApp\"
+		Release.AspNetCompiler.Updateable = "true"
+		Release.AspNetCompiler.ForceOverwrite = "true"
+		Release.AspNetCompiler.FixedNames = "false"
+		Release.AspNetCompiler.Debug = "False"
+		VWDPort = "1562"
+		VWDDynamicPort = "false"
+	EndProjectSection
+EndProject
+Global
+	GlobalSection(SubversionScc) = preSolution
+		Svn-Managed = True
+		Manager = AnkhSVN - Subversion Support for Visual Studio
+	EndGlobalSection
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{7A19C2C6-2591-44B6-827D-B03B8281D689}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{7A19C2C6-2591-44B6-827D-B03B8281D689}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{7A19C2C6-2591-44B6-827D-B03B8281D689}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{7A19C2C6-2591-44B6-827D-B03B8281D689}.Release|Any CPU.Build.0 = Release|Any CPU
+		{60D29134-7EF0-4BB2-A7B7-EA5963803E4A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{60D29134-7EF0-4BB2-A7B7-EA5963803E4A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{60D29134-7EF0-4BB2-A7B7-EA5963803E4A}.Release|Any CPU.ActiveCfg = Debug|Any CPU
+		{60D29134-7EF0-4BB2-A7B7-EA5963803E4A}.Release|Any CPU.Build.0 = Debug|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal
