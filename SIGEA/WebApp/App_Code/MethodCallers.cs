@@ -459,6 +459,12 @@ public class MethodCallers : System.Web.Services.WebService
 
         return uso_actual.ToString();
     }
+
+    [WebMethod]
+    public bool CheckIfConstruccion(int idAvaluo)
+    {
+        return AvaluoInmobiliario.CheckIfConstruccion(data_context, idAvaluo);
+    }
     #endregion
 
     #region Obtención de registros
