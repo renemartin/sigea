@@ -1,7 +1,7 @@
 ﻿<%@ Control Language="C#" AutoEventWireup="true" CodeFile="DatosDireccion.ascx.cs"
     Inherits="Controles_DatosDireccion" %>
 <%@ Register Assembly="AjaxControlToolkit" Namespace="AjaxControlToolkit" TagPrefix="cc1" %>
-<link href="../App_Themes/Default/DefaultStyle.css" rel="stylesheet" type="text/css" />
+
 <table>
     <tr>
         <td class="celdaTitulo">

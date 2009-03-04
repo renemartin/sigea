@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Configuration;
 using System.Linq;
 using System.Web;
 using System.Web.Services;
@@ -15,7 +16,7 @@ public class MethodCallers : System.Web.Services.WebService
 
     public MethodCallers()
     {
-        data_context = new SIGEADataContext();
+        data_context = new SIGEADataContext(ConfigurationManager.ConnectionStrings["SIGEA_ConnectionString"].ConnectionString);
     }
 
     #region Data fillers
@@ -459,6 +460,7 @@ public class MethodCallers : System.Web.Services.WebService
         return uso_actual.ToString();
     }
     #endregion
+
     #region Obtención de registros
     [WebMethod]
     public object GetDatosSintesis(int idAvaluo)

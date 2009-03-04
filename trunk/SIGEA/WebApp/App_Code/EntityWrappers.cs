@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Configuration;
 using System.Linq;
 using System.Web.Script.Services;
 using System.Web.Services;
@@ -11,11 +12,11 @@ using Entity = System.Collections.Generic.Dictionary<string, object>;
 [ScriptService]
 public class EntityWrappers : System.Web.Services.WebService
 {
-    SIGEADataContext common_context = new SIGEADataContext();
+    SIGEADataContext common_context = new SIGEADataContext(ConfigurationManager.ConnectionStrings["SIGEA_ConnectionString"].ConnectionString);
 
     public EntityWrappers()
     {
-        common_context = new SIGEADataContext();
+        common_context = new SIGEADataContext(ConfigurationManager.ConnectionStrings["SIGEA_ConnectionString"].ConnectionString);
     }
 
     #region Avaluos
@@ -34,7 +35,7 @@ public class EntityWrappers : System.Web.Services.WebService
         , Entity datosPropietario
         , Entity datosDireccionPropietario)
     {
-        SIGEADataContext data_context = new SIGEADataContext();
+        SIGEADataContext data_context = new SIGEADataContext(ConfigurationManager.ConnectionStrings["SIGEA_ConnectionString"].ConnectionString);
 
         AvaluoInmobiliario avaluo = AvaluoInmobiliario.GetForDataUpadte(data_context, idAvaluo);
         if (avaluo == null)
@@ -87,7 +88,7 @@ public class EntityWrappers : System.Web.Services.WebService
         , Entity datosSolicitante
         , Entity datosDireccionSolicitante)
     {
-        SIGEADataContext data_context = new SIGEADataContext();
+        SIGEADataContext data_context = new SIGEADataContext(ConfigurationManager.ConnectionStrings["SIGEA_ConnectionString"].ConnectionString);
         AvaluoInmobiliario avaluo = AvaluoInmobiliario.GetFromId(data_context, idAvaluo);
 
         if (avaluo == null)
@@ -153,7 +154,7 @@ public class EntityWrappers : System.Web.Services.WebService
     [WebMethod]
     public void CancelarAvaluo(int idAvaluo)
     {
-        SIGEADataContext data_context = new SIGEADataContext();
+        SIGEADataContext data_context = new SIGEADataContext(ConfigurationManager.ConnectionStrings["SIGEA_ConnectionString"].ConnectionString);
         AvaluoInmobiliario.Cancel(data_context, idAvaluo);
 
         data_context.SubmitChanges();
@@ -165,7 +166,7 @@ public class EntityWrappers : System.Web.Services.WebService
         , Entity datosDeclaraciones
         , Entity datosAdvertencias)
     {
-        SIGEADataContext data_context = new SIGEADataContext();
+        SIGEADataContext data_context = new SIGEADataContext(ConfigurationManager.ConnectionStrings["SIGEA_ConnectionString"].ConnectionString);
         Declaraciones declaracion = Declaraciones.GetForDataUpdate(data_context, idAvaluo);
 
         if (declaracion == null)
@@ -203,7 +204,7 @@ public class EntityWrappers : System.Web.Services.WebService
     [WebMethod]
     public void SaveAsignacionAvaluo(int idAvaluo, Entity datosAsignacion)
     {
-        SIGEADataContext data_context = new SIGEADataContext();
+        SIGEADataContext data_context = new SIGEADataContext(ConfigurationManager.ConnectionStrings["SIGEA_ConnectionString"].ConnectionString);
         AsignacionAvaluo.Save(data_context, idAvaluo, datosAsignacion);
 
         data_context.SubmitChanges();
@@ -218,7 +219,7 @@ public class EntityWrappers : System.Web.Services.WebService
     [WebMethod]
     public void DeleteAsignacionAvaluo(int idAvaluo)
     {
-        SIGEADataContext data_context = new SIGEADataContext();
+        SIGEADataContext data_context = new SIGEADataContext(ConfigurationManager.ConnectionStrings["SIGEA_ConnectionString"].ConnectionString);
         AsignacionAvaluo.Delete(data_context, idAvaluo);
         data_context.SubmitChanges();
     }
@@ -269,7 +270,7 @@ public class EntityWrappers : System.Web.Services.WebService
         , Entity datosPropietario
         , Entity datosDireccionPropietario)
     {
-        SIGEADataContext data_context = new SIGEADataContext();
+        SIGEADataContext data_context = new SIGEADataContext(ConfigurationManager.ConnectionStrings["SIGEA_ConnectionString"].ConnectionString);
 
         Inmueble inmueble = Inmueble.GetFromIdAvaluo(data_context, idAvaluo);
         if (inmueble == null)
@@ -327,7 +328,7 @@ public class EntityWrappers : System.Web.Services.WebService
         , Entity datosCalles
         , Entity datosTerreno)
     {
-        SIGEADataContext data_context = new SIGEADataContext();
+        SIGEADataContext data_context = new SIGEADataContext(ConfigurationManager.ConnectionStrings["SIGEA_ConnectionString"].ConnectionString);
         Inmueble inmueble = Inmueble.GetFromIdAvaluo(data_context, idAvaluo);
 
         if (inmueble == null)
@@ -382,7 +383,7 @@ public class EntityWrappers : System.Web.Services.WebService
         , Entity datosEntorno
         , Entity[] datosViasAcceso)
     {
-        SIGEADataContext data_context = new SIGEADataContext();
+        SIGEADataContext data_context = new SIGEADataContext(ConfigurationManager.ConnectionStrings["SIGEA_ConnectionString"].ConnectionString);
         Inmueble inmueble = Inmueble.GetFromIdAvaluo(data_context, idAvaluo);
 
         if (inmueble == null)
@@ -421,7 +422,7 @@ public class EntityWrappers : System.Web.Services.WebService
         , Entity datosInfraestructura
         , Entity datosServicios)
     {
-        SIGEADataContext data_context = new SIGEADataContext();
+        SIGEADataContext data_context = new SIGEADataContext(ConfigurationManager.ConnectionStrings["SIGEA_ConnectionString"].ConnectionString);
         Inmueble inmueble = Inmueble.GetFromIdAvaluo(data_context, idAvaluo);
 
         if (inmueble == null)
@@ -460,7 +461,8 @@ public class EntityWrappers : System.Web.Services.WebService
     [WebMethod]
     public void SaveEquipamiento(int idAvaluo, Entity datosEquipamiento)
     {
-        SIGEADataContext data_context = new SIGEADataContext();
+        
+        SIGEADataContext data_context = new SIGEADataContext(ConfigurationManager.ConnectionStrings["SIGEA_ConnectionString"].ConnectionString);
         Inmueble inmueble = Inmueble.GetFromIdAvaluo(data_context, idAvaluo);
 
         if (inmueble == null)
@@ -498,7 +500,7 @@ public class EntityWrappers : System.Web.Services.WebService
             , Entity[] datosRecamaras
             , Entity[] datosPlantas)
     {
-        SIGEADataContext data_context = new SIGEADataContext();
+        SIGEADataContext data_context = new SIGEADataContext(ConfigurationManager.ConnectionStrings["SIGEA_ConnectionString"].ConnectionString);
         Inmueble inmueble = Inmueble.GetFromIdAvaluo(data_context, idAvaluo);
 
         if (inmueble == null)
@@ -588,7 +590,7 @@ public class EntityWrappers : System.Web.Services.WebService
         , Entity[] datosTiposConstruccion
         , Entity datosConstrucciones)
     {
-        SIGEADataContext data_context = new SIGEADataContext();
+        SIGEADataContext data_context = new SIGEADataContext(ConfigurationManager.ConnectionStrings["SIGEA_ConnectionString"].ConnectionString);
         Inmueble inmueble = Inmueble.GetFromIdAvaluo(data_context, idAvaluo);
         if (inmueble == null)
         {
@@ -632,7 +634,7 @@ public class EntityWrappers : System.Web.Services.WebService
         , Entity[] datosAreaComun
         , Entity[] datosAreaComunComplementaria)
     {
-        SIGEADataContext data_context = new SIGEADataContext();
+        SIGEADataContext data_context = new SIGEADataContext(ConfigurationManager.ConnectionStrings["SIGEA_ConnectionString"].ConnectionString);
         Inmueble inmueble = Inmueble.GetFromIdAvaluo(data_context, idAvaluo);
         if (inmueble == null)
         {
@@ -676,7 +678,7 @@ public class EntityWrappers : System.Web.Services.WebService
         int idAvaluo
         , Entity datosSuperfice)
     {
-        SIGEADataContext data_context = new SIGEADataContext();
+        SIGEADataContext data_context = new SIGEADataContext(ConfigurationManager.ConnectionStrings["SIGEA_ConnectionString"].ConnectionString);
         Inmueble inmueble = Inmueble.GetFromIdAvaluo(data_context, idAvaluo);
         if (inmueble == null)
         {
@@ -712,7 +714,7 @@ public class EntityWrappers : System.Web.Services.WebService
         , Entity datosEstructuras
         )
     {
-        SIGEADataContext data_context = new SIGEADataContext();
+        SIGEADataContext data_context = new SIGEADataContext(ConfigurationManager.ConnectionStrings["SIGEA_ConnectionString"].ConnectionString);
         TipoConstruccion tipo_construccion = TipoConstruccion.GetFromIdAvaluo(data_context, idAvaluo, 1);
 
         if (tipo_construccion == null)
@@ -731,7 +733,7 @@ public class EntityWrappers : System.Web.Services.WebService
         , Entity[] datosAcabados
         )
     {
-        SIGEADataContext data_context = new SIGEADataContext();
+        SIGEADataContext data_context = new SIGEADataContext(ConfigurationManager.ConnectionStrings["SIGEA_ConnectionString"].ConnectionString);
         TipoConstruccion tipo_construccion = TipoConstruccion.GetFromIdAvaluo(data_context, idAvaluo, 1);
 
         if (tipo_construccion == null)
@@ -751,7 +753,7 @@ public class EntityWrappers : System.Web.Services.WebService
         , Entity[] datosInstalacionesComunes
         )
     {
-        SIGEADataContext data_context = new SIGEADataContext();
+        SIGEADataContext data_context = new SIGEADataContext(ConfigurationManager.ConnectionStrings["SIGEA_ConnectionString"].ConnectionString);
         TipoConstruccion tipo_construccion = TipoConstruccion.GetFromIdAvaluo(data_context, idAvaluo, 1);
         ConstruccionInmueble construccion = ConstruccionInmueble.GetFromIdAvaluo(data_context, idAvaluo);
 
@@ -825,7 +827,7 @@ public class EntityWrappers : System.Web.Services.WebService
         , Entity datosContacto
         )
     {
-        SIGEADataContext data_context = new SIGEADataContext();
+        SIGEADataContext data_context = new SIGEADataContext(ConfigurationManager.ConnectionStrings["SIGEA_ConnectionString"].ConnectionString);
 
         ComparableInmobiliario comparable = ComparableInmobiliario.GetDataForUpdate(data_context, idComparable);
         if (comparable == null)
@@ -860,7 +862,7 @@ public class EntityWrappers : System.Web.Services.WebService
     [WebMethod]
     public void DeleteComaprable(int idComparable)
     {
-        SIGEADataContext data_context = new SIGEADataContext();
+        SIGEADataContext data_context = new SIGEADataContext(ConfigurationManager.ConnectionStrings["SIGEA_ConnectionString"].ConnectionString);
         ComparableInmobiliario.Delete(data_context, idComparable);
 
         data_context.SubmitChanges();
@@ -879,7 +881,7 @@ public class EntityWrappers : System.Web.Services.WebService
         , Entity datosDireccion
         , Entity datosUsuario)
     {
-        SIGEADataContext data_context = new SIGEADataContext();
+        SIGEADataContext data_context = new SIGEADataContext(ConfigurationManager.ConnectionStrings["SIGEA_ConnectionString"].ConnectionString);
 
         Valuador valuador = Valuador.GetForDataUpdate(data_context, idValuador);
         if (valuador == null)
@@ -952,7 +954,7 @@ public class EntityWrappers : System.Web.Services.WebService
     [WebMethod]
     public void DeleteValuador(int idValuador)
     {
-        SIGEADataContext data_context = new SIGEADataContext();
+        SIGEADataContext data_context = new SIGEADataContext(ConfigurationManager.ConnectionStrings["SIGEA_ConnectionString"].ConnectionString);
         Valuador.Delete(data_context, idValuador);
 
         data_context.SubmitChanges();
@@ -974,7 +976,7 @@ public class EntityWrappers : System.Web.Services.WebService
         , Entity datosDireccion
         , Entity datosUsuario)
     {
-        SIGEADataContext data_context = new SIGEADataContext();
+        SIGEADataContext data_context = new SIGEADataContext(ConfigurationManager.ConnectionStrings["SIGEA_ConnectionString"].ConnectionString);
 
         Cliente cliente = Cliente.GetForDataUpdate(data_context, idCliente);
         if (cliente == null)
@@ -1047,7 +1049,7 @@ public class EntityWrappers : System.Web.Services.WebService
     [WebMethod]
     public void DeleteCliente(int idCliente)
     {
-        SIGEADataContext data_context = new SIGEADataContext();
+        SIGEADataContext data_context = new SIGEADataContext(ConfigurationManager.ConnectionStrings["SIGEA_ConnectionString"].ConnectionString);
         Cliente.Delete(data_context, idCliente);
 
         data_context.SubmitChanges();
@@ -1067,7 +1069,7 @@ public class EntityWrappers : System.Web.Services.WebService
         , Entity datosPersonales
         , Entity datosUsuario)
     {
-        SIGEADataContext data_context = new SIGEADataContext();
+        SIGEADataContext data_context = new SIGEADataContext(ConfigurationManager.ConnectionStrings["SIGEA_ConnectionString"].ConnectionString);
 
         Personal personal = Personal.GetForDataUpdate(data_context, idPersonal);
         if (personal == null)
@@ -1107,7 +1109,7 @@ public class EntityWrappers : System.Web.Services.WebService
     [WebMethod]
     public Entity[] LoadPersonal(int idPersonal)
     {
-        SIGEADataContext data_context = new SIGEADataContext();
+        SIGEADataContext data_context = new SIGEADataContext(ConfigurationManager.ConnectionStrings["SIGEA_ConnectionString"].ConnectionString);
         Entity[] data = new Entity[2];
 
         Personal personal = Personal.GetFromId(data_context, idPersonal);
@@ -1127,7 +1129,7 @@ public class EntityWrappers : System.Web.Services.WebService
     [WebMethod]
     public void DeletePersonal(int idPersonal)
     {
-        SIGEADataContext data_context = new SIGEADataContext();
+        SIGEADataContext data_context = new SIGEADataContext(ConfigurationManager.ConnectionStrings["SIGEA_ConnectionString"].ConnectionString);
         Personal.Delete(data_context, idPersonal);
 
         data_context.SubmitChanges();

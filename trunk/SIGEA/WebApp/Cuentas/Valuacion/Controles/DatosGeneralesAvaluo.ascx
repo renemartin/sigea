@@ -1,6 +1,5 @@
 ﻿<%@ Control Language="C#" AutoEventWireup="true" CodeFile="DatosGeneralesAvaluo.ascx.cs"
     Inherits="Cuentas_Valuacion_DatosGeneralesAvaluo" %>
-<link href="../../../App_Themes/Default/DefaultStyle.css" rel="stylesheet" type="text/css" />    
         
 <table>
     <tr>

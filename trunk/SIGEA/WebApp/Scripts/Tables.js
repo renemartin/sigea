@@ -41,7 +41,7 @@ function removeClonedRow(table_id) {
 }
 
 function setupClonedRow(cloned_row, num) {
-    cloned_row.style.display = "block";
+    cloned_row.style.display = "";
 
     var i = null;
     var inputs = cloned_row.getElementsByTagName("input");

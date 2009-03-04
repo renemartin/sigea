@@ -28,7 +28,7 @@ public partial class Cuentas_Administracion_ClienteLogo : System.Web.UI.Page
     {
         int idArchivo = 0;
 
-        SIGEADataContext data_context = new SIGEADataContext();
+        SIGEADataContext data_context = new SIGEADataContext(ConfigurationManager.ConnectionStrings["SIGEA_ConnectionString"].ConnectionString);
         FileUploader uploader = new FileUploader(data_context);
         try
         {
@@ -75,7 +75,7 @@ public partial class Cuentas_Administracion_ClienteLogo : System.Web.UI.Page
             return;
         }
 
-        SIGEADataContext data_context = new SIGEADataContext();
+        SIGEADataContext data_context = new SIGEADataContext(ConfigurationManager.ConnectionStrings["SIGEA_ConnectionString"].ConnectionString);
         Cliente cliente = Cliente.GetFromId(data_context, idCliente);
         if (cliente == null)
         {

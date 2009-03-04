@@ -1,6 +1,6 @@
 ﻿<%@ Control Language="C#" AutoEventWireup="true" CodeFile="DatosEntorno.ascx.cs"
     Inherits="Cuentas_Administracion_DatosEntorno" %>
-<link href="~/App_Themes/Default/DefaultStyle.css" rel="stylesheet" type="text/css" />
+
 <table>
     <tr>
         <td class="celdaTitulo">

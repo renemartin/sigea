@@ -1,6 +1,6 @@
 ﻿<%@ Control Language="C#" AutoEventWireup="true" CodeFile="DatosConstrucciones.ascx.cs"
     Inherits="Cuentas_Valuacion_DatosConstrucciones" %>
-<link href="~/App_Themes/Default/DefaultStyle.css" rel="stylesheet" type="text/css" />
+
 <table>
     <tr>
         <td class="celdaTitulo">

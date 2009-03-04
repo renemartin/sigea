@@ -1,5 +1,4 @@
 ﻿<%@ Control Language="C#" AutoEventWireup="true" CodeFile="DatosDireccionInmueble.ascx.cs" Inherits="Cuentas_Valuacion_Controles_DatosDireccionInmueble" %>
-<link href="../../../App_Themes/Default/DefaultStyle.css" rel="stylesheet" type="text/css" />
 
 <table>
     <tr>

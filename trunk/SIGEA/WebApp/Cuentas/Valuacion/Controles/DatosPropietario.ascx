@@ -1,6 +1,5 @@
 ﻿<%@ Control Language="C#" AutoEventWireup="true" CodeFile="DatosPropietario.ascx.cs" Inherits="Cuentas_Valuacion_DatosPropietario" %>
 <%@ Register Src="~/Controles/DatosDireccion.ascx" TagName="DatosDireccion" TagPrefix="SIGEA" %>
-<link href="../../../App_Themes/Default/DefaultStyle.css" rel="stylesheet" type="text/css" />
 
 <table>
     <tr>

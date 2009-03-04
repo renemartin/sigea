@@ -268,6 +268,34 @@ hr
 
 /* Menús */
 
+.menuPrincipal
+{
+	list-style: none;
+	padding-left: 5px;
+	padding-bottom: 3px;
+	margin-left: -5px;
+	margin-right: -5px;	
+}
+
+.menuPrincipal .item
+{
+	display:inline;
+}
+
+.menuPrincipal .item .l
+{
+	margin-left: 5px;
+}
+
+.menuPrincipal .item .m
+{
+}
+
+.menuPrincipal .item .r
+{
+	margin-right: 5px;
+}
+
 .menu
 {
 	list-style: none;
@@ -448,6 +476,7 @@ hr
 {
 	display: inline;
 	margin-left: 20px;
+	margin-right: 20px;
 }
 
 .tooltipError

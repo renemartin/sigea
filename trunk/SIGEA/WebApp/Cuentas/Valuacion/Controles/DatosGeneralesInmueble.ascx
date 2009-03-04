@@ -2,7 +2,7 @@
     Inherits="Cuentas_Valuacion_DatosGeneralesInmueble" %>
 <%@ Register Src="DatosDireccionInmueble.ascx" TagName="DatosDireccionInmueble" TagPrefix="SIGEA" %>
 <%@ Register Src="~/Controles/DatosDireccion.ascx" TagName="DatosDireccion" TagPrefix="SIGEA" %>
-<link href="../../../App_Themes/Default/DefaultStyle.css" rel="stylesheet" type="text/css" />
+
 <table>
     <tr>
         <td class="celdaTitulo">
