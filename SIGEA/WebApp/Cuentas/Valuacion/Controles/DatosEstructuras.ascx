@@ -1,4 +1,5 @@
 ﻿<%@ Control Language="C#" AutoEventWireup="true" CodeFile="DatosEstructuras.ascx.cs" Inherits="Cuentas_Valuacion_Controles_DatosEstructuras" %>
+<%@ Register assembly="AjaxControlToolkit" namespace="AjaxControlToolkit" tagprefix="cc1" %>
 <link href="~/App_Themes/Default/DefaultStyle.css" rel="stylesheet" type="text/css" />
 
 <table>
@@ -8,6 +9,13 @@
         </td>
         <td class="celdaValor">
             <asp:TextBox ID="cimentacion_TBox" runat="server" TextMode="MultiLine" SkinID="MultiLine"></asp:TextBox>
+            <cc1:AutoCompleteExtender ID="cimentacion_TBox_AutoCompleteExtender" 
+                runat="server" MinimumPrefixLength="3"
+                ServiceMethod="GetNombresMateriales" 
+                ServicePath="~/Services/MethodCallers.asmx" TargetControlID="cimentacion_TBox" 
+                UseContextKey="True" ContextKey=" " CompletionInterval="500" 
+                FirstRowSelected="True">
+            </cc1:AutoCompleteExtender>
         </td>
     </tr>
     <tr>
