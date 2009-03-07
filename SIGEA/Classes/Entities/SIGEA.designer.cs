@@ -360,6 +360,9 @@ namespace SIGEA.Classes.Entities
     partial void InsertTipoPlanta(TipoPlanta instance);
     partial void UpdateTipoPlanta(TipoPlanta instance);
     partial void DeleteTipoPlanta(TipoPlanta instance);
+    partial void InsertFotografiaInmueble(FotografiaInmueble instance);
+    partial void UpdateFotografiaInmueble(FotografiaInmueble instance);
+    partial void DeleteFotografiaInmueble(FotografiaInmueble instance);
     #endregion
 		
 		public SIGEADataContext() : 
@@ -1285,6 +1288,14 @@ namespace SIGEA.Classes.Entities
 			get
 			{
 				return this.GetTable<TipoPlanta>();
+			}
+		}
+		
+		public System.Data.Linq.Table<FotografiaInmueble> FotografiaInmueble
+		{
+			get
+			{
+				return this.GetTable<FotografiaInmueble>();
 			}
 		}
 		
@@ -13219,6 +13230,8 @@ namespace SIGEA.Classes.Entities
 		
 		private EntityRef<DatoCondominio> _DatoCondominio;
 		
+		private EntitySet<FotografiaInmueble> _FotografiaInmueble;
+		
 		private EntityRef<DireccionInmueble> _DireccionInmueble;
 		
 		private EntityRef<Propietario> _Propietario;
@@ -13269,6 +13282,7 @@ namespace SIGEA.Classes.Entities
 			this._ViasAcceso = new EntitySet<ViasAcceso>(new Action<ViasAcceso>(this.attach_ViasAcceso), new Action<ViasAcceso>(this.detach_ViasAcceso));
 			this._ConstruccionInmueble = default(EntityRef<ConstruccionInmueble>);
 			this._DatoCondominio = default(EntityRef<DatoCondominio>);
+			this._FotografiaInmueble = new EntitySet<FotografiaInmueble>(new Action<FotografiaInmueble>(this.attach_FotografiaInmueble), new Action<FotografiaInmueble>(this.detach_FotografiaInmueble));
 			this._DireccionInmueble = default(EntityRef<DireccionInmueble>);
 			this._Propietario = default(EntityRef<Propietario>);
 			this._RegimenPropiedad = default(EntityRef<RegimenPropiedad>);
@@ -13882,6 +13896,19 @@ namespace SIGEA.Classes.Entities
 			}
 		}
 		
+		[Association(Name="Inmueble_FotografiaInmueble", Storage="_FotografiaInmueble", ThisKey="idInmueble", OtherKey="idInmueble")]
+		public EntitySet<FotografiaInmueble> FotografiaInmueble
+		{
+			get
+			{
+				return this._FotografiaInmueble;
+			}
+			set
+			{
+				this._FotografiaInmueble.Assign(value);
+			}
+		}
+		
 		[Association(Name="DireccionInmueble_Inmueble", Storage="_DireccionInmueble", ThisKey="idDireccionInmueble", OtherKey="idDireccionInmueble", IsForeignKey=true)]
 		public DireccionInmueble DireccionInmueble
 		{
@@ -14045,6 +14072,18 @@ namespace SIGEA.Classes.Entities
 		}
 		
 		private void detach_ViasAcceso(ViasAcceso entity)
+		{
+			this.SendPropertyChanging();
+			entity.Inmueble = null;
+		}
+		
+		private void attach_FotografiaInmueble(FotografiaInmueble entity)
+		{
+			this.SendPropertyChanging();
+			entity.Inmueble = this;
+		}
+		
+		private void detach_FotografiaInmueble(FotografiaInmueble entity)
 		{
 			this.SendPropertyChanging();
 			entity.Inmueble = null;
@@ -28117,6 +28156,205 @@ namespace SIGEA.Classes.Entities
 		{
 			this.SendPropertyChanging();
 			entity.TipoPlanta = null;
+		}
+	}
+	
+	[Table(Name="dbo.FotografiaInmueble")]
+	public partial class FotografiaInmueble : INotifyPropertyChanging, INotifyPropertyChanged
+	{
+		
+		private static PropertyChangingEventArgs emptyChangingEventArgs = new PropertyChangingEventArgs(String.Empty);
+		
+		private int _idFotografia;
+		
+		private int _idInmueble;
+		
+		private int _idArchivoThumbnail;
+		
+		private int _idArchivo;
+		
+		private bool _principal;
+		
+		private EntityRef<Inmueble> _Inmueble;
+		
+    #region Extensibility Method Definitions
+    partial void OnLoaded();
+    partial void OnValidate(System.Data.Linq.ChangeAction action);
+    partial void OnCreated();
+    partial void OnidFotografiaChanging(int value);
+    partial void OnidFotografiaChanged();
+    partial void OnidInmuebleChanging(int value);
+    partial void OnidInmuebleChanged();
+    partial void OnidArchivoThumbnailChanging(int value);
+    partial void OnidArchivoThumbnailChanged();
+    partial void OnidArchivoChanging(int value);
+    partial void OnidArchivoChanged();
+    partial void OnprincipalChanging(bool value);
+    partial void OnprincipalChanged();
+    #endregion
+		
+		public FotografiaInmueble()
+		{
+			this._Inmueble = default(EntityRef<Inmueble>);
+			OnCreated();
+		}
+		
+		[Column(Storage="_idFotografia", DbType="Int NOT NULL", IsPrimaryKey=true)]
+		public int idFotografia
+		{
+			get
+			{
+				return this._idFotografia;
+			}
+			set
+			{
+				if ((this._idFotografia != value))
+				{
+					this.OnidFotografiaChanging(value);
+					this.SendPropertyChanging();
+					this._idFotografia = value;
+					this.SendPropertyChanged("idFotografia");
+					this.OnidFotografiaChanged();
+				}
+			}
+		}
+		
+		[Column(Storage="_idInmueble", DbType="Int NOT NULL")]
+		public int idInmueble
+		{
+			get
+			{
+				return this._idInmueble;
+			}
+			set
+			{
+				if ((this._idInmueble != value))
+				{
+					if (this._Inmueble.HasLoadedOrAssignedValue)
+					{
+						throw new System.Data.Linq.ForeignKeyReferenceAlreadyHasValueException();
+					}
+					this.OnidInmuebleChanging(value);
+					this.SendPropertyChanging();
+					this._idInmueble = value;
+					this.SendPropertyChanged("idInmueble");
+					this.OnidInmuebleChanged();
+				}
+			}
+		}
+		
+		[Column(Storage="_idArchivoThumbnail", DbType="Int NOT NULL")]
+		public int idArchivoThumbnail
+		{
+			get
+			{
+				return this._idArchivoThumbnail;
+			}
+			set
+			{
+				if ((this._idArchivoThumbnail != value))
+				{
+					this.OnidArchivoThumbnailChanging(value);
+					this.SendPropertyChanging();
+					this._idArchivoThumbnail = value;
+					this.SendPropertyChanged("idArchivoThumbnail");
+					this.OnidArchivoThumbnailChanged();
+				}
+			}
+		}
+		
+		[Column(Storage="_idArchivo", DbType="Int NOT NULL")]
+		public int idArchivo
+		{
+			get
+			{
+				return this._idArchivo;
+			}
+			set
+			{
+				if ((this._idArchivo != value))
+				{
+					this.OnidArchivoChanging(value);
+					this.SendPropertyChanging();
+					this._idArchivo = value;
+					this.SendPropertyChanged("idArchivo");
+					this.OnidArchivoChanged();
+				}
+			}
+		}
+		
+		[Column(Storage="_principal", DbType="Bit NOT NULL")]
+		public bool principal
+		{
+			get
+			{
+				return this._principal;
+			}
+			set
+			{
+				if ((this._principal != value))
+				{
+					this.OnprincipalChanging(value);
+					this.SendPropertyChanging();
+					this._principal = value;
+					this.SendPropertyChanged("principal");
+					this.OnprincipalChanged();
+				}
+			}
+		}
+		
+		[Association(Name="Inmueble_FotografiaInmueble", Storage="_Inmueble", ThisKey="idInmueble", OtherKey="idInmueble", IsForeignKey=true)]
+		public Inmueble Inmueble
+		{
+			get
+			{
+				return this._Inmueble.Entity;
+			}
+			set
+			{
+				Inmueble previousValue = this._Inmueble.Entity;
+				if (((previousValue != value) 
+							|| (this._Inmueble.HasLoadedOrAssignedValue == false)))
+				{
+					this.SendPropertyChanging();
+					if ((previousValue != null))
+					{
+						this._Inmueble.Entity = null;
+						previousValue.FotografiaInmueble.Remove(this);
+					}
+					this._Inmueble.Entity = value;
+					if ((value != null))
+					{
+						value.FotografiaInmueble.Add(this);
+						this._idInmueble = value.idInmueble;
+					}
+					else
+					{
+						this._idInmueble = default(int);
+					}
+					this.SendPropertyChanged("Inmueble");
+				}
+			}
+		}
+		
+		public event PropertyChangingEventHandler PropertyChanging;
+		
+		public event PropertyChangedEventHandler PropertyChanged;
+		
+		protected virtual void SendPropertyChanging()
+		{
+			if ((this.PropertyChanging != null))
+			{
+				this.PropertyChanging(this, emptyChangingEventArgs);
+			}
+		}
+		
+		protected virtual void SendPropertyChanged(String propertyName)
+		{
+			if ((this.PropertyChanged != null))
+			{
+				this.PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
+			}
 		}
 	}
 	

@@ -571,6 +571,7 @@
       <Association Name="Inmueble_ViasAcceso" Member="ViasAcceso" ThisKey="idInmueble" OtherKey="idInmueble" Type="ViasAcceso" />
       <Association Name="Inmueble_ConstruccionInmueble" Member="ConstruccionInmueble" ThisKey="idInmueble" OtherKey="idInmueble" Type="ConstruccionInmueble" Cardinality="One" />
       <Association Name="Inmueble_DatoCondominio" Member="DatoCondominio" ThisKey="idInmueble" OtherKey="idInmueble" Type="DatoCondominio" Cardinality="One" />
+      <Association Name="Inmueble_FotografiaInmueble" Member="FotografiaInmueble" ThisKey="idInmueble" OtherKey="idInmueble" Type="FotografiaInmueble" />
       <Association Name="DireccionInmueble_Inmueble" Member="DireccionInmueble" ThisKey="idDireccionInmueble" OtherKey="idDireccionInmueble" Type="DireccionInmueble" IsForeignKey="true" />
       <Association Name="Propietario_Inmueble" Member="Propietario" ThisKey="idPropietario" OtherKey="idPropietario" Type="Propietario" IsForeignKey="true" />
       <Association Name="RegimenPropiedad_Inmueble" Member="RegimenPropiedad" ThisKey="idRegimenPropiedad" OtherKey="idRegimenPropiedad" Type="RegimenPropiedad" IsForeignKey="true" />
@@ -1288,6 +1289,16 @@
       <Column Name="descripcion" Type="System.String" DbType="NVarChar(30) NOT NULL" CanBeNull="false" />
       <Association Name="TipoPlanta_UsoActualArea" Member="UsoActualArea" ThisKey="idTipoPlanta" OtherKey="planta" Type="UsoActualArea" />
       <Association Name="TipoPlanta_UsoActualRecamara" Member="UsoActualRecamara" ThisKey="idTipoPlanta" OtherKey="planta" Type="UsoActualRecamara" />
+    </Type>
+  </Table>
+  <Table Name="dbo.FotografiaInmueble" Member="FotografiaInmueble">
+    <Type Name="FotografiaInmueble">
+      <Column Name="idFotografia" Type="System.Int32" DbType="Int NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="idInmueble" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="idArchivoThumbnail" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="idArchivo" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="principal" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
+      <Association Name="Inmueble_FotografiaInmueble" Member="Inmueble" ThisKey="idInmueble" OtherKey="idInmueble" Type="Inmueble" IsForeignKey="true" />
     </Type>
   </Table>
   <Function Name="dbo.GenerarIDE" Method="GenerarIDE">
