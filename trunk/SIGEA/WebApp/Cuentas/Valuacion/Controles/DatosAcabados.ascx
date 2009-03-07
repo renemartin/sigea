@@ -307,7 +307,8 @@
         // Inicialización
         Acabados.prototype.setData = setData;
         Acabados.prototype.getData = getData;
-
+        Acabados.prototype.setFachada = setFachada;
+        Acabados.prototype.getFachada = getFachada;
         // DataBinsings
         function setData(data_set) {
 
@@ -377,6 +378,20 @@
                 $get("<%= estacionamientoPlafones_TBox.ClientID %>").value = dataEstacionamientos.plafon;
             }
         }
+        
+        function setFachada(data) {
+            if(data == null )
+                return null;
+            
+            $get("<%= fachada_TBox.ClientID %>").value = "blabla";
+        }
+        
+        function getFachada() {
+            var data = new Object();
+            data.fachada = $get("<%= fachada_TBox.ClientID %>").value;
+            
+            return data;
+        }
 
         function getData() {
             var data_set = new Array();
@@ -443,7 +458,7 @@
             dataEstacionamientos.muro = $get("<%= estacionamientoMuros_TBox.ClientID %>").value;
             dataEstacionamientos.plafon = $get("<%= estacionamientoPlafones_TBox.ClientID %>").value;
             data_set[6] = dataEstacionamientos;
-
+            
             return data_set;
         }
     }
