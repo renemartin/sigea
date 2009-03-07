@@ -77,9 +77,11 @@
     <Compile Include="Entities\EntornoInmueble.cs" />
     <Compile Include="Entities\Inmueble.cs" />
     <Compile Include="Entities\Instalaciones.cs" />
+    <Compile Include="Entities\Materiales.cs" />
     <Compile Include="Entities\Personal.cs" />
     <Compile Include="Entities\Propietario.cs" />
     <Compile Include="Entities\RolSistema.cs" />
+    <Compile Include="Entities\Servicios.cs" />
     <Compile Include="Entities\Solicitante.cs" />
     <Compile Include="Entities\StatusAvaluo.cs" />
     <Compile Include="Entities\SuperficiesCondominio.cs" />
