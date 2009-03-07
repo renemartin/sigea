@@ -100,8 +100,6 @@ function loadEstructurasAsync(idAvaluo, control) {
 function loadAcabadosAsync(idAvaluo, control) {
     EntityWrappers.LoadAcabados(
         idAvaluo, asyncControlLoad, asyncCallFail, control);
-    
-    loadFachadaAsync(idAvaluo, control);
 }
 function loadFachadaAsync(idAvaluo, control) {
     EntityWrappers.LoadFachada(
