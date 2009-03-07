@@ -2282,6 +2282,10 @@ namespace SIGEA.Classes.Entities
 		
 		private EntitySet<HistorialRevision> _HistorialRevision;
 		
+		private EntitySet<FotografiaInmueble> _FotografiaInmueble;
+		
+		private EntitySet<FotografiaInmueble> _FotografiaInmueble1;
+		
 		private EntityRef<Carpeta> _Carpeta;
 		
     #region Extensibility Method Definitions
@@ -2314,6 +2318,8 @@ namespace SIGEA.Classes.Entities
 			this._AvaluoReferencia = new EntitySet<AvaluoReferencia>(new Action<AvaluoReferencia>(this.attach_AvaluoReferencia), new Action<AvaluoReferencia>(this.detach_AvaluoReferencia));
 			this._Cliente = new EntitySet<Cliente>(new Action<Cliente>(this.attach_Cliente), new Action<Cliente>(this.detach_Cliente));
 			this._HistorialRevision = new EntitySet<HistorialRevision>(new Action<HistorialRevision>(this.attach_HistorialRevision), new Action<HistorialRevision>(this.detach_HistorialRevision));
+			this._FotografiaInmueble = new EntitySet<FotografiaInmueble>(new Action<FotografiaInmueble>(this.attach_FotografiaInmueble), new Action<FotografiaInmueble>(this.detach_FotografiaInmueble));
+			this._FotografiaInmueble1 = new EntitySet<FotografiaInmueble>(new Action<FotografiaInmueble>(this.attach_FotografiaInmueble1), new Action<FotografiaInmueble>(this.detach_FotografiaInmueble1));
 			this._Carpeta = default(EntityRef<Carpeta>);
 			OnCreated();
 		}
@@ -2554,6 +2560,32 @@ namespace SIGEA.Classes.Entities
 			}
 		}
 		
+		[Association(Name="Archivo_FotografiaInmueble", Storage="_FotografiaInmueble", ThisKey="idArchivo", OtherKey="idArchivo")]
+		public EntitySet<FotografiaInmueble> FotografiaInmueble
+		{
+			get
+			{
+				return this._FotografiaInmueble;
+			}
+			set
+			{
+				this._FotografiaInmueble.Assign(value);
+			}
+		}
+		
+		[Association(Name="Archivo_FotografiaInmueble1", Storage="_FotografiaInmueble1", ThisKey="idArchivo", OtherKey="idArchivoThumbnail")]
+		public EntitySet<FotografiaInmueble> FotografiaInmueble1
+		{
+			get
+			{
+				return this._FotografiaInmueble1;
+			}
+			set
+			{
+				this._FotografiaInmueble1.Assign(value);
+			}
+		}
+		
 		[Association(Name="Carpeta_Archivo", Storage="_Carpeta", ThisKey="idCarpeta", OtherKey="idCarpeta", IsForeignKey=true)]
 		public Carpeta Carpeta
 		{
@@ -2654,6 +2686,30 @@ namespace SIGEA.Classes.Entities
 		{
 			this.SendPropertyChanging();
 			entity.Archivo = null;
+		}
+		
+		private void attach_FotografiaInmueble(FotografiaInmueble entity)
+		{
+			this.SendPropertyChanging();
+			entity.Archivo = this;
+		}
+		
+		private void detach_FotografiaInmueble(FotografiaInmueble entity)
+		{
+			this.SendPropertyChanging();
+			entity.Archivo = null;
+		}
+		
+		private void attach_FotografiaInmueble1(FotografiaInmueble entity)
+		{
+			this.SendPropertyChanging();
+			entity.Archivo1 = this;
+		}
+		
+		private void detach_FotografiaInmueble1(FotografiaInmueble entity)
+		{
+			this.SendPropertyChanging();
+			entity.Archivo1 = null;
 		}
 	}
 	
@@ -28175,6 +28231,10 @@ namespace SIGEA.Classes.Entities
 		
 		private bool _principal;
 		
+		private EntityRef<Archivo> _Archivo;
+		
+		private EntityRef<Archivo> _Archivo1;
+		
 		private EntityRef<Inmueble> _Inmueble;
 		
     #region Extensibility Method Definitions
@@ -28195,6 +28255,8 @@ namespace SIGEA.Classes.Entities
 		
 		public FotografiaInmueble()
 		{
+			this._Archivo = default(EntityRef<Archivo>);
+			this._Archivo1 = default(EntityRef<Archivo>);
 			this._Inmueble = default(EntityRef<Inmueble>);
 			OnCreated();
 		}
@@ -28254,6 +28316,10 @@ namespace SIGEA.Classes.Entities
 			{
 				if ((this._idArchivoThumbnail != value))
 				{
+					if (this._Archivo1.HasLoadedOrAssignedValue)
+					{
+						throw new System.Data.Linq.ForeignKeyReferenceAlreadyHasValueException();
+					}
 					this.OnidArchivoThumbnailChanging(value);
 					this.SendPropertyChanging();
 					this._idArchivoThumbnail = value;
@@ -28274,6 +28340,10 @@ namespace SIGEA.Classes.Entities
 			{
 				if ((this._idArchivo != value))
 				{
+					if (this._Archivo.HasLoadedOrAssignedValue)
+					{
+						throw new System.Data.Linq.ForeignKeyReferenceAlreadyHasValueException();
+					}
 					this.OnidArchivoChanging(value);
 					this.SendPropertyChanging();
 					this._idArchivo = value;
@@ -28299,6 +28369,74 @@ namespace SIGEA.Classes.Entities
 					this._principal = value;
 					this.SendPropertyChanged("principal");
 					this.OnprincipalChanged();
+				}
+			}
+		}
+		
+		[Association(Name="Archivo_FotografiaInmueble", Storage="_Archivo", ThisKey="idArchivo", OtherKey="idArchivo", IsForeignKey=true)]
+		public Archivo Archivo
+		{
+			get
+			{
+				return this._Archivo.Entity;
+			}
+			set
+			{
+				Archivo previousValue = this._Archivo.Entity;
+				if (((previousValue != value) 
+							|| (this._Archivo.HasLoadedOrAssignedValue == false)))
+				{
+					this.SendPropertyChanging();
+					if ((previousValue != null))
+					{
+						this._Archivo.Entity = null;
+						previousValue.FotografiaInmueble.Remove(this);
+					}
+					this._Archivo.Entity = value;
+					if ((value != null))
+					{
+						value.FotografiaInmueble.Add(this);
+						this._idArchivo = value.idArchivo;
+					}
+					else
+					{
+						this._idArchivo = default(int);
+					}
+					this.SendPropertyChanged("Archivo");
+				}
+			}
+		}
+		
+		[Association(Name="Archivo_FotografiaInmueble1", Storage="_Archivo1", ThisKey="idArchivoThumbnail", OtherKey="idArchivo", IsForeignKey=true)]
+		public Archivo Archivo1
+		{
+			get
+			{
+				return this._Archivo1.Entity;
+			}
+			set
+			{
+				Archivo previousValue = this._Archivo1.Entity;
+				if (((previousValue != value) 
+							|| (this._Archivo1.HasLoadedOrAssignedValue == false)))
+				{
+					this.SendPropertyChanging();
+					if ((previousValue != null))
+					{
+						this._Archivo1.Entity = null;
+						previousValue.FotografiaInmueble1.Remove(this);
+					}
+					this._Archivo1.Entity = value;
+					if ((value != null))
+					{
+						value.FotografiaInmueble1.Add(this);
+						this._idArchivoThumbnail = value.idArchivo;
+					}
+					else
+					{
+						this._idArchivoThumbnail = default(int);
+					}
+					this.SendPropertyChanged("Archivo1");
 				}
 			}
 		}
