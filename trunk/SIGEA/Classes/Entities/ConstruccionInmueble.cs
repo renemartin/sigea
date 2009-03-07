@@ -66,5 +66,18 @@ namespace SIGEA.Classes.Entities
             unidadesRentables = short.Parse(data["unidadesRentables"].ToString());
         }
 
+        public void SetFachada(Dictionary<string, object> data)
+        {
+            fachada = data["fachada"].ToString();
+        }
+
+        public Dictionary<string, object> GetFachada()
+        {
+            Dictionary<string, object> data = new Dictionary<string, object>();
+
+            data.Add("fachada", fachada);
+
+            return data;
+        }
     }
 }
