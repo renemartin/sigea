@@ -92,5 +92,17 @@ namespace SIGEA.Classes.Entities
 
             return text.ToString().ToUpper();
         }
+
+        public int GetIdThumbnail()
+        {
+            if (FotografiaInmueble == null)
+                return 0;
+
+            var foto = FotografiaInmueble.Where(f => f.principal).Select(f => f.idArchivoThumbnail);
+            if (!foto.Any())
+                return 0;
+
+            return foto.Single();
+        }
     }
 }

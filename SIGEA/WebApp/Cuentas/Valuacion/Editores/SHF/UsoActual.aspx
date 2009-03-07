@@ -2,6 +2,8 @@
     CodeFile="UsoActual.aspx.cs" MasterPageFile="~/Cuentas/Valuacion/Editores/SHF/EditorSHF.master"
     Inherits="Cuentas_Valuacion_Editores_SHF_UsoActual" %>
 
+<%@ Register Src="~/Cuentas/Valuacion/Editores/SHF/EditorSHFNavegador.ascx" TagName="EditorSHFNavegador"
+    TagPrefix="SIGEA" %>
 <%@ Register Src="~/Cuentas/Valuacion/Controles/DatosUsoActualDistribucion.ascx"
     TagName="DatosDistribucion" TagPrefix="SIGEA" %>
 <%@ Register Src="~/Cuentas/Valuacion/Controles/DatosUsoActualRecamaras.ascx" TagName="DatosRecamara"
@@ -126,4 +128,6 @@
         <asp:ImageButton ID="guardar_uso_actual_ImBtn" runat="server" SkinID="Save" CssClass="hidden" />
         <asp:ImageButton ID="cancelar_uso_actual_ImBtn" runat="server" SkinID="Cancel" CssClass="hidden" />
     </div>
+    <SIGEA:EditorSHFNavegador ID="navegador_Ctrl" runat="server"
+        AnteriorURL="Entorno.aspx" SiguienteURL="Construcciones.aspx" />
 </asp:Content>

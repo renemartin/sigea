@@ -1,7 +1,7 @@
 ﻿/// <reference name="MicrosoftAjax.js"/>
 
 function asyncCallFail(error) {
-    showErrorMessage(error.get_message());
+    //showErrorMessage(error.get_message());
 }
 
 function asyncCallResultBack(result, callback) {

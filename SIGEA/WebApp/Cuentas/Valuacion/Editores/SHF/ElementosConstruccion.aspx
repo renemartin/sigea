@@ -164,8 +164,7 @@
             <asp:ScriptReference Path="~/Scripts/Entities/Avaluos.js" />
             <asp:ScriptReference Path="~/Scripts/Entities/Construcciones.js" />
         </Scripts>
-    </asp:ScriptManager>
-    <SIGEA:EditorSHFNavegador ID="navegador_Ctrl" runat="server" />
+    </asp:ScriptManager>    
     <h1>
         Acabados y estructuras
     </h1>
@@ -223,4 +222,6 @@
                 CssClass="hidden" />
         </div>
     </div>
+    <SIGEA:EditorSHFNavegador ID="navegador_Ctrl" runat="server" 
+        AnteriorURL="Construcciones.aspx" SiguienteVisible="False" />
 </asp:Content>

@@ -134,6 +134,9 @@
                 if(data.idTipoEstacionamiento != sin_estacionamiento) {
                     this.validator.removeOptionalField(1);
                 }
+
+                setVisibility($get("seccion_muebles_cocina"), data.cocina);
+                setVisibility($get("seccion_tipo_cocina"), data.cocina);
             }
 
             this.fillData();

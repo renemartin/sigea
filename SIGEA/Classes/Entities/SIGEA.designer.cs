@@ -28285,7 +28285,7 @@ namespace SIGEA.Classes.Entities
 			OnCreated();
 		}
 		
-		[Column(Storage="_idFotografia", DbType="Int NOT NULL", IsPrimaryKey=true)]
+		[Column(Storage="_idFotografia", AutoSync=AutoSync.OnInsert, DbType="Int NOT NULL IDENTITY", IsPrimaryKey=true, IsDbGenerated=true)]
 		public int idFotografia
 		{
 			get

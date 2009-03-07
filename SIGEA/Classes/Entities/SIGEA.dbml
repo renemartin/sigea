@@ -1296,7 +1296,7 @@
   </Table>
   <Table Name="dbo.FotografiaInmueble" Member="FotografiaInmueble">
     <Type Name="FotografiaInmueble">
-      <Column Name="idFotografia" Type="System.Int32" DbType="Int NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="idFotografia" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
       <Column Name="idInmueble" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
       <Column Name="idArchivoThumbnail" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
       <Column Name="idArchivo" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />

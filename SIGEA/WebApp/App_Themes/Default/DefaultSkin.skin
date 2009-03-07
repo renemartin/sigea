@@ -20,6 +20,17 @@
 <asp:ImageButton runat="server" SkinId="Asign" CssClass="botonImagen" ImageUrl="~/Images/Icons/Asignar.gif" ToolTip="Asignar el registro" />
 <asp:ImageButton runat="server" SkinId="Review" CssClass="botonImagen" ImageUrl="~/Images/Icons/Revisar.gif" ToolTip="Revisar el registro" />
 <asp:ImageButton runat="server" SkinId="PDF" CssClass="botonImagen" ImageUrl="~/Images/Icons/PDF.gif" ToolTip="Descargar en PDF" />
+<asp:ImageButton runat="server" SkinId="Documentos" CssClass="botonImagen" ImageUrl="~/Images/Icons/Documentos.gif" ToolTip="Documentos" />
+<asp:ImageButton runat="server" SkinId="Fotografias" CssClass="botonImagen" ImageUrl="~/Images/Icons/Fotografias.gif" ToolTip="Fotografias" />
+<asp:ImageButton runat="server" SkinId="Mapas" CssClass="botonImagen" ImageUrl="~/Images/Icons/Mapas.gif" ToolTip="Mapas" />
+<asp:ImageButton runat="server" SkinId="Planos" CssClass="botonImagen" ImageUrl="~/Images/Icons/Planos.gif" ToolTip="Planos" />
+<asp:ImageButton runat="server" SkinId="Escrituras" CssClass="botonImagen" ImageUrl="~/Images/Icons/Escrituras.gif" ToolTip="Escrituras" />
+<asp:ImageButton runat="server" SkinId="Next" CssClass="botonImagen" ImageUrl="~/Images/Icons/Siguiente.gif" ToolTip="Siguiente" />
+<asp:ImageButton runat="server" SkinId="Previous" CssClass="botonImagen" ImageUrl="~/Images/Icons/Anterior.gif" ToolTip="Anterior" />
+<asp:ImageButton runat="server" SkinId="FinishBig" CssClass="botonImagen" ImageUrl="~/Images/Icons/FinalizarGrande.gif" ToolTip="Finalizar" />
+<asp:ImageButton runat="server" SkinId="NextBig" CssClass="botonImagen" ImageUrl="~/Images/Icons/SiguienteGrande.gif" ToolTip="Siguiente" />
+<asp:ImageButton runat="server" SkinId="PreviousBig" CssClass="botonImagen" ImageUrl="~/Images/Icons/AnteriorGrande.gif" ToolTip="Anterior" />
+<asp:ImageButton runat="server" SkinId="Finish" CssClass="botonImagen" ImageUrl="~/Images/Icons/Finalizar.gif" ToolTip="Finalizar" />
 <asp:ImageButton runat="server" SkinId="DeleteSmall" CssClass="botonImagen" ImageUrl="~/Images/Icons/EliminarChico.gif" ToolTip="Eliminar elemento" />
 <asp:ImageButton runat="server" SkinId="SearchSmall" CssClass="botonImagen" ImageUrl="~/Images/Icons/BuscarChico.gif" ToolTip="Buscar elemento" />
 <asp:ImageButton runat="server" SkinId="AddSmall" CssClass="botonImagen" ImageUrl="~/Images/Icons/AgregarChico.gif" ToolTip="Agregar elemento" />

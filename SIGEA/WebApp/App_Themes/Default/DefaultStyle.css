@@ -359,6 +359,21 @@ hr
 
 /* Formularios */
 
+.contenedor
+{
+	border-width: 1px;
+	border-color: #C0C0C0;
+	padding: 5px 5px 0px 5px;
+	margin-right: 5px;
+	margin-left: 5px;
+	margin-top: 5px;
+	background-image: url('Images/BKModulo.jpg');
+	background-repeat: repeat-x;
+	border-top-style: solid;
+	border-right-style: solid;
+	border-left-style: solid;
+}
+
 .formulario
 {
 	border: 1px solid #C0C0C0;
@@ -366,7 +381,6 @@ hr
 	padding: 5px 5px 0px 5px;
 	margin-right: 5px;
 	margin-left: 5px;
-	margin-top: 5px;
 	background-image: url('Images/BKModulo.jpg');
 	background-repeat: repeat-x;
 }
@@ -422,7 +436,7 @@ hr
 
 .bandejas
 {
-	width: 200px;
+	width: 160px;
 	padding: 10px;
 }
 
@@ -485,4 +499,22 @@ hr
 	color: #FFFFFF;
 	padding: 3px;
 	border: thin solid #FF0000;
+}
+
+/* Marco de trabajo */
+
+.barraLateral
+{
+	border: 1px solid #AFE289;
+	padding: 3px;
+	background-image: url('Images/BKLateral.jpg');
+	background-repeat: repeat-y;
+	display: inline;
+	width: 36px;
+}
+
+.barraNavegador
+{
+	margin-top: 15px;
+	text-align: right;
 }

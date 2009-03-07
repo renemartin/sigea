@@ -16,12 +16,12 @@ public partial class Cuentas_Valuacion_Bandejas : System.Web.UI.Page
         avaluos_GridView.DataBind();
     }
 
-    public string ValidateUrlFoto(string url)
+    public string ValidateUrlFoto(int idThumbnail)
     {
         string ruta_base = "../../";
-        string ruta_imagen = string.IsNullOrEmpty(url)
+        string ruta_imagen = idThumbnail == 0 
             ? "Images/NoDisponible.jpg"
-            : url;
+            : "Archivos/Fotografias/" + idThumbnail;
 
         return ruta_base + ruta_imagen;
     }
