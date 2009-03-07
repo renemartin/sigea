@@ -17,7 +17,22 @@
     <script type="text/javascript">
         // Variables
         var idAvaluo = 0;
-
+        
+        function loadConstruccion(idAvaluo) {
+            checarConstruccion(idAvaluo, checarTipoConstruccion);
+        }
+        
+        function checarTipoConstruccion(enable, key_id) {
+            
+            if (enable == false) {
+                setVisibility($get("<%= editar_estructuras_ImBtn.ClientID %>"), false);
+                setVisibility($get("<%= editar_acabados_ImBtn.ClientID %>"), false);
+                setVisibility($get("<%= editar_instalaciones_ImBtn.ClientID %>"), false);
+                showMessage("El avalúo debe contar con un tipo de construcción.\n Debe capturar la descripción de las construcciones.");
+            }
+            else
+                loadForm(key_id);
+        }
         // Inicialización
         function setupForm() {
             var link = $get("ctl00_menu_Ctrl_elementos_LkBtn")
@@ -37,7 +52,7 @@
         // Carga de registros
         function loadForm(key_id) {
             idAvaluo = key_id;
-
+            
             loadDatosEstructuras();
             loadDatosAcabados();
             loadDatosInstalaciones();
@@ -48,6 +63,7 @@
         }
         function loadDatosAcabados() {
             loadAcabadosAsync(idAvaluo, datosAcabados_Ctrl);
+            loadFachadaAsync(idAvaluo, datosAcabados_Ctrl);
         }
         function loadDatosInstalaciones() {
             loadInstalacionesAsync(idAvaluo, instalaciones_Ctrl);
@@ -88,6 +104,11 @@
             saveDatosAcabadosAsync(
                 idAvaluo
                 , datosAcabados_Ctrl.getData()
+                , saveDatosAcabados_Success);
+                
+            saveDatosFachadaAsync(
+                idAvaluo
+                , datosAcabados_Ctrl.getFachada()
                 , saveDatosAcabados_Success);
         }
         function saveDatosAcabados_Success() {
@@ -140,6 +161,7 @@
             <asp:ScriptReference Path="~/Scripts/Tables.js" />
             <asp:ScriptReference Path="~/Scripts/Forms.js" />
             <asp:ScriptReference Path="~/Scripts/Validation.js" />
+            <asp:ScriptReference Path="~/Scripts/Entities/Avaluos.js" />
             <asp:ScriptReference Path="~/Scripts/Entities/Construcciones.js" />
         </Scripts>
     </asp:ScriptManager>

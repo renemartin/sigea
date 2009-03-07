@@ -20,7 +20,6 @@ public partial class Cuentas_Valuacion_Editores_SHF_ElementosConstruccion : Syst
             SetAttributes();
         }
     }
-
     private void Initialization()
     {
         scripts.AppendLine("setupForm();");
@@ -37,7 +36,7 @@ public partial class Cuentas_Valuacion_Editores_SHF_ElementosConstruccion : Syst
         {
             throw new Exception("Identificador de avalúo no proporcionado");
         }
-        scripts.AppendLine(string.Format("loadForm({0});", idAvaluo));
+        scripts.AppendLine(string.Format("loadConstruccion({0});", idAvaluo));
     }
     private void RegisterScripts()
     {
