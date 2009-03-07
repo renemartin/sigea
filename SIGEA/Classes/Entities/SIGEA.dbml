@@ -51,6 +51,8 @@
       <Association Name="Archivo_AvaluoReferencia" Member="AvaluoReferencia" ThisKey="idArchivo" OtherKey="idArchivo" Type="AvaluoReferencia" />
       <Association Name="Archivo_Cliente" Member="Cliente" ThisKey="idArchivo" OtherKey="idLogotipo" Type="Cliente" />
       <Association Name="Archivo_HistorialRevision" Member="HistorialRevision" ThisKey="idArchivo" OtherKey="idCapturaAvaluo" Type="HistorialRevision" />
+      <Association Name="Archivo_FotografiaInmueble" Member="FotografiaInmueble" ThisKey="idArchivo" OtherKey="idArchivo" Type="FotografiaInmueble" />
+      <Association Name="Archivo_FotografiaInmueble1" Member="FotografiaInmueble1" ThisKey="idArchivo" OtherKey="idArchivoThumbnail" Type="FotografiaInmueble" />
       <Association Name="Carpeta_Archivo" Member="Carpeta" ThisKey="idCarpeta" OtherKey="idCarpeta" Type="Carpeta" IsForeignKey="true" />
     </Type>
   </Table>
@@ -1298,6 +1300,8 @@
       <Column Name="idArchivoThumbnail" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
       <Column Name="idArchivo" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
       <Column Name="principal" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
+      <Association Name="Archivo_FotografiaInmueble" Member="Archivo" ThisKey="idArchivo" OtherKey="idArchivo" Type="Archivo" IsForeignKey="true" />
+      <Association Name="Archivo_FotografiaInmueble1" Member="Archivo1" ThisKey="idArchivoThumbnail" OtherKey="idArchivo" Type="Archivo" IsForeignKey="true" />
       <Association Name="Inmueble_FotografiaInmueble" Member="Inmueble" ThisKey="idInmueble" OtherKey="idInmueble" Type="Inmueble" IsForeignKey="true" />
     </Type>
   </Table>
