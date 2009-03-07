@@ -51,6 +51,17 @@ function saveDatosAcabadosAsync(idAvaluo, datosAcabados, callBack) {
         , callBack
     );
 }
+
+function saveDatosFachadaAsync(idAvaluo, datosFachada, callBack) {
+    EntityWrappers.SaveFachada(
+        idAvaluo
+        , datosFachada
+        , asyncCallResultBack
+        , asyncCallFail
+        , callBack
+    );
+}
+
 function saveDatosInstalacionesConstruccionAsync(idAvaluo, datosInstalacionesTipoConstruccion, datosInstalacionesPrivativas, datosInstalacionesComunes, callBack) {
     EntityWrappers.SaveInstalacionesConstruccion(
         idAvaluo
@@ -89,6 +100,12 @@ function loadEstructurasAsync(idAvaluo, control) {
 function loadAcabadosAsync(idAvaluo, control) {
     EntityWrappers.LoadAcabados(
         idAvaluo, asyncControlLoad, asyncCallFail, control);
+    
+    loadFachadaAsync(idAvaluo, control);
+}
+function loadFachadaAsync(idAvaluo, control) {
+    EntityWrappers.LoadFachada(
+        idAvaluo, asyncControlFachada, asyncCallFail, control);
 }
 function loadInstalacionesAsync(idAvaluo, control) {
     EntityWrappers.LoadInstalacionTipoConstruccion(
