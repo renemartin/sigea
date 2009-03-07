@@ -144,8 +144,7 @@
             <asp:ScriptReference Path="~/Scripts/Validation.js" />
             <asp:ScriptReference Path="~/Scripts/Entities/Construcciones.js" />
         </Scripts>
-    </asp:ScriptManager>
-    <SIGEA:EditorSHFNavegador ID="EditorSHFNavegador1" runat="server" />
+    </asp:ScriptManager>    
     <h1>
         Descripción de las construcciones
     </h1>
@@ -196,4 +195,6 @@
         <asp:ImageButton ID="guardar_condominio_ImBtn" runat="server" SkinID="Save" CssClass="hidden" />
         <asp:ImageButton ID="cancelar_condominio_ImBtn" runat="server" SkinID="Cancel" CssClass="hidden" />
     </div>
+    <SIGEA:EditorSHFNavegador ID="navegador_Ctrl" runat="server"
+        AnteriorURL="UsoActual.aspx" SiguienteURL="ElementosConstruccion.aspx" />
 </asp:Content>

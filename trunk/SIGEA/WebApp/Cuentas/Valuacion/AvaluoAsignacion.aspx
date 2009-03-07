@@ -113,6 +113,7 @@
     </script>
 
     <div class="modulo">
+        <br />
         <div class="formulario">
             <div class="etiqueta1">
                 <span class="textoNegritas">Filtro:</span>

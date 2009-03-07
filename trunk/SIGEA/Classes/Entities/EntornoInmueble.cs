@@ -60,6 +60,7 @@ namespace SIGEA.Classes.Entities
 
             return vias_acceso_query.ToArray();
         }
+        
         public static void SetViasAcceso(Inmueble inmueble, Dictionary<string, object>[] data_set)
         {
             ViasAcceso via_acceso = null;
@@ -172,7 +173,7 @@ namespace SIGEA.Classes.Entities
                 : null;
             banquetas = (bool)data["banquetas"];
             idTipoBanquetas = data.ContainsKey("idTipoBanquetas")
-                ? (short?)short.Parse(data["idTipoBanqueras"].ToString())
+                ? (short?)short.Parse(data["idTipoBanquetas"].ToString())
                 : null;
             guarniciones = (bool)data["guarniciones"];
             idTipoGuarniciones = data.ContainsKey("idTipoGuarniciones")

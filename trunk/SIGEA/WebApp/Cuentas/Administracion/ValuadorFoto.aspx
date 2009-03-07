@@ -11,6 +11,7 @@
 <body>
     <form id="form1" runat="server">
     <div class="modulo">
+        <br />
         <div class="formulario">
             <span class="textoInstruccion">Seleccione una imagen para el valuador y presione el
                 icono de guardar para cargarla </span>

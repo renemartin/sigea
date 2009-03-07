@@ -134,8 +134,7 @@
             <asp:ScriptReference Path="~/Scripts/Validation.js" />
             <asp:ScriptReference Path="~/Scripts/Entities/Inmuebles.js" />
         </Scripts>
-    </asp:ScriptManager>
-    <SIGEA:EditorSHFNavegador ID="navegador_Ctrl" runat="server" />
+    </asp:ScriptManager>    
     <h1>
         Datos del entorno</h1>
     <div class="barraAcciones">
@@ -178,4 +177,6 @@
         <asp:ImageButton ID="cancelar_equipamiento_ImBtn" runat="server" SkinID="Cancel"
             CssClass="hidden" />
     </div>
+    <SIGEA:EditorSHFNavegador ID="navegador_Ctrl" runat="server"
+        AnteriorURL="DatosInmueble.aspx" SiguienteURL="Construcciones.aspx" />
 </asp:Content>
