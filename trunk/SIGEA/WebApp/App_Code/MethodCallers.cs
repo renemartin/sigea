@@ -431,17 +431,20 @@ public class MethodCallers : System.Web.Services.WebService
     
     [WebMethod]
     public string[] GetNombresMateriales(string prefixText, int count, string contextKey)
-    {
-
-        string[] prueba = new string[3];
-        prueba[0] = "hola";
-        prueba[1] = "holandes";
-        prueba[2] = "holanda";       
-        return prueba;
+     {
+        
+        //string[] lista = new string[10];
+        //short idTipoMaterial = 7;
+        //lista = Materiales.GetMateriales(data_context, prefixText, count, contextKey);
+        return Materiales.GetMateriales(data_context, prefixText, count, contextKey);
 
      }
- 
-    #endregion
+    [WebMethod]
+    public string[] GetDescripcionServicios(string prefixText, int count, string contextKey)
+    {
+        return Servicios.GetServicios(data_context,prefixText,count,contextKey);
+    }
+     #endregion
 
     #region Búsquedas escalares
     [WebMethod]
