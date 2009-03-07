@@ -746,6 +746,25 @@ public class EntityWrappers : System.Web.Services.WebService
     }
 
     [WebMethod]
+    public void SaveFachada(
+        int idAvaluo
+        , Entity datosFachada
+        )
+    {
+        SIGEADataContext data_context = new SIGEADataContext(ConfigurationManager.ConnectionStrings["SIGEA_ConnectionString"].ConnectionString);
+        Inmueble inmueble = Inmueble.GetFromIdAvaluo(data_context, idAvaluo);
+
+        if (inmueble == null)
+        {
+            throw new Exception("El avalúo no cuenta con un inmueble registrado");
+        }
+
+        ConstruccionInmueble construccion = ConstruccionInmueble.GetForDataUpdate(inmueble);
+        construccion.SetFachada(datosFachada);
+        data_context.SubmitChanges();
+    }
+
+    [WebMethod]
     public void SaveInstalacionesConstruccion(
         int idAvaluo
         , Entity datosInstalacionesTipoConstruccion
@@ -791,6 +810,17 @@ public class EntityWrappers : System.Web.Services.WebService
             return null;
 
         return AcabadoTipoConstruccion.GetAcabados(tipo_construccion);
+    }
+    [WebMethod]
+    public Entity LoadFachada(int idAvaluo)
+    {
+        Inmueble inmueble = Inmueble.GetFromIdAvaluo(common_context, idAvaluo);
+        
+        if (inmueble == null)
+            return null;
+
+        ConstruccionInmueble construccion = ConstruccionInmueble.GetForDataUpdate(inmueble);
+        return construccion.GetFachada();
     }
 
     [WebMethod]
