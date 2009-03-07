@@ -1261,6 +1261,7 @@
       <Column Name="horizontal" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
       <Column Name="vertical" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
       <Column Name="unidadesRentables" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="fachada" Type="System.String" DbType="NVarChar(300)" CanBeNull="true" />
       <Association Name="ConstruccionInmueble_TipoConstruccion" Member="TipoConstruccion" ThisKey="idConstruccion" OtherKey="idConstruccion" Type="TipoConstruccion" />
       <Association Name="ConstruccionInmueble_InstalacionConstruccion" Member="InstalacionConstruccion" ThisKey="idConstruccion" OtherKey="idConstruccion" Type="InstalacionConstruccion" />
       <Association Name="Inmueble_ConstruccionInmueble" Member="Inmueble" ThisKey="idInmueble" OtherKey="idInmueble" Type="Inmueble" IsForeignKey="true" />
