@@ -134,3 +134,12 @@ var status_sin_revisor = 3;
 var status_revision = 4;
 var status_correccion = 5;
 var status_finalizado = 9;
+
+function checarConstruccion(idAvaluo, callBack) {
+    MethodCallers.CheckIfConstruccion(
+        idAvaluo
+        , callBack
+        , asyncCallFail
+        , idAvaluo
+    );
+}
