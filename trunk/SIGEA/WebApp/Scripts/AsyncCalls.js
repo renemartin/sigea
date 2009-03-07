@@ -37,6 +37,9 @@ function asyncCallSingleListBack(result, callBackList) {
 function asyncControlLoad(data, control) {
     control.setData(data);
 }
+function asyncControlFachada(data, control) {
+    control.setFachada(data);
+}
 function asyncSetTextResult(data, target) {
     if (target != null) {
         hideControlLoading(target.id);
