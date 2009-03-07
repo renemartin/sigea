@@ -9,11 +9,12 @@
         <td class="celdaValor">
             <asp:TextBox ID="cimentacion_TBox" runat="server" TextMode="MultiLine" SkinID="MultiLine"></asp:TextBox>
             <cc1:AutoCompleteExtender ID="cimentacion_TBox_AutoCompleteExtender" 
-                runat="server" MinimumPrefixLength="3"
+                runat="server" MinimumPrefixLength="2"
                 ServiceMethod="GetNombresMateriales" 
                 ServicePath="~/Services/MethodCallers.asmx" TargetControlID="cimentacion_TBox" 
-                UseContextKey="True" ContextKey=" " CompletionInterval="500" 
-                FirstRowSelected="True">
+                UseContextKey="True" ContextKey="cimentacion" CompletionInterval="500" 
+                FirstRowSelected="True" DelimiterCharacters=", " 
+                ShowOnlyCurrentWordInCompletionListItem="True">
             </cc1:AutoCompleteExtender>
         </td>
     </tr>
@@ -23,6 +24,13 @@
         </td>
         <td class="celdaValor">
             <asp:TextBox ID="muros_TBox" runat="server" TextMode="MultiLine" SkinID="MultiLine"></asp:TextBox>
+            <cc1:AutoCompleteExtender ID="muros_TBox_AutoCompleteExtender" runat="server" 
+                CompletionInterval="500" ContextKey="Muros" DelimiterCharacters=", " 
+                Enabled="True" ServiceMethod="GetNombresMateriales" 
+                ServicePath="~/Services/MethodCallers.asmx" TargetControlID="muros_TBox" 
+                UseContextKey="True" MinimumPrefixLength="2" 
+                ShowOnlyCurrentWordInCompletionListItem="True">
+            </cc1:AutoCompleteExtender>
         </td>
     </tr>
     <tr>
@@ -31,6 +39,13 @@
         </td>
         <td class="celdaValor">
             <asp:TextBox ID="escaleras_TBox" runat="server" TextMode="MultiLine" SkinID="MultiLine"></asp:TextBox>
+            <cc1:AutoCompleteExtender ID="escaleras_TBox_AutoCompleteExtender" 
+                runat="server" CompletionInterval="500" ContextKey="Escaleras" 
+                DelimiterCharacters=", " Enabled="True" ServiceMethod="GetNombresMateriales" 
+                ServicePath="~/Services/MethodCallers.asmx"
+                TargetControlID="escaleras_TBox" UseContextKey="True" 
+                MinimumPrefixLength="2" ShowOnlyCurrentWordInCompletionListItem="True">
+            </cc1:AutoCompleteExtender>
         </td>
     </tr>
     <tr>
@@ -39,6 +54,13 @@
         </td>
         <td class="celdaValor">
             <asp:TextBox ID="entrepisosTechos_TBox" runat="server" TextMode="MultiLine" SkinID="MultiLine"></asp:TextBox>
+            <cc1:AutoCompleteExtender ID="entrepisosTechos_TBox_AutoCompleteExtender" 
+                runat="server" CompletionInterval="500" ContextKey="Entrepisos" 
+                DelimiterCharacters=", " Enabled="True" ServiceMethod="GetNombresMateriales" 
+                ServicePath="~/Services/MethodCallers.asmx" 
+                TargetControlID="entrepisosTechos_TBox" UseContextKey="True" 
+                MinimumPrefixLength="2" ShowOnlyCurrentWordInCompletionListItem="True">
+            </cc1:AutoCompleteExtender>
         </td>
     </tr>
     <tr>
@@ -47,6 +69,13 @@
         </td>
         <td class="celdaValor">
             <asp:TextBox ID="trabesColumnas_TBox" runat="server" TextMode="MultiLine" SkinID="MultiLine"></asp:TextBox>
+            <cc1:AutoCompleteExtender ID="trabesColumnas_TBox_AutoCompleteExtender" 
+                runat="server" CompletionInterval="500" ContextKey="Trabes" 
+                DelimiterCharacters=", " Enabled="True" ServiceMethod="GetNombresMateriales" 
+                ServicePath="~/Services/MethodCallers.asmx" 
+                TargetControlID="trabesColumnas_TBox" UseContextKey="True" 
+                MinimumPrefixLength="2" ShowOnlyCurrentWordInCompletionListItem="True">
+            </cc1:AutoCompleteExtender>
         </td>
     </tr>
     
