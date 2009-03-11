@@ -25,7 +25,7 @@
         </td>
         <td class="celdaValor">
             <asp:TextBox ID="salaPisos_TBox" runat="server" TextMode="MultiLine" 
-                SkinID="MultiLine" Height="50px" Width="200px"></asp:TextBox>
+                SkinID="MultiLine" Height="50px" Width="200px" MaxLength="500"></asp:TextBox>
             <cc1:AutoCompleteExtender ID="salaPisos_TBox_AutoCompleteExtender" 
                 runat="server" CompletionInterval="500" ContextKey="Pisos Interiores" 
                 DelimiterCharacters=", " Enabled="True" ServiceMethod="GetNombresMateriales" 
@@ -36,7 +36,7 @@
         </td>
         <td class="celdaValor">
             <asp:TextBox ID="salaMuros_TBox" runat="server" TextMode="MultiLine" 
-                SkinID="MultiLine" Height="50px" Width="200px"></asp:TextBox>
+                SkinID="MultiLine" Height="50px" Width="200px" MaxLength="500"></asp:TextBox>
             <cc1:AutoCompleteExtender ID="salaMuros_TBox_AutoCompleteExtender" 
                 runat="server" CompletionInterval="500" ContextKey="Muros" 
                 DelimiterCharacters=", " Enabled="True" ServiceMethod="GetNombresMateriales" 
@@ -47,7 +47,7 @@
         </td>
         <td class="celdaValor">
             <asp:TextBox ID="salaPlafones_TBox" runat="server" TextMode="MultiLine" 
-                SkinID="MultiLine" Height="50px" Width="200px"></asp:TextBox>
+                SkinID="MultiLine" Height="50px" Width="200px" MaxLength="500"></asp:TextBox>
             <cc1:AutoCompleteExtender ID="salaPlafones_TBox_AutoCompleteExtender" 
                 runat="server" CompletionInterval="500" ContextKey="Plafones" 
                 DelimiterCharacters=", " Enabled="True" ServiceMethod="GetNombresMateriales" 
@@ -63,7 +63,7 @@
         </td>
         <td class="celdaValor">
             <asp:TextBox ID="comedorPisos_TBox" runat="server" TextMode="MultiLine" 
-                SkinID="MultiLine" Height="50px" Width="200px"></asp:TextBox>
+                SkinID="MultiLine" Height="50px" Width="200px" MaxLength="500"></asp:TextBox>
             <cc1:AutoCompleteExtender ID="comedorPisos_TBox_AutoCompleteExtender" 
                 runat="server" CompletionInterval="500" ContextKey="Pisos Interiores" 
                 DelimiterCharacters=", " Enabled="True" ServiceMethod="GetNombresMateriales" 
@@ -74,7 +74,7 @@
         </td>
         <td class="celdaValor">
             <asp:TextBox ID="comedorMuros_TBox" runat="server" TextMode="MultiLine" 
-                SkinID="MultiLine" Height="50px" Width="200px"></asp:TextBox>
+                SkinID="MultiLine" Height="50px" Width="200px" MaxLength="500"></asp:TextBox>
             <cc1:AutoCompleteExtender ID="comedorMuros_TBox_AutoCompleteExtender" 
                runat="server" CompletionInterval="500" ContextKey="Muros" 
                 DelimiterCharacters=", " Enabled="True" ServiceMethod="GetNombresMateriales" 
@@ -85,7 +85,7 @@
         </td>
         <td class="celdaValor">
             <asp:TextBox ID="comedorPlafones_TBox" runat="server" TextMode="MultiLine" 
-                SkinID="MultiLine" Height="50px" Width="200px"></asp:TextBox>
+                SkinID="MultiLine" Height="50px" Width="200px" MaxLength="500"></asp:TextBox>
             <cc1:AutoCompleteExtender ID="comedorPlafones_TBox_AutoCompleteExtender" 
                 runat="server" CompletionInterval="500" ContextKey="Plafones" 
                 DelimiterCharacters=", " Enabled="True" ServiceMethod="GetNombresMateriales" 
@@ -101,7 +101,7 @@
         </td>
         <td class="celdaValor">
             <asp:TextBox ID="cocinaPisos_TBox" runat="server" TextMode="MultiLine" 
-                SkinID="MultiLine" Height="50px" Width="200px"></asp:TextBox>
+                SkinID="MultiLine" Height="50px" Width="200px" MaxLength="500"></asp:TextBox>
             <cc1:AutoCompleteExtender ID="cocinaPisos_TBox_AutoCompleteExtender" 
                 runat="server" CompletionInterval="500" ContextKey="Pisos Interiores" 
                 DelimiterCharacters=", " Enabled="True" ServiceMethod="GetNombresMateriales" 
@@ -112,7 +112,7 @@
         </td>
         <td class="celdaValor">
             <asp:TextBox ID="cocinaMuros_TBox" runat="server" TextMode="MultiLine" 
-                SkinID="MultiLine" Height="50px" Width="200px"></asp:TextBox>
+                SkinID="MultiLine" Height="50px" Width="200px" MaxLength="500"></asp:TextBox>
             <cc1:AutoCompleteExtender ID="cocinaMuros_TBox_AutoCompleteExtender" 
                runat="server" CompletionInterval="500" ContextKey="Muros" 
                 DelimiterCharacters=", " Enabled="True" ServiceMethod="GetNombresMateriales" 
@@ -123,7 +123,7 @@
         </td>
         <td class="celdaValor">
             <asp:TextBox ID="cocinaPlafones_TBox" runat="server" TextMode="MultiLine" 
-                SkinID="MultiLine" Height="50px" Width="200px"></asp:TextBox>
+                SkinID="MultiLine" Height="50px" Width="200px" MaxLength="500"></asp:TextBox>
             <cc1:AutoCompleteExtender ID="cocinaPlafones_TBox_AutoCompleteExtender" 
                 runat="server" CompletionInterval="500" ContextKey="Plafones" 
                 DelimiterCharacters=", " Enabled="True" ServiceMethod="GetNombresMateriales" 
@@ -139,7 +139,7 @@
         </td>
         <td class="celdaValor">
             <asp:TextBox ID="recamarasPisos_TBox" runat="server" TextMode="MultiLine" 
-                SkinID="MultiLine" Height="50px" Width="200px"></asp:TextBox>
+                SkinID="MultiLine" Height="50px" Width="200px" MaxLength="500"></asp:TextBox>
             <cc1:AutoCompleteExtender ID="recamarasPisos_TBox_AutoCompleteExtender" 
                runat="server" CompletionInterval="500" ContextKey="Pisos Interiores" 
                 DelimiterCharacters=", " Enabled="True" ServiceMethod="GetNombresMateriales" 
@@ -150,7 +150,7 @@
         </td>
         <td class="celdaValor">
             <asp:TextBox ID="recamarasMuros_TBox" runat="server" TextMode="MultiLine" 
-                SkinID="MultiLine" Height="50px" Width="200px"></asp:TextBox>
+                SkinID="MultiLine" Height="50px" Width="200px" MaxLength="500"></asp:TextBox>
             <cc1:AutoCompleteExtender ID="recamarasMuros_TBox_AutoCompleteExtender" 
                 runat="server" CompletionInterval="500" ContextKey="Muros" 
                 DelimiterCharacters=", " Enabled="True" ServiceMethod="GetNombresMateriales" 
@@ -161,7 +161,7 @@
         </td>
         <td class="celdaValor">
             <asp:TextBox ID="recamarasPlafones_TBox" runat="server" TextMode="MultiLine" 
-                SkinID="MultiLine" Height="50px" Width="200px"></asp:TextBox>
+                SkinID="MultiLine" Height="50px" Width="200px" MaxLength="500"></asp:TextBox>
             <cc1:AutoCompleteExtender ID="recamarasPlafones_TBox_AutoCompleteExtender" 
                 runat="server" CompletionInterval="500" ContextKey="Plafones" 
                 DelimiterCharacters=", " Enabled="True" ServiceMethod="GetNombresMateriales" 
@@ -177,7 +177,7 @@
         </td>
         <td class="celdaValor">
             <asp:TextBox ID="banosPisos_TBox" runat="server" TextMode="MultiLine" 
-                SkinID="MultiLine" Height="50px" Width="200px"></asp:TextBox>
+                SkinID="MultiLine" Height="50px" Width="200px" MaxLength="500"></asp:TextBox>
             <cc1:AutoCompleteExtender ID="banosPisos_TBox_AutoCompleteExtender" 
                runat="server" CompletionInterval="500" ContextKey="Pisos Interiores" 
                 DelimiterCharacters=", " Enabled="True" ServiceMethod="GetNombresMateriales" 
@@ -188,7 +188,7 @@
         </td>
         <td class="celdaValor">
             <asp:TextBox ID="banosMuros_TBox" runat="server" TextMode="MultiLine" 
-                SkinID="MultiLine" Height="50px" Width="200px"></asp:TextBox>
+                SkinID="MultiLine" Height="50px" Width="200px" MaxLength="500"></asp:TextBox>
             <cc1:AutoCompleteExtender ID="banosMuros_TBox_AutoCompleteExtender" 
                 runat="server" CompletionInterval="500" ContextKey="Muros" 
                 DelimiterCharacters=", " Enabled="True" ServiceMethod="GetNombresMateriales" 
@@ -199,7 +199,7 @@
         </td>
         <td class="celdaValor">
             <asp:TextBox ID="banosPlafones_TBox" runat="server" TextMode="MultiLine" 
-                SkinID="MultiLine" Height="50px" Width="200px"></asp:TextBox>
+                SkinID="MultiLine" Height="50px" Width="200px" v></asp:TextBox>
             <cc1:AutoCompleteExtender ID="banosPlafones_TBox_AutoCompleteExtender" 
                 runat="server" CompletionInterval="500" ContextKey="Plafones" 
                 DelimiterCharacters=", " Enabled="True" ServiceMethod="GetNombresMateriales" 
@@ -215,7 +215,7 @@
         </td>
         <td class="celdaValor">
             <asp:TextBox ID="patiosPisos_TBox" runat="server" TextMode="MultiLine" 
-                SkinID="MultiLine" Height="50px" Width="200px"></asp:TextBox>
+                SkinID="MultiLine" Height="50px" Width="200px" MaxLength="500"></asp:TextBox>
             <cc1:AutoCompleteExtender ID="patiosPisos_TBox_AutoCompleteExtender" 
                 runat="server" CompletionInterval="500" ContextKey="Pisos Exteriores" 
                 DelimiterCharacters=", " Enabled="True" ServiceMethod="GetNombresMateriales" 
@@ -226,7 +226,7 @@
         </td>
         <td class="celdaValor">
             <asp:TextBox ID="patiosMuros_TBox" runat="server" TextMode="MultiLine" 
-                SkinID="MultiLine" Height="50px" Width="200px"></asp:TextBox>
+                SkinID="MultiLine" Height="50px" Width="200px" MaxLength="500"></asp:TextBox>
             <cc1:AutoCompleteExtender ID="patiosMuros_TBox_AutoCompleteExtender" 
                 runat="server" CompletionInterval="500" ContextKey="Muros" 
                 DelimiterCharacters=", " Enabled="True" ServiceMethod="GetNombresMateriales" 
@@ -237,7 +237,7 @@
         </td>
         <td class="celdaValor">
             <asp:TextBox ID="patiosPlafones_TBox" runat="server" TextMode="MultiLine" 
-                SkinID="MultiLine" Height="50px" Width="200px"></asp:TextBox>
+                SkinID="MultiLine" Height="50px" Width="200px" MaxLength="500"></asp:TextBox>
             <cc1:AutoCompleteExtender ID="patiosPlafones_TBox_AutoCompleteExtender" 
                 runat="server" CompletionInterval="500" ContextKey="Plafones" 
                 DelimiterCharacters=", " Enabled="True" ServiceMethod="GetNombresMateriales" 
@@ -253,7 +253,7 @@
         </td>
         <td class="celdaValor">
             <asp:TextBox ID="estacionamientoPisos_TBox" runat="server" TextMode="MultiLine" 
-                SkinID="MultiLine" Height="50px" Width="200px"></asp:TextBox>
+                SkinID="MultiLine" Height="50px" Width="200px" MaxLength="500"></asp:TextBox>
             <cc1:AutoCompleteExtender ID="estacionamientoPisos_TBox_AutoCompleteExtender" 
                 runat="server" CompletionInterval="500" ContextKey="Pisos Exteriores" 
                 DelimiterCharacters=", " Enabled="True" ServiceMethod="GetNombresMateriales" 
@@ -264,7 +264,7 @@
         </td>
         <td class="celdaValor">
             <asp:TextBox ID="estacionamientoMuros_TBox" runat="server" TextMode="MultiLine" 
-                SkinID="MultiLine" Height="50px" Width="200px"></asp:TextBox>
+                SkinID="MultiLine" Height="50px" Width="200px" MaxLength="500"></asp:TextBox>
             <cc1:AutoCompleteExtender ID="estacionamientoMuros_TBox_AutoCompleteExtender" 
                  runat="server" CompletionInterval="500" ContextKey="Muros" 
                 DelimiterCharacters=", " Enabled="True" ServiceMethod="GetNombresMateriales" 
@@ -275,7 +275,7 @@
         </td>
         <td class="celdaValor">
             <asp:TextBox ID="estacionamientoPlafones_TBox" runat="server" 
-                TextMode="MultiLine" SkinID="MultiLine" Height="50px" Width="200px"></asp:TextBox>
+                TextMode="MultiLine" SkinID="MultiLine" Height="50px" Width="200px" MaxLength="500"></asp:TextBox>
             <cc1:AutoCompleteExtender ID="estacionamientoPlafones_TBox_AutoCompleteExtender" 
                  runat="server" CompletionInterval="500" ContextKey="Plafones" 
                 DelimiterCharacters=", " Enabled="True" ServiceMethod="GetNombresMateriales" 
@@ -291,7 +291,7 @@
         </td>
         <td class="celdaValor" colspan="3">
             <asp:TextBox ID="fachada_TBox" runat="server" TextMode="MultiLine" 
-                SkinID="MultiLine" Height="50px" Width="600px"></asp:TextBox>
+                SkinID="MultiLine" Height="50px" Width="600px" MaxLength="500"></asp:TextBox>
             <cc1:AutoCompleteExtender ID="fachada_TBox_AutoCompleteExtender" runat="server" 
                 CompletionInterval="500" ContextKey="Fachada" DelimiterCharacters=", " 
                 Enabled="True"  ServicePath="~/Services/MethodCallers.asmx" ServiceMethod = "GetNombresMateriales" 

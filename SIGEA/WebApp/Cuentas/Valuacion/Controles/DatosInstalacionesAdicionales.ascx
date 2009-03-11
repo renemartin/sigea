@@ -25,7 +25,7 @@
     </tr>
     <tr style="display: none;">
         <td class="celdaValor">
-            <asp:TextBox ID="descripcion_TBox" runat="server"></asp:TextBox>
+            <asp:TextBox ID="descripcion_TBox" runat="server" MaxLength="50" ></asp:TextBox>
         </td>
         <td class="celdaValor">
             <asp:TextBox ID="cantidad_TBox" runat="server" SkinID="Numero"></asp:TextBox>

@@ -8,7 +8,8 @@
             Hidráulicas:</td>
         <td class="celdaValor">
             <asp:TextBox ID="hidraulicas_TBox" runat="server" TextMode="MultiLine" 
-                SkinID="MultiLine" Height="40px" Width="400px"></asp:TextBox>
+                SkinID="MultiLine" Height="40px" Width="400px" MaxLength="300" 
+                ontextchanged="hidraulicas_TBox_TextChanged"></asp:TextBox>
             <cc1:AutoCompleteExtender ID="hidraulicas_TBox_AutoCompleteExtender" 
                 runat="server" CompletionInterval="500" ContextKey="Drenaje" 
                 DelimiterCharacters=", " Enabled="True" 
@@ -23,7 +24,7 @@
             Sanitarias:</td>
         <td class="celdaValor">
             <asp:TextBox ID="sanitarias_TBox" runat="server" TextMode="MultiLine" 
-                SkinID="MultiLine" Height="40px" Width="400px"></asp:TextBox>
+                SkinID="MultiLine" Height="40px" Width="400px" MaxLength="300" ></asp:TextBox>
             <cc1:AutoCompleteExtender ID="sanitarias_TBox_AutoCompleteExtender" 
                 runat="server" CompletionInterval="500" ContextKey="Drenaje" 
                 DelimiterCharacters=", " Enabled="True" ServiceMethod="GetDescripcionServicios" 
@@ -39,7 +40,7 @@
         </td>
         <td class="celdaValor">
             <asp:TextBox ID="electricas_TBox" runat="server" TextMode="MultiLine" 
-                SkinID="MultiLine" Height="40px" Width="400px"></asp:TextBox> 
+                SkinID="MultiLine" Height="40px" Width="400px" MaxLength="300" ></asp:TextBox> 
             <cc1:AutoCompleteExtender ID="electricas_TBox_AutoCompleteExtender" 
                 runat="server" ContextKey="Electrificación" DelimiterCharacters=", " 
                 Enabled="True" ServiceMethod="GetDescripcionServicios" 
@@ -58,7 +59,7 @@
             Carpinteria:</td>
         <td class="celdaValor">
             <asp:TextBox ID="carpinteria_TBox" runat="server" TextMode="MultiLine" 
-                SkinID="MultiLine" Height="50px" Width="400px"></asp:TextBox>
+                SkinID="MultiLine" Height="50px" Width="400px" MaxLength="300" ></asp:TextBox>
             <cc1:AutoCompleteExtender ID="carpinteria_TBox_AutoCompleteExtender" 
                 runat="server" CompletionInterval="500" ContextKey="Carpintería" 
                 DelimiterCharacters=", " Enabled="True" ServiceMethod="GetNombresMateriales" 
@@ -73,7 +74,7 @@
             Herrería:</td>
         <td class="celdaValor">
             <asp:TextBox ID="herreria_TBox" runat="server" TextMode="MultiLine" 
-                SkinID="MultiLine" Height="50px" Width="400px"></asp:TextBox>
+                SkinID="MultiLine" Height="50px" Width="400px" MaxLength="300" ></asp:TextBox>
             <cc1:AutoCompleteExtender ID="herreria_TBox_AutoCompleteExtender" 
                 runat="server" CompletionInterval="500" ContextKey="Herrería" 
                 DelimiterCharacters=", " Enabled="True" ServiceMethod="GetNombresMateriales" 
@@ -88,7 +89,7 @@
             Cancelería:</td>
         <td class="celdaValor">
             <asp:TextBox ID="canceleria_TBox" runat="server" TextMode="MultiLine" 
-                SkinID="MultiLine" Height="50px" Width="400px"></asp:TextBox>
+                SkinID="MultiLine" Height="50px" Width="400px" MaxLength="300" ></asp:TextBox>
             <cc1:AutoCompleteExtender ID="canceleria_TBox_AutoCompleteExtender" 
                 runat="server" ContextKey="Cancelería" DelimiterCharacters=", " Enabled="True" 
                 ServiceMethod="GetNombresMateriales" 
