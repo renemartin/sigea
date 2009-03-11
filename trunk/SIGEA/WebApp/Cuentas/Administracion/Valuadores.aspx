@@ -105,7 +105,7 @@
                 </asp:GridView>
                 <asp:LinqDataSource ID="valuadores_DS" runat="server" ContextTypeName="SIGEA.Classes.Entities.SIGEADataContext"
                     OrderBy="nombre" Select="new (idValuador, nombre, externo, activo, DatoContacto, TipoValuador)"
-                    TableName="Valuador">
+                    TableName="Valuador" StoreOriginalValuesInViewState="False" OnContextCreating="SetupContext">
                     <WhereParameters>
                         <asp:ControlParameter ControlID="nombre_TBox" Name="nombre" PropertyName="Text" Type="String" />
                         <asp:ControlParameter ControlID="tipo_DDList" Name="idTipoValuador" PropertyName="SelectedValue"

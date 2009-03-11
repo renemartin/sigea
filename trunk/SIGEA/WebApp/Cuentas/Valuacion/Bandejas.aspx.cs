@@ -16,12 +16,12 @@ public partial class Cuentas_Valuacion_Bandejas : System.Web.UI.Page
         avaluos_GridView.DataBind();
     }
 
-    public string ValidateUrlFoto(int idThumbnail)
+    public string ValidateUrlFoto(string urlThumbnail)
     {
         string ruta_base = "../../";
-        string ruta_imagen = idThumbnail == 0 
+        string ruta_imagen = string.IsNullOrEmpty(urlThumbnail) 
             ? "Images/NoDisponible.jpg"
-            : "Archivos/Fotografias/" + idThumbnail;
+            : urlThumbnail;
 
         return ruta_base + ruta_imagen;
     }
@@ -58,6 +58,7 @@ public partial class Cuentas_Valuacion_Bandejas : System.Web.UI.Page
     private void refresh_ImBtn_Click(object sender, ImageClickEventArgs e)
     {
         GetBandejasCount();
+        avaluos_GridView.DataBind();
     }
     private void noAsignados_LkBtn_Click(object sender, EventArgs e)
     {

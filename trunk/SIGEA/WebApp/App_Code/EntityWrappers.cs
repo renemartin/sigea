@@ -23,9 +23,8 @@ public class EntityWrappers : System.Web.Services.WebService
 
     #region Datos del avaluo
     [WebMethod]
-    public int SaveAvaluoInmueble(
-        int idAvaluo
-        , Entity datosAvaluo
+    public object[] SaveAvaluoInmueble(
+        Entity datosAvaluo
         , Entity datosCredito
         , Entity datosSolicitante
         , Entity datosDireccionSolicitante
@@ -37,47 +36,41 @@ public class EntityWrappers : System.Web.Services.WebService
     {
         SIGEADataContext data_context = new SIGEADataContext(ConfigurationManager.ConnectionStrings["SIGEA_ConnectionString"].ConnectionString);
 
-        AvaluoInmobiliario avaluo = AvaluoInmobiliario.GetForDataUpadte(data_context, idAvaluo);
-        if (avaluo == null)
-            throw new Exception("El identificador del avalúo es inválido");
+        int idAvaluo = 0;
 
-        CodigoPostal cp_solicitante = CodigoPostal.GetFromData(data_context, datosDireccionSolicitante);
-        CodigoPostal cp_inmueble = CodigoPostal.GetFromData(data_context, datosDireccionInmueble);
-        CodigoPostal cp_propietario = CodigoPostal.GetFromData(data_context, datosDireccionPropietario);
-
-        avaluo.SetData(datosAvaluo);
-        avaluo.Solicitante.SetData(datosSolicitante);
-        avaluo.Solicitante.Direccion.SetData(cp_solicitante, datosDireccionSolicitante);
-        avaluo.Inmueble.SetData(datosInmueble);
-        avaluo.Inmueble.DireccionInmueble.SetData(datosUbicacionInmueble);
-        avaluo.Inmueble.DireccionInmueble.Direccion.SetData(cp_inmueble, datosDireccionInmueble);
-        avaluo.Inmueble.Propietario.SetData(datosPropietario);
-        avaluo.Inmueble.Propietario.Direccion.SetData(cp_propietario, datosDireccionPropietario);
-        avaluo.UpdateSubTipo(avaluo.Inmueble.idTipoInmueble);
-
-        if (datosCredito != null)
+        try
         {
-            DatoCredito credito = DatoCredito.GetForDataUpdate(data_context, idAvaluo);
-            credito.SetData(datosCredito);
-            if (idAvaluo == 0)
+            AvaluoInmobiliario avaluo = AvaluoInmobiliario.GetForDataUpadte(data_context, 0);
+
+            CodigoPostal cp_solicitante = CodigoPostal.GetFromData(data_context, datosDireccionSolicitante);
+            CodigoPostal cp_inmueble = CodigoPostal.GetFromData(data_context, datosDireccionInmueble);
+            CodigoPostal cp_propietario = CodigoPostal.GetFromData(data_context, datosDireccionPropietario);
+
+            avaluo.SetData(datosAvaluo);
+            avaluo.Solicitante.SetData(datosSolicitante);
+            avaluo.Solicitante.Direccion.SetData(cp_solicitante, datosDireccionSolicitante);
+            avaluo.Inmueble.SetData(datosInmueble);
+            avaluo.Inmueble.DireccionInmueble.SetData(datosUbicacionInmueble);
+            avaluo.Inmueble.DireccionInmueble.Direccion.SetData(cp_inmueble, datosDireccionInmueble);
+            avaluo.Inmueble.Propietario.SetData(datosPropietario);
+            avaluo.Inmueble.Propietario.Direccion.SetData(cp_propietario, datosDireccionPropietario);
+            avaluo.UpdateSubTipo(avaluo.Inmueble.idTipoInmueble);
+
+            if (datosCredito != null)
             {
-                avaluo.DatoCredito = credito;
+                DatoCredito credito = DatoCredito.GetForDataUpdate(data_context, avaluo);
+                credito.SetData(datosCredito);
             }
+            avaluo.GenerarIDE(data_context);
+            data_context.SubmitChanges();            
+            idAvaluo = avaluo.idAvaluo;
         }
-        else
+        catch (Exception ex)
         {
-            avaluo.DatoCredito = null;
+            return new object[] { 0, ex.Message };
         }
 
-        data_context.SubmitChanges();
-
-        if (idAvaluo == 0)
-        {
-            avaluo.GenerarIDE();
-            data_context.SubmitChanges();
-        }
-
-        return avaluo.idAvaluo;
+        return new object[] { idAvaluo, string.Empty };       
     }
 
     [WebMethod]
@@ -98,7 +91,7 @@ public class EntityWrappers : System.Web.Services.WebService
 
         if (datosCredito != null)
         {
-            DatoCredito credito = DatoCredito.GetForDataUpdate(data_context, idAvaluo);
+            DatoCredito credito = DatoCredito.GetForDataUpdate(data_context, avaluo);
             credito.SetData(datosCredito);
         }
         else
@@ -202,12 +195,19 @@ public class EntityWrappers : System.Web.Services.WebService
     #region Asignacion de avaluos
 
     [WebMethod]
-    public void SaveAsignacionAvaluo(int idAvaluo, Entity datosAsignacion)
+    public string SaveAsignacionAvaluo(int idAvaluo, Entity datosAsignacion)
     {
         SIGEADataContext data_context = new SIGEADataContext(ConfigurationManager.ConnectionStrings["SIGEA_ConnectionString"].ConnectionString);
-        AsignacionAvaluo.Save(data_context, idAvaluo, datosAsignacion);
-
-        data_context.SubmitChanges();
+        try
+        {
+            AsignacionAvaluo.Save(data_context, idAvaluo, datosAsignacion);
+            data_context.SubmitChanges();
+        }
+        catch(Exception ex)
+        {
+            return ex.Message;
+        }
+        return string.Empty;
     }
 
     [WebMethod]

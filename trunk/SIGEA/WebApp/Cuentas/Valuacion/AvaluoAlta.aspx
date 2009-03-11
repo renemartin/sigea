@@ -38,8 +38,7 @@
 
             if (validated) {
                 saveAvaluoInmuebleAsync(
-                    idAvaluo
-                    , datosAvaluo_Ctrl.getData()
+                    datosAvaluo_Ctrl.getData()
                     , datosSolicitante_Ctrl.getData()
                     , datosInmueble_Ctrl.getData()
                     , datosPropietario_Ctrl.getData()
@@ -50,18 +49,26 @@
                 showMessage("El bloque de datos contiene campos inválidos");
             }
         }
-        function saveAvaluo_Success(id) {
-            idAvaluo = id;
-            if (idValuador != null) {
-                //TODO: Falta asignar automaticamente el valuador
-                showMessage("Datos guardados");                
+        function saveAvaluo_Success(result) {
+            if (result[0] == 0) {
+                showErrorMessage(result[1]);
             }
             else {
-                if (requestConfirmation("Datos guardados\n\n¿Desea establecer las asignaciones?")) {
-                    openModalWindow("AvaluoAsignacion.aspx?idAvaluo=" + idAvaluo, 450, 180);
-                }
+                idAvaluo = result[0];
+                
+//                if (idValuador != null) {
+//                    //TODO: Falta asignar automaticamente el valuador
+//                    showMessage("Datos guardados");
+//                }
+//                else {
+//                    if (requestConfirmation("Datos guardados\n\n¿Desea establecer las asignaciones?")) {
+//                        openModalWindow("AvaluoAsignacion.aspx?idAvaluo=" + idAvaluo, 450, 180);
+//                    }
+//                }
+                showMessage("Datos guardados");
+                
+                window.location.href = "Bandejas.aspx";
             }
-            window.location.href = "Bandejas.aspx";
         }
     </script>
 

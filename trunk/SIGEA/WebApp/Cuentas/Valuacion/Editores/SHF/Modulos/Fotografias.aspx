@@ -13,7 +13,7 @@
 
     <script type="text/javascript" src="../../../../../Scripts/Utils.js"></script>
     <script type="text/javascript">
-        function showPhoto(idFotografia, idArchivo, idArchivoThumbnail, titulo, principal) {
+        function showPhoto(idFotografia, idArchivo, idArchivoThumbnail, urlFoto, titulo, principal) {
             $get("<%= idFotografia_HF.ClientID %>").value = idFotografia;
             $get("<%= idArchivo_HF.ClientID %>").value = idArchivo;
             $get("<%= idThumbnail_HF.ClientID %>").value = idArchivoThumbnail;
@@ -22,7 +22,7 @@
             $get("<%= eliminar_ImBtn.ClientID %>").style.display = "inline";
             
             var ima = $get("<%= foto_Ima.ClientID %>")
-            ima.src = "../../../../../Archivos/Fotografias/" + idArchivo;
+            ima.src = "../../../../../" + urlFoto;
             ima.style.display = "block";
 
             window.scrollTo(0, 0);
@@ -77,8 +77,9 @@
                     <ItemTemplate>
                         <div class="foto" style="margin: 5px;">
                             <div>
-                                <asp:ImageButton ID="foto_Ima" runat="server" ImageUrl='<%# Eval("idArchivoThumbnail", "../../../../../Archivos/Fotografias/{0}?") + DateTime.Now.Ticks %>'
-                                    OnClientClick='<%# GetShowMethod((int)Eval("idFotografia"), (int)Eval("idArchivo"), (int)Eval("idArchivoThumbnail"), Eval("titulo").ToString(), (bool)Eval("principal")) %>' />
+                                <asp:ImageButton ID="foto_Ima" runat="server" ImageUrl='<%# Eval("urlThumbnail", "../../../../../{0}") %>'
+                                    OnClientClick='<%# GetShowMethod((int)Eval("idFotografia"), (int)Eval("idArchivo"), (int)Eval("idArchivoThumbnail"), 
+                                        Eval("urlFoto").ToString(), Eval("titulo").ToString(), (bool)Eval("principal")) %>' />
                             </div>
                             <%# Eval("titulo") %>
                         </div>

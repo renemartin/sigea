@@ -18,15 +18,14 @@ namespace SIGEA.Classes.Entities
 
             return credito_query.Single();
         }
-        public static DatoCredito GetForDataUpdate(SIGEADataContext data_context, int idAvaluo)
+        public static DatoCredito GetForDataUpdate(SIGEADataContext data_context, AvaluoInmobiliario avaluo)
         {
-            DatoCredito credito = GetFromId(data_context, idAvaluo);
+            DatoCredito credito = avaluo.DatoCredito;
 
             if (credito == null)
             {
                 credito = new DatoCredito();
-                credito.idAvaluo = idAvaluo;
-                data_context.DatoCredito.InsertOnSubmit(credito);
+                avaluo.DatoCredito = credito;
             }
 
             return credito;

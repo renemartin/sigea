@@ -21,7 +21,7 @@ public class FileUploader
         Image image = ImageResizer.Resize(Bitmap.FromStream(file.InputStream), scale_width, scale_height);
 
         string file_name = Path.GetFileNameWithoutExtension(file.FileName);
-        string file_extension = Path.GetExtension(file.FileName);
+        string file_extension = ".jpg";
         string new_file_name = string.Empty;
         string new_file_path = string.Empty;
 
@@ -34,7 +34,7 @@ public class FileUploader
             , file.ContentType);
 
         new_file_name = archivo.idArchivo.ToString();
-        new_file_path = Path.Combine("~/" + folder_name, new_file_name);
+        new_file_path = Path.Combine("~/" + folder_name, new_file_name + ".jpg");
 
         try
         {            
@@ -70,7 +70,7 @@ public class FileUploader
             , file.ContentType);
 
         new_file_name = archivo.idArchivo + file_extension;
-        new_file_path = Path.Combine("~/" + folder_name, new_file_name);
+        new_file_path = Path.Combine("~/" + folder_name, new_file_name + file_extension);
 
         try
         {
