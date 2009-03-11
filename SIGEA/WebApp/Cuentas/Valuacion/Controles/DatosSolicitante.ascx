@@ -8,7 +8,7 @@
             Nombre:
         </td>
         <td class="celdaValor" colspan="4">
-            <asp:TextBox ID="nombre_TBox" runat="server"></asp:TextBox>
+            <asp:TextBox ID="nombre_TBox" runat="server" MaxLength="100"></asp:TextBox>
         </td>
     </tr>
     <tr>
@@ -16,7 +16,7 @@
             NSS:
         </td>
         <td class="celdaValor" colspan="3">
-            <asp:TextBox ID="NSS_TBox" runat="server"></asp:TextBox>
+            <asp:TextBox ID="NSS_TBox" runat="server" MaxLength="30"></asp:TextBox>
         </td>
     </tr>
     <tr>
@@ -25,13 +25,13 @@
             RFC:
         </td>
         <td class="celdaValor">
-            <asp:TextBox ID="RFC_TBox" runat="server"></asp:TextBox>
+            <asp:TextBox ID="RFC_TBox" runat="server" MaxLength="30"></asp:TextBox>
         </td>
         <td class="celdaTituloSec">
             CURP:
         </td>
         <td class="celdaValor">
-            <asp:TextBox ID="CURP_TBox" runat="server"></asp:TextBox>
+            <asp:TextBox ID="CURP_TBox" runat="server" MaxLength="30"></asp:TextBox>
         </td>
     </tr>
 </table>
