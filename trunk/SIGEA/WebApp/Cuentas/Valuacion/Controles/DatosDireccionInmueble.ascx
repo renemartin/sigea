@@ -6,13 +6,13 @@
             Edificio:
         </td>
         <td class="celdaValor">
-            <asp:TextBox ID="edificio_TBox" runat="server"></asp:TextBox>
+            <asp:TextBox ID="edificio_TBox" runat="server" MaxLength="20" ></asp:TextBox>
         </td>
         <td class="celdaTituloSec">
             Lote:
         </td>
         <td class="celdaValor">
-            <asp:TextBox ID="lote_TBox" runat="server"></asp:TextBox>
+            <asp:TextBox ID="lote_TBox" runat="server" MaxLength="10"></asp:TextBox>
         </td>
     </tr>
     <tr>
@@ -20,13 +20,14 @@
             Manzana:
         </td>
         <td class="celdaValor">
-            <asp:TextBox ID="manzana_TBox" runat="server"></asp:TextBox>
+            <asp:TextBox ID="manzana_TBox" runat="server" MaxLength="50"></asp:TextBox>
         </td>
         <td class="celdaTituloSec">
             Super manzana:
         </td>
         <td class="celdaValor">
-            <asp:TextBox ID="superManzana_TBox" runat="server"></asp:TextBox>
+            <asp:TextBox ID="superManzana_TBox" runat="server" 
+                ontextchanged="superManzana_TBox_TextChanged" MaxLength="30"></asp:TextBox>
         </td>
     </tr>
     <tr>
@@ -34,7 +35,7 @@
             Condominio:
         </td>
         <td class="celdaValor" colspan="3">
-            <asp:TextBox ID="condominio_TBox" runat="server"></asp:TextBox>
+            <asp:TextBox ID="condominio_TBox" runat="server" MaxLength="30"></asp:TextBox>
         </td>
     </tr>
 </table>

@@ -98,7 +98,7 @@
             </asp:DropDownList>
             <div id="seccion_fuente_medidas" style="display: none;">
                 <span class="subCampo">Especifique:</span>
-                <asp:TextBox ID="otraFuente_TBox" runat="server"></asp:TextBox></div>
+                <asp:TextBox ID="otraFuente_TBox" runat="server" MaxLength="50"></asp:TextBox></div>
         </td>
     </tr>
     <tr>
@@ -109,7 +109,7 @@
     <tr>
         <td class="celdaValor" colspan="2">
             <asp:TextBox ID="colindancias_TBox" runat="server" TextMode="MultiLine" 
-                SkinID="MultiLine" Height="100px" Width="550px"></asp:TextBox>
+                SkinID="MultiLine" Height="100px" Width="550px" MaxLength="500"></asp:TextBox>
         </td>
     </tr>
 </table>
