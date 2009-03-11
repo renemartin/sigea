@@ -68,7 +68,7 @@
             Constructor:
         </td>
         <td class="celdaValor" colspan="3">
-            <asp:TextBox ID="constructor_TBox" runat="server"></asp:TextBox>
+            <asp:TextBox ID="constructor_TBox" runat="server" MaxLength="50"></asp:TextBox>
         </td>
     </tr>
 </table>

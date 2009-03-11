@@ -16,7 +16,7 @@
     </tr>
     <tr style="display:none;">
         <td class="celdaValor">
-            <asp:TextBox ID="Concepto_TBox" runat="server"></asp:TextBox>
+            <asp:TextBox ID="Concepto_TBox" runat="server" MaxLength="40"></asp:TextBox>
         </td>
         <td class="celdaValor">
             <asp:TextBox ID="Superficie_TBox" runat="server"></asp:TextBox>

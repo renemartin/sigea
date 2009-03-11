@@ -46,7 +46,7 @@
             <asp:CheckBox ID="tipo_CBox" Text="Const." runat="server" />
         </td>
         <td class="celdaValor">
-            <asp:TextBox ID="descripcion_TBox" runat="server" SkinID="Compacto"></asp:TextBox>
+            <asp:TextBox ID="descripcion_TBox" runat="server" SkinID="Compacto" MaxLength="50"></asp:TextBox>
         </td>
         <td class="celdaValor">
             <asp:DropDownList ID="clase_DDList" runat="server" SkinID="Compacto">
