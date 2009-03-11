@@ -1,10 +1,12 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Configuration;
 using System.Linq;
 using System.Text;
 using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
+using SIGEA.Classes.Entities;
 
 public partial class Cuentas_Administracion_Valuadores : System.Web.UI.Page
 {
@@ -16,6 +18,11 @@ public partial class Cuentas_Administracion_Valuadores : System.Web.UI.Page
             ApplyFilters();
             SetAttributes();
         }
+    }
+
+    public void SetupContext(object sender, LinqDataSourceContextEventArgs e)
+    {
+        e.ObjectInstance = new SIGEADataContext(ConfigurationManager.ConnectionStrings["SIGEA_ConnectionString"].ConnectionString);
     }
 
     private void FillData()

@@ -21,14 +21,13 @@
         function loadConstruccion(idAvaluo) {
             checarConstruccion(idAvaluo, checarTipoConstruccion);
         }
-        
-        function checarTipoConstruccion(enable, key_id) {
-            
+
+        function checarTipoConstruccion(enable, key_id) {            
             if (enable == false) {
                 setVisibility($get("<%= editar_estructuras_ImBtn.ClientID %>"), false);
                 setVisibility($get("<%= editar_acabados_ImBtn.ClientID %>"), false);
                 setVisibility($get("<%= editar_instalaciones_ImBtn.ClientID %>"), false);
-                showMessage("El avalúo debe contar con un tipo de construcción.\n Debe capturar la descripción de las construcciones.");
+                showMessage("Antes de capturar los acabados y estructuras, el avalúo debe contar con un tipo de construcción.\n\n Por favor captura la descripción de las construcciones.");
             }
             else
                 loadForm(key_id);

@@ -67,7 +67,7 @@ namespace SIGEA.Classes.Entities
                     idStatus = a.idStatus,
                     IDE = a.IDE,
                     status = a.StatusAvaluo.descripcion,
-                    urlFoto = "",
+                    urlFoto = a.Inmueble.GetUrlThumbnail(),
                     fechaAlta = a.fechaCreacion,
                     fechaFinalizacion = a.fechaFinalizacion,
                     datosInmueble = a.Inmueble.ToString(),
@@ -135,14 +135,12 @@ namespace SIGEA.Classes.Entities
             return tipoAvaluo_SHF;
         }
 
-        public void GenerarIDE()
+        public void GenerarIDE(SIGEADataContext data_context)
         {
             if (!string.IsNullOrEmpty(IDE))
             {
                 throw new Exception("El avalúo especificado ya contiene un IDE generado");
             }
-
-            SIGEADataContext data_context = new SIGEADataContext(ConfigurationManager.ConnectionStrings["SIGEA_ConnectionString"].ConnectionString);
 
             int? consecutivo = 0;
             string IDE_generado = string.Empty;

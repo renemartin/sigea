@@ -58,7 +58,7 @@ namespace SIGEA.Classes.Entities
 
         public string GetUrl()
         {
-            return Carpeta.ruta + "/" + idArchivo + "?tck=" + DateTime.Now.Ticks;
+            return Carpeta.ruta + "/" + idArchivo + extension + "?tck=" + DateTime.Now.Ticks;
         }
     }
 }

@@ -84,7 +84,8 @@
                     </EmptyDataTemplate>
                 </asp:GridView>
                 <asp:LinqDataSource ID="personal_DS" runat="server" ContextTypeName="SIGEA.Classes.Entities.SIGEADataContext"
-                    OrderBy="nombre" Select="new (idPersonal, nombre)" TableName="Personal">
+                    OrderBy="nombre" Select="new (idPersonal, nombre)" TableName="Personal"
+                    StoreOriginalValuesInViewState="false" OnContextCreating="SetupContext" >
                     <WhereParameters>
                         <asp:ControlParameter ControlID="nombre_TBox" Name="nombre" PropertyName="Text" Type="String" />
                     </WhereParameters>

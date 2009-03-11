@@ -104,5 +104,17 @@ namespace SIGEA.Classes.Entities
 
             return foto.Single();
         }
+
+        public string GetUrlThumbnail()
+        {
+            if (FotografiaInmueble.Count == 0)
+                return string.Empty;
+
+            var foto = FotografiaInmueble.Where(f => f.principal).Select(f => f.Archivo1.GetUrl());
+            if (!foto.Any())
+                return string.Empty;
+
+            return foto.Single();
+        }
     }
 }

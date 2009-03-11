@@ -17,11 +17,13 @@ public partial class Cuentas_Valuacion_Editores_SHF_Modulos_Fotografias : System
         }
     }
 
-    public string GetShowMethod(int idFotografia, int idArchivo, int idArchivoThumbnail, string titulo, bool principal) {
-        return string.Format("showPhoto({0},{1},{2},'{3}',{4}); return false;",
+    public string GetShowMethod(int idFotografia, int idArchivo, int idArchivoThumbnail, 
+        string urlFoto, string titulo, bool principal) {
+        return string.Format("showPhoto({0},{1},{2},'{3}','{4}',{5}); return false;",
             idFotografia,
             idArchivo,
             idArchivoThumbnail,
+            urlFoto,
             titulo,
             principal ? "true" : "false");
     }

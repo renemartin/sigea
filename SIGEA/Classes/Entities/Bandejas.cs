@@ -23,6 +23,8 @@ namespace SIGEA.Classes.Entities
             options.LoadWith<Inmueble>(Inmueble => Inmueble.RegimenPropiedad);
             options.LoadWith<Inmueble>(Inmueble => Inmueble.DireccionInmueble);
             options.LoadWith<Inmueble>(Inmueble => Inmueble.FotografiaInmueble);
+            options.LoadWith<FotografiaInmueble>(Foto => Foto.Archivo1);
+            options.LoadWith<Archivo>(Archivo => Archivo.Carpeta);
             options.LoadWith<DireccionInmueble>(Ubicacion => Ubicacion.Direccion);
             options.LoadWith<Direccion>(Direccion => Direccion.CodigoPostal);
             options.LoadWith<CodigoPostal>(CP => CP.Asentamiento);
@@ -39,7 +41,7 @@ namespace SIGEA.Classes.Entities
                              {
                                  idAvaluo = a.idAvaluo,
                                  idStatus = a.idStatus,
-                                 idThumbnail = a.Inmueble.GetIdThumbnail(),
+                                 urlThumbnail = a.Inmueble.GetUrlThumbnail(),
                                  IDE = a.IDE,
                                  datosInmueble = a.Inmueble.ToString(),
                                  fechaAlta = a.fechaCreacion

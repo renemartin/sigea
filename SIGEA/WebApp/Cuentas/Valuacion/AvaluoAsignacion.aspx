@@ -89,10 +89,15 @@
                 , getDatosAsignacion()
                 , saveAsignacionAvaluo_Success);
         }
-        function saveAsignacionAvaluo_Success() {
-            showMessage("Datos guardados");
-            window.returnValue = "recargar";
-            closeWindow();
+        function saveAsignacionAvaluo_Success(errors) {
+            if (errors) {
+                showMessage(errors);
+            }
+            else {
+                showMessage("Datos guardados");
+                window.returnValue = "recargar";
+                closeWindow();
+            }
         }
 
         // Eliminación
@@ -151,6 +156,13 @@
                     </td>
                 </tr>
             </table>
+            <div class="textoInstruccion">
+                Presione el icono de 
+                <img alt="" src="../../Images/Icons/EliminarChico.gif" /> para autocompletar la 
+                captura con los valuadores de todos los estados ó 
+                <img alt="" src="../../Images/Icons/BuscarChico.gif" />
+                para filtrar por el estado del inmueble
+            </div>
         </div>
         <div class="barraMenu">
             <asp:ImageButton ID="guardar_ImBtn" runat="server" SkinID="Save" />

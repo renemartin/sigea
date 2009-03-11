@@ -5,10 +5,9 @@
 
 // Guardado de registros
 
-function saveAvaluoInmuebleAsync(idAvaluo, datosAvaluo, datosSolicitante, datosInmueble, datosPropietario, callBack) {
+function saveAvaluoInmuebleAsync(datosAvaluo, datosSolicitante, datosInmueble, datosPropietario, callBack) {
     EntityWrappers.SaveAvaluoInmueble(
-        idAvaluo
-        , datosAvaluo[0]
+        datosAvaluo[0]
         , datosAvaluo[1]
         , datosSolicitante[0]
         , datosSolicitante[1]
@@ -135,7 +134,7 @@ var status_revision = 4;
 var status_correccion = 5;
 var status_finalizado = 9;
 
-function checarConstruccion(idAvaluo, callBack) {
+function checarConstruccion(idAvaluo, callBack) {    
     MethodCallers.CheckIfConstruccion(
         idAvaluo
         , callBack

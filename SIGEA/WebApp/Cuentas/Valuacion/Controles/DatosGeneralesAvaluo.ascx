@@ -191,8 +191,8 @@
                 $get("<%= entidadCofinanciamiento_DDList.ClientID %>").selectedValue = data_set[1].idEntidadCofinanciamiento;
                 $get("<%= tipoCreditoInterno_DDList.ClientID %>").selectedValue = data_set[1].idTipoCreditoInterno;
 
-                setVisibility($get("seccion_cofinanciamiento"), data_set[1].idEntidadCofinanciamiento != null);
-                setVisibility($get("seccion_subtipo_credito"), data_set[1].idTipoCreditoInterno != null);
+                setVisibility($get("seccion_cofinanciamiento"), data_set[1].idEntidadCofinanciamiento != null, "");
+                setVisibility($get("seccion_subtipo_credito"), data_set[1].idTipoCreditoInterno != null, "");
 
                 this.validator.removeOptionalField(6);
                 this.validator.removeOptionalField(7);
@@ -271,7 +271,6 @@
             eval("<%= ID %>").validator.addOptionalField(7);
         }
         else {
-            alert("entre aqui");
             eval("<%= ID %>").validator.removeOptionalField(6);
             eval("<%= ID %>").validator.removeOptionalField(7);
         }
@@ -318,7 +317,7 @@
     }
     function setPromocionSelection() {
         var promocion_checked = $get("<%= promocionVIASC_CBox.ClientID %>").checked;
-        var sub_display = !promocion_checked ? "none" : "block";
+        var sub_display = !promocion_checked ? "none" : "";
 
         $get("seccion_cliente").style.display = sub_display;
     }

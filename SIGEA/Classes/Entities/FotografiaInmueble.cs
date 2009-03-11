@@ -43,6 +43,8 @@ namespace SIGEA.Classes.Entities
                                        titulo = f.Archivo.titulo,
                                        idArchivoThumbnail = f.Archivo1.idArchivo,
                                        idArchivo = f.Archivo.idArchivo,
+                                       urlThumbnail = f.Archivo1.GetUrl(),
+                                       urlFoto = f.Archivo.GetUrl(),
                                        principal = f.principal
                                    };
 

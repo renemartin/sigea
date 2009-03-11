@@ -118,7 +118,8 @@
                                     </td>
                                 </tr>
                             </table>
-                            <asp:Timer ID="bandejasCount_Timer" runat="server" Interval="5000">
+                            <asp:Timer ID="bandejasCount_Timer" runat="server" Interval="5000" 
+                                Enabled="False">
                             </asp:Timer>
                         </ContentTemplate>
                     </asp:UpdatePanel>
@@ -155,7 +156,7 @@
                                 <Columns>
                                     <asp:TemplateField>
                                         <ItemTemplate>
-                                            <asp:Image ID="foto_Ima" runat="server" ImageUrl='<%# ValidateUrlFoto((int)Eval("idThumbnail"))%>'
+                                            <asp:Image ID="foto_Ima" runat="server" ImageUrl='<%# ValidateUrlFoto(Eval("urlThumbnail").ToString())%>'
                                                 CssClass="foto" />
                                         </ItemTemplate>
                                     </asp:TemplateField>
