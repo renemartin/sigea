@@ -8,7 +8,7 @@
         </td>
         <td class="celdaValor">
             <asp:TextBox ID="cimentacion_TBox" runat="server" TextMode="MultiLine" 
-                SkinID="MultiLine" Height="50px" Width="400px"></asp:TextBox>
+                SkinID="MultiLine" Height="50px" Width="400px" MaxLength="400"></asp:TextBox>
             <cc1:AutoCompleteExtender ID="cimentacion_TBox_AutoCompleteExtender" 
                 runat="server"
                 ServiceMethod="GetNombresMateriales" 
@@ -25,7 +25,7 @@
         </td>
         <td class="celdaValor">
             <asp:TextBox ID="muros_TBox" runat="server" TextMode="MultiLine" 
-                SkinID="MultiLine" Height="50px" Width="400px"></asp:TextBox>
+                SkinID="MultiLine" Height="50px" Width="400px" MaxLength="400"></asp:TextBox>
             <cc1:AutoCompleteExtender ID="muros_TBox_AutoCompleteExtender" runat="server" 
                 CompletionInterval="500" ContextKey="Muros" DelimiterCharacters=", " 
                 Enabled="True" ServiceMethod="GetNombresMateriales" 
@@ -40,7 +40,7 @@
         </td>
         <td class="celdaValor">
             <asp:TextBox ID="escaleras_TBox" runat="server" TextMode="MultiLine" 
-                SkinID="MultiLine" Height="50px" Width="400px"></asp:TextBox>
+                SkinID="MultiLine" Height="50px" Width="400px" MaxLength="400"></asp:TextBox>
             <cc1:AutoCompleteExtender ID="escaleras_TBox_AutoCompleteExtender" 
                 runat="server" CompletionInterval="500" ContextKey="Escaleras" 
                 DelimiterCharacters=", " Enabled="True" ServiceMethod="GetNombresMateriales" 
@@ -56,7 +56,7 @@
         </td>
         <td class="celdaValor">
             <asp:TextBox ID="entrepisosTechos_TBox" runat="server" TextMode="MultiLine" 
-                SkinID="MultiLine" Height="50px" Width="400px"></asp:TextBox>
+                SkinID="MultiLine" Height="50px" Width="400px" MaxLength="400"></asp:TextBox>
             <cc1:AutoCompleteExtender ID="entrepisosTechos_TBox_AutoCompleteExtender" 
                 runat="server" CompletionInterval="500" ContextKey="Entrepisos" 
                 DelimiterCharacters=", " Enabled="True" ServiceMethod="GetNombresMateriales" 
@@ -72,7 +72,7 @@
         </td>
         <td class="celdaValor">
             <asp:TextBox ID="trabesColumnas_TBox" runat="server" TextMode="MultiLine" 
-                SkinID="MultiLine" Height="50px" Width="400px"></asp:TextBox>
+                SkinID="MultiLine" Height="50px" Width="400px" MaxLength="400"></asp:TextBox>
             <cc1:AutoCompleteExtender ID="trabesColumnas_TBox_AutoCompleteExtender" 
                 runat="server" CompletionInterval="500" ContextKey="Trabes" 
                 DelimiterCharacters=", " Enabled="True" ServiceMethod="GetNombresMateriales" 
