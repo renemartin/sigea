@@ -178,5 +178,5 @@
             CssClass="hidden" />
     </div>
     <SIGEA:EditorSHFNavegador ID="navegador_Ctrl" runat="server"
-        AnteriorURL="DatosInmueble.aspx" SiguienteURL="Construcciones.aspx" />
+        AnteriorURL="DatosInmueble.aspx" SiguienteURL="UsoActual.aspx" />
 </asp:Content>
