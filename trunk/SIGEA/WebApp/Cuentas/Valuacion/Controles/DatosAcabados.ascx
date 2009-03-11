@@ -383,7 +383,7 @@
             if(data == null )
                 return null;
             
-            $get("<%= fachada_TBox.ClientID %>").value = "blabla";
+            $get("<%= fachada_TBox.ClientID %>").value = data.fachada;
         }
         
         function getFachada() {
