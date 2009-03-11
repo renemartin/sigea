@@ -19,7 +19,7 @@
 <span>Otras advertencias:</span>
 <br />
 <asp:TextBox ID="otrasAdvertencias_TBox" runat="server" TextMode="MultiLine" 
-    Height="70px" Width="550px"></asp:TextBox>
+    Height="70px" Width="550px" MaxLength="500"></asp:TextBox>
 
 <script type="text/javascript">
 
