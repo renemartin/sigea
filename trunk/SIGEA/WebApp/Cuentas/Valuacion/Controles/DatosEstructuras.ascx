@@ -13,7 +13,7 @@
                 runat="server"
                 ServiceMethod="GetNombresMateriales" 
                 ServicePath="~/Services/MethodCallers.asmx" TargetControlID="cimentacion_TBox" 
-                UseContextKey="True" ContextKey="Cimentacion" CompletionInterval="500" 
+                UseContextKey="True" ContextKey="Cimentación" CompletionInterval="500" 
                 FirstRowSelected="True" DelimiterCharacters=", " 
                 ShowOnlyCurrentWordInCompletionListItem="True" MinimumPrefixLength="0" Enabled="True">
             </cc1:AutoCompleteExtender>

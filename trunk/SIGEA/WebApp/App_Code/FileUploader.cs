@@ -95,4 +95,15 @@ public class FileUploader
 
         return archivo;
     }
+
+    public Archivo UpdateTitulo(int idArchivo, string title)
+    {
+        Archivo archivo = Archivo.GetFromId(data_context, idArchivo);
+        if (archivo != null)
+        {
+            archivo.titulo = title;
+        }
+
+        return archivo;
+    }
 }

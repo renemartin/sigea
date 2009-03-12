@@ -28,11 +28,11 @@
                 "AvaluoAsignacion.aspx?idAvaluo=" + idAvaluo, 470, 240);
             if (result != undefined) {
                 window.returnValue = result;
-            }           
+            }
         }
         function editarAvaluo() {
             openFullWindow("Editores/SHF/DatosAvaluo.aspx?idAvaluo=" + idAvaluo, idAvaluo);
-            window.returnValue == "recargar";       
+            window.returnValue == "recargar";
         }
         function revisarAvaluo() {
         }
@@ -58,6 +58,7 @@
             $get("<%= datosInmueble_Lbl.ClientID %>").innerHTML = data.datosInmueble;
             $get("<%= supTerreno_Lbl.ClientID %>").innerHTML = getNumString(data.supTerreno);
             $get("<%= supConstruida_Lbl.ClientID %>").innerHTML = getNumString(data.supConstruida);
+            $get("<%= supAccesoria_Lbl.ClientID %>").innerHTML = getNumString(data.supAccesoria);
             $get("<%= supVendible_Lbl.ClientID %>").innerHTML = getNumString(data.supVendible);
             $get("<%= valorMercado_Lbl.ClientID %>").innerHTML = getCurrString(data.valorMercado);
             $get("<%= valorTerreno_Lbl.ClientID %>").innerHTML = getCurrString(data.valorTerreno);
@@ -69,7 +70,7 @@
                 + (data.urlFoto == "" ? "Images/NoDisponible.jpg" : data.urlFoto);
             var foto = $get("<%= foto_Ima.ClientID %>");
             foto.src = urlFoto;
-            setVisibility(foto, true);            
+            setVisibility(foto, true);
         }
 
         // Establecimiento de acciones por status
@@ -123,26 +124,38 @@
                 </tr>
                 <tr>
                     <td class="celdaTitulo">
-                        Superficie de terreno en m²
+                        Superficie de terreno
                     </td>
                     <td class="celdaValor">
                         <asp:Label ID="supTerreno_Lbl" runat="server"></asp:Label>
+                        &nbsp;m²
                     </td>
                 </tr>
                 <tr>
                     <td class="celdaTitulo">
-                        Superficie construida en m²
+                        Superficie construida
                     </td>
                     <td class="celdaValor">
                         <asp:Label ID="supConstruida_Lbl" runat="server"></asp:Label>
+                        &nbsp;m²
                     </td>
                 </tr>
                 <tr>
                     <td class="celdaTitulo">
-                        Superficie vendible en m²
+                        Superficie accesoria
+                    </td>
+                    <td class="celdaValor">
+                        <asp:Label ID="supAccesoria_Lbl" runat="server"></asp:Label>
+                        &nbsp;m²
+                    </td>
+                </tr>
+                <tr>
+                    <td class="celdaTitulo">
+                        Superficie vendible
                     </td>
                     <td class="celdaValor">
                         <asp:Label ID="supVendible_Lbl" runat="server"></asp:Label>
+                        &nbsp;m²
                     </td>
                 </tr>
                 <tr>

@@ -7,6 +7,54 @@ namespace SIGEA.Classes.Entities
 {
     public partial class ConstruccionInmueble
     {
+        public double SuperficieConstruida
+        {
+            get
+            {
+                var query_superficie = from tc in TipoConstruccion
+                                       where !tc.accesorio
+                                       select tc.superficie;
+
+                if (!query_superficie.Any())
+                {
+                    return 0;
+                }
+
+                return query_superficie.Sum();
+            }
+        }
+        public double SuperficieAccesoria
+        {
+            get
+            {
+                var query_superficie = from tc in TipoConstruccion
+                                       where tc.accesorio
+                                       select tc.superficie;
+
+                if (!query_superficie.Any())
+                {
+                    return 0;
+                }
+
+                return query_superficie.Sum();
+            }
+        }
+        public double SuperficieVendible
+        {
+            get
+            {
+                var query_superficie = from tc in TipoConstruccion
+                                       select tc.superficie;
+
+                if (!query_superficie.Any())
+                {
+                    return 0;
+                }
+
+                return query_superficie.Sum();
+            }
+        }
+
         public static ConstruccionInmueble GetFromIdAvaluo(SIGEADataContext data_context, int idAvaluo)
         {
             var construccion_query = from c in data_context.ConstruccionInmueble
@@ -20,7 +68,6 @@ namespace SIGEA.Classes.Entities
 
             return construccion_query.Single();
         }
-
         public static ConstruccionInmueble GetForDataUpdate(Inmueble inmueble)
         {
             ConstruccionInmueble construccion_inmueble = inmueble.ConstruccionInmueble;
@@ -65,12 +112,10 @@ namespace SIGEA.Classes.Entities
             vertical = (bool)data["vertical"];
             unidadesRentables = short.Parse(data["unidadesRentables"].ToString());
         }
-
         public void SetFachada(Dictionary<string, object> data)
         {
             fachada = data["fachada"].ToString();
         }
-
         public Dictionary<string, object> GetFachada()
         {
             Dictionary<string, object> data = new Dictionary<string, object>();

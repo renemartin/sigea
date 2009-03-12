@@ -51,6 +51,21 @@ namespace SIGEA.Classes.Entities
             return thumbnails_query.ToArray();
         }
 
+        public static void Delete(SIGEADataContext data_context, int idFotografia)
+        {
+            var foto_query = from f in data_context.FotografiaInmueble
+                             where f.idFotografia == idFotografia
+                             select f;
+
+            if (foto_query.Any())
+            {
+                FotografiaInmueble foto = foto_query.Single();
+                data_context.Archivo.DeleteOnSubmit(foto.Archivo);
+                data_context.Archivo.DeleteOnSubmit(foto.Archivo1);
+                data_context.FotografiaInmueble.DeleteOnSubmit(foto);
+            }
+        }
+
         public void SetData(SIGEADataContext data_context, Archivo fotografia, Archivo thumbnail, bool esPrincipal)
         {            
             if (!principal && esPrincipal && Inmueble != null)

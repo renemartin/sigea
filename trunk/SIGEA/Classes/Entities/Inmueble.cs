@@ -7,6 +7,60 @@ namespace SIGEA.Classes.Entities
 {
     public partial class Inmueble
     {
+        public double SuperficieTerreno
+        {
+            get
+            {
+                if (DatoCondominio != null && DatoCondominio.SuperficiesCondominio != null)
+                {
+                    return DatoCondominio.SuperficiesCondominio.totalTerreno *
+                        DatoCondominio.SuperficiesCondominio.indiviso;
+                }
+                else if (SuperficiesInmueble != null)
+                {
+                    return SuperficiesInmueble.totalTerreno;
+                }
+                
+                return 0;
+            }
+        }
+        public double SuperficieConstruida
+        {
+            get
+            {
+                if (ConstruccionInmueble != null)
+                {
+                    return ConstruccionInmueble.SuperficieConstruida;
+                }
+
+                return 0;
+            }
+        }
+        public double SuperficieAccesoria
+        {
+            get
+            {
+                if (ConstruccionInmueble != null)
+                {
+                    return ConstruccionInmueble.SuperficieAccesoria;
+                }
+
+                return 0;
+            }
+        }
+        public double SuperficieVendible
+        {
+            get
+            {
+                if (ConstruccionInmueble != null)
+                {
+                    return ConstruccionInmueble.SuperficieVendible;
+                }
+
+                return 0;
+            }
+        }
+
         public static Inmueble GetFromId(SIGEADataContext data_context, int idInmueble)
         {
             var inmueble_query = from i in data_context.Inmueble
@@ -57,6 +111,28 @@ namespace SIGEA.Classes.Entities
 
             return data;
         }
+        public int GetIdThumbnail()
+        {
+            if (FotografiaInmueble == null)
+                return 0;
+
+            var foto = FotografiaInmueble.Where(f => f.principal).Select(f => f.idArchivoThumbnail);
+            if (!foto.Any())
+                return 0;
+
+            return foto.Single();
+        }
+        public string GetUrlThumbnail()
+        {
+            if (FotografiaInmueble.Count == 0)
+                return string.Empty;
+
+            var foto = FotografiaInmueble.Where(f => f.principal).Select(f => f.Archivo1.GetUrl());
+            if (!foto.Any())
+                return string.Empty;
+
+            return foto.Single();
+        }
 
         public void SetData(Dictionary<string, object> data)
         {
@@ -91,30 +167,6 @@ namespace SIGEA.Classes.Entities
             text.Append(this.DireccionInmueble.Direccion.CodigoPostal.Asentamiento.Municipio.Estado.nombreEstado);
 
             return text.ToString().ToUpper();
-        }
-
-        public int GetIdThumbnail()
-        {
-            if (FotografiaInmueble == null)
-                return 0;
-
-            var foto = FotografiaInmueble.Where(f => f.principal).Select(f => f.idArchivoThumbnail);
-            if (!foto.Any())
-                return 0;
-
-            return foto.Single();
-        }
-
-        public string GetUrlThumbnail()
-        {
-            if (FotografiaInmueble.Count == 0)
-                return string.Empty;
-
-            var foto = FotografiaInmueble.Where(f => f.principal).Select(f => f.Archivo1.GetUrl());
-            if (!foto.Any())
-                return string.Empty;
-
-            return foto.Single();
         }
     }
 }
