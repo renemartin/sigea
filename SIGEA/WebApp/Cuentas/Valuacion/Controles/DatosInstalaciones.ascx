@@ -8,8 +8,7 @@
             Hidráulicas:</td>
         <td class="celdaValor">
             <asp:TextBox ID="hidraulicas_TBox" runat="server" TextMode="MultiLine" 
-                SkinID="MultiLine" Height="40px" Width="400px" MaxLength="300" 
-                ontextchanged="hidraulicas_TBox_TextChanged"></asp:TextBox>
+                SkinID="MultiLine" Height="40px" Width="400px" MaxLength="300"></asp:TextBox>
             <cc1:AutoCompleteExtender ID="hidraulicas_TBox_AutoCompleteExtender" 
                 runat="server" CompletionInterval="500" ContextKey="Drenaje" 
                 DelimiterCharacters=", " Enabled="True" 

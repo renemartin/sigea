@@ -26,8 +26,7 @@
             Super manzana:
         </td>
         <td class="celdaValor">
-            <asp:TextBox ID="superManzana_TBox" runat="server" 
-                ontextchanged="superManzana_TBox_TextChanged" MaxLength="30"></asp:TextBox>
+            <asp:TextBox ID="superManzana_TBox" runat="server" MaxLength="30"></asp:TextBox>
         </td>
     </tr>
     <tr>
