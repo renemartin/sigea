@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Drawing;
+using System.Drawing.Imaging;
 using System.IO;
 using System.Web;
 using SIGEA.Classes.Entities;
@@ -38,7 +39,7 @@ public class FileUploader
 
         try
         {            
-            image.Save(HttpContext.Current.Server.MapPath(new_file_path));
+            image.Save(HttpContext.Current.Server.MapPath(new_file_path), ImageFormat.Jpeg);
         }
         catch
         {

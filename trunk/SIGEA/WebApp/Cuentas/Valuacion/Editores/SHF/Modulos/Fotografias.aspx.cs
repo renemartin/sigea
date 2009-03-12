@@ -115,7 +115,10 @@ public partial class Cuentas_Valuacion_Editores_SHF_Modulos_Fotografias : System
         principal_CBox.Checked = false;
         idFotografia_HF.Value = "0";
         idArchivo_HF.Value = "0";
-        idThumbnail_HF.Value = "0";        
+        idThumbnail_HF.Value = "0";
+        urlFoto_HF.Value = "";
+        urlThumbnail_HF.Value = "";
+        cambioFoto_HF.Value = "True";
     }
 
     private void GetParameters()
