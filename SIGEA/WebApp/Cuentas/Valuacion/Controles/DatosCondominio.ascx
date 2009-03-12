@@ -3,7 +3,6 @@
 <%@ Register Src="~/Cuentas/Valuacion/Controles/DatosSuperficiesAdicionales.ascx"
     TagName="SuperficiesAdicionales" TagPrefix="SIGEA" %>
 
-
 <table>
     <tr>
         <td class="celdaTitulo">
@@ -169,7 +168,7 @@
                         setVisibility($get("seccion_fuente_indiviso"), true);
                         this.validator.removeOptionalField(6);
                     }
-                    if (data_set[1].fuentePrivativo != "") {
+                    if (data_set[1].otraFuentePrivativo != "") {
                         setVisibility($get("seccion_fuente_privativo"), true);
                         this.validator.removeOptionalField(9);
                     }
