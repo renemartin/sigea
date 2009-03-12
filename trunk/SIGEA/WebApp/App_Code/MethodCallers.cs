@@ -463,6 +463,13 @@ public class MethodCallers : System.Web.Services.WebService
     {
         return AvaluoInmobiliario.CheckIfConstruccion(data_context, idAvaluo);
     }
+    
+    [WebMethod]
+    public float CalculaVidaUtil(int idConstruccion)
+    {
+        return TipoConstruccion.CalculaVidaUtilFromIDConstruccion(data_context, idConstruccion);
+    }
+
     #endregion
 
     #region Obtención de registros
