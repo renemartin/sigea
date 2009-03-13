@@ -783,9 +783,11 @@ public class EntityWrappers : System.Web.Services.WebService
 
         InstalacionesTipoConstruccion instalaciones_tipo = InstalacionesTipoConstruccion.GetForDataUpdate(data_context, tipo_construccion);
         
-        instalaciones_tipo.SetData(datosInstalacionesTipoConstruccion);                       
-        InstalacionConstruccion.SetInstalacionesConstruccion(construccion, datosInstalacionesPrivativas, false);
-        InstalacionConstruccion.SetInstalacionesConstruccion(construccion, datosInstalacionesComunes, true);
+        instalaciones_tipo.SetData(datosInstalacionesTipoConstruccion);
+        if(datosInstalacionesComunes != null)            
+            InstalacionConstruccion.SetInstalacionesConstruccion(construccion, datosInstalacionesPrivativas, false);
+        if(datosInstalacionesPrivativas != null)
+            InstalacionConstruccion.SetInstalacionesConstruccion(construccion, datosInstalacionesComunes, true);
 
         data_context.SubmitChanges();
     }

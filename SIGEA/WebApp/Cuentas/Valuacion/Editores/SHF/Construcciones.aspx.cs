@@ -37,7 +37,7 @@ public partial class Cuentas_Valuacion_Editores_SHF_Construcciones : System.Web.
         {
             throw new Exception("Identificador de avalúo no proporcionado");
         }
-        scripts.AppendLine(string.Format("loadForm({0});", idAvaluo));
+        scripts.AppendLine(string.Format("checkCondominio({0});", idAvaluo));
     }
     private void RegisterScripts()
     {

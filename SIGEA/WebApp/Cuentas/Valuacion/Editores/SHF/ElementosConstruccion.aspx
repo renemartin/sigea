@@ -17,21 +17,8 @@
     <script type="text/javascript">
         // Variables
         var idAvaluo = 0;
+        var condominal = false;
         
-        function loadConstruccion(idAvaluo) {
-            checarConstruccion(idAvaluo, checarTipoConstruccion);
-        }
-
-        function checarTipoConstruccion(enable, key_id) {            
-            if (enable == false) {
-                setVisibility($get("<%= editar_estructuras_ImBtn.ClientID %>"), false);
-                setVisibility($get("<%= editar_acabados_ImBtn.ClientID %>"), false);
-                setVisibility($get("<%= editar_instalaciones_ImBtn.ClientID %>"), false);
-                showMessage("Antes de capturar los acabados y estructuras, el avalúo debe contar con un tipo de construcción.\n\n Por favor captura la descripción de las construcciones.");
-            }
-            else
-                loadForm(key_id);
-        }
         // Inicialización
         function setupForm() {
             var link = $get("ctl00_menu_Ctrl_elementos_LkBtn")
@@ -48,14 +35,42 @@
             disableControls($get('form_instalaciones'));
         }
 
-        // Carga de registros
-        function loadForm(key_id) {
+        // Chequeo construcciones
+        function checkConstruccion(key_id) {
+            checarConstruccion(key_id, checkConstruccion_Complete);
+        }
+        function checkConstruccion_Complete(enable, key_id) {
+            if (enable == false) {
+                setVisibility($get("<%= editar_estructuras_ImBtn.ClientID %>"), false);
+                setVisibility($get("<%= editar_acabados_ImBtn.ClientID %>"), false);
+                setVisibility($get("<%= editar_instalaciones_ImBtn.ClientID %>"), false);
+                showMessage("Antes de capturar los acabados y estructuras, el avalúo debe contar con un tipo de construcción.\n\n Por favor captura la descripción de las construcciones.");
+            }
+            else
+                checkCondominio(key_id);
+        }
+
+        // Chequeo bloque condominio
+        function checkCondominio(key_id) {
             idAvaluo = key_id;
-            
+            getInmuebleEscondominalAsync(idAvaluo, checkCondominio_Complete);
+        }
+        function checkCondominio_Complete(result) {
+            condominal = result;
+            if (condominal) {
+                $get("modCondominio").style.display = "block";
+            }
+            loadForm();
+        }
+        
+        // Carga de registros
+        function loadForm() {           
             loadDatosEstructuras();
             loadDatosAcabados();
             loadDatosInstalaciones();
-            loadDatosInstalacionesAdicionales();
+            if (condominal) {
+                loadDatosInstalacionesAdicionales();
+            }
         }
         function loadDatosEstructuras() {
             loadEstructurasAsync(idAvaluo, datosEstructuras_Ctrl);
@@ -121,16 +136,18 @@
             var validated = true;
             if (!instalaciones_Ctrl.validate())
                 validated = false;
-            if (!instalacionesPrivativas_Ctrl.validate())
-                validated = false;
-            if (!instalacionesComunes_Ctrl.validate())
-                validated = false;
+            if (condominal) {
+                if (!instalacionesPrivativas_Ctrl.validate())
+                    validated = false;
+                if (!instalacionesComunes_Ctrl.validate())
+                    validated = false;
+            }
             if (validated) {
                 saveDatosInstalacionesConstruccionAsync(
                 idAvaluo
                 , instalaciones_Ctrl.getData()
-                , instalacionesPrivativas_Ctrl.getData()
-                , instalacionesComunes_Ctrl.getData()
+                , condominal ? instalacionesPrivativas_Ctrl.getData() : null
+                , condominal ? instalacionesComunes_Ctrl.getData() : null
                 , saveDatosInstalaciones_Success);
             }
             else if (mostrarAlertas != false) {
@@ -161,6 +178,7 @@
             <asp:ScriptReference Path="~/Scripts/Forms.js" />
             <asp:ScriptReference Path="~/Scripts/Validation.js" />
             <asp:ScriptReference Path="~/Scripts/Entities/Avaluos.js" />
+            <asp:ScriptReference Path="~/Scripts/Entities/Inmuebles.js" />
             <asp:ScriptReference Path="~/Scripts/Entities/Construcciones.js" />
         </Scripts>
     </asp:ScriptManager>    
@@ -193,8 +211,7 @@
     <div class="barraAcciones">
         <asp:ImageButton ID="guardar_acabados_ImBtn" runat="server" SkinID="Save" CssClass="hidden" />
         <asp:ImageButton ID="cancelar_acabados_ImBtn" runat="server" SkinID="Cancel" CssClass="hidden" />
-    </div>
-    <div id="seccion_instalaciones_condominio">
+    </div>    
         <hr />
         <h1>
             Instalaciones
@@ -204,23 +221,24 @@
         </div>
         <div id="form_instalaciones" class="formulario">
             <SIGEA:DatosInstalaciones ID="instalaciones_Ctrl" runat="server" />
-            <h2>
-                Instalaciones especiales</h2>
-            <h3>
-                Instalaciones privativas</h3>
-            <SIGEA:InstalacionesAdicionales ID="instalacionesPrivativas_Ctrl" runat="server" />
-            <h2>
-                Obras complementarias</h2>
-            <h3>
-                Instalaciones comúnes</h3>
-            <SIGEA:InstalacionesAdicionales ID="instalacionesComunes_Ctrl" runat="server" />
+            <div id="modCondominio" class="hidden">
+                <h2>
+                    Instalaciones especiales</h2>
+                <h3>
+                    Instalaciones privativas</h3>
+                <SIGEA:InstalacionesAdicionales ID="instalacionesPrivativas_Ctrl" runat="server" />
+                <h2>
+                    Obras complementarias</h2>
+                <h3>
+                    Instalaciones comúnes</h3>
+                <SIGEA:InstalacionesAdicionales ID="instalacionesComunes_Ctrl" runat="server" />
+            </div>
         </div>
         <div class="barraAcciones">
             <asp:ImageButton ID="guardar_instalaciones_ImBtn" runat="server" SkinID="Save" CssClass="hidden" />
             <asp:ImageButton ID="cancelar_instalaciones_ImBtn" runat="server" SkinID="Cancel"
                 CssClass="hidden" />
         </div>
-    </div>
     <SIGEA:EditorSHFNavegador ID="navegador_Ctrl" runat="server" 
         AnteriorURL="Construcciones.aspx" SiguienteVisible="False" />
 </asp:Content>
