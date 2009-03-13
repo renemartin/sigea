@@ -127,7 +127,7 @@
             Datos generales del avalúo</h2>
         <SIGEA:DatosGeneralesAvaluo ID="avaluo_Ctrl" runat="server" />
         <h2>
-            del solicitante
+            Datos del solicitante
         </h2>
         <SIGEA:DatosSolicitante ID="solicitante_Ctrl" runat="server" />
     </div>
