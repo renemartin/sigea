@@ -68,6 +68,8 @@ function setupClonedControl(control, num) {
             || control.type == "select-one")) {
 
         var old_id = control.getAttribute("id");
+        var old_name = control.getAttribute("name");
         control.setAttribute("id", old_id + "_" + num);
+        control.setAttribute("name", old_name + "_" + num);
     }
 }

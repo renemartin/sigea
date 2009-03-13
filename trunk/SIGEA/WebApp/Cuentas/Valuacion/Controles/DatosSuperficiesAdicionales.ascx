@@ -3,10 +3,10 @@
 
 <table id="<%= ClientID %>_tabla_adicionales">
     <tr class="filaHeader">
-        <td style="width:150px">
+        <td style="width:180px">
             Concepto
         </td>
-        <td style="width:150px">
+        <td style="width:180px">
             Superficie
         </td>
         <td>
