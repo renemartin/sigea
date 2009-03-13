@@ -143,7 +143,7 @@
             <cc1:AutoCompleteExtender ID="recamarasPisos_TBox_AutoCompleteExtender" 
                runat="server" CompletionInterval="500" ContextKey="Pisos Interiores" 
                 DelimiterCharacters=", " Enabled="True" ServiceMethod="GetNombresMateriales" 
-                ServicePath="~/Services/MethodCallers.asmx" 
+                ServicePath="~/Services/MethodCallers.asmx" MinimumPrefixLength="0" 
                 TargetControlID="recamarasPisos_TBox" 
                 ShowOnlyCurrentWordInCompletionListItem="True">
             </cc1:AutoCompleteExtender>

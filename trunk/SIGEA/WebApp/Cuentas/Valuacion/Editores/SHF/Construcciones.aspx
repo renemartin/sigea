@@ -16,6 +16,7 @@
     <script type="text/javascript">
         // Variables
         var idAvaluo = 0;
+        var condominal = false;
 
         // Inicialización
         function setupForm() {
@@ -33,13 +34,26 @@
             disableControls($get('form_condominio'));
         }
 
-        // Carga de registros
-        function loadForm(key_id) {
+        // Chequeo bloque condominio
+        function checkCondominio(key_id) {
             idAvaluo = key_id;
+            getInmuebleEscondominalAsync(idAvaluo, checkCondominio_Complete);
+        }
+        function checkCondominio_Complete(result) {
+            condominal = result;
+            if (condominal) {
+                $get("modCondominio").style.display = "block";
+            }
+            loadForm();
+        }
 
+        // Carga de registros
+        function loadForm() {            
             loadDatosConstrucciones();
             loadDatosSuperficies();
-            loadDatosCondominio();
+            if (condominal) {
+                loadDatosCondominio();
+            }
             getDescripcionUsoActual(
                 idAvaluo, $get("<%= descripcionUsoActual_Lbl.ClientID %>"));
         }
@@ -142,6 +156,7 @@
             <asp:ScriptReference Path="~/Scripts/Tables.js" />
             <asp:ScriptReference Path="~/Scripts/Forms.js" />
             <asp:ScriptReference Path="~/Scripts/Validation.js" />
+            <asp:ScriptReference Path="~/Scripts/Entities/Inmuebles.js" />
             <asp:ScriptReference Path="~/Scripts/Entities/Construcciones.js" />
         </Scripts>
     </asp:ScriptManager>    
@@ -183,18 +198,21 @@
         <asp:ImageButton ID="cancelar_superficies_ImBtn" runat="server" SkinID="Cancel" CssClass="hidden" />
     </div>
     <hr />
-    <h1>
-        Datos del condominio</h1>
-    <div class="barraAcciones">
-        <asp:ImageButton ID="editar_condominio_ImBtn" runat="server" SkinID="Edit" />
+    <div id="modCondominio" class="hidden">
+        <h1>
+            Datos del condominio</h1>
+        <div class="barraAcciones">
+            <asp:ImageButton ID="editar_condominio_ImBtn" runat="server" SkinID="Edit" />
+        </div>
+        <div id="form_condominio" class="formulario">
+            <SIGEA:Condominio ID="condominio_Ctrl" runat="server" />
+        </div>
+        <div class="barraAcciones">
+            <asp:ImageButton ID="guardar_condominio_ImBtn" runat="server" SkinID="Save" CssClass="hidden" />
+            <asp:ImageButton ID="cancelar_condominio_ImBtn" runat="server" SkinID="Cancel" CssClass="hidden" />
+        </div>
     </div>
-    <div id="form_condominio" class="formulario">
-        <SIGEA:Condominio ID="condominio_Ctrl" runat="server" />
-    </div>
-    <div class="barraAcciones">
-        <asp:ImageButton ID="guardar_condominio_ImBtn" runat="server" SkinID="Save" CssClass="hidden" />
-        <asp:ImageButton ID="cancelar_condominio_ImBtn" runat="server" SkinID="Cancel" CssClass="hidden" />
-    </div>
+    
     <SIGEA:EditorSHFNavegador ID="navegador_Ctrl" runat="server"
         AnteriorURL="UsoActual.aspx" SiguienteURL="ElementosConstruccion.aspx" />
 </asp:Content>

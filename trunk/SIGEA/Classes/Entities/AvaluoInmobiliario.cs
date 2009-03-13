@@ -253,7 +253,7 @@ namespace SIGEA.Classes.Entities
                                join c in data_context.ConstruccionInmueble on tc.idConstruccion equals c.idConstruccion
                                join i in data_context.Inmueble on c.idInmueble equals i.idInmueble
                                join a in data_context.AvaluoInmobiliario on i.idInmueble equals a.idInmueble
-                               where a.idAvaluo == idAvaluo
+                               where a.idAvaluo == idAvaluo && tc.numeroTipo == 1
                                select tc;
 
             if (!checar_query.Any())
