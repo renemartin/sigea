@@ -23,12 +23,12 @@ namespace SIGEA.Classes.Entities
             return tipoConstruccion_query.Single();               
         }
 
-        public static float CalculaVidaUtilFromIDConstruccion(SIGEADataContext data_context, int idConstruccion) 
-        { 
+        public static float GetVidaUtilFromIDClase(SIGEADataContext data_context, int idClase) 
+        {
             var tipoConstruccion_query = from tc in data_context.TipoConstruccion
                                          join c in data_context.ClaseInmueble on tc.idClase equals c.idClase
-                                         where tc.idConstruccion == idConstruccion
-                                         select (c.vidaUtil - tc.edad);
+                                         select c.vidaUtil;
+
             
             if (!tipoConstruccion_query.Any())
                 return 0;
