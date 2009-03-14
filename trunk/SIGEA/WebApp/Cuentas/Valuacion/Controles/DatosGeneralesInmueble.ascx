@@ -2,7 +2,6 @@
     Inherits="Cuentas_Valuacion_DatosGeneralesInmueble" %>
 <%@ Register Src="DatosDireccionInmueble.ascx" TagName="DatosDireccionInmueble" TagPrefix="SIGEA" %>
 <%@ Register Src="~/Controles/DatosDireccion.ascx" TagName="DatosDireccion" TagPrefix="SIGEA" %>
-
 <table>
     <tr>
         <td class="celdaTitulo">
@@ -106,7 +105,7 @@
             data_set[0].telefono = $get("<%= telefono_TBox.ClientID %>").value;
 
             data_set[1] = ubicacion_Ctrl.getData();
-            data_set[2] = direccionInmueble_Ctrl.getData();            
+            data_set[2] = direccionInmueble_Ctrl.getData();
 
             return data_set;
         }
@@ -120,7 +119,7 @@
                 $get("<%= telefono_TBox.ClientID %>").value = data_set[0].telefono;
 
                 ubicacion_Ctrl.setData(data_set[1]);
-                direccionInmueble_Ctrl.setData(data_set[2]);                
+                direccionInmueble_Ctrl.setData(data_set[2]);
             }
             else {
                 direccionInmueble_Ctrl.fillData();
@@ -128,6 +127,7 @@
 
             fillTipoInmueble("<%= tipoInmueble_DDList.ClientID %>");
             fillRegimenPropiedad("<%= regimenPropiedad_DDList.ClientID %>");
+            setTipoInmuebleSelection(data_set[0].idTipoInmueble);
         }
 
         // Llenado de datos
@@ -154,9 +154,31 @@
         function getIdTipo() {
             return $get("<%= tipoInmueble_DDList.ClientID %>").value;
         }
+
+
+    }
+
+    function setTipoInmuebleSelection(opcion) {
+        var regimen = $get("<%= regimenPropiedad_DDList.ClientID %>");
+        var index_condominal = 2;
+        var index_seleccione = 0;
+
+        if (opcion == "3" || opcion == "4") {
+            clearSelection(regimen);
+            regimen.disabled = "disabled";
+            if(regimen.options.length > 0)
+                regimen.options[index_condominal].selected = true;
+            regimen.setAttribute("stay-disabled", true);
+        }
+        else {
+            if(regimen.options.length > 0)
+                regimen.options[index_seleccione].selected = true;
+            regimen.disabled = "";
+            regimen.removeAttribute("stay-disabled");
+        }
     }
 
     this["<%= ID %>"] = new Inmueble();
-   
+
 </script>
 
