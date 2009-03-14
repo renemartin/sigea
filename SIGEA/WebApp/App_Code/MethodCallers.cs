@@ -465,9 +465,9 @@ public class MethodCallers : System.Web.Services.WebService
     }
     
     [WebMethod]
-    public float CalculaVidaUtil(int idConstruccion)
+    public float CalculaVidaUtil(int idClase, float edad)
     {
-        return TipoConstruccion.CalculaVidaUtilFromIDConstruccion(data_context, idConstruccion);
+        return (TipoConstruccion.GetVidaUtilFromIDClase(data_context, idClase) - edad);
     }
 
     #endregion
