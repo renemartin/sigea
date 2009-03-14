@@ -16,12 +16,13 @@ function toggleControlEnabled(container, enabled) {
         || container.type == "checkbox"
         || container.type == "radio") {
         if (enabled) {
-            if (container.getAttribute("stay-disabled") == undefined) {
-                container.disabled = false;
-            }
-            else {
-                container.removeAttribute("stay-disabled");
-            }
+    
+                if (container.getAttribute("stay-disabled") == null) {
+                    container.disabled = false;
+                }
+                else {
+                    container.removeAttribute("stay-disabled");
+                }
         }
         else {
             if (container.disabled) {
