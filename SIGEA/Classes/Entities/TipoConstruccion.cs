@@ -23,17 +23,16 @@ namespace SIGEA.Classes.Entities
             return tipoConstruccion_query.Single();               
         }
 
-        public static float GetVidaUtilFromIDClase(SIGEADataContext data_context, int idClase) 
+        public static int GetVidaUtilFromIDClase(SIGEADataContext data_context, int idClase) 
         {
-            var tipoConstruccion_query = from tc in data_context.TipoConstruccion
-                                         join c in data_context.ClaseInmueble on tc.idClase equals c.idClase
-                                         select c.vidaUtil;
+            var vida_util_query = from c in data_context.ClaseInmueble
+                                         where c.idClase == idClase
+                                         select (int)c.vidaUtil;
 
-            
-            if (!tipoConstruccion_query.Any())
+            if (!vida_util_query.Any())
                 return 0;
 
-            return (float)tipoConstruccion_query.Single();
+            return vida_util_query.Single();
         }
         
         public static Dictionary<string, object>[] GetTiposConstruccion(ConstruccionInmueble construccion)
