@@ -106,6 +106,11 @@ function clearControl(control) {
 
 // Controles select
 
+function clearSelection(select) {
+    for (var i = select.options.length - 1; i >= 0; i--) {
+        select.options[i].selected = false;
+    }
+}
 function clearSelect(select) {
     for (var i = select.options.length - 1; i >= 0; i--) {
         select.options[i] = null;
