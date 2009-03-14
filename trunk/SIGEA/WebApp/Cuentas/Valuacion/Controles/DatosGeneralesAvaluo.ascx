@@ -110,6 +110,7 @@
             $get("<%= entidadOtorgante_DDList.ClientID %>"),            // 7
             $get("<%= entidadCofinanciamiento_DDList.ClientID %>"),     // 8
             $get("<%= tipoCreditoInterno_DDList.ClientID %>")           // 9
+            //$get("<%= entidadOtorgante_DDList.ClientID %>")             //10
         );
         this.validator = new ControlValidator(this.controls);
         this.validator.addOptionalField(1);
@@ -312,7 +313,14 @@
             eval("<%= ID %>").validator.removeOptionalField(9);
         }
         else {
-            eval("<%= ID %>").validator.addOptionalField(9);        
+            eval("<%= ID %>").validator.addOptionalField(9);
+        }
+        
+//        var opcion_entidad = entidad.options[entidad.selectedIndex].text.toLowerCase();
+//        if (entidad.value == "infonavit") {
+//            //mandar nss a validacion
+//            
+          
         }
     }
     function setPromocionSelection() {
@@ -328,6 +336,8 @@
         eval("<%= ID %>").validator.removeOptionalField(3);
         eval("<%= ID %>").validator.removeOptionalField(4);
     }
+
+   
     
 </script>
 
