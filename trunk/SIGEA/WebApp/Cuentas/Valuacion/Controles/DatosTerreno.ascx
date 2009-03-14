@@ -181,6 +181,9 @@
                 if (data.otraFuente != "") {
                     this.validator.removeOptionalField(11);
                 }
+                setConfiguracionRegular(data.configuracionRegular);
+                
+                
             }
 
             this.fillData();
@@ -226,6 +229,19 @@
         }
         else {
             eval("<%= ID %>").validator.addOptionalField(11)
+        }
+    }
+    function setConfiguracionRegular(configuracion_regular) {        
+        var lados = $get("<%= lados_TBox.ClientID%>");
+        if (configuracion_regular == true) {
+            lados.disabled = "disabled";
+            lados.value = "4";
+            lados.setAttribute("stay-disabled", true); 
+        }
+        else {
+            lados.value = "";
+            lados.disabled = "";
+            lados.removeAttribute("stay-disabled");
         }
     }
 
