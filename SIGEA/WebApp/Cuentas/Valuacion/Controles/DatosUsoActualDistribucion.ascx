@@ -22,7 +22,7 @@
             Jardines:
         </td>
         <td class="celdaValor" colspan="3">
-            <asp:CheckBox ID="jardin_CBox" Text="Tiene jardines" runat="server" />&nbsp;<asp:CheckBox
+            <asp:CheckBox ID="jardin_CBox" Text="Tiene jardín frontal" runat="server" />&nbsp;<asp:CheckBox
                 ID="jardinFondo_CBox" Text="Tiene jardín al fondo" runat="server" />&nbsp;<asp:CheckBox
                     ID="jardinLateral_CBox" Text="Tiene jardín lateral" runat="server" />
         </td>
