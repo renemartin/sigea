@@ -18,5 +18,6 @@ public partial class Cuentas_Valuacion_Controles_DatosTerreno : System.Web.UI.Us
     private void SetAttributes()
     {
         fuenteMedidas_DDList.Attributes.Add("onchange", "setFuenteMedidasSelection();");
+        configuracionRegular_CBox.Attributes.Add("onclick", "setConfiguracionRegular(this.checked);");
     }
 }
