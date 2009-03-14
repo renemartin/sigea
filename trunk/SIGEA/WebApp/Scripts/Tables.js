@@ -21,7 +21,7 @@ function addClonedRow(table_id) {
 
     var base_row = tables[table_id].base_row;
     var cloned_row = base_row.cloneNode(true);
-
+    
     setupClonedRow(cloned_row, ++tables[table_id].count);
     base_row.parentNode.appendChild(cloned_row);
 
@@ -42,7 +42,8 @@ function removeClonedRow(table_id) {
 
 function setupClonedRow(cloned_row, num) {
     cloned_row.style.display = "";
-
+    cloned_row.setAttribute("indice", num);
+    
     var i = null;
     var inputs = cloned_row.getElementsByTagName("input");
     for (i = 0; i < inputs.length; i++) {
