@@ -14,6 +14,7 @@ function asyncCallSenderBack(result, context) {
         context[1](context[0]);
     }
 }
+
 function asyncCallListBack(result, callBackList) {
     if (callBackList != null) {
         if (result != null && result.length != undefined) {
@@ -28,18 +29,22 @@ function asyncCallListBack(result, callBackList) {
         callBackList[0]();
     }
 }
+
 function asyncCallSingleListBack(result, callBackList) {
     if (callBackList != null) {
         callBackList[1](result);
         callBackList[0]();
     }
 }
+
 function asyncControlLoad(data, control) {
     control.setData(data);
 }
+
 function asyncControlFachada(data, control) {
     control.setFachada(data);
 }
+
 function asyncSetTextResult(data, target) {
     if (target != null) {
         hideControlLoading(target.id);
@@ -47,5 +52,15 @@ function asyncSetTextResult(data, target) {
             target.value = data;
         else if (target.innerHTML != undefined)
             target.innerHTML = data;            
+    }
+}
+
+function asyncSetNumResult(data, target) {
+    if (target != null) {
+        hideControlLoading(target.id);
+        if (target.value != undefined)
+            target.value = getNumString(data, 2);
+        else if (target.innerHTML != undefined)
+            target.innerHTML = getNumString(data, 2);
     }
 }

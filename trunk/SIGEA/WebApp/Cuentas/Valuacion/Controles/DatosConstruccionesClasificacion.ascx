@@ -87,18 +87,16 @@
     function ClasificacionConstrucciones() {
         
         // Inicialización
-        if (typeof (ClasificacionConstrucciones_Init) == 'undefined') {
-            ClasificacionConstrucciones_Init = true;
-            ClasificacionConstrucciones.prototype.addConstruccionRow = addConstruccionRow;
-            ClasificacionConstrucciones.prototype.removeConstruccionRow = removeConstruccionRow;
-            ClasificacionConstrucciones.prototype.getData = getData;
-            ClasificacionConstrucciones.prototype.setData = setData;
-            ClasificacionConstrucciones.prototype.validate = validate;
-            ClasificacionConstrucciones.prototype.fillRowData = fillRowData;
-            ClasificacionConstrucciones.prototype.addRowValidator = addRowValidator;
-            ClasificacionConstrucciones.prototype.onEdadLostFocus = onEdadLostFocus;
-        }        
-        this.parent_id = parent_id = "<%= ClientID %>";
+        ClasificacionConstrucciones_Init = true;
+        ClasificacionConstrucciones.prototype.addConstruccionRow = addConstruccionRow;
+        ClasificacionConstrucciones.prototype.removeConstruccionRow = removeConstruccionRow;
+        ClasificacionConstrucciones.prototype.getData = getData;
+        ClasificacionConstrucciones.prototype.setData = setData;
+        ClasificacionConstrucciones.prototype.validate = validate;
+        ClasificacionConstrucciones.prototype.fillRowData = fillRowData;
+        ClasificacionConstrucciones.prototype.addRowValidator = addRowValidator;
+
+        this.parent_id = "<%= ClientID %>";
         this.validators = new Array();
         this.addRowValidator(1);
         addCloningTable($get("tabla_construcciones"), 1, 1, 5);
@@ -225,16 +223,19 @@
             validator.addNumericField(9, true);
 
             this.validators[row_num - 1] = validator;
-        }
-        
-        function onEdadLostFocus() {
-            debugger; var clase = $get(this.parent_id + "_clase_DDList");
-            var edad = $get(this.parent_id + "_edad_TBox");
-            var vida_util = $get(this.parent_id + "_vidaUtil_TBox");
+        }       
+    }
 
-            if (clase.value != 0 && edad.value != "" && vida_util.value =="") {
-                calculaVidaUtil(clase.value, edad.value, vida_util);
-            }
+    function calcularVidaUtil(sender) {
+        var parent_id = "<%= ClientID %>";
+        var num_fila = sender.parentElement.parentElement.getAttribute("indice");
+        
+        var clase = $get(parent_id + "_clase_DDList_" + num_fila);
+        var edad = $get(parent_id + "_edad_TBox_" + num_fila);
+        var vida_util = $get(parent_id + "_vidaUtil_TBox_" + num_fila);
+        
+        if (clase.value != "0") {
+            calculaVidaUtil(clase.value, edad.value, vida_util);
         }
     }
 

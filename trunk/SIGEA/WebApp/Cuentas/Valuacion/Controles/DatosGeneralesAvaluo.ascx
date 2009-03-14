@@ -319,9 +319,8 @@
 //        var opcion_entidad = entidad.options[entidad.selectedIndex].text.toLowerCase();
 //        if (entidad.value == "infonavit") {
 //            //mandar nss a validacion
-//            
-          
-        }
+//        }
+
     }
     function setPromocionSelection() {
         var promocion_checked = $get("<%= promocionVIASC_CBox.ClientID %>").checked;
