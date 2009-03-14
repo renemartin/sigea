@@ -79,8 +79,7 @@
 <div class="etiqueta2">
     <span class="textoNegritas">Proximidad general:</span>
     <asp:Label ID="proximidadGeneral_Lbl" Text="0" runat="server"></asp:Label>
-    <span class="textoChico">&nbsp;%</span>
-</div>
+    <span class="textoChico">&nbsp;m</span></div>
 <div class="etiqueta2">
     <span class="textoNegritas">Nivel de equipamiento urbano:</span>
     <asp:Label ID="nivelEquipamiento_Lbl" Text="0" runat="server"></asp:Label>
