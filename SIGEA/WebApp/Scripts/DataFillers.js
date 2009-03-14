@@ -268,4 +268,10 @@ function getDescripcionUsoActual(idAvaluo, target) {
         idAvaluo, asyncSetTextResult, asyncCallFail, target);
 }
 
+function calculaVidaUtil(idClase, edad, target) {
+    showControlLoading(target.id);
+    MethodCallers.CalculaVidaUtil(
+        idClase, edad, asyncSetTextResult, asyncCallFail, target);
+}
+
 
