@@ -96,6 +96,7 @@
             ClasificacionConstrucciones.prototype.validate = validate;
             ClasificacionConstrucciones.prototype.fillRowData = fillRowData;
             ClasificacionConstrucciones.prototype.addRowValidator = addRowValidator;
+            ClasificacionConstrucciones.prototype.onEdadLostFocus = onEdadLostFocus;
         }        
         this.parent_id = parent_id = "<%= ClientID %>";
         this.validators = new Array();
@@ -109,7 +110,7 @@
                 if (fill == null || fill == true) {
                     this.fillRowData(row_num + 1);
                 }
-                this.addRowValidator(row_num + 1);
+                this.addRowValidator(row_num + 1);                              
             }
         }
 
@@ -224,6 +225,16 @@
             validator.addNumericField(9, true);
 
             this.validators[row_num - 1] = validator;
+        }
+        
+        function onEdadLostFocus() {
+            debugger; var clase = $get(this.parent_id + "_clase_DDList");
+            var edad = $get(this.parent_id + "_edad_TBox");
+            var vida_util = $get(this.parent_id + "_vidaUtil_TBox");
+
+            if (clase.value != 0 && edad.value != "" && vida_util.value =="") {
+                calculaVidaUtil(clase.value, edad.value, vida_util);
+            }
         }
     }
 
