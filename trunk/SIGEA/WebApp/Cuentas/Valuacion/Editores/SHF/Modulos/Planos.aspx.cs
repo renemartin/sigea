@@ -8,7 +8,7 @@ using System.Web.UI;
 using System.Web.UI.WebControls;
 using SIGEA.Classes.Entities;
 
-public partial class Cuentas_Valuacion_Editores_SHF_Modulos_Fotografias : System.Web.UI.Page
+public partial class Cuentas_Valuacion_Editores_SHF_Modulos_Planos : System.Web.UI.Page
 {
     protected void Page_Load(object sender, EventArgs e)
     {
@@ -18,58 +18,58 @@ public partial class Cuentas_Valuacion_Editores_SHF_Modulos_Fotografias : System
         }
     }
 
-    public string GetShowMethod(int idFotografia, int idArchivo, int idArchivoThumbnail, 
-        string urlFoto, string urlThumbnail,  string titulo, bool principal) {
-        return string.Format("loadPhoto({0},{1},{2},'{3}','{4}','{5}',{6}); return false;",
+    public string GetShowMethod(int idFotografia, int idArchivo, int idArchivoThumbnail,
+        string urlFoto, string urlThumbnail, string titulo)
+    {
+        return string.Format("loadPhoto({0},{1},{2},'{3}','{4}','{5}'); return false;",
             idFotografia,
             idArchivo,
             idArchivoThumbnail,
             urlFoto,
             urlThumbnail,
-            titulo,
-            principal ? "true" : "false");
+            titulo);
     }
 
-    private void SavePhoto()
+    private void SaveImage()
     {
         int idInmueble = int.Parse(idInmueble_HF.Value);
-        int idFotografia = int.Parse(idFotografia_HF.Value);
+        int idPlano = int.Parse(idPlano_HF.Value);
         int idArchivo = int.Parse(idArchivo_HF.Value);
         int idArchivoThumbnail = int.Parse(idThumbnail_HF.Value);
 
-        SIGEADataContext data_context = new SIGEADataContext(ConfigurationManager.ConnectionStrings["SIGEA_ConnectionString"].ConnectionString);        
-        
+        SIGEADataContext data_context = new SIGEADataContext(ConfigurationManager.ConnectionStrings["SIGEA_ConnectionString"].ConnectionString);
+
         try
         {
-            
+
             FileUploader uploader = new FileUploader(data_context);
             string folder_name = ConfigurationManager.AppSettings["photosFolderPath"];
 
-            Archivo archivoFoto = null;
+            Archivo archivoImagen = null;
             Archivo archivoThumbnail = null;
 
-            if (cambioFoto_HF.Value != "")
+            if (cambioImagen_HF.Value != "")
             {
-                archivoFoto = uploader.SaveImage(idArchivo, descripcion_TBox.Text, file_Fup.PostedFile, folder_name, 800, 600);
-                archivoThumbnail = uploader.SaveImage(idArchivoThumbnail, descripcion_TBox.Text, file_Fup.PostedFile, folder_name, 75, 50);
+                archivoImagen = uploader.SaveImage(idArchivo, descripcion_TBox.Text, file_Fup.PostedFile, folder_name, 1024, 768);
+                archivoThumbnail = uploader.SaveImage(idArchivoThumbnail, descripcion_TBox.Text, file_Fup.PostedFile, folder_name, 100, 75);
             }
             else
             {
-                archivoFoto = uploader.UpdateTitulo(idArchivo, descripcion_TBox.Text);
+                archivoImagen = uploader.UpdateTitulo(idArchivo, descripcion_TBox.Text);
                 archivoThumbnail = uploader.UpdateTitulo(idArchivoThumbnail, descripcion_TBox.Text);
             }
 
-            if (archivoFoto == null || archivoThumbnail == null)
+            if (archivoImagen == null || archivoThumbnail == null)
             {
                 throw new Exception("Ocurrió un error al crear el archivo de imágen");
             }
 
-            FotografiaInmueble fotografia = FotografiaInmueble.GetForDataUpdate(data_context, idFotografia, idInmueble);
-            fotografia.SetData(data_context, archivoFoto, archivoThumbnail, principal_CBox.Checked);
-            
+            PlanoInmueble plano = PlanoInmueble.GetForDataUpdate(data_context, idPlano, idInmueble);
+            plano.SetData(archivoImagen, archivoThumbnail);
+
             data_context.SubmitChanges();
 
-            fotos_View.DataBind();
+            planos_View.DataBind();
         }
         catch (Exception ex)
         {
@@ -78,18 +78,18 @@ public partial class Cuentas_Valuacion_Editores_SHF_Modulos_Fotografias : System
 
         ClearForm();
     }
-    private void DeletePhoto()
+    private void DeleteImage()
     {
-        int idFotografia = int.Parse(idFotografia_HF.Value);
-        string urlFoto = Server.MapPath("~/" + urlFoto_HF.Value.Split('?')[0]);
+        int idPlano = int.Parse(idPlano_HF.Value);
+        string urlImagen = Server.MapPath("~/" + urlImagen_HF.Value.Split('?')[0]);
         string urlThumbnail = Server.MapPath("~/" + urlThumbnail_HF.Value.Split('?')[0]);
 
         SIGEADataContext data_context = new SIGEADataContext(ConfigurationManager.ConnectionStrings["SIGEA_ConnectionString"].ConnectionString);
         try
         {
-            if (File.Exists(urlFoto))
+            if (File.Exists(urlImagen))
             {
-                File.Delete(urlFoto);
+                File.Delete(urlImagen);
             }
 
             if (File.Exists(urlThumbnail))
@@ -97,10 +97,10 @@ public partial class Cuentas_Valuacion_Editores_SHF_Modulos_Fotografias : System
                 File.Delete(urlThumbnail);
             }
 
-            FotografiaInmueble.Delete(data_context, idFotografia);
+            PlanoInmueble.Delete(data_context, idPlano);
             data_context.SubmitChanges();
 
-            fotos_View.DataBind();
+            planos_View.DataBind();
         }
         catch (Exception ex)
         {
@@ -112,13 +112,12 @@ public partial class Cuentas_Valuacion_Editores_SHF_Modulos_Fotografias : System
     private void ClearForm()
     {
         descripcion_TBox.Text = string.Empty;
-        principal_CBox.Checked = false;
-        idFotografia_HF.Value = "0";
+        idPlano_HF.Value = "0";
         idArchivo_HF.Value = "0";
         idThumbnail_HF.Value = "0";
-        urlFoto_HF.Value = "";
+        urlImagen_HF.Value = "";
         urlThumbnail_HF.Value = "";
-        cambioFoto_HF.Value = "True";
+        cambioImagen_HF.Value = "True";
     }
 
     private void GetParameters()
@@ -156,7 +155,7 @@ public partial class Cuentas_Valuacion_Editores_SHF_Modulos_Fotografias : System
 
     protected void subir_ImBtn_Click(object sender, ImageClickEventArgs e)
     {
-        SavePhoto();
+        SaveImage();
     }
     protected void cancelar_ImBtn_Click(object sender, ImageClickEventArgs e)
     {
@@ -164,6 +163,6 @@ public partial class Cuentas_Valuacion_Editores_SHF_Modulos_Fotografias : System
     }
     protected void eliminar_ImBtn_Click(object sender, ImageClickEventArgs e)
     {
-        DeletePhoto();
+        DeleteImage();
     }
 }
