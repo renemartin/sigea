@@ -867,7 +867,7 @@ public class EntityWrappers : System.Web.Services.WebService
 
         CodigoPostal cp_direccion = CodigoPostal.GetFromData(data_context, datosUbicacion);
         comparable.SetDatos(datosComparable);
-        comparable.DatoContacto.SetData(datosContacto);
+        //comparable.DatoContacto.SetData(datosContacto);
         comparable.Direccion.SetData(cp_direccion, datosUbicacion);
 
         data_context.SubmitChanges();
@@ -885,7 +885,7 @@ public class EntityWrappers : System.Web.Services.WebService
             throw new Exception("El identificador del comparable es inválido");
 
         data[0] = comparable.GetData();
-        data[1] = comparable.DatoContacto.GetData();
+        //data[1] = comparable.DatoContacto.GetData();
         data[2] = comparable.Direccion.GetData();
 
         return data;
