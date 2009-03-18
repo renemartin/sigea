@@ -204,9 +204,6 @@ namespace SIGEA.Classes.Entities
     partial void InsertTipoColindancia(TipoColindancia instance);
     partial void UpdateTipoColindancia(TipoColindancia instance);
     partial void DeleteTipoColindancia(TipoColindancia instance);
-    partial void InsertTipoComparable(TipoComparable instance);
-    partial void UpdateTipoComparable(TipoComparable instance);
-    partial void DeleteTipoComparable(TipoComparable instance);
     partial void InsertTipoConstruccionPredominante(TipoConstruccionPredominante instance);
     partial void UpdateTipoConstruccionPredominante(TipoConstruccionPredominante instance);
     partial void DeleteTipoConstruccionPredominante(TipoConstruccionPredominante instance);
@@ -309,15 +306,9 @@ namespace SIGEA.Classes.Entities
     partial void InsertViasAcceso(ViasAcceso instance);
     partial void UpdateViasAcceso(ViasAcceso instance);
     partial void DeleteViasAcceso(ViasAcceso instance);
-    partial void InsertClaseComparable(ClaseComparable instance);
-    partial void UpdateClaseComparable(ClaseComparable instance);
-    partial void DeleteClaseComparable(ClaseComparable instance);
     partial void InsertCalidadProyecto(CalidadProyecto instance);
     partial void UpdateCalidadProyecto(CalidadProyecto instance);
     partial void DeleteCalidadProyecto(CalidadProyecto instance);
-    partial void InsertComparableInmobiliario(ComparableInmobiliario instance);
-    partial void UpdateComparableInmobiliario(ComparableInmobiliario instance);
-    partial void DeleteComparableInmobiliario(ComparableInmobiliario instance);
     partial void InsertTipoComparable1(TipoComparable1 instance);
     partial void UpdateTipoComparable1(TipoComparable1 instance);
     partial void DeleteTipoComparable1(TipoComparable1 instance);
@@ -366,6 +357,15 @@ namespace SIGEA.Classes.Entities
     partial void InsertPlanoInmueble(PlanoInmueble instance);
     partial void UpdatePlanoInmueble(PlanoInmueble instance);
     partial void DeletePlanoInmueble(PlanoInmueble instance);
+    partial void InsertTipoComparable(TipoComparable instance);
+    partial void UpdateTipoComparable(TipoComparable instance);
+    partial void DeleteTipoComparable(TipoComparable instance);
+    partial void InsertComparableInmobiliario(ComparableInmobiliario instance);
+    partial void UpdateComparableInmobiliario(ComparableInmobiliario instance);
+    partial void DeleteComparableInmobiliario(ComparableInmobiliario instance);
+    partial void InsertTipoComparable2(TipoComparable2 instance);
+    partial void UpdateTipoComparable2(TipoComparable2 instance);
+    partial void DeleteTipoComparable2(TipoComparable2 instance);
     #endregion
 		
 		public SIGEADataContext() : 
@@ -878,14 +878,6 @@ namespace SIGEA.Classes.Entities
 			}
 		}
 		
-		public System.Data.Linq.Table<TipoComparable> TipoComparable
-		{
-			get
-			{
-				return this.GetTable<TipoComparable>();
-			}
-		}
-		
 		public System.Data.Linq.Table<TipoConstruccionPredominante> TipoConstruccionPredominante
 		{
 			get
@@ -1158,27 +1150,11 @@ namespace SIGEA.Classes.Entities
 			}
 		}
 		
-		public System.Data.Linq.Table<ClaseComparable> ClaseComparable
-		{
-			get
-			{
-				return this.GetTable<ClaseComparable>();
-			}
-		}
-		
 		public System.Data.Linq.Table<CalidadProyecto> CalidadProyecto
 		{
 			get
 			{
 				return this.GetTable<CalidadProyecto>();
-			}
-		}
-		
-		public System.Data.Linq.Table<ComparableInmobiliario> ComparableInmobiliario
-		{
-			get
-			{
-				return this.GetTable<ComparableInmobiliario>();
 			}
 		}
 		
@@ -1310,6 +1286,30 @@ namespace SIGEA.Classes.Entities
 			}
 		}
 		
+		public System.Data.Linq.Table<TipoComparable> TipoComparable
+		{
+			get
+			{
+				return this.GetTable<TipoComparable>();
+			}
+		}
+		
+		public System.Data.Linq.Table<ComparableInmobiliario> ComparableInmobiliario
+		{
+			get
+			{
+				return this.GetTable<ComparableInmobiliario>();
+			}
+		}
+		
+		public System.Data.Linq.Table<TipoComparable2> TipoComparable2
+		{
+			get
+			{
+				return this.GetTable<TipoComparable2>();
+			}
+		}
+		
 		[Function(Name="dbo.GenerarIDE")]
 		public ISingleResult<GenerarIDEResult> GenerarIDE([Parameter(DbType="SmallInt")] System.Nullable<short> mes, [Parameter(DbType="SmallInt")] System.Nullable<short> periodo, [Parameter(DbType="Int")] ref System.Nullable<int> consecutivo, [Parameter(Name="IDE", DbType="NVarChar(20)")] ref string iDE)
 		{
@@ -1372,8 +1372,6 @@ namespace SIGEA.Classes.Entities
 		
 		private EntitySet<UsuarioValuador> _UsuarioValuador;
 		
-		private EntitySet<ComparableInmobiliario> _ComparableInmobiliario;
-		
 		private EntityRef<Archivo> _Archivo;
 		
 		private EntityRef<DatoBancario> _DatoBancario;
@@ -1433,7 +1431,6 @@ namespace SIGEA.Classes.Entities
 			this._RechazoAvaluo = new EntitySet<RechazoAvaluo>(new Action<RechazoAvaluo>(this.attach_RechazoAvaluo), new Action<RechazoAvaluo>(this.detach_RechazoAvaluo));
 			this._RegistroSHF = new EntitySet<RegistroSHF>(new Action<RegistroSHF>(this.attach_RegistroSHF), new Action<RegistroSHF>(this.detach_RegistroSHF));
 			this._UsuarioValuador = new EntitySet<UsuarioValuador>(new Action<UsuarioValuador>(this.attach_UsuarioValuador), new Action<UsuarioValuador>(this.detach_UsuarioValuador));
-			this._ComparableInmobiliario = new EntitySet<ComparableInmobiliario>(new Action<ComparableInmobiliario>(this.attach_ComparableInmobiliario), new Action<ComparableInmobiliario>(this.detach_ComparableInmobiliario));
 			this._Archivo = default(EntityRef<Archivo>);
 			this._DatoBancario = default(EntityRef<DatoBancario>);
 			this._DatoContacto = default(EntityRef<DatoContacto>);
@@ -1869,19 +1866,6 @@ namespace SIGEA.Classes.Entities
 			}
 		}
 		
-		[Association(Name="Valuador_ComparableInmobiliario", Storage="_ComparableInmobiliario", ThisKey="idValuador", OtherKey="idValuador")]
-		public EntitySet<ComparableInmobiliario> ComparableInmobiliario
-		{
-			get
-			{
-				return this._ComparableInmobiliario;
-			}
-			set
-			{
-				this._ComparableInmobiliario.Assign(value);
-			}
-		}
-		
 		[Association(Name="Archivo_Valuador", Storage="_Archivo", ThisKey="idFotografia", OtherKey="idArchivo", IsForeignKey=true, DeleteRule="SET NULL")]
 		public Archivo Archivo
 		{
@@ -2243,18 +2227,6 @@ namespace SIGEA.Classes.Entities
 		}
 		
 		private void detach_UsuarioValuador(UsuarioValuador entity)
-		{
-			this.SendPropertyChanging();
-			entity.Valuador = null;
-		}
-		
-		private void attach_ComparableInmobiliario(ComparableInmobiliario entity)
-		{
-			this.SendPropertyChanging();
-			entity.Valuador = this;
-		}
-		
-		private void detach_ComparableInmobiliario(ComparableInmobiliario entity)
 		{
 			this.SendPropertyChanging();
 			entity.Valuador = null;
@@ -4976,6 +4948,8 @@ namespace SIGEA.Classes.Entities
 		
 		private EntitySet<ValorMaterial> _ValorMaterial;
 		
+		private EntitySet<ComparableInmobiliario> _ComparableInmobiliario;
+		
     #region Extensibility Method Definitions
     partial void OnLoaded();
     partial void OnValidate(System.Data.Linq.ChangeAction action);
@@ -4997,6 +4971,7 @@ namespace SIGEA.Classes.Entities
 			this._TipoProximidadUrbana = new EntitySet<TipoProximidadUrbana>(new Action<TipoProximidadUrbana>(this.attach_TipoProximidadUrbana), new Action<TipoProximidadUrbana>(this.detach_TipoProximidadUrbana));
 			this._TipoUsoSuelo = new EntitySet<TipoUsoSuelo>(new Action<TipoUsoSuelo>(this.attach_TipoUsoSuelo), new Action<TipoUsoSuelo>(this.detach_TipoUsoSuelo));
 			this._ValorMaterial = new EntitySet<ValorMaterial>(new Action<ValorMaterial>(this.attach_ValorMaterial), new Action<ValorMaterial>(this.detach_ValorMaterial));
+			this._ComparableInmobiliario = new EntitySet<ComparableInmobiliario>(new Action<ComparableInmobiliario>(this.attach_ComparableInmobiliario), new Action<ComparableInmobiliario>(this.detach_ComparableInmobiliario));
 			OnCreated();
 		}
 		
@@ -5151,6 +5126,19 @@ namespace SIGEA.Classes.Entities
 			}
 		}
 		
+		[Association(Name="ClaseInmueble_ComparableInmobiliario", Storage="_ComparableInmobiliario", ThisKey="idClase", OtherKey="idClase")]
+		public EntitySet<ComparableInmobiliario> ComparableInmobiliario
+		{
+			get
+			{
+				return this._ComparableInmobiliario;
+			}
+			set
+			{
+				this._ComparableInmobiliario.Assign(value);
+			}
+		}
+		
 		public event PropertyChangingEventHandler PropertyChanging;
 		
 		public event PropertyChangedEventHandler PropertyChanged;
@@ -5250,6 +5238,18 @@ namespace SIGEA.Classes.Entities
 		}
 		
 		private void detach_ValorMaterial(ValorMaterial entity)
+		{
+			this.SendPropertyChanging();
+			entity.ClaseInmueble = null;
+		}
+		
+		private void attach_ComparableInmobiliario(ComparableInmobiliario entity)
+		{
+			this.SendPropertyChanging();
+			entity.ClaseInmueble = this;
+		}
+		
+		private void detach_ComparableInmobiliario(ComparableInmobiliario entity)
 		{
 			this.SendPropertyChanging();
 			entity.ClaseInmueble = null;
@@ -7355,8 +7355,6 @@ namespace SIGEA.Classes.Entities
 		
 		private EntitySet<Cliente> _Cliente;
 		
-		private EntitySet<ComparableInmobiliario> _ComparableInmobiliario;
-		
     #region Extensibility Method Definitions
     partial void OnLoaded();
     partial void OnValidate(System.Data.Linq.ChangeAction action);
@@ -7393,7 +7391,6 @@ namespace SIGEA.Classes.Entities
 		{
 			this._Valuador = new EntitySet<Valuador>(new Action<Valuador>(this.attach_Valuador), new Action<Valuador>(this.detach_Valuador));
 			this._Cliente = new EntitySet<Cliente>(new Action<Cliente>(this.attach_Cliente), new Action<Cliente>(this.detach_Cliente));
-			this._ComparableInmobiliario = new EntitySet<ComparableInmobiliario>(new Action<ComparableInmobiliario>(this.attach_ComparableInmobiliario), new Action<ComparableInmobiliario>(this.detach_ComparableInmobiliario));
 			OnCreated();
 		}
 		
@@ -7683,19 +7680,6 @@ namespace SIGEA.Classes.Entities
 			}
 		}
 		
-		[Association(Name="DatoContacto_ComparableInmobiliario", Storage="_ComparableInmobiliario", ThisKey="idDatoContacto", OtherKey="idDatoContacto")]
-		public EntitySet<ComparableInmobiliario> ComparableInmobiliario
-		{
-			get
-			{
-				return this._ComparableInmobiliario;
-			}
-			set
-			{
-				this._ComparableInmobiliario.Assign(value);
-			}
-		}
-		
 		public event PropertyChangingEventHandler PropertyChanging;
 		
 		public event PropertyChangedEventHandler PropertyChanged;
@@ -7735,18 +7719,6 @@ namespace SIGEA.Classes.Entities
 		}
 		
 		private void detach_Cliente(Cliente entity)
-		{
-			this.SendPropertyChanging();
-			entity.DatoContacto = null;
-		}
-		
-		private void attach_ComparableInmobiliario(ComparableInmobiliario entity)
-		{
-			this.SendPropertyChanging();
-			entity.DatoContacto = this;
-		}
-		
-		private void detach_ComparableInmobiliario(ComparableInmobiliario entity)
 		{
 			this.SendPropertyChanging();
 			entity.DatoContacto = null;
@@ -17521,6 +17493,8 @@ namespace SIGEA.Classes.Entities
 		
 		private string _descricion;
 		
+		private EntitySet<ComparableInmobiliario> _ComparableInmobiliario;
+		
     #region Extensibility Method Definitions
     partial void OnLoaded();
     partial void OnValidate(System.Data.Linq.ChangeAction action);
@@ -17533,6 +17507,7 @@ namespace SIGEA.Classes.Entities
 		
 		public TipoCalidadProyecto()
 		{
+			this._ComparableInmobiliario = new EntitySet<ComparableInmobiliario>(new Action<ComparableInmobiliario>(this.attach_ComparableInmobiliario), new Action<ComparableInmobiliario>(this.detach_ComparableInmobiliario));
 			OnCreated();
 		}
 		
@@ -17576,6 +17551,19 @@ namespace SIGEA.Classes.Entities
 			}
 		}
 		
+		[Association(Name="TipoCalidadProyecto_ComparableInmobiliario", Storage="_ComparableInmobiliario", ThisKey="idTipoCalidadProyecto", OtherKey="idCalidadProyecto")]
+		public EntitySet<ComparableInmobiliario> ComparableInmobiliario
+		{
+			get
+			{
+				return this._ComparableInmobiliario;
+			}
+			set
+			{
+				this._ComparableInmobiliario.Assign(value);
+			}
+		}
+		
 		public event PropertyChangingEventHandler PropertyChanging;
 		
 		public event PropertyChangedEventHandler PropertyChanged;
@@ -17594,6 +17582,18 @@ namespace SIGEA.Classes.Entities
 			{
 				this.PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
 			}
+		}
+		
+		private void attach_ComparableInmobiliario(ComparableInmobiliario entity)
+		{
+			this.SendPropertyChanging();
+			entity.TipoCalidadProyecto = this;
+		}
+		
+		private void detach_ComparableInmobiliario(ComparableInmobiliario entity)
+		{
+			this.SendPropertyChanging();
+			entity.TipoCalidadProyecto = null;
 		}
 	}
 	
@@ -17917,120 +17917,6 @@ namespace SIGEA.Classes.Entities
 			{
 				this.PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
 			}
-		}
-	}
-	
-	[Table(Name="dbo.TipoComparable")]
-	public partial class TipoComparable : INotifyPropertyChanging, INotifyPropertyChanged
-	{
-		
-		private static PropertyChangingEventArgs emptyChangingEventArgs = new PropertyChangingEventArgs(String.Empty);
-		
-		private short _idTipoComparable;
-		
-		private string _descripcion;
-		
-		private EntitySet<ComparableInmobiliario> _ComparableInmobiliario;
-		
-    #region Extensibility Method Definitions
-    partial void OnLoaded();
-    partial void OnValidate(System.Data.Linq.ChangeAction action);
-    partial void OnCreated();
-    partial void OnidTipoComparableChanging(short value);
-    partial void OnidTipoComparableChanged();
-    partial void OndescripcionChanging(string value);
-    partial void OndescripcionChanged();
-    #endregion
-		
-		public TipoComparable()
-		{
-			this._ComparableInmobiliario = new EntitySet<ComparableInmobiliario>(new Action<ComparableInmobiliario>(this.attach_ComparableInmobiliario), new Action<ComparableInmobiliario>(this.detach_ComparableInmobiliario));
-			OnCreated();
-		}
-		
-		[Column(Storage="_idTipoComparable", DbType="SmallInt NOT NULL", IsPrimaryKey=true)]
-		public short idTipoComparable
-		{
-			get
-			{
-				return this._idTipoComparable;
-			}
-			set
-			{
-				if ((this._idTipoComparable != value))
-				{
-					this.OnidTipoComparableChanging(value);
-					this.SendPropertyChanging();
-					this._idTipoComparable = value;
-					this.SendPropertyChanged("idTipoComparable");
-					this.OnidTipoComparableChanged();
-				}
-			}
-		}
-		
-		[Column(Storage="_descripcion", DbType="NVarChar(15) NOT NULL", CanBeNull=false)]
-		public string descripcion
-		{
-			get
-			{
-				return this._descripcion;
-			}
-			set
-			{
-				if ((this._descripcion != value))
-				{
-					this.OndescripcionChanging(value);
-					this.SendPropertyChanging();
-					this._descripcion = value;
-					this.SendPropertyChanged("descripcion");
-					this.OndescripcionChanged();
-				}
-			}
-		}
-		
-		[Association(Name="TipoComparable_ComparableInmobiliario", Storage="_ComparableInmobiliario", ThisKey="idTipoComparable", OtherKey="idTipoComparable")]
-		public EntitySet<ComparableInmobiliario> ComparableInmobiliario
-		{
-			get
-			{
-				return this._ComparableInmobiliario;
-			}
-			set
-			{
-				this._ComparableInmobiliario.Assign(value);
-			}
-		}
-		
-		public event PropertyChangingEventHandler PropertyChanging;
-		
-		public event PropertyChangedEventHandler PropertyChanged;
-		
-		protected virtual void SendPropertyChanging()
-		{
-			if ((this.PropertyChanging != null))
-			{
-				this.PropertyChanging(this, emptyChangingEventArgs);
-			}
-		}
-		
-		protected virtual void SendPropertyChanged(String propertyName)
-		{
-			if ((this.PropertyChanged != null))
-			{
-				this.PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
-			}
-		}
-		
-		private void attach_ComparableInmobiliario(ComparableInmobiliario entity)
-		{
-			this.SendPropertyChanging();
-			entity.TipoComparable = this;
-		}
-		
-		private void detach_ComparableInmobiliario(ComparableInmobiliario entity)
-		{
-			this.SendPropertyChanging();
-			entity.TipoComparable = null;
 		}
 	}
 	
@@ -20359,6 +20245,8 @@ namespace SIGEA.Classes.Entities
 		
 		private System.Nullable<short> _idClase;
 		
+		private EntitySet<ComparableInmobiliario> _ComparableInmobiliario;
+		
 		private EntityRef<ClaseInmueble> _ClaseInmueble;
 		
     #region Extensibility Method Definitions
@@ -20375,6 +20263,7 @@ namespace SIGEA.Classes.Entities
 		
 		public TipoUsoSuelo()
 		{
+			this._ComparableInmobiliario = new EntitySet<ComparableInmobiliario>(new Action<ComparableInmobiliario>(this.attach_ComparableInmobiliario), new Action<ComparableInmobiliario>(this.detach_ComparableInmobiliario));
 			this._ClaseInmueble = default(EntityRef<ClaseInmueble>);
 			OnCreated();
 		}
@@ -20443,6 +20332,19 @@ namespace SIGEA.Classes.Entities
 			}
 		}
 		
+		[Association(Name="TipoUsoSuelo_ComparableInmobiliario", Storage="_ComparableInmobiliario", ThisKey="idTipoUsoSuelo", OtherKey="idUsoSuelo")]
+		public EntitySet<ComparableInmobiliario> ComparableInmobiliario
+		{
+			get
+			{
+				return this._ComparableInmobiliario;
+			}
+			set
+			{
+				this._ComparableInmobiliario.Assign(value);
+			}
+		}
+		
 		[Association(Name="ClaseInmueble_TipoUsoSuelo", Storage="_ClaseInmueble", ThisKey="idClase", OtherKey="idClase", IsForeignKey=true)]
 		public ClaseInmueble ClaseInmueble
 		{
@@ -20495,6 +20397,18 @@ namespace SIGEA.Classes.Entities
 			{
 				this.PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
 			}
+		}
+		
+		private void attach_ComparableInmobiliario(ComparableInmobiliario entity)
+		{
+			this.SendPropertyChanging();
+			entity.TipoUsoSuelo = this;
+		}
+		
+		private void detach_ComparableInmobiliario(ComparableInmobiliario entity)
+		{
+			this.SendPropertyChanging();
+			entity.TipoUsoSuelo = null;
 		}
 	}
 	
@@ -23888,120 +23802,6 @@ namespace SIGEA.Classes.Entities
 		}
 	}
 	
-	[Table(Name="dbo.ClaseComparable")]
-	public partial class ClaseComparable : INotifyPropertyChanging, INotifyPropertyChanged
-	{
-		
-		private static PropertyChangingEventArgs emptyChangingEventArgs = new PropertyChangingEventArgs(String.Empty);
-		
-		private short _idClase;
-		
-		private string _descripcion;
-		
-		private EntitySet<ComparableInmobiliario> _ComparableInmobiliario;
-		
-    #region Extensibility Method Definitions
-    partial void OnLoaded();
-    partial void OnValidate(System.Data.Linq.ChangeAction action);
-    partial void OnCreated();
-    partial void OnidClaseChanging(short value);
-    partial void OnidClaseChanged();
-    partial void OndescripcionChanging(string value);
-    partial void OndescripcionChanged();
-    #endregion
-		
-		public ClaseComparable()
-		{
-			this._ComparableInmobiliario = new EntitySet<ComparableInmobiliario>(new Action<ComparableInmobiliario>(this.attach_ComparableInmobiliario), new Action<ComparableInmobiliario>(this.detach_ComparableInmobiliario));
-			OnCreated();
-		}
-		
-		[Column(Storage="_idClase", AutoSync=AutoSync.OnInsert, DbType="SmallInt NOT NULL IDENTITY", IsPrimaryKey=true, IsDbGenerated=true)]
-		public short idClase
-		{
-			get
-			{
-				return this._idClase;
-			}
-			set
-			{
-				if ((this._idClase != value))
-				{
-					this.OnidClaseChanging(value);
-					this.SendPropertyChanging();
-					this._idClase = value;
-					this.SendPropertyChanged("idClase");
-					this.OnidClaseChanged();
-				}
-			}
-		}
-		
-		[Column(Storage="_descripcion", DbType="NVarChar(50) NOT NULL", CanBeNull=false)]
-		public string descripcion
-		{
-			get
-			{
-				return this._descripcion;
-			}
-			set
-			{
-				if ((this._descripcion != value))
-				{
-					this.OndescripcionChanging(value);
-					this.SendPropertyChanging();
-					this._descripcion = value;
-					this.SendPropertyChanged("descripcion");
-					this.OndescripcionChanged();
-				}
-			}
-		}
-		
-		[Association(Name="ClaseComparable_ComparableInmobiliario", Storage="_ComparableInmobiliario", ThisKey="idClase", OtherKey="idClase")]
-		public EntitySet<ComparableInmobiliario> ComparableInmobiliario
-		{
-			get
-			{
-				return this._ComparableInmobiliario;
-			}
-			set
-			{
-				this._ComparableInmobiliario.Assign(value);
-			}
-		}
-		
-		public event PropertyChangingEventHandler PropertyChanging;
-		
-		public event PropertyChangedEventHandler PropertyChanged;
-		
-		protected virtual void SendPropertyChanging()
-		{
-			if ((this.PropertyChanging != null))
-			{
-				this.PropertyChanging(this, emptyChangingEventArgs);
-			}
-		}
-		
-		protected virtual void SendPropertyChanged(String propertyName)
-		{
-			if ((this.PropertyChanged != null))
-			{
-				this.PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
-			}
-		}
-		
-		private void attach_ComparableInmobiliario(ComparableInmobiliario entity)
-		{
-			this.SendPropertyChanging();
-			entity.ClaseComparable = this;
-		}
-		
-		private void detach_ComparableInmobiliario(ComparableInmobiliario entity)
-		{
-			this.SendPropertyChanging();
-			entity.ClaseComparable = null;
-		}
-	}
-	
 	[Table(Name="dbo.CalidadProyecto")]
 	public partial class CalidadProyecto : INotifyPropertyChanging, INotifyPropertyChanged
 	{
@@ -24113,848 +23913,6 @@ namespace SIGEA.Classes.Entities
 		{
 			this.SendPropertyChanging();
 			entity.CalidadProyecto = null;
-		}
-	}
-	
-	[Table(Name="dbo.ComparableInmobiliario")]
-	public partial class ComparableInmobiliario : INotifyPropertyChanging, INotifyPropertyChanged
-	{
-		
-		private static PropertyChangingEventArgs emptyChangingEventArgs = new PropertyChangingEventArgs(String.Empty);
-		
-		private long _idComparable;
-		
-		private short _idTipoComparable;
-		
-		private int _idValuador;
-		
-		private int _idDatoContacto;
-		
-		private string _nombre;
-		
-		private int _idDireccion;
-		
-		private decimal _valorOferta;
-		
-		private short _idUsoSuelo;
-		
-		private System.Nullable<int> _numeroFrentes;
-		
-		private double _superficieTerreno;
-		
-		private System.Nullable<double> _superficieConstruida;
-		
-		private short _idClase;
-		
-		private System.Nullable<double> _antiguedad;
-		
-		private short _idConservacion;
-		
-		private short _idCalidadProyecto;
-		
-		private System.Nullable<double> _avanceObra;
-		
-		private System.Nullable<System.DateTime> _fechaCreacion;
-		
-		private System.DateTime _fechaActualizacion;
-		
-		private bool _revisado;
-		
-		private System.Nullable<bool> _activo;
-		
-		private EntityRef<CalidadProyecto> _CalidadProyecto;
-		
-		private EntityRef<ClaseComparable> _ClaseComparable;
-		
-		private EntityRef<TipoComparable> _TipoComparable;
-		
-		private EntityRef<TipoComparable1> _TipoComparable1;
-		
-		private EntityRef<UsoSuelo> _UsoSuelo;
-		
-		private EntityRef<Direccion> _Direccion;
-		
-		private EntityRef<DatoContacto> _DatoContacto;
-		
-		private EntityRef<Valuador> _Valuador;
-		
-    #region Extensibility Method Definitions
-    partial void OnLoaded();
-    partial void OnValidate(System.Data.Linq.ChangeAction action);
-    partial void OnCreated();
-    partial void OnidComparableChanging(long value);
-    partial void OnidComparableChanged();
-    partial void OnidTipoComparableChanging(short value);
-    partial void OnidTipoComparableChanged();
-    partial void OnidValuadorChanging(int value);
-    partial void OnidValuadorChanged();
-    partial void OnidDatoContactoChanging(int value);
-    partial void OnidDatoContactoChanged();
-    partial void OnnombreChanging(string value);
-    partial void OnnombreChanged();
-    partial void OnidDireccionChanging(int value);
-    partial void OnidDireccionChanged();
-    partial void OnvalorOfertaChanging(decimal value);
-    partial void OnvalorOfertaChanged();
-    partial void OnidUsoSueloChanging(short value);
-    partial void OnidUsoSueloChanged();
-    partial void OnnumeroFrentesChanging(System.Nullable<int> value);
-    partial void OnnumeroFrentesChanged();
-    partial void OnsuperficieTerrenoChanging(double value);
-    partial void OnsuperficieTerrenoChanged();
-    partial void OnsuperficieConstruidaChanging(System.Nullable<double> value);
-    partial void OnsuperficieConstruidaChanged();
-    partial void OnidClaseChanging(short value);
-    partial void OnidClaseChanged();
-    partial void OnantiguedadChanging(System.Nullable<double> value);
-    partial void OnantiguedadChanged();
-    partial void OnidConservacionChanging(short value);
-    partial void OnidConservacionChanged();
-    partial void OnidCalidadProyectoChanging(short value);
-    partial void OnidCalidadProyectoChanged();
-    partial void OnavanceObraChanging(System.Nullable<double> value);
-    partial void OnavanceObraChanged();
-    partial void OnfechaCreacionChanging(System.Nullable<System.DateTime> value);
-    partial void OnfechaCreacionChanged();
-    partial void OnfechaActualizacionChanging(System.DateTime value);
-    partial void OnfechaActualizacionChanged();
-    partial void OnrevisadoChanging(bool value);
-    partial void OnrevisadoChanged();
-    partial void OnactivoChanging(System.Nullable<bool> value);
-    partial void OnactivoChanged();
-    #endregion
-		
-		public ComparableInmobiliario()
-		{
-			this._CalidadProyecto = default(EntityRef<CalidadProyecto>);
-			this._ClaseComparable = default(EntityRef<ClaseComparable>);
-			this._TipoComparable = default(EntityRef<TipoComparable>);
-			this._TipoComparable1 = default(EntityRef<TipoComparable1>);
-			this._UsoSuelo = default(EntityRef<UsoSuelo>);
-			this._Direccion = default(EntityRef<Direccion>);
-			this._DatoContacto = default(EntityRef<DatoContacto>);
-			this._Valuador = default(EntityRef<Valuador>);
-			OnCreated();
-		}
-		
-		[Column(Storage="_idComparable", AutoSync=AutoSync.OnInsert, DbType="BigInt NOT NULL IDENTITY", IsPrimaryKey=true, IsDbGenerated=true)]
-		public long idComparable
-		{
-			get
-			{
-				return this._idComparable;
-			}
-			set
-			{
-				if ((this._idComparable != value))
-				{
-					this.OnidComparableChanging(value);
-					this.SendPropertyChanging();
-					this._idComparable = value;
-					this.SendPropertyChanged("idComparable");
-					this.OnidComparableChanged();
-				}
-			}
-		}
-		
-		[Column(Storage="_idTipoComparable", DbType="SmallInt NOT NULL")]
-		public short idTipoComparable
-		{
-			get
-			{
-				return this._idTipoComparable;
-			}
-			set
-			{
-				if ((this._idTipoComparable != value))
-				{
-					if (this._TipoComparable.HasLoadedOrAssignedValue)
-					{
-						throw new System.Data.Linq.ForeignKeyReferenceAlreadyHasValueException();
-					}
-					this.OnidTipoComparableChanging(value);
-					this.SendPropertyChanging();
-					this._idTipoComparable = value;
-					this.SendPropertyChanged("idTipoComparable");
-					this.OnidTipoComparableChanged();
-				}
-			}
-		}
-		
-		[Column(Storage="_idValuador", DbType="Int NOT NULL")]
-		public int idValuador
-		{
-			get
-			{
-				return this._idValuador;
-			}
-			set
-			{
-				if ((this._idValuador != value))
-				{
-					if (this._Valuador.HasLoadedOrAssignedValue)
-					{
-						throw new System.Data.Linq.ForeignKeyReferenceAlreadyHasValueException();
-					}
-					this.OnidValuadorChanging(value);
-					this.SendPropertyChanging();
-					this._idValuador = value;
-					this.SendPropertyChanged("idValuador");
-					this.OnidValuadorChanged();
-				}
-			}
-		}
-		
-		[Column(Storage="_idDatoContacto", DbType="Int NOT NULL")]
-		public int idDatoContacto
-		{
-			get
-			{
-				return this._idDatoContacto;
-			}
-			set
-			{
-				if ((this._idDatoContacto != value))
-				{
-					if (this._DatoContacto.HasLoadedOrAssignedValue)
-					{
-						throw new System.Data.Linq.ForeignKeyReferenceAlreadyHasValueException();
-					}
-					this.OnidDatoContactoChanging(value);
-					this.SendPropertyChanging();
-					this._idDatoContacto = value;
-					this.SendPropertyChanged("idDatoContacto");
-					this.OnidDatoContactoChanged();
-				}
-			}
-		}
-		
-		[Column(Storage="_nombre", DbType="NVarChar(30)")]
-		public string nombre
-		{
-			get
-			{
-				return this._nombre;
-			}
-			set
-			{
-				if ((this._nombre != value))
-				{
-					this.OnnombreChanging(value);
-					this.SendPropertyChanging();
-					this._nombre = value;
-					this.SendPropertyChanged("nombre");
-					this.OnnombreChanged();
-				}
-			}
-		}
-		
-		[Column(Storage="_idDireccion", DbType="Int NOT NULL")]
-		public int idDireccion
-		{
-			get
-			{
-				return this._idDireccion;
-			}
-			set
-			{
-				if ((this._idDireccion != value))
-				{
-					if (this._Direccion.HasLoadedOrAssignedValue)
-					{
-						throw new System.Data.Linq.ForeignKeyReferenceAlreadyHasValueException();
-					}
-					this.OnidDireccionChanging(value);
-					this.SendPropertyChanging();
-					this._idDireccion = value;
-					this.SendPropertyChanged("idDireccion");
-					this.OnidDireccionChanged();
-				}
-			}
-		}
-		
-		[Column(Storage="_valorOferta", DbType="Money NOT NULL")]
-		public decimal valorOferta
-		{
-			get
-			{
-				return this._valorOferta;
-			}
-			set
-			{
-				if ((this._valorOferta != value))
-				{
-					this.OnvalorOfertaChanging(value);
-					this.SendPropertyChanging();
-					this._valorOferta = value;
-					this.SendPropertyChanged("valorOferta");
-					this.OnvalorOfertaChanged();
-				}
-			}
-		}
-		
-		[Column(Storage="_idUsoSuelo", DbType="SmallInt NOT NULL")]
-		public short idUsoSuelo
-		{
-			get
-			{
-				return this._idUsoSuelo;
-			}
-			set
-			{
-				if ((this._idUsoSuelo != value))
-				{
-					if (this._UsoSuelo.HasLoadedOrAssignedValue)
-					{
-						throw new System.Data.Linq.ForeignKeyReferenceAlreadyHasValueException();
-					}
-					this.OnidUsoSueloChanging(value);
-					this.SendPropertyChanging();
-					this._idUsoSuelo = value;
-					this.SendPropertyChanged("idUsoSuelo");
-					this.OnidUsoSueloChanged();
-				}
-			}
-		}
-		
-		[Column(Storage="_numeroFrentes", DbType="Int")]
-		public System.Nullable<int> numeroFrentes
-		{
-			get
-			{
-				return this._numeroFrentes;
-			}
-			set
-			{
-				if ((this._numeroFrentes != value))
-				{
-					this.OnnumeroFrentesChanging(value);
-					this.SendPropertyChanging();
-					this._numeroFrentes = value;
-					this.SendPropertyChanged("numeroFrentes");
-					this.OnnumeroFrentesChanged();
-				}
-			}
-		}
-		
-		[Column(Storage="_superficieTerreno", DbType="Float NOT NULL")]
-		public double superficieTerreno
-		{
-			get
-			{
-				return this._superficieTerreno;
-			}
-			set
-			{
-				if ((this._superficieTerreno != value))
-				{
-					this.OnsuperficieTerrenoChanging(value);
-					this.SendPropertyChanging();
-					this._superficieTerreno = value;
-					this.SendPropertyChanged("superficieTerreno");
-					this.OnsuperficieTerrenoChanged();
-				}
-			}
-		}
-		
-		[Column(Storage="_superficieConstruida", DbType="Float")]
-		public System.Nullable<double> superficieConstruida
-		{
-			get
-			{
-				return this._superficieConstruida;
-			}
-			set
-			{
-				if ((this._superficieConstruida != value))
-				{
-					this.OnsuperficieConstruidaChanging(value);
-					this.SendPropertyChanging();
-					this._superficieConstruida = value;
-					this.SendPropertyChanged("superficieConstruida");
-					this.OnsuperficieConstruidaChanged();
-				}
-			}
-		}
-		
-		[Column(Storage="_idClase", DbType="SmallInt NOT NULL")]
-		public short idClase
-		{
-			get
-			{
-				return this._idClase;
-			}
-			set
-			{
-				if ((this._idClase != value))
-				{
-					if (this._ClaseComparable.HasLoadedOrAssignedValue)
-					{
-						throw new System.Data.Linq.ForeignKeyReferenceAlreadyHasValueException();
-					}
-					this.OnidClaseChanging(value);
-					this.SendPropertyChanging();
-					this._idClase = value;
-					this.SendPropertyChanged("idClase");
-					this.OnidClaseChanged();
-				}
-			}
-		}
-		
-		[Column(Storage="_antiguedad", DbType="Float")]
-		public System.Nullable<double> antiguedad
-		{
-			get
-			{
-				return this._antiguedad;
-			}
-			set
-			{
-				if ((this._antiguedad != value))
-				{
-					this.OnantiguedadChanging(value);
-					this.SendPropertyChanging();
-					this._antiguedad = value;
-					this.SendPropertyChanged("antiguedad");
-					this.OnantiguedadChanged();
-				}
-			}
-		}
-		
-		[Column(Storage="_idConservacion", DbType="SmallInt NOT NULL")]
-		public short idConservacion
-		{
-			get
-			{
-				return this._idConservacion;
-			}
-			set
-			{
-				if ((this._idConservacion != value))
-				{
-					this.OnidConservacionChanging(value);
-					this.SendPropertyChanging();
-					this._idConservacion = value;
-					this.SendPropertyChanged("idConservacion");
-					this.OnidConservacionChanged();
-				}
-			}
-		}
-		
-		[Column(Storage="_idCalidadProyecto", DbType="SmallInt NOT NULL")]
-		public short idCalidadProyecto
-		{
-			get
-			{
-				return this._idCalidadProyecto;
-			}
-			set
-			{
-				if ((this._idCalidadProyecto != value))
-				{
-					if (this._CalidadProyecto.HasLoadedOrAssignedValue)
-					{
-						throw new System.Data.Linq.ForeignKeyReferenceAlreadyHasValueException();
-					}
-					this.OnidCalidadProyectoChanging(value);
-					this.SendPropertyChanging();
-					this._idCalidadProyecto = value;
-					this.SendPropertyChanged("idCalidadProyecto");
-					this.OnidCalidadProyectoChanged();
-				}
-			}
-		}
-		
-		[Column(Storage="_avanceObra", DbType="Float")]
-		public System.Nullable<double> avanceObra
-		{
-			get
-			{
-				return this._avanceObra;
-			}
-			set
-			{
-				if ((this._avanceObra != value))
-				{
-					this.OnavanceObraChanging(value);
-					this.SendPropertyChanging();
-					this._avanceObra = value;
-					this.SendPropertyChanged("avanceObra");
-					this.OnavanceObraChanged();
-				}
-			}
-		}
-		
-		[Column(Storage="_fechaCreacion", DbType="DateTime")]
-		public System.Nullable<System.DateTime> fechaCreacion
-		{
-			get
-			{
-				return this._fechaCreacion;
-			}
-			set
-			{
-				if ((this._fechaCreacion != value))
-				{
-					this.OnfechaCreacionChanging(value);
-					this.SendPropertyChanging();
-					this._fechaCreacion = value;
-					this.SendPropertyChanged("fechaCreacion");
-					this.OnfechaCreacionChanged();
-				}
-			}
-		}
-		
-		[Column(Storage="_fechaActualizacion", DbType="DateTime NOT NULL")]
-		public System.DateTime fechaActualizacion
-		{
-			get
-			{
-				return this._fechaActualizacion;
-			}
-			set
-			{
-				if ((this._fechaActualizacion != value))
-				{
-					this.OnfechaActualizacionChanging(value);
-					this.SendPropertyChanging();
-					this._fechaActualizacion = value;
-					this.SendPropertyChanged("fechaActualizacion");
-					this.OnfechaActualizacionChanged();
-				}
-			}
-		}
-		
-		[Column(Storage="_revisado", DbType="Bit NOT NULL")]
-		public bool revisado
-		{
-			get
-			{
-				return this._revisado;
-			}
-			set
-			{
-				if ((this._revisado != value))
-				{
-					this.OnrevisadoChanging(value);
-					this.SendPropertyChanging();
-					this._revisado = value;
-					this.SendPropertyChanged("revisado");
-					this.OnrevisadoChanged();
-				}
-			}
-		}
-		
-		[Column(Storage="_activo", DbType="Bit")]
-		public System.Nullable<bool> activo
-		{
-			get
-			{
-				return this._activo;
-			}
-			set
-			{
-				if ((this._activo != value))
-				{
-					this.OnactivoChanging(value);
-					this.SendPropertyChanging();
-					this._activo = value;
-					this.SendPropertyChanged("activo");
-					this.OnactivoChanged();
-				}
-			}
-		}
-		
-		[Association(Name="CalidadProyecto_ComparableInmobiliario", Storage="_CalidadProyecto", ThisKey="idCalidadProyecto", OtherKey="idCalidadProyecto", IsForeignKey=true)]
-		public CalidadProyecto CalidadProyecto
-		{
-			get
-			{
-				return this._CalidadProyecto.Entity;
-			}
-			set
-			{
-				CalidadProyecto previousValue = this._CalidadProyecto.Entity;
-				if (((previousValue != value) 
-							|| (this._CalidadProyecto.HasLoadedOrAssignedValue == false)))
-				{
-					this.SendPropertyChanging();
-					if ((previousValue != null))
-					{
-						this._CalidadProyecto.Entity = null;
-						previousValue.ComparableInmobiliario.Remove(this);
-					}
-					this._CalidadProyecto.Entity = value;
-					if ((value != null))
-					{
-						value.ComparableInmobiliario.Add(this);
-						this._idCalidadProyecto = value.idCalidadProyecto;
-					}
-					else
-					{
-						this._idCalidadProyecto = default(short);
-					}
-					this.SendPropertyChanged("CalidadProyecto");
-				}
-			}
-		}
-		
-		[Association(Name="ClaseComparable_ComparableInmobiliario", Storage="_ClaseComparable", ThisKey="idClase", OtherKey="idClase", IsForeignKey=true)]
-		public ClaseComparable ClaseComparable
-		{
-			get
-			{
-				return this._ClaseComparable.Entity;
-			}
-			set
-			{
-				ClaseComparable previousValue = this._ClaseComparable.Entity;
-				if (((previousValue != value) 
-							|| (this._ClaseComparable.HasLoadedOrAssignedValue == false)))
-				{
-					this.SendPropertyChanging();
-					if ((previousValue != null))
-					{
-						this._ClaseComparable.Entity = null;
-						previousValue.ComparableInmobiliario.Remove(this);
-					}
-					this._ClaseComparable.Entity = value;
-					if ((value != null))
-					{
-						value.ComparableInmobiliario.Add(this);
-						this._idClase = value.idClase;
-					}
-					else
-					{
-						this._idClase = default(short);
-					}
-					this.SendPropertyChanged("ClaseComparable");
-				}
-			}
-		}
-		
-		[Association(Name="TipoComparable_ComparableInmobiliario", Storage="_TipoComparable", ThisKey="idTipoComparable", OtherKey="idTipoComparable", IsForeignKey=true)]
-		public TipoComparable TipoComparable
-		{
-			get
-			{
-				return this._TipoComparable.Entity;
-			}
-			set
-			{
-				TipoComparable previousValue = this._TipoComparable.Entity;
-				if (((previousValue != value) 
-							|| (this._TipoComparable.HasLoadedOrAssignedValue == false)))
-				{
-					this.SendPropertyChanging();
-					if ((previousValue != null))
-					{
-						this._TipoComparable.Entity = null;
-						previousValue.ComparableInmobiliario.Remove(this);
-					}
-					this._TipoComparable.Entity = value;
-					if ((value != null))
-					{
-						value.ComparableInmobiliario.Add(this);
-						this._idTipoComparable = value.idTipoComparable;
-					}
-					else
-					{
-						this._idTipoComparable = default(short);
-					}
-					this.SendPropertyChanged("TipoComparable");
-				}
-			}
-		}
-		
-		[Association(Name="TipoComparable1_ComparableInmobiliario", Storage="_TipoComparable1", ThisKey="idTipoComparable", OtherKey="idTipoComparable", IsForeignKey=true)]
-		public TipoComparable1 TipoComparable1
-		{
-			get
-			{
-				return this._TipoComparable1.Entity;
-			}
-			set
-			{
-				TipoComparable1 previousValue = this._TipoComparable1.Entity;
-				if (((previousValue != value) 
-							|| (this._TipoComparable1.HasLoadedOrAssignedValue == false)))
-				{
-					this.SendPropertyChanging();
-					if ((previousValue != null))
-					{
-						this._TipoComparable1.Entity = null;
-						previousValue.ComparableInmobiliario.Remove(this);
-					}
-					this._TipoComparable1.Entity = value;
-					if ((value != null))
-					{
-						value.ComparableInmobiliario.Add(this);
-						this._idTipoComparable = value.idTipoComparable;
-					}
-					else
-					{
-						this._idTipoComparable = default(short);
-					}
-					this.SendPropertyChanged("TipoComparable1");
-				}
-			}
-		}
-		
-		[Association(Name="UsoSuelo_ComparableInmobiliario", Storage="_UsoSuelo", ThisKey="idUsoSuelo", OtherKey="idUsoSuelo", IsForeignKey=true)]
-		public UsoSuelo UsoSuelo
-		{
-			get
-			{
-				return this._UsoSuelo.Entity;
-			}
-			set
-			{
-				UsoSuelo previousValue = this._UsoSuelo.Entity;
-				if (((previousValue != value) 
-							|| (this._UsoSuelo.HasLoadedOrAssignedValue == false)))
-				{
-					this.SendPropertyChanging();
-					if ((previousValue != null))
-					{
-						this._UsoSuelo.Entity = null;
-						previousValue.ComparableInmobiliario.Remove(this);
-					}
-					this._UsoSuelo.Entity = value;
-					if ((value != null))
-					{
-						value.ComparableInmobiliario.Add(this);
-						this._idUsoSuelo = value.idUsoSuelo;
-					}
-					else
-					{
-						this._idUsoSuelo = default(short);
-					}
-					this.SendPropertyChanged("UsoSuelo");
-				}
-			}
-		}
-		
-		[Association(Name="Direccion_ComparableInmobiliario", Storage="_Direccion", ThisKey="idDireccion", OtherKey="idDireccion", IsForeignKey=true)]
-		public Direccion Direccion
-		{
-			get
-			{
-				return this._Direccion.Entity;
-			}
-			set
-			{
-				Direccion previousValue = this._Direccion.Entity;
-				if (((previousValue != value) 
-							|| (this._Direccion.HasLoadedOrAssignedValue == false)))
-				{
-					this.SendPropertyChanging();
-					if ((previousValue != null))
-					{
-						this._Direccion.Entity = null;
-						previousValue.ComparableInmobiliario.Remove(this);
-					}
-					this._Direccion.Entity = value;
-					if ((value != null))
-					{
-						value.ComparableInmobiliario.Add(this);
-						this._idDireccion = value.idDireccion;
-					}
-					else
-					{
-						this._idDireccion = default(int);
-					}
-					this.SendPropertyChanged("Direccion");
-				}
-			}
-		}
-		
-		[Association(Name="DatoContacto_ComparableInmobiliario", Storage="_DatoContacto", ThisKey="idDatoContacto", OtherKey="idDatoContacto", IsForeignKey=true)]
-		public DatoContacto DatoContacto
-		{
-			get
-			{
-				return this._DatoContacto.Entity;
-			}
-			set
-			{
-				DatoContacto previousValue = this._DatoContacto.Entity;
-				if (((previousValue != value) 
-							|| (this._DatoContacto.HasLoadedOrAssignedValue == false)))
-				{
-					this.SendPropertyChanging();
-					if ((previousValue != null))
-					{
-						this._DatoContacto.Entity = null;
-						previousValue.ComparableInmobiliario.Remove(this);
-					}
-					this._DatoContacto.Entity = value;
-					if ((value != null))
-					{
-						value.ComparableInmobiliario.Add(this);
-						this._idDatoContacto = value.idDatoContacto;
-					}
-					else
-					{
-						this._idDatoContacto = default(int);
-					}
-					this.SendPropertyChanged("DatoContacto");
-				}
-			}
-		}
-		
-		[Association(Name="Valuador_ComparableInmobiliario", Storage="_Valuador", ThisKey="idValuador", OtherKey="idValuador", IsForeignKey=true)]
-		public Valuador Valuador
-		{
-			get
-			{
-				return this._Valuador.Entity;
-			}
-			set
-			{
-				Valuador previousValue = this._Valuador.Entity;
-				if (((previousValue != value) 
-							|| (this._Valuador.HasLoadedOrAssignedValue == false)))
-				{
-					this.SendPropertyChanging();
-					if ((previousValue != null))
-					{
-						this._Valuador.Entity = null;
-						previousValue.ComparableInmobiliario.Remove(this);
-					}
-					this._Valuador.Entity = value;
-					if ((value != null))
-					{
-						value.ComparableInmobiliario.Add(this);
-						this._idValuador = value.idValuador;
-					}
-					else
-					{
-						this._idValuador = default(int);
-					}
-					this.SendPropertyChanged("Valuador");
-				}
-			}
-		}
-		
-		public event PropertyChangingEventHandler PropertyChanging;
-		
-		public event PropertyChangedEventHandler PropertyChanged;
-		
-		protected virtual void SendPropertyChanging()
-		{
-			if ((this.PropertyChanging != null))
-			{
-				this.PropertyChanging(this, emptyChangingEventArgs);
-			}
-		}
-		
-		protected virtual void SendPropertyChanged(String propertyName)
-		{
-			if ((this.PropertyChanged != null))
-			{
-				this.PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
-			}
 		}
 	}
 	
@@ -28869,6 +27827,1081 @@ namespace SIGEA.Classes.Entities
 			{
 				this.PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
 			}
+		}
+	}
+	
+	[Table(Name="dbo.TipoComparable")]
+	public partial class TipoComparable : INotifyPropertyChanging, INotifyPropertyChanged
+	{
+		
+		private static PropertyChangingEventArgs emptyChangingEventArgs = new PropertyChangingEventArgs(String.Empty);
+		
+		private short _idTipoComparable;
+		
+		private string _descripcion;
+		
+		private EntitySet<ComparableInmobiliario> _ComparableInmobiliario;
+		
+    #region Extensibility Method Definitions
+    partial void OnLoaded();
+    partial void OnValidate(System.Data.Linq.ChangeAction action);
+    partial void OnCreated();
+    partial void OnidTipoComparableChanging(short value);
+    partial void OnidTipoComparableChanged();
+    partial void OndescripcionChanging(string value);
+    partial void OndescripcionChanged();
+    #endregion
+		
+		public TipoComparable()
+		{
+			this._ComparableInmobiliario = new EntitySet<ComparableInmobiliario>(new Action<ComparableInmobiliario>(this.attach_ComparableInmobiliario), new Action<ComparableInmobiliario>(this.detach_ComparableInmobiliario));
+			OnCreated();
+		}
+		
+		[Column(Storage="_idTipoComparable", DbType="SmallInt NOT NULL", IsPrimaryKey=true)]
+		public short idTipoComparable
+		{
+			get
+			{
+				return this._idTipoComparable;
+			}
+			set
+			{
+				if ((this._idTipoComparable != value))
+				{
+					this.OnidTipoComparableChanging(value);
+					this.SendPropertyChanging();
+					this._idTipoComparable = value;
+					this.SendPropertyChanged("idTipoComparable");
+					this.OnidTipoComparableChanged();
+				}
+			}
+		}
+		
+		[Column(Storage="_descripcion", DbType="NVarChar(15) NOT NULL", CanBeNull=false)]
+		public string descripcion
+		{
+			get
+			{
+				return this._descripcion;
+			}
+			set
+			{
+				if ((this._descripcion != value))
+				{
+					this.OndescripcionChanging(value);
+					this.SendPropertyChanging();
+					this._descripcion = value;
+					this.SendPropertyChanged("descripcion");
+					this.OndescripcionChanged();
+				}
+			}
+		}
+		
+		[Association(Name="TipoComparable_ComparableInmobiliario", Storage="_ComparableInmobiliario", ThisKey="idTipoComparable", OtherKey="idTipoComparable")]
+		public EntitySet<ComparableInmobiliario> ComparableInmobiliario
+		{
+			get
+			{
+				return this._ComparableInmobiliario;
+			}
+			set
+			{
+				this._ComparableInmobiliario.Assign(value);
+			}
+		}
+		
+		public event PropertyChangingEventHandler PropertyChanging;
+		
+		public event PropertyChangedEventHandler PropertyChanged;
+		
+		protected virtual void SendPropertyChanging()
+		{
+			if ((this.PropertyChanging != null))
+			{
+				this.PropertyChanging(this, emptyChangingEventArgs);
+			}
+		}
+		
+		protected virtual void SendPropertyChanged(String propertyName)
+		{
+			if ((this.PropertyChanged != null))
+			{
+				this.PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
+			}
+		}
+		
+		private void attach_ComparableInmobiliario(ComparableInmobiliario entity)
+		{
+			this.SendPropertyChanging();
+			entity.TipoComparable = this;
+		}
+		
+		private void detach_ComparableInmobiliario(ComparableInmobiliario entity)
+		{
+			this.SendPropertyChanging();
+			entity.TipoComparable = null;
+		}
+	}
+	
+	[Table(Name="dbo.ComparableInmobiliario")]
+	public partial class ComparableInmobiliario : INotifyPropertyChanging, INotifyPropertyChanged
+	{
+		
+		private static PropertyChangingEventArgs emptyChangingEventArgs = new PropertyChangingEventArgs(String.Empty);
+		
+		private long _idComparable;
+		
+		private short _idTipoComparable;
+		
+		private int _idDireccion;
+		
+		private System.Nullable<short> _idClase;
+		
+		private System.Nullable<short> _idConservacion;
+		
+		private System.Nullable<short> _idCalidadProyecto;
+		
+		private System.Nullable<short> _idUsoSuelo;
+		
+		private decimal _valorOferta;
+		
+		private int _numeroFrentes;
+		
+		private double _superficieTerreno;
+		
+		private System.Nullable<double> _superficieConstruida;
+		
+		private System.Nullable<double> _antiguedad;
+		
+		private System.Nullable<double> _avanceObra;
+		
+		private string _nombreContacto;
+		
+		private string _telefonoContacto;
+		
+		private string _emailContacto;
+		
+		private System.DateTime _fechaCreacion;
+		
+		private System.DateTime _fechaActualizacion;
+		
+		private bool _activo;
+		
+		private EntityRef<CalidadProyecto> _CalidadProyecto;
+		
+		private EntityRef<ClaseInmueble> _ClaseInmueble;
+		
+		private EntityRef<Direccion> _Direccion;
+		
+		private EntityRef<TipoCalidadProyecto> _TipoCalidadProyecto;
+		
+		private EntityRef<TipoComparable1> _TipoComparable1;
+		
+		private EntityRef<TipoComparable> _TipoComparable;
+		
+		private EntityRef<TipoUsoSuelo> _TipoUsoSuelo;
+		
+		private EntityRef<UsoSuelo> _UsoSuelo;
+		
+		private EntityRef<TipoComparable2> _TipoComparable2;
+		
+    #region Extensibility Method Definitions
+    partial void OnLoaded();
+    partial void OnValidate(System.Data.Linq.ChangeAction action);
+    partial void OnCreated();
+    partial void OnidComparableChanging(long value);
+    partial void OnidComparableChanged();
+    partial void OnidTipoComparableChanging(short value);
+    partial void OnidTipoComparableChanged();
+    partial void OnidDireccionChanging(int value);
+    partial void OnidDireccionChanged();
+    partial void OnidClaseChanging(System.Nullable<short> value);
+    partial void OnidClaseChanged();
+    partial void OnidConservacionChanging(System.Nullable<short> value);
+    partial void OnidConservacionChanged();
+    partial void OnidCalidadProyectoChanging(System.Nullable<short> value);
+    partial void OnidCalidadProyectoChanged();
+    partial void OnidUsoSueloChanging(System.Nullable<short> value);
+    partial void OnidUsoSueloChanged();
+    partial void OnvalorOfertaChanging(decimal value);
+    partial void OnvalorOfertaChanged();
+    partial void OnnumeroFrentesChanging(int value);
+    partial void OnnumeroFrentesChanged();
+    partial void OnsuperficieTerrenoChanging(double value);
+    partial void OnsuperficieTerrenoChanged();
+    partial void OnsuperficieConstruidaChanging(System.Nullable<double> value);
+    partial void OnsuperficieConstruidaChanged();
+    partial void OnantiguedadChanging(System.Nullable<double> value);
+    partial void OnantiguedadChanged();
+    partial void OnavanceObraChanging(System.Nullable<double> value);
+    partial void OnavanceObraChanged();
+    partial void OnnombreContactoChanging(string value);
+    partial void OnnombreContactoChanged();
+    partial void OntelefonoContactoChanging(string value);
+    partial void OntelefonoContactoChanged();
+    partial void OnemailContactoChanging(string value);
+    partial void OnemailContactoChanged();
+    partial void OnfechaCreacionChanging(System.DateTime value);
+    partial void OnfechaCreacionChanged();
+    partial void OnfechaActualizacionChanging(System.DateTime value);
+    partial void OnfechaActualizacionChanged();
+    partial void OnactivoChanging(bool value);
+    partial void OnactivoChanged();
+    #endregion
+		
+		public ComparableInmobiliario()
+		{
+			this._CalidadProyecto = default(EntityRef<CalidadProyecto>);
+			this._ClaseInmueble = default(EntityRef<ClaseInmueble>);
+			this._Direccion = default(EntityRef<Direccion>);
+			this._TipoCalidadProyecto = default(EntityRef<TipoCalidadProyecto>);
+			this._TipoComparable1 = default(EntityRef<TipoComparable1>);
+			this._TipoComparable = default(EntityRef<TipoComparable>);
+			this._TipoUsoSuelo = default(EntityRef<TipoUsoSuelo>);
+			this._UsoSuelo = default(EntityRef<UsoSuelo>);
+			this._TipoComparable2 = default(EntityRef<TipoComparable2>);
+			OnCreated();
+		}
+		
+		[Column(Storage="_idComparable", AutoSync=AutoSync.OnInsert, DbType="BigInt NOT NULL IDENTITY", IsPrimaryKey=true, IsDbGenerated=true)]
+		public long idComparable
+		{
+			get
+			{
+				return this._idComparable;
+			}
+			set
+			{
+				if ((this._idComparable != value))
+				{
+					this.OnidComparableChanging(value);
+					this.SendPropertyChanging();
+					this._idComparable = value;
+					this.SendPropertyChanged("idComparable");
+					this.OnidComparableChanged();
+				}
+			}
+		}
+		
+		[Column(Storage="_idTipoComparable", DbType="SmallInt NOT NULL")]
+		public short idTipoComparable
+		{
+			get
+			{
+				return this._idTipoComparable;
+			}
+			set
+			{
+				if ((this._idTipoComparable != value))
+				{
+					if (this._TipoComparable1.HasLoadedOrAssignedValue)
+					{
+						throw new System.Data.Linq.ForeignKeyReferenceAlreadyHasValueException();
+					}
+					this.OnidTipoComparableChanging(value);
+					this.SendPropertyChanging();
+					this._idTipoComparable = value;
+					this.SendPropertyChanged("idTipoComparable");
+					this.OnidTipoComparableChanged();
+				}
+			}
+		}
+		
+		[Column(Storage="_idDireccion", DbType="Int NOT NULL")]
+		public int idDireccion
+		{
+			get
+			{
+				return this._idDireccion;
+			}
+			set
+			{
+				if ((this._idDireccion != value))
+				{
+					if (this._Direccion.HasLoadedOrAssignedValue)
+					{
+						throw new System.Data.Linq.ForeignKeyReferenceAlreadyHasValueException();
+					}
+					this.OnidDireccionChanging(value);
+					this.SendPropertyChanging();
+					this._idDireccion = value;
+					this.SendPropertyChanged("idDireccion");
+					this.OnidDireccionChanged();
+				}
+			}
+		}
+		
+		[Column(Storage="_idClase", DbType="SmallInt")]
+		public System.Nullable<short> idClase
+		{
+			get
+			{
+				return this._idClase;
+			}
+			set
+			{
+				if ((this._idClase != value))
+				{
+					if (this._ClaseInmueble.HasLoadedOrAssignedValue)
+					{
+						throw new System.Data.Linq.ForeignKeyReferenceAlreadyHasValueException();
+					}
+					this.OnidClaseChanging(value);
+					this.SendPropertyChanging();
+					this._idClase = value;
+					this.SendPropertyChanged("idClase");
+					this.OnidClaseChanged();
+				}
+			}
+		}
+		
+		[Column(Storage="_idConservacion", DbType="SmallInt")]
+		public System.Nullable<short> idConservacion
+		{
+			get
+			{
+				return this._idConservacion;
+			}
+			set
+			{
+				if ((this._idConservacion != value))
+				{
+					this.OnidConservacionChanging(value);
+					this.SendPropertyChanging();
+					this._idConservacion = value;
+					this.SendPropertyChanged("idConservacion");
+					this.OnidConservacionChanged();
+				}
+			}
+		}
+		
+		[Column(Storage="_idCalidadProyecto", DbType="SmallInt")]
+		public System.Nullable<short> idCalidadProyecto
+		{
+			get
+			{
+				return this._idCalidadProyecto;
+			}
+			set
+			{
+				if ((this._idCalidadProyecto != value))
+				{
+					if (this._CalidadProyecto.HasLoadedOrAssignedValue)
+					{
+						throw new System.Data.Linq.ForeignKeyReferenceAlreadyHasValueException();
+					}
+					this.OnidCalidadProyectoChanging(value);
+					this.SendPropertyChanging();
+					this._idCalidadProyecto = value;
+					this.SendPropertyChanged("idCalidadProyecto");
+					this.OnidCalidadProyectoChanged();
+				}
+			}
+		}
+		
+		[Column(Storage="_idUsoSuelo", DbType="SmallInt")]
+		public System.Nullable<short> idUsoSuelo
+		{
+			get
+			{
+				return this._idUsoSuelo;
+			}
+			set
+			{
+				if ((this._idUsoSuelo != value))
+				{
+					if (this._TipoUsoSuelo.HasLoadedOrAssignedValue)
+					{
+						throw new System.Data.Linq.ForeignKeyReferenceAlreadyHasValueException();
+					}
+					this.OnidUsoSueloChanging(value);
+					this.SendPropertyChanging();
+					this._idUsoSuelo = value;
+					this.SendPropertyChanged("idUsoSuelo");
+					this.OnidUsoSueloChanged();
+				}
+			}
+		}
+		
+		[Column(Storage="_valorOferta", DbType="Money NOT NULL")]
+		public decimal valorOferta
+		{
+			get
+			{
+				return this._valorOferta;
+			}
+			set
+			{
+				if ((this._valorOferta != value))
+				{
+					this.OnvalorOfertaChanging(value);
+					this.SendPropertyChanging();
+					this._valorOferta = value;
+					this.SendPropertyChanged("valorOferta");
+					this.OnvalorOfertaChanged();
+				}
+			}
+		}
+		
+		[Column(Storage="_numeroFrentes", DbType="Int NOT NULL")]
+		public int numeroFrentes
+		{
+			get
+			{
+				return this._numeroFrentes;
+			}
+			set
+			{
+				if ((this._numeroFrentes != value))
+				{
+					this.OnnumeroFrentesChanging(value);
+					this.SendPropertyChanging();
+					this._numeroFrentes = value;
+					this.SendPropertyChanged("numeroFrentes");
+					this.OnnumeroFrentesChanged();
+				}
+			}
+		}
+		
+		[Column(Storage="_superficieTerreno", DbType="Float NOT NULL")]
+		public double superficieTerreno
+		{
+			get
+			{
+				return this._superficieTerreno;
+			}
+			set
+			{
+				if ((this._superficieTerreno != value))
+				{
+					this.OnsuperficieTerrenoChanging(value);
+					this.SendPropertyChanging();
+					this._superficieTerreno = value;
+					this.SendPropertyChanged("superficieTerreno");
+					this.OnsuperficieTerrenoChanged();
+				}
+			}
+		}
+		
+		[Column(Storage="_superficieConstruida", DbType="Float")]
+		public System.Nullable<double> superficieConstruida
+		{
+			get
+			{
+				return this._superficieConstruida;
+			}
+			set
+			{
+				if ((this._superficieConstruida != value))
+				{
+					this.OnsuperficieConstruidaChanging(value);
+					this.SendPropertyChanging();
+					this._superficieConstruida = value;
+					this.SendPropertyChanged("superficieConstruida");
+					this.OnsuperficieConstruidaChanged();
+				}
+			}
+		}
+		
+		[Column(Storage="_antiguedad", DbType="Float")]
+		public System.Nullable<double> antiguedad
+		{
+			get
+			{
+				return this._antiguedad;
+			}
+			set
+			{
+				if ((this._antiguedad != value))
+				{
+					this.OnantiguedadChanging(value);
+					this.SendPropertyChanging();
+					this._antiguedad = value;
+					this.SendPropertyChanged("antiguedad");
+					this.OnantiguedadChanged();
+				}
+			}
+		}
+		
+		[Column(Storage="_avanceObra", DbType="Float")]
+		public System.Nullable<double> avanceObra
+		{
+			get
+			{
+				return this._avanceObra;
+			}
+			set
+			{
+				if ((this._avanceObra != value))
+				{
+					this.OnavanceObraChanging(value);
+					this.SendPropertyChanging();
+					this._avanceObra = value;
+					this.SendPropertyChanged("avanceObra");
+					this.OnavanceObraChanged();
+				}
+			}
+		}
+		
+		[Column(Storage="_nombreContacto", DbType="NVarChar(50) NOT NULL", CanBeNull=false)]
+		public string nombreContacto
+		{
+			get
+			{
+				return this._nombreContacto;
+			}
+			set
+			{
+				if ((this._nombreContacto != value))
+				{
+					this.OnnombreContactoChanging(value);
+					this.SendPropertyChanging();
+					this._nombreContacto = value;
+					this.SendPropertyChanged("nombreContacto");
+					this.OnnombreContactoChanged();
+				}
+			}
+		}
+		
+		[Column(Storage="_telefonoContacto", DbType="NVarChar(30)")]
+		public string telefonoContacto
+		{
+			get
+			{
+				return this._telefonoContacto;
+			}
+			set
+			{
+				if ((this._telefonoContacto != value))
+				{
+					this.OntelefonoContactoChanging(value);
+					this.SendPropertyChanging();
+					this._telefonoContacto = value;
+					this.SendPropertyChanged("telefonoContacto");
+					this.OntelefonoContactoChanged();
+				}
+			}
+		}
+		
+		[Column(Storage="_emailContacto", DbType="NVarChar(50)")]
+		public string emailContacto
+		{
+			get
+			{
+				return this._emailContacto;
+			}
+			set
+			{
+				if ((this._emailContacto != value))
+				{
+					this.OnemailContactoChanging(value);
+					this.SendPropertyChanging();
+					this._emailContacto = value;
+					this.SendPropertyChanged("emailContacto");
+					this.OnemailContactoChanged();
+				}
+			}
+		}
+		
+		[Column(Storage="_fechaCreacion", DbType="DateTime NOT NULL")]
+		public System.DateTime fechaCreacion
+		{
+			get
+			{
+				return this._fechaCreacion;
+			}
+			set
+			{
+				if ((this._fechaCreacion != value))
+				{
+					this.OnfechaCreacionChanging(value);
+					this.SendPropertyChanging();
+					this._fechaCreacion = value;
+					this.SendPropertyChanged("fechaCreacion");
+					this.OnfechaCreacionChanged();
+				}
+			}
+		}
+		
+		[Column(Storage="_fechaActualizacion", DbType="DateTime NOT NULL")]
+		public System.DateTime fechaActualizacion
+		{
+			get
+			{
+				return this._fechaActualizacion;
+			}
+			set
+			{
+				if ((this._fechaActualizacion != value))
+				{
+					this.OnfechaActualizacionChanging(value);
+					this.SendPropertyChanging();
+					this._fechaActualizacion = value;
+					this.SendPropertyChanged("fechaActualizacion");
+					this.OnfechaActualizacionChanged();
+				}
+			}
+		}
+		
+		[Column(Storage="_activo", DbType="Bit NOT NULL")]
+		public bool activo
+		{
+			get
+			{
+				return this._activo;
+			}
+			set
+			{
+				if ((this._activo != value))
+				{
+					this.OnactivoChanging(value);
+					this.SendPropertyChanging();
+					this._activo = value;
+					this.SendPropertyChanged("activo");
+					this.OnactivoChanged();
+				}
+			}
+		}
+		
+		[Association(Name="CalidadProyecto_ComparableInmobiliario", Storage="_CalidadProyecto", ThisKey="idCalidadProyecto", OtherKey="idCalidadProyecto", IsForeignKey=true)]
+		public CalidadProyecto CalidadProyecto
+		{
+			get
+			{
+				return this._CalidadProyecto.Entity;
+			}
+			set
+			{
+				CalidadProyecto previousValue = this._CalidadProyecto.Entity;
+				if (((previousValue != value) 
+							|| (this._CalidadProyecto.HasLoadedOrAssignedValue == false)))
+				{
+					this.SendPropertyChanging();
+					if ((previousValue != null))
+					{
+						this._CalidadProyecto.Entity = null;
+						previousValue.ComparableInmobiliario.Remove(this);
+					}
+					this._CalidadProyecto.Entity = value;
+					if ((value != null))
+					{
+						value.ComparableInmobiliario.Add(this);
+						this._idCalidadProyecto = value.idCalidadProyecto;
+					}
+					else
+					{
+						this._idCalidadProyecto = default(Nullable<short>);
+					}
+					this.SendPropertyChanged("CalidadProyecto");
+				}
+			}
+		}
+		
+		[Association(Name="ClaseInmueble_ComparableInmobiliario", Storage="_ClaseInmueble", ThisKey="idClase", OtherKey="idClase", IsForeignKey=true)]
+		public ClaseInmueble ClaseInmueble
+		{
+			get
+			{
+				return this._ClaseInmueble.Entity;
+			}
+			set
+			{
+				ClaseInmueble previousValue = this._ClaseInmueble.Entity;
+				if (((previousValue != value) 
+							|| (this._ClaseInmueble.HasLoadedOrAssignedValue == false)))
+				{
+					this.SendPropertyChanging();
+					if ((previousValue != null))
+					{
+						this._ClaseInmueble.Entity = null;
+						previousValue.ComparableInmobiliario.Remove(this);
+					}
+					this._ClaseInmueble.Entity = value;
+					if ((value != null))
+					{
+						value.ComparableInmobiliario.Add(this);
+						this._idClase = value.idClase;
+					}
+					else
+					{
+						this._idClase = default(Nullable<short>);
+					}
+					this.SendPropertyChanged("ClaseInmueble");
+				}
+			}
+		}
+		
+		[Association(Name="Direccion_ComparableInmobiliario", Storage="_Direccion", ThisKey="idDireccion", OtherKey="idDireccion", IsForeignKey=true)]
+		public Direccion Direccion
+		{
+			get
+			{
+				return this._Direccion.Entity;
+			}
+			set
+			{
+				Direccion previousValue = this._Direccion.Entity;
+				if (((previousValue != value) 
+							|| (this._Direccion.HasLoadedOrAssignedValue == false)))
+				{
+					this.SendPropertyChanging();
+					if ((previousValue != null))
+					{
+						this._Direccion.Entity = null;
+						previousValue.ComparableInmobiliario.Remove(this);
+					}
+					this._Direccion.Entity = value;
+					if ((value != null))
+					{
+						value.ComparableInmobiliario.Add(this);
+						this._idDireccion = value.idDireccion;
+					}
+					else
+					{
+						this._idDireccion = default(int);
+					}
+					this.SendPropertyChanged("Direccion");
+				}
+			}
+		}
+		
+		[Association(Name="TipoCalidadProyecto_ComparableInmobiliario", Storage="_TipoCalidadProyecto", ThisKey="idCalidadProyecto", OtherKey="idTipoCalidadProyecto", IsForeignKey=true)]
+		public TipoCalidadProyecto TipoCalidadProyecto
+		{
+			get
+			{
+				return this._TipoCalidadProyecto.Entity;
+			}
+			set
+			{
+				TipoCalidadProyecto previousValue = this._TipoCalidadProyecto.Entity;
+				if (((previousValue != value) 
+							|| (this._TipoCalidadProyecto.HasLoadedOrAssignedValue == false)))
+				{
+					this.SendPropertyChanging();
+					if ((previousValue != null))
+					{
+						this._TipoCalidadProyecto.Entity = null;
+						previousValue.ComparableInmobiliario.Remove(this);
+					}
+					this._TipoCalidadProyecto.Entity = value;
+					if ((value != null))
+					{
+						value.ComparableInmobiliario.Add(this);
+						this._idCalidadProyecto = value.idTipoCalidadProyecto;
+					}
+					else
+					{
+						this._idCalidadProyecto = default(Nullable<short>);
+					}
+					this.SendPropertyChanged("TipoCalidadProyecto");
+				}
+			}
+		}
+		
+		[Association(Name="TipoComparable1_ComparableInmobiliario", Storage="_TipoComparable1", ThisKey="idTipoComparable", OtherKey="idTipoComparable", IsForeignKey=true)]
+		public TipoComparable1 TipoComparable1
+		{
+			get
+			{
+				return this._TipoComparable1.Entity;
+			}
+			set
+			{
+				TipoComparable1 previousValue = this._TipoComparable1.Entity;
+				if (((previousValue != value) 
+							|| (this._TipoComparable1.HasLoadedOrAssignedValue == false)))
+				{
+					this.SendPropertyChanging();
+					if ((previousValue != null))
+					{
+						this._TipoComparable1.Entity = null;
+						previousValue.ComparableInmobiliario.Remove(this);
+					}
+					this._TipoComparable1.Entity = value;
+					if ((value != null))
+					{
+						value.ComparableInmobiliario.Add(this);
+						this._idTipoComparable = value.idTipoComparable;
+					}
+					else
+					{
+						this._idTipoComparable = default(short);
+					}
+					this.SendPropertyChanged("TipoComparable1");
+				}
+			}
+		}
+		
+		[Association(Name="TipoComparable_ComparableInmobiliario", Storage="_TipoComparable", ThisKey="idTipoComparable", OtherKey="idTipoComparable", IsForeignKey=true)]
+		public TipoComparable TipoComparable
+		{
+			get
+			{
+				return this._TipoComparable.Entity;
+			}
+			set
+			{
+				TipoComparable previousValue = this._TipoComparable.Entity;
+				if (((previousValue != value) 
+							|| (this._TipoComparable.HasLoadedOrAssignedValue == false)))
+				{
+					this.SendPropertyChanging();
+					if ((previousValue != null))
+					{
+						this._TipoComparable.Entity = null;
+						previousValue.ComparableInmobiliario.Remove(this);
+					}
+					this._TipoComparable.Entity = value;
+					if ((value != null))
+					{
+						value.ComparableInmobiliario.Add(this);
+						this._idTipoComparable = value.idTipoComparable;
+					}
+					else
+					{
+						this._idTipoComparable = default(short);
+					}
+					this.SendPropertyChanged("TipoComparable");
+				}
+			}
+		}
+		
+		[Association(Name="TipoUsoSuelo_ComparableInmobiliario", Storage="_TipoUsoSuelo", ThisKey="idUsoSuelo", OtherKey="idTipoUsoSuelo", IsForeignKey=true)]
+		public TipoUsoSuelo TipoUsoSuelo
+		{
+			get
+			{
+				return this._TipoUsoSuelo.Entity;
+			}
+			set
+			{
+				TipoUsoSuelo previousValue = this._TipoUsoSuelo.Entity;
+				if (((previousValue != value) 
+							|| (this._TipoUsoSuelo.HasLoadedOrAssignedValue == false)))
+				{
+					this.SendPropertyChanging();
+					if ((previousValue != null))
+					{
+						this._TipoUsoSuelo.Entity = null;
+						previousValue.ComparableInmobiliario.Remove(this);
+					}
+					this._TipoUsoSuelo.Entity = value;
+					if ((value != null))
+					{
+						value.ComparableInmobiliario.Add(this);
+						this._idUsoSuelo = value.idTipoUsoSuelo;
+					}
+					else
+					{
+						this._idUsoSuelo = default(Nullable<short>);
+					}
+					this.SendPropertyChanged("TipoUsoSuelo");
+				}
+			}
+		}
+		
+		[Association(Name="UsoSuelo_ComparableInmobiliario", Storage="_UsoSuelo", ThisKey="idUsoSuelo", OtherKey="idUsoSuelo", IsForeignKey=true)]
+		public UsoSuelo UsoSuelo
+		{
+			get
+			{
+				return this._UsoSuelo.Entity;
+			}
+			set
+			{
+				UsoSuelo previousValue = this._UsoSuelo.Entity;
+				if (((previousValue != value) 
+							|| (this._UsoSuelo.HasLoadedOrAssignedValue == false)))
+				{
+					this.SendPropertyChanging();
+					if ((previousValue != null))
+					{
+						this._UsoSuelo.Entity = null;
+						previousValue.ComparableInmobiliario.Remove(this);
+					}
+					this._UsoSuelo.Entity = value;
+					if ((value != null))
+					{
+						value.ComparableInmobiliario.Add(this);
+						this._idUsoSuelo = value.idUsoSuelo;
+					}
+					else
+					{
+						this._idUsoSuelo = default(Nullable<short>);
+					}
+					this.SendPropertyChanged("UsoSuelo");
+				}
+			}
+		}
+		
+		[Association(Name="TipoComparable2_ComparableInmobiliario", Storage="_TipoComparable2", ThisKey="idTipoComparable", OtherKey="idTipoComparable", IsForeignKey=true)]
+		public TipoComparable2 TipoComparable2
+		{
+			get
+			{
+				return this._TipoComparable2.Entity;
+			}
+			set
+			{
+				TipoComparable2 previousValue = this._TipoComparable2.Entity;
+				if (((previousValue != value) 
+							|| (this._TipoComparable2.HasLoadedOrAssignedValue == false)))
+				{
+					this.SendPropertyChanging();
+					if ((previousValue != null))
+					{
+						this._TipoComparable2.Entity = null;
+						previousValue.ComparableInmobiliario.Remove(this);
+					}
+					this._TipoComparable2.Entity = value;
+					if ((value != null))
+					{
+						value.ComparableInmobiliario.Add(this);
+						this._idTipoComparable = value.idTipoComparable;
+					}
+					else
+					{
+						this._idTipoComparable = default(short);
+					}
+					this.SendPropertyChanged("TipoComparable2");
+				}
+			}
+		}
+		
+		public event PropertyChangingEventHandler PropertyChanging;
+		
+		public event PropertyChangedEventHandler PropertyChanged;
+		
+		protected virtual void SendPropertyChanging()
+		{
+			if ((this.PropertyChanging != null))
+			{
+				this.PropertyChanging(this, emptyChangingEventArgs);
+			}
+		}
+		
+		protected virtual void SendPropertyChanged(String propertyName)
+		{
+			if ((this.PropertyChanged != null))
+			{
+				this.PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
+			}
+		}
+	}
+	
+	[Table(Name="dbo.TipoComparable")]
+	public partial class TipoComparable2 : INotifyPropertyChanging, INotifyPropertyChanged
+	{
+		
+		private static PropertyChangingEventArgs emptyChangingEventArgs = new PropertyChangingEventArgs(String.Empty);
+		
+		private short _idTipoComparable;
+		
+		private string _descripcion;
+		
+		private EntitySet<ComparableInmobiliario> _ComparableInmobiliario;
+		
+    #region Extensibility Method Definitions
+    partial void OnLoaded();
+    partial void OnValidate(System.Data.Linq.ChangeAction action);
+    partial void OnCreated();
+    partial void OnidTipoComparableChanging(short value);
+    partial void OnidTipoComparableChanged();
+    partial void OndescripcionChanging(string value);
+    partial void OndescripcionChanged();
+    #endregion
+		
+		public TipoComparable2()
+		{
+			this._ComparableInmobiliario = new EntitySet<ComparableInmobiliario>(new Action<ComparableInmobiliario>(this.attach_ComparableInmobiliario), new Action<ComparableInmobiliario>(this.detach_ComparableInmobiliario));
+			OnCreated();
+		}
+		
+		[Column(Storage="_idTipoComparable", DbType="SmallInt NOT NULL", IsPrimaryKey=true)]
+		public short idTipoComparable
+		{
+			get
+			{
+				return this._idTipoComparable;
+			}
+			set
+			{
+				if ((this._idTipoComparable != value))
+				{
+					this.OnidTipoComparableChanging(value);
+					this.SendPropertyChanging();
+					this._idTipoComparable = value;
+					this.SendPropertyChanged("idTipoComparable");
+					this.OnidTipoComparableChanged();
+				}
+			}
+		}
+		
+		[Column(Storage="_descripcion", DbType="NVarChar(15) NOT NULL", CanBeNull=false)]
+		public string descripcion
+		{
+			get
+			{
+				return this._descripcion;
+			}
+			set
+			{
+				if ((this._descripcion != value))
+				{
+					this.OndescripcionChanging(value);
+					this.SendPropertyChanging();
+					this._descripcion = value;
+					this.SendPropertyChanged("descripcion");
+					this.OndescripcionChanged();
+				}
+			}
+		}
+		
+		[Association(Name="TipoComparable2_ComparableInmobiliario", Storage="_ComparableInmobiliario", ThisKey="idTipoComparable", OtherKey="idTipoComparable")]
+		public EntitySet<ComparableInmobiliario> ComparableInmobiliario
+		{
+			get
+			{
+				return this._ComparableInmobiliario;
+			}
+			set
+			{
+				this._ComparableInmobiliario.Assign(value);
+			}
+		}
+		
+		public event PropertyChangingEventHandler PropertyChanging;
+		
+		public event PropertyChangedEventHandler PropertyChanged;
+		
+		protected virtual void SendPropertyChanging()
+		{
+			if ((this.PropertyChanging != null))
+			{
+				this.PropertyChanging(this, emptyChangingEventArgs);
+			}
+		}
+		
+		protected virtual void SendPropertyChanged(String propertyName)
+		{
+			if ((this.PropertyChanged != null))
+			{
+				this.PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
+			}
+		}
+		
+		private void attach_ComparableInmobiliario(ComparableInmobiliario entity)
+		{
+			this.SendPropertyChanging();
+			entity.TipoComparable2 = this;
+		}
+		
+		private void detach_ComparableInmobiliario(ComparableInmobiliario entity)
+		{
+			this.SendPropertyChanging();
+			entity.TipoComparable2 = null;
 		}
 	}
 	
