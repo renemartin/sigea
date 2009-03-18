@@ -75,6 +75,7 @@
     <Compile Include="Entities\Direccion.cs" />
     <Compile Include="Entities\DireccionInmueble.cs" />
     <Compile Include="Entities\EntornoInmueble.cs" />
+    <Compile Include="Entities\EscriturasInmueble.cs" />
     <Compile Include="Entities\Inmueble.cs" />
     <Compile Include="Entities\Instalaciones.cs" />
     <Compile Include="Entities\Materiales.cs" />
