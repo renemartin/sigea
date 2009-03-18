@@ -1,7 +1,6 @@
 ﻿<%@ Page Title="SIGEA - Comparables" Language="C#" MasterPageFile="~/Cuentas/Administracion/Administracion.master"
     AutoEventWireup="true" CodeFile="Comparables.aspx.cs" Inherits="Cuentas_Administracion_Comparables" %>
 
-
 <asp:Content ID="headContent" ContentPlaceHolderID="head" runat="server">
 </asp:Content>
 
@@ -22,6 +21,7 @@
         var tipoComparable_ID = '<%= filtroComparables_DDList.ClientID %>';
 //        fillTipoComparables(tipoComparable_ID);
     </script>
+    
     <h1>Comparables</h1>
     <table>
         <tr>

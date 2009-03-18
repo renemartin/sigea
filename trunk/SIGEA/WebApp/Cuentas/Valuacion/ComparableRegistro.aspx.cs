@@ -15,18 +15,18 @@ public partial class Cuentas_Administracion_ComparableRegistro : System.Web.UI.P
         if (!IsPostBack)
         {
             script = new StringBuilder();
-            script.AppendLine(string.Format(
-                "fillTipoComparable('{0}');" +
-                "fillUsosSuelo('{1}');" +
-                "fillClase('{2}');" +
-                "fillConservacion('{3}');" +
-                "fillCalidadProyecto('{4}');",
-                tipoComparable_DDList.ClientID,
-                usoSuelo_DDList.ClientID,
-                clase_DDList.ClientID,
-                conservacion_DDList.ClientID,
-                calidadProyecto_DDList.ClientID)
-            );
+            //script.AppendLine(string.Format(
+            //    "fillTipoComparable('{0}');" +
+            //    "fillUsosSuelo('{1}');" +
+            //    "fillClase('{2}');" +
+            //    "fillConservacion('{3}');" +
+            //    "fillCalidadProyecto('{4}');",
+            //    tipoComparable_DDList.ClientID,
+            //    usoSuelo_DDList.ClientID,
+            //    clase_DDList.ClientID,
+            //    conservacion_DDList.ClientID,
+            //    calidadProyecto_DDList.ClientID)
+            //);
             //LoadData();
             RegisterScripts();
             SetAttributes();
