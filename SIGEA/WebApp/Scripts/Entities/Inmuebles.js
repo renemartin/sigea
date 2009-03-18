@@ -62,6 +62,15 @@ function saveUsoActualAsync(idAvaluo, datosDistribucion, datosRecamaras, datosPl
         , callBack
     );
 }
+function saveEscriturasAsync(idAvaluo, datosEscrituras, callBack) {
+    EntityWrappers.SaveEscriturasInmueble(
+        idAvaluo
+        , datosEscrituras
+        , asyncCallResultBack
+        , asyncCallFail
+        , callBack
+    );
+}
 
 // Carga de datos
 
@@ -104,6 +113,9 @@ function loadUsoActualRecamarasAsync(idAvaluo, control) {
 function loadUsoActualPlantasAsync(idAvaluo, control) {
     EntityWrappers.LoadUsoActualPlantas(
         idAvaluo, asyncControlLoad, asyncCallFail, control);
+}
+function loadEscriturasAsync(idAvaluo, callBack) {
+    EntityWrappers.LoadEscrituras(idAvaluo, asyncCallResultBack, asyncCallFail, callBack);
 }
 
 // Datos escalares

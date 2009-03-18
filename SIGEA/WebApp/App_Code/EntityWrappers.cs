@@ -562,6 +562,38 @@ public class EntityWrappers : System.Web.Services.WebService
 
         return UsoActualArea.GetPlantas(inmueble.UsoActualInmueble);
     }
+
+    #endregion
+    
+    #region Escrituras del inmueble
+    [WebMethod]
+    public void SaveEscriturasInmueble(
+            int idAvaluo
+            , Entity datosEscrituras
+           )
+    {
+        SIGEADataContext data_context = new SIGEADataContext(ConfigurationManager.ConnectionStrings["SIGEA_ConnectionString"].ConnectionString);
+        Inmueble inmueble = Inmueble.GetFromIdAvaluo(data_context, idAvaluo);
+        if (inmueble == null)
+        {
+            throw new Exception("El avalúo no cuenta con un inmueble registrado");
+        }
+        EscriturasInmueble escrituras = EscriturasInmueble.GetForDataUpdate(data_context, inmueble);
+        escrituras.SetData(datosEscrituras);
+        data_context.SubmitChanges();
+    }
+    [WebMethod]
+    public Entity LoadEscrituras(int idAvaluo) 
+    {      
+        Inmueble inmueble = Inmueble.GetFromIdAvaluo(common_context, idAvaluo);        
+        if (inmueble == null)
+        {
+            throw new Exception("El avalúo no cuenta con un inmueble registrado");
+        }
+        if (inmueble.EscriturasInmueble == null)
+            return null;
+        return inmueble.EscriturasInmueble.GetData();
+    }
     #endregion
 
     #region Métodos del inmueble
