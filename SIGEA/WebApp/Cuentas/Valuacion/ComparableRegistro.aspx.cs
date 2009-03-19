@@ -15,28 +15,11 @@ public partial class Cuentas_Administracion_ComparableRegistro : System.Web.UI.P
         if (!IsPostBack)
         {
             script = new StringBuilder();
-            //script.AppendLine(string.Format(
-            //    "fillTipoComparable('{0}');" +
-            //    "fillUsosSuelo('{1}');" +
-            //    "fillClase('{2}');" +
-            //    "fillConservacion('{3}');" +
-            //    "fillCalidadProyecto('{4}');",
-            //    tipoComparable_DDList.ClientID,
-            //    usoSuelo_DDList.ClientID,
-            //    clase_DDList.ClientID,
-            //    conservacion_DDList.ClientID,
-            //    calidadProyecto_DDList.ClientID)
-            //);
-            //LoadData();
+
+            LoadData();
             RegisterScripts();
             SetAttributes();
         }
-    }
-
-    private void RegisterScripts()
-    {
-        Page.ClientScript.RegisterStartupScript(
-            typeof(Page), "scriptComparableInmobiliario", script.ToString(), true);
     }
 
     private void LoadData()
@@ -47,11 +30,18 @@ public partial class Cuentas_Administracion_ComparableRegistro : System.Web.UI.P
             if (!int.TryParse(Request.QueryString["idComparable"], out idComparable))
                 throw new Exception("Identificador de comparable invalido");
         }
-        script.AppendLine(string.Format("loadFormComparable('{0}');", idComparable));
+        script.AppendLine(string.Format("loadComparable('{0}');", idComparable));
+    }
+
+    private void RegisterScripts()
+    {
+        Page.ClientScript.RegisterStartupScript(
+            typeof(Page), "scriptComparableInmobiliario", script.ToString(), true);
     }
 
     private void SetAttributes()
     {
-        save_ImBtn.Attributes.Add("onClick", "saveForm(); return false");
+        save_ImBtn.Attributes.Add("onClick", "saveComparable(); return false");
+        cancel_ImBtn.Attributes.Add("onClick", "window.location.href='Comparables.aspx'; return false;");
     }
 }

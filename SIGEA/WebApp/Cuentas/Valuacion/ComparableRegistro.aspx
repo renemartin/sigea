@@ -1,4 +1,4 @@
-﻿<%@ Page Title="SIGEA - Registro de Comparables" Language="C#" MasterPageFile="~/Cuentas/Administracion/Administracion.master"
+﻿<%@ Page Title="SIGEA - Registro de Comparables" Language="C#" MasterPageFile="~/Cuentas/Valuacion/Valuacion.master"
     AutoEventWireup="true" CodeFile="ComparableRegistro.aspx.cs" Inherits="Cuentas_Administracion_ComparableRegistro"
     EnableViewState="false" %>
 
@@ -7,30 +7,34 @@
 <asp:Content ID="headContent" ContentPlaceHolderID="head" runat="server">
 
     <script type="text/javascript">
+        // Variables
         var idComparable = 0;
 
+        // Guardado de datos
         function saveComparable() {
-            saveComparableAsync(
-                idComparable
-                , ctrl_Comparable.getData()
-                , saveComparable_Success
-            );
+            if (ctrl_Comparable.validate()) {
+                saveComparableAsync(
+                    idComparable
+                    , ctrl_Comparable.getData()
+                    , saveComparable_Success
+                );
+            }
         }
         function saveComparable_Success(id) {
+            idComparable = id;
             showMessage("Datos guardados");
+            window.location.href = "Comparables.aspx";           
         }
 
+        // Carga de datos
         function loadComparable(keyId) {
             if (keyId != 0) {
                 idComparable = keyId;
-                loadComparableAsync(idComparable, callBackList);
+                loadComparableAsync(idComparable, ctrl_Comparable);
             }
             else {
-                loadFormComparable_Success();
+                ctrl_Comparable.setData(); 
             }
-        }
-        function loadFormComparable_Success(data) {
-            
         }
         
     </script>
@@ -47,6 +51,7 @@
             <asp:ScriptReference Path="~/Scripts/AsyncCalls.js" />
             <asp:ScriptReference Path="~/Scripts/DataFillers.js" />
             <asp:ScriptReference Path="~/Scripts/Validation.js" />
+            <asp:ScriptReference Path="~/Scripts/Entities/Comparables.js" />
         </Scripts>
     </asp:ScriptManager>
     <h1>
@@ -57,6 +62,7 @@
         </SIGEA:DatosComparable>
         <div class="barraMenu">
             <asp:ImageButton ID="save_ImBtn" runat="server" SkinID="Save" />
+            <asp:ImageButton ID="cancel_ImBtn" runat="server" SkinID="Cancel" />
         </div>
     </div>
 </asp:Content>

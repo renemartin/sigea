@@ -18,4 +18,12 @@
         </span>
         <span class="r"></span>            
     </div>
+    <div class="item">
+        <span class="l"></span>
+        <span class="m">
+            <asp:Image ID="comparables_Ima" runat="server" ImageUrl="~/Images/Icons/Comparable.gif" />
+            <asp:LinkButton ID="copmarables_LkBtn" runat="server" Text="Comparables" PostBackUrl="~/Cuentas/Valuacion/Comparables.aspx" />
+        </span>
+        <span class="r"></span>            
+    </div>
 </div>
