@@ -240,7 +240,7 @@ function fillPlanta(target_id) {
         fillSelect, asyncCallFail, target_id);
 }
 
-//sintesis
+// Sintesis
 
 function fillDatosSintesisAsync(idAvaluo, callback) {
     MethodCallers.GetDatosSintesis(

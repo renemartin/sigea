@@ -1,59 +1,35 @@
 ﻿/// <reference name="MicrosoftAjax.js"/>
+/// <reference path="~/Scripts/Utils.js"/>
 /// <reference path="~/Scripts/SelectFiller.js"/>
 /// <reference path="~/Scripts/AsyncCalls.js"/>
 /// <reference path="~/Services/MethodCallers.asmx">
 /// <reference path="~/Services/EntityWrappers.asmx">
 
-function saveComparableAsync(idComparable, datosComparable, datosUbicacion, datosContacto, callBack) {
+function saveComparableAsync(idComparable, datosComparable, callBack) {
     EntityWrappers.SaveComparable(
         idComparable
-        , datosComparable
-        , datosUbicacion
-        , datosContacto
+        , datosComparable[0]
+        , datosComparable[1]
+        , asyncCallResultBack
         , asyncCallFail
         , callBack
     );
 }
 
-function saveComparableAsyncComplete(result, callBack){
-    if(callBack != null)
-        callBack(result);
-}
-
-function loadComparableAsync(idComparable, callBackList){
+function loadComparableAsync(idComparable, control){
     EntityWrappers.LoadComparable(
         idComparable
-        , asyncCallListBack
-        , asyncCallFaill
-        , callBackList
+        , asyncControlLoad
+        , asyncCallFail
+        , control
     );
 }
 
-function loadComparableComplete(result, callBackList){
-    if(result != null && callBackList != null){
-        for ( i = 0; i < result.lenght; i++){
-            callBackList[i + 1](result[i]);
-        } 
-        
-        callBackList[0]();
-    }
-}
-
-function deleteComparableAsync(idComparable, callBack, parameter){
-    var context = new Array();
-    context[0] = callBack;
-    context[1] = parameter;
-    
+function deleteComparableAsync(idComparable, callBack){    
     EntityWrappers.DeleteComparable(
         idComparable
-        , deleteComparableAsync_Complete
+        , asyncCallResultBack
         , asyncCallFail
-        , context
+        , callBack
     );
-}
-
-function deleteComparableAsync_Complete(result, context){
-    if ( context != null && context.length == 2 ) {
-        context[0](context[1]);
-    }    
 }
