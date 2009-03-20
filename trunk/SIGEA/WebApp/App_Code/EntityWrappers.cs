@@ -62,7 +62,7 @@ public class EntityWrappers : System.Web.Services.WebService
                 credito.SetData(datosCredito);
             }
             avaluo.GenerarIDE(data_context);
-            data_context.SubmitChanges();            
+            data_context.SubmitChanges();
             idAvaluo = avaluo.idAvaluo;
         }
         catch (Exception ex)
@@ -70,7 +70,7 @@ public class EntityWrappers : System.Web.Services.WebService
             return new object[] { 0, ex.Message };
         }
 
-        return new object[] { idAvaluo, string.Empty };       
+        return new object[] { idAvaluo, string.Empty };
     }
 
     [WebMethod]
@@ -203,7 +203,7 @@ public class EntityWrappers : System.Web.Services.WebService
             AsignacionAvaluo.Save(data_context, idAvaluo, datosAsignacion);
             data_context.SubmitChanges();
         }
-        catch(Exception ex)
+        catch (Exception ex)
         {
             return ex.Message;
         }
@@ -356,7 +356,7 @@ public class EntityWrappers : System.Web.Services.WebService
 
         if (inmueble.UbicacionInmueble == null)
             return null;
-            
+
         return inmueble.UbicacionInmueble.GetData();
     }
 
@@ -461,7 +461,7 @@ public class EntityWrappers : System.Web.Services.WebService
     [WebMethod]
     public void SaveEquipamiento(int idAvaluo, Entity datosEquipamiento)
     {
-        
+
         SIGEADataContext data_context = new SIGEADataContext(ConfigurationManager.ConnectionStrings["SIGEA_ConnectionString"].ConnectionString);
         Inmueble inmueble = Inmueble.GetFromIdAvaluo(data_context, idAvaluo);
 
@@ -564,7 +564,7 @@ public class EntityWrappers : System.Web.Services.WebService
     }
 
     #endregion
-    
+
     #region Escrituras del inmueble
     [WebMethod]
     public void SaveEscriturasInmueble(
@@ -583,9 +583,9 @@ public class EntityWrappers : System.Web.Services.WebService
         data_context.SubmitChanges();
     }
     [WebMethod]
-    public Entity LoadEscrituras(int idAvaluo) 
-    {      
-        Inmueble inmueble = Inmueble.GetFromIdAvaluo(common_context, idAvaluo);        
+    public Entity LoadEscrituras(int idAvaluo)
+    {
+        Inmueble inmueble = Inmueble.GetFromIdAvaluo(common_context, idAvaluo);
         if (inmueble == null)
         {
             throw new Exception("El avalúo no cuenta con un inmueble registrado");
@@ -593,6 +593,37 @@ public class EntityWrappers : System.Web.Services.WebService
         if (inmueble.EscriturasInmueble == null)
             return null;
         return inmueble.EscriturasInmueble.GetData();
+    }
+    #endregion
+    
+    #region Geolocalizacion del inmueble
+    [WebMethod]
+    public void SaveGeolocalizacionInmueble(
+        int idAvaluo
+        , Entity datosGeolocalizacion
+        )
+    {
+        SIGEADataContext data_context = new SIGEADataContext(ConfigurationManager.ConnectionStrings["SIGEA_ConnectionString"].ConnectionString);
+        Inmueble inmueble = Inmueble.GetFromIdAvaluo(data_context, idAvaluo);
+        if (inmueble == null)
+        {
+            throw new Exception("El avalúo no cuenta con un inmueble registrado");
+        }
+        GeolocalizacionInmueble geolocalizacion = GeolocalizacionInmueble.GetForDataUpdate(data_context, inmueble);
+        geolocalizacion.SetData(datosGeolocalizacion);
+        data_context.SubmitChanges();
+    }
+    [WebMethod]
+    public Entity LoadGeolocalizacion(int idAvaluo)
+    {
+        Inmueble inmueble = Inmueble.GetFromIdAvaluo(common_context, idAvaluo);
+        if (inmueble == null)
+        {
+            throw new Exception("El avalúo no cuenta con un inmueble registrado");
+        }
+        if (inmueble.GeolocalizacionInmueble == null)
+            return null;
+        return inmueble.GeolocalizacionInmueble.GetData();
     }
     #endregion
 
@@ -814,11 +845,11 @@ public class EntityWrappers : System.Web.Services.WebService
         }
 
         InstalacionesTipoConstruccion instalaciones_tipo = InstalacionesTipoConstruccion.GetForDataUpdate(data_context, tipo_construccion);
-        
+
         instalaciones_tipo.SetData(datosInstalacionesTipoConstruccion);
-        if(datosInstalacionesComunes != null)            
+        if (datosInstalacionesComunes != null)
             InstalacionConstruccion.SetInstalacionesConstruccion(construccion, datosInstalacionesPrivativas, false);
-        if(datosInstalacionesPrivativas != null)
+        if (datosInstalacionesPrivativas != null)
             InstalacionConstruccion.SetInstalacionesConstruccion(construccion, datosInstalacionesComunes, true);
 
         data_context.SubmitChanges();
@@ -849,7 +880,7 @@ public class EntityWrappers : System.Web.Services.WebService
     public Entity LoadFachada(int idAvaluo)
     {
         Inmueble inmueble = Inmueble.GetFromIdAvaluo(common_context, idAvaluo);
-        
+
         if (inmueble == null)
             return null;
 
