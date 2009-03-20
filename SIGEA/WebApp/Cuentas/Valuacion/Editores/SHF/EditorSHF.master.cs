@@ -20,12 +20,14 @@ public partial class Cuentas_Valuacion_Editores_SHF_EditorSHF : System.Web.UI.Ma
 
         planos_ImBtn.OnClientClick = "openModalWindow('Modulos/Planos.aspx?idAvaluo=" +
                 Page.Request.QueryString["idAvaluo"] + "', 850, 550); return false;";
-        
-        mapas_ImBtn.OnClientClick = "return false;";
+
+        mapas_ImBtn.OnClientClick = "openModalWindow('Modulos/Mapas.aspx?idAvaluo=" +
+                Page.Request.QueryString["idAvaluo"] + "', 600, 600); return false;";
         
         documentos_ImBtn.OnClientClick = "return false;";
 
         escrituras_ImBtn.OnClientClick = "openModalWindow('Modulos/Escrituras.aspx?idAvaluo=" +
                 Page.Request.QueryString["idAvaluo"] + "', 320, 320); return false;";
+        
     }
 }
