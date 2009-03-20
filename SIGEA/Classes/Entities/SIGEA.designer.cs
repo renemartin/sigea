@@ -360,6 +360,12 @@ namespace SIGEA.Classes.Entities
     partial void InsertTipoCalidadProyecto(TipoCalidadProyecto instance);
     partial void UpdateTipoCalidadProyecto(TipoCalidadProyecto instance);
     partial void DeleteTipoCalidadProyecto(TipoCalidadProyecto instance);
+    partial void InsertDocumentoAvaluo(DocumentoAvaluo instance);
+    partial void UpdateDocumentoAvaluo(DocumentoAvaluo instance);
+    partial void DeleteDocumentoAvaluo(DocumentoAvaluo instance);
+    partial void InsertTipoDocumentoAvaluo(TipoDocumentoAvaluo instance);
+    partial void UpdateTipoDocumentoAvaluo(TipoDocumentoAvaluo instance);
+    partial void DeleteTipoDocumentoAvaluo(TipoDocumentoAvaluo instance);
     #endregion
 		
 		public SIGEADataContext() : 
@@ -1285,6 +1291,22 @@ namespace SIGEA.Classes.Entities
 			get
 			{
 				return this.GetTable<TipoCalidadProyecto>();
+			}
+		}
+		
+		public System.Data.Linq.Table<DocumentoAvaluo> DocumentoAvaluo
+		{
+			get
+			{
+				return this.GetTable<DocumentoAvaluo>();
+			}
+		}
+		
+		public System.Data.Linq.Table<TipoDocumentoAvaluo> TipoDocumentoAvaluo
+		{
+			get
+			{
+				return this.GetTable<TipoDocumentoAvaluo>();
 			}
 		}
 		
@@ -2251,6 +2273,8 @@ namespace SIGEA.Classes.Entities
 		
 		private EntitySet<PlanoInmueble> _PlanoInmueble1;
 		
+		private EntitySet<DocumentoAvaluo> _DocumentoAvaluo;
+		
 		private EntityRef<Carpeta> _Carpeta;
 		
     #region Extensibility Method Definitions
@@ -2287,6 +2311,7 @@ namespace SIGEA.Classes.Entities
 			this._FotografiaInmueble1 = new EntitySet<FotografiaInmueble>(new Action<FotografiaInmueble>(this.attach_FotografiaInmueble1), new Action<FotografiaInmueble>(this.detach_FotografiaInmueble1));
 			this._PlanoInmueble = new EntitySet<PlanoInmueble>(new Action<PlanoInmueble>(this.attach_PlanoInmueble), new Action<PlanoInmueble>(this.detach_PlanoInmueble));
 			this._PlanoInmueble1 = new EntitySet<PlanoInmueble>(new Action<PlanoInmueble>(this.attach_PlanoInmueble1), new Action<PlanoInmueble>(this.detach_PlanoInmueble1));
+			this._DocumentoAvaluo = new EntitySet<DocumentoAvaluo>(new Action<DocumentoAvaluo>(this.attach_DocumentoAvaluo), new Action<DocumentoAvaluo>(this.detach_DocumentoAvaluo));
 			this._Carpeta = default(EntityRef<Carpeta>);
 			OnCreated();
 		}
@@ -2579,6 +2604,19 @@ namespace SIGEA.Classes.Entities
 			}
 		}
 		
+		[Association(Name="Archivo_DocumentoAvaluo", Storage="_DocumentoAvaluo", ThisKey="idArchivo", OtherKey="idArchivo")]
+		public EntitySet<DocumentoAvaluo> DocumentoAvaluo
+		{
+			get
+			{
+				return this._DocumentoAvaluo;
+			}
+			set
+			{
+				this._DocumentoAvaluo.Assign(value);
+			}
+		}
+		
 		[Association(Name="Carpeta_Archivo", Storage="_Carpeta", ThisKey="idCarpeta", OtherKey="idCarpeta", IsForeignKey=true)]
 		public Carpeta Carpeta
 		{
@@ -2727,6 +2765,18 @@ namespace SIGEA.Classes.Entities
 		{
 			this.SendPropertyChanging();
 			entity.Archivo1 = null;
+		}
+		
+		private void attach_DocumentoAvaluo(DocumentoAvaluo entity)
+		{
+			this.SendPropertyChanging();
+			entity.Archivo = this;
+		}
+		
+		private void detach_DocumentoAvaluo(DocumentoAvaluo entity)
+		{
+			this.SendPropertyChanging();
+			entity.Archivo = null;
 		}
 	}
 	
@@ -3456,6 +3506,8 @@ namespace SIGEA.Classes.Entities
 		
 		private EntitySet<RevisionAvaluo> _RevisionAvaluo;
 		
+		private EntitySet<DocumentoAvaluo> _DocumentoAvaluo;
+		
 		private EntityRef<Cliente> _Cliente;
 		
 		private EntityRef<Inmueble> _Inmueble;
@@ -3513,6 +3565,7 @@ namespace SIGEA.Classes.Entities
 			this._Declaraciones = default(EntityRef<Declaraciones>);
 			this._RechazoAvaluo = new EntitySet<RechazoAvaluo>(new Action<RechazoAvaluo>(this.attach_RechazoAvaluo), new Action<RechazoAvaluo>(this.detach_RechazoAvaluo));
 			this._RevisionAvaluo = new EntitySet<RevisionAvaluo>(new Action<RevisionAvaluo>(this.attach_RevisionAvaluo), new Action<RevisionAvaluo>(this.detach_RevisionAvaluo));
+			this._DocumentoAvaluo = new EntitySet<DocumentoAvaluo>(new Action<DocumentoAvaluo>(this.attach_DocumentoAvaluo), new Action<DocumentoAvaluo>(this.detach_DocumentoAvaluo));
 			this._Cliente = default(EntityRef<Cliente>);
 			this._Inmueble = default(EntityRef<Inmueble>);
 			this._PropositoAvaluo = default(EntityRef<PropositoAvaluo>);
@@ -4017,6 +4070,19 @@ namespace SIGEA.Classes.Entities
 			}
 		}
 		
+		[Association(Name="AvaluoInmobiliario_DocumentoAvaluo", Storage="_DocumentoAvaluo", ThisKey="idAvaluo", OtherKey="idAvaluo")]
+		public EntitySet<DocumentoAvaluo> DocumentoAvaluo
+		{
+			get
+			{
+				return this._DocumentoAvaluo;
+			}
+			set
+			{
+				this._DocumentoAvaluo.Assign(value);
+			}
+		}
+		
 		[Association(Name="Cliente_AvaluoInmobiliario", Storage="_Cliente", ThisKey="idCliente", OtherKey="idCliente", IsForeignKey=true)]
 		public Cliente Cliente
 		{
@@ -4260,6 +4326,18 @@ namespace SIGEA.Classes.Entities
 		}
 		
 		private void detach_RevisionAvaluo(RevisionAvaluo entity)
+		{
+			this.SendPropertyChanging();
+			entity.AvaluoInmobiliario = null;
+		}
+		
+		private void attach_DocumentoAvaluo(DocumentoAvaluo entity)
+		{
+			this.SendPropertyChanging();
+			entity.AvaluoInmobiliario = this;
+		}
+		
+		private void detach_DocumentoAvaluo(DocumentoAvaluo entity)
 		{
 			this.SendPropertyChanging();
 			entity.AvaluoInmobiliario = null;
@@ -28647,6 +28725,377 @@ namespace SIGEA.Classes.Entities
 		{
 			this.SendPropertyChanging();
 			entity.TipoCalidadProyecto1 = null;
+		}
+	}
+	
+	[Table(Name="dbo.DocumentoAvaluo")]
+	public partial class DocumentoAvaluo : INotifyPropertyChanging, INotifyPropertyChanged
+	{
+		
+		private static PropertyChangingEventArgs emptyChangingEventArgs = new PropertyChangingEventArgs(String.Empty);
+		
+		private int _idDocumentoAvaluo;
+		
+		private int _idArchivo;
+		
+		private int _idAvaluo;
+		
+		private short _idTipoDocumento;
+		
+		private EntityRef<Archivo> _Archivo;
+		
+		private EntityRef<AvaluoInmobiliario> _AvaluoInmobiliario;
+		
+		private EntityRef<TipoDocumentoAvaluo> _TipoDocumentoAvaluo;
+		
+    #region Extensibility Method Definitions
+    partial void OnLoaded();
+    partial void OnValidate(System.Data.Linq.ChangeAction action);
+    partial void OnCreated();
+    partial void OnidDocumentoAvaluoChanging(int value);
+    partial void OnidDocumentoAvaluoChanged();
+    partial void OnidArchivoChanging(int value);
+    partial void OnidArchivoChanged();
+    partial void OnidAvaluoChanging(int value);
+    partial void OnidAvaluoChanged();
+    partial void OnidTipoDocumentoChanging(short value);
+    partial void OnidTipoDocumentoChanged();
+    #endregion
+		
+		public DocumentoAvaluo()
+		{
+			this._Archivo = default(EntityRef<Archivo>);
+			this._AvaluoInmobiliario = default(EntityRef<AvaluoInmobiliario>);
+			this._TipoDocumentoAvaluo = default(EntityRef<TipoDocumentoAvaluo>);
+			OnCreated();
+		}
+		
+		[Column(Storage="_idDocumentoAvaluo", AutoSync=AutoSync.OnInsert, DbType="Int NOT NULL IDENTITY", IsPrimaryKey=true, IsDbGenerated=true)]
+		public int idDocumentoAvaluo
+		{
+			get
+			{
+				return this._idDocumentoAvaluo;
+			}
+			set
+			{
+				if ((this._idDocumentoAvaluo != value))
+				{
+					this.OnidDocumentoAvaluoChanging(value);
+					this.SendPropertyChanging();
+					this._idDocumentoAvaluo = value;
+					this.SendPropertyChanged("idDocumentoAvaluo");
+					this.OnidDocumentoAvaluoChanged();
+				}
+			}
+		}
+		
+		[Column(Storage="_idArchivo", DbType="Int NOT NULL")]
+		public int idArchivo
+		{
+			get
+			{
+				return this._idArchivo;
+			}
+			set
+			{
+				if ((this._idArchivo != value))
+				{
+					if (this._Archivo.HasLoadedOrAssignedValue)
+					{
+						throw new System.Data.Linq.ForeignKeyReferenceAlreadyHasValueException();
+					}
+					this.OnidArchivoChanging(value);
+					this.SendPropertyChanging();
+					this._idArchivo = value;
+					this.SendPropertyChanged("idArchivo");
+					this.OnidArchivoChanged();
+				}
+			}
+		}
+		
+		[Column(Storage="_idAvaluo", DbType="Int NOT NULL")]
+		public int idAvaluo
+		{
+			get
+			{
+				return this._idAvaluo;
+			}
+			set
+			{
+				if ((this._idAvaluo != value))
+				{
+					if (this._AvaluoInmobiliario.HasLoadedOrAssignedValue)
+					{
+						throw new System.Data.Linq.ForeignKeyReferenceAlreadyHasValueException();
+					}
+					this.OnidAvaluoChanging(value);
+					this.SendPropertyChanging();
+					this._idAvaluo = value;
+					this.SendPropertyChanged("idAvaluo");
+					this.OnidAvaluoChanged();
+				}
+			}
+		}
+		
+		[Column(Storage="_idTipoDocumento", DbType="SmallInt NOT NULL")]
+		public short idTipoDocumento
+		{
+			get
+			{
+				return this._idTipoDocumento;
+			}
+			set
+			{
+				if ((this._idTipoDocumento != value))
+				{
+					if (this._TipoDocumentoAvaluo.HasLoadedOrAssignedValue)
+					{
+						throw new System.Data.Linq.ForeignKeyReferenceAlreadyHasValueException();
+					}
+					this.OnidTipoDocumentoChanging(value);
+					this.SendPropertyChanging();
+					this._idTipoDocumento = value;
+					this.SendPropertyChanged("idTipoDocumento");
+					this.OnidTipoDocumentoChanged();
+				}
+			}
+		}
+		
+		[Association(Name="Archivo_DocumentoAvaluo", Storage="_Archivo", ThisKey="idArchivo", OtherKey="idArchivo", IsForeignKey=true)]
+		public Archivo Archivo
+		{
+			get
+			{
+				return this._Archivo.Entity;
+			}
+			set
+			{
+				Archivo previousValue = this._Archivo.Entity;
+				if (((previousValue != value) 
+							|| (this._Archivo.HasLoadedOrAssignedValue == false)))
+				{
+					this.SendPropertyChanging();
+					if ((previousValue != null))
+					{
+						this._Archivo.Entity = null;
+						previousValue.DocumentoAvaluo.Remove(this);
+					}
+					this._Archivo.Entity = value;
+					if ((value != null))
+					{
+						value.DocumentoAvaluo.Add(this);
+						this._idArchivo = value.idArchivo;
+					}
+					else
+					{
+						this._idArchivo = default(int);
+					}
+					this.SendPropertyChanged("Archivo");
+				}
+			}
+		}
+		
+		[Association(Name="AvaluoInmobiliario_DocumentoAvaluo", Storage="_AvaluoInmobiliario", ThisKey="idAvaluo", OtherKey="idAvaluo", IsForeignKey=true)]
+		public AvaluoInmobiliario AvaluoInmobiliario
+		{
+			get
+			{
+				return this._AvaluoInmobiliario.Entity;
+			}
+			set
+			{
+				AvaluoInmobiliario previousValue = this._AvaluoInmobiliario.Entity;
+				if (((previousValue != value) 
+							|| (this._AvaluoInmobiliario.HasLoadedOrAssignedValue == false)))
+				{
+					this.SendPropertyChanging();
+					if ((previousValue != null))
+					{
+						this._AvaluoInmobiliario.Entity = null;
+						previousValue.DocumentoAvaluo.Remove(this);
+					}
+					this._AvaluoInmobiliario.Entity = value;
+					if ((value != null))
+					{
+						value.DocumentoAvaluo.Add(this);
+						this._idAvaluo = value.idAvaluo;
+					}
+					else
+					{
+						this._idAvaluo = default(int);
+					}
+					this.SendPropertyChanged("AvaluoInmobiliario");
+				}
+			}
+		}
+		
+		[Association(Name="TipoDocumentoAvaluo_DocumentoAvaluo", Storage="_TipoDocumentoAvaluo", ThisKey="idTipoDocumento", OtherKey="idTipoDocumentoAvaluo", IsForeignKey=true)]
+		public TipoDocumentoAvaluo TipoDocumentoAvaluo
+		{
+			get
+			{
+				return this._TipoDocumentoAvaluo.Entity;
+			}
+			set
+			{
+				TipoDocumentoAvaluo previousValue = this._TipoDocumentoAvaluo.Entity;
+				if (((previousValue != value) 
+							|| (this._TipoDocumentoAvaluo.HasLoadedOrAssignedValue == false)))
+				{
+					this.SendPropertyChanging();
+					if ((previousValue != null))
+					{
+						this._TipoDocumentoAvaluo.Entity = null;
+						previousValue.DocumentoAvaluo.Remove(this);
+					}
+					this._TipoDocumentoAvaluo.Entity = value;
+					if ((value != null))
+					{
+						value.DocumentoAvaluo.Add(this);
+						this._idTipoDocumento = value.idTipoDocumentoAvaluo;
+					}
+					else
+					{
+						this._idTipoDocumento = default(short);
+					}
+					this.SendPropertyChanged("TipoDocumentoAvaluo");
+				}
+			}
+		}
+		
+		public event PropertyChangingEventHandler PropertyChanging;
+		
+		public event PropertyChangedEventHandler PropertyChanged;
+		
+		protected virtual void SendPropertyChanging()
+		{
+			if ((this.PropertyChanging != null))
+			{
+				this.PropertyChanging(this, emptyChangingEventArgs);
+			}
+		}
+		
+		protected virtual void SendPropertyChanged(String propertyName)
+		{
+			if ((this.PropertyChanged != null))
+			{
+				this.PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
+			}
+		}
+	}
+	
+	[Table(Name="dbo.TipoDocumentoAvaluo")]
+	public partial class TipoDocumentoAvaluo : INotifyPropertyChanging, INotifyPropertyChanged
+	{
+		
+		private static PropertyChangingEventArgs emptyChangingEventArgs = new PropertyChangingEventArgs(String.Empty);
+		
+		private short _idTipoDocumentoAvaluo;
+		
+		private string _descripcion;
+		
+		private EntitySet<DocumentoAvaluo> _DocumentoAvaluo;
+		
+    #region Extensibility Method Definitions
+    partial void OnLoaded();
+    partial void OnValidate(System.Data.Linq.ChangeAction action);
+    partial void OnCreated();
+    partial void OnidTipoDocumentoAvaluoChanging(short value);
+    partial void OnidTipoDocumentoAvaluoChanged();
+    partial void OndescripcionChanging(string value);
+    partial void OndescripcionChanged();
+    #endregion
+		
+		public TipoDocumentoAvaluo()
+		{
+			this._DocumentoAvaluo = new EntitySet<DocumentoAvaluo>(new Action<DocumentoAvaluo>(this.attach_DocumentoAvaluo), new Action<DocumentoAvaluo>(this.detach_DocumentoAvaluo));
+			OnCreated();
+		}
+		
+		[Column(Storage="_idTipoDocumentoAvaluo", DbType="SmallInt NOT NULL", IsPrimaryKey=true)]
+		public short idTipoDocumentoAvaluo
+		{
+			get
+			{
+				return this._idTipoDocumentoAvaluo;
+			}
+			set
+			{
+				if ((this._idTipoDocumentoAvaluo != value))
+				{
+					this.OnidTipoDocumentoAvaluoChanging(value);
+					this.SendPropertyChanging();
+					this._idTipoDocumentoAvaluo = value;
+					this.SendPropertyChanged("idTipoDocumentoAvaluo");
+					this.OnidTipoDocumentoAvaluoChanged();
+				}
+			}
+		}
+		
+		[Column(Storage="_descripcion", DbType="NVarChar(30) NOT NULL", CanBeNull=false)]
+		public string descripcion
+		{
+			get
+			{
+				return this._descripcion;
+			}
+			set
+			{
+				if ((this._descripcion != value))
+				{
+					this.OndescripcionChanging(value);
+					this.SendPropertyChanging();
+					this._descripcion = value;
+					this.SendPropertyChanged("descripcion");
+					this.OndescripcionChanged();
+				}
+			}
+		}
+		
+		[Association(Name="TipoDocumentoAvaluo_DocumentoAvaluo", Storage="_DocumentoAvaluo", ThisKey="idTipoDocumentoAvaluo", OtherKey="idTipoDocumento")]
+		public EntitySet<DocumentoAvaluo> DocumentoAvaluo
+		{
+			get
+			{
+				return this._DocumentoAvaluo;
+			}
+			set
+			{
+				this._DocumentoAvaluo.Assign(value);
+			}
+		}
+		
+		public event PropertyChangingEventHandler PropertyChanging;
+		
+		public event PropertyChangedEventHandler PropertyChanged;
+		
+		protected virtual void SendPropertyChanging()
+		{
+			if ((this.PropertyChanging != null))
+			{
+				this.PropertyChanging(this, emptyChangingEventArgs);
+			}
+		}
+		
+		protected virtual void SendPropertyChanged(String propertyName)
+		{
+			if ((this.PropertyChanged != null))
+			{
+				this.PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
+			}
+		}
+		
+		private void attach_DocumentoAvaluo(DocumentoAvaluo entity)
+		{
+			this.SendPropertyChanging();
+			entity.TipoDocumentoAvaluo = this;
+		}
+		
+		private void detach_DocumentoAvaluo(DocumentoAvaluo entity)
+		{
+			this.SendPropertyChanging();
+			entity.TipoDocumentoAvaluo = null;
 		}
 	}
 	
