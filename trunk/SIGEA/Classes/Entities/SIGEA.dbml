@@ -54,6 +54,7 @@
       <Association Name="Archivo_FotografiaInmueble1" Member="FotografiaInmueble1" ThisKey="idArchivo" OtherKey="idArchivoThumbnail" Type="FotografiaInmueble" />
       <Association Name="Archivo_PlanoInmueble" Member="PlanoInmueble" ThisKey="idArchivo" OtherKey="idArchivo" Type="PlanoInmueble" />
       <Association Name="Archivo_PlanoInmueble1" Member="PlanoInmueble1" ThisKey="idArchivo" OtherKey="idArchivoThumbnail" Type="PlanoInmueble" />
+      <Association Name="Archivo_DocumentoAvaluo" Member="DocumentoAvaluo" ThisKey="idArchivo" OtherKey="idArchivo" Type="DocumentoAvaluo" />
       <Association Name="Carpeta_Archivo" Member="Carpeta" ThisKey="idCarpeta" OtherKey="idCarpeta" Type="Carpeta" IsForeignKey="true" />
     </Type>
   </Table>
@@ -112,6 +113,7 @@
       <Association Name="AvaluoInmobiliario_Declaraciones" Member="Declaraciones" ThisKey="idAvaluo" OtherKey="idAvaluo" Type="Declaraciones" Cardinality="One" />
       <Association Name="AvaluoInmobiliario_RechazoAvaluo" Member="RechazoAvaluo" ThisKey="idAvaluo" OtherKey="idAvaluo" Type="RechazoAvaluo" />
       <Association Name="AvaluoInmobiliario_RevisionAvaluo" Member="RevisionAvaluo" ThisKey="idAvaluo" OtherKey="idAvaluo" Type="RevisionAvaluo" />
+      <Association Name="AvaluoInmobiliario_DocumentoAvaluo" Member="DocumentoAvaluo" ThisKey="idAvaluo" OtherKey="idAvaluo" Type="DocumentoAvaluo" />
       <Association Name="Cliente_AvaluoInmobiliario" Member="Cliente" ThisKey="idCliente" OtherKey="idCliente" Type="Cliente" IsForeignKey="true" />
       <Association Name="Inmueble_AvaluoInmobiliario" Member="Inmueble" ThisKey="idInmueble" OtherKey="idInmueble" Type="Inmueble" IsForeignKey="true" />
       <Association Name="PropositoAvaluo_AvaluoInmobiliario" Member="PropositoAvaluo" ThisKey="idProposito" OtherKey="idProposito" Type="PropositoAvaluo" IsForeignKey="true" />
@@ -1305,6 +1307,24 @@
       <Column Name="descricion" Type="System.String" DbType="NVarChar(30) NOT NULL" CanBeNull="false" />
       <Association Name="TipoCalidadProyecto_ComparableInmobiliario" Member="ComparableInmobiliario" ThisKey="idTipoCalidadProyecto" OtherKey="idCalidadProyecto" Type="ComparableInmobiliario" />
       <Association Name="TipoCalidadProyecto_ComparableInmobiliario1" Member="ComparableInmobiliario1" ThisKey="idTipoCalidadProyecto" OtherKey="idCalidadProyecto" Type="ComparableInmobiliario" />
+    </Type>
+  </Table>
+  <Table Name="dbo.DocumentoAvaluo" Member="DocumentoAvaluo">
+    <Type Name="DocumentoAvaluo">
+      <Column Name="idDocumentoAvaluo" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="idArchivo" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="idAvaluo" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="idTipoDocumento" Type="System.Int16" DbType="SmallInt NOT NULL" CanBeNull="false" />
+      <Association Name="Archivo_DocumentoAvaluo" Member="Archivo" ThisKey="idArchivo" OtherKey="idArchivo" Type="Archivo" IsForeignKey="true" />
+      <Association Name="AvaluoInmobiliario_DocumentoAvaluo" Member="AvaluoInmobiliario" ThisKey="idAvaluo" OtherKey="idAvaluo" Type="AvaluoInmobiliario" IsForeignKey="true" />
+      <Association Name="TipoDocumentoAvaluo_DocumentoAvaluo" Member="TipoDocumentoAvaluo" ThisKey="idTipoDocumento" OtherKey="idTipoDocumentoAvaluo" Type="TipoDocumentoAvaluo" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.TipoDocumentoAvaluo" Member="TipoDocumentoAvaluo">
+    <Type Name="TipoDocumentoAvaluo">
+      <Column Name="idTipoDocumentoAvaluo" Type="System.Int16" DbType="SmallInt NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="descripcion" Type="System.String" DbType="NVarChar(30) NOT NULL" CanBeNull="false" />
+      <Association Name="TipoDocumentoAvaluo_DocumentoAvaluo" Member="DocumentoAvaluo" ThisKey="idTipoDocumentoAvaluo" OtherKey="idTipoDocumento" Type="DocumentoAvaluo" />
     </Type>
   </Table>
   <Function Name="dbo.GenerarIDE" Method="GenerarIDE">
