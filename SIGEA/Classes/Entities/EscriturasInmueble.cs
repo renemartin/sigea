@@ -37,10 +37,7 @@ namespace SIGEA.Classes.Entities
             notario = data["notario"].ToString();
             notaria = data["notaria"].ToString();
             plaza = data["plaza"].ToString();
-            fecha = (DateTime)data["fecha"]; ///está bien???
-        }
-        
+            fecha = (DateTime)data["fecha"];
+        }        
     }
-
-
 }
