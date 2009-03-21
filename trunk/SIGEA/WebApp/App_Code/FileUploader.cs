@@ -71,7 +71,7 @@ public class FileUploader
             , file.ContentType);
 
         new_file_name = archivo.idArchivo + file_extension;
-        new_file_path = Path.Combine("~/" + folder_name, new_file_name + file_extension);
+        new_file_path = Path.Combine("~/" + folder_name, new_file_name);
 
         try
         {

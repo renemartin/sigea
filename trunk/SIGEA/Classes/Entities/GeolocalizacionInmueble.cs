@@ -29,9 +29,9 @@ namespace SIGEA.Classes.Entities
         public void SetData(Dictionary<string,object> data)
         {
             formatoAbsoluto = (bool)data["formatoAbsoluto"];
-            latitud = decimal.Parse(data["latitud"].ToString());
-            longitud = decimal.Parse(data["longitud"].ToString());
-            altitud = decimal.Parse(data["altitud"].ToString());
+            latitud = double.Parse(data["latitud"].ToString());
+            longitud = double.Parse(data["longitud"].ToString());
+            altitud = double.Parse(data["altitud"].ToString());
         }
     }
 }

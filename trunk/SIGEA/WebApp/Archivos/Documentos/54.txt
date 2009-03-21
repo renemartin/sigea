@@ -1,0 +1,68 @@
+
+IF @unidad IS NULL
+BEGIN
+	SET @temp = ''
+	IF @c = '1' 
+	BEGIN
+		IF @cuenta = 2
+			SET @temp = ' UN MILLON'
+		ELSE IF @cuenta = 1		
+			SET @temp = ' UN MIL'
+		ELSE
+			SET @temp = ' UNO'
+	END
+	ELSE
+	BEGIN
+		@temp = texto_unidad(@c)
+		IF @cuenta = 1
+			SET @temp = @temp + ' MIL'
+		ELSE IF @cuenta = 2
+			SET @temp = @temp + ' MILLONES'
+		END
+	SET @unidad = @c
+END
+ELSE IF @decena IS NULL
+BEGIN
+	IF @unidad = '0'
+		SET @salida = texto_decenas(@c, 0) + @temp + @salida
+	ELSE 
+	BEGIN
+		IF @c ='1'
+		BEGIN
+			IF convert(int, @unidad) > 5
+				SET @salida = ' DIESCI' + @temp + @salida	
+			ELSE
+			BEGIN
+				IF @unidad = '1'
+					SET @temp = ' ONCE'
+				ELSE IF @unidad = '2'
+					SET @temp = ' DOCE'
+				ELSE IF @unidad = '3'
+					SET @temp = ' TRECE'
+				ELSE IF @unidad = '4'
+					SET @temp = ' CATORCE'
+				ELS
+					SET @temp = ' QUINCE'
+				IF @cuenta = 1
+					SET @temp = @temp + ' MIL'
+				ELSE IF @cuenta = 2
+					SET @temp = @temp + ' MILLONES'
+				SET @salida = @temp + ' ' + @salida				
+			END			
+		END
+		ELSE
+			SET @salida = texto_dececenas(@c, 1) + @temp + @salida	
+	END
+	SET @temp = ''
+END
+ELSE
+BEGIN
+	IF @c = '1' AND @decena = '0' AND @unidad = '0'
+		SET @salida = ' CIEN ' + @salida
+	ELSE
+		SET @salida = texto_centenas(@c) + @salida
+
+	SET @unidad = NULL
+	sET @decena = NULL
+	SET @cuenta = @cuenta + 1
+END

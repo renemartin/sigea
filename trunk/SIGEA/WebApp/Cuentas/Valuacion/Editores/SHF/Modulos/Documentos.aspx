@@ -11,6 +11,51 @@
     <asp:ScriptManager ID="ScriptManager1" runat="server">
     </asp:ScriptManager>
     
+    <script type="text/javascript" src="../../../../../Scripts/Utils.js"></script>
+    <script type="text/javascript">
+        function loadDocumento(idDocumento, idArchivo, urlArchivo, titulo) {
+            $get("<%= idDocumento_HF.ClientID %>").value = idDocumento;
+            $get("<%= idArchivo_HF.ClientID %>").value = idArchivo;
+            $get("<%= urlDocumento_HF.ClientID %>").value = urlArchivo;
+
+            $get("<%= descripcion_TBox.ClientID %>").value = titulo;
+            $get("<%= cancelar_ImBtn.ClientID %>").style.display = "inline";
+            $get("<%= eliminar_ImBtn.ClientID %>").style.display = "inline";
+            $get("<%= cambiarDocumento_Btn.ClientID %>").style.display = "inline";
+            $get("<%= descargarDocumento_Btn.ClientID %>").style.display = "inline";
+            $get("divFileUpload").style.display = "none";
+        }
+
+        function descargaArchivo() {
+            window.open("../../../../../" + $get("<%= urlDocumento_HF.ClientID %>").value, "descargaDocumento",
+                "toolbar=no,location=no,directories=no,status=no,menubar=no,resizable=yes,copyhistory=no,width=200,height=300", true);
+        }
+
+        function setCambioArchivo() {
+            $get("<%= cambiarDocumento_Btn.ClientID %>").style.display = "none";
+            $get("<%= descargarDocumento_Btn.ClientID %>").style.display = "none";
+            $get("divFileUpload").style.display = "block";
+            $get("<%= cambioDocumento_HF.ClientID %>").value = "True";
+        }
+
+        function validarEliminacion() {
+            var eliminar = confirm("¿Realmente desea eliminar el documento seleccionado?");
+            if (eliminar) {
+                callLoadingMode();
+            }
+            return eliminar;
+        }
+
+        function callLoadingMode() {
+            setTimeout("setLoadingMode();", 100);
+        }
+        function setLoadingMode() {
+            $get("modLoading").style.display = "inline";
+            $get("<%= subir_ImBtn.ClientID %>").disabled = "disabled";
+            $get("<%= eliminar_ImBtn.ClientID %>").disabled = "disabled";
+        }
+    </script>
+    
     <div class="modulo">
         <br />
         <div class="formulario">
@@ -45,9 +90,10 @@
                             Tipo:
                         </td>
                         <td>
-                            <asp:DropDownList ID="tipo_DDList" runat="server" 
-                                DataSourceID="tipoDocumento_DS" DataTextField="descripcion" 
-                                DataValueField="idTipoDocumentoAvaluo"></asp:DropDownList>
+                            <asp:DropDownList ID="tipo_DDList" runat="server" DataSourceID="tipoDocumento_DS"
+                                DataTextField="descripcion" DataValueField="idTipoDocumentoAvaluo" AppendDataBoundItems="true">
+                                <asp:ListItem Text="Seleccione..." Value="0" Selected="True"></asp:ListItem>
+                            </asp:DropDownList>
                         </td>
                     </tr>
                 </table>
@@ -63,16 +109,15 @@
                         </span>
                 </div>
                 
-                <div style="margin: 5px; overflow: auto; height: 230px" class="contenedor">
-                    <asp:DataList ID="fotos_View" runat="server" DataSourceID="fotos_DS" RepeatColumns="4"
+                <div style="margin: 5px; overflow: auto; height: 190px" class="contenedor">
+                    <asp:DataList ID="documentos_View" runat="server" DataSourceID="documentos_DS" RepeatColumns="8"
                         RepeatDirection="Horizontal">
-                        <ItemTemplate>
-                            <div class="foto" style="margin: 5px;">
-                                <div>
-                                    <asp:ImageButton ID="foto_Ima" runat="server" ImageUrl='<%# Eval("urlThumbnail", "../../../../../{0}") %>'
-                                        OnClientClick='<%# GetShowMethod((int)Eval("idFotografia"), (int)Eval("idArchivo"), (int)Eval("idArchivoThumbnail"), 
-                                        Eval("urlFoto").ToString(), Eval("urlThumbnail").ToString(), Eval("titulo").ToString(), (bool)Eval("principal")) %>' />
-                                </div>
+                        <ItemTemplate>                            
+                            <div style="margin:5px">
+                                <asp:ImageButton ID="dcumento_Ima" runat="server" ImageUrl="~/Images/Icons/Documento.gif"
+                                    OnClientClick='<%# GetShowMethod((int)Eval("idDocumento"), (int)Eval("idArchivo"),
+                                    Eval("urlDocumento").ToString(), Eval("titulo").ToString()) %>' />
+                                <br />                            
                                 <%# Eval("titulo") %>
                             </div>
                         </ItemTemplate>
@@ -82,6 +127,13 @@
         </div>
     </div>
     
+    <asp:ObjectDataSource ID="documentos_DS" runat="server" SelectMethod="GetLista" TypeName="SIGEA.Classes.Entities.DocumentoAvaluo">
+        <SelectParameters>
+            <asp:ControlParameter ControlID="idAvaluo_HF" Name="idAvaluo" PropertyName="Value"
+                Type="Int32" />
+        </SelectParameters>
+    </asp:ObjectDataSource>
+    
     <asp:LinqDataSource ID="tipoDocumento_DS" runat="server" 
         ContextTypeName="SIGEA.Classes.Entities.SIGEADataContext" 
         Select="new (idTipoDocumentoAvaluo, descripcion)" 
@@ -90,6 +142,7 @@
     
     <asp:HiddenField ID="idAvaluo_HF" runat="server" Value="0" />
     <asp:HiddenField ID="idDocumento_HF" runat="server" Value="0" />
+    <asp:HiddenField ID="idArchivo_HF" runat="server" Value="0" />
     <asp:HiddenField ID="urlDocumento_HF" runat="server" Value="" />
     <asp:HiddenField ID="cambioDocumento_HF" runat="server" Value="True" />
     
