@@ -2380,7 +2380,7 @@ namespace SIGEA.Classes.Entities
 			}
 		}
 		
-		[Column(Storage="_titulo", DbType="NVarChar(20) NOT NULL", CanBeNull=false)]
+		[Column(Storage="_titulo", DbType="NVarChar(80) NOT NULL", CanBeNull=false)]
 		public string titulo
 		{
 			get
@@ -2440,7 +2440,7 @@ namespace SIGEA.Classes.Entities
 			}
 		}
 		
-		[Column(Storage="_tipoMIME", DbType="NVarChar(35) NOT NULL", CanBeNull=false)]
+		[Column(Storage="_tipoMIME", DbType="NVarChar(100) NOT NULL", CanBeNull=false)]
 		public string tipoMIME
 		{
 			get
@@ -12339,11 +12339,11 @@ namespace SIGEA.Classes.Entities
 		
 		private bool _formatoAbsoluto;
 		
-		private decimal _longitud;
+		private double _longitud;
 		
-		private decimal _latitud;
+		private double _latitud;
 		
-		private decimal _altitud;
+		private double _altitud;
 		
 		private EntityRef<Inmueble> _Inmueble;
 		
@@ -12355,11 +12355,11 @@ namespace SIGEA.Classes.Entities
     partial void OnidInmuebleChanged();
     partial void OnformatoAbsolutoChanging(bool value);
     partial void OnformatoAbsolutoChanged();
-    partial void OnlongitudChanging(decimal value);
+    partial void OnlongitudChanging(double value);
     partial void OnlongitudChanged();
-    partial void OnlatitudChanging(decimal value);
+    partial void OnlatitudChanging(double value);
     partial void OnlatitudChanged();
-    partial void OnaltitudChanging(decimal value);
+    partial void OnaltitudChanging(double value);
     partial void OnaltitudChanged();
     #endregion
 		
@@ -12413,8 +12413,8 @@ namespace SIGEA.Classes.Entities
 			}
 		}
 		
-		[Column(Storage="_longitud", DbType="Decimal(18,0) NOT NULL")]
-		public decimal longitud
+		[Column(Storage="_longitud", DbType="float NOT NULL")]
+		public double longitud
 		{
 			get
 			{
@@ -12433,8 +12433,8 @@ namespace SIGEA.Classes.Entities
 			}
 		}
 		
-		[Column(Storage="_latitud", DbType="Decimal(18,0) NOT NULL")]
-		public decimal latitud
+		[Column(Storage="_latitud", DbType="float NOT NULL")]
+		public double latitud
 		{
 			get
 			{
@@ -12453,8 +12453,8 @@ namespace SIGEA.Classes.Entities
 			}
 		}
 		
-		[Column(Storage="_altitud", DbType="Decimal(18,0) NOT NULL")]
-		public decimal altitud
+		[Column(Storage="_altitud", DbType="float NOT NULL")]
+		public double altitud
 		{
 			get
 			{

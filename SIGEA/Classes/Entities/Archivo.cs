@@ -205,4 +205,67 @@ namespace SIGEA.Classes.Entities
             Archivo1 = thumbnail;
         }
     }
+
+    public partial class DocumentoAvaluo
+    {
+        public static DocumentoAvaluo GetFromId(SIGEADataContext data_context, int idDocumento)
+        {
+            var documento_avaluo = from d in data_context.DocumentoAvaluo
+                                 where d.idDocumentoAvaluo == idDocumento
+                                 select d;
+
+            if (!documento_avaluo.Any())
+                return null;
+
+            return documento_avaluo.Single();
+        }
+        public static DocumentoAvaluo GetForDataUpdate(SIGEADataContext data_context, int idDocumento, int idAvaluo)
+        {
+            DocumentoAvaluo documento = GetFromId(data_context, idDocumento);
+            if (documento == null)
+            {
+                documento = new DocumentoAvaluo();
+                documento.idAvaluo = idAvaluo;
+                data_context.DocumentoAvaluo.InsertOnSubmit(documento);
+            }
+
+            return documento;
+        }
+
+        public static IEnumerable<object> GetLista(int idAvaluo)
+        {
+            SIGEADataContext data_context = new SIGEADataContext(ConfigurationManager.ConnectionStrings["SIGEA_ConnectionString"].ConnectionString);
+            var lista_query = from d in data_context.DocumentoAvaluo
+                                   where d.idAvaluo == idAvaluo
+                                   select new
+                                   {
+                                       idDocumento = d.idDocumentoAvaluo,
+                                       titulo = d.Archivo.titulo,
+                                       idArchivo = d.idArchivo,
+                                       urlDocumento = d.Archivo.GetUrl()
+                                   };
+
+            return lista_query.ToArray();
+        }
+
+        public static void Delete(SIGEADataContext data_context, int idDocumento)
+        {
+            var documento_query = from d in data_context.DocumentoAvaluo
+                              where d.idDocumentoAvaluo == idDocumento
+                              select d;
+
+            if (documento_query.Any())
+            {
+                DocumentoAvaluo documento = documento_query.Single();
+                data_context.Archivo.DeleteOnSubmit(documento.Archivo);               
+                data_context.DocumentoAvaluo.DeleteOnSubmit(documento);
+            }
+        }
+
+        public void SetData(Archivo documento, short idTipo)
+        {
+            Archivo = documento;
+            idTipoDocumento = idTipo;
+        }
+    }
 }

@@ -25,26 +25,23 @@
         var idAvaluo = 0;
         var validator = null;
 
-
         // Databindings
         function getDatosGeolocalizacion() {
             var data = new Object();
             data.formatoAbsoluto = $get("<%= absolutos_RBtn.ClientID %>").checked;
 
-            if ($get("<%= absolutos_RBtn.ClientID %>").checked == false) {
-
-                data.latitud = calcularAbs(parseFloat($get("<%= gradosLatitud_TBox.ClientID %>").value)
-                                            , parseFloat($get("<%= minutosLatitud_TBox.ClientID %>").value)
-                                            , parseFloat($get("<%= segundosLatitud_TBox.ClientID %>").value)
-                                            );
-                data.longitud = calcularAbs(parseFloat($get("<%= gradosLongitud_TBox.ClientID %>").value)
-                                            , parseFloat($get("<%= minutosLongitud_TBox.ClientID %>").value)
-                                            , parseFloat($get("<%= segundosLongitud_TBox.ClientID %>").value)
-                                            );
+            if (data.formatoAbsoluto) {
+                data.latitud = $get("<%= latitudAbsoluto_TBox.ClientID%>").value;
+                data.longitud = $get("<%= longitudAbsoluto_TBox.ClientID%>").value;
             }
             else {
-                data.latitud = parseFloat($get("<%= latitudAbsoluto_TBox.ClientID%>").value);
-                data.longitud = parseFloat($get("<%= longitudAbsoluto_TBox.ClientID%>").value);
+                data.latitud = calcularAbs(parseFloat($get("<%= gradosLatitud_TBox.ClientID %>").value)
+                                            , parseFloat($get("<%= minutosLatitud_TBox.ClientID %>").value)
+                                            , parseFloat($get("<%= segundosLatitud_TBox.ClientID %>").value));
+
+                data.longitud = calcularAbs(parseFloat($get("<%= gradosLongitud_TBox.ClientID %>").value)
+                                            , parseFloat($get("<%= minutosLongitud_TBox.ClientID %>").value)
+                                            , parseFloat($get("<%= segundosLongitud_TBox.ClientID %>").value));
             }
 
             data.altitud = $get("<%= altitud_TBox.ClientID %>").value;
@@ -53,27 +50,31 @@
         function setDatosGeolocalizacion(data) {
             var latitudGMS = new Array();
             var longitudGMS = new Array();
+            
             if (data != null) {
                 $get("<%= absolutos_RBtn.ClientID %>").checked = data.formatoAbsoluto;
                 if (data.formatoAbsoluto) {
                     setFormatoAbsoluto(data.latitud, data.longitud);
                 }
                 else {
-                    latitudGMS = calcularGMS(getNumString(data.latitud, 11));
-                    longitudGMS = calcularGMS(getNumString(data.longitud, 11));
+                    debugger;
+                    latitudGMS = calcularGMS(data.latitud);
+                    longitudGMS = calcularGMS(data.longitud);
                     setFormatoGMS(latitudGMS, longitudGMS);
                 }
                 $get("<%= altitud_TBox.ClientID%>").value = getNumString(data.altitud, 11);
-                setVisibilityFormato();
             }
+
+            setVisibilityFormato();
         }
+        
         //Guardar
         function saveGeolocalizacion() {
             if (validate()) {
                 saveGeolocalizacionAsync(
-                idAvaluo
-                , getDatosGeolocalizacion()
-                , saveGeolocalizacion_Success
+                    idAvaluo
+                    , getDatosGeolocalizacion()
+                    , saveGeolocalizacion_Success
                 );
             }
             else {
@@ -83,56 +84,100 @@
         function saveGeolocalizacion_Success() {
             showMessage("Datos guardados");
         }
+        
         //Cargar
         function loadGeolocalizacion(key_id) {
             idAvaluo = key_id;
             loadGeolocalizacionAsync(idAvaluo, setDatosGeolocalizacion);
         }
+        
         //Validar
         function setupValidator() {
             var controls;
+            
             if ($get("<%= absolutos_RBtn.ClientID %>").checked == true) {
                 controls = new Array(
-                $get("<%= latitudAbsoluto_TBox.ClientID%>"),
-                $get("<%= longitudAbsoluto_TBox.ClientID%>"),
-                $get("<%= altitud_TBox.ClientID%>"));
+                    $get("<%= latitudAbsoluto_TBox.ClientID%>"),
+                    $get("<%= longitudAbsoluto_TBox.ClientID%>"),
+                    $get("<%= altitud_TBox.ClientID%>"));                
             }
             else {
                 controls = new Array(
-                $get("<%= gradosLatitud_TBox.ClientID %>"),
-                $get("<%= minutosLatitud_TBox.ClientID %>"),
-                $get("<%= segundosLatitud_TBox.ClientID %>"),
-                $get("<%= gradosLongitud_TBox.ClientID %>"),
-                $get("<%= minutosLongitud_TBox.ClientID %>"),
-                $get("<%= segundosLongitud_TBox.ClientID %>"),
-                $get("<%= altitud_TBox.ClientID%>"));
+                    $get("<%= gradosLatitud_TBox.ClientID %>"),
+                    $get("<%= minutosLatitud_TBox.ClientID %>"),
+                    $get("<%= segundosLatitud_TBox.ClientID %>"),
+                    $get("<%= gradosLongitud_TBox.ClientID %>"),
+                    $get("<%= minutosLongitud_TBox.ClientID %>"),
+                    $get("<%= segundosLongitud_TBox.ClientID %>"),
+                    $get("<%= altitud_TBox.ClientID%>"));
             }
 
             validator = new ControlValidator(controls);
+            for (var i = 0; i < controls.length; i++) {
+                validator.addNumericField(i, true);
+            }
         }
+                
         function validate() {
             var validated = true;
             if (validator == null || !validator.validate())
                 validated = false;
             return validated;
         }
+        
         function setFormatoGMS(latitudGMS, longitudGMS) {
-            $get("<%= gradosLatitud_TBox.ClientID %>").value = getNumString(latitudGMS[0], 11);
-            $get("<%= minutosLatitud_TBox.ClientID %>").value = getNumString(latitudGMS[1], 11);
-            $get("<%= segundosLatitud_TBox.ClientID %>").value = getNumString(latitudGMS[2], 11);
-            $get("<%= gradosLongitud_TBox.ClientID %>").value = getNumString(longitudGMS[0], 11);
-            $get("<%= minutosLongitud_TBox.ClientID %>").value = getNumString(longitudGMS[1], 11);
-            $get("<%= segundosLongitud_TBox.ClientID %>").value = getNumString(longitudGMS[2], 11);
+            $get("<%= gradosLatitud_TBox.ClientID %>").value = getNumString(latitudGMS[0]);
+            $get("<%= minutosLatitud_TBox.ClientID %>").value = getNumString(latitudGMS[1]);
+            $get("<%= segundosLatitud_TBox.ClientID %>").value = getNumString(latitudGMS[2], 2);
+            
+            $get("<%= gradosLongitud_TBox.ClientID %>").value = getNumString(longitudGMS[0]);
+            $get("<%= minutosLongitud_TBox.ClientID %>").value = getNumString(longitudGMS[1]);
+            $get("<%= segundosLongitud_TBox.ClientID %>").value = getNumString(longitudGMS[2], 2);
         }
+
         function setFormatoAbsoluto(latitudAbsoluto, longitudAbsoluto) {
             $get("<%= latitudAbsoluto_TBox.ClientID%>").value = getNumString(latitudAbsoluto, 11);
             $get("<%= longitudAbsoluto_TBox.ClientID%>").value = getNumString(longitudAbsoluto, 11);
         }
-        function setVisibilityFormato() {
-            ($get("seccion_latitudAbsoluto")).style.display = ($get("<%= absolutos_RBtn.ClientID%>")).checked ? "" : "none";
-            ($get("seccion_longitudAbsoluto")).style.display = ($get("<%= absolutos_RBtn.ClientID%>")).checked ? "" : "none";
-            ($get("seccion_latitudGrados")).style.display = ($get("<%= absolutos_RBtn.ClientID%>")).checked ? "none" : "";
-            ($get("seccion_longitudGrados")).style.display = ($get("<%= absolutos_RBtn.ClientID%>")).checked ? "none" : "";
+        
+        function setVisibilityFormato(convertir) {
+            var absolutos = $get("<%= absolutos_RBtn.ClientID%>").checked;
+
+            $get("seccion_latitudAbsoluto").style.display = absolutos ? "block" : "none";
+            $get("seccion_longitudAbsoluto").style.display = absolutos ? "block" : "none";
+            $get("seccion_latitudGrados").style.display = absolutos ? "none" : "block";
+            $get("seccion_longitudGrados").style.display = absolutos ? "none" : "block";
+
+            if (convertir == true) {
+                convertirGeoreferencias(absolutos);
+            }
+            setupValidator();
+        }
+
+        function convertirGeoreferencias(absolutos) {
+            var latitud = 0;
+            var longitud = 0;
+            var latitudGMS = null;
+            var longitudGMS = null;
+            
+            if (absolutos) {
+                latitud = calcularAbs(parseFloat($get("<%= gradosLatitud_TBox.ClientID %>").value)
+                                            , parseFloat($get("<%= minutosLatitud_TBox.ClientID %>").value)
+                                            , parseFloat($get("<%= segundosLatitud_TBox.ClientID %>").value));
+
+                longitud = calcularAbs(parseFloat($get("<%= gradosLongitud_TBox.ClientID %>").value)
+                                            , parseFloat($get("<%= minutosLongitud_TBox.ClientID %>").value)
+                                            , parseFloat($get("<%= segundosLongitud_TBox.ClientID %>").value));
+
+                setFormatoAbsoluto(latitud, longitud);
+            }
+            else {
+                latitud = $get("<%= latitudAbsoluto_TBox.ClientID%>").value;
+                longitud = $get("<%= longitudAbsoluto_TBox.ClientID%>").value;                
+                latitudGMS = calcularGMS(latitud);
+                longitudGMS = calcularGMS(longitud);
+                setFormatoGMS(latitudGMS, longitudGMS);
+            }
         }
     </script>
 
@@ -146,67 +191,76 @@
                     </td>
                     <td class="celdaValor">
                         <asp:RadioButton ID="absolutos_RBtn" runat="server" GroupName="formato" Text="Georeferencias absolutas" />
-                    </td>
-                    <td class="celdaValor" colspan="2">
-                        <asp:RadioButton ID="grados_RBtn" runat="server" GroupName="formato" Text="Grados, minutos y segundos"
-                            Checked="True" />
-                    </td>
+                        <asp:RadioButton ID="grados_RBtn" runat="server" GroupName="formato" Text="Grados, minutos y segundos" Checked="True" />
+                    </td>                    
                 </tr>
                 <tr>
-                    <td class="celdaTitulo" rowspan="3">
+                    <td class="celdaTitulo">
                         Latitud (N)
                     </td>
-                </tr>
-                <tr id="seccion_latitudGrados">
-                    <td class="celdaValor">
-                        Grados:
-                        <asp:TextBox ID="gradosLatitud_TBox" runat="server"></asp:TextBox>
-                    </td>
-                    <td class="celdaValor">
-                        Minutos:
-                        <asp:TextBox ID="minutosLatitud_TBox" runat="server"></asp:TextBox>
-                    </td>
-                    <td class="celdaValor">
-                        Segundos:
-                        <asp:TextBox ID="segundosLatitud_TBox" runat="server"></asp:TextBox>
-                    </td>
-                </tr>
-                <tr id="seccion_latitudAbsoluto">
-                    <td class="celdaValor" colspan="3">
-                        Valor absoluto:
-                        <asp:TextBox ID="latitudAbsoluto_TBox" runat="server"></asp:TextBox>
+                    <td>
+                        <table id="seccion_latitudGrados">
+                            <tr>
+                                <td class="celdaValor">
+                                    Grados:
+                                    <asp:TextBox ID="gradosLatitud_TBox" runat="server" SkinID="Numero"></asp:TextBox>
+                                </td>
+                                <td class="celdaValor">
+                                    Minutos:
+                                    <asp:TextBox ID="minutosLatitud_TBox" runat="server" SkinID="Numero"></asp:TextBox>
+                                </td>
+                                <td class="celdaValor">
+                                    Segundos:
+                                    <asp:TextBox ID="segundosLatitud_TBox" runat="server"></asp:TextBox>
+                                </td>
+                            </tr>
+                        </table>
+                        <table id="seccion_latitudAbsoluto" class="hidden">
+                            <tr>
+                                <td class="celdaValor" colspan="3">
+                                    Valor absoluto:
+                                    <asp:TextBox ID="latitudAbsoluto_TBox" runat="server"></asp:TextBox>
+                                </td>
+                            </tr>
+                        </table>
                     </td>
                 </tr>
                 <tr>
-                    <td class="celdaTitulo" rowspan="3">
+                    <td class="celdaTitulo">
                         Longitud (W)
                     </td>
-                </tr>
-                <tr id="seccion_longitudGrados">
-                    <td class="celdaValor">
-                        Grados:
-                        <asp:TextBox ID="gradosLongitud_TBox" runat="server"></asp:TextBox>
-                    </td>
-                    <td class="celdaValor">
-                        Minutos:
-                        <asp:TextBox ID="minutosLongitud_TBox" runat="server"></asp:TextBox>
-                    </td>
-                    <td class="celdaValor">
-                        Segundos:
-                        <asp:TextBox ID="segundosLongitud_TBox" runat="server"></asp:TextBox>
-                    </td>
-                </tr>
-                <tr id="seccion_longitudAbsoluto" c>
-                    <td class="celdaValor" colspan="3">
-                        Valor absoluto:
-                        <asp:TextBox ID="longitudAbsoluto_TBox" runat="server"></asp:TextBox>
+                    <td>
+                        <table id="seccion_longitudGrados">
+                            <tr>
+                                <td class="celdaValor">
+                                    Grados:
+                                    <asp:TextBox ID="gradosLongitud_TBox" runat="server" SkinID="Numero"></asp:TextBox>
+                                </td>
+                                <td class="celdaValor">
+                                    Minutos:
+                                    <asp:TextBox ID="minutosLongitud_TBox" runat="server" SkinID="Numero"></asp:TextBox>
+                                </td>
+                                <td class="celdaValor">
+                                    Segundos:
+                                    <asp:TextBox ID="segundosLongitud_TBox" runat="server"></asp:TextBox>
+                                </td>
+                            </tr>
+                        </table>
+                        <table id="seccion_longitudAbsoluto" class="hidden">
+                            <tr>
+                                <td class="celdaValor" colspan="3">
+                                    Valor absoluto:
+                                    <asp:TextBox ID="longitudAbsoluto_TBox" runat="server"></asp:TextBox>
+                                </td>
+                            </tr>
+                        </table>
                     </td>
                 </tr>
                 <tr>
                     <td class="celdaTitulo">
                         Altitud (MSNM)
                     </td>
-                    <td class="celdaValor" colspan="3">
+                    <td class="celdaValor">
                         <asp:TextBox ID="altitud_TBox" runat="server"></asp:TextBox>
                     </td>
                 </tr>

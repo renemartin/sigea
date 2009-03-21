@@ -255,38 +255,20 @@ function calcularNivelEquipamiento(datosEquipamiento) {
 
     return nivel;
 }
+
 function calcularGMS(absoluto) {    
-//        double[] georeferencia;
-//        georeferencia = new double[3];
-
-//        bool negativo = absoluto < 0;
-//        absoluto = Math.Abs(absoluto);
-
-//        int parte_entera = (int)absoluto;       
-//        double parte_decimal = absoluto - parte_entera;
-//        
-//        georeferencia[0] = parte_entera * (negativo ? -1 : 1);
-//        georeferencia[1] = (int)(parte_decimal * 60);
-//        georeferencia[2] = ((parte_decimal * 3600) - (int)(parte_decimal * 60));
-//        
-//        return georeferencia;
     var georeferencia = new Array();
-    var parte_entera;
-    var parte_decimal;
-    var negativo;
-    if (absoluto >= 0)
-        negativo = 0;
-    else
-        negativo = 1;
-    absoluto = Math.abs(absoluto);
-    parte_entera = parseInt(absoluto);
-    parte_decimal = absoluto - parte_entera;
+    var parte_entera = parseInt(Math.abs(absoluto));
+    var parte_decimal = Math.abs(absoluto) - parte_entera;
+    var negativo = absoluto < 0;
+        
     georeferencia[0] = parte_entera * (negativo ? -1 : 1);
     georeferencia[1] = parseInt(parte_decimal * 60);
     georeferencia[2] = ((parte_decimal * 3600) - parseInt(parte_decimal * 60));
 
     return georeferencia;
 }
+
 function calcularAbs(grados, minutos, segundos) {
     var valorAbsoluto = (Math.abs(grados) + (minutos / 60) + (segundos / 3600)) * (grados > 0 ? 1 : -1);
     return valorAbsoluto;
