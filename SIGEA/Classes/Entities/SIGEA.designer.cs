@@ -1302,7 +1302,7 @@ namespace SIGEA.Classes.Entities
 			}
 		}
 		
-		public System.Data.Linq.Table<MapaLocalizacion> MapaLocalizacions
+		public System.Data.Linq.Table<MapaLocalizacion> MapaLocalizacion
 		{
 			get
 			{
@@ -2275,7 +2275,7 @@ namespace SIGEA.Classes.Entities
 		
 		private EntitySet<DocumentoAvaluo> _DocumentoAvaluo;
 		
-		private EntitySet<MapaLocalizacion> _MapaLocalizacions;
+		private EntitySet<MapaLocalizacion> _MapaLocalizacion;
 		
 		private EntityRef<Carpeta> _Carpeta;
 		
@@ -2314,7 +2314,7 @@ namespace SIGEA.Classes.Entities
 			this._PlanoInmueble = new EntitySet<PlanoInmueble>(new Action<PlanoInmueble>(this.attach_PlanoInmueble), new Action<PlanoInmueble>(this.detach_PlanoInmueble));
 			this._PlanoInmueble1 = new EntitySet<PlanoInmueble>(new Action<PlanoInmueble>(this.attach_PlanoInmueble1), new Action<PlanoInmueble>(this.detach_PlanoInmueble1));
 			this._DocumentoAvaluo = new EntitySet<DocumentoAvaluo>(new Action<DocumentoAvaluo>(this.attach_DocumentoAvaluo), new Action<DocumentoAvaluo>(this.detach_DocumentoAvaluo));
-			this._MapaLocalizacions = new EntitySet<MapaLocalizacion>(new Action<MapaLocalizacion>(this.attach_MapaLocalizacions), new Action<MapaLocalizacion>(this.detach_MapaLocalizacions));
+			this._MapaLocalizacion = new EntitySet<MapaLocalizacion>(new Action<MapaLocalizacion>(this.attach_MapaLocalizacion), new Action<MapaLocalizacion>(this.detach_MapaLocalizacion));
 			this._Carpeta = default(EntityRef<Carpeta>);
 			OnCreated();
 		}
@@ -2620,16 +2620,16 @@ namespace SIGEA.Classes.Entities
 			}
 		}
 		
-		[Association(Name="Archivo_MapaLocalizacion", Storage="_MapaLocalizacions", ThisKey="idArchivo", OtherKey="idArchivo")]
-		public EntitySet<MapaLocalizacion> MapaLocalizacions
+		[Association(Name="Archivo_MapaLocalizacion", Storage="_MapaLocalizacion", ThisKey="idArchivo", OtherKey="idArchivo")]
+		public EntitySet<MapaLocalizacion> MapaLocalizacion
 		{
 			get
 			{
-				return this._MapaLocalizacions;
+				return this._MapaLocalizacion;
 			}
 			set
 			{
-				this._MapaLocalizacions.Assign(value);
+				this._MapaLocalizacion.Assign(value);
 			}
 		}
 		
@@ -2795,13 +2795,13 @@ namespace SIGEA.Classes.Entities
 			entity.Archivo = null;
 		}
 		
-		private void attach_MapaLocalizacions(MapaLocalizacion entity)
+		private void attach_MapaLocalizacion(MapaLocalizacion entity)
 		{
 			this.SendPropertyChanging();
 			entity.Archivo = this;
 		}
 		
-		private void detach_MapaLocalizacions(MapaLocalizacion entity)
+		private void detach_MapaLocalizacion(MapaLocalizacion entity)
 		{
 			this.SendPropertyChanging();
 			entity.Archivo = null;
@@ -13413,7 +13413,7 @@ namespace SIGEA.Classes.Entities
 		
 		private EntitySet<PlanoInmueble> _PlanoInmueble;
 		
-		private EntitySet<MapaLocalizacion> _MapaLocalizacions;
+		private EntitySet<MapaLocalizacion> _MapaLocalizacion;
 		
 		private EntityRef<DireccionInmueble> _DireccionInmueble;
 		
@@ -13467,7 +13467,7 @@ namespace SIGEA.Classes.Entities
 			this._DatoCondominio = default(EntityRef<DatoCondominio>);
 			this._FotografiaInmueble = new EntitySet<FotografiaInmueble>(new Action<FotografiaInmueble>(this.attach_FotografiaInmueble), new Action<FotografiaInmueble>(this.detach_FotografiaInmueble));
 			this._PlanoInmueble = new EntitySet<PlanoInmueble>(new Action<PlanoInmueble>(this.attach_PlanoInmueble), new Action<PlanoInmueble>(this.detach_PlanoInmueble));
-			this._MapaLocalizacions = new EntitySet<MapaLocalizacion>(new Action<MapaLocalizacion>(this.attach_MapaLocalizacions), new Action<MapaLocalizacion>(this.detach_MapaLocalizacions));
+			this._MapaLocalizacion = new EntitySet<MapaLocalizacion>(new Action<MapaLocalizacion>(this.attach_MapaLocalizacion), new Action<MapaLocalizacion>(this.detach_MapaLocalizacion));
 			this._DireccionInmueble = default(EntityRef<DireccionInmueble>);
 			this._Propietario = default(EntityRef<Propietario>);
 			this._RegimenPropiedad = default(EntityRef<RegimenPropiedad>);
@@ -14107,16 +14107,16 @@ namespace SIGEA.Classes.Entities
 			}
 		}
 		
-		[Association(Name="Inmueble_MapaLocalizacion", Storage="_MapaLocalizacions", ThisKey="idInmueble", OtherKey="idInmueble")]
-		public EntitySet<MapaLocalizacion> MapaLocalizacions
+		[Association(Name="Inmueble_MapaLocalizacion", Storage="_MapaLocalizacion", ThisKey="idInmueble", OtherKey="idInmueble")]
+		public EntitySet<MapaLocalizacion> MapaLocalizacion
 		{
 			get
 			{
-				return this._MapaLocalizacions;
+				return this._MapaLocalizacion;
 			}
 			set
 			{
-				this._MapaLocalizacions.Assign(value);
+				this._MapaLocalizacion.Assign(value);
 			}
 		}
 		
@@ -14312,13 +14312,13 @@ namespace SIGEA.Classes.Entities
 			entity.Inmueble = null;
 		}
 		
-		private void attach_MapaLocalizacions(MapaLocalizacion entity)
+		private void attach_MapaLocalizacion(MapaLocalizacion entity)
 		{
 			this.SendPropertyChanging();
 			entity.Inmueble = this;
 		}
 		
-		private void detach_MapaLocalizacions(MapaLocalizacion entity)
+		private void detach_MapaLocalizacion(MapaLocalizacion entity)
 		{
 			this.SendPropertyChanging();
 			entity.Inmueble = null;
@@ -29213,12 +29213,12 @@ namespace SIGEA.Classes.Entities
 					if ((previousValue != null))
 					{
 						this._Archivo.Entity = null;
-						previousValue.MapaLocalizacions.Remove(this);
+						previousValue.MapaLocalizacion.Remove(this);
 					}
 					this._Archivo.Entity = value;
 					if ((value != null))
 					{
-						value.MapaLocalizacions.Add(this);
+						value.MapaLocalizacion.Add(this);
 						this._idArchivo = value.idArchivo;
 					}
 					else
@@ -29247,12 +29247,12 @@ namespace SIGEA.Classes.Entities
 					if ((previousValue != null))
 					{
 						this._Inmueble.Entity = null;
-						previousValue.MapaLocalizacions.Remove(this);
+						previousValue.MapaLocalizacion.Remove(this);
 					}
 					this._Inmueble.Entity = value;
 					if ((value != null))
 					{
-						value.MapaLocalizacions.Add(this);
+						value.MapaLocalizacion.Add(this);
 						this._idInmueble = value.idInmueble;
 					}
 					else
