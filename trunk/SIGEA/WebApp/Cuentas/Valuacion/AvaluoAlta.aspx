@@ -56,15 +56,6 @@
             else {
                 idAvaluo = result[0];
                 
-//                if (idValuador != null) {
-//                    //TODO: Falta asignar automaticamente el valuador
-//                    showMessage("Datos guardados");
-//                }
-//                else {
-//                    if (requestConfirmation("Datos guardados\n\n¿Desea establecer las asignaciones?")) {
-//                        openModalWindow("AvaluoAsignacion.aspx?idAvaluo=" + idAvaluo, 450, 180);
-//                    }
-//                }
                 showMessage("Datos guardados");
                 
                 window.location.href = "Bandejas.aspx";

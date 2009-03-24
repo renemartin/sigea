@@ -17,7 +17,10 @@ public partial class Cuentas_Valuacion_Editores_SHF_EditorSHFMenu : System.Web.U
             entorno_LkBtn,
             usoActual_LkBtn,
             construcciones_LkBtn,
-            elementos_LkBtn 
+            elementos_LkBtn,
+            enfoqueCostos_LkBtn,
+            enfoqueMercado_LkBtn,
+            enfoqueIngresos_LkBtn
         };
 
         if (!IsPostBack)

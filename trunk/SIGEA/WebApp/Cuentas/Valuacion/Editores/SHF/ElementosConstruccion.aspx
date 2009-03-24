@@ -2,16 +2,12 @@
     MasterPageFile="~/Cuentas/Valuacion/Editores/SHF/EditorSHF.master" CodeFile="ElementosConstruccion.aspx.cs"
     Inherits="Cuentas_Valuacion_Editores_SHF_ElementosConstruccion" %>
 
-<%@ Register Src="~/Cuentas/Valuacion/Editores/SHF/EditorSHFNavegador.ascx" TagName="EditorSHFNavegador"
-    TagPrefix="SIGEA" %>
-<%@ Register Src="~/Cuentas/Valuacion/Controles/DatosAcabados.ascx" TagName="DatosAcabados"
-    TagPrefix="SIGEA" %>
-<%@ Register Src="~/Cuentas/Valuacion/Controles/DatosEstructuras.ascx" TagName="DatosEstructuras"
-    TagPrefix="SIGEA" %>
-<%@ Register Src="~/Cuentas/Valuacion/Controles/DatosInstalaciones.ascx" TagName="DatosInstalaciones"
-    TagPrefix="SIGEA" %>
-<%@ Register Src="~/Cuentas/Valuacion/Controles/DatosInstalacionesAdicionales.ascx"
-    TagName="InstalacionesAdicionales" TagPrefix="SIGEA" %>
+<%@ Register Src="~/Cuentas/Valuacion/Editores/SHF/EditorSHFNavegador.ascx" TagName="EditorSHFNavegador" TagPrefix="SIGEA" %>
+<%@ Register Src="~/Cuentas/Valuacion/Controles/DatosAcabados.ascx" TagName="DatosAcabados" TagPrefix="SIGEA" %>
+<%@ Register Src="~/Cuentas/Valuacion/Controles/DatosEstructuras.ascx" TagName="DatosEstructuras" TagPrefix="SIGEA" %>
+<%@ Register Src="~/Cuentas/Valuacion/Controles/DatosInstalaciones.ascx" TagName="DatosInstalaciones" TagPrefix="SIGEA" %>
+<%@ Register Src="~/Cuentas/Valuacion/Controles/DatosInstalacionesAdicionales.ascx" TagName="InstalacionesAdicionales" TagPrefix="SIGEA" %>
+    
 <asp:Content ID="headContent" ContentPlaceHolderID="head" runat="Server">
 
     <script type="text/javascript">
@@ -240,5 +236,5 @@
                 CssClass="hidden" />
         </div>
     <SIGEA:EditorSHFNavegador ID="navegador_Ctrl" runat="server" 
-        AnteriorURL="Construcciones.aspx" SiguienteVisible="False" />
+        AnteriorURL="Construcciones.aspx" SiguienteURL="EnfoqueCostos.aspx" />
 </asp:Content>

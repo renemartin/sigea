@@ -297,9 +297,6 @@ namespace SIGEA.Classes.Entities
     partial void InsertViasAcceso(ViasAcceso instance);
     partial void UpdateViasAcceso(ViasAcceso instance);
     partial void DeleteViasAcceso(ViasAcceso instance);
-    partial void InsertCalidadProyecto(CalidadProyecto instance);
-    partial void UpdateCalidadProyecto(CalidadProyecto instance);
-    partial void DeleteCalidadProyecto(CalidadProyecto instance);
     partial void InsertUsoSuelo(UsoSuelo instance);
     partial void UpdateUsoSuelo(UsoSuelo instance);
     partial void DeleteUsoSuelo(UsoSuelo instance);
@@ -1123,14 +1120,6 @@ namespace SIGEA.Classes.Entities
 			get
 			{
 				return this.GetTable<ViasAcceso>();
-			}
-		}
-		
-		public System.Data.Linq.Table<CalidadProyecto> CalidadProyecto
-		{
-			get
-			{
-				return this.GetTable<CalidadProyecto>();
 			}
 		}
 		
@@ -23479,92 +23468,6 @@ namespace SIGEA.Classes.Entities
 		}
 	}
 	
-	[Table(Name="dbo.CalidadProyecto")]
-	public partial class CalidadProyecto : INotifyPropertyChanging, INotifyPropertyChanged
-	{
-		
-		private static PropertyChangingEventArgs emptyChangingEventArgs = new PropertyChangingEventArgs(String.Empty);
-		
-		private short _idCalidadProyecto;
-		
-		private string _descripcion;
-		
-    #region Extensibility Method Definitions
-    partial void OnLoaded();
-    partial void OnValidate(System.Data.Linq.ChangeAction action);
-    partial void OnCreated();
-    partial void OnidCalidadProyectoChanging(short value);
-    partial void OnidCalidadProyectoChanged();
-    partial void OndescripcionChanging(string value);
-    partial void OndescripcionChanged();
-    #endregion
-		
-		public CalidadProyecto()
-		{
-			OnCreated();
-		}
-		
-		[Column(Storage="_idCalidadProyecto", AutoSync=AutoSync.OnInsert, DbType="SmallInt NOT NULL IDENTITY", IsPrimaryKey=true, IsDbGenerated=true)]
-		public short idCalidadProyecto
-		{
-			get
-			{
-				return this._idCalidadProyecto;
-			}
-			set
-			{
-				if ((this._idCalidadProyecto != value))
-				{
-					this.OnidCalidadProyectoChanging(value);
-					this.SendPropertyChanging();
-					this._idCalidadProyecto = value;
-					this.SendPropertyChanged("idCalidadProyecto");
-					this.OnidCalidadProyectoChanged();
-				}
-			}
-		}
-		
-		[Column(Storage="_descripcion", DbType="NVarChar(50) NOT NULL", CanBeNull=false)]
-		public string descripcion
-		{
-			get
-			{
-				return this._descripcion;
-			}
-			set
-			{
-				if ((this._descripcion != value))
-				{
-					this.OndescripcionChanging(value);
-					this.SendPropertyChanging();
-					this._descripcion = value;
-					this.SendPropertyChanged("descripcion");
-					this.OndescripcionChanged();
-				}
-			}
-		}
-		
-		public event PropertyChangingEventHandler PropertyChanging;
-		
-		public event PropertyChangedEventHandler PropertyChanged;
-		
-		protected virtual void SendPropertyChanging()
-		{
-			if ((this.PropertyChanging != null))
-			{
-				this.PropertyChanging(this, emptyChangingEventArgs);
-			}
-		}
-		
-		protected virtual void SendPropertyChanged(String propertyName)
-		{
-			if ((this.PropertyChanged != null))
-			{
-				this.PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
-			}
-		}
-	}
-	
 	[Table(Name="dbo.UsoSuelo")]
 	public partial class UsoSuelo : INotifyPropertyChanging, INotifyPropertyChanged
 	{
@@ -28606,8 +28509,8 @@ namespace SIGEA.Classes.Entities
     partial void OnCreated();
     partial void OnidTipoCalidadProyectoChanging(short value);
     partial void OnidTipoCalidadProyectoChanged();
-    partial void OndescricionChanging(string value);
-    partial void OndescricionChanged();
+    partial void OndescripcionChanging(string value);
+    partial void OndescripcionChanged();
     #endregion
 		
 		public TipoCalidadProyecto()
@@ -28638,7 +28541,7 @@ namespace SIGEA.Classes.Entities
 		}
 		
 		[Column(Storage="_descricion", DbType="NVarChar(30) NOT NULL", CanBeNull=false)]
-		public string descricion
+		public string descripcion
 		{
 			get
 			{
@@ -28648,11 +28551,11 @@ namespace SIGEA.Classes.Entities
 			{
 				if ((this._descricion != value))
 				{
-					this.OndescricionChanging(value);
+					this.OndescripcionChanging(value);
 					this.SendPropertyChanging();
 					this._descricion = value;
-					this.SendPropertyChanged("descricion");
-					this.OndescricionChanged();
+					this.SendPropertyChanged("descripcion");
+					this.OndescripcionChanged();
 				}
 			}
 		}

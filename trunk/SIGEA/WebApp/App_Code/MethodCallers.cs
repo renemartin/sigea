@@ -319,8 +319,8 @@ public class MethodCallers : System.Web.Services.WebService
     public IEnumerable<object> GetListaTiposCalidadProyecto()
     {
         var lista = from e in data_context.TipoCalidadProyecto
-                    orderby e.descricion
-                    select new { display = e.descricion, value = e.idTipoCalidadProyecto };
+                    orderby e.descripcion
+                    select new { display = e.descripcion, value = e.idTipoCalidadProyecto };
 
         return lista.ToArray();
     }

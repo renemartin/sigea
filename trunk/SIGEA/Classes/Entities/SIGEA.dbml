@@ -1061,12 +1061,6 @@
       <Association Name="Inmueble_ViasAcceso" Member="Inmueble" ThisKey="idInmueble" OtherKey="idInmueble" Type="Inmueble" IsForeignKey="true" DeleteRule="CASCADE" DeleteOnNull="true" />
     </Type>
   </Table>
-  <Table Name="dbo.CalidadProyecto" Member="CalidadProyecto">
-    <Type Name="CalidadProyecto">
-      <Column Name="idCalidadProyecto" Type="System.Int16" DbType="SmallInt NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
-      <Column Name="descripcion" Type="System.String" DbType="NVarChar(50) NOT NULL" CanBeNull="false" />
-    </Type>
-  </Table>
   <Table Name="dbo.UsoSuelo" Member="UsoSuelo">
     <Type Name="UsoSuelo">
       <Column Name="idUsoSuelo" Type="System.Int16" DbType="SmallInt NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
@@ -1304,7 +1298,7 @@
   <Table Name="dbo.TipoCalidadProyecto" Member="TipoCalidadProyecto">
     <Type Name="TipoCalidadProyecto">
       <Column Name="idTipoCalidadProyecto" Type="System.Int16" DbType="SmallInt NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
-      <Column Name="descricion" Type="System.String" DbType="NVarChar(30) NOT NULL" CanBeNull="false" />
+      <Column Name="descripcion" Storage="_descricion" Type="System.String" DbType="NVarChar(30) NOT NULL" CanBeNull="false" />
       <Association Name="TipoCalidadProyecto_ComparableInmobiliario" Member="ComparableInmobiliario" ThisKey="idTipoCalidadProyecto" OtherKey="idCalidadProyecto" Type="ComparableInmobiliario" />
       <Association Name="TipoCalidadProyecto_ComparableInmobiliario1" Member="ComparableInmobiliario1" ThisKey="idTipoCalidadProyecto" OtherKey="idCalidadProyecto" Type="ComparableInmobiliario" />
     </Type>
