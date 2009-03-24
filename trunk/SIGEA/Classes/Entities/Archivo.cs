@@ -30,8 +30,8 @@ namespace SIGEA.Classes.Entities
 
                 Carpeta carpeta = null;
                 var carpeta_query = from c in data_context.Carpeta
-                                  where c.ruta == folder_name
-                                  select c;
+                                    where c.ruta == folder_name
+                                    select c;
                 if (!carpeta_query.Any())
                 {
                     carpeta = new Carpeta();
@@ -145,8 +145,8 @@ namespace SIGEA.Classes.Entities
         public static PlanoInmueble GetFromId(SIGEADataContext data_context, int idPlano)
         {
             var plano_inmueble = from p in data_context.PlanoInmueble
-                                      where p.idPlano == idPlano
-                                      select p;
+                                 where p.idPlano == idPlano
+                                 select p;
 
             if (!plano_inmueble.Any())
                 return null;
@@ -211,8 +211,8 @@ namespace SIGEA.Classes.Entities
         public static DocumentoAvaluo GetFromId(SIGEADataContext data_context, int idDocumento)
         {
             var documento_avaluo = from d in data_context.DocumentoAvaluo
-                                 where d.idDocumentoAvaluo == idDocumento
-                                 select d;
+                                   where d.idDocumentoAvaluo == idDocumento
+                                   select d;
 
             if (!documento_avaluo.Any())
                 return null;
@@ -236,14 +236,14 @@ namespace SIGEA.Classes.Entities
         {
             SIGEADataContext data_context = new SIGEADataContext(ConfigurationManager.ConnectionStrings["SIGEA_ConnectionString"].ConnectionString);
             var lista_query = from d in data_context.DocumentoAvaluo
-                                   where d.idAvaluo == idAvaluo
-                                   select new
-                                   {
-                                       idDocumento = d.idDocumentoAvaluo,
-                                       titulo = d.Archivo.titulo,
-                                       idArchivo = d.idArchivo,
-                                       urlDocumento = d.Archivo.GetUrl()
-                                   };
+                              where d.idAvaluo == idAvaluo
+                              select new
+                              {
+                                  idDocumento = d.idDocumentoAvaluo,
+                                  titulo = d.Archivo.titulo,
+                                  idArchivo = d.idArchivo,
+                                  urlDocumento = d.Archivo.GetUrl()
+                              };
 
             return lista_query.ToArray();
         }
@@ -251,13 +251,13 @@ namespace SIGEA.Classes.Entities
         public static void Delete(SIGEADataContext data_context, int idDocumento)
         {
             var documento_query = from d in data_context.DocumentoAvaluo
-                              where d.idDocumentoAvaluo == idDocumento
-                              select d;
+                                  where d.idDocumentoAvaluo == idDocumento
+                                  select d;
 
             if (documento_query.Any())
             {
                 DocumentoAvaluo documento = documento_query.Single();
-                data_context.Archivo.DeleteOnSubmit(documento.Archivo);               
+                data_context.Archivo.DeleteOnSubmit(documento.Archivo);
                 data_context.DocumentoAvaluo.DeleteOnSubmit(documento);
             }
         }
@@ -267,5 +267,65 @@ namespace SIGEA.Classes.Entities
             Archivo = documento;
             idTipoDocumento = idTipo;
         }
+    }
+
+    public partial class MapaLocalizacion
+    {
+        public static MapaLocalizacion GetFromIdInmueble(SIGEADataContext data_context, int idInmueble, bool esMacro)
+        {
+            var mapa_localizacion = from m in data_context.MapaLocalizacion
+                                    where m.idInmueble == idInmueble && m.mapaMacro == esMacro  
+                                    select m;
+            if (!mapa_localizacion.Any())
+                return null;
+            return mapa_localizacion.Single();
+        }
+        
+        public static MapaLocalizacion GetFromId(SIGEADataContext data_context, int idMapa)
+        {
+            var mapa_localizacion = from m in data_context.MapaLocalizacion
+                                    where m.idMapa == idMapa
+                                    select m;
+            if (!mapa_localizacion.Any())
+                return null;
+            return mapa_localizacion.Single();
+        }
+        public static MapaLocalizacion GetForDataUpdate(SIGEADataContext data_context, int idMapa, int idInmueble)
+        {
+            MapaLocalizacion mapa = GetFromId(data_context, idMapa);
+            if (mapa == null)
+            {
+                mapa = new MapaLocalizacion();
+                mapa.idInmueble = idInmueble;
+                data_context.MapaLocalizacion.InsertOnSubmit(mapa);
+            }
+            return mapa;
+        }
+
+        public static void Delete(SIGEADataContext data_context, MapaLocalizacion mapa)
+        {
+            data_context.Archivo.DeleteOnSubmit(mapa.Archivo);
+            data_context.MapaLocalizacion.DeleteOnSubmit(mapa);
+        }
+        public static MapaLocalizacion GetMapa(int idInmueble, bool esMacro)
+        {
+            SIGEADataContext data_context = new SIGEADataContext(ConfigurationManager.ConnectionStrings["SIGEA_ConnectionString"].ConnectionString);
+            var mapa_query = from m in data_context.MapaLocalizacion
+                             where m.idInmueble == idInmueble && m.mapaMacro == esMacro
+                             select m;
+
+            if (!mapa_query.Any())
+            {
+                return null;
+            }
+            return mapa_query.Single();
+        }
+
+        public void SetData(SIGEADataContext data_context, Archivo mapa, bool esMapaMacro)
+        {
+            Archivo = mapa;
+            mapaMacro = esMapaMacro;
+        }
+
     }
 }

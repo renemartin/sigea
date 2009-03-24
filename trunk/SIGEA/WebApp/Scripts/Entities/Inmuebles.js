@@ -264,7 +264,7 @@ function calcularGMS(absoluto) {
         
     georeferencia[0] = parte_entera * (negativo ? -1 : 1);
     georeferencia[1] = parseInt(parte_decimal * 60);
-    georeferencia[2] = ((parte_decimal * 3600) - parseInt(parte_decimal * 60));
+    georeferencia[2] = ((parte_decimal * 60) - parseInt(parte_decimal * 60)) * 60;
 
     return georeferencia;
 }
