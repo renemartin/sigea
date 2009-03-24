@@ -1,6 +1,6 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Database Name="SIGEA" Class="SIGEADataContext" xmlns="http://schemas.microsoft.com/linqtosql/dbml/2007">
-  <Connection Mode="AppSettings" ConnectionString="Data Source=65.182.106.50;Initial Catalog=SIGEA;Persist Security Info=True;User ID=sistemaSIGEA" SettingsObjectName="SIGEA.Classes.Properties.Settings" SettingsPropertyName="SIGEAConnectionString1" Provider="System.Data.SqlClient" />
+  <Connection Mode="AppSettings" ConnectionString="Data Source=65.182.106.50,1433;Initial Catalog=SIGEA;Persist Security Info=True;User ID=SistemaSIGEA" SettingsObjectName="SIGEA.Classes.Properties.Settings" SettingsPropertyName="SIGEAConnectionString" Provider="System.Data.SqlClient" />
   <Table Name="dbo.Valuador" Member="Valuador">
     <Type Name="Valuador">
       <Column Name="idValuador" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
@@ -1326,16 +1326,6 @@
       <Association Name="TipoDocumentoAvaluo_DocumentoAvaluo" Member="DocumentoAvaluo" ThisKey="idTipoDocumentoAvaluo" OtherKey="idTipoDocumento" Type="DocumentoAvaluo" />
     </Type>
   </Table>
-  <Table Name="dbo.MapaLocalizacion" Member="MapaLocalizacion">
-    <Type Name="MapaLocalizacion">
-      <Column Name="idMapa" Type="System.Int32" DbType="Int NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
-      <Column Name="idInmueble" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
-      <Column Name="idArchivo" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
-      <Column Name="mapaMacro" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
-      <Association Name="Archivo_MapaLocalizacion" Member="Archivo" ThisKey="idArchivo" OtherKey="idArchivo" Type="Archivo" IsForeignKey="true" />
-      <Association Name="Inmueble_MapaLocalizacion" Member="Inmueble" ThisKey="idInmueble" OtherKey="idInmueble" Type="Inmueble" IsForeignKey="true" />
-    </Type>
-  </Table>
   <Table Name="dbo.EnfoqueCostos" Member="EnfoqueCostos">
     <Type Name="EnfoqueCostos">
       <Column Name="idAvaluo" Type="System.Int32" DbType="Int NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
@@ -1520,6 +1510,16 @@
       <Column Name="FRE" Type="System.Double" DbType="Float" CanBeNull="true" />
       <Column Name="VUVH" Type="System.Decimal" DbType="Money" CanBeNull="true" />
       <Association Name="EnfoqueMercado_EnfoqueMercadoHomologacion" Member="EnfoqueMercado" ThisKey="idAvaluo" OtherKey="idAvaluo" Type="EnfoqueMercado" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.MapaLocalizacion" Member="MapaLocalizacion">
+    <Type Name="MapaLocalizacion">
+      <Column Name="idMapa" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="idInmueble" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="idArchivo" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="mapaMacro" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
+      <Association Name="Archivo_MapaLocalizacion" Member="Archivo" ThisKey="idArchivo" OtherKey="idArchivo" Type="Archivo" IsForeignKey="true" />
+      <Association Name="Inmueble_MapaLocalizacion" Member="Inmueble" ThisKey="idInmueble" OtherKey="idInmueble" Type="Inmueble" IsForeignKey="true" />
     </Type>
   </Table>
   <Function Name="dbo.GenerarIDE" Method="GenerarIDE">
