@@ -55,6 +55,7 @@
       <Association Name="Archivo_PlanoInmueble" Member="PlanoInmueble" ThisKey="idArchivo" OtherKey="idArchivo" Type="PlanoInmueble" />
       <Association Name="Archivo_PlanoInmueble1" Member="PlanoInmueble1" ThisKey="idArchivo" OtherKey="idArchivoThumbnail" Type="PlanoInmueble" />
       <Association Name="Archivo_DocumentoAvaluo" Member="DocumentoAvaluo" ThisKey="idArchivo" OtherKey="idArchivo" Type="DocumentoAvaluo" />
+      <Association Name="Archivo_MapaLocalizacion" Member="MapaLocalizacions" ThisKey="idArchivo" OtherKey="idArchivo" Type="MapaLocalizacion" />
       <Association Name="Carpeta_Archivo" Member="Carpeta" ThisKey="idCarpeta" OtherKey="idCarpeta" Type="Carpeta" IsForeignKey="true" />
     </Type>
   </Table>
@@ -578,6 +579,7 @@
       <Association Name="Inmueble_DatoCondominio" Member="DatoCondominio" ThisKey="idInmueble" OtherKey="idInmueble" Type="DatoCondominio" Cardinality="One" />
       <Association Name="Inmueble_FotografiaInmueble" Member="FotografiaInmueble" ThisKey="idInmueble" OtherKey="idInmueble" Type="FotografiaInmueble" />
       <Association Name="Inmueble_PlanoInmueble" Member="PlanoInmueble" ThisKey="idInmueble" OtherKey="idInmueble" Type="PlanoInmueble" />
+      <Association Name="Inmueble_MapaLocalizacion" Member="MapaLocalizacions" ThisKey="idInmueble" OtherKey="idInmueble" Type="MapaLocalizacion" />
       <Association Name="DireccionInmueble_Inmueble" Member="DireccionInmueble" ThisKey="idDireccionInmueble" OtherKey="idDireccionInmueble" Type="DireccionInmueble" IsForeignKey="true" />
       <Association Name="Propietario_Inmueble" Member="Propietario" ThisKey="idPropietario" OtherKey="idPropietario" Type="Propietario" IsForeignKey="true" />
       <Association Name="RegimenPropiedad_Inmueble" Member="RegimenPropiedad" ThisKey="idRegimenPropiedad" OtherKey="idRegimenPropiedad" Type="RegimenPropiedad" IsForeignKey="true" />
@@ -1319,6 +1321,16 @@
       <Column Name="idTipoDocumentoAvaluo" Type="System.Int16" DbType="SmallInt NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
       <Column Name="descripcion" Type="System.String" DbType="NVarChar(30) NOT NULL" CanBeNull="false" />
       <Association Name="TipoDocumentoAvaluo_DocumentoAvaluo" Member="DocumentoAvaluo" ThisKey="idTipoDocumentoAvaluo" OtherKey="idTipoDocumento" Type="DocumentoAvaluo" />
+    </Type>
+  </Table>
+  <Table Name="dbo.MapaLocalizacion" Member="MapaLocalizacions">
+    <Type Name="MapaLocalizacion">
+      <Column Name="idMapa" Type="System.Int32" DbType="Int NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="idInmueble" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="idArchivo" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="mapaMacro" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
+      <Association Name="Archivo_MapaLocalizacion" Member="Archivo" ThisKey="idArchivo" OtherKey="idArchivo" Type="Archivo" IsForeignKey="true" />
+      <Association Name="Inmueble_MapaLocalizacion" Member="Inmueble" ThisKey="idInmueble" OtherKey="idInmueble" Type="Inmueble" IsForeignKey="true" />
     </Type>
   </Table>
   <Function Name="dbo.GenerarIDE" Method="GenerarIDE">
