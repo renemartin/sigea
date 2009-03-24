@@ -4,9 +4,78 @@
 <%@ Register Src="~/Cuentas/Valuacion/Controles/DatosEnfoqueMercadoHomologacion.ascx" TagName="Homologacion" TagPrefix="SIGEA" %>  
 
 <asp:Content ID="headContent" ContentPlaceHolderID="head" Runat="Server">
+
+<script type="text/javascript">
+        // Variables
+        var idAvaluo = 0;
+
+        // Inicialización
+        function setupForm() {
+            var link = $get("ctl00_menu_Ctrl_enfoqueMercado_LkBtn")
+            link.removeAttribute("href");
+            link.setAttribute("class", "current");
+            link.setAttribute("className", "current");
+
+            window.onbeforeunload = function() {
+                beforeUnload(saveForm)
+            };
+
+            disableControls($get('form_homologacion'));
+        }
+
+        // Carga de registros
+        function loadForm(key_id) {
+            idAvaluo = key_id;
+            loadDatosHomologacion();
+        }
+        function loadDatosHomologacion() {
+            loadMercadoHomologacionAsync(idAvaluo, homologacion_Ctrl);
+        }
+        
+        // Guardado de registros
+        function saveForm() {
+            if (getVisibility($get("<%= guardar_homologacion_ImBtn.ClientID %>")))
+                saveDatosHomologacion(false);
+        }
+        
+        function saveDatosHomologacion(mostrarAlertas) {
+            if (homologacion_Ctrl.validate()) {
+                saveMercadoHomologacionAsync(
+                    idAvaluo, homologacion_Ctrl.getData(), saveDatosHomologacion_Success);
+            }
+            else {
+                if (mostrarAlertas != false) {
+                    showMessage("El bloque de datos contiene campos inválidos");
+                }
+            }
+        }
+        function saveDatosHomologacion_Success() {
+            terminateEdit("form_homologacion",
+                "<%= editar_homologacion_ImBtn.ClientID %>",
+                "<%= guardar_homologacion_ImBtn.ClientID %>",
+                "<%= cancelar_homologacion_ImBtn.ClientID %>");
+        }            
+        
+    </script>
+
 </asp:Content>
 <asp:Content ID="mainContent" ContentPlaceHolderID="main" Runat="Server">
-
+    <asp:ScriptManager ID="ScriptManager" runat="server">
+        <Services>
+            <asp:ServiceReference Path="~/Services/MethodCallers.asmx" />
+            <asp:ServiceReference Path="~/Services/EntityWrappers.asmx" />
+        </Services>
+        <Scripts>
+            <asp:ScriptReference Path="~/Scripts/Utils.js" />
+            <asp:ScriptReference Path="~/Scripts/AsyncCalls.js" />
+            <asp:ScriptReference Path="~/Scripts/DataFillers.js" />
+            <asp:ScriptReference Path="~/Scripts/Tables.js" />
+            <asp:ScriptReference Path="~/Scripts/Forms.js" />
+            <asp:ScriptReference Path="~/Scripts/Validation.js" />
+            <asp:ScriptReference Path="~/Scripts/Entities/Enfoques.js" />
+        </Scripts>
+    </asp:ScriptManager>
+  
     <h1>Enfoque de mercado</h1>
     
     <div class="barraAcciones">
