@@ -106,9 +106,4 @@
             <asp:Label ID="productoLA_Lbl" runat="server"></asp:Label>
         </td>
     </tr>
-    <tr>
-        <td class="celdaTitulo" colspan="2">
-            <asp:Button ID="calcularDeducciones_Btn" runat="server" Text="Calcular" />
-        </td>
-    </tr>
 </table>
