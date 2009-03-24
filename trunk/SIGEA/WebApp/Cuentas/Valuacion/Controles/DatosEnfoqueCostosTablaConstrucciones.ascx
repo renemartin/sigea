@@ -55,6 +55,5 @@
         <td class="celdaValor">            
             <asp:Label ID="VCC_Label" runat="server"></asp:Label>
         </td>
-    </tr>
-    
+    </tr>    
 </table>

@@ -92,103 +92,133 @@
         <td rowspan="2">
             Valor unitario de terreno homologado
         </td>
-        <tr class="filaHeader">
-            <td>
-                Fzo
-            </td>
-            <td>
-                FUb
-            </td>
-            <td>
-                FFr
-            </td>
-            <td>
-                FFo
-            </td>
-            <td>
-                FSu
-            </td>
-            <td>
-                FTo
-            </td>
-            <td>
-                FUs
-            </td>
-            <td>
-                FLo
-            </td>
-        </tr>
-        <tr>
-            <td class="celdaValor">
-                <asp:TextBox ID="FCom_TBox" Text="1.00" runat="server" SkinID="NumeroCompacto">1.00</asp:TextBox>            
-            </td>
-            <td class="celdaValor">
-                <asp:Label ID="VATNumero_Lbl" runat="server"></asp:Label>
-            </td>
-            <td class="celdaValor">
-                <asp:Label ID="VUTNumero_Lbl" runat="server"></asp:Label>
-            </td>
-            <td class="celdaValor">
-                <asp:DropDownList ID="FZo_DDList" runat="server" SkinID="Compacto">
-                    <asp:ListItem Selected="True" Text="1.00"></asp:ListItem>
-                    <asp:ListItem Text="0.80"></asp:ListItem>
-                    <asp:ListItem Text="1.20"></asp:ListItem>
-                </asp:DropDownList>
-            </td>
-            <td class="celdaValor">
-                <asp:DropDownList ID="FUb_DDList" runat="server" SkinID="Compacto">
-                    <asp:ListItem Selected="True" Text="1.00"></asp:ListItem>
-                    <asp:ListItem Text="1.15"></asp:ListItem>
-                    <asp:ListItem Text="1.25"></asp:ListItem>
-                    <asp:ListItem Text="1.35"></asp:ListItem>
-                </asp:DropDownList>
-            </td>
-            <td class="celdaValor">
-                <asp:DropDownList ID="FFR_DDList" runat="server" SkinID="Compacto">
-                    <asp:ListItem Text="0.60"></asp:ListItem>
-                    <asp:ListItem Text="0.80"></asp:ListItem>
-                    <asp:ListItem Text="1.00" Selected="True"></asp:ListItem>
-                </asp:DropDownList>
-            </td>
-            <td class="celdaValor">
-                <asp:TextBox ID="FFO_TBox" Text="1.00" runat="server" SkinID="NumeroCompacto"></asp:TextBox>
-            </td>
-            <td class="celdaValor">
-                <asp:TextBox ID="FSu_TBox" Text="1.00" runat="server" SkinID="NumeroCompacto"></asp:TextBox>
-            </td>
-            <td class="celdaValor">
-                <asp:TextBox ID="FTo_TBox" Text="1.00" runat="server" SkinID="NumeroCompacto"></asp:TextBox>
-            </td>
-            <td class="celdaValor">
-                <asp:TextBox ID="FUs" Text="1.00" runat="server" SkinID="NumeroCompacto"></asp:TextBox>
-            </td>
-            <td class="celdaValor">
-                <asp:TextBox ID="FLo_TBox" Text="1.00" runat="server" SkinID="NumeroCompacto"></asp:TextBox>
-            </td>
-            <td class="celdaValor">
-                <asp:Label ID="FRe_Lbl" runat="server"></asp:Label>
-            </td>
-            <td class="celdaValor">
-                <asp:Label ID="FRER_Lbl" runat="server"></asp:Label>
-            </td>
-            <td class="celdaValor">
-                <asp:Label ID="VUTH_Lbl" runat="server"></asp:Label>
-            </td>
-        </tr>
-        <tr>
-            <td class="celdaTituloSec" align="right" colspan="13">
-                Valor unitario de terreno homologado:
-            </td>
-            <td class="celdaValor">
-                <asp:Label ID="VUTHP_Lbl" runat="server"></asp:Label>
-            </td>
-        </tr>
-        <tr>
-            <td class="celdaTituloSec" align="right" colspan="13">
-                Valor unitario de terreno a aplicar:
-            </td>
-            <td class="celdaValor">
-                <asp:Label ID="VUTHA_Lbl" runat="server"></asp:Label>
-            </td>
-        </tr>
+    </tr>
+    <tr class="filaHeader">
+        <td>
+            Fzo
+        </td>
+        <td>
+            FUb
+        </td>
+        <td>
+            FFr
+        </td>
+        <td>
+            FFo
+        </td>
+        <td>
+            FSu
+        </td>
+        <td>
+            FTo
+        </td>
+        <td>
+            FUs
+        </td>
+        <td>
+            FLo
+        </td>
+    </tr>
+    <tr>
+        <td class="celdaValor">
+            <asp:TextBox ID="FCom_TBox" Text="1.00" runat="server" SkinID="NumeroCompacto">1.00</asp:TextBox>
+        </td>
+        <td class="celdaValor">
+            <asp:Label ID="VATNumero_Lbl" runat="server"></asp:Label>
+        </td>
+        <td class="celdaValor">
+            <asp:Label ID="VUTNumero_Lbl" runat="server"></asp:Label>
+        </td>
+        <td class="celdaValor">
+            <asp:DropDownList ID="FZo_DDList" runat="server" SkinID="Compacto">
+                <asp:ListItem Selected="True" Text="1.00"></asp:ListItem>
+                <asp:ListItem Text="0.80"></asp:ListItem>
+                <asp:ListItem Text="1.20"></asp:ListItem>
+            </asp:DropDownList>
+        </td>
+        <td class="celdaValor">
+            <asp:DropDownList ID="FUb_DDList" runat="server" SkinID="Compacto">
+                <asp:ListItem Selected="True" Text="1.00"></asp:ListItem>
+                <asp:ListItem Text="1.15"></asp:ListItem>
+                <asp:ListItem Text="1.25"></asp:ListItem>
+                <asp:ListItem Text="1.35"></asp:ListItem>
+            </asp:DropDownList>
+        </td>
+        <td class="celdaValor">
+            <asp:DropDownList ID="FFR_DDList" runat="server" SkinID="Compacto">
+                <asp:ListItem Text="0.60"></asp:ListItem>
+                <asp:ListItem Text="0.80"></asp:ListItem>
+                <asp:ListItem Text="1.00" Selected="True"></asp:ListItem>
+            </asp:DropDownList>
+        </td>
+        <td class="celdaValor">
+            <asp:TextBox ID="FFO_TBox" Text="1.00" runat="server" SkinID="NumeroCompacto"></asp:TextBox>
+        </td>
+        <td class="celdaValor">
+            <asp:TextBox ID="FSu_TBox" Text="1.00" runat="server" SkinID="NumeroCompacto"></asp:TextBox>
+        </td>
+        <td class="celdaValor">
+            <asp:TextBox ID="FTo_TBox" Text="1.00" runat="server" SkinID="NumeroCompacto"></asp:TextBox>
+        </td>
+        <td class="celdaValor">
+            <asp:TextBox ID="FUs" Text="1.00" runat="server" SkinID="NumeroCompacto"></asp:TextBox>
+        </td>
+        <td class="celdaValor">
+            <asp:TextBox ID="FLo_TBox" Text="1.00" runat="server" SkinID="NumeroCompacto"></asp:TextBox>
+        </td>
+        <td class="celdaValor">
+            <asp:Label ID="FRe_Lbl" runat="server"></asp:Label>
+        </td>
+        <td class="celdaValor">
+            <asp:Label ID="FRER_Lbl" runat="server"></asp:Label>
+        </td>
+        <td class="celdaValor">
+            <asp:Label ID="VUTH_Lbl" runat="server"></asp:Label>
+        </td>
+    </tr>
+    <tr>
+        <td class="celdaTituloSec" align="right" colspan="13">
+            Valor unitario de terreno homologado:
+        </td>
+        <td class="celdaValor">
+            <asp:Label ID="VUTHP_Lbl" runat="server"></asp:Label>
+        </td>
+    </tr>
+    <tr>
+        <td class="celdaTituloSec" align="right" colspan="13">
+            Valor unitario de terreno a aplicar:
+        </td>
+        <td class="celdaValor">
+            <asp:Label ID="VUTHA_Lbl" runat="server"></asp:Label>
+        </td>
+    </tr>
 </table>
+
+<script type="text/javascript">
+
+    function CostosHomologacion() {
+        // Inicialización
+        CostosHomologacion.prototype.getData = getData;
+        CostosHomologacion.prototype.setData = setData;        
+        CostosHomologacion.prototype.validate = validate;
+
+        // Databindings
+        function getData() {
+            var data_set = new Array();
+            
+            
+            return data_set;
+        }
+
+        function setData(data_set) {
+        }
+        
+        // Validación
+        function validate() {
+            return true;
+        }
+    }
+
+    this["<%= ID %>"] = new CostosHomologacion();
+
+</script>

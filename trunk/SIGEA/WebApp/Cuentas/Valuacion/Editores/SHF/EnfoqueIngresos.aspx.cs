@@ -48,15 +48,15 @@ public partial class Cuentas_Valuacion_Editores_SHF_EnfoqueIngresos : System.Web
     {
         SetEdit("form_homologacion", editar_homologacion_ImBtn, guardar_homologacion_ImBtn, cancelar_homologacion_ImBtn);
         SetCancel("form_homologacion", editar_homologacion_ImBtn, guardar_homologacion_ImBtn, cancelar_homologacion_ImBtn);
-        guardar_homologacion_ImBtn.OnClientClick = "saveHomologacion(); return false;";
+        guardar_homologacion_ImBtn.OnClientClick = "saveDatosHomologacion(); return false;";
 
         SetEdit("form_capitalizacion", editar_capitalizacion_ImBtn, guardar_capitalizacion_ImBtn, cancelar_capitalizacion_ImBtn);
         SetCancel("form_capitalizacion", editar_capitalizacion_ImBtn, guardar_capitalizacion_ImBtn, cancelar_capitalizacion_ImBtn);
-        guardar_capitalizacion_ImBtn.OnClientClick = "saveCapitalizacion(); return false;";
+        guardar_capitalizacion_ImBtn.OnClientClick = "saveDatosCapitalizacion(); return false;";
 
         SetEdit("form_deducciones", editar_deducciones_ImBtn, guardar_deducciones_ImBtn, cancelar_deducciones_ImBtn);
         SetCancel("form_deducciones", editar_deducciones_ImBtn, guardar_deducciones_ImBtn, cancelar_deducciones_ImBtn);
-        guardar_deducciones_ImBtn.OnClientClick = "saveDeducciones(); return false;";
+        guardar_deducciones_ImBtn.OnClientClick = "saveDatosDeducciones(); return false;";
     }
 
     private void SetEdit(string form, ImageButton editar, ImageButton guardar, ImageButton cancelar)

@@ -48,7 +48,7 @@ public partial class Cuentas_Valuacion_Editores_SHF_EnfoqueMercado : System.Web.
     {
         SetEdit("form_homologacion", editar_homologacion_ImBtn, guardar_homologacion_ImBtn, cancelar_homologacion_ImBtn);
         SetCancel("form_homologacion", editar_homologacion_ImBtn, guardar_homologacion_ImBtn, cancelar_homologacion_ImBtn);
-        guardar_homologacion_ImBtn.OnClientClick = "saveHomologacion(); return false;";
+        guardar_homologacion_ImBtn.OnClientClick = "saveDatosHomologacion(); return false;";
     }
 
     private void SetEdit(string form, ImageButton editar, ImageButton guardar, ImageButton cancelar)
