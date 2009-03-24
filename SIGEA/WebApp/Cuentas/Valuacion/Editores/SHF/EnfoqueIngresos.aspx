@@ -23,20 +23,7 @@
         <asp:ImageButton ID="cancelar_homologacion_ImBtn" runat="server" SkinID="Cancel" CssClass="hidden" />
     </div>
     <hr />
-    
-    <h2>Análisis de capitalización</h2>
-    <div class="barraAcciones">
-        <asp:ImageButton ID="editar_capitalizacion_ImBtn" runat="server" SkinID="Edit" />
-    </div>
-    <div id="form_capitalizacion" class="formulario">        
-        <SIGEA:Capitalizacion ID="capitalizacion_Ctrl" runat="server" />
-    </div>
-    <div class="barraAcciones">
-        <asp:ImageButton ID="guardar_capitalizacion_ImBtn" runat="server" SkinID="Save" CssClass="hidden" />
-        <asp:ImageButton ID="cancelar_capitalizacion_ImBtn" runat="server" SkinID="Cancel" CssClass="hidden" />
-    </div>
-    <hr />
-    
+      
     <h2>Análisis de deducciones</h2>
     <div class="barraAcciones">
         <asp:ImageButton ID="editar_deducciones_ImBtn" runat="server" SkinID="Edit" />
@@ -50,6 +37,19 @@
     </div>
     <hr />
 
+    <h2>Análisis de capitalización</h2>
+    <div class="barraAcciones">
+        <asp:ImageButton ID="editar_capitalizacion_ImBtn" runat="server" SkinID="Edit" />
+    </div>
+    <div id="form_capitalizacion" class="formulario">        
+        <SIGEA:Capitalizacion ID="capitalizacion_Ctrl" runat="server" />
+    </div>
+    <div class="barraAcciones">
+        <asp:ImageButton ID="guardar_capitalizacion_ImBtn" runat="server" SkinID="Save" CssClass="hidden" />
+        <asp:ImageButton ID="cancelar_capitalizacion_ImBtn" runat="server" SkinID="Cancel" CssClass="hidden" />
+    </div>
+    <hr />
+    
     <div class="etiqueta1">
         <span class="textoNegritas">Resultado del enfoque:</span>
         <asp:Label ID="resultado_Lbl" runat="server"></asp:Label>
