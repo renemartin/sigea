@@ -363,6 +363,9 @@ namespace SIGEA.Classes.Entities
     partial void InsertTipoDocumentoAvaluo(TipoDocumentoAvaluo instance);
     partial void UpdateTipoDocumentoAvaluo(TipoDocumentoAvaluo instance);
     partial void DeleteTipoDocumentoAvaluo(TipoDocumentoAvaluo instance);
+    partial void InsertMapaLocalizacion(MapaLocalizacion instance);
+    partial void UpdateMapaLocalizacion(MapaLocalizacion instance);
+    partial void DeleteMapaLocalizacion(MapaLocalizacion instance);
     #endregion
 		
 		public SIGEADataContext() : 
@@ -1296,6 +1299,14 @@ namespace SIGEA.Classes.Entities
 			get
 			{
 				return this.GetTable<TipoDocumentoAvaluo>();
+			}
+		}
+		
+		public System.Data.Linq.Table<MapaLocalizacion> MapaLocalizacions
+		{
+			get
+			{
+				return this.GetTable<MapaLocalizacion>();
 			}
 		}
 		
@@ -2264,6 +2275,8 @@ namespace SIGEA.Classes.Entities
 		
 		private EntitySet<DocumentoAvaluo> _DocumentoAvaluo;
 		
+		private EntitySet<MapaLocalizacion> _MapaLocalizacions;
+		
 		private EntityRef<Carpeta> _Carpeta;
 		
     #region Extensibility Method Definitions
@@ -2301,6 +2314,7 @@ namespace SIGEA.Classes.Entities
 			this._PlanoInmueble = new EntitySet<PlanoInmueble>(new Action<PlanoInmueble>(this.attach_PlanoInmueble), new Action<PlanoInmueble>(this.detach_PlanoInmueble));
 			this._PlanoInmueble1 = new EntitySet<PlanoInmueble>(new Action<PlanoInmueble>(this.attach_PlanoInmueble1), new Action<PlanoInmueble>(this.detach_PlanoInmueble1));
 			this._DocumentoAvaluo = new EntitySet<DocumentoAvaluo>(new Action<DocumentoAvaluo>(this.attach_DocumentoAvaluo), new Action<DocumentoAvaluo>(this.detach_DocumentoAvaluo));
+			this._MapaLocalizacions = new EntitySet<MapaLocalizacion>(new Action<MapaLocalizacion>(this.attach_MapaLocalizacions), new Action<MapaLocalizacion>(this.detach_MapaLocalizacions));
 			this._Carpeta = default(EntityRef<Carpeta>);
 			OnCreated();
 		}
@@ -2606,6 +2620,19 @@ namespace SIGEA.Classes.Entities
 			}
 		}
 		
+		[Association(Name="Archivo_MapaLocalizacion", Storage="_MapaLocalizacions", ThisKey="idArchivo", OtherKey="idArchivo")]
+		public EntitySet<MapaLocalizacion> MapaLocalizacions
+		{
+			get
+			{
+				return this._MapaLocalizacions;
+			}
+			set
+			{
+				this._MapaLocalizacions.Assign(value);
+			}
+		}
+		
 		[Association(Name="Carpeta_Archivo", Storage="_Carpeta", ThisKey="idCarpeta", OtherKey="idCarpeta", IsForeignKey=true)]
 		public Carpeta Carpeta
 		{
@@ -2763,6 +2790,18 @@ namespace SIGEA.Classes.Entities
 		}
 		
 		private void detach_DocumentoAvaluo(DocumentoAvaluo entity)
+		{
+			this.SendPropertyChanging();
+			entity.Archivo = null;
+		}
+		
+		private void attach_MapaLocalizacions(MapaLocalizacion entity)
+		{
+			this.SendPropertyChanging();
+			entity.Archivo = this;
+		}
+		
+		private void detach_MapaLocalizacions(MapaLocalizacion entity)
 		{
 			this.SendPropertyChanging();
 			entity.Archivo = null;
@@ -13374,6 +13413,8 @@ namespace SIGEA.Classes.Entities
 		
 		private EntitySet<PlanoInmueble> _PlanoInmueble;
 		
+		private EntitySet<MapaLocalizacion> _MapaLocalizacions;
+		
 		private EntityRef<DireccionInmueble> _DireccionInmueble;
 		
 		private EntityRef<Propietario> _Propietario;
@@ -13426,6 +13467,7 @@ namespace SIGEA.Classes.Entities
 			this._DatoCondominio = default(EntityRef<DatoCondominio>);
 			this._FotografiaInmueble = new EntitySet<FotografiaInmueble>(new Action<FotografiaInmueble>(this.attach_FotografiaInmueble), new Action<FotografiaInmueble>(this.detach_FotografiaInmueble));
 			this._PlanoInmueble = new EntitySet<PlanoInmueble>(new Action<PlanoInmueble>(this.attach_PlanoInmueble), new Action<PlanoInmueble>(this.detach_PlanoInmueble));
+			this._MapaLocalizacions = new EntitySet<MapaLocalizacion>(new Action<MapaLocalizacion>(this.attach_MapaLocalizacions), new Action<MapaLocalizacion>(this.detach_MapaLocalizacions));
 			this._DireccionInmueble = default(EntityRef<DireccionInmueble>);
 			this._Propietario = default(EntityRef<Propietario>);
 			this._RegimenPropiedad = default(EntityRef<RegimenPropiedad>);
@@ -14065,6 +14107,19 @@ namespace SIGEA.Classes.Entities
 			}
 		}
 		
+		[Association(Name="Inmueble_MapaLocalizacion", Storage="_MapaLocalizacions", ThisKey="idInmueble", OtherKey="idInmueble")]
+		public EntitySet<MapaLocalizacion> MapaLocalizacions
+		{
+			get
+			{
+				return this._MapaLocalizacions;
+			}
+			set
+			{
+				this._MapaLocalizacions.Assign(value);
+			}
+		}
+		
 		[Association(Name="DireccionInmueble_Inmueble", Storage="_DireccionInmueble", ThisKey="idDireccionInmueble", OtherKey="idDireccionInmueble", IsForeignKey=true)]
 		public DireccionInmueble DireccionInmueble
 		{
@@ -14252,6 +14307,18 @@ namespace SIGEA.Classes.Entities
 		}
 		
 		private void detach_PlanoInmueble(PlanoInmueble entity)
+		{
+			this.SendPropertyChanging();
+			entity.Inmueble = null;
+		}
+		
+		private void attach_MapaLocalizacions(MapaLocalizacion entity)
+		{
+			this.SendPropertyChanging();
+			entity.Inmueble = this;
+		}
+		
+		private void detach_MapaLocalizacions(MapaLocalizacion entity)
 		{
 			this.SendPropertyChanging();
 			entity.Inmueble = null;
@@ -28999,6 +29066,222 @@ namespace SIGEA.Classes.Entities
 		{
 			this.SendPropertyChanging();
 			entity.TipoDocumentoAvaluo = null;
+		}
+	}
+	
+	[Table(Name="dbo.MapaLocalizacion")]
+	public partial class MapaLocalizacion : INotifyPropertyChanging, INotifyPropertyChanged
+	{
+		
+		private static PropertyChangingEventArgs emptyChangingEventArgs = new PropertyChangingEventArgs(String.Empty);
+		
+		private int _idMapa;
+		
+		private int _idInmueble;
+		
+		private int _idArchivo;
+		
+		private bool _mapaMacro;
+		
+		private EntityRef<Archivo> _Archivo;
+		
+		private EntityRef<Inmueble> _Inmueble;
+		
+    #region Extensibility Method Definitions
+    partial void OnLoaded();
+    partial void OnValidate(System.Data.Linq.ChangeAction action);
+    partial void OnCreated();
+    partial void OnidMapaChanging(int value);
+    partial void OnidMapaChanged();
+    partial void OnidInmuebleChanging(int value);
+    partial void OnidInmuebleChanged();
+    partial void OnidArchivoChanging(int value);
+    partial void OnidArchivoChanged();
+    partial void OnmapaMacroChanging(bool value);
+    partial void OnmapaMacroChanged();
+    #endregion
+		
+		public MapaLocalizacion()
+		{
+			this._Archivo = default(EntityRef<Archivo>);
+			this._Inmueble = default(EntityRef<Inmueble>);
+			OnCreated();
+		}
+		
+		[Column(Storage="_idMapa", DbType="Int NOT NULL", IsPrimaryKey=true)]
+		public int idMapa
+		{
+			get
+			{
+				return this._idMapa;
+			}
+			set
+			{
+				if ((this._idMapa != value))
+				{
+					this.OnidMapaChanging(value);
+					this.SendPropertyChanging();
+					this._idMapa = value;
+					this.SendPropertyChanged("idMapa");
+					this.OnidMapaChanged();
+				}
+			}
+		}
+		
+		[Column(Storage="_idInmueble", DbType="Int NOT NULL")]
+		public int idInmueble
+		{
+			get
+			{
+				return this._idInmueble;
+			}
+			set
+			{
+				if ((this._idInmueble != value))
+				{
+					if (this._Inmueble.HasLoadedOrAssignedValue)
+					{
+						throw new System.Data.Linq.ForeignKeyReferenceAlreadyHasValueException();
+					}
+					this.OnidInmuebleChanging(value);
+					this.SendPropertyChanging();
+					this._idInmueble = value;
+					this.SendPropertyChanged("idInmueble");
+					this.OnidInmuebleChanged();
+				}
+			}
+		}
+		
+		[Column(Storage="_idArchivo", DbType="Int NOT NULL")]
+		public int idArchivo
+		{
+			get
+			{
+				return this._idArchivo;
+			}
+			set
+			{
+				if ((this._idArchivo != value))
+				{
+					if (this._Archivo.HasLoadedOrAssignedValue)
+					{
+						throw new System.Data.Linq.ForeignKeyReferenceAlreadyHasValueException();
+					}
+					this.OnidArchivoChanging(value);
+					this.SendPropertyChanging();
+					this._idArchivo = value;
+					this.SendPropertyChanged("idArchivo");
+					this.OnidArchivoChanged();
+				}
+			}
+		}
+		
+		[Column(Storage="_mapaMacro", DbType="Bit NOT NULL")]
+		public bool mapaMacro
+		{
+			get
+			{
+				return this._mapaMacro;
+			}
+			set
+			{
+				if ((this._mapaMacro != value))
+				{
+					this.OnmapaMacroChanging(value);
+					this.SendPropertyChanging();
+					this._mapaMacro = value;
+					this.SendPropertyChanged("mapaMacro");
+					this.OnmapaMacroChanged();
+				}
+			}
+		}
+		
+		[Association(Name="Archivo_MapaLocalizacion", Storage="_Archivo", ThisKey="idArchivo", OtherKey="idArchivo", IsForeignKey=true)]
+		public Archivo Archivo
+		{
+			get
+			{
+				return this._Archivo.Entity;
+			}
+			set
+			{
+				Archivo previousValue = this._Archivo.Entity;
+				if (((previousValue != value) 
+							|| (this._Archivo.HasLoadedOrAssignedValue == false)))
+				{
+					this.SendPropertyChanging();
+					if ((previousValue != null))
+					{
+						this._Archivo.Entity = null;
+						previousValue.MapaLocalizacions.Remove(this);
+					}
+					this._Archivo.Entity = value;
+					if ((value != null))
+					{
+						value.MapaLocalizacions.Add(this);
+						this._idArchivo = value.idArchivo;
+					}
+					else
+					{
+						this._idArchivo = default(int);
+					}
+					this.SendPropertyChanged("Archivo");
+				}
+			}
+		}
+		
+		[Association(Name="Inmueble_MapaLocalizacion", Storage="_Inmueble", ThisKey="idInmueble", OtherKey="idInmueble", IsForeignKey=true)]
+		public Inmueble Inmueble
+		{
+			get
+			{
+				return this._Inmueble.Entity;
+			}
+			set
+			{
+				Inmueble previousValue = this._Inmueble.Entity;
+				if (((previousValue != value) 
+							|| (this._Inmueble.HasLoadedOrAssignedValue == false)))
+				{
+					this.SendPropertyChanging();
+					if ((previousValue != null))
+					{
+						this._Inmueble.Entity = null;
+						previousValue.MapaLocalizacions.Remove(this);
+					}
+					this._Inmueble.Entity = value;
+					if ((value != null))
+					{
+						value.MapaLocalizacions.Add(this);
+						this._idInmueble = value.idInmueble;
+					}
+					else
+					{
+						this._idInmueble = default(int);
+					}
+					this.SendPropertyChanged("Inmueble");
+				}
+			}
+		}
+		
+		public event PropertyChangingEventHandler PropertyChanging;
+		
+		public event PropertyChangedEventHandler PropertyChanged;
+		
+		protected virtual void SendPropertyChanging()
+		{
+			if ((this.PropertyChanging != null))
+			{
+				this.PropertyChanging(this, emptyChangingEventArgs);
+			}
+		}
+		
+		protected virtual void SendPropertyChanged(String propertyName)
+		{
+			if ((this.PropertyChanged != null))
+			{
+				this.PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
+			}
 		}
 	}
 	
