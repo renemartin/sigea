@@ -22,16 +22,27 @@ namespace SIGEA.Classes.Entities
             Dictionary<string, object> data = new Dictionary<string, object>();
             data.Add("formatoAbsoluto", formatoAbsoluto);
             data.Add("longitud", longitud);
-            data.Add("latitud",latitud);
-            data.Add("altitud",altitud);
+            data.Add("latitud", latitud);
+            data.Add("altitud", altitud);
             return data;
         }
-        public void SetData(Dictionary<string,object> data)
+        public void SetData(Dictionary<string, object> data)
         {
             formatoAbsoluto = (bool)data["formatoAbsoluto"];
             latitud = double.Parse(data["latitud"].ToString());
             longitud = double.Parse(data["longitud"].ToString());
             altitud = double.Parse(data["altitud"].ToString());
+        }
+
+        public override string ToString()
+        {
+            StringBuilder georeferencias = new StringBuilder();
+            georeferencias.AppendFormat("Latitud: {0} Longitud: {1} Altitud: {2}",
+                Inmueble.GeolocalizacionInmueble.latitud.ToString(),
+                Inmueble.GeolocalizacionInmueble.longitud.ToString(),
+                Inmueble.GeolocalizacionInmueble.altitud.ToString());
+
+            return georeferencias.ToString();
         }
     }
 }

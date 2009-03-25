@@ -21,7 +21,7 @@
             if (esMacro) {
                 $get("modMacroLoading").style.display = "inline";
                 $get("<%= subirMacro_ImBtn.ClientID %>").disabled = "disabled";
-                if($get("<%= eliminarMacro_ImBtn.ClientID %>") != null)
+                if ($get("<%= eliminarMacro_ImBtn.ClientID %>") != null)
                     $get("<%= eliminarMacro_ImBtn.ClientID %>").disabled = "disabled";
             }
             else {
@@ -31,7 +31,6 @@
                     $get("<%= eliminarMicro_ImBtn.ClientID %>").disabled = "disabled";
             }
         }
-
         function validarEliminacion(esMacro) {
             var eliminar = confirm("¿Realmente desea eliminar el mapa seleccionado?");
             if (eliminar) {
@@ -39,11 +38,22 @@
             }
             return eliminar;
         }
+        function editarGeoreferencias(){
+            openModalWindow('Georeferencias.aspx?idAvaluo=<%= Page.Request.QueryString["idAvaluo"]%>', 550, 250);
+            return false;
+        }
     </script>
 
     <div class="modulo">
         <br />
         <div class="formulario">
+            <div class="etiqueta1">
+                <span class="textoNegritas">Georeferencias del inmueble:</span>
+                <asp:Label ID="georeferencias_Lbl" CssClass="textoChico" runat="server" />
+                &nbsp;
+                <asp:ImageButton ID="editarGeoreferencias_ImBtn" runat="server" 
+                    SkinID="Edit" ToolTip="Editar georeferencias" OnClientClick="editarGeoreferencias()" />
+            </div>
             <div>
                 <table>
                     <tr>
@@ -55,12 +65,12 @@
                         </td>
                     </tr>
                     <tr>
-                        <td colspan="2" style="height:210px">
+                        <td colspan="2" style="height: 210px">
                             <div class="foto" align="center">
                                 <asp:Image ID="mapaMicrolocalizacion_Ima" runat="server" />
                             </div>
                         </td>
-                        <td colspan="2" style="height:210px">
+                        <td colspan="2" style="height: 210px">
                             <div class="foto" align="center">
                                 <asp:Image ID="mapaMacrolocalizacion_Ima" runat="server" />
                             </div>
@@ -94,10 +104,10 @@
                                 <asp:ImageButton ID="subirMicro_ImBtn" runat="server" SkinID="Save" ToolTip="Subir mapa micro localización"
                                     OnClientClick="callLoadingMode(false);" OnClick="subirMicro_ImBtn_Click" />&nbsp;
                                 <asp:ImageButton ID="eliminarMicro_ImBtn" runat="server" SkinID="Delete" ToolTip="Eliminar mapa micro localización"
-                                    OnClientClick="return validarEliminacion(false);" OnClick="eliminarMicro_ImBtn_Click" />&nbsp; 
-                                    <span id="modMicroLoading" runat="server" class="hidden">
-                                        <img alt="" src="../../../../../Images/Cargando.gif" />
-                                    </span>
+                                    OnClientClick="return validarEliminacion(false);" OnClick="eliminarMicro_ImBtn_Click" />&nbsp;
+                                <span id="modMicroLoading" runat="server" class="hidden">
+                                    <img alt="" src="../../../../../Images/Cargando.gif" />
+                                </span>
                             </div>
                         </td>
                         <td colspan="2">
@@ -105,10 +115,10 @@
                                 <asp:ImageButton ID="subirMacro_ImBtn" runat="server" SkinID="Save" ToolTip="Subir mapa macro localización"
                                     OnClientClick="callLoadingMode(true);" OnClick="subirMacro_ImBtn_Click" />&nbsp;
                                 <asp:ImageButton ID="eliminarMacro_ImBtn" runat="server" SkinID="Delete" ToolTip="Eliminar mapa macro localización"
-                                    OnClientClick="return validarEliminacion(true);" OnClick="eliminarMacro_ImBtn_Click"/>&nbsp; 
-                                    <span id="modMacroLoading" runat="server" class="hidden">
-                                        <img alt="" src="../../../../../Images/Cargando.gif" />
-                                    </span>
+                                    OnClientClick="return validarEliminacion(true);" OnClick="eliminarMacro_ImBtn_Click" />&nbsp;
+                                <span id="modMacroLoading" runat="server" class="hidden">
+                                    <img alt="" src="../../../../../Images/Cargando.gif" />
+                                </span>
                             </div>
                         </td>
                     </tr>

@@ -53,7 +53,7 @@ public partial class Cuentas_Valuacion_Editores_SHF_Modulos_Mapas : System.Web.U
         SIGEADataContext data_context = new SIGEADataContext(ConfigurationManager.ConnectionStrings["SIGEA_ConnectionString"].ConnectionString);
         MapaLocalizacion mapa = MapaLocalizacion.GetFromId(data_context, idMapa);
         string URLMapa = Server.MapPath("~/" + mapa.Archivo.GetUrl().Split('?')[0]);
-        if(File.Exists(URLMapa))
+        if (File.Exists(URLMapa))
         {
             File.Delete(URLMapa);
         }
@@ -61,7 +61,7 @@ public partial class Cuentas_Valuacion_Editores_SHF_Modulos_Mapas : System.Web.U
         data_context.SubmitChanges();
         LoadMapa(null, esMacro);
     }
-    
+
     private void GetParameters()
     {
         if (Request.QueryString["idAvaluo"] == null)
@@ -90,9 +90,12 @@ public partial class Cuentas_Valuacion_Editores_SHF_Modulos_Mapas : System.Web.U
 
         idInmueble_HF.Value = inmueble.idInmueble.ToString();
         LoadData(data_context, inmueble.idInmueble);
+        SetGeoreferencias(inmueble);
+
     }
     private void LoadData(SIGEADataContext data_context, int idInmueble)
     {
+
         LoadMapa(MapaLocalizacion.GetFromIdInmueble(data_context, idInmueble, true), true);
         LoadMapa(MapaLocalizacion.GetFromIdInmueble(data_context, idInmueble, false), false);
     }
@@ -139,7 +142,7 @@ public partial class Cuentas_Valuacion_Editores_SHF_Modulos_Mapas : System.Web.U
     {
         ClientScript.RegisterStartupScript(typeof(Page), "closeWindowScript", "closeWindow(false);", true);
     }
-    
+
     private void RegisterScripts()
     {
         Page.ClientScript.RegisterStartupScript(typeof(Page), "scriptsGeolocalizacion", scripts.ToString(), true);
@@ -176,5 +179,12 @@ public partial class Cuentas_Valuacion_Editores_SHF_Modulos_Mapas : System.Web.U
     {
         int idMapa = int.Parse(idMapaMacro_HF.Value);
         DeleteMapa(idMapa, true);
+    }
+    protected void SetGeoreferencias(Inmueble inmueble)
+    {
+        if (inmueble.GeolocalizacionInmueble != null)
+            georeferencias_Lbl.Text = inmueble.GeolocalizacionInmueble.ToString();
+        else
+            georeferencias_Lbl.Text = "Georeferencias no especificadas";
     }
 }
