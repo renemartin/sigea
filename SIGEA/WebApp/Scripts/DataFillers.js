@@ -268,6 +268,11 @@ function getDescripcionUsoActual(idAvaluo, target) {
         idAvaluo, asyncSetTextResult, asyncCallFail, target);
 }
 
+function getGeoreferencias(idAvaluo, target) {
+    showControlLoading(target.id);
+    MethodCallers.GetGeoreferencias(idAvaluo,asyncSetTextResult,asyncCallFail,target);
+}
+
 function calculaVidaUtil(idClase, edad, target) {
     showControlLoading(target.id);
     MethodCallers.CalculaVidaUtil(

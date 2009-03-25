@@ -459,6 +459,13 @@ public class MethodCallers : System.Web.Services.WebService
     }
 
     [WebMethod]
+    public string GetGeoreferencias(int idAvaluo)
+    {
+        Inmueble inmueble = Inmueble.GetFromIdAvaluo(data_context, idAvaluo);
+        return inmueble.GeolocalizacionInmueble.ToString();
+    }
+
+    [WebMethod]
     public bool CheckIfConstruccion(int idAvaluo)
     {
         return AvaluoInmobiliario.CheckIfConstruccion(data_context, idAvaluo);
