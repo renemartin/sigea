@@ -25,7 +25,7 @@ namespace SIGEA.Classes.Entities
             foreach (Dictionary<string, object> data in data_set)
             {
                 var areas_comunes_query = from ac in dato_condominio.AreaComun
-                                          where ac.complemetaria == complementarias 
+                                          where ac.complemetaria == complementarias
                                             && ac.idArea == short.Parse(data["idArea"].ToString())
                                           select ac;
 

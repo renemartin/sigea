@@ -1,12 +1,16 @@
 ﻿<%@ Page Title="SIGEA - Editor SHF - Enfoque de costos" Language="C#" MasterPageFile="~/Cuentas/Valuacion/Editores/SHF/EditorSHF.master"
     AutoEventWireup="true" CodeFile="EnfoqueCostos.aspx.cs" Inherits="Cuentas_Valuacion_Editores_SHF_EnfoqueCostos" %>
 
-<%@ Register Src="~/Cuentas/Valuacion/Editores/SHF/EditorSHFNavegador.ascx" TagName="EditorSHFNavegador" TagPrefix="SIGEA" %>
-<%@ Register Src="~/Cuentas/Valuacion/Controles/DatosEnfoqueCostosHomologacion.ascx" TagName="Homologacion" TagPrefix="SIGEA" %>  
-<%@ Register Src="~/Cuentas/Valuacion/Controles/DatosEnfoqueCostosTerreno.ascx" TagName="Terreno" TagPrefix="SIGEA" %>  
-<%@ Register Src="~/Cuentas/Valuacion/Controles/DatosEnfoqueCostosConstrucciones.ascx" TagName="Construcciones" TagPrefix="SIGEA" %>  
-<%@ Register Src="~/Cuentas/Valuacion/Controles/DatosEnfoqueCostosInstalaciones.ascx" TagName="Instalaciones" TagPrefix="SIGEA" %>  
-
+<%@ Register Src="~/Cuentas/Valuacion/Editores/SHF/EditorSHFNavegador.ascx" TagName="EditorSHFNavegador"
+    TagPrefix="SIGEA" %>
+<%@ Register Src="~/Cuentas/Valuacion/Controles/DatosEnfoqueCostosHomologacion.ascx"
+    TagName="Homologacion" TagPrefix="SIGEA" %>
+<%@ Register Src="~/Cuentas/Valuacion/Controles/DatosEnfoqueCostosTerreno.ascx" TagName="Terreno"
+    TagPrefix="SIGEA" %>
+<%@ Register Src="~/Cuentas/Valuacion/Controles/DatosEnfoqueCostosConstrucciones.ascx"
+    TagName="Construcciones" TagPrefix="SIGEA" %>
+<%@ Register Src="~/Cuentas/Valuacion/Controles/DatosEnfoqueCostosInstalaciones.ascx"
+    TagName="Instalaciones" TagPrefix="SIGEA" %>
 <asp:Content ID="headContent" ContentPlaceHolderID="head" runat="Server">
 
     <script type="text/javascript">
@@ -38,6 +42,8 @@
             loadDatosTerreno();
             loadDatosConstrucciones();
             loadDatosInstalaciones();
+            setConstruccionesCondominio();
+            setInstalacionesCondominio();
         }
         function loadDatosHomologacion() {
             loadCostosHomologacionAsync(idAvaluo, homologacion_Ctrl);
@@ -50,6 +56,30 @@
         }
         function loadDatosInstalaciones() {
             loadCostosInstalacionesAsync(idAvaluo, instalaciones_Ctrl);
+        }
+        function setConstruccionesCondominio() {
+            getConstruccionesComunesAsync(idAvaluo, setConstruccionesCondominio_Success);
+        }
+        function setConstruccionesCondominio_Success(data) {
+            if (data != null) {
+                $get("seccion_Construcciones").style.display = "block"
+                if (data[0] != null)
+                    construcciones_Ctrl.showPrivativas();
+                if (data[1] != null)
+                    construcciones_Ctrl.showComunes();
+            }
+        }
+        function setInstalacionesCondominio() {
+            getInstalacionesAdicionalesAsync(idAvaluo, setInstalacionesCondominio_Success);
+        }
+        function setInstalacionesCondominio_Success(data) {
+            if (data != null) {
+                $get("seccion_Instalaciones").style.display = "block"
+                if (data[0] != null)
+                    instalaciones_Ctrl.showPrivativas();
+                if (data[1] != null)
+                    instalaciones_Ctrl.showComunes();
+            }
         }
 
         // Guardado de registros
@@ -153,28 +183,30 @@
             <asp:ScriptReference Path="~/Scripts/Tables.js" />
             <asp:ScriptReference Path="~/Scripts/Forms.js" />
             <asp:ScriptReference Path="~/Scripts/Validation.js" />
+            <asp:ScriptReference Path="~/Scripts/Entities/Construcciones.js" />
             <asp:ScriptReference Path="~/Scripts/Entities/Enfoques.js" />
         </Scripts>
     </asp:ScriptManager>
-    
-    <h1>Enfoque de costos</h1>
-    
-    <h2>Homologación</h2>
+    <h1>
+        Enfoque de costos</h1>
+    <h2>
+        Homologación</h2>
     <div class="barraAcciones">
         <asp:ImageButton ID="editar_homologacion_ImBtn" runat="server" SkinID="Edit" />
     </div>
-    <div id="form_homologacion" class="formulario">        
+    <div id="form_homologacion" class="formulario">
         <SIGEA:Homologacion ID="homologacion_Ctrl" runat="server" />
     </div>
     <div class="barraAcciones">
         <asp:ImageButton ID="guardar_homologacion_ImBtn" runat="server" SkinID="Save" CssClass="hidden" />
-        <asp:ImageButton ID="cancelar_homologacion_ImBtn" runat="server" SkinID="Cancel" CssClass="hidden" />
+        <asp:ImageButton ID="cancelar_homologacion_ImBtn" runat="server" SkinID="Cancel"
+            CssClass="hidden" />
     </div>
     <hr />
-    
-    <h1>Aplicación del enfoque</h1>
-    
-    <h2>Terreno</h2>
+    <h1>
+        Aplicación del enfoque</h1>
+    <h2>
+        Terreno</h2>
     <div class="barraAcciones">
         <asp:ImageButton ID="editar_terreno_ImBtn" runat="server" SkinID="Edit" />
     </div>
@@ -186,39 +218,42 @@
         <asp:ImageButton ID="cancelar_terreno_ImBtn" runat="server" SkinID="Cancel" CssClass="hidden" />
     </div>
     <hr />
-    
-    <h2>Construcciones</h2>
-    <div class="barraAcciones">
-        <asp:ImageButton ID="editar_construcciones_ImBtn" runat="server" SkinID="Edit" />
-    </div>
-    <div id="form_construcciones" class="formulario">
-        <SIGEA:Construcciones ID="construcciones_Ctrl" runat="server" />
-    </div>
-    <div class="barraAcciones">
-        <asp:ImageButton ID="guardar_construcciones_ImBtn" runat="server" SkinID="Save" CssClass="hidden" />
-        <asp:ImageButton ID="cancelar_construcciones_ImBtn" runat="server" SkinID="Cancel" CssClass="hidden" />
-    </div>
-    <hr />
-    
-    <h2>Instalaciones</h2>
-    <div class="barraAcciones">
-        <asp:ImageButton ID="editar_instalaciones_ImBtn" runat="server" SkinID="Edit" />
-    </div>
-    <div id="form_instalaciones" class="formulario">
-        <SIGEA:Instalaciones ID="instalaciones_Ctrl" runat="server" />
-    </div>
-    <div class="barraAcciones">
-        <asp:ImageButton ID="guardar_instalaciones_ImBtn" runat="server" SkinID="Save" CssClass="hidden" />
-        <asp:ImageButton ID="cancelar_instalaciones_ImBtn" runat="server" SkinID="Cancel" CssClass="hidden" />
+    <div id="seccion_Construcciones" class="hidden">
+        <h2>
+            Construcciones</h2>
+        <div class="barraAcciones">
+            <asp:ImageButton ID="editar_construcciones_ImBtn" runat="server" SkinID="Edit" />
+        </div>
+        <div id="form_construcciones" class="formulario">
+            <SIGEA:Construcciones ID="construcciones_Ctrl" runat="server" />
+        </div>
+        <div class="barraAcciones">
+            <asp:ImageButton ID="guardar_construcciones_ImBtn" runat="server" SkinID="Save" CssClass="hidden" />
+            <asp:ImageButton ID="cancelar_construcciones_ImBtn" runat="server" SkinID="Cancel"
+                CssClass="hidden" />
+        </div>
     </div>
     <hr />
-        
+    <div id="seccion_Instalaciones" class="hidden">
+        <h2>
+            Instalaciones</h2>
+        <div class="barraAcciones">
+            <asp:ImageButton ID="editar_instalaciones_ImBtn" runat="server" SkinID="Edit" />
+        </div>
+        <div id="form_instalaciones" class="formulario">
+            <SIGEA:Instalaciones ID="instalaciones_Ctrl" runat="server" />
+        </div>
+        <div class="barraAcciones">
+            <asp:ImageButton ID="guardar_instalaciones_ImBtn" runat="server" SkinID="Save" CssClass="hidden" />
+            <asp:ImageButton ID="cancelar_instalaciones_ImBtn" runat="server" SkinID="Cancel"
+                CssClass="hidden" />
+        </div>
+    </div>
+    <hr />
     <div class="etiqueta1">
         <span class="textoNegritas">Resultado del enfoque:</span>
         <asp:Label ID="resultado_Lbl" runat="server"></asp:Label>
     </div>
-        
-    <SIGEA:EditorSHFNavegador ID="navegador_Ctrl" runat="server"
-        AnteriorURL="ElementosConstruccion.aspx" SiguienteURL="EnfoqueMercado.aspx" />        
-        
+    <SIGEA:EditorSHFNavegador ID="navegador_Ctrl" runat="server" AnteriorURL="ElementosConstruccion.aspx"
+        SiguienteURL="EnfoqueMercado.aspx" />
 </asp:Content>

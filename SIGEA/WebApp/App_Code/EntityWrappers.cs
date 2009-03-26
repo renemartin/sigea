@@ -733,6 +733,19 @@ public class EntityWrappers : System.Web.Services.WebService
 
         return data;
     }
+    [WebMethod]
+    public object[] LoadDatosConstruccionesComunes(int idAvaluo)
+    {
+        object[] data = new object[2];
+        DatoCondominio condominio = DatoCondominio.GetFromIdAvaluo(common_context, idAvaluo);
+        if (condominio == null)
+            return null;
+
+        data[0] = AreaComun.GetAreasComunes(condominio, false);
+        data[1] = AreaComun.GetAreasComunes(condominio, true);
+
+        return data;
+    }
     #endregion
 
     #region Superficies
@@ -909,7 +922,20 @@ public class EntityWrappers : System.Web.Services.WebService
 
         return InstalacionConstruccion.GetInstalacionesConstruccion(construccion, comun);
     }
+
+    [WebMethod]
+    public object[] LoadInstalacionesEnfoqueCostos(int idAvaluo)
+    {
+        object[] data = new object[2];
+        ConstruccionInmueble construccion = ConstruccionInmueble.GetFromIdAvaluo(common_context, idAvaluo);
+        if (construccion.InstalacionConstruccion == null)
+            return null;
+        data[0] = InstalacionConstruccion.GetInstalacionesConstruccion(construccion, false);
+        data[1] = InstalacionConstruccion.GetInstalacionesConstruccion(construccion, true);
+        return data;
+    }
     #endregion
+
 
     #endregion
 
