@@ -76,10 +76,7 @@ function saveDatosInstalacionesConstruccionAsync(idAvaluo, datosInstalacionesTip
 
 // Carga de datos
 
-function loadTiposConstruccionesAsync(idAvaluo, control) {
-    EntityWrappers.LoadTiposConstrucciones(
-        idAvaluo, asyncControlLoad, asyncCallFail, control);
-}
+
 function loadDatosConstruccionesAsync(idAvaluo, control) {
     EntityWrappers.LoadDatosConstrucciones(
         idAvaluo, asyncControlLoad, asyncCallFail, control);
@@ -109,7 +106,24 @@ function loadInstalacionesAsync(idAvaluo, control) {
     EntityWrappers.LoadInstalacionTipoConstruccion(
         idAvaluo, asyncControlLoad, asyncCallFail, control);
 }
+function loadTiposConstruccionesAsync(idAvaluo, control) {
+    EntityWrappers.LoadTiposConstrucciones(
+        idAvaluo, asyncControlLoad, asyncCallFail, control);
+}
 function loadInstalacionesAdicionalesAsync(idAvaluo, comun, control) {
     EntityWrappers.LoadInstalacionConstruccion(
         idAvaluo, comun, asyncControlLoad, asyncCallFail, control);
 }
+function getInstalacionesAdicionalesAsync(idAvaluo, control) {
+    EntityWrappers.LoadInstalacionesEnfoqueCostos(
+    idAvaluo, asyncCallResultBack, asyncCallFail, control);
+}
+function getConstruccionesComunesAsync (idAvaluo,control){
+    EntityWrappers.LoadDatosConstruccionesComunes(
+    idAvaluo, asyncCallResultBack, asyncCallFail, control);
+   
+}
+
+
+
+
