@@ -18,7 +18,11 @@ public partial class Cuentas_Administracion_Comparables : System.Web.UI.Page
             SetAttributes();
         }
     }
-
+   
+    public void SetupContext(object sender, LinqDataSourceContextEventArgs e)
+    {
+        e.ObjectInstance = new SIGEADataContext(ConfigurationManager.ConnectionStrings["SIGEA_ConnectionString"].ConnectionString);
+    }
     private void SetStartupParams()
     {
         if (Session["idTipoComparableGrid"] == null)
@@ -29,20 +33,34 @@ public partial class Cuentas_Administracion_Comparables : System.Web.UI.Page
         {
             tipo_DDList.SelectedValue = Session["idTipoComparableGrid"].ToString();
         }
+        Session["filtrosComparablesGrid"] = null;
+        filtro_Lbl.Text = "No especificado";
     }
-
-    public void SetupContext(object sender, LinqDataSourceContextEventArgs e)
-    {
-        e.ObjectInstance = new SIGEADataContext(ConfigurationManager.ConnectionStrings["SIGEA_ConnectionString"].ConnectionString);
-    }
-
     private void SetAttributes()
     {
         addNew_ImBtn.Attributes.Add("onclick", "addNewComparable(); return false;");
+        tipo_DDList.Attributes.Add("onchange", "buscador_Ctrl.setTipo(this.value);");
     }
 
-    protected void search_ImBtn_Click(object sender, ImageClickEventArgs e)
+    protected void tipo_DDList_SelectedIndexChanged(object sender, EventArgs e)
     {
         Session["idTipoComparableGrid"] = tipo_DDList.SelectedValue;
+    }
+    protected void buscar_ImBtn_ImBtn_Click(object sender, ImageClickEventArgs e)
+    {
+        buscador_Ctrl.Visible = true;
+    }
+    protected void buscador_Ctrl_Search(object sender, EventArgs e)
+    {
+        buscador_Ctrl.Visible = false;
+        Session["filtrosComparablesGrid"] = buscador_Ctrl.GetColeccionBusqueda();
+        filtro_Lbl.Text = buscador_Ctrl.DescripcionBusqueda;
+    }
+    protected void buscador_Ctrl_Cancel(object sender, EventArgs e)
+    {
+        filtro_Lbl.Text = "No especificado";
+        buscador_Ctrl.Clear();
+        buscador_Ctrl.Visible = false;
+        Session["filtrosComparablesGrid"] = null;
     }
 }

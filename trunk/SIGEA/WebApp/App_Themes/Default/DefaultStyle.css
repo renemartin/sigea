@@ -152,6 +152,13 @@ hr
 	font-weight: bold;
 }
 
+.filaHeaderSeccion
+{
+	font-weight: bold;
+	background-color: #E3E3DD;
+	color: #777362;
+}
+
 .celdaHeader
 {
 	font-size: 1.2em;

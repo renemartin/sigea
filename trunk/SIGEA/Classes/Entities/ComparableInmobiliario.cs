@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Configuration;
 using System.Linq;
 using System.IO;
 using System.Text;
@@ -163,7 +164,62 @@ namespace SIGEA.Classes.Entities
             }
 
             comparable_delete.activo = false;
+        }       
+    }
+
+    public class ListaComparables
+    {
+        private SIGEADataContext data_context;
+
+        public ListaComparables()
+        {
+            data_context = new SIGEADataContext(ConfigurationManager.ConnectionStrings["SIGEA_ConnectionString"].ConnectionString);
         }
-       
+
+        public IEnumerable<object> GetLista(short idTipo, Dictionary<string, string> filtros) 
+        {
+            var comparables_list = from c in data_context.ComparableInmobiliario
+                                   where c.idTipoComparable == idTipo
+                                   select new
+                                   {
+                                       c.idComparable,
+                                       c.valorOferta,
+                                       c.DescripcionComparable,
+                                       c.DescripcionUbicacion,
+                                       c.DescripcionContacto,
+                                       c.fechaCreacion,
+                                       c.fechaActualizacion,
+                                       c.idTipoComparable,
+                                       c.TipoComparable
+                                   };
+
+            if (filtros != null)
+            {
+                if (filtros["valorOferta"] != "" && filtros["operadorValor"] != "")
+                {
+                    decimal valor = decimal.Parse(filtros["valorOferta"]);
+                    switch (filtros["operadorValor"])
+                    {
+                        case "0":
+                            comparables_list = comparables_list.Where(c => c.valorOferta == valor);
+                            break;
+                        case "1":
+                            comparables_list = comparables_list.Where(c => c.valorOferta > valor);
+                            break;
+                        case "2":
+                            comparables_list = comparables_list.Where(c => c.valorOferta >= valor);
+                            break;
+                        case "3":
+                            comparables_list = comparables_list.Where(c => c.valorOferta < valor);
+                            break;
+                        case "4":
+                            comparables_list = comparables_list.Where(c => c.valorOferta <= valor);
+                            break;
+                    }
+                }
+            }
+
+            return comparables_list.ToArray();
+        }
     }
 }
