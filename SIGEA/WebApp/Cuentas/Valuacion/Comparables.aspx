@@ -1,6 +1,8 @@
 ﻿<%@ Page Title="SIGEA - Comparables" Language="C#" MasterPageFile="~/Cuentas/Valuacion/Valuacion.master"
     AutoEventWireup="true" CodeFile="Comparables.aspx.cs" Inherits="Cuentas_Administracion_Comparables" %>
 
+<%@ Register Src="~/Controles/BusquedaComparable.ascx" TagName="Buscador" TagPrefix="SIGEA" %>
+
 <asp:Content ID="headContent" ContentPlaceHolderID="head" runat="server">
 
     <script type="text/javascript">
@@ -31,7 +33,7 @@
 </asp:Content>
 
 <asp:Content ID="mainContent" ContentPlaceHolderID="main" runat="server">
-    <asp:ScriptManager ID="ScriptManager1" runat="server">
+    <asp:ScriptManager runat="server">
         <Services>
             <asp:ServiceReference Path="~/Services/MethodCallers.asmx" />
             <asp:ServiceReference Path="~/Services/EntityWrappers.asmx" />
@@ -45,30 +47,44 @@
     </asp:ScriptManager>  
     
     <h1>Comparables</h1>
-    <div class="barraAcciones">
-        <asp:ImageButton ID="addNew_ImBtn" runat="server" SkinID="Add" /></div>
-    <asp:Panel ID="filter_Panel" runat="server" CssClass="panel">
-        <table>
-            <tr>
-                <td class="celdaTitulo">
-                    Tipo:
-                </td>
-                <td class="celdaValor">
-                    <asp:DropDownList ID="tipo_DDList" runat="server" DataSourceID="tipo_DS" 
-                        DataTextField="descripcion" DataValueField="idTipoComparable">
-                    </asp:DropDownList>
-                </td>
-                <td>
-                    <asp:ImageButton ID="search_ImBtn" runat="server" SkinID="Search" 
-                        OnClick="search_ImBtn_Click" />
-                </td>
-            </tr>
-        </table>
-    </asp:Panel>
-    
+              
     <div class="formulario">
         <asp:UpdatePanel ID="comparableData_UpPanel" runat="server">
             <ContentTemplate>
+   
+                <div class="barraAcciones">
+                    <asp:ImageButton ID="addNew_ImBtn" runat="server" SkinID="Add" />
+                    <asp:ImageButton ID="buscar_ImBtn_ImBtn" runat="server" SkinID="Search"
+                        OnClick="buscar_ImBtn_ImBtn_Click" />
+                </div>
+            
+                <asp:Panel ID="filter_Panel" runat="server" CssClass="panel">
+                    <table>
+                        <tr>
+                            <td class="celdaTituloSec">
+                                Tipo:
+                            </td>
+                            <td class="celdaValor">
+                                <asp:DropDownList ID="tipo_DDList" runat="server" DataSourceID="tipo_DS" DataTextField="descripcion"
+                                    DataValueField="idTipoComparable" OnSelectedIndexChanged="tipo_DDList_SelectedIndexChanged"
+                                    AutoPostBack="True">
+                                </asp:DropDownList>
+                            </td>
+                        </tr>
+                    </table>
+                </asp:Panel>
+                
+                <div class="etiqueta1">
+                    <span class="textoNegritas">Filtro: </span>
+                    <asp:Label ID="filtro_Lbl" runat="server"></asp:Label>
+                </div>
+                
+                <div id="divBuscador" style="padding-top:5px; padding-bottom:10px">
+                    <SIGEA:Buscador ID="buscador_Ctrl" runat="server" Mode="Server" 
+                        OnSearch="buscador_Ctrl_Search" OnCancel="buscador_Ctrl_Cancel"
+                        Visible="false" />
+                </div>
+            
                 <asp:GridView ID="data_gridView" runat="server" AutoGenerateColumns="False" DataSourceID="comparables_DS"
                     AllowPaging="True" AllowSorting="True" Width="100%">
                     <Columns>
@@ -125,25 +141,22 @@
                         </div>
                     </EmptyDataTemplate>
                 </asp:GridView>
+                
                 <asp:LinqDataSource ID="tipo_DS" runat="server" 
                     ContextTypeName="SIGEA.Classes.Entities.SIGEADataContext" Select="new (idTipoComparable, descripcion)"
                     TableName="TipoComparable" 
                     OnContextCreating="SetupContext">
-                </asp:LinqDataSource>                
-            
-                <asp:LinqDataSource ID="comparables_DS" runat="server" ContextTypeName="SIGEA.Classes.Entities.SIGEADataContext"
-                    OrderBy="fechaActualizacion DESC" Select="new (idComparable, valorOferta, DescripcionComparable, DescripcionUbicacion, DescripcionContacto, fechaCreacion, fechaActualizacion, idTipoComparable, TipoComparable)"
-                    TableName="ComparableInmobiliario" StoreOriginalValuesInViewState="False" 
-                    OnContextCreating="SetupContext" Where="@idTipoComparable = 0 || idTipoComparable == @idTipoComparable">
-                    <WhereParameters>
-                        <asp:SessionParameter SessionField="idTipoComparableGrid" Name="idTipoComparable" 
-                            Type="Int32" DefaultValue="0" />
-                    </WhereParameters>
-                </asp:LinqDataSource>                
+                </asp:LinqDataSource>
+                
+                <asp:ObjectDataSource ID="comparables_DS" runat="server" SelectMethod="GetLista" TypeName="SIGEA.Classes.Entities.ListaComparables">
+                    <SelectParameters>
+                        <asp:SessionParameter Name="idTipo" SessionField="idTipoComparableGrid" Type="Int16" />
+                        <asp:SessionParameter Name="filtros" SessionField="filtrosComparablesGrid" Type="Object" />
+                    </SelectParameters>
+                </asp:ObjectDataSource>
+                     
             </ContentTemplate>
-            <Triggers>
-                <asp:AsyncPostBackTrigger ControlID="search_ImBtn" EventName="Click" />
-            </Triggers>
+
         </asp:UpdatePanel>
     </div>
 </asp:Content>
