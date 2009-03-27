@@ -62,7 +62,7 @@
         </SIGEA:DatosComparable>
         <div class="barraMenu">
             <asp:ImageButton ID="save_ImBtn" runat="server" SkinID="Save" />
-            <asp:ImageButton ID="cancel_ImBtn" runat="server" SkinID="Cancel" />
+            <asp:ImageButton ID="cancel_ImBtn" runat="server" SkinID="Cancel" OnClientClick="closeWindow(false); return false;" />
         </div>
     </div>
 </asp:Content>
