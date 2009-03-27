@@ -14,7 +14,7 @@ TagPrefix="SIGEA" %>
                     <Columns>
                         <asp:TemplateField HeaderText="">
                             <ItemTemplate>
-                                <asp:CheckBox ID="CBox" runat="server" Checked="false" />
+                                <input type="checkbox" id="comparable_CBox" idComparable='<%# Eval("idComparable") %>' />
                             </ItemTemplate>
                             <ItemStyle Width="10px" />
                         </asp:TemplateField>
