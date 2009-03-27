@@ -28,10 +28,12 @@ public partial class Cuentas_Administracion_Comparables : System.Web.UI.Page
         if (Session["idTipoComparableGrid"] == null)
         {
             Session["idTipoComparableGrid"] = "1";
+            buscador_Ctrl.Tipo = TipoComparable.Costos;
         }
         else
         {
             tipo_DDList.SelectedValue = Session["idTipoComparableGrid"].ToString();
+            buscador_Ctrl.Tipo = (TipoComparable)int.Parse(Session["idTipoComparableGrid"].ToString());
         }
         Session["filtrosComparablesGrid"] = null;
         filtro_Lbl.Text = "No especificado";
@@ -39,16 +41,16 @@ public partial class Cuentas_Administracion_Comparables : System.Web.UI.Page
     private void SetAttributes()
     {
         addNew_ImBtn.Attributes.Add("onclick", "addNewComparable(); return false;");
-        tipo_DDList.Attributes.Add("onchange", "buscador_Ctrl.setTipo(this.value);");
     }
 
     protected void tipo_DDList_SelectedIndexChanged(object sender, EventArgs e)
     {
         Session["idTipoComparableGrid"] = tipo_DDList.SelectedValue;
+        buscador_Ctrl.Tipo = (TipoComparable)int.Parse(tipo_DDList.SelectedValue);
     }
     protected void buscar_ImBtn_ImBtn_Click(object sender, ImageClickEventArgs e)
     {
-        buscador_Ctrl.Visible = true;
+        buscador_Ctrl.Visible = true;        
     }
     protected void buscador_Ctrl_Search(object sender, EventArgs e)
     {
