@@ -8,11 +8,13 @@
     <script type="text/javascript">
         // Acciones del registro
         function addNewComparable() {
-            redirect("ComparableRegistro.aspx");
+            //redirect("ComparableRegistro.aspx");
+            openModalWindow("ComparableRegistro.aspx", 750, 550);
         }
 
         function viewComparable(sender, idComparable) {
-            redirect(String.format("ComparableRegistro.aspx?idComparable={0}", idComparable));
+            //redirect(String.format("ComparableRegistro.aspx?idComparable={0}", idComparable));
+            openModalWindow(String.format("ComparableRegistro.aspx?idComparable={0}", idComparable), 750, 550);
         }
 
         function deleteComparable(sender, idComparable) {
