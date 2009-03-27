@@ -1,6 +1,6 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Database Name="SIGEA" Class="SIGEADataContext" xmlns="http://schemas.microsoft.com/linqtosql/dbml/2007">
-  <Connection Mode="AppSettings" ConnectionString="Data Source=65.182.106.50,1433;Initial Catalog=SIGEA;Persist Security Info=True;User ID=SistemaSIGEA" SettingsObjectName="SIGEA.Classes.Properties.Settings" SettingsPropertyName="SIGEAConnectionString" Provider="System.Data.SqlClient" />
+  <Connection Mode="AppSettings" ConnectionString="Data Source=65.182.106.50;Initial Catalog=SIGEA;Persist Security Info=True;User ID=sistemaSIGEA" SettingsObjectName="SIGEA.Classes.Properties.Settings" SettingsPropertyName="SIGEAConnectionString1" Provider="System.Data.SqlClient" />
   <Table Name="dbo.Valuador" Member="Valuador">
     <Type Name="Valuador">
       <Column Name="idValuador" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
@@ -115,9 +115,9 @@
       <Association Name="AvaluoInmobiliario_RechazoAvaluo" Member="RechazoAvaluo" ThisKey="idAvaluo" OtherKey="idAvaluo" Type="RechazoAvaluo" />
       <Association Name="AvaluoInmobiliario_RevisionAvaluo" Member="RevisionAvaluo" ThisKey="idAvaluo" OtherKey="idAvaluo" Type="RevisionAvaluo" />
       <Association Name="AvaluoInmobiliario_DocumentoAvaluo" Member="DocumentoAvaluo" ThisKey="idAvaluo" OtherKey="idAvaluo" Type="DocumentoAvaluo" />
-      <Association Name="AvaluoInmobiliario_EnfoqueCostos" Member="EnfoqueCostos" ThisKey="idAvaluo" OtherKey="idAvaluo" Type="EnfoqueCostos" />
-      <Association Name="AvaluoInmobiliario_EnfoqueIngresos" Member="EnfoqueIngresos" ThisKey="idAvaluo" OtherKey="idAvaluo" Type="EnfoqueIngresos" />
-      <Association Name="AvaluoInmobiliario_EnfoqueMercado" Member="EnfoqueMercado" ThisKey="idAvaluo" OtherKey="idAvaluo" Type="EnfoqueMercado" />
+      <Association Name="AvaluoInmobiliario_EnfoqueCostos" Member="EnfoqueCostos" ThisKey="idAvaluo" OtherKey="idAvaluo" Type="EnfoqueCostos" Cardinality="One" />
+      <Association Name="AvaluoInmobiliario_EnfoqueIngresos" Member="EnfoqueIngresos" ThisKey="idAvaluo" OtherKey="idAvaluo" Type="EnfoqueIngresos" Cardinality="One" />
+      <Association Name="AvaluoInmobiliario_EnfoqueMercado" Member="EnfoqueMercado" ThisKey="idAvaluo" OtherKey="idAvaluo" Type="EnfoqueMercado" Cardinality="One" />
       <Association Name="Cliente_AvaluoInmobiliario" Member="Cliente" ThisKey="idCliente" OtherKey="idCliente" Type="Cliente" IsForeignKey="true" />
       <Association Name="Inmueble_AvaluoInmobiliario" Member="Inmueble" ThisKey="idInmueble" OtherKey="idInmueble" Type="Inmueble" IsForeignKey="true" />
       <Association Name="PropositoAvaluo_AvaluoInmobiliario" Member="PropositoAvaluo" ThisKey="idProposito" OtherKey="idProposito" Type="PropositoAvaluo" IsForeignKey="true" />
@@ -1326,6 +1326,16 @@
       <Association Name="TipoDocumentoAvaluo_DocumentoAvaluo" Member="DocumentoAvaluo" ThisKey="idTipoDocumentoAvaluo" OtherKey="idTipoDocumento" Type="DocumentoAvaluo" />
     </Type>
   </Table>
+  <Table Name="dbo.MapaLocalizacion" Member="MapaLocalizacion">
+    <Type Name="MapaLocalizacion">
+      <Column Name="idMapa" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="idInmueble" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="idArchivo" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="mapaMacro" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
+      <Association Name="Archivo_MapaLocalizacion" Member="Archivo" ThisKey="idArchivo" OtherKey="idArchivo" Type="Archivo" IsForeignKey="true" />
+      <Association Name="Inmueble_MapaLocalizacion" Member="Inmueble" ThisKey="idInmueble" OtherKey="idInmueble" Type="Inmueble" IsForeignKey="true" />
+    </Type>
+  </Table>
   <Table Name="dbo.EnfoqueCostos" Member="EnfoqueCostos">
     <Type Name="EnfoqueCostos">
       <Column Name="idAvaluo" Type="System.Int32" DbType="Int NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
@@ -1335,7 +1345,7 @@
       <Column Name="idComparable4" Type="System.Int64" DbType="BigInt" CanBeNull="true" />
       <Column Name="VUHP" Type="System.Decimal" DbType="Money" CanBeNull="true" />
       <Column Name="VUHTA" Type="System.Decimal" DbType="Money" CanBeNull="true" />
-      <Column Name="valotTerreno" Type="System.Decimal" DbType="Money" CanBeNull="true" />
+      <Column Name="valorTerreno" Type="System.Decimal" DbType="Money" CanBeNull="true" />
       <Column Name="valorCP" Type="System.Decimal" DbType="Money" CanBeNull="true" />
       <Column Name="valorCI" Type="System.Decimal" DbType="Money" CanBeNull="true" />
       <Column Name="valorConstrucciones" Type="System.Decimal" DbType="Money" CanBeNull="true" />
@@ -1355,6 +1365,27 @@
       <Association Name="AvaluoInmobiliario_EnfoqueCostos" Member="AvaluoInmobiliario" ThisKey="idAvaluo" OtherKey="idAvaluo" Type="AvaluoInmobiliario" IsForeignKey="true" />
     </Type>
   </Table>
+  <Table Name="dbo.EnfoqueMercadoHomologacion" Member="EnfoqueMercadoHomologacion">
+    <Type Name="EnfoqueMercadoHomologacion">
+      <Column Name="idAvaluo" Type="System.Int32" DbType="Int NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="caso" Type="System.Int16" DbType="SmallInt NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="FCOM" Type="System.Double" DbType="Float" CanBeNull="true" />
+      <Column Name="valorAjustado" Type="System.Decimal" DbType="Money" CanBeNull="true" />
+      <Column Name="superficieVendible" Type="System.Double" DbType="Float" CanBeNull="true" />
+      <Column Name="VUAV" Type="System.Decimal" DbType="Money" CanBeNull="true" />
+      <Column Name="FED" Type="System.Double" DbType="Float" CanBeNull="true" />
+      <Column Name="FCO" Type="System.Double" DbType="Float" CanBeNull="true" />
+      <Column Name="FCL" Type="System.Double" DbType="Float" CanBeNull="true" />
+      <Column Name="FUB" Type="System.Double" DbType="Float" CanBeNull="true" />
+      <Column Name="FPR" Type="System.Double" DbType="Float" CanBeNull="true" />
+      <Column Name="FLO" Type="System.Double" DbType="Float" CanBeNull="true" />
+      <Column Name="FSU" Type="System.Double" DbType="Float" CanBeNull="true" />
+      <Column Name="FUS" Type="System.Double" DbType="Float" CanBeNull="true" />
+      <Column Name="FRE" Type="System.Double" DbType="Float" CanBeNull="true" />
+      <Column Name="VUVH" Type="System.Decimal" DbType="Money" CanBeNull="true" />
+      <Association Name="EnfoqueMercado_EnfoqueMercadoHomologacion" Member="EnfoqueMercado" ThisKey="idAvaluo" OtherKey="idAvaluo" Type="EnfoqueMercado" IsForeignKey="true" />
+    </Type>
+  </Table>
   <Table Name="dbo.EnfoqueCostosConstrucciones" Member="EnfoqueCostosConstrucciones">
     <Type Name="EnfoqueCostosConstrucciones">
       <Column Name="idAvaluo" Type="System.Int32" DbType="Int NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
@@ -1367,6 +1398,7 @@
       <Column Name="valorNeto" Type="System.Decimal" DbType="Money" CanBeNull="true" />
       <Column Name="valorParcial" Type="System.Decimal" DbType="Money" CanBeNull="true" />
       <Column Name="indiviso" Type="System.Boolean" DbType="Bit" CanBeNull="true" />
+      <Column Name="comun" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
       <Association Name="EnfoqueCostos_EnfoqueCostosConstrucciones" Member="EnfoqueCostos" ThisKey="idAvaluo" OtherKey="idAvaluo" Type="EnfoqueCostos" IsForeignKey="true" />
     </Type>
   </Table>
@@ -1403,6 +1435,7 @@
       <Column Name="valorNeto" Type="System.Decimal" DbType="Money" CanBeNull="true" />
       <Column Name="valorParcial" Type="System.Decimal" DbType="Money" CanBeNull="true" />
       <Column Name="tipoInstalacion" Type="System.String" DbType="NVarChar(20)" CanBeNull="true" />
+      <Column Name="comun" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
       <Association Name="EnfoqueCostos_EnfoqueCostosInstalaciones" Member="EnfoqueCostos" ThisKey="idAvaluo" OtherKey="idAvaluo" Type="EnfoqueCostos" IsForeignKey="true" />
     </Type>
   </Table>
@@ -1477,8 +1510,8 @@
       <Column Name="resultadoAplicacion" Type="System.Decimal" DbType="Money" CanBeNull="true" />
       <Column Name="detalle" Type="System.String" DbType="NVarChar(200)" CanBeNull="true" />
       <Column Name="numConst" Type="System.Int32" DbType="Int" CanBeNull="true" />
-      <Association Name="EnfoqueMercado_EnfoqueMercadoAplicacion" Member="EnfoqueMercadoAplicacion" ThisKey="idAvaluo" OtherKey="idAvaluo" Type="EnfoqueMercadoAplicacion" />
       <Association Name="EnfoqueMercado_EnfoqueMercadoHomologacion" Member="EnfoqueMercadoHomologacion" ThisKey="idAvaluo" OtherKey="idAvaluo" Type="EnfoqueMercadoHomologacion" />
+      <Association Name="EnfoqueMercado_EnfoqueMercadoAplicacion" Member="EnfoqueMercadoAplicacion" ThisKey="idAvaluo" OtherKey="idAvaluo" Type="EnfoqueMercadoAplicacion" />
       <Association Name="AvaluoInmobiliario_EnfoqueMercado" Member="AvaluoInmobiliario" ThisKey="idAvaluo" OtherKey="idAvaluo" Type="AvaluoInmobiliario" IsForeignKey="true" />
     </Type>
   </Table>
@@ -1489,37 +1522,6 @@
       <Column Name="valorParcial" Type="System.Decimal" DbType="Money" CanBeNull="true" />
       <Column Name="descripcion" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
       <Association Name="EnfoqueMercado_EnfoqueMercadoAplicacion" Member="EnfoqueMercado" ThisKey="idAvaluo" OtherKey="idAvaluo" Type="EnfoqueMercado" IsForeignKey="true" />
-    </Type>
-  </Table>
-  <Table Name="dbo.EnfoqueMercadoHomologacion" Member="EnfoqueMercadoHomologacion">
-    <Type Name="EnfoqueMercadoHomologacion">
-      <Column Name="idAvaluo" Type="System.Int32" DbType="Int NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
-      <Column Name="caso" Type="System.Int16" DbType="SmallInt NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
-      <Column Name="FCOM" Type="System.Double" DbType="Float" CanBeNull="true" />
-      <Column Name="valorAjustado" Type="System.Decimal" DbType="Money" CanBeNull="true" />
-      <Column Name="superficieVendible" Type="System.Double" DbType="Float" CanBeNull="true" />
-      <Column Name="VUAV" Type="System.Decimal" DbType="Money" CanBeNull="true" />
-      <Column Name="FED" Type="System.Double" DbType="Float" CanBeNull="true" />
-      <Column Name="FCO" Type="System.Double" DbType="Float" CanBeNull="true" />
-      <Column Name="FCL" Type="System.Double" DbType="Float" CanBeNull="true" />
-      <Column Name="FUB" Type="System.Double" DbType="Float" CanBeNull="true" />
-      <Column Name="FPR" Type="System.Double" DbType="Float" CanBeNull="true" />
-      <Column Name="FLO" Type="System.Double" DbType="Float" CanBeNull="true" />
-      <Column Name="FSU" Type="System.Double" DbType="Float" CanBeNull="true" />
-      <Column Name="FUS" Type="System.Double" DbType="Float" CanBeNull="true" />
-      <Column Name="FRE" Type="System.Double" DbType="Float" CanBeNull="true" />
-      <Column Name="VUVH" Type="System.Decimal" DbType="Money" CanBeNull="true" />
-      <Association Name="EnfoqueMercado_EnfoqueMercadoHomologacion" Member="EnfoqueMercado" ThisKey="idAvaluo" OtherKey="idAvaluo" Type="EnfoqueMercado" IsForeignKey="true" />
-    </Type>
-  </Table>
-  <Table Name="dbo.MapaLocalizacion" Member="MapaLocalizacion">
-    <Type Name="MapaLocalizacion">
-      <Column Name="idMapa" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
-      <Column Name="idInmueble" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
-      <Column Name="idArchivo" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
-      <Column Name="mapaMacro" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
-      <Association Name="Archivo_MapaLocalizacion" Member="Archivo" ThisKey="idArchivo" OtherKey="idArchivo" Type="Archivo" IsForeignKey="true" />
-      <Association Name="Inmueble_MapaLocalizacion" Member="Inmueble" ThisKey="idInmueble" OtherKey="idInmueble" Type="Inmueble" IsForeignKey="true" />
     </Type>
   </Table>
   <Function Name="dbo.GenerarIDE" Method="GenerarIDE">
