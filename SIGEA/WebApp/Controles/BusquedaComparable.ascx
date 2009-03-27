@@ -44,7 +44,7 @@
         </tr>
     </table>
     
-    <asp:Panel ID="construccion_Panel" runat="server">
+    <asp:Panel ID="construccion_Panel" runat="server" CssClass="hidden">
         <table class="tablaCompactaExtendida">
         <tr class="filaHeaderSeccion">
             <td colspan="6">

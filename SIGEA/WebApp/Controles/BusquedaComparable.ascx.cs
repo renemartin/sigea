@@ -23,9 +23,8 @@ public partial class Controles_BusquedaComparable : System.Web.UI.UserControl
     {
         if (!IsPostBack)
         {
-            if (Tipo == TipoComparable.Costos)
-            {
-                construccion_Panel.CssClass = "hidden";
+            if (Tipo != TipoComparable.Costos) {
+                construccion_Panel.CssClass = "";
             }
 
             if (OnClientSearch != "")
@@ -44,7 +43,18 @@ public partial class Controles_BusquedaComparable : System.Web.UI.UserControl
 
     public TipoComparable Tipo
     {
-        set { ViewState["Tipo"] = value; }
+        set 
+        { 
+            ViewState["Tipo"] = value;
+            if (value == TipoComparable.Costos)
+            {
+                construccion_Panel.CssClass = "hidden";
+            }
+            else
+            {
+                construccion_Panel.CssClass = "";
+            }
+        }
         get 
         { 
             return ViewState["Tipo"] == null 

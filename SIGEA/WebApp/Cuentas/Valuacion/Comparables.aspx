@@ -28,6 +28,7 @@
             var row = sender.parentNode.parentNode;
             row.style.display = "none";
         }
+
     </script>
 
 </asp:Content>
