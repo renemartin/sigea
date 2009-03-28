@@ -74,6 +74,7 @@
     <Compile Include="Entities\Declaraciones.cs" />
     <Compile Include="Entities\Direccion.cs" />
     <Compile Include="Entities\DireccionInmueble.cs" />
+    <Compile Include="Entities\Enfoques.cs" />
     <Compile Include="Entities\EntornoInmueble.cs" />
     <Compile Include="Entities\EscriturasInmueble.cs" />
     <Compile Include="Entities\GeolocalizacionInmueble.cs" />
