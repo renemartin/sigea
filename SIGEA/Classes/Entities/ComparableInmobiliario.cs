@@ -232,6 +232,11 @@ namespace SIGEA.Classes.Entities
                             break;
                     }
                 }
+                if (filtros["fechaCreacion"] != "")
+                {
+                    DateTime fechaCreacion = DateTime.Parse(filtros["fechaCreacion"]);
+                    comparables_list = comparables_list.Where(c => c.fechaCreacion <= fechaCreacion); ;
+                }
                 if (filtros["numeroFrentes"] != "")
                 {
                     int frentes = int.Parse(filtros["numeroFrentes"]);

@@ -33,5 +33,16 @@ namespace SIGEA.Classes.Properties {
                 return ((string)(this["SIGEAConnectionString"]));
             }
         }
+        
+        [global::System.Configuration.ApplicationScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.SpecialSettingAttribute(global::System.Configuration.SpecialSetting.ConnectionString)]
+        [global::System.Configuration.DefaultSettingValueAttribute("Data Source=65.182.106.50,1433;Initial Catalog=SIGEA;Persist Security Info=True;U" +
+            "ser ID=SistemaSIGEA")]
+        public string SIGEAConnectionString2 {
+            get {
+                return ((string)(this["SIGEAConnectionString2"]));
+            }
+        }
     }
 }
