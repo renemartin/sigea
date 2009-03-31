@@ -45,6 +45,7 @@
             <asp:ScriptReference Path="~/Scripts/Utils.js" />
             <asp:ScriptReference Path="~/Scripts/AsyncCalls.js" />
             <asp:ScriptReference Path="~/Scripts/DataFillers.js" />
+            <asp:ScriptReference Path="~/Scripts/Validation.js" />
             <asp:ScriptReference Path="~/Scripts/Entities/Comparables.js" />
         </Scripts>
     </asp:ScriptManager>  
@@ -85,7 +86,7 @@
                 <div id="divBuscador" style="padding-top:5px; padding-bottom:10px">
                     <SIGEA:Buscador ID="buscador_Ctrl" runat="server" Mode="Server" 
                         OnSearch="buscador_Ctrl_Search" OnCancel="buscador_Ctrl_Cancel"
-                        Visible="false" />
+                        Hidden="True" />
                 </div>
             
                 <asp:GridView ID="data_gridView" runat="server" AutoGenerateColumns="False" DataSourceID="comparables_DS"

@@ -1,165 +1,168 @@
 ﻿<%@ Control Language="C#" AutoEventWireup="true" CodeFile="BusquedaComparable.ascx.cs"
     Inherits="Controles_BusquedaComparable" %>
 <%@ Register Assembly="AjaxControlToolkit" Namespace="AjaxControlToolkit" TagPrefix="cc1" %>
-<div class="formulario">
-    <table class="tablaCompactaExtendida">
-        <tr>
-            <td class="celdaTitulo">
-                Valor oferta:
-            </td>
-            <td class="celdaValor">
-                <asp:DropDownList ID="operador_DDList" runat="server">
-                    <asp:ListItem Text="=" Value="0" Selected="True"></asp:ListItem>
-                    <asp:ListItem Text="&gt;" Value="1" Selected="False"></asp:ListItem>
-                    <asp:ListItem Text="&gt;=" Value="2" Selected="False"></asp:ListItem>
-                    <asp:ListItem Text="&lt;" Value="3" Selected="False"></asp:ListItem>
-                    <asp:ListItem Text="&lt;=" Value="4" Selected="False"></asp:ListItem>
-                </asp:DropDownList>
-                <asp:TextBox ID="valorOferta_TBox" runat="server"></asp:TextBox>
-            </td>
-            <td class="celdaTituloSec">
-                Fecha límite de antigüedad:
-            </td>
-            <td class="celdaValor" colspan="3">
-                <asp:TextBox ID="fechaCreacion_TBox" runat="server" Enabled="false"></asp:TextBox>
-                &nbsp;<asp:Image ID="calendar_img" runat="server" ImageUrl="../Images/Icons/calendar.gif"
-                    ImageAlign="AbsMiddle" />
-            </td>
-        </tr>
-        <tr>
-            <td class="celdaTitulo">
-                Número de frentes:
-            </td>
-            <td class="celdaValor">
-                <asp:TextBox ID="numeroFrentes_TBox" runat="server"></asp:TextBox>
-                TargetControlID="numeroFrentes_TBox">
-            </td>
-            <td class="celdaTituloSec">
-                Superficie terreno:
-            </td>
-            <td class="celdaValor" colspan="3">
-                <asp:TextBox ID="superficieTerreno_TBox" runat="server"></asp:TextBox>
-            </td>
-        </tr>
-    </table>
-    <asp:Panel ID="construccion_Panel" runat="server" CssClass="hidden">
+
+<asp:Panel ID="baseControl_Panel" runat="server">
+    <div class="formulario">
         <table class="tablaCompactaExtendida">
-            <tr class="filaHeaderSeccion">
-                <td colspan="6">
-                    Datos de construcción
-                </td>
-            </tr>
             <tr>
                 <td class="celdaTitulo">
-                    Superficie construida:
+                    Valor oferta:
                 </td>
                 <td class="celdaValor">
-                    <asp:TextBox ID="superficieConstruida_TBox" runat="server"></asp:TextBox>
+                    <asp:DropDownList ID="operador_DDList" runat="server">
+                        <asp:ListItem Text="=" Value="0" Selected="True"></asp:ListItem>
+                        <asp:ListItem Text="&gt;" Value="1" Selected="False"></asp:ListItem>
+                        <asp:ListItem Text="&gt;=" Value="2" Selected="False"></asp:ListItem>
+                        <asp:ListItem Text="&lt;" Value="3" Selected="False"></asp:ListItem>
+                        <asp:ListItem Text="&lt;=" Value="4" Selected="False"></asp:ListItem>
+                    </asp:DropDownList>
+                    <asp:TextBox ID="valorOferta_TBox" runat="server"></asp:TextBox>
                 </td>
                 <td class="celdaTituloSec">
-                    Uso de suelo:
+                    Fecha límite de antigüedad:
                 </td>
                 <td class="celdaValor" colspan="3">
-                    <asp:DropDownList ID="usoSuelo_DDList" runat="server" AppendDataBoundItems="True"
-                        DataSourceID="usoSuelo_DS" DataTextField="descripcion" DataValueField="idTipoUsoSuelo">
-                        <asp:ListItem Value="0" Text="Seleccione..." />
-                    </asp:DropDownList>
+                    <asp:TextBox ID="fechaCreacion_TBox" runat="server" Enabled="false"></asp:TextBox>
+                    &nbsp;<asp:Image ID="calendar_img" runat="server" ImageUrl="../Images/Icons/calendar.gif"
+                        ImageAlign="AbsMiddle" />
                 </td>
             </tr>
             <tr>
                 <td class="celdaTitulo">
-                    Clase:
+                    Número de frentes:
                 </td>
                 <td class="celdaValor">
-                    <asp:DropDownList ID="clase_DDList" runat="server" AppendDataBoundItems="True" DataSourceID="clase_DS"
-                        DataTextField="descripcion" DataValueField="idClase">
-                        <asp:ListItem Value="0" Text="Seleccione..." />
-                    </asp:DropDownList>
+                    <asp:TextBox ID="numeroFrentes_TBox" runat="server"></asp:TextBox>
                 </td>
                 <td class="celdaTituloSec">
-                    Conservación:
-                </td>
-                <td class="celdaValor">
-                    <asp:DropDownList ID="conservacion_DDList" runat="server" AppendDataBoundItems="True"
-                        DataSourceID="conservacion_DS" DataTextField="descripcion" DataValueField="idTipoEstadoConservacion">
-                        <asp:ListItem Value="0" Text="Seleccione..." />
-                    </asp:DropDownList>
-                </td>
-                <td class="celdaTituloSec">
-                    Antigüedad:
-                </td>
-                <td class="celdaValor">
-                    <asp:TextBox ID="antiguedad_TBox" runat="server"></asp:TextBox>
-                </td>
-            </tr>
-            <tr>
-                <td class="celdaTitulo">
-                    Avance obra:
-                </td>
-                <td class="celdaValor">
-                    <asp:TextBox ID="avanceObra_TBox" runat="server"></asp:TextBox>
-                </td>
-                <td class="celdaTituloSec">
-                    Calidad del proyecto:
+                    Superficie terreno:
                 </td>
                 <td class="celdaValor" colspan="3">
-                    <asp:DropDownList ID="calidadProyecto_DDList" runat="server" AppendDataBoundItems="True"
-                        DataSourceID="calidad_DS" DataTextField="descripcion" DataValueField="idTipoCalidadProyecto">
-                        <asp:ListItem Value="0" Text="Seleccione..." />
-                    </asp:DropDownList>
+                    <asp:TextBox ID="superficieTerreno_TBox" runat="server"></asp:TextBox>
                 </td>
             </tr>
         </table>
-    </asp:Panel>
-    <table class="tablaCompactaExtendida">
-        <tr class="filaHeaderSeccion">
-            <td colspan="6">
-                Datos de ubicación
-            </td>
-        </tr>
-        <tr>
-            <td class="celdaTitulo">
-                Calle:
-            </td>
-            <td class="celdaValor" colspan="3">
-                <cc1:CalendarExtender ID="CalendarExtender1" runat="server" TargetControlID="fechaCreacion_TBox"
-                    PopupButtonID="calendar_img">
-                </cc1:CalendarExtender>
-                <asp:TextBox ID="calle_TBox" runat="server" Width="300px"></asp:TextBox>
-            </td>
-            <td class="celdaTituloSec">
-                Código postal:
-            </td>
-            <td class="celdaValor">
-                <asp:TextBox ID="codigoPostal_TBox" runat="server"></asp:TextBox>
-            </td>
-        </tr>
-        <tr>
-            <td class="celdaTitulo">
-                Asentamiento:
-            </td>
-            <td class="celdaValor">
-                <asp:TextBox ID="asentamiento_TBox" runat="server"></asp:TextBox>
-            </td>
-            <td class="celdaTituloSec">
-                Municipio:
-            </td>
-            <td class="celdaValor">
-                <asp:TextBox ID="municipio_TBox" runat="server"></asp:TextBox>
-            </td>
-            <td class="celdaTituloSec">
-                Estado:
-            </td>
-            <td class="celdaValor">
-                <asp:TextBox ID="estado_TBox" runat="server"></asp:TextBox>
-            </td>
-        </tr>
-    </table>
-</div>
-<div class="barraAcciones" style="text-align: right">
-    <asp:ImageButton ID="buscar_ImBtn" runat="server" SkinID="Search" OnClick="buscar_ImBtn_Click" />
-    <asp:ImageButton ID="cancelar_ImBtn" runat="server" SkinID="Cancel" OnClick="cancelar_ImBtn_Click" />
-</div>
+        <asp:Panel ID="construccion_Panel" runat="server" CssClass="hidden">
+            <table class="tablaCompactaExtendida">
+                <tr class="filaHeaderSeccion">
+                    <td colspan="6">
+                        Datos de construcción
+                    </td>
+                </tr>
+                <tr>
+                    <td class="celdaTitulo">
+                        Superficie construida:
+                    </td>
+                    <td class="celdaValor">
+                        <asp:TextBox ID="superficieConstruida_TBox" runat="server"></asp:TextBox>
+                    </td>
+                    <td class="celdaTituloSec">
+                        Uso de suelo:
+                    </td>
+                    <td class="celdaValor" colspan="3">
+                        <asp:DropDownList ID="usoSuelo_DDList" runat="server" AppendDataBoundItems="True"
+                            DataSourceID="usoSuelo_DS" DataTextField="descripcion" DataValueField="idTipoUsoSuelo">
+                            <asp:ListItem Value="0" Text="Seleccione..." />
+                        </asp:DropDownList>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="celdaTitulo">
+                        Clase:
+                    </td>
+                    <td class="celdaValor">
+                        <asp:DropDownList ID="clase_DDList" runat="server" AppendDataBoundItems="True" DataSourceID="clase_DS"
+                            DataTextField="descripcion" DataValueField="idClase">
+                            <asp:ListItem Value="0" Text="Seleccione..." />
+                        </asp:DropDownList>
+                    </td>
+                    <td class="celdaTituloSec">
+                        Conservación:
+                    </td>
+                    <td class="celdaValor">
+                        <asp:DropDownList ID="conservacion_DDList" runat="server" AppendDataBoundItems="True"
+                            DataSourceID="conservacion_DS" DataTextField="descripcion" DataValueField="idTipoEstadoConservacion">
+                            <asp:ListItem Value="0" Text="Seleccione..." />
+                        </asp:DropDownList>
+                    </td>
+                    <td class="celdaTituloSec">
+                        Antigüedad:
+                    </td>
+                    <td class="celdaValor">
+                        <asp:TextBox ID="antiguedad_TBox" runat="server"></asp:TextBox>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="celdaTitulo">
+                        Avance obra:
+                    </td>
+                    <td class="celdaValor">
+                        <asp:TextBox ID="avanceObra_TBox" runat="server"></asp:TextBox>
+                    </td>
+                    <td class="celdaTituloSec">
+                        Calidad del proyecto:
+                    </td>
+                    <td class="celdaValor" colspan="3">
+                        <asp:DropDownList ID="calidadProyecto_DDList" runat="server" AppendDataBoundItems="True"
+                            DataSourceID="calidad_DS" DataTextField="descripcion" DataValueField="idTipoCalidadProyecto">
+                            <asp:ListItem Value="0" Text="Seleccione..." />
+                        </asp:DropDownList>
+                    </td>
+                </tr>
+            </table>
+        </asp:Panel>
+        <table class="tablaCompactaExtendida">
+            <tr class="filaHeaderSeccion">
+                <td colspan="6">
+                    Datos de ubicación
+                </td>
+            </tr>
+            <tr>
+                <td class="celdaTitulo">
+                    Calle:
+                </td>
+                <td class="celdaValor" colspan="3">
+                    <cc1:CalendarExtender ID="CalendarExtender1" runat="server" TargetControlID="fechaCreacion_TBox"
+                        PopupButtonID="calendar_img">
+                    </cc1:CalendarExtender>
+                    <asp:TextBox ID="calle_TBox" runat="server" Width="300px"></asp:TextBox>
+                </td>
+                <td class="celdaTituloSec">
+                    Código postal:
+                </td>
+                <td class="celdaValor">
+                    <asp:TextBox ID="codigoPostal_TBox" runat="server"></asp:TextBox>
+                </td>
+            </tr>
+            <tr>
+                <td class="celdaTitulo">
+                    Asentamiento:
+                </td>
+                <td class="celdaValor">
+                    <asp:TextBox ID="asentamiento_TBox" runat="server"></asp:TextBox>
+                </td>
+                <td class="celdaTituloSec">
+                    Municipio:
+                </td>
+                <td class="celdaValor">
+                    <asp:TextBox ID="municipio_TBox" runat="server"></asp:TextBox>
+                </td>
+                <td class="celdaTituloSec">
+                    Estado:
+                </td>
+                <td class="celdaValor">
+                    <asp:TextBox ID="estado_TBox" runat="server"></asp:TextBox>
+                </td>
+            </tr>
+        </table>
+    </div>
+    <div class="barraAcciones" style="text-align: right">
+        <asp:ImageButton ID="buscar_ImBtn" runat="server" SkinID="Search" OnClick="buscar_ImBtn_Click" />
+        <asp:ImageButton ID="cancelar_ImBtn" runat="server" SkinID="Cancel" OnClick="cancelar_ImBtn_Click" />
+    </div>
+</asp:Panel>
+
 <asp:LinqDataSource ID="usoSuelo_DS" runat="server" ContextTypeName="SIGEA.Classes.Entities.SIGEADataContext"
     OrderBy="descripcion DESC" Select="new (descripcion, idTipoUsoSuelo)" TableName="TipoUsoSuelo"
     StoreOriginalValuesInViewState="False" OnContextCreating="SetupContext">
@@ -185,40 +188,32 @@
         BusquedaComparable.prototype.getData = getData;
         BusquedaComparable.prototype.setTipo = setTipo;
         BusquedaComparable.prototype.clear = clear;
+        BusquedaComparable.prototype.validate = validate;
 
         // Inicialización de validador
-        //        this.controls = new Array(
-        //            $get(this.parent_id + "_calle_TBox"),           // 0
-        //            $get(this.parent_id + "_entre1_TBox"),          // 1
-        //            $get(this.parent_id + "_entre2_TBox"),          // 2
-        //            $get(this.parent_id + "_numExt_TBox"),          // 3
-        //            $get(this.parent_id + "_numInt_TBox"),          // 4
-        //            $get(this.parent_id + "_estado_DDList"),        // 5
-        //            $get(this.parent_id + "_municipio_DDList"),     // 6
-        //            $get(this.parent_id + "_asentamiento_TBox"),    // 7
-        //            $get(this.parent_id + "_cp_TBox")               // 8
-        //        );
-        //        this.validator = new ControlValidator(this.controls);
-        //        this.validator.addOptionalField(1);
-        //        this.validator.addOptionalField(2);
-        //        this.validator.addOptionalField(4);
-        //        this.validator.addNumericField(8, false);
+        this.parent_id = "<%= ClientID %>";
         this.controls = new Array(
-            $get(this.parent_id + "valorOferta_TBox"),
-            $get(this.parent_id + ""),
-            $get(this.parent_id + ""),
-            $get(this.parent_id + ""),
-            $get(this.parent_id + ""),
-            $get(this.parent_id + ""),
-            $get(this.parent_id + ""),
-            $get(this.parent_id + ""),
-            $get(this.parent_id + ""),
-            $get(this.parent_id + ""),
-            $get(this.parent_id + ""),
-            $get(this.parent_id + "")
+            $get(this.parent_id + "_valorOferta_TBox"),              //0
+            $get(this.parent_id + "_fechaCreacion_TBox"),            //1
+            $get(this.parent_id + "_numeroFrentes_TBox"),            //2
+            $get(this.parent_id + "_superficieTerreno_TBox"),        //3
+            $get(this.parent_id + "_superficieConstruida_TBox"),     //4
+            $get(this.parent_id + "_antiguedad_TBox"),               //5
+            $get(this.parent_id + "_avanceObra_TBox"),               //6
+            $get(this.parent_id + "_codigoPostal_TBox")              //7
         );
-
-
+        this.validator = new ControlValidator(this.controls);
+        for (var i = 0; i < this.controls.length; i++) {
+            this.validator.addOptionalField(i);
+        }
+        this.validator.addNumericField(0, true);
+        //this.validator.addDateField(1);
+        this.validator.addNumericField(2, false);
+        this.validator.addNumericField(3, true);
+        this.validator.addNumericField(4, true);
+        this.validator.addNumericField(5, true);
+        this.validator.addNumericField(6, true);
+        this.validator.addNumericField(7, false);
         function getData() {
             var data = new Object();
 
@@ -272,7 +267,9 @@
             $get("<%= estado_TBox.ClientID %>").value = "";
         }
 
+        // Validación
         function validate() {
+            return this.validator.validate();
         }
 
     }
