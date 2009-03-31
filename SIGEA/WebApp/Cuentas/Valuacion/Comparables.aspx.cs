@@ -50,19 +50,29 @@ public partial class Cuentas_Valuacion_Comparables : System.Web.UI.Page
     }
     protected void buscar_ImBtn_ImBtn_Click(object sender, ImageClickEventArgs e)
     {
-        buscador_Ctrl.Visible = true;        
+        buscador_Ctrl.Hidden = false;        
     }
     protected void buscador_Ctrl_Search(object sender, EventArgs e)
-    {
-        buscador_Ctrl.Visible = false;
-        Session["filtrosComparablesGrid"] = buscador_Ctrl.GetColeccionBusqueda();
-        filtro_Lbl.Text = buscador_Ctrl.DescripcionBusqueda;
+    {        
+        buscador_Ctrl.Hidden = true;        
+
+        string descripcion_busqueda = buscador_Ctrl.DescripcionBusqueda;
+        if (!string.IsNullOrEmpty(buscador_Ctrl.DescripcionBusqueda))
+        {
+            filtro_Lbl.Text = buscador_Ctrl.DescripcionBusqueda;
+            Session["filtrosComparablesGrid"] = buscador_Ctrl.GetColeccionBusqueda();
+        }
+        else
+        {
+            filtro_Lbl.Text = "No especificado";
+            Session["filtrosComparablesGrid"] = null;
+        }
     }
     protected void buscador_Ctrl_Cancel(object sender, EventArgs e)
     {
         filtro_Lbl.Text = "No especificado";
         buscador_Ctrl.Clear();
-        buscador_Ctrl.Visible = false;
+        buscador_Ctrl.Hidden = true;
         Session["filtrosComparablesGrid"] = null;
     }
 }

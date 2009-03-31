@@ -23,28 +23,19 @@ public partial class Controles_BusquedaComparable : System.Web.UI.UserControl
     {
         if (!IsPostBack)
         {
-            if (Tipo != TipoComparable.Costos) {
+            if (Tipo != TipoComparable.Costos)
+            {
                 construccion_Panel.CssClass = "";
             }
-
-            if (OnClientSearch != "")
-            {
-                buscar_ImBtn.OnClientClick = OnClientSearch 
-                    + " return false;";
-            }
-
-            if (OnClientCancel != "")
-            {
-                cancelar_ImBtn.OnClientClick = OnClientCancel 
-                    + " " + ID + ".clear(); return false;";
-            }
+            
+            buscar_ImBtn.OnClientClick = "return " + ID + ".validate();";
         }
     }
 
     public TipoComparable Tipo
     {
-        set 
-        { 
+        set
+        {
             ViewState["Tipo"] = value;
             if (value == TipoComparable.Costos)
             {
@@ -55,11 +46,11 @@ public partial class Controles_BusquedaComparable : System.Web.UI.UserControl
                 construccion_Panel.CssClass = "";
             }
         }
-        get 
-        { 
-            return ViewState["Tipo"] == null 
-                ? TipoComparable.Costos 
-                : (TipoComparable)ViewState["Tipo"]; 
+        get
+        {
+            return ViewState["Tipo"] == null
+                ? TipoComparable.Costos
+                : (TipoComparable)ViewState["Tipo"];
         }
     }
     public RunningMode Mode
@@ -72,6 +63,17 @@ public partial class Controles_BusquedaComparable : System.Web.UI.UserControl
                 : (RunningMode)ViewState["Mode"];
         }
     }
+    public bool Hidden
+    {
+        get
+        {
+            return baseControl_Panel.CssClass == "hidden";
+        }
+        set
+        {
+            baseControl_Panel.CssClass = value ? "hidden" : "";
+        }
+    }
     public Dictionary<string, string> GetColeccionBusqueda()
     {
         Dictionary<string, string> coleccion = new Dictionary<string, string>();
@@ -81,7 +83,7 @@ public partial class Controles_BusquedaComparable : System.Web.UI.UserControl
         coleccion.Add("fechaCreacion", fechaCreacion_TBox.Text);
         coleccion.Add("numeroFrentes", numeroFrentes_TBox.Text);
         coleccion.Add("superficieTerreno", superficieTerreno_TBox.Text);
-        
+
         coleccion.Add("superficieConstruida", superficieConstruida_TBox.Text);
         coleccion.Add("usoSuelo", usoSuelo_DDList.SelectedItem == null ? "" : usoSuelo_DDList.SelectedValue);
         coleccion.Add("clase", clase_DDList.SelectedItem == null ? "" : clase_DDList.SelectedValue);
@@ -89,7 +91,7 @@ public partial class Controles_BusquedaComparable : System.Web.UI.UserControl
         coleccion.Add("atiguedad", antiguedad_TBox.Text);
         coleccion.Add("avanceObra", avanceObra_TBox.Text);
         coleccion.Add("calidadProyecto", calidadProyecto_DDList.SelectedItem == null ? "" : calidadProyecto_DDList.SelectedValue);
-        
+
         coleccion.Add("calle", calle_TBox.Text);
         coleccion.Add("codigoPostal", codigoPostal_TBox.Text);
         coleccion.Add("asentamiento", asentamiento_TBox.Text);
@@ -98,27 +100,18 @@ public partial class Controles_BusquedaComparable : System.Web.UI.UserControl
 
         return coleccion;
     }
-    public string OnClientSearch
-    {
-        set { ViewState["OnClientSearch"] = value; }
-        get { return ViewState["OnClientSearch"] == null ? "" : ViewState["OnClientSearch"].ToString(); }
-    }
-    public string OnClientCancel
-    {
-        set { ViewState["OnClientCancel"] = value; }
-        get { return ViewState["OnClientCancel"] == null ? "" : ViewState["OnClientCancel"].ToString(); }
-    }
+
     public string DescripcionBusqueda
     {
         get
         {
             StringBuilder desc = new StringBuilder();
-            
+
             if (valorOferta_TBox.Text != "")
                 desc.Append(string.Format(", Valor de oferta {0} {1}", operador_DDList.SelectedItem.Text, valorOferta_TBox.Text));
-            if(fechaCreacion_TBox.Text != "")
+            if (fechaCreacion_TBox.Text != "")
                 desc.Append(", Fecha de creación: " + fechaCreacion_TBox.Text);
-            if(numeroFrentes_TBox.Text != "")
+            if (numeroFrentes_TBox.Text != "")
                 desc.Append(", Numero de frentes: " + numeroFrentes_TBox.Text);
             if (superficieTerreno_TBox.Text != "")
                 desc.Append(", Superficie de terreno aproximada: " + superficieTerreno_TBox.Text);
@@ -150,7 +143,7 @@ public partial class Controles_BusquedaComparable : System.Web.UI.UserControl
             string descripcion = desc.ToString();
             if (descripcion.Length == 0)
                 return string.Empty;
-            return desc.ToString().Substring(2, descripcion.Length-2);
+            return desc.ToString().Substring(2, descripcion.Length - 2);
         }
     }
     public bool CancelarVisible
@@ -166,7 +159,7 @@ public partial class Controles_BusquedaComparable : System.Web.UI.UserControl
         fechaCreacion_TBox.Text = "";
         numeroFrentes_TBox.Text = "";
         superficieTerreno_TBox.Text = "";
-        
+
         superficieConstruida_TBox.Text = "";
         usoSuelo_DDList.SelectedIndex = 0;
         clase_DDList.SelectedIndex = 0;
@@ -174,7 +167,7 @@ public partial class Controles_BusquedaComparable : System.Web.UI.UserControl
         antiguedad_TBox.Text = "";
         avanceObra_TBox.Text = "";
         calidadProyecto_DDList.SelectedIndex = 0;
-        
+
         calle_TBox.Text = "";
         codigoPostal_TBox.Text = "";
         asentamiento_TBox.Text = "";
@@ -210,4 +203,5 @@ public partial class Controles_BusquedaComparable : System.Web.UI.UserControl
         Clear();
         OnCancel();
     }
+
 }
