@@ -8,13 +8,17 @@
     <script type="text/javascript">
         // Acciones del registro
         function addNewComparable() {
-            //redirect("ComparableRegistro.aspx");
-            openModalWindow("ComparableRegistro.aspx", 750, 550);
+            var result = openModalWindow("ComparableRegistro.aspx", 750, 550);
+            if (result != undefined) {
+                recargarDatos();    
+            }
         }
 
         function viewComparable(sender, idComparable) {
-            //redirect(String.format("ComparableRegistro.aspx?idComparable={0}", idComparable));
-            openModalWindow(String.format("ComparableRegistro.aspx?idComparable={0}", idComparable), 750, 550);
+            var result = openModalWindow(String.format("ComparableRegistro.aspx?idComparable={0}", idComparable), 750, 550);
+            if (result != undefined) {
+                recargarDatos();
+            }
         }
 
         function deleteComparable(sender, idComparable) {
@@ -29,6 +33,11 @@
         function deleteComparable_Success(sender) {
             var row = sender.parentNode.parentNode;
             row.style.display = "none";
+        }
+
+        // Actualizacion
+        function recargarDatos() {
+            __doPostBack("<%= comparableData_UpPanel.ClientID %>", "");
         }
 
     </script>
@@ -89,8 +98,16 @@
                         Hidden="True" />
                 </div>
             
+                <asp:UpdateProgress ID="comparableData_Prog" runat="server">
+                    <ProgressTemplate>                        
+                        <div style="text-align:center;">
+                            <img alt="" src="../../Images/Cargando.gif" />
+                        </div>
+                    </ProgressTemplate>
+                </asp:UpdateProgress>
+                            
                 <asp:GridView ID="data_gridView" runat="server" AutoGenerateColumns="False" DataSourceID="comparables_DS"
-                    AllowPaging="True" AllowSorting="True" Width="100%">
+                    AllowPaging="True" Width="100%">
                     <Columns>
                         <asp:TemplateField HeaderText="Tipo" SortExpression="idTipoComparable" ItemStyle-VerticalAlign="Top">
                             <ItemTemplate>
