@@ -78,6 +78,7 @@ public partial class Controles_BusquedaComparable : System.Web.UI.UserControl
 
         coleccion.Add("valorOferta", valorOferta_TBox.Text);
         coleccion.Add("operadorValor", operador_DDList.SelectedItem == null ? "" : operador_DDList.SelectedValue);
+        coleccion.Add("fechaCreacion", fechaCreacion_TBox.Text);
         coleccion.Add("numeroFrentes", numeroFrentes_TBox.Text);
         coleccion.Add("superficieTerreno", superficieTerreno_TBox.Text);
         
