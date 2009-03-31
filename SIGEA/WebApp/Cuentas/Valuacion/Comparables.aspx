@@ -1,5 +1,5 @@
 ﻿<%@ Page Title="SIGEA - Comparables" Language="C#" MasterPageFile="~/Cuentas/Valuacion/Valuacion.master"
-    AutoEventWireup="true" CodeFile="Comparables.aspx.cs" Inherits="Cuentas_Administracion_Comparables" %>
+    AutoEventWireup="true" CodeFile="Comparables.aspx.cs" Inherits="Cuentas_Valuacion_Comparables" %>
 
 <%@ Register Src="~/Controles/BusquedaComparable.ascx" TagName="Buscador" TagPrefix="SIGEA" %>
 

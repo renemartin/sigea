@@ -8,7 +8,7 @@ using System.Web.UI;
 using System.Web.UI.WebControls;
 using SIGEA.Classes.Entities;
 
-public partial class Cuentas_Administracion_Comparables : System.Web.UI.Page
+public partial class Cuentas_Valuacion_Comparables : System.Web.UI.Page
 {   
     protected void Page_Load(object sender, EventArgs e)
     {
