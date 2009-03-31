@@ -689,7 +689,7 @@ namespace SIGEA.Classes.Entities
                                      where em.idAvaluo == enfoque_mercado.idAvaluo
                                      select em.GetData();
 
-            if (!mercado_aplicacion.Any() == null)
+            if (!mercado_aplicacion.Any())
                 return null;
 
             return mercado_aplicacion.ToArray();
@@ -778,7 +778,7 @@ namespace SIGEA.Classes.Entities
                                where h.idAvaluo == enfoque_mercado.idAvaluo
                                select h.GetData();
 
-            if (!homologacion.Any() == null)
+            if (!homologacion.Any())
                 return null;
 
             return homologacion.ToArray();
