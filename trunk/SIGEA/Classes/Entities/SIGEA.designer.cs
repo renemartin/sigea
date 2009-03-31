@@ -396,7 +396,7 @@ namespace SIGEA.Classes.Entities
     #endregion
 		
 		public SIGEADataContext() : 
-				base(global::SIGEA.Classes.Properties.Settings.Default.SIGEAConnectionString2, mappingSource)
+				base(global::SIGEA.Classes.Properties.Settings.Default.SIGEAConnectionString, mappingSource)
 		{
 			OnCreated();
 		}
