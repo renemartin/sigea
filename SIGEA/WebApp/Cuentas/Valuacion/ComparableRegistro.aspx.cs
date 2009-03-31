@@ -42,6 +42,6 @@ public partial class Cuentas_Administracion_ComparableRegistro : System.Web.UI.P
     private void SetAttributes()
     {
         save_ImBtn.Attributes.Add("onClick", "saveComparable(); return false");
-        cancel_ImBtn.Attributes.Add("onClick", "window.location.href='Comparables.aspx'; return false;");
+        cancel_ImBtn.Attributes.Add("onClick", "closeWindow(true); return false;");
     }
 }

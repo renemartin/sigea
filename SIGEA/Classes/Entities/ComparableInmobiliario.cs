@@ -4,6 +4,7 @@ using System.Configuration;
 using System.Linq;
 using System.IO;
 using System.Text;
+using System.Data.Linq;
 
 namespace SIGEA.Classes.Entities
 {
@@ -41,7 +42,8 @@ namespace SIGEA.Classes.Entities
                     text.Append(" INT. ");
                     text.Append(this.Direccion.numeroInterior);
                 }
-
+                text.Append(", CP: ");
+                text.Append(this.Direccion.CodigoPostal.codigoPostal1);
                 text.Append("<br/>");
                 text.Append(this.Direccion.CodigoPostal.Asentamiento.Municipio.nombreMunicipio);
                 text.Append(", ");
@@ -174,6 +176,15 @@ namespace SIGEA.Classes.Entities
         public ListaComparables()
         {
             data_context = new SIGEADataContext(ConfigurationManager.ConnectionStrings["SIGEA_ConnectionString"].ConnectionString);
+            data_context.ObjectTrackingEnabled = false;
+
+            DataLoadOptions options = new DataLoadOptions();
+            options.LoadWith<ComparableInmobiliario>(Comparable => Comparable.Direccion);
+            options.LoadWith<Direccion>(Direccion => Direccion.CodigoPostal);
+            options.LoadWith<CodigoPostal>(CP => CP.Asentamiento);
+            options.LoadWith<Asentamiento>(Asentamiento => Asentamiento.Municipio);
+            options.LoadWith<Municipio>(Municipio => Municipio.Estado);
+            data_context.LoadOptions = options;
         }
 
         public IEnumerable<object> GetLista(short idTipo, Dictionary<string, string> filtros)
@@ -254,17 +265,17 @@ namespace SIGEA.Classes.Entities
                     float superficieConstruida = float.Parse(filtros["superficieConstruida"]);
                     comparables_list = comparables_list.Where(c => (c.superficieConstruida >= (superficieConstruida - rangoSC) && c.superficieConstruida <= (superficieConstruida + rangoSC)));
                 }
-                if (filtros["usoSuelo"] != "")
+                if (filtros["usoSuelo"] != "" && filtros["usoSuelo"] != "0")
                 {
                     short idUsoSuelo = short.Parse(filtros["usoSuelo"]);
                     comparables_list = comparables_list.Where(c => c.idUsoSuelo == idUsoSuelo);
                 }
-                if (filtros["clase"] != "")
+                if (filtros["clase"] != "" && filtros["clase"] != "0")
                 {
                     short idClase = short.Parse(filtros["clase"]);
                     comparables_list = comparables_list.Where(c => c.idClase == idClase);
                 }
-                if (filtros["conservacion"] != "")
+                if (filtros["conservacion"] != "" && filtros["conservacion"] != "0")
                 {
                     short idConservacion = short.Parse(filtros["clase"]);
                     comparables_list = comparables_list.Where(c => c.idConservacion == idConservacion);
@@ -281,14 +292,14 @@ namespace SIGEA.Classes.Entities
                     float avanceObra = float.Parse(filtros["avanceObra"]);
                     comparables_list = comparables_list.Where(c => (c.avanceObra >= (avanceObra - rangoAvanceO) && c.avanceObra <= (avanceObra + rangoAvanceO)));
                 }
-                if (filtros["calidadProyecto"] != "")
+                if (filtros["calidadProyecto"] != "" && filtros["calidadProyecto"] != "0")
                 {
                     short idCalidadProyecto = short.Parse(filtros["calidadProyecto"]);
                     comparables_list = comparables_list.Where(c => c.idCalidadProyecto == idCalidadProyecto);
                 }
                 if (filtros["calle"] != "")
                 {
-                    comparables_list = comparables_list.Where(c => c.calle == filtros["calle"]);
+                    comparables_list = comparables_list.Where(c => c.calle.ToLower().StartsWith(filtros["calle"].Trim().ToLower()));
                 }
                 if (filtros["codigoPostal"] != "")
                 {
@@ -296,15 +307,15 @@ namespace SIGEA.Classes.Entities
                 }
                 if (filtros["asentamiento"] != "")
                 {
-                    comparables_list = comparables_list.Where(c => c.nombreAsentamiento == filtros["asentamiento"]);
+                    comparables_list = comparables_list.Where(c => c.nombreAsentamiento.ToLower() == filtros["asentamiento"].Trim().ToLower());
                 }
                 if (filtros["municipio"] != "")
                 {
-                    comparables_list = comparables_list.Where(c => c.nombreMunicipio == filtros["municipio"]);
+                    comparables_list = comparables_list.Where(c => c.nombreMunicipio.ToLower() == filtros["municipio"].Trim().ToLower());
                 }
                 if (filtros["estado"] != "")
                 {
-                    comparables_list = comparables_list.Where(c => c.nombreEstado == filtros["estado"]);
+                    comparables_list = comparables_list.Where(c => c.nombreEstado.ToLower() == filtros["estado"].Trim().ToLower());
                 }
             }
 

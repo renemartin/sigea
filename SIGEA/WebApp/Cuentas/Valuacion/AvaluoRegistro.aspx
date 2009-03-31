@@ -4,6 +4,7 @@
 <html>
 <head runat="server">
     <title>SIGEA - Registro de avalúo</title>
+    <base target="_self" />
 </head>
 <body>
     <form id="form1" runat="server">

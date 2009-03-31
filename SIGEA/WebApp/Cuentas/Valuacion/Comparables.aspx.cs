@@ -17,6 +17,10 @@ public partial class Cuentas_Valuacion_Comparables : System.Web.UI.Page
             SetStartupParams();
             SetAttributes();
         }
+        else
+        {
+            data_gridView.DataBind();
+        }
     }
    
     public void SetupContext(object sender, LinqDataSourceContextEventArgs e)
