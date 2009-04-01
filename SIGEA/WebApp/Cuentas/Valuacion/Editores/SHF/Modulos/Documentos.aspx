@@ -137,7 +137,8 @@
     <asp:LinqDataSource ID="tipoDocumento_DS" runat="server" 
         ContextTypeName="SIGEA.Classes.Entities.SIGEADataContext" 
         Select="new (idTipoDocumentoAvaluo, descripcion)" 
-        TableName="TipoDocumentoAvaluo">
+        TableName="TipoDocumentoAvaluo"
+         OnContextCreating="SetupContext">
     </asp:LinqDataSource>
     
     <asp:HiddenField ID="idAvaluo_HF" runat="server" Value="0" />

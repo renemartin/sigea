@@ -143,4 +143,8 @@ public partial class Cuentas_Valuacion_Editores_SHF_Modulos_Documentos : System.
     {
         DeleteDocumento();
     }
+    public void SetupContext(object sender, LinqDataSourceContextEventArgs e)
+    {
+        e.ObjectInstance = new SIGEADataContext(ConfigurationManager.ConnectionStrings["SIGEA_ConnectionString"].ConnectionString);
+    }
 }

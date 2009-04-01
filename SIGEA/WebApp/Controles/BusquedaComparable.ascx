@@ -189,31 +189,11 @@
         BusquedaComparable.prototype.setTipo = setTipo;
         BusquedaComparable.prototype.clear = clear;
         BusquedaComparable.prototype.validate = validate;
+        BusquedaComparable.prototype.setValidator = setValidator;
 
         // Inicialización de validador
         this.parent_id = "<%= ClientID %>";
-        this.controls = new Array(
-            $get(this.parent_id + "_valorOferta_TBox"),              //0
-            $get(this.parent_id + "_fechaCreacion_TBox"),            //1
-            $get(this.parent_id + "_numeroFrentes_TBox"),            //2
-            $get(this.parent_id + "_superficieTerreno_TBox"),        //3
-            $get(this.parent_id + "_superficieConstruida_TBox"),     //4
-            $get(this.parent_id + "_antiguedad_TBox"),               //5
-            $get(this.parent_id + "_avanceObra_TBox"),               //6
-            $get(this.parent_id + "_codigoPostal_TBox")              //7
-        );
-        this.validator = new ControlValidator(this.controls);
-        for (var i = 0; i < this.controls.length; i++) {
-            this.validator.addOptionalField(i);
-        }
-        this.validator.addNumericField(0, true);
-        //this.validator.addDateField(1);
-        this.validator.addNumericField(2, false);
-        this.validator.addNumericField(3, true);
-        this.validator.addNumericField(4, true);
-        this.validator.addNumericField(5, true);
-        this.validator.addNumericField(6, true);
-        this.validator.addNumericField(7, false);
+                
         function getData() {
             var data = new Object();
 
@@ -269,7 +249,33 @@
 
         // Validación
         function validate() {
+            this.setValidator();
             return this.validator.validate();
+        }
+
+        function setValidator() {
+            this.controls = new Array(
+                $get(this.parent_id + "_valorOferta_TBox"),              //0
+                $get(this.parent_id + "_fechaCreacion_TBox"),            //1
+                $get(this.parent_id + "_numeroFrentes_TBox"),            //2
+                $get(this.parent_id + "_superficieTerreno_TBox"),        //3
+                $get(this.parent_id + "_superficieConstruida_TBox"),     //4
+                $get(this.parent_id + "_antiguedad_TBox"),               //5
+                $get(this.parent_id + "_avanceObra_TBox"),               //6
+                $get(this.parent_id + "_codigoPostal_TBox")              //7
+            );
+            this.validator = new ControlValidator(this.controls);
+            for (var i = 0; i < this.controls.length; i++) {
+                this.validator.addOptionalField(i);
+            }
+            this.validator.addNumericField(0, true);
+            //this.validator.addDateField(1);
+            this.validator.addNumericField(2, false);
+            this.validator.addNumericField(3, true);
+            this.validator.addNumericField(4, true);
+            this.validator.addNumericField(5, true);
+            this.validator.addNumericField(6, true);
+            this.validator.addNumericField(7, false);
         }
 
     }
