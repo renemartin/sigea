@@ -1,0 +1,2 @@
+This system store information required for the appraisal of properties and lands and
+controls all the phases of the process; from the initial request of appraisal to the   billing of the service to the final customer.
